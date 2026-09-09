@@ -139,12 +139,18 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home')
 
   const cardRefs = useRef([])
+  const carouselRef = useRef(null)
   const toastTimer = useRef(null)
 
   const showCard = (i) => {
     setCurrent((prev) => {
       const next = (i + CARDS.length) % CARDS.length
-      cardRefs.current[next]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+      const track = carouselRef.current
+      const card = cardRefs.current[next]
+      if (track && card) {
+        const target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2
+        track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' })
+      }
       return next
     })
   }
@@ -259,7 +265,7 @@ export default function App() {
         </div>
         <div className="carousel-wrap">
           <button className="car-btn prev" onClick={() => showCard(current - 1)}>‹</button>
-          <div className="carousel">
+          <div className="carousel" ref={carouselRef}>
             {CARDS.map((c, i) => (
               <div
                 key={c.title}
