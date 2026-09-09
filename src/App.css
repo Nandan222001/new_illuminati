@@ -22,6 +22,24 @@ button{font-family:inherit;cursor:pointer}
 ::-webkit-scrollbar-track{background:#0a0705}
 ::-webkit-scrollbar-thumb{background:linear-gradient(#8a6f35,#4a3a1c);border-radius:6px}
 
+/* ---------- SKELETON LOADING ---------- */
+.skeleton{
+  position:absolute;inset:0;
+  background-color:#15100c;
+  background-image:linear-gradient(100deg, transparent 8%, rgba(230,200,120,.16) 20%, transparent 34%);
+  background-size:200% 100%;
+  animation:skeleton-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer{
+  0%{background-position:150% 0}
+  100%{background-position:-50% 0}
+}
+.img-fade{opacity:0;transition:opacity .5s ease}
+.img-fade.loaded{opacity:1}
+.bg-skeleton{transition:opacity .6s ease;pointer-events:none}
+.bg-skeleton-hidden{opacity:0}
+.comm-emblem-wrap{position:relative;width:110px;height:110px;flex-shrink:0;border-radius:50%;overflow:hidden}
+
 /* ---------- NAV ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:26px;
   padding:12px 28px;background:linear-gradient(180deg,rgba(3,1,1,.92),rgba(3,1,1,.75) 70%,transparent);
@@ -100,7 +118,7 @@ section{position:relative}
 .carousel::-webkit-scrollbar{display:none}
 .card{position:relative;flex:0 0 clamp(200px,22vw,330px);aspect-ratio:16/10;border-radius:6px;overflow:hidden;scroll-snap-align:start;
   border:1px solid rgba(230,200,120,.14);cursor:pointer;transition:transform .35s,box-shadow .35s,border-color .35s}
-.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s, opacity .5s ease}
 .card:hover{transform:translateY(-4px) scale(1.01);border-color:rgba(230,200,120,.5);box-shadow:0 12px 44px rgba(0,0,0,.7),0 0 24px rgba(230,200,120,.15)}
 .card:hover img{transform:scale(1.07)}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.75))}

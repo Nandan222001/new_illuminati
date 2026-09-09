@@ -57,6 +57,22 @@ function getTimeLeft() {
   }
 }
 
+function Img({ src, alt, className = '' }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <>
+      {!loaded && <div className="skeleton" />}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className={`${className} img-fade${loaded ? ' loaded' : ''}`}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  )
+}
+
 function BrandMark({ className }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none">
@@ -137,6 +153,17 @@ export default function App() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [soundOn, setSoundOn] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [heroBgLoaded, setHeroBgLoaded] = useState(false)
+  const [countdownBgLoaded, setCountdownBgLoaded] = useState(false)
+
+  useEffect(() => {
+    const hero = new Image()
+    hero.onload = () => setHeroBgLoaded(true)
+    hero.src = '/assets/hero-baphomet.jpg'
+    const countdown = new Image()
+    countdown.onload = () => setCountdownBgLoaded(true)
+    countdown.src = '/assets/archive-baphomet.jpg'
+  }, [])
 
   const cardRefs = useRef([])
   const carouselRef = useRef(null)
@@ -220,6 +247,7 @@ export default function App() {
       </nav>
 
       <header className="hero" id="home">
+        <div className={`skeleton bg-skeleton${heroBgLoaded ? ' bg-skeleton-hidden' : ''}`} />
         <div className="hero-inner">
           <div>
             <div className="eyebrow">WELCOME TO</div>
@@ -273,7 +301,7 @@ export default function App() {
                 className={`card${i === current ? ' active' : ''}`}
                 onClick={() => showCard(i)}
               >
-                <img src={c.img} alt={c.title} />
+                <Img src={c.img} alt={c.title} />
                 <div className="card-cap"><h4>{c.title}</h4><p>{c.cap}</p></div>
               </div>
             ))}
@@ -311,6 +339,7 @@ export default function App() {
           </div>
         </div>
         <div className="countdown" id="countdown">
+          <div className={`skeleton bg-skeleton${countdownBgLoaded ? ' bg-skeleton-hidden' : ''}`} />
           <div className="cd-kicker">THE 666,666 EXPERIENCE</div>
           <div className="cd-date">06 NOVEMBER 2026 · 12:00 AM</div>
           <div className="cd-big">666,666</div>
@@ -336,7 +365,7 @@ export default function App() {
             {VIDEOS.map((v) => (
               <div className="vid" key={v.title} onClick={() => toast(v.note)}>
                 <div className="vid-thumb">
-                  <img src={v.img} alt={v.title} />
+                  <Img src={v.img} alt={v.title} />
                   <span className="play">▶</span>
                   <span className="dur">{v.dur}</span>
                 </div>
@@ -356,7 +385,9 @@ export default function App() {
             </div>
           </div>
           <div className="comm-body">
-            <img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" />
+            <div className="comm-emblem-wrap">
+              <Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" />
+            </div>
             <div className="comm-btns">
               <button onClick={() => toast('Discord invite copied (demo)')}>🎮 DISCORD</button>
               <button onClick={() => toast('Opening Telegram (demo)')}>✈ TELEGRAM</button>
@@ -375,7 +406,7 @@ export default function App() {
           </div>
           <div className="insta-grid">
             {INSTA_IMAGES.map((img, i) => (
-              <a href="#" key={i}><img src={img} alt="post" /></a>
+              <a href="#" key={i}><Img src={img} alt="post" /></a>
             ))}
           </div>
           <div className="insta-foot">
