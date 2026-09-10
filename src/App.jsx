@@ -48,20 +48,22 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-                <Route path="/admin" element={<ProtectedRoute adminOnly><AdminLayout /></ProtectedRoute>}>
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="revenue" element={<AdminRevenue />} />
-                  <Route path="members" element={<AdminMembers />} />
-                  <Route path="videos" element={<AdminVideos />} />
-                  <Route path="images" element={<AdminImages />} />
-                  <Route path="rituals" element={<AdminRituals />} />
-                  <Route path="settings" element={<AdminSettings />} />
-                </Route>
                 {/* legacy hash anchors from the single-page version */}
                 <Route path="/home" element={<Navigate to="/" replace />} />
                 <Route path="/symbols" element={<Navigate to="/visuals" replace />} />
                 <Route path="/countdown" element={<Navigate to="/new-order" replace />} />
                 <Route path="*" element={<NotFound />} />
+              </Route>
+
+              {/* Admin console is its own app shell — no public site header/footer. */}
+              <Route path="/admin" element={<ProtectedRoute adminOnly><AdminLayout /></ProtectedRoute>}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="revenue" element={<AdminRevenue />} />
+                <Route path="members" element={<AdminMembers />} />
+                <Route path="videos" element={<AdminVideos />} />
+                <Route path="images" element={<AdminImages />} />
+                <Route path="rituals" element={<AdminRituals />} />
+                <Route path="settings" element={<AdminSettings />} />
               </Route>
             </Routes>
           </ContentProvider>

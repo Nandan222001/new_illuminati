@@ -66,16 +66,17 @@ export function render(url) {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            <Route path="/admin" element={<ProtectedRoute adminOnly><AdminLayout /></ProtectedRoute>}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="revenue" element={<AdminRevenue />} />
-              <Route path="members" element={<AdminMembers />} />
-              <Route path="videos" element={<AdminVideos />} />
-              <Route path="images" element={<AdminImages />} />
-              <Route path="rituals" element={<AdminRituals />} />
-              <Route path="settings" element={<AdminSettings />} />
-            </Route>
             <Route path="*" element={<NotFound />} />
+          </Route>
+
+          <Route path="/admin" element={<ProtectedRoute adminOnly><AdminLayout /></ProtectedRoute>}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="revenue" element={<AdminRevenue />} />
+            <Route path="members" element={<AdminMembers />} />
+            <Route path="videos" element={<AdminVideos />} />
+            <Route path="images" element={<AdminImages />} />
+            <Route path="rituals" element={<AdminRituals />} />
+            <Route path="settings" element={<AdminSettings />} />
           </Route>
         </Routes>
       </ContentProvider></AuthProvider></ToastProvider>
