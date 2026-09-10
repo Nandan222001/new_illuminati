@@ -10,7 +10,8 @@ import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const routes = ['/', '/archives', '/archives/the-third-eye', '/rituals', '/new-order', '/videos', '/videos/satanic-mythology',
-  '/videos/the-last-screening', '/visuals', '/community', '/about', '/login', '/register', '/profile', '/admin', '/nope']
+  '/videos/the-last-screening', '/visuals', '/community', '/about', '/login', '/register', '/profile', '/admin',
+  '/admin/revenue', '/admin/members', '/admin/videos', '/admin/images', '/admin/rituals', '/admin/settings', '/nope']
 
 const out = join(process.cwd(), 'node_modules', '.cache', 'ib-ssr')
 await rm(out, { recursive: true, force: true })
@@ -23,6 +24,7 @@ import { AuthProvider } from '/src/context/AuthContext'
 import { ContentProvider } from '/src/context/ContentContext'
 import { ToastProvider } from '/src/context/ToastContext'
 import Layout from '/src/components/Layout'
+import AdminLayout from '/src/components/AdminLayout'
 import ProtectedRoute from '/src/components/ProtectedRoute'
 import Home from '/src/pages/Home'
 import Archives from '/src/pages/Archives'
@@ -37,7 +39,13 @@ import About from '/src/pages/About'
 import Login from '/src/pages/Login'
 import Register from '/src/pages/Register'
 import Profile from '/src/pages/Profile'
-import Admin from '/src/pages/Admin'
+import AdminDashboard from '/src/pages/admin/Dashboard'
+import AdminRevenue from '/src/pages/admin/Revenue'
+import AdminMembers from '/src/pages/admin/Members'
+import AdminVideos from '/src/pages/admin/VideosAdmin'
+import AdminImages from '/src/pages/admin/ImagesAdmin'
+import AdminRituals from '/src/pages/admin/RitualsAdmin'
+import AdminSettings from '/src/pages/admin/Settings'
 import NotFound from '/src/pages/NotFound'
 export function render(url) {
   return renderToString(
@@ -58,7 +66,15 @@ export function render(url) {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            <Route path="/admin" element={<ProtectedRoute adminOnly><Admin /></ProtectedRoute>} />
+            <Route path="/admin" element={<ProtectedRoute adminOnly><AdminLayout /></ProtectedRoute>}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="revenue" element={<AdminRevenue />} />
+              <Route path="members" element={<AdminMembers />} />
+              <Route path="videos" element={<AdminVideos />} />
+              <Route path="images" element={<AdminImages />} />
+              <Route path="rituals" element={<AdminRituals />} />
+              <Route path="settings" element={<AdminSettings />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

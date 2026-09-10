@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { RITUALS, VIDEOS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
@@ -10,15 +9,15 @@ import Img from '../components/Img'
 
 export default function Profile() {
   const { user, isAdmin, logout, updateProfile } = useAuth()
-  const { locks } = useContent()
+  const { videos, rituals } = useContent()
   const toast = useToast()
   const navigate = useNavigate()
   const location = useLocation()
   const [name, setName] = useState(user.name)
   const [error, setError] = useState('')
 
-  const sealedVideos = VIDEOS.filter((v) => locks[v.slug])
-  const sealedRituals = RITUALS.filter((r) => locks[r.slug])
+  const sealedVideos = videos.filter((v) => v.category === 'paid')
+  const sealedRituals = rituals.filter((r) => r.category === 'paid')
   const joined = new Date(user.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
 
   const save = (e) => {

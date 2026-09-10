@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext'
 import { ContentProvider } from './context/ContentContext'
 import { ToastProvider } from './context/ToastContext'
 import Layout from './components/Layout'
+import AdminLayout from './components/AdminLayout'
 import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import Archives from './pages/Archives'
@@ -17,7 +18,13 @@ import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
-import Admin from './pages/Admin'
+import AdminDashboard from './pages/admin/Dashboard'
+import AdminRevenue from './pages/admin/Revenue'
+import AdminMembers from './pages/admin/Members'
+import AdminVideos from './pages/admin/VideosAdmin'
+import AdminImages from './pages/admin/ImagesAdmin'
+import AdminRituals from './pages/admin/RitualsAdmin'
+import AdminSettings from './pages/admin/Settings'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -41,7 +48,15 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-                <Route path="/admin" element={<ProtectedRoute adminOnly><Admin /></ProtectedRoute>} />
+                <Route path="/admin" element={<ProtectedRoute adminOnly><AdminLayout /></ProtectedRoute>}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="revenue" element={<AdminRevenue />} />
+                  <Route path="members" element={<AdminMembers />} />
+                  <Route path="videos" element={<AdminVideos />} />
+                  <Route path="images" element={<AdminImages />} />
+                  <Route path="rituals" element={<AdminRituals />} />
+                  <Route path="settings" element={<AdminSettings />} />
+                </Route>
                 {/* legacy hash anchors from the single-page version */}
                 <Route path="/home" element={<Navigate to="/" replace />} />
                 <Route path="/symbols" element={<Navigate to="/visuals" replace />} />

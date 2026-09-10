@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { PAGES, RITUALS } from '../data/content'
+import { PAGES } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
@@ -9,7 +9,7 @@ import Img from '../components/Img'
 export default function Rituals() {
   const page = PAGES.rituals
   const { user } = useAuth()
-  const { isLocked, canAccess } = useContent()
+  const { rituals: RITUALS, canAccess } = useContent()
 
   return (
     <>
@@ -25,8 +25,8 @@ export default function Rituals() {
         />
         <ol className="ritual-timeline">
           {RITUALS.map((r) => {
-            const locked = isLocked(r.slug)
-            const open = canAccess(r.slug)
+            const locked = r.category === 'paid'
+            const open = canAccess(r.category)
             return (
               <li className="ritual" key={r.slug} id={r.slug}>
                 <div className="ritual-step"><span>{r.step}</span></div>

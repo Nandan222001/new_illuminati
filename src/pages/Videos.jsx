@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PAGES, VIDEOS } from '../data/content'
+import { PAGES } from '../data/content'
 import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
@@ -12,13 +12,13 @@ export default function Videos() {
   const page = PAGES.videos
   const [filter, setFilter] = useState('all')
   const [query, setQuery] = useState('')
-  const { isLocked, canAccess } = useContent()
+  const { videos: VIDEOS, canAccess } = useContent()
 
   const list = useMemo(() => VIDEOS.filter((v) => {
     if (filter !== 'all' && v.tag !== filter) return false
     if (query && !`${v.title} ${v.desc}`.toLowerCase().includes(query.toLowerCase())) return false
     return true
-  }), [filter, query])
+  }), [VIDEOS, filter, query])
 
   const featured = VIDEOS[0]
 
@@ -62,8 +62,8 @@ export default function Videos() {
         ) : (
           <div className="vid-grid page-vid-grid">
             {list.map((v) => {
-              const locked = isLocked(v.slug)
-              const open = canAccess(v.slug)
+              const locked = v.category === 'paid'
+              const open = canAccess(v.category)
               return (
                 <Link className={`vid${!open ? ' sealed' : ''}`} key={v.slug} to={`/videos/${v.slug}`}>
                   <div className="vid-thumb">

@@ -114,18 +114,18 @@ export const SYMBOLS = [
 ]
 
 export const GALLERY = [
-  { img: '/assets/hero-baphomet.jpg', title: 'The Throne', cap: 'Key visual · Chapter I' },
-  { img: '/assets/neworder-hero.jpg', title: 'The Eye Over The City', cap: 'Key visual · New Order' },
-  { img: '/assets/rituals-hero.jpg', title: 'The Circle', cap: 'Rituals · Station II' },
-  { img: '/assets/archives-hero.jpg', title: 'The Library', cap: 'Archives · Entrance' },
-  { img: '/assets/videos-hero.jpg', title: 'The Screening Room', cap: 'Videos · Hall' },
-  { img: '/assets/community-hero.jpg', title: 'The Round Table', cap: 'Community · Council' },
-  { img: '/assets/about-hero.jpg', title: 'The Gate', cap: 'About · Threshold' },
-  { img: '/assets/visuals-hero.jpg', title: 'The Wall of Sigils', cap: 'Visuals · Temple' },
-  { img: '/assets/forbidden-city.jpg', title: 'The Forbidden City', cap: 'Videos · Theory' },
-  { img: '/assets/hero-baphomet-mobile.jpg', title: 'The Throne · Portrait', cap: 'Key visual · Mobile', portrait: true },
-  { img: '/assets/auth-login.jpg', title: 'The Sealed Door', cap: 'Login · Key visual', portrait: true },
-  { img: '/assets/auth-register.jpg', title: 'The Oath', cap: 'Register · Key visual', portrait: true },
+  { id: 'the-throne', img: '/assets/hero-baphomet.jpg', title: 'The Throne', cap: 'Key visual · Chapter I' },
+  { id: 'the-eye-over-the-city', img: '/assets/neworder-hero.jpg', title: 'The Eye Over The City', cap: 'Key visual · New Order' },
+  { id: 'the-circle', img: '/assets/rituals-hero.jpg', title: 'The Circle', cap: 'Rituals · Station II' },
+  { id: 'the-library', img: '/assets/archives-hero.jpg', title: 'The Library', cap: 'Archives · Entrance' },
+  { id: 'the-screening-room', img: '/assets/videos-hero.jpg', title: 'The Screening Room', cap: 'Videos · Hall' },
+  { id: 'the-round-table', img: '/assets/community-hero.jpg', title: 'The Round Table', cap: 'Community · Council' },
+  { id: 'the-gate', img: '/assets/about-hero.jpg', title: 'The Gate', cap: 'About · Threshold' },
+  { id: 'the-wall-of-sigils', img: '/assets/visuals-hero.jpg', title: 'The Wall of Sigils', cap: 'Visuals · Temple' },
+  { id: 'the-forbidden-city', img: '/assets/forbidden-city.jpg', title: 'The Forbidden City', cap: 'Videos · Theory' },
+  { id: 'the-throne-portrait', img: '/assets/hero-baphomet-mobile.jpg', title: 'The Throne · Portrait', cap: 'Key visual · Mobile', portrait: true },
+  { id: 'the-sealed-door', img: '/assets/auth-login.jpg', title: 'The Sealed Door', cap: 'Login · Key visual', portrait: true },
+  { id: 'the-oath', img: '/assets/auth-register.jpg', title: 'The Oath', cap: 'Register · Key visual', portrait: true },
 ]
 
 export const INSTA_IMAGES = [

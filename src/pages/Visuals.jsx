@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { GALLERY, PAGES, SYMBOLS } from '../data/content'
+import { Link, useLocation } from 'react-router-dom'
+import { PAGES, SYMBOLS } from '../data/content'
+import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
@@ -8,6 +9,7 @@ import Img from '../components/Img'
 
 export default function Visuals() {
   const page = PAGES.visuals
+  const { gallery: GALLERY, canAccess } = useContent()
   const [active, setActive] = useState(SYMBOLS[0])
   const [lightbox, setLightbox] = useState(null)
   const { hash } = useLocation()
@@ -60,13 +62,20 @@ export default function Visuals() {
       <section className="page-section">
         <SectionHead title="THE GALLERY" sub="KEY VISUALS FROM ACROSS THE EXPERIENCE. CLICK TO ENLARGE." />
         <div className="gallery">
-          {GALLERY.map((g, i) => (
-            <button type="button" className={`gallery-item${g.portrait ? ' portrait' : ''}`} key={g.img} onClick={() => setLightbox(i)}>
-              <Img src={g.img} alt={g.title} />
-              <span className="gallery-cap"><b>{g.title}</b><small>{g.cap}</small></span>
-            </button>
-          ))}
+          {GALLERY.map((g, i) => {
+            const open = canAccess(g.category)
+            return (
+              <button type="button" className={`gallery-item${g.portrait ? ' portrait' : ''}${!open ? ' sealed' : ''}`} key={g.id} onClick={() => open && setLightbox(i)} disabled={!open}>
+                <Img src={g.img} alt={g.title} />
+                {!open && <span className="seal-badge">🔒 SEALED</span>}
+                <span className="gallery-cap"><b>{g.title}</b><small>{g.cap}</small></span>
+              </button>
+            )
+          })}
         </div>
+        {GALLERY.some((g) => g.category === 'paid') && (
+          <p className="muted">🔒 Sealed visuals are available to signed-in initiates. <Link to="/register">Become an initiate ›</Link></p>
+        )}
       </section>
 
       {lightbox !== null && (

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import DisclaimerModal from './DisclaimerModal'
@@ -8,6 +8,8 @@ import ScrollToTop from './ScrollToTop'
 export default function Layout() {
   const [modalOpen, setModalOpen] = useState(false)
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const isAdmin = pathname.startsWith('/admin')
 
   return (
     <>
@@ -16,7 +18,7 @@ export default function Layout() {
       <main>
         <Outlet context={{ openDisclaimer: () => setModalOpen(true) }} />
       </main>
-      <Footer />
+      {!isAdmin && <Footer />}
       <DisclaimerModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}

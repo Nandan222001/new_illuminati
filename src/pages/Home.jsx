@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
-import { CARDS, INSTA_IMAGES, PAGES, SYMBOLS, VIDEOS, getTimeLeft } from '../data/content'
+import { CARDS, INSTA_IMAGES, PAGES, SYMBOLS, getTimeLeft } from '../data/content'
 import { useAuth } from '../context/AuthContext'
+import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
 import Img from '../components/Img'
 import { useIsMobile } from '../components/PageHero'
@@ -9,7 +10,6 @@ import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 
 const HOME_SYMBOLS = SYMBOLS.slice(0, 5)
-const HOME_VIDEOS = VIDEOS.slice(0, 4)
 
 const EXPLORE = [
   { to: '/archives', page: PAGES.archives },
@@ -31,9 +31,11 @@ export default function Home() {
   const toast = useToast()
   const navigate = useNavigate()
   const { user } = useAuth()
+  const { videos } = useContent()
   const { openDisclaimer } = useOutletContext()
   const isMobile = useIsMobile()
   const heroSrc = isMobile ? '/assets/hero-baphomet-mobile.jpg' : '/assets/hero-baphomet.jpg'
+  const HOME_VIDEOS = useMemo(() => videos.slice(0, 4), [videos])
 
   useEffect(() => {
     setHeroBgLoaded(false)

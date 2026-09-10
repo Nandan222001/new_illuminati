@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { VIDEOS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
@@ -9,14 +8,14 @@ import SectionHead from '../components/SectionHead'
 
 export default function VideoDetail() {
   const { slug } = useParams()
+  const { videos: VIDEOS, canAccess } = useContent()
   const video = VIDEOS.find((v) => v.slug === slug)
   const [playing, setPlaying] = useState(false)
   const { user } = useAuth()
-  const { canAccess } = useContent()
   const toast = useToast()
 
   if (!video) return <Navigate to="/videos" replace />
-  const open = canAccess(video.slug)
+  const open = canAccess(video.category)
   const related = VIDEOS.filter((v) => v.slug !== video.slug).slice(0, 4)
 
   return (
@@ -72,7 +71,7 @@ export default function VideoDetail() {
           <Link className="vid" key={v.slug} to={`/videos/${v.slug}`}>
             <div className="vid-thumb">
               <Img src={v.img} alt={v.title} />
-              <span className="play">{canAccess(v.slug) ? '▶' : '🔒'}</span>
+              <span className="play">{canAccess(v.category) ? '▶' : '🔒'}</span>
               <span className="dur">{v.dur}</span>
             </div>
             <div className="vid-body">
