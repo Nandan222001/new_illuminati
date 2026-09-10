@@ -60,7 +60,7 @@ export default function Admin() {
 
   return (
     <>
-      <PageHero kicker="KEEPER CONSOLE" title="ADMIN PANEL" sub={`SIGNED IN AS ${user.name.toUpperCase()} · ${user.email}`} image="/assets/community-hero.jpg" compact>
+      <PageHero kicker="KEEPER CONSOLE" title="ADMIN PANEL" sub={`SIGNED IN AS ${user.name.toUpperCase()} · ${user.email}`} image="/assets/community-hero.jpg" imageMobile="/assets/community-hero-mobile.jpg" compact>
         <div className="stat-row">
           <div className="stat"><b>{users.length}</b><span>ACCOUNTS</span></div>
           <div className="stat"><b>{admins}</b><span>KEEPERS</span></div>

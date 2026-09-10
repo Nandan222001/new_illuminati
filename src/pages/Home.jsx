@@ -4,6 +4,7 @@ import { CARDS, INSTA_IMAGES, PAGES, SYMBOLS, VIDEOS, getTimeLeft } from '../dat
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import Img from '../components/Img'
+import { useIsMobile } from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 
@@ -31,15 +32,18 @@ export default function Home() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { openDisclaimer } = useOutletContext()
+  const isMobile = useIsMobile()
+  const heroSrc = isMobile ? '/assets/hero-baphomet-mobile.jpg' : '/assets/hero-baphomet.jpg'
 
   useEffect(() => {
+    setHeroBgLoaded(false)
     const hero = new Image()
     hero.onload = () => setHeroBgLoaded(true)
-    hero.src = '/assets/hero-baphomet.jpg'
+    hero.src = heroSrc
     const countdown = new Image()
     countdown.onload = () => setCountdownBgLoaded(true)
     countdown.src = '/assets/archive-baphomet.jpg'
-  }, [])
+  }, [heroSrc])
 
   const showCard = (i) => {
     setCurrent(() => {
@@ -68,7 +72,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="hero" id="home">
+      <header className={`hero${isMobile ? ' hero-portrait' : ''}`} id="home" style={{ backgroundImage: `url('${heroSrc}')` }}>
         <div className={`skeleton bg-skeleton${heroBgLoaded ? ' bg-skeleton-hidden' : ''}`} />
         <div className="hero-inner">
           <div>

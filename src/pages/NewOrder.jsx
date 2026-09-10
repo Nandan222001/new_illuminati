@@ -34,7 +34,7 @@ export default function NewOrder() {
 
   return (
     <>
-      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero}>
+      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero} imageMobile={page.heroMobile}>
         <div className="cd-boxes big">
           <div className="cd-box"><b>{String(timeLeft.d).padStart(3, '0')}</b><span>DAYS</span></div>
           <div className="cd-box"><b>{String(timeLeft.h).padStart(2, '0')}</b><span>HOURS</span></div>

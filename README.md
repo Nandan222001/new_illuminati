@@ -55,6 +55,15 @@ VITE_ADMIN_PASSWORD=<your passphrase>
 Safety rails: you cannot demote or banish yourself, and the last Keeper can
 never be removed.
 
+## Mobile art direction
+
+Wide 16:9 artwork crops badly on phones, so every hero has a dedicated
+portrait (9:16) version: `public/assets/*-hero-mobile.jpg` and
+`hero-baphomet-mobile.jpg`. `PageHero` (and the Home hero) pick the portrait
+image below 720px via `matchMedia`, and the `@media(max-width:720px)` block at
+the end of `App.css` switches the grids to image-led poster layouts
+(tall cards, horizontal snap rails, 2-up posters).
+
 ## Project layout
 
 ```

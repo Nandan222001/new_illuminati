@@ -24,7 +24,7 @@ export default function Videos() {
 
   return (
     <>
-      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero}>
+      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero} imageMobile={page.heroMobile}>
         <p className="page-intro">{page.intro}</p>
       </PageHero>
 

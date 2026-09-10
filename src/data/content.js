@@ -19,6 +19,7 @@ export const PAGES = {
     title: 'ARCHIVES',
     sub: 'A JOURNEY THROUGH SYMBOLS, CEREMONY AND MYSTERY.',
     hero: '/assets/archives-hero.jpg',
+    heroMobile: '/assets/archives-hero-mobile.jpg',
     intro: 'Every order keeps a library. Ours keeps the questions nobody dared to write down. Six chambers, six relics — each one a doorway into the mythology the Brotherhood was built on.',
   },
   rituals: {
@@ -26,6 +27,7 @@ export const PAGES = {
     title: 'RITUALS',
     sub: 'CANDLE. CIRCLE. SILENCE. THE STAGES OF THE INITIATE.',
     hero: '/assets/rituals-hero.jpg',
+    heroMobile: '/assets/rituals-hero-mobile.jpg',
     intro: 'The rites of the Brotherhood are theatre — staged, symbolic and entirely fictional. Read them as story. Follow the seven stations from the first candle to the sealed oath.',
   },
   newOrder: {
@@ -33,6 +35,7 @@ export const PAGES = {
     title: 'NEW ORDER',
     sub: '06 NOVEMBER 2026 · 12:00 AM · THE VEIL THINS.',
     hero: '/assets/neworder-hero.jpg',
+    heroMobile: '/assets/neworder-hero-mobile.jpg',
     intro: 'A fictional campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter of the experience. No prophecies. No real-world claims. Just a date on the calendar and a story waiting to unfold.',
   },
   videos: {
@@ -40,6 +43,7 @@ export const PAGES = {
     title: 'VIDEOS',
     sub: 'EXPLORE THE VIDEOS, DOCUMENTARIES AND HIDDEN STORIES.',
     hero: '/assets/videos-hero.jpg',
+    heroMobile: '/assets/videos-hero-mobile.jpg',
     intro: 'The projector hums in an empty hall. Documentaries, dramatisations and theory breakdowns — each one labelled clearly as fiction, theory or fact so you always know what you are watching.',
   },
   visuals: {
@@ -47,6 +51,7 @@ export const PAGES = {
     title: 'VISUALS',
     sub: 'ANCIENT SYMBOLS. MODERN INTERPRETATIONS. ENDLESS QUESTIONS.',
     hero: '/assets/visuals-hero.jpg',
+    heroMobile: '/assets/visuals-hero-mobile.jpg',
     intro: 'A gallery of sigils, emblems and imagery from across the Brotherhood universe. Tap any symbol to learn the meaning we assigned it in this fiction.',
   },
   community: {
@@ -54,6 +59,7 @@ export const PAGES = {
     title: 'COMMUNITY',
     sub: 'DISCUSS. SHARE. EXPLORE.',
     hero: '/assets/community-hero.jpg',
+    heroMobile: '/assets/community-hero-mobile.jpg',
     intro: 'The round table is open. Join the channels, meet the other initiates, and help decide where the story goes next. 18+ recommended for mature themes.',
   },
   about: {
@@ -61,6 +67,7 @@ export const PAGES = {
     title: 'ABOUT',
     sub: 'WHO WE ARE. WHAT THIS IS. WHAT IT IS NOT.',
     hero: '/assets/about-hero.jpg',
+    heroMobile: '/assets/about-hero-mobile.jpg',
     intro: 'Illuminati Brotherhood is an immersive, fictional entertainment experience about secret-society mythology, conspiracy culture and historical mystery. Nothing here is a real-world claim.',
   },
 }
@@ -116,6 +123,9 @@ export const GALLERY = [
   { img: '/assets/about-hero.jpg', title: 'The Gate', cap: 'About · Threshold' },
   { img: '/assets/visuals-hero.jpg', title: 'The Wall of Sigils', cap: 'Visuals · Temple' },
   { img: '/assets/forbidden-city.jpg', title: 'The Forbidden City', cap: 'Videos · Theory' },
+  { img: '/assets/hero-baphomet-mobile.jpg', title: 'The Throne · Portrait', cap: 'Key visual · Mobile', portrait: true },
+  { img: '/assets/auth-login.jpg', title: 'The Sealed Door', cap: 'Login · Key visual', portrait: true },
+  { img: '/assets/auth-register.jpg', title: 'The Oath', cap: 'Register · Key visual', portrait: true },
 ]
 
 export const INSTA_IMAGES = [

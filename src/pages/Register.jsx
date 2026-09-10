@@ -47,7 +47,7 @@ export default function Register() {
   return (
     <AuthShell
       reverse
-      image="/assets/archive-altar.jpg"
+      image="/assets/auth-register.jpg"
       imageAlt="Signing the oath"
       quote="“Seek. Question. And never claim the story is anything but a story.”"
       kicker="THE SEALED OATH"

@@ -30,7 +30,7 @@ export default function Visuals() {
 
   return (
     <>
-      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero}>
+      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero} imageMobile={page.heroMobile}>
         <p className="page-intro">{page.intro}</p>
       </PageHero>
 
@@ -61,7 +61,7 @@ export default function Visuals() {
         <SectionHead title="THE GALLERY" sub="KEY VISUALS FROM ACROSS THE EXPERIENCE. CLICK TO ENLARGE." />
         <div className="gallery">
           {GALLERY.map((g, i) => (
-            <button type="button" className="gallery-item" key={g.img} onClick={() => setLightbox(i)}>
+            <button type="button" className={`gallery-item${g.portrait ? ' portrait' : ''}`} key={g.img} onClick={() => setLightbox(i)}>
               <Img src={g.img} alt={g.title} />
               <span className="gallery-cap"><b>{g.title}</b><small>{g.cap}</small></span>
             </button>
