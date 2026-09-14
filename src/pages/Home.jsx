@@ -83,7 +83,7 @@ export default function Home() {
             <p className="hero-sub">The door has always been open,<br />only few know where it is.</p>
             <div className="hero-tag">ENTER THE UNKNOWN</div>
             <div className="hero-cta">
-              <button className="btn-gold" onClick={openDisclaimer}>ENTER THE ARCHIVES <span>›</span></button>
+              <button className="btn-gold" onClick={openDisclaimer}>ENTER THE DARK WORLD <span>›</span></button>
               {user
                 ? <Link className="btn-ghost" to="/community">👥 JOIN THE COMMUNITY</Link>
                 : <Link className="btn-ghost" to="/register">△ BECOME AN INITIATE</Link>}
