@@ -45,7 +45,26 @@ button{font-family:inherit;cursor:pointer}
   padding:12px 28px;background:linear-gradient(180deg,rgba(3,1,1,.92),rgba(3,1,1,.75) 70%,transparent);
   backdrop-filter:blur(10px);border-bottom:1px solid rgba(230,200,120,.08)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.brand-mark{width:44px;height:44px;filter:drop-shadow(0 0 12px rgba(230,200,120,.35))}
+.brand-mark{width:44px;height:44px;filter:drop-shadow(0 0 12px rgba(230,200,120,.35)) drop-shadow(0 0 10px rgba(255,120,30,.35))}
+
+.bm-flame{transform-box:fill-box;transform-origin:50% 100%;animation:bm-flicker 2.6s ease-in-out infinite}
+.bm-flame-a{animation-duration:2.3s;animation-delay:-.4s}
+.bm-flame-b{animation-duration:3s;animation-delay:-1.1s}
+.bm-flame-c{animation-duration:2.7s;animation-delay:-.7s}
+.bm-flame-glow{transform-box:fill-box;transform-origin:50% 50%;animation:bm-glow-pulse 3.4s ease-in-out infinite}
+@keyframes bm-flicker{
+  0%,100%{transform:scaleY(1) scaleX(1) translateY(0);opacity:.82}
+  25%{transform:scaleY(1.1) scaleX(.95) translateY(-1px);opacity:1}
+  50%{transform:scaleY(.9) scaleX(1.05) translateY(1px);opacity:.7}
+  75%{transform:scaleY(1.05) scaleX(.98) translateY(-.5px);opacity:.92}
+}
+@keyframes bm-glow-pulse{
+  0%,100%{opacity:.5;transform:scale(1)}
+  50%{opacity:.75;transform:scale(1.08)}
+}
+@media (prefers-reduced-motion:reduce){
+  .bm-flame,.bm-flame-glow{animation:none}
+}
 .brand-name{font-family:'Cinzel',serif;font-weight:700;font-size:15px;letter-spacing:4px;color:var(--gold);line-height:1.25}
 .brand-name small{display:block;font-size:10px;letter-spacing:6px;color:var(--gold2);font-weight:500}
 .nav-links{display:flex;gap:22px;margin:0 auto;flex-wrap:wrap;justify-content:center}
