@@ -11,6 +11,7 @@ import {
   login as loginRequest,
   publicUser,
   register as registerRequest,
+  sealInitiation,
   setSession,
   updateUser,
 } from '../auth/authService'
@@ -95,6 +96,12 @@ export function AuthProvider({ children }) {
     setUsers(updateUser(rawUser.id, { name }))
   }, [rawUser])
 
+  const completeInitiation = useCallback(() => {
+    if (!rawUser) throw new Error('You are not signed in.')
+    setUsers(sealInitiation(rawUser.id))
+    return publicUser(getUsers().find((u) => u.id === rawUser.id))
+  }, [rawUser])
+
   const value = useMemo(() => ({
     ready,
     user: publicUser(rawUser),
@@ -106,7 +113,8 @@ export function AuthProvider({ children }) {
     updateRole,
     removeUser,
     updateProfile,
-  }), [ready, rawUser, users, login, register, logout, updateRole, removeUser, updateProfile])
+    completeInitiation,
+  }), [ready, rawUser, users, login, register, logout, updateRole, removeUser, updateProfile, completeInitiation])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

@@ -124,6 +124,7 @@ export function ensureSeeded() {
         const password = ENV_ADMIN_PASSWORD || generatePassphrase()
         if (!ENV_ADMIN_PASSWORD) writeJSON(DEMO_KEY, { email: ADMIN_EMAIL, password })
         const salt = randomHex(8)
+        const createdAt = new Date().toISOString()
         users.unshift({
           id: 'usr_grand_keeper',
           name: 'Grand Keeper',
@@ -131,8 +132,11 @@ export function ensureSeeded() {
           role: ROLES.ADMIN,
           salt,
           passwordHash: await hashPassword(password, salt),
-          createdAt: new Date().toISOString(),
+          createdAt,
           initiate: 1,
+          paid: true,
+          paidAt: createdAt,
+          sealId: 'IB-000',
         })
         saveUsers(users)
       }
@@ -164,6 +168,9 @@ export async function register({ name, email, password }) {
     passwordHash: await hashPassword(password, salt),
     createdAt: new Date().toISOString(),
     initiate: users.reduce((max, u) => Math.max(max, u.initiate || 0), 0) + 1,
+    paid: false,
+    paidAt: null,
+    sealId: null,
   }
   users.push(user)
   saveUsers(users)
@@ -177,6 +184,22 @@ export async function login({ email, password }) {
   const hash = await hashPassword(password, user.salt)
   if (hash !== user.passwordHash) throw new Error('The passphrase is incorrect.')
   return user
+}
+
+export const INITIATION_FEE_INR = 999
+
+/**
+ * Marks a member as having completed their (simulated) ₹999 initiation
+ * payment. This never talks to a real payment gateway — it just flips a
+ * local flag, same as everything else in this demo auth service.
+ */
+export function sealInitiation(id) {
+  const users = getUsers()
+  const target = users.find((u) => u.id === id)
+  if (!target) throw new Error('Initiate not found.')
+  if (target.paid) return users
+  const sealId = `IB-${randomHex(3).toUpperCase()}`
+  return updateUser(id, { paid: true, paidAt: new Date().toISOString(), sealId })
 }
 
 export function updateUser(id, patch) {

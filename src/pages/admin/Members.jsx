@@ -51,7 +51,7 @@ export default function AdminMembers() {
       <div className="table-wrap">
         <table className="table">
           <thead>
-            <tr><th>INITIATE</th><th>EMAIL</th><th>RANK</th><th>JOINED</th><th className="right">ACTIONS</th></tr>
+            <tr><th>INITIATE</th><th>EMAIL</th><th>RANK</th><th>MEMBERSHIP</th><th>JOINED</th><th className="right">ACTIONS</th></tr>
           </thead>
           <tbody>
             {list.map((u) => {
@@ -61,6 +61,7 @@ export default function AdminMembers() {
                   <td data-label="INITIATE"><span className={`avatar${u.role === ROLES.ADMIN ? ' admin' : ''}`}>{u.name[0]}</span><b>{u.name}</b>{self && <em className="you">YOU</em>}</td>
                   <td data-label="EMAIL">{u.email}</td>
                   <td data-label="RANK"><em className={`role-pill ${u.role}`}>{u.role === ROLES.ADMIN ? 'KEEPER' : `INITIATE #${String(u.initiate || 0).padStart(3, '0')}`}</em></td>
+                  <td data-label="MEMBERSHIP">{u.paid ? <em className="status-pill paid">◈ SEALED · {u.sealId}</em> : <em className="status-pill">UNSEALED</em>}</td>
                   <td data-label="JOINED">{new Date(u.createdAt).toLocaleDateString()}</td>
                   <td data-label="ACTIONS" className="right">
                     <div className="row-actions">
@@ -78,7 +79,7 @@ export default function AdminMembers() {
                 </tr>
               )
             })}
-            {list.length === 0 && <tr><td colSpan={5} className="empty">No initiates match that search.</td></tr>}
+            {list.length === 0 && <tr><td colSpan={6} className="empty">No initiates match that search.</td></tr>}
           </tbody>
         </table>
       </div>

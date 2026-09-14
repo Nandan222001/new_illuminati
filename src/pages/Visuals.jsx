@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { PAGES, SYMBOLS } from '../data/content'
+import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 import Img from '../components/Img'
+import InitiationModal from '../components/InitiationModal'
 
 export default function Visuals() {
   const page = PAGES.visuals
+  const { user } = useAuth()
   const { gallery: GALLERY, canAccess } = useContent()
   const [active, setActive] = useState(SYMBOLS[0])
   const [lightbox, setLightbox] = useState(null)
+  const [showInitiation, setShowInitiation] = useState(false)
   const { hash } = useLocation()
 
   useEffect(() => {
@@ -64,8 +68,15 @@ export default function Visuals() {
         <div className="gallery">
           {GALLERY.map((g, i) => {
             const open = canAccess(g.category)
+            const clickable = open || !!user
             return (
-              <button type="button" className={`gallery-item${g.portrait ? ' portrait' : ''}${!open ? ' sealed' : ''}`} key={g.id} onClick={() => open && setLightbox(i)} disabled={!open}>
+              <button
+                type="button"
+                className={`gallery-item${g.portrait ? ' portrait' : ''}${!open ? ' sealed' : ''}`}
+                key={g.id}
+                onClick={() => { if (open) setLightbox(i); else if (user) setShowInitiation(true) }}
+                disabled={!clickable}
+              >
                 <Img src={g.img} alt={g.title} />
                 {!open && <span className="seal-badge">🔒 SEALED</span>}
                 <span className="gallery-cap"><b>{g.title}</b><small>{g.cap}</small></span>
@@ -74,7 +85,11 @@ export default function Visuals() {
           })}
         </div>
         {GALLERY.some((g) => g.category === 'paid') && (
-          <p className="muted">🔒 Sealed visuals are available to signed-in initiates. <Link to="/register">Become an initiate ›</Link></p>
+          user ? (
+            <p className="muted">🔒 Sealed visuals unlock once your oath is sealed. <button type="button" className="link-btn" onClick={() => setShowInitiation(true)}>Seal your oath ›</button></p>
+          ) : (
+            <p className="muted">🔒 Sealed visuals are available to signed-in initiates. <Link to="/register">Become an initiate ›</Link></p>
+          )
         )}
       </section>
 
@@ -89,6 +104,8 @@ export default function Visuals() {
           <button type="button" className="lb-nav next" aria-label="Next" onClick={() => setLightbox((i) => (i + 1) % GALLERY.length)}>›</button>
         </div>
       )}
+
+      <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />
     </>
   )
 }

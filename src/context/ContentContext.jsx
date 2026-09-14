@@ -163,7 +163,7 @@ export function ContentProvider({ children }) {
     locks,
     isLocked: (id) => !!locks[id],
     /** Sealed (paid) content is visible to any signed-in initiate. */
-    canAccess: (category) => category !== 'paid' || !!user,
+    canAccess: (category) => category !== 'paid' || !!user?.paid,
     setLocked,
     setCategory,
     hidden,

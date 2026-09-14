@@ -3,14 +3,17 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
+import { INITIATION_FEE_INR } from '../auth/authService'
 import Img from '../components/Img'
 import SectionHead from '../components/SectionHead'
+import InitiationModal from '../components/InitiationModal'
 
 export default function VideoDetail() {
   const { slug } = useParams()
   const { videos: VIDEOS, canAccess } = useContent()
   const video = VIDEOS.find((v) => v.slug === slug)
   const [playing, setPlaying] = useState(false)
+  const [showInitiation, setShowInitiation] = useState(false)
   const { user } = useAuth()
   const toast = useToast()
 
@@ -42,11 +45,22 @@ export default function VideoDetail() {
         ) : (
           <div className="player-locked">
             <b>🔒 SEALED FOR INITIATES</b>
-            <p>This episode is available to signed-in members of the Brotherhood.</p>
-            <div className="detail-actions">
-              <Link to="/login" state={{ from: `/videos/${video.slug}` }} className="btn-gold">SIGN IN ›</Link>
-              <Link to="/register" className="btn-ghost">BECOME AN INITIATE</Link>
-            </div>
+            {user ? (
+              <>
+                <p>This episode unlocks once your oath is sealed (a one-time ₹{INITIATION_FEE_INR} initiation).</p>
+                <div className="detail-actions">
+                  <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>SEAL YOUR OATH ›</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p>This episode is available to signed-in members of the Brotherhood.</p>
+                <div className="detail-actions">
+                  <Link to="/login" state={{ from: `/videos/${video.slug}` }} className="btn-gold">SIGN IN ›</Link>
+                  <Link to="/register" className="btn-ghost">BECOME AN INITIATE</Link>
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>
@@ -81,6 +95,8 @@ export default function VideoDetail() {
           </Link>
         ))}
       </div>
+
+      <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />
     </section>
   )
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PAGES } from '../data/content'
 import { useAuth } from '../context/AuthContext'
@@ -5,11 +6,13 @@ import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
+import InitiationModal from '../components/InitiationModal'
 
 export default function Rituals() {
   const page = PAGES.rituals
   const { user } = useAuth()
   const { rituals: RITUALS, canAccess } = useContent()
+  const [showInitiation, setShowInitiation] = useState(false)
 
   return (
     <>
@@ -40,6 +43,8 @@ export default function Rituals() {
                     <h3>{r.title}</h3>
                     {open ? (
                       <p>{r.desc}</p>
+                    ) : user ? (
+                      <p className="sealed-text">This station is sealed. <button type="button" className="link-btn" onClick={() => setShowInitiation(true)}>Seal your oath</button> to read the record.</p>
                     ) : (
                       <p className="sealed-text">This station is sealed. <Link to="/login">Sign in</Link> or <Link to="/register">become an initiate</Link> to read the record.</p>
                     )}
@@ -64,6 +69,8 @@ export default function Rituals() {
           </div>
         </div>
       </section>
+
+      <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />
     </>
   )
 }
