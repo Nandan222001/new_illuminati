@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import BrandMark from './BrandMark'
+import BrandFlame from './BrandFlame'
 
 export default function Footer() {
   const { user, isAdmin } = useAuth()
@@ -10,6 +11,7 @@ export default function Footer() {
       <div className="foot-top">
         <div className="foot-col foot-about">
           <div className="foot-brand">
+            <BrandFlame />
             <BrandMark className="brand-mark" style={{ width: 40, height: 40 }} />
             <span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span>
           </div>

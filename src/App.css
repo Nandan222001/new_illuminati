@@ -46,20 +46,27 @@ button{font-family:inherit;cursor:pointer}
   backdrop-filter:blur(10px);border-bottom:1px solid rgba(230,200,120,.08)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .brand-mark{width:44px;height:44px;filter:drop-shadow(0 0 12px rgba(230,200,120,.35))}
-.brand-mark-wrap{position:relative;display:inline-block;flex-shrink:0}
-.brand-mark-svg{position:relative;z-index:1;width:100%;height:100%;display:block}
+.brand,.admin-brand,.foot-brand,.auth-brand{position:relative}
+.brand-mark,.brand-name{position:relative;z-index:1}
 
-/* moving flame background layer, fills the whole emblem badge (not just a glow near the triangle) */
-.brand-flame-bg{position:absolute;inset:-26%;z-index:0;pointer-events:none;overflow:hidden;border-radius:50%}
-.brand-flame-video{position:absolute;left:50%;top:50%;width:100%;height:100%;
-  transform:translate(-50%,-50%);object-fit:cover;mix-blend-mode:screen;opacity:.92;
+/* moving flame background layer: covers the whole lockup (icon + wordmark), not just the icon */
+.brand-flame-full{position:absolute;inset:-20% -6%;z-index:0;pointer-events:none;overflow:hidden;border-radius:14px}
+.brand-flame-full video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  mix-blend-mode:screen;opacity:.68;
+  -webkit-mask-image:radial-gradient(ellipse 78% 130% at 16% 50%,#000 34%,transparent 82%);
+  mask-image:radial-gradient(ellipse 78% 130% at 16% 50%,#000 34%,transparent 82%)}
+.brand-flame-static{position:absolute;inset:0;border-radius:14px;display:none;
+  background:radial-gradient(ellipse 74% 130% at 16% 50%,#ffb347 0%,#e8541f 38%,transparent 76%);
+  filter:blur(10px);opacity:.4}
+/* icon-only spots (no wordmark alongside): keep it a tight circular glow */
+.brand-flame-full.circle{inset:-26%;border-radius:50%}
+.brand-flame-full.circle video{
   -webkit-mask-image:radial-gradient(circle at 50% 52%,#000 78%,transparent 99%);
   mask-image:radial-gradient(circle at 50% 52%,#000 78%,transparent 99%)}
-.brand-flame-static{position:absolute;inset:10%;border-radius:50%;display:none;
-  background:radial-gradient(circle at 50% 60%,#ffb347 0%,#e8541f 45%,transparent 75%);
-  filter:blur(6px);opacity:.55}
+.brand-flame-full.circle .brand-flame-static{border-radius:50%;
+  background:radial-gradient(circle at 50% 60%,#ffb347 0%,#e8541f 45%,transparent 75%)}
 @media (prefers-reduced-motion:reduce){
-  .brand-flame-video{display:none}
+  .brand-flame-full video{display:none}
   .brand-flame-static{display:block}
 }
 .brand-name{font-family:'Cinzel',serif;font-weight:700;font-size:15px;letter-spacing:4px;color:var(--gold);line-height:1.25}
@@ -655,6 +662,7 @@ input[type="search"]{padding:9px 14px;font-size:12px}
 .auth-visual-cap{position:absolute;left:44px;right:44px;bottom:44px;z-index:2;display:flex;flex-direction:column;gap:14px}
 .auth-visual-cap blockquote{font-family:'Cinzel',serif;font-size:clamp(16px,1.6vw,22px);letter-spacing:1px;line-height:1.5;color:#fff6dd;max-width:480px}
 .auth-visual-cap .muted{letter-spacing:2px;font-size:9px}
+.auth-visual-mark{position:relative;display:inline-block}
 .auth-panel{display:flex;align-items:center;justify-content:center;padding:120px 40px 60px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(230,200,120,.07),transparent 70%),#050203}
 .auth-box{width:100%;max-width:440px;display:flex;flex-direction:column}
 .auth-brand{display:none;align-items:center;gap:10px;margin-bottom:26px}
@@ -743,7 +751,7 @@ input[type="search"]{padding:9px 14px;font-size:12px}
   .auth{grid-template-columns:1fr}
   .auth-visual{min-height:34vh;max-height:40vh;order:0!important}
   .auth-visual-cap{left:24px;right:24px;bottom:22px}
-  .auth-visual-cap .brand-mark{display:none}
+  .auth-visual-cap .auth-visual-mark{display:none}
   .auth-visual-cap blockquote{font-size:15px}
   .auth-panel{padding:36px 24px 50px}
   .auth-brand{display:flex}

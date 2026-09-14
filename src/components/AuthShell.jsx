@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import BrandMark from './BrandMark'
+import BrandFlame from './BrandFlame'
 import Img from './Img'
 
 /**
@@ -12,14 +13,17 @@ export default function AuthShell({ image, imageAlt, quote, kicker, title, sub, 
       <div className="auth-visual">
         <Img src={image} alt={imageAlt} eager />
         <div className="auth-visual-cap">
-          <BrandMark className="brand-mark" style={{ width: 52, height: 52 }} />
+          <span className="auth-visual-mark">
+            <BrandFlame circle />
+            <BrandMark className="brand-mark" style={{ width: 52, height: 52 }} />
+          </span>
           <blockquote>{quote}</blockquote>
           <span className="muted">FICTIONAL / ENTERTAINMENT EXPERIENCE</span>
         </div>
       </div>
       <div className="auth-panel">
         <div className="auth-box">
-          <Link to="/" className="auth-brand"><BrandMark className="brand-mark" /><span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span></Link>
+          <Link to="/" className="auth-brand"><BrandFlame /><BrandMark className="brand-mark" /><span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span></Link>
           <div className="eyebrow">{kicker}</div>
           <h1>{title}</h1>
           <p className="auth-sub">{sub}</p>

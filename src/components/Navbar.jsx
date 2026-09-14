@@ -4,6 +4,7 @@ import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import BrandMark from './BrandMark'
+import BrandFlame from './BrandFlame'
 
 function initials(name = '') {
   return name.split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0].toUpperCase()).join('') || '?'
@@ -50,6 +51,7 @@ export default function Navbar({ onEnter }) {
   return (
     <nav className="nav" aria-label="Primary">
       <Link className="brand" to="/">
+        <BrandFlame />
         <BrandMark className="brand-mark" />
         <span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span>
       </Link>

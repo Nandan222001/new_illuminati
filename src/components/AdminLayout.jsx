@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import BrandMark from './BrandMark'
+import BrandFlame from './BrandFlame'
 import ScrollToTop from './ScrollToTop'
 
 const LINKS = [
@@ -40,6 +41,7 @@ export default function AdminLayout() {
       <ScrollToTop />
       <header className="admin-topbar">
         <Link to="/admin" className="admin-brand">
+          <BrandFlame />
           <BrandMark className="brand-mark" />
           <span className="brand-name">ILLUMINATI<small>KEEPER CONSOLE</small></span>
         </Link>
