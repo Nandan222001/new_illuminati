@@ -2,10 +2,18 @@ export default function BrandMark({ className = '', style }) {
   return (
     <span className={`brand-mark-wrap ${className}`} style={style}>
       <span className="brand-flame-bg" aria-hidden="true">
-        <span className="flame-particle f1" />
-        <span className="flame-particle f2" />
-        <span className="flame-particle f3" />
-        <span className="flame-particle f4" />
+        <video
+          className="brand-flame-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/assets/brand-flame-loop.webm" type="video/webm" />
+          <source src="/assets/brand-flame-loop.mp4" type="video/mp4" />
+        </video>
+        <span className="brand-flame-static" />
       </span>
       <svg className="brand-mark-svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
         <polygon points="50,6 95,88 5,88" stroke="#e6c878" strokeWidth="3" fill="rgba(230,200,120,.06)" />
