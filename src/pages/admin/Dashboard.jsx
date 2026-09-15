@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ROLES } from '../../auth/authService'
 import { useAuth } from '../../context/AuthContext'
 import { useContent } from '../../context/ContentContext'
-import { getRevenueSeries, formatINR } from '../../admin/adminStore'
+import { fetchRevenueSeries, formatINR } from '../../admin/adminStore'
 
 const QUICK_LINKS = [
   { to: '/admin/videos', icon: '▶', label: 'Upload a video' },
@@ -11,16 +12,23 @@ const QUICK_LINKS = [
   { to: '/admin/settings', icon: '⚙', label: 'Configure payments' },
 ]
 
+const EMPTY_SERIES = Array.from({ length: 6 }, () => ({ label: '—', subscriptions: 0, revenue: 0 }))
+
 export default function AdminDashboard() {
   const { user, users } = useAuth()
   const { videos, rituals, gallery } = useContent()
+  const [series, setSeries] = useState(EMPTY_SERIES)
+
+  useEffect(() => {
+    fetchRevenueSeries(6).then(setSeries).catch(() => {})
+  }, [])
+
   const admins = users.filter((u) => u.role === ROLES.ADMIN).length
   const members = users.length - admins
   const paidCount = [...videos, ...rituals, ...gallery].filter((i) => i.category === 'paid').length
-  const series = getRevenueSeries(6)
   const thisMonth = series[series.length - 1]
   const lastMonth = series[series.length - 2]
-  const growth = lastMonth ? Math.round(((thisMonth.revenue - lastMonth.revenue) / lastMonth.revenue) * 100) : 0
+  const growth = lastMonth && lastMonth.revenue ? Math.round(((thisMonth.revenue - lastMonth.revenue) / lastMonth.revenue) * 100) : 0
 
   return (
     <>

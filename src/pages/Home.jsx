@@ -8,6 +8,7 @@ import Img from '../components/Img'
 import { useIsMobile } from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
+import BrandFlame from '../components/BrandFlame'
 
 const HOME_SYMBOLS = SYMBOLS.slice(0, 5)
 
@@ -31,7 +32,7 @@ export default function Home() {
   const toast = useToast()
   const navigate = useNavigate()
   const { user } = useAuth()
-  const { videos } = useContent()
+  const { videos, canAccess } = useContent()
   const { openDisclaimer } = useOutletContext()
   const isMobile = useIsMobile()
   const heroSrc = isMobile ? '/assets/hero-baphomet-mobile.jpg' : '/assets/hero-baphomet.jpg'
@@ -83,7 +84,10 @@ export default function Home() {
             <p className="hero-sub">The door has always been open,<br />only few know where it is.</p>
             <div className="hero-tag">ENTER THE UNKNOWN</div>
             <div className="hero-cta">
-              <button className="btn-gold" onClick={openDisclaimer}>ENTER THE DARK WORLD <span>›</span></button>
+              <button className="btn-gold hero-cta-main" onClick={openDisclaimer}>
+                <BrandFlame button />
+                <span className="cta-label">ENTER THE DARK WORLD <i className="cta-arrow">›</i></span>
+              </button>
               {user
                 ? <Link className="btn-ghost" to="/community">👥 JOIN THE COMMUNITY</Link>
                 : <Link className="btn-ghost" to="/register">△ BECOME AN INITIATE</Link>}
@@ -215,19 +219,23 @@ export default function Home() {
             right={<Link to="/videos" className="sec-link">ALL VIDEOS ›</Link>}
           />
           <div className="vid-grid">
-            {HOME_VIDEOS.map((v) => (
-              <Link className="vid" key={v.slug} to={`/videos/${v.slug}`}>
-                <div className="vid-thumb">
-                  <Img src={v.img} alt={v.title} />
-                  <span className="play">▶</span>
-                  <span className="dur">{v.dur}</span>
-                </div>
-                <div className="vid-body">
-                  <h5>{v.title}</h5>
-                  <span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span>
-                </div>
-              </Link>
-            ))}
+            {HOME_VIDEOS.map((v) => {
+              const open = canAccess(v.category) && !!user
+              return (
+                <Link className={`vid${!open ? ' sealed' : ''}`} key={v.slug} to={`/videos/${v.slug}`}>
+                  <div className="vid-thumb">
+                    <Img src={v.img} alt={v.title} />
+                    <span className="play">{open ? '▶' : '🔒'}</span>
+                    <span className="dur">{v.dur}</span>
+                    {!open && <span className="seal-badge">{user ? '🔒 SEALED' : '🔒 SIGN IN TO WATCH'}</span>}
+                  </div>
+                  <div className="vid-body">
+                    <h5>{v.title}</h5>
+                    <span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
         <div id="community">

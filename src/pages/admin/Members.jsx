@@ -16,9 +16,9 @@ export default function AdminMembers() {
       .sort((a, b) => (a.role === b.role ? new Date(a.createdAt) - new Date(b.createdAt) : a.role === ROLES.ADMIN ? -1 : 1))
   }, [users, query])
 
-  const act = (fn, okMsg) => {
+  const act = async (fn, okMsg) => {
     try {
-      fn()
+      await fn()
       toast(okMsg)
     } catch (err) {
       toast(err.message)
@@ -83,7 +83,7 @@ export default function AdminMembers() {
           </tbody>
         </table>
       </div>
-      <p className="muted">Accounts live in this browser&apos;s local storage (demo). Connect a backend to make them global.</p>
+      <p className="muted">Accounts are stored in the database and shared across every browser and device.</p>
     </>
   )
 }

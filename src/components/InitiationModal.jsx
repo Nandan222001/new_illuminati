@@ -39,9 +39,9 @@ export default function InitiationModal({ open, onClose }) {
     if (form.cvv.length < 3) { setError('Enter the 3-digit security code.'); return }
 
     setStage('processing')
-    window.setTimeout(() => {
+    window.setTimeout(async () => {
       try {
-        const updated = completeInitiation()
+        const updated = await completeInitiation()
         setSealId(updated?.sealId || '')
         setStage('done')
         toast('Your oath is sealed. Welcome to the inner circle.')

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { GALLERY } from '../../data/content'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
@@ -7,30 +6,27 @@ import Img from '../../components/Img'
 const EMPTY = { title: '', cap: '', img: '', portrait: false, category: 'free' }
 
 export default function AdminImages() {
-  const { gallery, hidden, addImage, updateImage, deleteImage, restoreItem, setCategory } = useContent()
+  const { gallery, hiddenImages, addImage, updateImage, deleteImage, restoreImage } = useContent()
   const toast = useToast()
   const [form, setForm] = useState(EMPTY)
   const [showHidden, setShowHidden] = useState(false)
 
-  const hiddenSeed = GALLERY.filter((g) => hidden[g.id]).map((g) => ({ id: g.id, title: g.title }))
-
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
     if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
-    addImage(form)
+    await addImage(form)
     toast(`"${form.title}" added as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
   }
 
-  const toggleCategory = (g) => {
+  const toggleCategory = async (g) => {
     const next = g.category === 'paid' ? 'free' : 'paid'
-    if (g.custom) updateImage(g.id, { category: next })
-    else setCategory(g.id, next)
+    await updateImage(g.id, { category: next })
     toast(`"${g.title}" is now ${next.toUpperCase()}.`)
   }
 
-  const remove = (g) => {
-    deleteImage(g.id, g.custom)
+  const remove = async (g) => {
+    await deleteImage(g.id)
     toast(g.custom ? `"${g.title}" deleted.` : `"${g.title}" removed from the site (can be restored).`)
   }
 
@@ -89,12 +85,12 @@ export default function AdminImages() {
       {showHidden && (
         <>
           <h3 className="admin-subhead">REMOVED SEED IMAGES</h3>
-          {hiddenSeed.length === 0 ? <p className="empty">Nothing removed.</p> : (
+          {hiddenImages.length === 0 ? <p className="empty">Nothing removed.</p> : (
             <div className="restore-list">
-              {hiddenSeed.map((g) => (
+              {hiddenImages.map((g) => (
                 <div className="restore-row" key={g.id}>
                   <span>{g.title}</span>
-                  <button type="button" className="btn-ghost small" onClick={() => { restoreItem(g.id); toast('Restored.') }}>RESTORE</button>
+                  <button type="button" className="btn-ghost small" onClick={async () => { await restoreImage(g.id); toast('Restored.') }}>RESTORE</button>
                 </div>
               ))}
             </div>

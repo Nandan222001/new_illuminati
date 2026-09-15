@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useToast } from '../../context/ToastContext'
-import { DEFAULT_SETTINGS, readSettings, writeSettings } from '../../admin/adminStore'
+import { DEFAULT_SETTINGS, fetchSettings, saveSettings } from '../../admin/adminStore'
 
 function SecretField({ label, value, onChange, placeholder }) {
   const [show, setShow] = useState(false)
@@ -17,12 +17,19 @@ function SecretField({ label, value, onChange, placeholder }) {
 
 export default function AdminSettings() {
   const toast = useToast()
-  const [settings, setSettings] = useState(readSettings)
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS)
 
-  const save = (section) => {
-    const next = { ...settings }
-    writeSettings(next)
-    toast(`${section} settings saved locally (demo).`)
+  useEffect(() => {
+    fetchSettings().then(setSettings).catch(() => {})
+  }, [])
+
+  const save = async (section) => {
+    try {
+      await saveSettings(settings)
+      toast(`${section} settings saved (demo — no live provider is called).`)
+    } catch (err) {
+      toast(err.message)
+    }
   }
 
   const patch = (section, fields) => setSettings((prev) => ({ ...prev, [section]: { ...prev[section], ...fields } }))
@@ -40,7 +47,7 @@ export default function AdminSettings() {
       </div>
 
       <div className="notice">
-        ⚠ <b>Demo only.</b> This site is a static front end with no backend. Values below are saved to <em>this browser&apos;s</em> local storage and are never sent to Razorpay, an SMTP server, Twilio, or anywhere else. Wire <code>src/admin/adminStore.js</code> to a real API before accepting real credentials.
+        ⚠ <b>Demo only.</b> Values below are saved to the database but are never sent to Razorpay, an SMTP server, Twilio, or anywhere else — no live provider call is ever made. Wire <code>backend/app/crud/admin.py</code> to real provider SDKs before accepting real credentials.
       </div>
 
       <section className="admin-card">

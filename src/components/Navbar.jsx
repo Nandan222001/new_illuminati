@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
+import { useAmbientSound } from '../hooks/useAmbientSound'
 import BrandMark from './BrandMark'
 import BrandFlame from './BrandFlame'
 
@@ -13,7 +14,7 @@ function initials(name = '') {
 export default function Navbar({ onEnter }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [soundOn, setSoundOn] = useState(false)
+  const { on: soundOn, toggle: toggleSound } = useAmbientSound()
   const menuRef = useRef(null)
   const { user, isAdmin, logout } = useAuth()
   const toast = useToast()
@@ -79,7 +80,7 @@ export default function Navbar({ onEnter }) {
       </div>
 
       <div className="nav-right">
-        <button className="icon-btn" title="Ambient sound" aria-label="Toggle ambient sound" onClick={() => { setSoundOn((s) => !s); toast('Ambient sound toggled (demo)') }}>
+        <button className="icon-btn" title="Ambient sound" aria-label="Toggle ambient sound" aria-pressed={soundOn} onClick={toggleSound}>
           {soundOn ? '🔊' : '🔈'}
         </button>
         <button className="icon-btn" title="Search" aria-label="Search" onClick={() => toast('Search the archives (demo)')}>⌕</button>

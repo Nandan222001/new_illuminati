@@ -23,11 +23,11 @@ export default function Profile() {
   const sealedRituals = rituals.filter((r) => r.category === 'paid')
   const joined = new Date(user.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
 
-  const save = (e) => {
+  const save = async (e) => {
     e.preventDefault()
     setError('')
     try {
-      updateProfile({ name })
+      await updateProfile({ name })
       toast('Profile updated.')
     } catch (err) {
       setError(err.message)

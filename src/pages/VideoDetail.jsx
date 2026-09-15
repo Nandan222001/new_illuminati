@@ -18,7 +18,7 @@ export default function VideoDetail() {
   const toast = useToast()
 
   if (!video) return <Navigate to="/videos" replace />
-  const open = canAccess(video.category)
+  const open = canAccess(video.category) && !!user
   const related = VIDEOS.filter((v) => v.slug !== video.slug).slice(0, 4)
 
   return (
@@ -85,7 +85,7 @@ export default function VideoDetail() {
           <Link className="vid" key={v.slug} to={`/videos/${v.slug}`}>
             <div className="vid-thumb">
               <Img src={v.img} alt={v.title} />
-              <span className="play">{canAccess(v.category) ? '▶' : '🔒'}</span>
+              <span className="play">{canAccess(v.category) && !!user ? '▶' : '🔒'}</span>
               <span className="dur">{v.dur}</span>
             </div>
             <div className="vid-body">

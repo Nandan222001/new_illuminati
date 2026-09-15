@@ -1,112 +1,111 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import {
   ROLES,
-  SESSION_KEY,
-  USERS_KEY,
-  changeRole,
-  deleteUser,
-  ensureSeeded,
-  getSession,
-  getUsers,
+  changeRole as changeRoleRequest,
+  deleteUser as deleteUserRequest,
+  fetchMe,
+  hasSession,
+  listUsers,
   login as loginRequest,
-  publicUser,
+  logout as logoutRequest,
   register as registerRequest,
   sealInitiation,
-  setSession,
-  updateUser,
+  updateProfile as updateProfileRequest,
 } from '../auth/authService'
+import { TOKEN_STORAGE_KEY } from '../api/client'
 
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null)
   const [users, setUsers] = useState([])
-  const [session, setSessionState] = useState(null)
   const [ready, setReady] = useState(false)
+
+  const isAdmin = user?.role === ROLES.ADMIN
+
+  const refreshUsers = useCallback(async () => {
+    try {
+      setUsers(await listUsers())
+    } catch {
+      setUsers([])
+    }
+  }, [])
+
+  const loadIdentity = useCallback(async () => {
+    if (!hasSession()) {
+      setUser(null)
+      setUsers([])
+      return
+    }
+    try {
+      const me = await fetchMe()
+      setUser(me)
+      if (me.role === ROLES.ADMIN) await refreshUsers()
+      else setUsers([])
+    } catch {
+      setUser(null)
+      setUsers([])
+    }
+  }, [refreshUsers])
 
   useEffect(() => {
     let alive = true
-    ensureSeeded().then((seeded) => {
-      if (!alive) return
-      setUsers(seeded)
-      setSessionState(getSession())
-      setReady(true)
-    })
-    // Keep tabs in sync (another tab logging out, admin changing roles, ...)
-    const onStorage = (e) => {
-      if (e.key === USERS_KEY) setUsers(getUsers())
-      if (e.key === SESSION_KEY) setSessionState(getSession())
-    }
+    loadIdentity().finally(() => { if (alive) setReady(true) })
+    const onStorage = (e) => { if (e.key === TOKEN_STORAGE_KEY) loadIdentity() }
     window.addEventListener('storage', onStorage)
     return () => {
       alive = false
       window.removeEventListener('storage', onStorage)
     }
-  }, [])
-
-  const rawUser = useMemo(
-    () => (session ? users.find((u) => u.id === session.userId) || null : null),
-    [users, session],
-  )
-
-  // Session points at a user that no longer exists (banished) -> clear it.
-  useEffect(() => {
-    if (ready && session && !rawUser) {
-      setSession(null)
-      setSessionState(null)
-    }
-  }, [ready, session, rawUser])
-
-  const startSession = useCallback((user) => {
-    const next = { userId: user.id, startedAt: new Date().toISOString() }
-    setSession(next)
-    setSessionState(next)
-  }, [])
+  }, [loadIdentity])
 
   const login = useCallback(async (credentials) => {
-    const user = await loginRequest(credentials)
-    setUsers(getUsers())
-    startSession(user)
-    return publicUser(user)
-  }, [startSession])
+    const me = await loginRequest(credentials)
+    setUser(me)
+    if (me.role === ROLES.ADMIN) await refreshUsers()
+    return me
+  }, [refreshUsers])
 
   const register = useCallback(async (data) => {
-    const user = await registerRequest(data)
-    setUsers(getUsers())
-    startSession(user)
-    return publicUser(user)
-  }, [startSession])
-
-  const logout = useCallback(() => {
-    setSession(null)
-    setSessionState(null)
+    const me = await registerRequest(data)
+    setUser(me)
+    setUsers([])
+    return me
   }, [])
 
-  const updateRole = useCallback((id, role) => {
-    setUsers(changeRole(id, role, rawUser?.id))
-  }, [rawUser])
+  const logout = useCallback(() => {
+    logoutRequest()
+    setUser(null)
+    setUsers([])
+  }, [])
 
-  const removeUser = useCallback((id) => {
-    setUsers(deleteUser(id, rawUser?.id))
-  }, [rawUser])
+  const updateRole = useCallback(async (id, role) => {
+    const updated = await changeRoleRequest(id, role)
+    setUsers((prev) => prev.map((u) => (u.id === id ? updated : u)))
+  }, [])
 
-  const updateProfile = useCallback((patch) => {
-    if (!rawUser) throw new Error('You are not signed in.')
-    const name = String(patch.name ?? rawUser.name).trim()
-    if (name.length < 2) throw new Error('Your name must be at least 2 characters.')
-    setUsers(updateUser(rawUser.id, { name }))
-  }, [rawUser])
+  const removeUser = useCallback(async (id) => {
+    await deleteUserRequest(id)
+    setUsers((prev) => prev.filter((u) => u.id !== id))
+  }, [])
 
-  const completeInitiation = useCallback(() => {
-    if (!rawUser) throw new Error('You are not signed in.')
-    setUsers(sealInitiation(rawUser.id))
-    return publicUser(getUsers().find((u) => u.id === rawUser.id))
-  }, [rawUser])
+  const updateProfile = useCallback(async (patch) => {
+    const updated = await updateProfileRequest(patch)
+    setUser(updated)
+    return updated
+  }, [])
+
+  const completeInitiation = useCallback(async () => {
+    const updated = await sealInitiation()
+    setUser(updated)
+    return updated
+  }, [])
 
   const value = useMemo(() => ({
     ready,
-    user: publicUser(rawUser),
-    users: users.map(publicUser),
-    isAdmin: rawUser?.role === ROLES.ADMIN,
+    user,
+    users,
+    isAdmin,
     login,
     register,
     logout,
@@ -114,7 +113,7 @@ export function AuthProvider({ children }) {
     removeUser,
     updateProfile,
     completeInitiation,
-  }), [ready, rawUser, users, login, register, logout, updateRole, removeUser, updateProfile, completeInitiation])
+  }), [ready, user, users, isAdmin, login, register, logout, updateRole, removeUser, updateProfile, completeInitiation])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

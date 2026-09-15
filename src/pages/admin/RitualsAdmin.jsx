@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { RITUALS } from '../../data/content'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
@@ -8,33 +7,30 @@ import Img from '../../components/Img'
 const EMPTY = { title: '', desc: '', img: '', step: '', duration: '', tags: '', category: 'free' }
 
 export default function AdminRituals() {
-  const { rituals, hidden, addRitual, updateRitual, deleteRitual, restoreItem, setCategory } = useContent()
+  const { rituals, hiddenRituals, addRitual, updateRitual, deleteRitual, restoreRitual } = useContent()
   const toast = useToast()
   const [form, setForm] = useState(EMPTY)
   const [showHidden, setShowHidden] = useState(false)
 
-  const hiddenSeed = RITUALS.filter((r) => hidden[r.slug]).map((r) => ({ id: r.slug, title: r.title }))
-
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
     if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
     const step = form.step.trim() || String(rituals.length + 1)
     const duration = form.duration.trim() || `Station ${rituals.length + 1} · Custom`
     const tags = form.tags.split(',').map((t) => t.trim()).filter(Boolean)
-    addRitual({ title: form.title, desc: form.desc, img: form.img, category: form.category, step, duration, tags })
+    await addRitual({ title: form.title, desc: form.desc, img: form.img, category: form.category, step, duration, tags })
     toast(`"${form.title}" added as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
   }
 
-  const toggleCategory = (r) => {
+  const toggleCategory = async (r) => {
     const next = r.category === 'paid' ? 'free' : 'paid'
-    if (r.custom) updateRitual(r.id, { category: next })
-    else setCategory(r.id, next)
+    await updateRitual(r.id, { category: next })
     toast(`"${r.title}" is now ${next.toUpperCase()}.`)
   }
 
-  const remove = (r) => {
-    deleteRitual(r.id, r.custom)
+  const remove = async (r) => {
+    await deleteRitual(r.id)
     toast(r.custom ? `"${r.title}" deleted.` : `"${r.title}" removed from the site (can be restored).`)
   }
 
@@ -98,12 +94,12 @@ export default function AdminRituals() {
       {showHidden && (
         <>
           <h3 className="admin-subhead">REMOVED SEED RITUALS</h3>
-          {hiddenSeed.length === 0 ? <p className="empty">Nothing removed.</p> : (
+          {hiddenRituals.length === 0 ? <p className="empty">Nothing removed.</p> : (
             <div className="restore-list">
-              {hiddenSeed.map((r) => (
+              {hiddenRituals.map((r) => (
                 <div className="restore-row" key={r.id}>
                   <span>{r.title}</span>
-                  <button type="button" className="btn-ghost small" onClick={() => { restoreItem(r.id); toast('Restored.') }}>RESTORE</button>
+                  <button type="button" className="btn-ghost small" onClick={async () => { await restoreRitual(r.id); toast('Restored.') }}>RESTORE</button>
                 </div>
               ))}
             </div>

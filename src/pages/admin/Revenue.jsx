@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react'
-import { useAuth } from '../../context/AuthContext'
-import { getRevenueSeries, getTransactions, formatINR } from '../../admin/adminStore'
+import { useEffect, useState } from 'react'
+import { fetchRevenueSeries, fetchTransactions, formatINR } from '../../admin/adminStore'
 
 const CHART_W = 640
 const CHART_H = 220
@@ -8,17 +7,23 @@ const PAD_L = 8
 const PAD_B = 26
 const BAR_GAP = 10
 
+const EMPTY_SERIES = Array.from({ length: 6 }, (_, i) => ({ label: `—${i}`, subscriptions: 0, revenue: 0 }))
+
 export default function AdminRevenue() {
-  const { users } = useAuth()
   const [hover, setHover] = useState(null)
-  const series = useMemo(() => getRevenueSeries(6), [])
-  const transactions = useMemo(() => getTransactions(users, 10), [users])
+  const [series, setSeries] = useState(EMPTY_SERIES)
+  const [transactions, setTransactions] = useState([])
+
+  useEffect(() => {
+    fetchRevenueSeries(6).then(setSeries).catch(() => {})
+    fetchTransactions(10).then(setTransactions).catch(() => {})
+  }, [])
 
   const total = series.reduce((s, m) => s + m.revenue, 0)
   const thisMonth = series[series.length - 1]
   const lastMonth = series[series.length - 2]
-  const growth = lastMonth ? Math.round(((thisMonth.revenue - lastMonth.revenue) / lastMonth.revenue) * 100) : 0
-  const max = Math.max(...series.map((m) => m.revenue)) * 1.15
+  const growth = lastMonth && lastMonth.revenue ? Math.round(((thisMonth.revenue - lastMonth.revenue) / lastMonth.revenue) * 100) : 0
+  const max = Math.max(1, ...series.map((m) => m.revenue)) * 1.15
 
   const plotW = CHART_W - PAD_L
   const plotH = CHART_H - PAD_B
@@ -28,7 +33,7 @@ export default function AdminRevenue() {
     <>
       <div className="admin-head">
         <h1>REVENUE</h1>
-        <p>Demo figures — Razorpay is not connected. Configure it under <b>Settings</b> to go live.</p>
+        <p>Real figures from recorded initiations — Razorpay is not connected. Configure it under <b>Settings</b> to go live.</p>
       </div>
 
       <div className="kpi-grid">
@@ -96,7 +101,7 @@ export default function AdminRevenue() {
             </tbody>
           </table>
         </div>
-        <p className="muted">Demo data generated locally — no real payment gateway is connected.</p>
+        <p className="muted">Recorded from actual initiation fees in the database — no real payment gateway is connected.</p>
       </section>
     </>
   )

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { VIDEOS } from '../../data/content'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
@@ -9,30 +8,27 @@ const TAGS = ['fiction', 'theory', 'fact']
 const EMPTY = { title: '', desc: '', img: '', tag: 'fiction', dur: '10:00', category: 'free' }
 
 export default function AdminVideos() {
-  const { videos, hidden, addVideo, updateVideo, deleteVideo, restoreItem, setCategory } = useContent()
+  const { videos, hiddenVideos, addVideo, updateVideo, deleteVideo, restoreVideo } = useContent()
   const toast = useToast()
   const [form, setForm] = useState(EMPTY)
   const [showHidden, setShowHidden] = useState(false)
 
-  const hiddenSeed = VIDEOS.filter((v) => hidden[v.slug]).map((v) => ({ id: v.slug, title: v.title }))
-
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
     if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
-    addVideo({ ...form, views: '—', date: 'New' })
+    await addVideo({ ...form, views: '—', date: 'New' })
     toast(`"${form.title}" uploaded as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
   }
 
-  const toggleCategory = (v) => {
+  const toggleCategory = async (v) => {
     const next = v.category === 'paid' ? 'free' : 'paid'
-    if (v.custom) updateVideo(v.id, { category: next })
-    else setCategory(v.id, next)
+    await updateVideo(v.id, { category: next })
     toast(`"${v.title}" is now ${next.toUpperCase()}.`)
   }
 
-  const remove = (v) => {
-    deleteVideo(v.id, v.custom)
+  const remove = async (v) => {
+    await deleteVideo(v.id)
     toast(v.custom ? `"${v.title}" deleted.` : `"${v.title}" removed from the site (can be restored).`)
   }
 
@@ -97,12 +93,12 @@ export default function AdminVideos() {
       {showHidden && (
         <>
           <h3 className="admin-subhead">REMOVED SEED VIDEOS</h3>
-          {hiddenSeed.length === 0 ? <p className="empty">Nothing removed.</p> : (
+          {hiddenVideos.length === 0 ? <p className="empty">Nothing removed.</p> : (
             <div className="restore-list">
-              {hiddenSeed.map((v) => (
+              {hiddenVideos.map((v) => (
                 <div className="restore-row" key={v.id}>
                   <span>{v.title}</span>
-                  <button type="button" className="btn-ghost small" onClick={() => { restoreItem(v.id); toast('Restored.') }}>RESTORE</button>
+                  <button type="button" className="btn-ghost small" onClick={async () => { await restoreVideo(v.id); toast('Restored.') }}>RESTORE</button>
                 </div>
               ))}
             </div>

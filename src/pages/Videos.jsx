@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PAGES } from '../data/content'
+import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
@@ -13,6 +14,7 @@ export default function Videos() {
   const [filter, setFilter] = useState('all')
   const [query, setQuery] = useState('')
   const { videos: VIDEOS, canAccess } = useContent()
+  const { user } = useAuth()
 
   const list = useMemo(() => VIDEOS.filter((v) => {
     if (filter !== 'all' && v.tag !== filter) return false
@@ -38,7 +40,16 @@ export default function Videos() {
             <p>{featured.desc}</p>
             <div className="featured-meta"><span>▶ {featured.dur}</span><span>{featured.views} views</span><span>{featured.date}</span></div>
           </div>
-          <span className="play big-play">▶</span>
+          {(() => {
+            const open = canAccess(featured.category) && !!user
+            if (open) return <span className="play big-play">▶</span>
+            return (
+              <>
+                <span className="play big-play">🔒</span>
+                <span className="seal-badge">{user ? '🔒 SEALED' : '🔒 SIGN IN TO WATCH'}</span>
+              </>
+            )
+          })()}
         </Link>
       </section>
 
@@ -63,14 +74,16 @@ export default function Videos() {
           <div className="vid-grid page-vid-grid">
             {list.map((v) => {
               const locked = v.category === 'paid'
-              const open = canAccess(v.category)
+              const open = canAccess(v.category) && !!user
+              const needsLogin = !user
               return (
                 <Link className={`vid${!open ? ' sealed' : ''}`} key={v.slug} to={`/videos/${v.slug}`}>
                   <div className="vid-thumb">
                     <Img src={v.img} alt={v.title} />
                     <span className="play">{open ? '▶' : '🔒'}</span>
                     <span className="dur">{v.dur}</span>
-                    {locked && <span className={`seal-badge${open ? ' unsealed' : ''}`}>{open ? '◈ UNSEALED' : '🔒 SEALED'}</span>}
+                    {!open && <span className="seal-badge">{needsLogin ? '🔒 SIGN IN TO WATCH' : '🔒 SEALED'}</span>}
+                    {open && locked && <span className="seal-badge unsealed">◈ UNSEALED</span>}
                   </div>
                   <div className="vid-body">
                     <h5>{v.title}</h5>
