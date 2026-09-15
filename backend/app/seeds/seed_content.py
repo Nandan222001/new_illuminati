@@ -1,14 +1,14 @@
 """
-Seeds the content_items table with the site's built-in videos, rituals and
-gallery images (ported from the frontend's src/data/content.js) plus the
-default set of sealed (paid) items from ContentContext.jsx. Idempotent: runs
-once, does nothing on later startups since content_items is no longer empty.
+Seeds the videos/rituals/images tables with the site's built-in content
+(ported from the frontend's src/data/content.js) plus the default set of
+sealed (paid) items from ContentContext.jsx. Idempotent: runs once, does
+nothing on later startups since the videos table is no longer empty.
 """
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models.content import ContentItem, ContentKind
+from app.models.content import Image, Ritual, Video
 
 DEFAULT_LOCKED_SLUGS = {"the-black-sun-vigil", "council-of-thirteen", "the-last-screening"}
 
@@ -49,11 +49,10 @@ GALLERY = [
 ]
 
 
-def _seed_kind(db: Session, kind: ContentKind, rows: list[dict], *, slug_key: str, title_key: str, desc_key: str | None, img_key: str, extra_keys: list[str]) -> None:
+def _seed_kind(db: Session, model, rows: list[dict], *, slug_key: str, title_key: str, desc_key: str | None, img_key: str, extra_keys: list[str]) -> None:
     for row in rows:
         slug = row[slug_key]
-        item = ContentItem(
-            kind=kind,
+        item = model(
             slug=slug,
             title=row[title_key],
             description=row.get(desc_key) if desc_key else None,
@@ -67,12 +66,12 @@ def _seed_kind(db: Session, kind: ContentKind, rows: list[dict], *, slug_key: st
 
 
 def run(db: Session) -> None:
-    already_seeded = db.scalar(select(ContentItem.id).limit(1))
+    already_seeded = db.scalar(select(Video.id).limit(1))
     if already_seeded:
         return
 
-    _seed_kind(db, ContentKind.RITUAL, RITUALS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["step", "duration", "tags"])
-    _seed_kind(db, ContentKind.VIDEO, VIDEOS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["tag", "dur", "views", "date"])
-    _seed_kind(db, ContentKind.IMAGE, GALLERY, slug_key="id", title_key="title", desc_key=None, img_key="img", extra_keys=["cap", "portrait"])
+    _seed_kind(db, Ritual, RITUALS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["step", "duration", "tags"])
+    _seed_kind(db, Video, VIDEOS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["tag", "dur", "views", "date"])
+    _seed_kind(db, Image, GALLERY, slug_key="id", title_key="title", desc_key=None, img_key="img", extra_keys=["cap", "portrait"])
 
     db.commit()

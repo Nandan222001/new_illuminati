@@ -3,14 +3,11 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict
 
-from app.models.content import ContentKind
-
 
 class ContentItemPublic(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
-    kind: ContentKind
     slug: str
     title: str
     description: str | None

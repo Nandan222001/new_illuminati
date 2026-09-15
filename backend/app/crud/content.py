@@ -1,8 +1,6 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models.content import ContentItem, ContentKind
-
 
 def slugify(text: str) -> str:
     lowered = "".join(c if c.isalnum() else "-" for c in text.lower()).strip("-")
@@ -11,34 +9,33 @@ def slugify(text: str) -> str:
     return lowered or "item"
 
 
-def unique_slug(db: Session, kind: ContentKind, base: str) -> str:
+def unique_slug(db: Session, model, base: str) -> str:
     slug = base
     n = 2
-    while db.scalar(select(ContentItem).where(ContentItem.kind == kind, ContentItem.slug == slug)):
+    while db.scalar(select(model).where(model.slug == slug)):
         slug = f"{base}-{n}"
         n += 1
     return slug
 
 
-def list_items(db: Session, kind: ContentKind, *, include_hidden: bool = False) -> list[ContentItem]:
-    stmt = select(ContentItem).where(ContentItem.kind == kind).order_by(ContentItem.created_at)
+def list_items(db: Session, model, *, include_hidden: bool = False) -> list:
+    stmt = select(model).order_by(model.created_at)
     if not include_hidden:
-        stmt = stmt.where(ContentItem.hidden.is_(False))
+        stmt = stmt.where(model.hidden.is_(False))
     return list(db.scalars(stmt))
 
 
-def get_by_slug(db: Session, kind: ContentKind, slug: str) -> ContentItem | None:
-    return db.scalar(select(ContentItem).where(ContentItem.kind == kind, ContentItem.slug == slug))
+def get_by_slug(db: Session, model, slug: str):
+    return db.scalar(select(model).where(model.slug == slug))
 
 
-def get_by_id(db: Session, item_id: int) -> ContentItem | None:
-    return db.get(ContentItem, item_id)
+def get_by_id(db: Session, model, item_id: int):
+    return db.get(model, item_id)
 
 
-def create_item(db: Session, kind: ContentKind, *, title: str, description, image_url, locked: bool, extra: dict) -> ContentItem:
-    slug = unique_slug(db, kind, slugify(title))
-    item = ContentItem(
-        kind=kind,
+def create_item(db: Session, model, *, title: str, description, image_url, locked: bool, extra: dict):
+    slug = unique_slug(db, model, slugify(title))
+    item = model(
         slug=slug,
         title=title,
         description=description,
@@ -54,7 +51,7 @@ def create_item(db: Session, kind: ContentKind, *, title: str, description, imag
     return item
 
 
-def update_item(db: Session, item: ContentItem, patch: dict) -> ContentItem:
+def update_item(db: Session, item, patch: dict):
     for field in ("title", "description", "image_url"):
         if patch.get(field) is not None:
             setattr(item, field, patch[field])
@@ -66,7 +63,7 @@ def update_item(db: Session, item: ContentItem, patch: dict) -> ContentItem:
     return item
 
 
-def set_locked(db: Session, item: ContentItem, locked: bool) -> ContentItem:
+def set_locked(db: Session, item, locked: bool):
     item.locked = locked
     db.add(item)
     db.commit()
@@ -74,7 +71,7 @@ def set_locked(db: Session, item: ContentItem, locked: bool) -> ContentItem:
     return item
 
 
-def set_hidden(db: Session, item: ContentItem, hidden: bool) -> ContentItem:
+def set_hidden(db: Session, item, hidden: bool):
     item.hidden = hidden
     db.add(item)
     db.commit()
@@ -82,12 +79,12 @@ def set_hidden(db: Session, item: ContentItem, hidden: bool) -> ContentItem:
     return item
 
 
-def delete_item(db: Session, item: ContentItem) -> None:
+def delete_item(db: Session, item) -> None:
     db.delete(item)
     db.commit()
 
 
-def delete_or_hide(db: Session, item: ContentItem) -> ContentItem | None:
+def delete_or_hide(db: Session, item):
     """Custom items are fully deleted; seed items are hidden (reversible)."""
     if item.is_custom:
         delete_item(db, item)
