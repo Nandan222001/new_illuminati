@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import BrandMark from './BrandMark'
 import BrandFlame from './BrandFlame'
 import Img from './Img'
@@ -8,6 +9,7 @@ import Img from './Img'
  * a full-height key visual on one side and the form on the other.
  */
 export default function AuthShell({ image, imageAlt, quote, kicker, title, sub, children, footer, reverse = false }) {
+  const { t } = useTranslation()
   return (
     <section className={`auth${reverse ? ' reverse' : ''}`}>
       <div className="auth-visual">
@@ -18,7 +20,7 @@ export default function AuthShell({ image, imageAlt, quote, kicker, title, sub, 
             <BrandMark className="brand-mark" style={{ width: 52, height: 52 }} />
           </span>
           <blockquote>{quote}</blockquote>
-          <span className="muted">FICTIONAL / ENTERTAINMENT EXPERIENCE</span>
+          <span className="muted">{t('common.fictionalExperience')}</span>
         </div>
       </div>
       <div className="auth-panel">

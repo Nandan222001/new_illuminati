@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Trans, useTranslation } from 'react-i18next'
 import { getDemoCredentials } from '../auth/authService'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
@@ -11,6 +12,7 @@ export default function Login() {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from || '/profile'
+  const { t } = useTranslation()
 
   const [form, setForm] = useState({ email: '', password: '' })
   const [showPw, setShowPw] = useState(false)
@@ -30,7 +32,7 @@ export default function Login() {
     setBusy(true)
     try {
       const u = await login(form)
-      toast(u.role === 'admin' ? `Welcome back, Keeper ${u.name}.` : `Welcome back, ${u.name}.`)
+      toast(u.role === 'admin' ? t('login.welcomeBackKeeper', { name: u.name }) : t('login.welcomeBack', { name: u.name }))
     } catch (err) {
       setError(err.message)
     } finally {
@@ -45,39 +47,41 @@ export default function Login() {
     <AuthShell
       image="/assets/auth-login.jpg"
       imageAlt="The sealed door"
-      quote="“The door has always been open. Only few know where it is.”"
-      kicker="RETURN TO THE CIRCLE"
-      title="LOGIN"
-      sub="Sign in to unseal the archives, the rituals and the community board."
-      footer={<>New to the Brotherhood? <Link to="/register">Become an initiate ›</Link></>}
+      quote={t('login.quote')}
+      kicker={t('login.kicker')}
+      title={t('nav.login')}
+      sub={t('login.sub')}
+      footer={<Trans i18nKey="login.footerCta" components={{ 0: <Link to="/register" /> }} />}
     >
-      {location.state?.from && <div className="notice">Sign in to continue to <b>{location.state.from}</b>.</div>}
+      {location.state?.from && (
+        <div className="notice"><Trans i18nKey="login.continueNotice" values={{ from: location.state.from }} components={{ 0: <b /> }} /></div>
+      )}
       <form className="form" onSubmit={submit} noValidate>
         <label>
-          <span>EMAIL</span>
-          <input type="email" name="email" autoComplete="email" required placeholder="initiate@brotherhood.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+          <span>{t('common.emailLabel')}</span>
+          <input type="email" name="email" autoComplete="email" required placeholder={t('common.emailPlaceholder')} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
         </label>
         <label>
-          <span>PASSPHRASE</span>
+          <span>{t('common.passphraseLabel')}</span>
           <div className="pw-wrap">
             <input type={showPw ? 'text' : 'password'} name="password" autoComplete="current-password" required placeholder="••••••••" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-            <button type="button" className="pw-toggle" onClick={() => setShowPw((v) => !v)} aria-label={showPw ? 'Hide password' : 'Show password'}>{showPw ? '◎' : '◉'}</button>
+            <button type="button" className="pw-toggle" onClick={() => setShowPw((v) => !v)} aria-label={showPw ? t('common.hidePassword') : t('common.showPassword')}>{showPw ? '◎' : '◉'}</button>
           </div>
         </label>
         {error && <div className="form-error" role="alert">{error}</div>}
-        <button type="submit" className="btn-gold full" disabled={busy}>{busy ? 'OPENING THE DOOR…' : 'ENTER ›'}</button>
+        <button type="submit" className="btn-gold full" disabled={busy}>{busy ? t('login.opening') : t('common.enterArrow')}</button>
       </form>
 
       <div className="demo-box">
-        <b>▲ ADMIN DEMO ACCESS</b>
+        <b>{t('login.demoTitle')}</b>
         {demo ? (
           <>
-            <p>Email <code>{demo.email}</code> · Passphrase <code>{demo.password}</code></p>
-            <button type="button" className="btn-ghost small" onClick={fillAdmin}>FILL ADMIN CREDENTIALS</button>
-            {!demo.fromEnv && <span className="muted">Generated for this browser on first visit. Set <code>VITE_ADMIN_PASSWORD</code> to fix it.</span>}
+            <p><Trans i18nKey="login.demoCreds" values={{ email: demo.email, password: demo.password }} components={{ 0: <code />, 1: <code /> }} /></p>
+            <button type="button" className="btn-ghost small" onClick={fillAdmin}>{t('login.fillAdmin')}</button>
+            {!demo.fromEnv && <span className="muted"><Trans i18nKey="login.demoGeneratedNote" components={{ 0: <code /> }} /></span>}
           </>
         ) : (
-          <p>Keeper credentials are managed by the site owner. Set <code>VITE_ADMIN_PASSWORD</code> or clear site data to regenerate the demo account.</p>
+          <p><Trans i18nKey="login.demoManagedNote" components={{ 0: <code /> }} /></p>
         )}
       </div>
     </AuthShell>

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
@@ -15,6 +16,7 @@ export default function Videos() {
   const [query, setQuery] = useState('')
   const { videos: VIDEOS, canAccess } = useContent()
   const { user } = useAuth()
+  const { t } = useTranslation()
 
   const list = useMemo(() => VIDEOS.filter((v) => {
     if (filter !== 'all' && v.tag !== filter) return false
@@ -26,50 +28,52 @@ export default function Videos() {
 
   return (
     <>
-      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero} imageMobile={page.heroMobile}>
-        <p className="page-intro">{page.intro}</p>
+      <PageHero kicker={t('content.pages.videos.kicker')} title={t('content.pages.videos.title')} sub={t('content.pages.videos.sub')} image={page.hero} imageMobile={page.heroMobile}>
+        <p className="page-intro">{t('content.pages.videos.intro')}</p>
       </PageHero>
 
-      <section className="page-section">
-        <SectionHead title="NOW SCREENING" sub="THE FEATURED EPISODE THIS WEEK." />
-        <Link to={`/videos/${featured.slug}`} className="featured-video">
-          <Img src={featured.img} alt={featured.title} />
-          <div className="featured-cap">
-            <span className={`tag ${featured.tag}`}>{featured.tag.toUpperCase()}</span>
-            <h3>{featured.title}</h3>
-            <p>{featured.desc}</p>
-            <div className="featured-meta"><span>▶ {featured.dur}</span><span>{featured.views} views</span><span>{featured.date}</span></div>
-          </div>
-          {(() => {
-            const open = canAccess(featured.category) && !!user
-            if (open) return <span className="play big-play">▶</span>
-            return (
-              <>
-                <span className="play big-play">🔒</span>
-                <span className="seal-badge">{user ? '🔒 SEALED' : '🔒 SIGN IN TO WATCH'}</span>
-              </>
-            )
-          })()}
-        </Link>
-      </section>
+      {featured && (
+        <section className="page-section">
+          <SectionHead title={t('videos.nowScreeningTitle')} sub={t('videos.nowScreeningSub')} />
+          <Link to={`/videos/${featured.slug}`} className="featured-video">
+            <Img src={featured.img} alt={featured.title} />
+            <div className="featured-cap">
+              <span className={`tag ${featured.tag}`}>{t(`common.tags.${featured.tag}`)}</span>
+              <h3>{featured.title}</h3>
+              <p>{featured.desc}</p>
+              <div className="featured-meta"><span>▶ {featured.dur}</span><span>{featured.views} {t('common.viewsSuffix')}</span><span>{featured.date}</span></div>
+            </div>
+            {(() => {
+              const open = canAccess(featured.category) && !!user
+              if (open) return <span className="play big-play">▶</span>
+              return (
+                <>
+                  <span className="play big-play">🔒</span>
+                  <span className="seal-badge">{user ? t('common.sealedBadge') : t('common.signInBadge')}</span>
+                </>
+              )
+            })()}
+          </Link>
+        </section>
+      )}
 
       <section className="page-section">
         <SectionHead
-          title="ALL EPISODES"
-          sub={`${list.length} OF ${VIDEOS.length} EPISODES`}
+          title={t('videos.allEpisodesTitle')}
+          sub={t('videos.episodesCountSub', { shown: list.length, total: VIDEOS.length })}
           right={(
             <div className="filter-bar">
-              <input type="search" placeholder="Search the archives…" value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search videos" />
+              <input type="search" placeholder={t('videos.searchPlaceholder')} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('videos.searchAriaLabel')} />
               <div className="chips">
                 {FILTERS.map((f) => (
-                  <button key={f} type="button" className={`chip${filter === f ? ' active' : ''}`} onClick={() => setFilter(f)}>{f.toUpperCase()}</button>
+                  <button key={f} type="button" className={`chip${filter === f ? ' active' : ''}`} onClick={() => setFilter(f)}>{t(`common.tags.${f}`)}</button>
                 ))}
               </div>
             </div>
           )}
         />
         {list.length === 0 ? (
-          <p className="empty">Nothing in the archive matches that search.</p>
+          <p className="empty">{t('videos.emptySearch')}</p>
         ) : (
           <div className="vid-grid page-vid-grid">
             {list.map((v) => {
@@ -82,13 +86,13 @@ export default function Videos() {
                     <Img src={v.img} alt={v.title} />
                     <span className="play">{open ? '▶' : '🔒'}</span>
                     <span className="dur">{v.dur}</span>
-                    {!open && <span className="seal-badge">{needsLogin ? '🔒 SIGN IN TO WATCH' : '🔒 SEALED'}</span>}
-                    {open && locked && <span className="seal-badge unsealed">◈ UNSEALED</span>}
+                    {!open && <span className="seal-badge">{needsLogin ? t('common.signInBadge') : t('common.sealedBadge')}</span>}
+                    {open && locked && <span className="seal-badge unsealed">{t('common.unsealedBadge')}</span>}
                   </div>
                   <div className="vid-body">
                     <h5>{v.title}</h5>
-                    <span className="vid-sub">{v.date} · {v.views} views</span>
-                    <span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span>
+                    <span className="vid-sub">{v.date} · {v.views} {t('common.viewsSuffix')}</span>
+                    <span className={`tag ${v.tag}`}>{t(`common.tags.${v.tag}`)}</span>
                   </div>
                 </Link>
               )

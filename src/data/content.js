@@ -3,82 +3,36 @@
 /* ------------------------------------------------------------------ */
 
 export const NAV_LINKS = [
-  { to: '/', label: 'HOME' },
-  { to: '/archives', label: 'ARCHIVES' },
-  { to: '/new-order', label: 'NEW ORDER' },
-  { to: '/rituals', label: 'RITUALS' },
-  { to: '/videos', label: 'VIDEOS' },
-  { to: '/visuals', label: 'VISUALS' },
-  { to: '/community', label: 'COMMUNITY' },
-  { to: '/about', label: 'ABOUT' },
+  { to: '/', key: 'home' },
+  { to: '/archives', key: 'archives' },
+  { to: '/new-order', key: 'newOrder' },
+  { to: '/rituals', key: 'rituals' },
+  { to: '/videos', key: 'videos' },
+  { to: '/visuals', key: 'visuals' },
+  { to: '/community', key: 'community' },
+  { to: '/about', key: 'about' },
 ]
 
+/* Translatable copy for these entries (kicker/title/sub/intro, card/symbol
+   text, channel/timeline/faq copy) lives in src/i18n/locales/*, keyed by the
+   slug/key below. See src/hooks/useLocalizedContent.js. */
 export const PAGES = {
-  archives: {
-    kicker: 'THE RITUAL ARCHIVE',
-    title: 'ARCHIVES',
-    sub: 'A JOURNEY THROUGH SYMBOLS, CEREMONY AND MYSTERY.',
-    hero: '/assets/archives-hero.jpg',
-    heroMobile: '/assets/archives-hero-mobile.jpg',
-    intro: 'Every order keeps a library. Ours keeps the questions nobody dared to write down. Six chambers, six relics — each one a doorway into the mythology the Brotherhood was built on.',
-  },
-  rituals: {
-    kicker: 'CEREMONY & OATH',
-    title: 'RITUALS',
-    sub: 'CANDLE. CIRCLE. SILENCE. THE STAGES OF THE INITIATE.',
-    hero: '/assets/rituals-hero.jpg',
-    heroMobile: '/assets/rituals-hero-mobile.jpg',
-    intro: 'The rites of the Brotherhood are theatre — staged, symbolic and entirely fictional. Read them as story. Follow the seven stations from the first candle to the sealed oath.',
-  },
-  newOrder: {
-    kicker: 'THE 666,666 EXPERIENCE',
-    title: 'NEW ORDER',
-    sub: '06 NOVEMBER 2026 · 12:00 AM · THE VEIL THINS.',
-    hero: '/assets/neworder-hero.jpg',
-    heroMobile: '/assets/neworder-hero-mobile.jpg',
-    intro: 'A fictional campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter of the experience. No prophecies. No real-world claims. Just a date on the calendar and a story waiting to unfold.',
-  },
-  videos: {
-    kicker: 'FORBIDDEN ARCHIVES',
-    title: 'VIDEOS',
-    sub: 'EXPLORE THE VIDEOS, DOCUMENTARIES AND HIDDEN STORIES.',
-    hero: '/assets/videos-hero.jpg',
-    heroMobile: '/assets/videos-hero-mobile.jpg',
-    intro: 'The projector hums in an empty hall. Documentaries, dramatisations and theory breakdowns — each one labelled clearly as fiction, theory or fact so you always know what you are watching.',
-  },
-  visuals: {
-    kicker: 'SYMBOLS OF THE UNKNOWN',
-    title: 'VISUALS',
-    sub: 'ANCIENT SYMBOLS. MODERN INTERPRETATIONS. ENDLESS QUESTIONS.',
-    hero: '/assets/visuals-hero.jpg',
-    heroMobile: '/assets/visuals-hero-mobile.jpg',
-    intro: 'A gallery of sigils, emblems and imagery from across the Brotherhood universe. Tap any symbol to learn the meaning we assigned it in this fiction.',
-  },
-  community: {
-    kicker: 'THE COUNCIL',
-    title: 'COMMUNITY',
-    sub: 'DISCUSS. SHARE. EXPLORE.',
-    hero: '/assets/community-hero.jpg',
-    heroMobile: '/assets/community-hero-mobile.jpg',
-    intro: 'The round table is open. Join the channels, meet the other initiates, and help decide where the story goes next. 18+ recommended for mature themes.',
-  },
-  about: {
-    kicker: 'THE THRESHOLD',
-    title: 'ABOUT',
-    sub: 'WHO WE ARE. WHAT THIS IS. WHAT IT IS NOT.',
-    hero: '/assets/about-hero.jpg',
-    heroMobile: '/assets/about-hero-mobile.jpg',
-    intro: 'Illuminati Brotherhood is an immersive, fictional entertainment experience about secret-society mythology, conspiracy culture and historical mystery. Nothing here is a real-world claim.',
-  },
+  archives: { hero: '/assets/archives-hero.jpg', heroMobile: '/assets/archives-hero-mobile.jpg' },
+  rituals: { hero: '/assets/rituals-hero.jpg', heroMobile: '/assets/rituals-hero-mobile.jpg' },
+  newOrder: { hero: '/assets/neworder-hero.jpg', heroMobile: '/assets/neworder-hero-mobile.jpg' },
+  videos: { hero: '/assets/videos-hero.jpg', heroMobile: '/assets/videos-hero-mobile.jpg' },
+  visuals: { hero: '/assets/visuals-hero.jpg', heroMobile: '/assets/visuals-hero-mobile.jpg' },
+  community: { hero: '/assets/community-hero.jpg', heroMobile: '/assets/community-hero-mobile.jpg' },
+  about: { hero: '/assets/about-hero.jpg', heroMobile: '/assets/about-hero-mobile.jpg' },
 }
 
 export const CARDS = [
-  { slug: 'the-third-eye', title: 'THE THIRD EYE', desc: 'A symbol representing knowledge, perception and hidden truth.', cap: 'Knowledge · Perception · Truth', img: '/assets/archive-eye.jpg', era: 'Chamber I', body: 'Older than any order that claimed it, the open eye appears wherever humans wanted to say "we see more than we are told". In the Brotherhood fiction it marks the first chamber: the moment an initiate stops accepting and starts looking.' },
-  { slug: 'the-gathering', title: 'THE GATHERING', desc: 'Hooded keepers circle the eternal flame of counsel.', cap: 'Ceremony · Brotherhood · Oath', img: '/assets/archive-ritual.jpg', era: 'Chamber II', body: 'Thirteen robes, one circle, no faces. The Gathering is the Brotherhood\'s founding image — a council where rank dissolves and only the flame is above anyone. It is staged, symbolic and entirely fictional.' },
-  { slug: 'the-golden-altar', title: 'THE GOLDEN ALTAR', desc: 'Where candlelight meets the triangular gate of awakening.', cap: 'Light · Passage · Awakening', img: '/assets/archive-altar.jpg', era: 'Chamber III', body: 'A triangle of light set into the stone. Initiates kneel not to worship, but to look through it. The altar is a lens in the fiction: what you see on the other side is whatever you brought with you.' },
-  { slug: 'the-horned-figure', title: 'THE HORNED FIGURE', desc: 'Myth and allegory guarding the gate of forbidden wisdom.', cap: 'Myth · Allegory · Power', img: '/assets/archive-baphomet.jpg', era: 'Chamber IV', body: 'Borrowed from centuries of allegory, the horned guardian is the story\'s antagonist and mirror at once. It represents the fear of knowledge — the thing standing between the seeker and the fourth chamber.' },
-  { slug: 'the-threshold', title: 'THE THRESHOLD', desc: 'One silhouette. One triangle. One choice to step through.', cap: 'Choice · Passage · Destiny', img: '/assets/archive-silhouette.jpg', era: 'Chamber V', body: 'Every initiate reaches a door they can still walk away from. The Threshold is that scene, frozen: the figure, the flame, and the moment before the choice.' },
-  { slug: 'the-grimoire', title: 'THE GRIMOIRE', desc: 'Parchments of sigils, circles and centuries-old questions.', cap: 'Sigils · History · Mystery', img: '/assets/archive-parchment.jpg', era: 'Chamber VI', body: 'The final chamber holds a book that is never finished. Its sigils are the visual language of the whole experience — you will find them hidden across every page of this site.' },
+  { slug: 'the-third-eye', img: '/assets/archive-eye.jpg' },
+  { slug: 'the-gathering', img: '/assets/archive-ritual.jpg' },
+  { slug: 'the-golden-altar', img: '/assets/archive-altar.jpg' },
+  { slug: 'the-horned-figure', img: '/assets/archive-baphomet.jpg' },
+  { slug: 'the-threshold', img: '/assets/archive-silhouette.jpg' },
+  { slug: 'the-grimoire', img: '/assets/archive-parchment.jpg' },
 ]
 
 export const RITUALS = [
@@ -103,14 +57,14 @@ export const VIDEOS = [
 ]
 
 export const SYMBOLS = [
-  { slug: 'the-third-eye', name: 'THE THIRD EYE', short: 'perception beyond sight', img: '/assets/archive-eye.jpg', meaning: 'The eye that sees what is hidden. In the fiction it is the first mark an initiate receives — the reminder to question everything, including the Brotherhood itself.' },
-  { slug: 'the-pyramid', name: 'THE PYRAMID', short: 'ascent of knowledge', img: '/assets/forbidden-pyramid.jpg', meaning: 'Wide at the base, narrow at the peak: knowledge is easy to begin and hard to finish. The capstone floats free because the climb is never complete.' },
-  { slug: 'the-shadow', name: 'THE SHADOW', short: 'the keeper of secrets', img: '/assets/archive-silhouette.jpg', meaning: 'The hooded silhouette stands for every keeper who chose anonymity. Faces are never shown in Brotherhood imagery — the story matters more than the storyteller.' },
-  { slug: 'the-horned-figure', name: 'THE HORNED FIGURE', short: 'myth & allegory', img: '/assets/archive-baphomet.jpg', meaning: 'Borrowed from centuries of allegory and deliberately reframed as the fear of knowledge. The antagonist of the fiction, and its mirror.' },
-  { slug: 'the-black-sun', name: 'THE BLACK SUN', short: 'the hidden light', img: '/assets/visuals-hero.jpg', meaning: 'A sun that gives no light, only outline. The emblem of the vigil: the idea that some truths are only visible in darkness.' },
-  { slug: 'the-emblem', name: 'THE EMBLEM', short: 'seal of the brotherhood', img: '/assets/community-emblem.jpg', meaning: 'Triangle, eye and ring of runes. The seal every initiate receives at the seventh station and the mark that appears on every page of this experience.' },
-  { slug: 'the-altar-gate', name: 'THE ALTAR GATE', short: 'the triangular passage', img: '/assets/archive-altar.jpg', meaning: 'The lit triangle set into stone. Not a place of worship but of looking — a lens through which the seeker sees whatever they carried in.' },
-  { slug: 'the-grimoire-page', name: 'THE GRIMOIRE PAGE', short: 'the unfinished book', img: '/assets/archive-parchment.jpg', meaning: 'Sigils, circles and centuries-old questions. The visual language of the whole experience, drawn from a book that is never finished.' },
+  { slug: 'the-third-eye', img: '/assets/archive-eye.jpg' },
+  { slug: 'the-pyramid', img: '/assets/forbidden-pyramid.jpg' },
+  { slug: 'the-shadow', img: '/assets/archive-silhouette.jpg' },
+  { slug: 'the-horned-figure', img: '/assets/archive-baphomet.jpg' },
+  { slug: 'the-black-sun', img: '/assets/visuals-hero.jpg' },
+  { slug: 'the-emblem', img: '/assets/community-emblem.jpg' },
+  { slug: 'the-altar-gate', img: '/assets/archive-altar.jpg' },
+  { slug: 'the-grimoire-page', img: '/assets/archive-parchment.jpg' },
 ]
 
 export const GALLERY = [
@@ -138,24 +92,24 @@ export const INSTA_IMAGES = [
 ]
 
 export const CHANNELS = [
-  { icon: '🎮', name: 'DISCORD', desc: 'Live discussion, theory threads and voice rooms.', members: '48,200 initiates', note: 'Discord invite copied (demo)' },
-  { icon: '✈', name: 'TELEGRAM', desc: 'Announcements, drops and countdown updates.', members: '21,900 initiates', note: 'Opening Telegram (demo)' },
-  { icon: '📷', name: 'INSTAGRAM', desc: 'Daily visuals, sigils and behind-the-scenes.', members: '132K followers', note: 'Opening Instagram (demo)' },
-  { icon: '💬', name: 'DISCUSSION BOARD', desc: 'Long-form essays and archive deep-dives.', members: '9,400 initiates', note: 'Opening Discussion Board (demo)' },
+  { key: 'discord', icon: '🎮' },
+  { key: 'telegram', icon: '✈' },
+  { key: 'instagram', icon: '📷' },
+  { key: 'discussionBoard', icon: '💬' },
 ]
 
 export const TIMELINE = [
-  { year: 'ORIGIN', title: 'A story, not a claim', text: 'The Brotherhood began as a creative project: what if secret-society mythology were treated as cinema instead of conspiracy?' },
-  { year: 'ARCHIVE', title: 'Six chambers', text: 'The Ritual Archive gave the fiction a structure — six relics, six chambers, one journey from perception to oath.' },
-  { year: 'COUNCIL', title: 'The community', text: 'Initiates joined the round table. Their theories, art and questions now shape where the story goes next.' },
-  { year: '2026', title: 'The New Order', text: 'On 06 November 2026 the counter hits zero and the next chapter of the experience opens. Fictional, scheduled, and entirely ours.' },
+  { key: 'origin' },
+  { key: 'archive' },
+  { key: 'council' },
+  { key: 'newOrder' },
 ]
 
 export const FAQ = [
-  { q: 'Is any of this real?', a: 'No. Illuminati Brotherhood is a fictional entertainment experience. The rituals, council, countdown and lore are invented for storytelling.' },
-  { q: 'Who can join the community?', a: 'Anyone who enjoys mystery, cinema and mythology. 18+ is recommended because some visuals are dark and mature in tone.' },
-  { q: 'What does an account do?', a: 'Signed-in initiates unlock sealed videos and rituals and receive an initiate number. Admins (Keepers) manage members and sealed content.' },
-  { q: 'Do you make real-world claims about people or organisations?', a: 'Never. Any resemblance to real people, groups or events is coincidental or purely referential for the sake of the fiction.' },
+  { key: 'isReal' },
+  { key: 'whoCanJoin' },
+  { key: 'accountDoes' },
+  { key: 'realWorldClaims' },
 ]
 
 export const TARGET_DATE = new Date('2026-11-06T00:00:00')

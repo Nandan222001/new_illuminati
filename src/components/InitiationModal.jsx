@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import { INITIATION_FEE_INR } from '../auth/authService'
@@ -14,6 +15,7 @@ const EMPTY = { cardName: '', cardNumber: '', expiry: '', cvv: '' }
 export default function InitiationModal({ open, onClose }) {
   const { completeInitiation } = useAuth()
   const toast = useToast()
+  const { t } = useTranslation()
   const [form, setForm] = useState(EMPTY)
   const [stage, setStage] = useState('form') // 'form' | 'processing' | 'done'
   const [sealId, setSealId] = useState('')
@@ -33,10 +35,10 @@ export default function InitiationModal({ open, onClose }) {
   const submit = (e) => {
     e.preventDefault()
     setError('')
-    if (form.cardName.trim().length < 2) { setError('Enter the name on the card.'); return }
-    if (form.cardNumber.replace(/\s/g, '').length < 12) { setError('That card number looks too short.'); return }
-    if (!/^\d{2}\s*\/\s*\d{2}$/.test(form.expiry)) { setError('Expiry should look like MM/YY.'); return }
-    if (form.cvv.length < 3) { setError('Enter the 3-digit security code.'); return }
+    if (form.cardName.trim().length < 2) { setError(t('modals.initiation.errorName')); return }
+    if (form.cardNumber.replace(/\s/g, '').length < 12) { setError(t('modals.initiation.errorCardNumber')); return }
+    if (!/^\d{2}\s*\/\s*\d{2}$/.test(form.expiry)) { setError(t('modals.initiation.errorExpiry')); return }
+    if (form.cvv.length < 3) { setError(t('modals.initiation.errorCvv')); return }
 
     setStage('processing')
     window.setTimeout(async () => {
@@ -44,7 +46,7 @@ export default function InitiationModal({ open, onClose }) {
         const updated = await completeInitiation()
         setSealId(updated?.sealId || '')
         setStage('done')
-        toast('Your oath is sealed. Welcome to the inner circle.')
+        toast(t('modals.initiation.sealedToast'))
       } catch (err) {
         setError(err.message)
         setStage('form')
@@ -62,49 +64,47 @@ export default function InitiationModal({ open, onClose }) {
               <ellipse cx="50" cy="60" rx="17" ry="10" stroke="#e6c878" strokeWidth="2" />
               <circle cx="50" cy="60" r="5" fill="#e6c878" />
             </svg>
-            <h3>OATH SEALED</h3>
+            <h3>{t('modals.initiation.doneTitle')}</h3>
             <p>
-              Your initiation is complete. Membership seal <b style={{ color: 'var(--gold)' }}>{sealId}</b> has been recorded.
-              Every sealed chapter across the archive is now open to you.
+              <Trans i18nKey="modals.initiation.doneBody" values={{ sealId }} components={{ 0: <b style={{ color: 'var(--gold)' }} /> }} />
             </p>
             <div className="modal-actions">
-              <button className="btn-gold" onClick={onClose}>ENTER THE SEALED ARCHIVES ›</button>
+              <button className="btn-gold" onClick={onClose}>{t('modals.initiation.enterSealed')}</button>
             </div>
           </>
         ) : (
           <>
-            <h3>COMPLETE YOUR INITIATION</h3>
+            <h3>{t('modals.initiation.title')}</h3>
             <p>
-              A one-time fee of <b style={{ color: 'var(--gold)' }}>₹{INITIATION_FEE_INR}</b> seals your oath and unlocks
-              every sealed chapter, ritual and reel in the archive.
+              <Trans i18nKey="modals.initiation.bodyIntro" values={{ fee: INITIATION_FEE_INR }} components={{ 0: <b style={{ color: 'var(--gold)' }} /> }} />
               <br /><br />
-              <span className="muted">This is a simulated checkout for a fictional experience — no card details are sent anywhere or stored.</span>
+              <span className="muted">{t('modals.initiation.simulatedNote')}</span>
             </p>
             <form className="form init-form" onSubmit={submit} noValidate>
               <label>
-                <span>NAME ON CARD</span>
-                <input type="text" autoComplete="cc-name" placeholder="As it appears on the card" value={form.cardName} onChange={(e) => setForm({ ...form, cardName: e.target.value })} disabled={stage === 'processing'} />
+                <span>{t('modals.initiation.nameOnCard')}</span>
+                <input type="text" autoComplete="cc-name" placeholder={t('modals.initiation.namePlaceholder')} value={form.cardName} onChange={(e) => setForm({ ...form, cardName: e.target.value })} disabled={stage === 'processing'} />
               </label>
               <label>
-                <span>CARD NUMBER</span>
+                <span>{t('modals.initiation.cardNumber')}</span>
                 <input type="text" inputMode="numeric" autoComplete="cc-number" placeholder="0000 0000 0000 0000" maxLength={19} value={form.cardNumber} onChange={(e) => setForm({ ...form, cardNumber: e.target.value })} disabled={stage === 'processing'} />
               </label>
               <div className="form-row">
                 <label>
-                  <span>EXPIRY</span>
+                  <span>{t('modals.initiation.expiry')}</span>
                   <input type="text" autoComplete="cc-exp" placeholder="MM/YY" maxLength={5} value={form.expiry} onChange={(e) => setForm({ ...form, expiry: e.target.value })} disabled={stage === 'processing'} />
                 </label>
                 <label>
-                  <span>CVV</span>
+                  <span>{t('modals.initiation.cvv')}</span>
                   <input type="text" inputMode="numeric" autoComplete="cc-csc" placeholder="•••" maxLength={4} value={form.cvv} onChange={(e) => setForm({ ...form, cvv: e.target.value })} disabled={stage === 'processing'} />
                 </label>
               </div>
               {error && <div className="form-error" role="alert">{error}</div>}
               <div className="modal-actions">
                 <button type="submit" className="btn-gold" disabled={stage === 'processing'}>
-                  {stage === 'processing' ? 'SEALING THE OATH…' : `PAY ₹${INITIATION_FEE_INR} · SEAL OATH`}
+                  {stage === 'processing' ? t('modals.initiation.sealing') : t('modals.initiation.payAndSeal', { fee: INITIATION_FEE_INR })}
                 </button>
-                <button type="button" className="btn-ghost" onClick={onClose} disabled={stage === 'processing'}>NOT NOW</button>
+                <button type="button" className="btn-ghost" onClick={onClose} disabled={stage === 'processing'}>{t('modals.initiation.notNow')}</button>
               </div>
             </form>
           </>

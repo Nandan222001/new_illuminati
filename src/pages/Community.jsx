@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CHANNELS, INSTA_IMAGES, PAGES } from '../data/content'
+import { Trans, useTranslation } from 'react-i18next'
+import { INSTA_IMAGES, PAGES } from '../data/content'
+import { useLocalizedChannels } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import PageHero from '../components/PageHero'
@@ -8,38 +10,40 @@ import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 
 const SEED_POSTS = [
-  { id: 'p1', author: 'Grand Keeper', role: 'admin', time: '2h ago', text: 'The fourth chamber opens to initiates this week. Bring your interpretation of the Black Sun — the best reading gets pinned.' },
-  { id: 'p2', author: 'Vesper', role: 'member', time: '5h ago', text: 'Re-watched Hidden Societies. The empty thirteenth seat theory holds up if you pause at 06:12.' },
-  { id: 'p3', author: 'Orrin', role: 'member', time: '1d ago', text: 'Has anyone mapped the sigils on the Visuals page against the grimoire parchment? Three of them repeat.' },
+  { id: 'p1', author: 'Grand Keeper', role: 'admin', key: 'p1' },
+  { id: 'p2', author: 'Vesper', role: 'member', key: 'p2' },
+  { id: 'p3', author: 'Orrin', role: 'member', key: 'p3' },
 ]
 
 export default function Community() {
   const page = PAGES.community
   const { user, isAdmin } = useAuth()
   const toast = useToast()
-  const [posts, setPosts] = useState(SEED_POSTS)
+  const { t } = useTranslation()
+  const channels = useLocalizedChannels()
+  const [posts, setPosts] = useState(SEED_POSTS.map((p) => ({ ...p, time: t(`community.seedPosts.${p.key}.time`), text: t(`community.seedPosts.${p.key}.text`) })))
   const [draft, setDraft] = useState('')
 
   const submit = (e) => {
     e.preventDefault()
     const text = draft.trim()
     if (!text) return
-    setPosts((p) => [{ id: `p${Date.now()}`, author: user.name, role: user.role, time: 'just now', text }, ...p])
+    setPosts((p) => [{ id: `p${Date.now()}`, author: user.name, role: user.role, time: t('community.justNow'), text }, ...p])
     setDraft('')
-    toast('Posted to the board (demo — not persisted)')
+    toast(t('community.postedToast'))
   }
 
   return (
     <>
-      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero} imageMobile={page.heroMobile}>
-        <p className="page-intro">{page.intro}</p>
+      <PageHero kicker={t('content.pages.community.kicker')} title={t('content.pages.community.title')} sub={t('content.pages.community.sub')} image={page.hero} imageMobile={page.heroMobile}>
+        <p className="page-intro">{t('content.pages.community.intro')}</p>
       </PageHero>
 
       <section className="page-section">
-        <SectionHead title="THE CHANNELS" sub="PICK YOUR SEAT AT THE TABLE." />
+        <SectionHead title={t('community.channelsTitle')} sub={t('community.channelsSub')} />
         <div className="channel-grid">
-          {CHANNELS.map((c) => (
-            <button type="button" className="channel" key={c.name} onClick={() => toast(c.note)}>
+          {channels.map((c) => (
+            <button type="button" className="channel" key={c.key} onClick={() => toast(c.note)}>
               <span className="channel-icon">{c.icon}</span>
               <h3>{c.name}</h3>
               <p>{c.desc}</p>
@@ -51,18 +55,18 @@ export default function Community() {
 
       <section className="page-section community-split">
         <div className="board">
-          <SectionHead title="DISCUSSION BOARD" sub="LATEST FROM THE INITIATES." size={16} />
+          <SectionHead title={t('community.boardTitle')} sub={t('community.boardSub')} size={16} />
           {user ? (
             <form className="post-form" onSubmit={submit}>
-              <textarea rows={3} maxLength={400} placeholder={`Share a theory, ${user.name.split(' ')[0]}…`} value={draft} onChange={(e) => setDraft(e.target.value)} />
+              <textarea rows={3} maxLength={400} placeholder={t('community.sharePlaceholder', { name: user.name.split(' ')[0] })} value={draft} onChange={(e) => setDraft(e.target.value)} />
               <div className="post-form-foot">
                 <span className="muted">{draft.length}/400</span>
-                <button type="submit" className="btn-gold" disabled={!draft.trim()}>POST ›</button>
+                <button type="submit" className="btn-gold" disabled={!draft.trim()}>{t('community.post')}</button>
               </div>
             </form>
           ) : (
             <div className="post-locked">
-              <p>Only initiates may post. <Link to="/login">Sign in</Link> or <Link to="/register">register</Link> to join the discussion.</p>
+              <p><Trans i18nKey="community.postLocked" components={{ 0: <Link to="/login" />, 1: <Link to="/register" /> }} /></p>
             </div>
           )}
           <ul className="posts">
@@ -70,36 +74,36 @@ export default function Community() {
               <li className="post" key={p.id}>
                 <span className={`avatar${p.role === 'admin' ? ' admin' : ''}`}>{p.author[0]}</span>
                 <div>
-                  <div className="post-head"><b>{p.author}</b>{p.role === 'admin' && <em className="role-pill admin">KEEPER</em>}<span>{p.time}</span></div>
+                  <div className="post-head"><b>{p.author}</b>{p.role === 'admin' && <em className="role-pill admin">{t('common.keeper')}</em>}<span>{p.time}</span></div>
                   <p>{p.text}</p>
                 </div>
               </li>
             ))}
           </ul>
-          {isAdmin && <p className="muted">You are viewing the board as a Keeper. Moderation tools live in the <Link to="/admin">admin panel</Link>.</p>}
+          {isAdmin && <p className="muted"><Trans i18nKey="community.adminNote" components={{ 0: <Link to="/admin" /> }} /></p>}
         </div>
 
         <aside className="community-side">
           <div className="side-card">
             <div className="comm-emblem-wrap"><Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" /></div>
-            <h4>THE EMBLEM</h4>
-            <p>Every initiate receives the seal at the seventh station. Wear it in your profile.</p>
-            {!user && <Link to="/register" className="btn-gold">BECOME AN INITIATE ›</Link>}
-            {user && <Link to="/profile" className="btn-gold">MY PROFILE ›</Link>}
+            <h4>{t('community.emblemTitle')}</h4>
+            <p>{t('community.emblemText')}</p>
+            {!user && <Link to="/register" className="btn-gold">{t('common.becomeInitiate')} ›</Link>}
+            {user && <Link to="/profile" className="btn-gold">{t('nav.myProfile')} ›</Link>}
           </div>
           <div className="side-card">
-            <h4>FOLLOW ON INSTAGRAM</h4>
+            <h4>{t('community.followInstagram')}</h4>
             <div className="insta-grid tight">
               {INSTA_IMAGES.map((img, i) => (
-                <a href="#" key={i} onClick={(e) => { e.preventDefault(); toast('Opening Instagram (demo)') }}><Img src={img} alt="Instagram post" /></a>
+                <a href="#" key={i} onClick={(e) => { e.preventDefault(); toast(t('content.channels.instagram.note')) }}><Img src={img} alt={t('common.instagramPostAlt')} /></a>
               ))}
             </div>
             <div className="insta-foot">
-              <button className="follow-btn" onClick={() => toast('Following @illuminati.brotherhood (demo)')}>📷 FOLLOW NOW</button>
+              <button className="follow-btn" onClick={() => toast(t('common.followingToast'))}>📷 {t('common.followNow')}</button>
               <span className="handle">@illuminati.brotherhood</span>
             </div>
           </div>
-          <div className="comm-note">18+ recommended for mature content. Be kind — this is a story we tell together.</div>
+          <div className="comm-note">{t('community.matureNote')}</div>
         </aside>
       </section>
     </>

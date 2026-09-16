@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import BrandMark from './BrandMark'
@@ -6,6 +7,7 @@ import BrandFlame from './BrandFlame'
 
 export default function Footer() {
   const { user, isAdmin } = useAuth()
+  const { t } = useTranslation()
   return (
     <footer>
       <div className="foot-top">
@@ -15,7 +17,7 @@ export default function Footer() {
             <BrandMark className="brand-mark" style={{ width: 40, height: 40 }} />
             <span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span>
           </div>
-          <p className="foot-desc">An immersive fictional exploration of secret-society mythology, conspiracy culture and historical mysteries.</p>
+          <p className="foot-desc">{t('footer.description')}</p>
           <div className="social-row">
             <a href="#" title="Instagram" onClick={(e) => e.preventDefault()}>📷</a>
             <a href="#" title="Discord" onClick={(e) => e.preventDefault()}>🎮</a>
@@ -25,34 +27,34 @@ export default function Footer() {
           </div>
         </div>
         <div className="foot-col">
-          <h6>EXPLORE</h6>
-          {NAV_LINKS.map((l) => <Link key={l.to} to={l.to}>{l.label}</Link>)}
+          <h6>{t('footer.explore')}</h6>
+          {NAV_LINKS.map((l) => <Link key={l.to} to={l.to}>{t(`nav.${l.key}`)}</Link>)}
         </div>
         <div className="foot-col">
-          <h6>ACCOUNT</h6>
+          <h6>{t('footer.account')}</h6>
           {user ? (
             <>
-              <Link to="/profile">MY PROFILE</Link>
-              {isAdmin && <Link to="/admin">ADMIN PANEL</Link>}
+              <Link to="/profile">{t('nav.myProfile')}</Link>
+              {isAdmin && <Link to="/admin">{t('nav.adminPanel')}</Link>}
             </>
           ) : (
             <>
-              <Link to="/login">LOGIN</Link>
-              <Link to="/register">REGISTER</Link>
+              <Link to="/login">{t('nav.login')}</Link>
+              <Link to="/register">{t('nav.register')}</Link>
             </>
           )}
-          <Link to="/about#faq">FAQ</Link>
-          <Link to="/about#disclaimer">CONTENT DISCLAIMER</Link>
+          <Link to="/about#faq">{t('footer.faq')}</Link>
+          <Link to="/about#disclaimer">{t('footer.disclaimer')}</Link>
         </div>
         <div className="foot-col">
-          <h6>LEGAL</h6>
-          <a href="#" onClick={(e) => e.preventDefault()}>PRIVACY</a>
-          <a href="#" onClick={(e) => e.preventDefault()}>TERMS</a>
-          <a href="#" onClick={(e) => e.preventDefault()}>COMMUNITY GUIDELINES</a>
-          <a href="#" onClick={(e) => e.preventDefault()}>CONTACT</a>
+          <h6>{t('footer.legal')}</h6>
+          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.privacy')}</a>
+          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.terms')}</a>
+          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.guidelines')}</a>
+          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.contact')}</a>
         </div>
       </div>
-      <div className="foot-copy">© 2026 Illuminati Brotherhood. All rights reserved. A fictional entertainment experience.</div>
+      <div className="foot-copy">{t('footer.copyright')}</div>
     </footer>
   )
 }

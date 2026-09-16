@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
-import { CARDS, INSTA_IMAGES, PAGES, SYMBOLS, getTimeLeft } from '../data/content'
+import { useTranslation } from 'react-i18next'
+import { INSTA_IMAGES, PAGES, getTimeLeft } from '../data/content'
+import { useLocalizedCards, useLocalizedSymbols } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
@@ -10,15 +12,13 @@ import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 import BrandFlame from '../components/BrandFlame'
 
-const HOME_SYMBOLS = SYMBOLS.slice(0, 5)
-
 const EXPLORE = [
-  { to: '/archives', page: PAGES.archives },
-  { to: '/rituals', page: PAGES.rituals },
-  { to: '/new-order', page: PAGES.newOrder },
-  { to: '/videos', page: PAGES.videos },
-  { to: '/visuals', page: PAGES.visuals },
-  { to: '/community', page: PAGES.community },
+  { to: '/archives', key: 'archives', page: PAGES.archives },
+  { to: '/rituals', key: 'rituals', page: PAGES.rituals },
+  { to: '/new-order', key: 'newOrder', page: PAGES.newOrder },
+  { to: '/videos', key: 'videos', page: PAGES.videos },
+  { to: '/visuals', key: 'visuals', page: PAGES.visuals },
+  { to: '/community', key: 'community', page: PAGES.community },
 ]
 
 export default function Home() {
@@ -37,6 +37,9 @@ export default function Home() {
   const isMobile = useIsMobile()
   const heroSrc = isMobile ? '/assets/hero-baphomet-mobile.jpg' : '/assets/hero-baphomet.jpg'
   const HOME_VIDEOS = useMemo(() => videos.slice(0, 4), [videos])
+  const { t } = useTranslation()
+  const CARDS = useLocalizedCards()
+  const HOME_SYMBOLS = useLocalizedSymbols().slice(0, 5)
 
   useEffect(() => {
     setHeroBgLoaded(false)
@@ -79,18 +82,18 @@ export default function Home() {
         <div className={`skeleton bg-skeleton${heroBgLoaded ? ' bg-skeleton-hidden' : ''}`} />
         <div className="hero-inner">
           <div>
-            <div className="eyebrow">{user ? `WELCOME BACK, ${user.name.split(' ')[0].toUpperCase()}` : 'WELCOME TO'}</div>
+            <div className="eyebrow">{user ? t('home.welcomeBack', { name: user.name.split(' ')[0].toUpperCase() }) : t('home.welcomeTo')}</div>
             <h1>ILLUMINATI<br />BROTHERHOOD</h1>
-            <p className="hero-sub">The door has always been open,<br />only few know where it is.</p>
-            <div className="hero-tag">ENTER THE UNKNOWN</div>
+            <p className="hero-sub">{t('home.heroSubLine1')}<br />{t('home.heroSubLine2')}</p>
+            <div className="hero-tag">{t('home.heroTag')}</div>
             <div className="hero-cta">
               <button className="btn-gold hero-cta-main" onClick={openDisclaimer}>
                 <BrandFlame button />
-                <span className="cta-label">ENTER THE DARK WORLD <i className="cta-arrow">›</i></span>
+                <span className="cta-label">{t('home.ctaMain')} <i className="cta-arrow">›</i></span>
               </button>
               {user
-                ? <Link className="btn-ghost" to="/community">👥 JOIN THE COMMUNITY</Link>
-                : <Link className="btn-ghost" to="/register">△ BECOME AN INITIATE</Link>}
+                ? <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>
+                : <Link className="btn-ghost" to="/register">△ {t('common.becomeInitiate')}</Link>}
             </div>
             <div className="social-row">
               <a href="#" title="Instagram" onClick={(e) => e.preventDefault()}>📷</a>
@@ -102,11 +105,11 @@ export default function Home() {
           </div>
           <div className="hero-rail">
             <div>
-              <Link to="/archives">HISTORY</Link><br />
-              <Link to="/visuals">SYMBOLS</Link><br />
-              <Link to="/videos">CONSPIRACIES</Link><br />
-              <Link to="/rituals">RITUALS</Link><br />
-              <Link to="/new-order">SECRETS</Link>
+              <Link to="/archives">{t('home.railHistory')}</Link><br />
+              <Link to="/visuals">{t('home.railSymbols')}</Link><br />
+              <Link to="/videos">{t('home.railConspiracies')}</Link><br />
+              <Link to="/rituals">{t('nav.rituals')}</Link><br />
+              <Link to="/new-order">{t('home.railSecrets')}</Link>
             </div>
             <svg className="rail-emblem" viewBox="0 0 100 100" fill="none" aria-hidden="true">
               <polygon points="50,6 95,88 5,88" stroke="#e6c878" strokeWidth="2.5" />
@@ -117,23 +120,23 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-bottom">
-          <div className="left"><span className="pulse-dot"></span> FICTIONAL / ENTERTAINMENT EXPERIENCE</div>
-          <div className="scroll-hint">SCROLL TO EXPLORE <span className="mouse"></span></div>
+          <div className="left"><span className="pulse-dot"></span> {t('home.bottomLeft')}</div>
+          <div className="scroll-hint">{t('home.scrollHint')} <span className="mouse"></span></div>
         </div>
       </header>
 
       {/* ---------- EXPLORE THE PAGES ---------- */}
       <section className="explore" id="explore">
-        <SectionHead title="CHOOSE YOUR PATH" sub="SIX DOORS. EACH ONE LEADS DEEPER." />
+        <SectionHead title={t('home.exploreTitle')} sub={t('home.exploreSub')} />
         <div className="explore-grid">
-          {EXPLORE.map(({ to, page }) => (
+          {EXPLORE.map(({ to, key, page }) => (
             <Link to={to} className="explore-card" key={to}>
-              <Img src={page.hero} alt={page.title} />
+              <Img src={page.hero} alt={t(`content.pages.${key}.title`)} />
               <div className="explore-cap">
-                <span>{page.kicker}</span>
-                <h3>{page.title}</h3>
-                <p>{page.sub}</p>
-                <em>ENTER ›</em>
+                <span>{t(`content.pages.${key}.kicker`)}</span>
+                <h3>{t(`content.pages.${key}.title`)}</h3>
+                <p>{t(`content.pages.${key}.sub`)}</p>
+                <em>{t('common.enterArrow')}</em>
               </div>
             </Link>
           ))}
@@ -143,16 +146,16 @@ export default function Home() {
       {/* ---------- ARCHIVE CAROUSEL ---------- */}
       <section className="archive" id="archives">
         <SectionHead
-          title="THE RITUAL ARCHIVE"
-          sub="A JOURNEY THROUGH SYMBOLS, CEREMONY AND MYSTERY."
-          right={<Link to="/archives" className="sec-link">VIEW ALL CHAMBERS ›</Link>}
+          title={t('content.pages.archives.kicker')}
+          sub={t('content.pages.archives.sub')}
+          right={<Link to="/archives" className="sec-link">{t('home.viewAllChambers')}</Link>}
         />
         <div className="carousel-wrap">
-          <button className="car-btn prev" aria-label="Previous" onClick={() => showCard(current - 1)}>‹</button>
+          <button className="car-btn prev" aria-label={t('common.previous')} onClick={() => showCard(current - 1)}>‹</button>
           <div className="carousel" ref={carouselRef}>
             {CARDS.map((c, i) => (
               <div
-                key={c.title}
+                key={c.slug}
                 ref={(el) => { cardRefs.current[i] = el }}
                 className={`card${i === current ? ' active' : ''}`}
                 onClick={() => (i === current ? navigate(`/archives/${c.slug}`) : showCard(i))}
@@ -162,7 +165,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <button className="car-btn next" aria-label="Next" onClick={() => showCard(current + 1)}>›</button>
+          <button className="car-btn next" aria-label={t('common.next')} onClick={() => showCard(current + 1)}>›</button>
         </div>
         <div className="car-foot">
           <div className="car-count"><span>{String(current + 1).padStart(2, '0')}</span> <span className="dim">/ {String(CARDS.length).padStart(2, '0')}</span></div>
@@ -171,8 +174,8 @@ export default function Home() {
             <div><h4>{CARDS[current].title}</h4><p>{CARDS[current].desc}</p></div>
           </div>
           <div className="autoplay">
-            AUTO PLAY · 02 SEC
-            <button className="pause-btn" aria-label={playing ? 'Pause' : 'Play'} onClick={() => setPlaying((p) => !p)}>{playing ? '❚❚' : '▶'}</button>
+            {t('home.autoplayLabel')}
+            <button className="pause-btn" aria-label={playing ? t('common.pause') : t('common.play')} onClick={() => setPlaying((p) => !p)}>{playing ? '❚❚' : '▶'}</button>
           </div>
         </div>
       </section>
@@ -181,32 +184,32 @@ export default function Home() {
       <section className="split" id="symbols">
         <div className="symbols">
           <SectionHead
-            title="SYMBOLS OF THE UNKNOWN"
-            sub="ANCIENT SYMBOLS. MODERN INTERPRETATIONS. ENDLESS QUESTIONS."
-            right={<Link to="/visuals" className="sec-link">ALL VISUALS ›</Link>}
+            title={t('content.pages.visuals.kicker')}
+            sub={t('content.pages.visuals.sub')}
+            right={<Link to="/visuals" className="sec-link">{t('home.allVisuals')}</Link>}
           />
           <div className="symbol-row">
             {HOME_SYMBOLS.map((s) => (
-              <Link className="symbol" key={s.name} to={`/visuals#${s.slug}`} onClick={() => toast(`${s.name} — ${s.short}`)}>
+              <Link className="symbol" key={s.slug} to={`/visuals#${s.slug}`} onClick={() => toast(`${s.name} — ${s.short}`)}>
                 <div className="symbol-ring"><SymbolIcon name={s.name} /></div>
-                <h5>{s.name}</h5><span>Explore</span>
+                <h5>{s.name}</h5><span>{t('common.explore')}</span>
               </Link>
             ))}
           </div>
         </div>
         <div className="countdown" id="countdown">
           <div className={`skeleton bg-skeleton${countdownBgLoaded ? ' bg-skeleton-hidden' : ''}`} />
-          <div className="cd-kicker">THE 666,666 EXPERIENCE</div>
-          <div className="cd-date">06 NOVEMBER 2026 · 12:00 AM</div>
+          <div className="cd-kicker">{t('content.pages.newOrder.kicker')}</div>
+          <div className="cd-date">{t('home.countdownDate')}</div>
           <div className="cd-big">666,666</div>
           <div className="cd-boxes">
-            <div className="cd-box"><b>{String(timeLeft.d).padStart(3, '0')}</b><span>DAYS</span></div>
-            <div className="cd-box"><b>{String(timeLeft.h).padStart(2, '0')}</b><span>HOURS</span></div>
-            <div className="cd-box"><b>{String(timeLeft.m).padStart(2, '0')}</b><span>MINUTES</span></div>
-            <div className="cd-box"><b>{String(timeLeft.s).padStart(2, '0')}</b><span>SECONDS</span></div>
+            <div className="cd-box"><b>{String(timeLeft.d).padStart(3, '0')}</b><span>{t('common.days')}</span></div>
+            <div className="cd-box"><b>{String(timeLeft.h).padStart(2, '0')}</b><span>{t('common.hours')}</span></div>
+            <div className="cd-box"><b>{String(timeLeft.m).padStart(2, '0')}</b><span>{t('common.minutes')}</span></div>
+            <div className="cd-box"><b>{String(timeLeft.s).padStart(2, '0')}</b><span>{t('common.seconds')}</span></div>
           </div>
-          <Link to="/new-order" className="btn-ghost cd-cta">THE NEW ORDER ›</Link>
-          <div className="cd-note"><i>ⓘ</i> This is a fictional campaign milestone, not a real-world event.</div>
+          <Link to="/new-order" className="btn-ghost cd-cta">{t('home.countdownCta')}</Link>
+          <div className="cd-note"><i>ⓘ</i> {t('common.fictionalMilestoneNote')}</div>
         </div>
       </section>
 
@@ -214,9 +217,9 @@ export default function Home() {
       <section className="triple" id="videos">
         <div>
           <SectionHead
-            title="FORBIDDEN ARCHIVES"
-            sub="EXPLORE THE VIDEOS, DOCUMENTARIES AND HIDDEN STORIES."
-            right={<Link to="/videos" className="sec-link">ALL VIDEOS ›</Link>}
+            title={t('content.pages.videos.kicker')}
+            sub={t('content.pages.videos.sub')}
+            right={<Link to="/videos" className="sec-link">{t('home.allVideos')}</Link>}
           />
           <div className="vid-grid">
             {HOME_VIDEOS.map((v) => {
@@ -227,11 +230,11 @@ export default function Home() {
                     <Img src={v.img} alt={v.title} />
                     <span className="play">{open ? '▶' : '🔒'}</span>
                     <span className="dur">{v.dur}</span>
-                    {!open && <span className="seal-badge">{user ? '🔒 SEALED' : '🔒 SIGN IN TO WATCH'}</span>}
+                    {!open && <span className="seal-badge">{user ? t('common.sealedBadge') : t('common.signInBadge')}</span>}
                   </div>
                   <div className="vid-body">
                     <h5>{v.title}</h5>
-                    <span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span>
+                    <span className={`tag ${v.tag}`}>{t(`common.tags.${v.tag}`)}</span>
                   </div>
                 </Link>
               )
@@ -239,32 +242,32 @@ export default function Home() {
           </div>
         </div>
         <div id="community">
-          <SectionHead title="ENTER THE COMMUNITY" sub="DISCUSS. SHARE. EXPLORE." size={16} />
+          <SectionHead title={t('home.communityTitle')} sub={t('content.pages.community.sub')} size={16} />
           <div className="comm-body">
             <div className="comm-emblem-wrap">
               <Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" />
             </div>
             <div className="comm-btns">
-              <button onClick={() => toast('Discord invite copied (demo)')}>🎮 DISCORD</button>
-              <button onClick={() => toast('Opening Telegram (demo)')}>✈ TELEGRAM</button>
-              <button onClick={() => toast('Opening Instagram (demo)')}>📷 INSTAGRAM</button>
-              <button onClick={() => navigate('/community')}>💬 DISCUSSION BOARD</button>
+              <button onClick={() => toast(t('content.channels.discord.note'))}>🎮 {t('content.channels.discord.name')}</button>
+              <button onClick={() => toast(t('content.channels.telegram.note'))}>✈ {t('content.channels.telegram.name')}</button>
+              <button onClick={() => toast(t('content.channels.instagram.note'))}>📷 {t('content.channels.instagram.name')}</button>
+              <button onClick={() => navigate('/community')}>💬 {t('content.channels.discussionBoard.name')}</button>
             </div>
           </div>
-          <div className="comm-note">18+ recommended for mature content.</div>
+          <div className="comm-note">{t('home.communityMatureNote')}</div>
           <div className="comm-social">
             <a href="#" onClick={(e) => e.preventDefault()}>📷</a><a href="#" onClick={(e) => e.preventDefault()}>🎮</a><a href="#" onClick={(e) => e.preventDefault()}>✈</a><a href="#" onClick={(e) => e.preventDefault()}>▶</a><a href="#" onClick={(e) => e.preventDefault()}>𝕏</a>
           </div>
         </div>
         <div>
-          <SectionHead title={<>FOLLOW THE BROTHERHOOD<br />ON INSTAGRAM</>} size={13} />
+          <SectionHead title={<>{t('home.instagramTitleLine1')}<br />{t('home.instagramTitleLine2')}</>} size={13} />
           <div className="insta-grid">
             {INSTA_IMAGES.map((img, i) => (
-              <a href="#" key={i} onClick={(e) => { e.preventDefault(); toast('Opening Instagram (demo)') }}><Img src={img} alt="Instagram post" /></a>
+              <a href="#" key={i} onClick={(e) => { e.preventDefault(); toast(t('content.channels.instagram.note')) }}><Img src={img} alt={t('common.instagramPostAlt')} /></a>
             ))}
           </div>
           <div className="insta-foot">
-            <button className="follow-btn" onClick={() => toast('Following @illuminati.brotherhood (demo)')}>📷 FOLLOW NOW</button>
+            <button className="follow-btn" onClick={() => toast(t('common.followingToast'))}>📷 {t('common.followNow')}</button>
             <span className="handle">@illuminati.brotherhood</span>
           </div>
         </div>

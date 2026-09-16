@@ -1,15 +1,18 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { CARDS } from '../data/content'
+import { useTranslation } from 'react-i18next'
+import { useLocalizedCards } from '../hooks/useLocalizedContent'
 import PageHero from '../components/PageHero'
 import Img from '../components/Img'
 
 export default function ArchiveDetail() {
   const { slug } = useParams()
-  const index = CARDS.findIndex((c) => c.slug === slug)
+  const { t } = useTranslation()
+  const cards = useLocalizedCards()
+  const index = cards.findIndex((c) => c.slug === slug)
   if (index === -1) return <Navigate to="/archives" replace />
-  const card = CARDS[index]
-  const prev = CARDS[(index - 1 + CARDS.length) % CARDS.length]
-  const next = CARDS[(index + 1) % CARDS.length]
+  const card = cards[index]
+  const prev = cards[(index - 1 + cards.length) % cards.length]
+  const next = cards[(index + 1) % cards.length]
 
   return (
     <>
@@ -17,17 +20,17 @@ export default function ArchiveDetail() {
 
       <section className="page-section detail">
         <nav className="crumbs" aria-label="Breadcrumb">
-          <Link to="/">HOME</Link><span>/</span><Link to="/archives">ARCHIVES</Link><span>/</span><b>{card.title}</b>
+          <Link to="/">{t('nav.home')}</Link><span>/</span><Link to="/archives">{t('nav.archives')}</Link><span>/</span><b>{card.title}</b>
         </nav>
         <div className="detail-grid">
           <div className="detail-media"><Img src={card.img} alt={card.title} /></div>
           <div className="detail-body">
             <h2>{card.desc}</h2>
             <p>{card.body}</p>
-            <p className="muted">All records in the Ritual Archive are fictional lore written for this entertainment experience.</p>
+            <p className="muted">{t('archiveDetail.fictionalNote')}</p>
             <div className="detail-actions">
-              <Link to="/rituals" className="btn-gold">SEE THE RITUALS ›</Link>
-              <Link to="/archives" className="btn-ghost">ALL CHAMBERS</Link>
+              <Link to="/rituals" className="btn-gold">{t('archiveDetail.seeRituals')}</Link>
+              <Link to="/archives" className="btn-ghost">{t('archiveDetail.allChambers')}</Link>
             </div>
           </div>
         </div>

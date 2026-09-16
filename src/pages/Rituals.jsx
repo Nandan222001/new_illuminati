@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Trans, useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
@@ -13,18 +14,19 @@ export default function Rituals() {
   const { user } = useAuth()
   const { rituals: RITUALS, canAccess } = useContent()
   const [showInitiation, setShowInitiation] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <>
-      <PageHero kicker={page.kicker} title={page.title} sub={page.sub} image={page.hero} imageMobile={page.heroMobile}>
-        <p className="page-intro">{page.intro}</p>
+      <PageHero kicker={t('content.pages.rituals.kicker')} title={t('content.pages.rituals.title')} sub={t('content.pages.rituals.sub')} image={page.hero} imageMobile={page.heroMobile}>
+        <p className="page-intro">{t('content.pages.rituals.intro')}</p>
       </PageHero>
 
       <section className="page-section">
         <SectionHead
-          title="THE SEVEN STATIONS"
-          sub="FOLLOW THE PATH OF THE INITIATE FROM FIRST CANDLE TO SEALED OATH."
-          right={!user && <Link to="/register" className="sec-link">SIGN UP TO UNSEAL ›</Link>}
+          title={t('rituals.stationsTitle')}
+          sub={t('rituals.stationsSub')}
+          right={!user && <Link to="/register" className="sec-link">{t('rituals.signUpToUnseal')}</Link>}
         />
         <ol className="ritual-timeline">
           {RITUALS.map((r) => {
@@ -36,7 +38,7 @@ export default function Rituals() {
                 <div className={`ritual-card${!open ? ' sealed' : ''}`}>
                   <div className="ritual-img">
                     <Img src={r.img} alt={r.title} />
-                    {locked && <span className={`seal-badge${open ? ' unsealed' : ''}`}>{open ? '◈ UNSEALED' : '🔒 SEALED'}</span>}
+                    {locked && <span className={`seal-badge${open ? ' unsealed' : ''}`}>{open ? t('common.unsealedBadge') : t('common.sealedBadge')}</span>}
                   </div>
                   <div className="ritual-body">
                     <span className="ritual-meta">{r.duration}</span>
@@ -44,11 +46,15 @@ export default function Rituals() {
                     {open ? (
                       <p>{r.desc}</p>
                     ) : user ? (
-                      <p className="sealed-text">This station is sealed. <button type="button" className="link-btn" onClick={() => setShowInitiation(true)}>Seal your oath</button> to read the record.</p>
+                      <p className="sealed-text">
+                        <Trans i18nKey="rituals.sealedUserText" components={{ 0: <button type="button" className="link-btn" onClick={() => setShowInitiation(true)} /> }} />
+                      </p>
                     ) : (
-                      <p className="sealed-text">This station is sealed. <Link to="/login">Sign in</Link> or <Link to="/register">become an initiate</Link> to read the record.</p>
+                      <p className="sealed-text">
+                        <Trans i18nKey="rituals.sealedGuestText" components={{ 0: <Link to="/login" />, 1: <Link to="/register" /> }} />
+                      </p>
                     )}
-                    <div className="tag-row">{r.tags.map((t) => <span className="tag fact" key={t}>{t.toUpperCase()}</span>)}</div>
+                    <div className="tag-row">{r.tags.map((tag) => <span className="tag fact" key={tag}>{tag.toUpperCase()}</span>)}</div>
                   </div>
                 </div>
               </li>
@@ -60,12 +66,12 @@ export default function Rituals() {
       <section className="page-section band">
         <div className="band-inner">
           <div>
-            <div className="sec-title">STAGED. SYMBOLIC. FICTIONAL.</div>
-            <p className="band-text">No real rituals are described or encouraged anywhere in this experience. The stations are narrative devices — scenes in a story you are invited to explore.</p>
+            <div className="sec-title">{t('rituals.bandTitle')}</div>
+            <p className="band-text">{t('rituals.bandText')}</p>
           </div>
           <div className="band-actions">
-            <Link to="/videos" className="btn-gold">WATCH THE DOCUMENTARIES ›</Link>
-            <Link to="/about#disclaimer" className="btn-ghost">CONTENT DISCLAIMER</Link>
+            <Link to="/videos" className="btn-gold">{t('rituals.watchDocs')}</Link>
+            <Link to="/about#disclaimer" className="btn-ghost">{t('footer.disclaimer')}</Link>
           </div>
         </div>
       </section>

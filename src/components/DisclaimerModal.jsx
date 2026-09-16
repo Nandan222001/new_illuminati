@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 
 export default function DisclaimerModal({ open, onClose, onEnter }) {
+  const { t } = useTranslation()
   useEffect(() => {
     if (!open) return undefined
     const onKey = (e) => { if (e.key === 'Escape') onClose() }
@@ -16,14 +18,14 @@ export default function DisclaimerModal({ open, onClose, onEnter }) {
           <ellipse cx="50" cy="60" rx="17" ry="10" stroke="#e6c878" strokeWidth="2" />
           <circle cx="50" cy="60" r="5" fill="#e6c878" />
         </svg>
-        <h3>ENTER THE UNKNOWN?</h3>
+        <h3>{t('modals.disclaimer.title')}</h3>
         <p>
-          You are about to explore a <b style={{ color: 'var(--gold)' }}>fictional, entertainment-only</b> experience about secret-society mythology. No real-world claims. No real rituals. Just story, symbol and cinema.
-          <br /><br />Do you wish to proceed?
+          <Trans i18nKey="modals.disclaimer.body" components={{ 0: <b style={{ color: 'var(--gold)' }} /> }} />
+          <br /><br />{t('modals.disclaimer.prompt')}
         </p>
         <div className="modal-actions">
-          <button className="btn-gold" onClick={onEnter}>I ENTER ›</button>
-          <button className="btn-ghost" onClick={onClose}>STAY OUTSIDE</button>
+          <button className="btn-gold" onClick={onEnter}>{t('modals.disclaimer.enter')}</button>
+          <button className="btn-ghost" onClick={onClose}>{t('modals.disclaimer.stay')}</button>
         </div>
       </div>
     </div>

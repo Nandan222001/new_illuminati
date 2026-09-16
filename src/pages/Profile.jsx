@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
@@ -18,6 +19,7 @@ export default function Profile() {
   const [name, setName] = useState(user.name)
   const [error, setError] = useState('')
   const [showInitiation, setShowInitiation] = useState(false)
+  const { t } = useTranslation()
 
   const sealedVideos = videos.filter((v) => v.category === 'paid')
   const sealedRituals = rituals.filter((r) => r.category === 'paid')
@@ -28,7 +30,7 @@ export default function Profile() {
     setError('')
     try {
       await updateProfile({ name })
-      toast('Profile updated.')
+      toast(t('profile.updatedToast'))
     } catch (err) {
       setError(err.message)
     }
@@ -36,77 +38,77 @@ export default function Profile() {
 
   const handleLogout = () => {
     logout()
-    toast('You have left the circle. Until next time.')
+    toast(t('nav.leftCircleToast'))
     navigate('/')
   }
 
   return (
     <>
-      <PageHero kicker={isAdmin ? 'KEEPER OF THE ARCHIVE' : `INITIATE #${String(user.initiate || 0).padStart(3, '0')}`} title={user.name.toUpperCase()} sub={user.email} image="/assets/community-emblem.jpg" compact>
+      <PageHero kicker={isAdmin ? t('profile.keeperKicker') : t('nav.initiateNumber', { number: String(user.initiate || 0).padStart(3, '0') })} title={user.name.toUpperCase()} sub={user.email} image="/assets/community-emblem.jpg" compact>
         <div className="hero-cta">
-          {isAdmin && <Link to="/admin" className="btn-gold">▲ ADMIN PANEL</Link>}
-          <button type="button" className="btn-ghost" onClick={handleLogout}>⏻ LOGOUT</button>
+          {isAdmin && <Link to="/admin" className="btn-gold">▲ {t('profile.adminPanelBtn')}</Link>}
+          <button type="button" className="btn-ghost" onClick={handleLogout}>⏻ {t('nav.logout')}</button>
         </div>
       </PageHero>
 
       {location.state?.denied && (
-        <div className="page-section"><div className="notice danger">That area is reserved for Keepers (admins).</div></div>
+        <div className="page-section"><div className="notice danger">{t('profile.deniedNotice')}</div></div>
       )}
 
       {!user.paid && (
         <div className="page-section">
           <div className="notice initiation-notice">
             <div>
-              <b>🔒 Your oath is not yet sealed.</b>
-              <p>Complete your initiation for a one-time fee of ₹{INITIATION_FEE_INR} to unlock every sealed chapter, ritual and reel across the archive.</p>
+              <b>{t('profile.oathNotSealed')}</b>
+              <p>{t('profile.completeInitiationText', { fee: INITIATION_FEE_INR })}</p>
             </div>
-            <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>SEAL YOUR OATH ›</button>
+            <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>{t('common.sealYourOathCta')}</button>
           </div>
         </div>
       )}
 
       <section className="page-section profile-grid">
         <div className="side-card">
-          <h4>MY DETAILS</h4>
+          <h4>{t('profile.myDetails')}</h4>
           <form className="form" onSubmit={save}>
-            <label><span>INITIATE NAME</span><input type="text" value={name} minLength={2} required onChange={(e) => setName(e.target.value)} /></label>
-            <label><span>EMAIL</span><input type="email" value={user.email} disabled /></label>
-            <label><span>RANK</span><input type="text" value={isAdmin ? 'Keeper (admin)' : 'Initiate (member)'} disabled /></label>
-            <label><span>MEMBER SINCE</span><input type="text" value={joined} disabled /></label>
-            <label><span>MEMBERSHIP</span><input type="text" value={user.paid ? `Sealed · ${user.sealId}` : 'Not yet sealed'} disabled /></label>
+            <label><span>{t('common.initiateNameLabel')}</span><input type="text" value={name} minLength={2} required onChange={(e) => setName(e.target.value)} /></label>
+            <label><span>{t('common.emailLabel')}</span><input type="email" value={user.email} disabled /></label>
+            <label><span>{t('profile.rankLabel')}</span><input type="text" value={isAdmin ? t('profile.rankKeeper') : t('profile.rankInitiate')} disabled /></label>
+            <label><span>{t('profile.memberSinceLabel')}</span><input type="text" value={joined} disabled /></label>
+            <label><span>{t('profile.membershipLabel')}</span><input type="text" value={user.paid ? t('profile.membershipSealed', { sealId: user.sealId }) : t('profile.membershipNotSealed')} disabled /></label>
             {error && <div className="form-error" role="alert">{error}</div>}
-            <button type="submit" className="btn-gold" disabled={name.trim() === user.name}>SAVE CHANGES</button>
+            <button type="submit" className="btn-gold" disabled={name.trim() === user.name}>{t('profile.saveChanges')}</button>
           </form>
         </div>
 
         <div className="profile-main">
           <SectionHead
-            title="YOUR UNSEALED CONTENT"
-            sub={user.paid ? 'YOUR SEALED OATH UNLOCKS EVERYTHING BELOW.' : 'SEAL YOUR OATH TO UNLOCK THE RECORDS BELOW.'}
+            title={t('profile.unsealedContentTitle')}
+            sub={user.paid ? t('profile.unsealedSubPaid') : t('profile.unsealedSubUnpaid')}
             size={16}
           />
           <div className="vid-grid page-vid-grid">
             {sealedVideos.map((v) => (
               <Link className="vid" key={v.slug} to={`/videos/${v.slug}`}>
-                <div className="vid-thumb"><Img src={v.img} alt={v.title} /><span className="play">{user.paid ? '▶' : '🔒'}</span><span className="dur">{v.dur}</span><span className={`seal-badge${user.paid ? ' unsealed' : ''}`}>{user.paid ? '◈ UNSEALED' : '🔒 SEALED'}</span></div>
-                <div className="vid-body"><h5>{v.title}</h5><span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span></div>
+                <div className="vid-thumb"><Img src={v.img} alt={v.title} /><span className="play">{user.paid ? '▶' : '🔒'}</span><span className="dur">{v.dur}</span><span className={`seal-badge${user.paid ? ' unsealed' : ''}`}>{user.paid ? t('common.unsealedBadge') : t('common.sealedBadge')}</span></div>
+                <div className="vid-body"><h5>{v.title}</h5><span className={`tag ${v.tag}`}>{t(`common.tags.${v.tag}`)}</span></div>
               </Link>
             ))}
             {sealedRituals.map((r) => (
               <Link className="vid" key={r.slug} to={`/rituals#${r.slug}`}>
-                <div className="vid-thumb"><Img src={r.img} alt={r.title} /><span className="play">{r.step}</span><span className={`seal-badge${user.paid ? ' unsealed' : ''}`}>{user.paid ? '◈ UNSEALED' : '🔒 SEALED'}</span></div>
-                <div className="vid-body"><h5>{r.title}</h5><span className="tag fact">RITUAL</span></div>
+                <div className="vid-thumb"><Img src={r.img} alt={r.title} /><span className="play">{r.step}</span><span className={`seal-badge${user.paid ? ' unsealed' : ''}`}>{user.paid ? t('common.unsealedBadge') : t('common.sealedBadge')}</span></div>
+                <div className="vid-body"><h5>{r.title}</h5><span className="tag fact">{t('profile.ritualTag')}</span></div>
               </Link>
             ))}
-            {sealedVideos.length + sealedRituals.length === 0 && <p className="empty">Nothing is sealed right now — every record is open to all.</p>}
+            {sealedVideos.length + sealedRituals.length === 0 && <p className="empty">{t('profile.emptyUnsealed')}</p>}
           </div>
 
-          <SectionHead title="CONTINUE THE JOURNEY" size={16} />
+          <SectionHead title={t('profile.continueJourney')} size={16} />
           <div className="quick-links">
-            <Link to="/archives">◬ THE ARCHIVES</Link>
-            <Link to="/rituals">◈ THE RITUALS</Link>
-            <Link to="/videos">▶ THE VIDEOS</Link>
-            <Link to="/community">◎ THE COMMUNITY</Link>
+            <Link to="/archives">◬ {t('nav.archives')}</Link>
+            <Link to="/rituals">◈ {t('nav.rituals')}</Link>
+            <Link to="/videos">▶ {t('nav.videos')}</Link>
+            <Link to="/community">◎ {t('nav.community')}</Link>
           </div>
         </div>
       </section>

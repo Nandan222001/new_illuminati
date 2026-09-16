@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
@@ -16,6 +17,7 @@ export default function VideoDetail() {
   const [showInitiation, setShowInitiation] = useState(false)
   const { user } = useAuth()
   const toast = useToast()
+  const { t } = useTranslation()
 
   if (!video) return <Navigate to="/videos" replace />
   const open = canAccess(video.category) && !!user
@@ -24,7 +26,7 @@ export default function VideoDetail() {
   return (
     <section className="page-section detail video-detail">
       <nav className="crumbs" aria-label="Breadcrumb">
-        <Link to="/">HOME</Link><span>/</span><Link to="/videos">VIDEOS</Link><span>/</span><b>{video.title}</b>
+        <Link to="/">{t('nav.home')}</Link><span>/</span><Link to="/videos">{t('nav.videos')}</Link><span>/</span><b>{video.title}</b>
       </nav>
 
       <div className={`player${playing ? ' playing' : ''}`}>
@@ -32,11 +34,11 @@ export default function VideoDetail() {
         {open ? (
           <>
             {!playing && (
-              <button type="button" className="play big-play" aria-label="Play" onClick={() => { setPlaying(true); toast(`Now playing: ${video.title} (demo)`) }}>▶</button>
+              <button type="button" className="play big-play" aria-label={t('common.play')} onClick={() => { setPlaying(true); toast(t('videoDetail.nowPlayingToast', { title: video.title })) }}>▶</button>
             )}
             {playing && (
               <div className="player-bar">
-                <button type="button" onClick={() => setPlaying(false)} aria-label="Pause">❚❚</button>
+                <button type="button" onClick={() => setPlaying(false)} aria-label={t('common.pause')}>❚❚</button>
                 <div className="progress"><span /></div>
                 <em>00:00 / {video.dur}</em>
               </div>
@@ -44,20 +46,20 @@ export default function VideoDetail() {
           </>
         ) : (
           <div className="player-locked">
-            <b>🔒 SEALED FOR INITIATES</b>
+            <b>{t('videoDetail.sealedForInitiates')}</b>
             {user ? (
               <>
-                <p>This episode unlocks once your oath is sealed (a one-time ₹{INITIATION_FEE_INR} initiation).</p>
+                <p>{t('videoDetail.unlocksText', { fee: INITIATION_FEE_INR })}</p>
                 <div className="detail-actions">
-                  <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>SEAL YOUR OATH ›</button>
+                  <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>{t('common.sealYourOathCta')}</button>
                 </div>
               </>
             ) : (
               <>
-                <p>This episode is available to signed-in members of the Brotherhood.</p>
+                <p>{t('videoDetail.availableSignedIn')}</p>
                 <div className="detail-actions">
-                  <Link to="/login" state={{ from: `/videos/${video.slug}` }} className="btn-gold">SIGN IN ›</Link>
-                  <Link to="/register" className="btn-ghost">BECOME AN INITIATE</Link>
+                  <Link to="/login" state={{ from: `/videos/${video.slug}` }} className="btn-gold">{t('videoDetail.signInCta')}</Link>
+                  <Link to="/register" className="btn-ghost">{t('common.becomeInitiate')}</Link>
                 </div>
               </>
             )}
@@ -67,19 +69,19 @@ export default function VideoDetail() {
 
       <div className="video-info">
         <div>
-          <span className={`tag ${video.tag}`}>{video.tag.toUpperCase()}</span>
+          <span className={`tag ${video.tag}`}>{t(`common.tags.${video.tag}`)}</span>
           <h1>{video.title}</h1>
-          <div className="featured-meta"><span>▶ {video.dur}</span><span>{video.views} views</span><span>{video.date}</span></div>
+          <div className="featured-meta"><span>▶ {video.dur}</span><span>{video.views} {t('common.viewsSuffix')}</span><span>{video.date}</span></div>
           <p>{video.desc}</p>
-          <p className="muted">Labels: <b>FICTION</b> = dramatised story · <b>THEORY</b> = popular ideas discussed critically · <b>FACT</b> = documented history.</p>
+          <p className="muted"><Trans i18nKey="videoDetail.labelsLegend" components={{ 0: <b />, 1: <b />, 2: <b /> }} /></p>
         </div>
         <div className="video-side">
-          <button type="button" className="btn-ghost" onClick={() => toast(user ? 'Saved to your watchlist (demo)' : 'Sign in to save episodes')}>＋ WATCHLIST</button>
-          <button type="button" className="btn-ghost" onClick={() => { navigator.clipboard?.writeText(window.location.href).catch(() => {}); toast('Link copied') }}>⇪ SHARE</button>
+          <button type="button" className="btn-ghost" onClick={() => toast(user ? t('videoDetail.watchlistToast') : t('videoDetail.watchlistSignInToast'))}>{t('videoDetail.watchlist')}</button>
+          <button type="button" className="btn-ghost" onClick={() => { navigator.clipboard?.writeText(window.location.href).catch(() => {}); toast(t('videoDetail.linkCopiedToast')) }}>{t('videoDetail.share')}</button>
         </div>
       </div>
 
-      <SectionHead title="MORE FROM THE ARCHIVE" />
+      <SectionHead title={t('videoDetail.moreFromArchive')} />
       <div className="vid-grid page-vid-grid">
         {related.map((v) => (
           <Link className="vid" key={v.slug} to={`/videos/${v.slug}`}>
@@ -90,7 +92,7 @@ export default function VideoDetail() {
             </div>
             <div className="vid-body">
               <h5>{v.title}</h5>
-              <span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span>
+              <span className={`tag ${v.tag}`}>{t(`common.tags.${v.tag}`)}</span>
             </div>
           </Link>
         ))}
