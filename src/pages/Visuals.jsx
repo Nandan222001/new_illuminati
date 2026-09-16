@@ -70,21 +70,27 @@ export default function Visuals() {
             ))}
           </div>
           <article className="sigil-detail" key={active.slug}>
-            <div className="sigil-detail-img">
-              {active.slug === THIRD_EYE_SLUG ? (
-                <a href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
-                  <Img src={active.img} alt={active.name} />
-                </a>
-              ) : (
-                <Img src={active.img} alt={active.name} />
-              )}
-            </div>
-            <div className="sigil-detail-body">
-              <div className="symbol-ring small"><SymbolIcon name={active.name} /></div>
-              <span className="chamber-num">{active.short.toUpperCase()}</span>
-              <h3>{active.name}</h3>
-              <p>{active.meaning}</p>
-            </div>
+            {active.slug === THIRD_EYE_SLUG ? (
+              <a className="sigil-detail-link" href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
+                <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
+                <div className="sigil-detail-body">
+                  <div className="symbol-ring small"><SymbolIcon name={active.name} /></div>
+                  <span className="chamber-num">{active.short.toUpperCase()}</span>
+                  <h3>{active.name}</h3>
+                  <p>{active.meaning}</p>
+                </div>
+              </a>
+            ) : (
+              <>
+                <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
+                <div className="sigil-detail-body">
+                  <div className="symbol-ring small"><SymbolIcon name={active.name} /></div>
+                  <span className="chamber-num">{active.short.toUpperCase()}</span>
+                  <h3>{active.name}</h3>
+                  <p>{active.meaning}</p>
+                </div>
+              </>
+            )}
           </article>
         </div>
       </section>

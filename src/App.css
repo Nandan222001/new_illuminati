@@ -565,6 +565,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;colo
 .symbol.active .symbol-name{color:var(--gold)}
 .symbol span{display:block}
 .sigil-detail{border:1px solid rgba(230,200,120,.2);border-radius:12px;overflow:hidden;background:#0a0706;animation:fadeUp .4s ease}
+.sigil-detail-link{display:block;color:inherit;text-decoration:none;cursor:pointer}
+.sigil-detail-link:hover .sigil-detail-body h3{color:#fff}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .sigil-detail-img{position:relative;aspect-ratio:16/9;overflow:hidden}
 .sigil-detail-img img{width:100%;height:100%;object-fit:cover}
