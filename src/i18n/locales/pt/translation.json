@@ -243,6 +243,8 @@
     "sigilsSub": "TOQUE EM UM SÍMBOLO PARA REVELAR SEU SIGNIFICADO NA FICÇÃO.",
     "galleryTitle": "A GALERIA",
     "gallerySub": "IMAGENS-CHAVE DE TODA A EXPERIÊNCIA. CLIQUE PARA AMPLIAR.",
+    "tattoosTitle": "TATUAGENS DO DESCONHECIDO",
+    "tattoosSub": "TINTA DA LINGUAGEM SIMBÓLICA DA FICÇÃO.",
     "sealedUserText": "🔒 As imagens seladas são desbloqueadas assim que seu juramento é selado. <0>Sele seu juramento ›</0>",
     "sealedGuestText": "🔒 As imagens seladas estão disponíveis para iniciados conectados. <0>Torne-se um iniciado ›</0>"
   },
@@ -471,6 +473,14 @@
         "short": "o livro inacabado",
         "meaning": "Sigilos, círculos e perguntas centenárias. A linguagem visual de toda a experiência, extraída de um livro que nunca está terminado."
       }
+    },
+    "tattoos": {
+      "eye-of-providence": { "name": "O OLHO DA PROVIDÊNCIA", "meaning": "Um olho radiante dentro de um triângulo, tatuado no pulso de cada Guardião no Conselho. Na ficção, marca um voto de vigilância — não uma alegação sobre qualquer ordem real." },
+      "silent-owl": { "name": "A CORUJA SILENCIOSA", "meaning": "Usada entre as omoplatas pelos membros mais antigos da história, a coruja marca aqueles que escutam mais do que falam. Um emblema fictício de observação silenciosa." },
+      "twin-pillars": { "name": "OS PILARES GÊMEOS", "meaning": "Duas colunas, luz e sombra, sempre tatuadas em par. Na história, representam o equilíbrio que todo iniciado deve manter entre a pergunta e a resposta." },
+      "compass-square": { "name": "COMPASSO E ESQUADRO", "meaning": "Uma ferramenta de medição transformada em emblema — o compasso para a visão, o esquadro para a conduta. Na ficção, é dado somente após o Juramento Selado." },
+      "checkered-floor": { "name": "O PISO XADREZ", "meaning": "Ladrilhos claros e escuros tatuados como uma faixa ao redor do pulso, um lembrete de que toda escolha na história tem seu oposto." },
+      "ouroboros": { "name": "O OUROBOROS", "meaning": "Uma serpente devorando a própria cauda, marcando aqueles que completam um ciclo inteiro das sete estações. Usado somente após a Travessia." }
     },
     "channels": {
       "discord": {

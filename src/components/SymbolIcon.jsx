@@ -1,7 +1,11 @@
-export default function SymbolIcon({ name }) {
+/**
+ * Keyed by the symbol's stable `slug` (not its translated display name) so
+ * the correct icon still renders when the UI language isn't English.
+ */
+export default function SymbolIcon({ slug }) {
   const stroke = { fill: 'none', stroke: '#e6c878', strokeWidth: 2 }
-  switch (name) {
-    case 'THE THIRD EYE':
+  switch (slug) {
+    case 'the-third-eye':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -11,7 +15,7 @@ export default function SymbolIcon({ name }) {
           <path d="M50 18v8M50 74v8M18 50h8M74 50h8" strokeWidth="1.5" />
         </svg>
       )
-    case 'THE PYRAMID':
+    case 'the-pyramid':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -20,7 +24,7 @@ export default function SymbolIcon({ name }) {
           <path d="M32 62h36M37 54h26" strokeWidth="1" opacity=".7" />
         </svg>
       )
-    case 'THE SHADOW':
+    case 'the-shadow':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -30,7 +34,7 @@ export default function SymbolIcon({ name }) {
           <circle cx="53" cy="46" r="1.3" fill="#e6c878" stroke="none" />
         </svg>
       )
-    case 'THE HORNED FIGURE':
+    case 'the-horned-figure':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -40,7 +44,7 @@ export default function SymbolIcon({ name }) {
           <circle cx="55" cy="56" r="1.6" fill="#e6c878" stroke="none" />
         </svg>
       )
-    case 'THE BLACK SUN':
+    case 'the-black-sun':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -51,7 +55,7 @@ export default function SymbolIcon({ name }) {
           <circle cx="50" cy="50" r="4" fill="#e6c878" stroke="none" />
         </svg>
       )
-    case 'THE EMBLEM':
+    case 'the-emblem':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -61,7 +65,7 @@ export default function SymbolIcon({ name }) {
           <circle cx="50" cy="54" r="3" fill="#e6c878" stroke="none" />
         </svg>
       )
-    case 'THE ALTAR GATE':
+    case 'the-altar-gate':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
@@ -70,7 +74,7 @@ export default function SymbolIcon({ name }) {
           <path d="M26 80h48" strokeWidth="1.5" />
         </svg>
       )
-    case 'THE GRIMOIRE PAGE':
+    case 'the-grimoire-page':
       return (
         <svg viewBox="0 0 100 100" {...stroke}>
           <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />

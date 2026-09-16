@@ -67,6 +67,18 @@ export const SYMBOLS = [
   { slug: 'the-grimoire-page', img: '/assets/archive-parchment.jpg' },
 ]
 
+/* Tattoo motifs are drawn inline (see TattooIcon.jsx) in the site's own
+   gold-on-dark line-art style, not photographs — see content.tattoos.* for
+   translated name/meaning text, keyed by slug. */
+export const TATTOOS = [
+  { slug: 'eye-of-providence' },
+  { slug: 'silent-owl' },
+  { slug: 'twin-pillars' },
+  { slug: 'compass-square' },
+  { slug: 'checkered-floor' },
+  { slug: 'ouroboros' },
+]
+
 export const GALLERY = [
   { id: 'the-throne', img: '/assets/hero-baphomet.jpg', title: 'The Throne', cap: 'Key visual · Chapter I' },
   { id: 'the-eye-over-the-city', img: '/assets/neworder-hero.jpg', title: 'The Eye Over The City', cap: 'Key visual · New Order' },

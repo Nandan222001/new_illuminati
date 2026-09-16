@@ -243,6 +243,8 @@
     "sigilsSub": "TIPPE AUF EIN SYMBOL, UM SEINE BEDEUTUNG IN DER FIKTION ZU ENTHÜLLEN.",
     "galleryTitle": "DIE GALERIE",
     "gallerySub": "SCHLÜSSELBILDER AUS DEM GESAMTEN ERLEBNIS. ZUM VERGRÖSSERN KLICKEN.",
+    "tattoosTitle": "TÄTOWIERUNGEN DES UNBEKANNTEN",
+    "tattoosSub": "TINTE AUS DER SYMBOLSPRACHE DER FIKTION.",
     "sealedUserText": "🔒 Versiegelte Bilder werden freigeschaltet, sobald dein Schwur versiegelt ist. <0>Versiegle deinen Schwur ›</0>",
     "sealedGuestText": "🔒 Versiegelte Bilder sind für angemeldete Initiierte verfügbar. <0>Initiierter werden ›</0>"
   },
@@ -471,6 +473,14 @@
         "short": "das unvollendete Buch",
         "meaning": "Sigillen, Kreise und jahrhundertealte Fragen. Die visuelle Sprache des gesamten Erlebnisses, entnommen aus einem Buch, das nie vollendet ist."
       }
+    },
+    "tattoos": {
+      "eye-of-providence": { "name": "AUGE DER VORSEHUNG", "meaning": "Ein strahlendes Auge in einem Dreieck, das jedem Hüter am Rat auf das Handgelenk tätowiert wird. In der Fiktion markiert es ein Gelübde der Wachsamkeit — keine Behauptung über einen realen Orden." },
+      "silent-owl": { "name": "DIE STILLE EULE", "meaning": "Zwischen den Schulterblättern der ältesten Mitglieder der Geschichte getragen, markiert die Eule jene, die mehr zuhören als sprechen. Ein fiktives Emblem stiller Beobachtung." },
+      "twin-pillars": { "name": "DIE ZWILLINGSSÄULEN", "meaning": "Zwei Säulen, Licht und Schatten, immer als Paar tätowiert. In der Geschichte stehen sie für das Gleichgewicht, das jeder Initiierte zwischen Frage und Antwort halten muss." },
+      "compass-square": { "name": "ZIRKEL & WINKELMASS", "meaning": "Ein Messwerkzeug, das zum Emblem wurde — der Zirkel für die Vision, das Winkelmaß für das Verhalten. In der Fiktion wird es erst nach dem versiegelten Schwur verliehen." },
+      "checkered-floor": { "name": "DER SCHACHBRETTBODEN", "meaning": "Helle und dunkle Fliesen, tätowiert als Band um das Handgelenk — eine Erinnerung daran, dass jede Entscheidung in der Geschichte ihr Gegenteil hat." },
+      "ouroboros": { "name": "DER OUROBOROS", "meaning": "Eine Schlange, die sich in den eigenen Schwanz beißt, markiert jene, die einen vollen Zyklus der sieben Stationen abgeschlossen haben. Nur nach der Überquerung getragen." }
     },
     "channels": {
       "discord": {

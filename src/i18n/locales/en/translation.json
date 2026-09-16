@@ -243,6 +243,8 @@
     "sigilsSub": "TAP A SYMBOL TO REVEAL ITS MEANING IN THE FICTION.",
     "galleryTitle": "THE GALLERY",
     "gallerySub": "KEY VISUALS FROM ACROSS THE EXPERIENCE. CLICK TO ENLARGE.",
+    "tattoosTitle": "TATTOOS OF THE UNKNOWN",
+    "tattoosSub": "INK FROM THE FICTION'S SYMBOLIC LANGUAGE.",
     "sealedUserText": "🔒 Sealed visuals unlock once your oath is sealed. <0>Seal your oath ›</0>",
     "sealedGuestText": "🔒 Sealed visuals are available to signed-in initiates. <0>Become an initiate ›</0>"
   },
@@ -471,6 +473,14 @@
         "short": "the unfinished book",
         "meaning": "Sigils, circles and centuries-old questions. The visual language of the whole experience, drawn from a book that is never finished."
       }
+    },
+    "tattoos": {
+      "eye-of-providence": { "name": "EYE OF PROVIDENCE", "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the fiction it marks a vow of vigilance — not a claim about any real order." },
+      "silent-owl": { "name": "THE SILENT OWL", "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. A fictional emblem of quiet observation." },
+      "twin-pillars": { "name": "THE TWIN PILLARS", "meaning": "Two columns, light and shadow, always inked as a pair. In the story they represent the balance every initiate must hold between question and answer." },
+      "compass-square": { "name": "COMPASS & SQUARE", "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the fiction it is given only after the Sealed Oath." },
+      "checkered-floor": { "name": "THE CHECKERED FLOOR", "meaning": "Light and dark tiles inked as a band around the wrist, a reminder that every choice in the story has its opposite." },
+      "ouroboros": { "name": "THE OUROBOROS", "meaning": "A serpent devouring its own tail, marking those who complete a full cycle of the seven stations. Worn only after the Crossing." }
     },
     "channels": {
       "discord": {

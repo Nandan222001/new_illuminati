@@ -191,7 +191,7 @@ export default function Home() {
           <div className="symbol-row">
             {HOME_SYMBOLS.map((s) => (
               <Link className="symbol" key={s.slug} to={`/visuals#${s.slug}`} onClick={() => toast(`${s.name} — ${s.short}`)}>
-                <div className="symbol-ring"><SymbolIcon name={s.name} /></div>
+                <div className="symbol-ring"><SymbolIcon slug={s.slug} /></div>
                 <h5>{s.name}</h5><span>{t('common.explore')}</span>
               </Link>
             ))}

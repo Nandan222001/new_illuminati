@@ -243,6 +243,8 @@
     "sigilsSub": "TOCA UN SÍMBOLO PARA REVELAR SU SIGNIFICADO EN LA FICCIÓN.",
     "galleryTitle": "LA GALERÍA",
     "gallerySub": "IMÁGENES CLAVE DE TODA LA EXPERIENCIA. HAZ CLIC PARA AMPLIAR.",
+    "tattoosTitle": "TATUAJES DE LO DESCONOCIDO",
+    "tattoosSub": "TINTA DEL LENGUAJE SIMBÓLICO DE LA FICCIÓN.",
     "sealedUserText": "🔒 Las imágenes selladas se desbloquean al sellar tu juramento. <0>Sella tu juramento ›</0>",
     "sealedGuestText": "🔒 Las imágenes selladas están disponibles para iniciados con sesión iniciada. <0>Conviértete en iniciado ›</0>"
   },
@@ -471,6 +473,14 @@
         "short": "el libro inacabado",
         "meaning": "Sígilos, círculos y preguntas centenarias. El lenguaje visual de toda la experiencia, extraído de un libro que nunca se termina."
       }
+    },
+    "tattoos": {
+      "eye-of-providence": { "name": "EL OJO DE LA PROVIDENCIA", "meaning": "Un ojo radiante dentro de un triángulo, tatuado en la muñeca de cada Guardián en el Consejo. En la ficción marca un voto de vigilancia — no una afirmación sobre ninguna orden real." },
+      "silent-owl": { "name": "EL BÚHO SILENCIOSO", "meaning": "Llevado entre los omóplatos por los miembros más antiguos de la historia, el búho marca a quienes escuchan más de lo que hablan. Un emblema ficticio de observación silenciosa." },
+      "twin-pillars": { "name": "LOS PILARES GEMELOS", "meaning": "Dos columnas, luz y sombra, siempre tatuadas en pareja. En la historia representan el equilibrio que todo iniciado debe mantener entre la pregunta y la respuesta." },
+      "compass-square": { "name": "COMPÁS Y ESCUADRA", "meaning": "Una herramienta de medición convertida en emblema — el compás para la visión, la escuadra para la conducta. En la ficción se entrega solo después del Juramento Sellado." },
+      "checkered-floor": { "name": "EL SUELO AJEDREZADO", "meaning": "Baldosas claras y oscuras tatuadas como una banda alrededor de la muñeca, un recordatorio de que toda elección en la historia tiene su opuesto." },
+      "ouroboros": { "name": "EL OUROBOROS", "meaning": "Una serpiente devorando su propia cola, que marca a quienes completan un ciclo entero de las siete estaciones. Se lleva solo después del Cruce." }
     },
     "channels": {
       "discord": {

@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
-import { useLocalizedSymbols } from '../hooks/useLocalizedContent'
+import { useLocalizedSymbols, useLocalizedTattoos } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
+import TattooIcon from '../components/TattooIcon'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
 
@@ -20,6 +21,7 @@ export default function Visuals() {
   const { gallery: GALLERY, canAccess } = useContent()
   const { t } = useTranslation()
   const SYMBOLS = useLocalizedSymbols()
+  const TATTOOS = useLocalizedTattoos()
   const [activeSlug, setActiveSlug] = useState(SYMBOLS[0].slug)
   const active = SYMBOLS.find((s) => s.slug === activeSlug) || SYMBOLS[0]
   const [lightbox, setLightbox] = useState(null)
@@ -64,7 +66,7 @@ export default function Visuals() {
                   if (s.slug === THIRD_EYE_SLUG) window.open(THIRD_EYE_URL, '_blank', 'noopener,noreferrer')
                 }}
               >
-                <div className="symbol-ring"><SymbolIcon name={s.name} /></div>
+                <div className="symbol-ring"><SymbolIcon slug={s.slug} /></div>
                 <b className="symbol-name">{s.name}</b><span>{s.short}</span>
               </button>
             ))}
@@ -74,7 +76,7 @@ export default function Visuals() {
               <a className="sigil-detail-link" href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
                 <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
                 <div className="sigil-detail-body">
-                  <div className="symbol-ring small"><SymbolIcon name={active.name} /></div>
+                  <div className="symbol-ring small"><SymbolIcon slug={active.slug} /></div>
                   <span className="chamber-num">{active.short.toUpperCase()}</span>
                   <h3>{active.name}</h3>
                   <p>{active.meaning}</p>
@@ -84,7 +86,7 @@ export default function Visuals() {
               <>
                 <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
                 <div className="sigil-detail-body">
-                  <div className="symbol-ring small"><SymbolIcon name={active.name} /></div>
+                  <div className="symbol-ring small"><SymbolIcon slug={active.slug} /></div>
                   <span className="chamber-num">{active.short.toUpperCase()}</span>
                   <h3>{active.name}</h3>
                   <p>{active.meaning}</p>
@@ -92,6 +94,19 @@ export default function Visuals() {
               </>
             )}
           </article>
+        </div>
+      </section>
+
+      <section className="page-section">
+        <SectionHead title={t('visuals.tattoosTitle')} sub={t('visuals.tattoosSub')} />
+        <div className="tattoo-grid">
+          {TATTOOS.map((tt) => (
+            <article className="tattoo-card" key={tt.slug}>
+              <div className="symbol-ring"><TattooIcon slug={tt.slug} /></div>
+              <h4>{tt.name}</h4>
+              <p>{tt.meaning}</p>
+            </article>
+          ))}
         </div>
       </section>
 

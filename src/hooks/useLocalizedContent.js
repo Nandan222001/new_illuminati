@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { CARDS, CHANNELS, FAQ, SYMBOLS, TIMELINE } from '../data/content'
+import { CARDS, CHANNELS, FAQ, SYMBOLS, TATTOOS, TIMELINE } from '../data/content'
 
 /** Archive chamber cards, with title/desc/cap/era/body translated by slug. */
 export function useLocalizedCards() {
@@ -22,6 +22,16 @@ export function useLocalizedSymbols() {
     name: t(`content.symbols.${s.slug}.name`),
     short: t(`content.symbols.${s.slug}.short`),
     meaning: t(`content.symbols.${s.slug}.meaning`),
+  }))
+}
+
+/** Tattoo motifs, with name/meaning translated by slug. */
+export function useLocalizedTattoos() {
+  const { t } = useTranslation()
+  return TATTOOS.map((tt) => ({
+    ...tt,
+    name: t(`content.tattoos.${tt.slug}.name`),
+    meaning: t(`content.tattoos.${tt.slug}.meaning`),
   }))
 }
 

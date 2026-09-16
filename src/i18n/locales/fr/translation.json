@@ -243,6 +243,8 @@
     "sigilsSub": "TOUCHEZ UN SYMBOLE POUR RÉVÉLER SA SIGNIFICATION DANS LA FICTION.",
     "galleryTitle": "LA GALERIE",
     "gallerySub": "VISUELS CLÉS DE TOUTE L'EXPÉRIENCE. CLIQUEZ POUR AGRANDIR.",
+    "tattoosTitle": "TATOUAGES DE L'INCONNU",
+    "tattoosSub": "L'ENCRE DU LANGAGE SYMBOLIQUE DE LA FICTION.",
     "sealedUserText": "🔒 Les visuels scellés se débloquent une fois votre serment scellé. <0>Scellez votre serment ›</0>",
     "sealedGuestText": "🔒 Les visuels scellés sont réservés aux initiés connectés. <0>Devenez initié ›</0>"
   },
@@ -471,6 +473,14 @@
         "short": "le livre inachevé",
         "meaning": "Sceaux, cercles et questions centenaires. Le langage visuel de toute l'expérience, tiré d'un livre qui n'est jamais achevé."
       }
+    },
+    "tattoos": {
+      "eye-of-providence": { "name": "L'ŒIL DE LA PROVIDENCE", "meaning": "Un œil rayonnant inscrit dans un triangle, tatoué au poignet de chaque Gardien au Conseil. Dans la fiction, il marque un vœu de vigilance — pas une affirmation sur un ordre réel." },
+      "silent-owl": { "name": "LE HIBOU SILENCIEUX", "meaning": "Porté entre les omoplates par les membres les plus anciens de l'histoire, le hibou marque ceux qui écoutent plus qu'ils ne parlent. Un emblème fictif d'observation silencieuse." },
+      "twin-pillars": { "name": "LES PILIERS JUMEAUX", "meaning": "Deux colonnes, lumière et ombre, toujours tatouées en paire. Dans l'histoire, elles représentent l'équilibre que chaque initié doit maintenir entre la question et la réponse." },
+      "compass-square": { "name": "COMPAS ET ÉQUERRE", "meaning": "Un instrument de mesure devenu emblème — le compas pour la vision, l'équerre pour la conduite. Dans la fiction, il n'est remis qu'après le Serment Scellé." },
+      "checkered-floor": { "name": "LE SOL EN DAMIER", "meaning": "Des carreaux clairs et sombres tatoués comme un bracelet autour du poignet, un rappel que chaque choix de l'histoire a son contraire." },
+      "ouroboros": { "name": "L'OUROBOROS", "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée." }
     },
     "channels": {
       "discord": {
