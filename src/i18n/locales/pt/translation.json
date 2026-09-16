@@ -135,10 +135,22 @@
   },
   "about": {
     "pillars": {
-      "storyFirst": { "title": "A HISTÓRIA EM PRIMEIRO LUGAR", "text": "Cada página é um capítulo. O arquivo, os rituais e a contagem regressiva são recursos narrativos — não alegações." },
-      "clearlyLabelled": { "title": "CLARAMENTE ROTULADO", "text": "Os vídeos são marcados como ficção, teoria ou fato para que você sempre saiba o que está assistindo." },
-      "communityLed": { "title": "LIDERADO PELA COMUNIDADE", "text": "Os iniciados votam para onde a história vai a seguir. O conselho escuta." },
-      "noClaims": { "title": "SEM ALEGAÇÕES REAIS", "text": "Nunca visamos pessoas ou organizações reais. Semelhanças são coincidência ou puramente referenciais." }
+      "storyFirst": {
+        "title": "A HISTÓRIA EM PRIMEIRO LUGAR",
+        "text": "Cada página é um capítulo. O arquivo, os rituais e a contagem regressiva são recursos narrativos — não alegações."
+      },
+      "clearlyLabelled": {
+        "title": "CLARAMENTE ROTULADO",
+        "text": "Os vídeos são marcados como ficção, teoria ou fato para que você sempre saiba o que está assistindo."
+      },
+      "communityLed": {
+        "title": "LIDERADO PELA COMUNIDADE",
+        "text": "Os iniciados votam para onde a história vai a seguir. O conselho escuta."
+      },
+      "noClaims": {
+        "title": "SEM ALEGAÇÕES REAIS",
+        "text": "Nunca visamos pessoas ou organizações reais. Semelhanças são coincidência ou puramente referenciais."
+      }
     },
     "pillarsTitle": "NO QUE ACREDITAMOS",
     "pillarsSub": "QUATRO PILARES DA EXPERIÊNCIA.",
@@ -174,10 +186,22 @@
   },
   "newOrder": {
     "phases": {
-      "signal": { "title": "O SINAL", "text": "O contador aparece em cada página. Os iniciados recebem a primeira mensagem selada." },
-      "gathering": { "title": "A REUNIÃO", "text": "O conselho se reúne. Novas câmaras se abrem no arquivo e a comunidade vota o próximo capítulo." },
-      "screening": { "title": "A EXIBIÇÃO", "text": "A Última Exibição — o final de longa-metragem da primeira temporada — é desselada para todos os iniciados." },
-      "zeroHour": { "title": "A NOVA ORDEM", "text": "Hora zero. Começa a próxima temporada da experiência. Fictícia, programada e totalmente nossa." }
+      "signal": {
+        "title": "O SINAL",
+        "text": "O contador aparece em cada página. Os iniciados recebem a primeira mensagem selada."
+      },
+      "gathering": {
+        "title": "A REUNIÃO",
+        "text": "O conselho se reúne. Novas câmaras se abrem no arquivo e a comunidade vota o próximo capítulo."
+      },
+      "screening": {
+        "title": "A EXIBIÇÃO",
+        "text": "A Última Exibição — o final de longa-metragem da primeira temporada — é desselada para todos os iniciados."
+      },
+      "zeroHour": {
+        "title": "A NOVA ORDEM",
+        "text": "Hora zero. Começa a próxima temporada da experiência. Fictícia, programada e totalmente nossa."
+      }
     },
     "whatHappensTitle": "O QUE ACONTECE NO ZERO",
     "whatHappensSub": "QUATRO FASES. UMA DATA.",
@@ -224,9 +248,18 @@
   },
   "community": {
     "seedPosts": {
-      "p1": { "time": "há 2 h", "text": "A quarta câmara se abre para os iniciados esta semana. Traga sua interpretação do Sol Negro — a melhor leitura será fixada." },
-      "p2": { "time": "há 5 h", "text": "Assisti de novo a Hidden Societies. A teoria do décimo terceiro assento vazio se sustenta se você pausar em 06:12." },
-      "p3": { "time": "há 1 d", "text": "Alguém já comparou os sigilos da página Visuais com o pergaminho do grimório? Três deles se repetem." }
+      "p1": {
+        "time": "há 2 h",
+        "text": "A quarta câmara se abre para os iniciados esta semana. Traga sua interpretação do Sol Negro — a melhor leitura será fixada."
+      },
+      "p2": {
+        "time": "há 5 h",
+        "text": "Assisti de novo a Hidden Societies. A teoria do décimo terceiro assento vazio se sustenta se você pausar em 06:12."
+      },
+      "p3": {
+        "time": "há 1 d",
+        "text": "Alguém já comparou os sigilos da página Visuais com o pergaminho do grimório? Três deles se repetem."
+      }
     },
     "channelsTitle": "OS CANAIS",
     "channelsSub": "ESCOLHA SEU LUGAR À MESA.",
@@ -310,49 +343,200 @@
   },
   "content": {
     "pages": {
-      "archives": { "kicker": "O ARQUIVO RITUAL", "title": "ARQUIVOS", "sub": "UMA JORNADA POR SÍMBOLOS, CERIMÔNIA E MISTÉRIO.", "intro": "Toda ordem guarda uma biblioteca. A nossa guarda as perguntas que ninguém ousou escrever. Seis câmaras, seis relíquias — cada uma uma porta para a mitologia sobre a qual a Irmandade foi construída." },
-      "rituals": { "kicker": "CERIMÔNIA E JURAMENTO", "title": "RITUAIS", "sub": "VELA. CÍRCULO. SILÊNCIO. AS ETAPAS DO INICIADO.", "intro": "Os ritos da Irmandade são teatro — encenados, simbólicos e totalmente fictícios. Leia-os como uma história. Siga as sete estações, da primeira vela ao juramento selado." },
-      "newOrder": { "kicker": "A EXPERIÊNCIA 666.666", "title": "NOVA ORDEM", "sub": "06 DE NOVEMBRO DE 2026 · 00:00 · O VÉU SE DISSIPA.", "intro": "Um marco fictício da campanha: quando o contador chega a zero, a Irmandade abre o próximo capítulo da experiência. Sem profecias. Sem alegações reais. Apenas uma data no calendário e uma história a se revelar." },
-      "videos": { "kicker": "ARQUIVOS PROIBIDOS", "title": "VÍDEOS", "sub": "EXPLORE OS VÍDEOS, DOCUMENTÁRIOS E HISTÓRIAS OCULTAS.", "intro": "O projetor zumbe em um salão vazio. Documentários, dramatizações e análises de teorias — cada um claramente rotulado como ficção, teoria ou fato para que você sempre saiba o que está assistindo." },
-      "visuals": { "kicker": "SÍMBOLOS DO DESCONHECIDO", "title": "VISUAIS", "sub": "SÍMBOLOS ANTIGOS. INTERPRETAÇÕES MODERNAS. PERGUNTAS INFINITAS.", "intro": "Uma galeria de sigilos, emblemas e imagens de todo o universo da Irmandade. Toque em qualquer símbolo para conhecer o significado que atribuímos a ele nesta ficção." },
-      "community": { "kicker": "O CONSELHO", "title": "COMUNIDADE", "sub": "DISCUTA. COMPARTILHE. EXPLORE.", "intro": "A mesa redonda está aberta. Junte-se aos canais, conheça outros iniciados e ajude a decidir para onde a história vai a seguir. Recomendado para maiores de 18 anos por temas adultos." },
-      "about": { "kicker": "O LIMIAR", "title": "SOBRE", "sub": "QUEM SOMOS. O QUE ISSO É. O QUE NÃO É.", "intro": "Illuminati Brotherhood é uma experiência de entretenimento ficcional e imersiva sobre a mitologia de sociedades secretas, a cultura de conspiração e o mistério histórico. Nada aqui é uma alegação real." }
+      "archives": {
+        "kicker": "O ARQUIVO RITUAL",
+        "title": "ARQUIVOS",
+        "sub": "UMA JORNADA POR SÍMBOLOS, CERIMÔNIA E MISTÉRIO.",
+        "intro": "Toda ordem guarda uma biblioteca. A nossa guarda as perguntas que ninguém ousou escrever. Seis câmaras, seis relíquias — cada uma uma porta para a mitologia sobre a qual a Irmandade foi construída."
+      },
+      "rituals": {
+        "kicker": "CERIMÔNIA E JURAMENTO",
+        "title": "RITUAIS",
+        "sub": "VELA. CÍRCULO. SILÊNCIO. AS ETAPAS DO INICIADO.",
+        "intro": "Os ritos da Irmandade são teatro — encenados, simbólicos e totalmente fictícios. Leia-os como uma história. Siga as sete estações, da primeira vela ao juramento selado."
+      },
+      "newOrder": {
+        "kicker": "A EXPERIÊNCIA 666.666",
+        "title": "NOVA ORDEM",
+        "sub": "06 DE NOVEMBRO DE 2026 · 00:00 · O VÉU SE DISSIPA.",
+        "intro": "Um marco fictício da campanha: quando o contador chega a zero, a Irmandade abre o próximo capítulo da experiência. Sem profecias. Sem alegações reais. Apenas uma data no calendário e uma história a se revelar."
+      },
+      "videos": {
+        "kicker": "ARQUIVOS PROIBIDOS",
+        "title": "VÍDEOS",
+        "sub": "EXPLORE OS VÍDEOS, DOCUMENTÁRIOS E HISTÓRIAS OCULTAS.",
+        "intro": "O projetor zumbe em um salão vazio. Documentários, dramatizações e análises de teorias — cada um claramente rotulado como ficção, teoria ou fato para que você sempre saiba o que está assistindo."
+      },
+      "visuals": {
+        "kicker": "SÍMBOLOS DO DESCONHECIDO",
+        "title": "VISUAIS",
+        "sub": "SÍMBOLOS ANTIGOS. INTERPRETAÇÕES MODERNAS. PERGUNTAS INFINITAS.",
+        "intro": "Uma galeria de sigilos, emblemas e imagens de todo o universo da Irmandade. Toque em qualquer símbolo para conhecer o significado que atribuímos a ele nesta ficção."
+      },
+      "community": {
+        "kicker": "O CONSELHO",
+        "title": "COMUNIDADE",
+        "sub": "DISCUTA. COMPARTILHE. EXPLORE.",
+        "intro": "A mesa redonda está aberta. Junte-se aos canais, conheça outros iniciados e ajude a decidir para onde a história vai a seguir. Recomendado para maiores de 18 anos por temas adultos."
+      },
+      "about": {
+        "kicker": "O LIMIAR",
+        "title": "SOBRE",
+        "sub": "QUEM SOMOS. O QUE ISSO É. O QUE NÃO É.",
+        "intro": "Illuminati Brotherhood é uma experiência de entretenimento ficcional e imersiva sobre a mitologia de sociedades secretas, a cultura de conspiração e o mistério histórico. Nada aqui é uma alegação real."
+      }
     },
     "cards": {
-      "the-third-eye": { "title": "O TERCEIRO OLHO", "desc": "Um símbolo que representa conhecimento, percepção e verdade oculta.", "cap": "Conhecimento · Percepção · Verdade", "era": "Câmara I", "body": "Mais antigo do que qualquer ordem que o reivindicou, o olho aberto aparece onde quer que os humanos quisessem dizer \"vemos mais do que nos contam\". Na ficção da Irmandade, marca a primeira câmara: o momento em que um iniciado deixa de aceitar e começa a olhar." },
-      "the-gathering": { "title": "A REUNIÃO", "desc": "Guardiões encapuzados cercam a chama eterna do conselho.", "cap": "Cerimônia · Irmandade · Juramento", "era": "Câmara II", "body": "Treze mantos, um círculo, nenhum rosto. A Reunião é a imagem fundadora da Irmandade — um conselho onde a hierarquia se dissolve e só a chama está acima de todos. É encenada, simbólica e totalmente fictícia." },
-      "the-golden-altar": { "title": "O ALTAR DOURADO", "desc": "Onde a luz das velas encontra o portal triangular do despertar.", "cap": "Luz · Passagem · Despertar", "era": "Câmara III", "body": "Um triângulo de luz incrustado na pedra. Os iniciados se ajoelham não para adorar, mas para olhar através dele. O altar é uma lente na ficção: o que se vê do outro lado é o que você mesmo trouxe." },
-      "the-horned-figure": { "title": "A FIGURA CORNUDA", "desc": "Mito e alegoria que guardam o portal da sabedoria proibida.", "cap": "Mito · Alegoria · Poder", "era": "Câmara IV", "body": "Tomada de séculos de alegoria, a guardiã cornuda é ao mesmo tempo a antagonista e o espelho da história. Representa o medo do conhecimento — o que se interpõe entre o buscador e a quarta câmara." },
-      "the-threshold": { "title": "O LIMIAR", "desc": "Uma silhueta. Um triângulo. Uma escolha para atravessar.", "cap": "Escolha · Passagem · Destino", "era": "Câmara V", "body": "Todo iniciado chega a uma porta da qual ainda pode se afastar. O Limiar é essa cena, congelada: a figura, a chama e o instante antes da escolha." },
-      "the-grimoire": { "title": "O GRIMÓRIO", "desc": "Pergaminhos de sigilos, círculos e perguntas centenárias.", "cap": "Sigilos · História · Mistério", "era": "Câmara VI", "body": "A câmara final guarda um livro que nunca está terminado. Seus sigilos são a linguagem visual de toda a experiência — você os encontrará escondidos em cada página deste site." }
+      "the-third-eye": {
+        "title": "O TERCEIRO OLHO",
+        "desc": "Um símbolo que representa conhecimento, percepção e verdade oculta.",
+        "cap": "Conhecimento · Percepção · Verdade",
+        "era": "Câmara I",
+        "body": "Mais antigo do que qualquer ordem que o reivindicou, o olho aberto aparece onde quer que os humanos quisessem dizer \"vemos mais do que nos contam\". Na ficção da Irmandade, marca a primeira câmara: o momento em que um iniciado deixa de aceitar e começa a olhar."
+      },
+      "the-gathering": {
+        "title": "A REUNIÃO",
+        "desc": "Guardiões encapuzados cercam a chama eterna do conselho.",
+        "cap": "Cerimônia · Irmandade · Juramento",
+        "era": "Câmara II",
+        "body": "Treze mantos, um círculo, nenhum rosto. A Reunião é a imagem fundadora da Irmandade — um conselho onde a hierarquia se dissolve e só a chama está acima de todos. É encenada, simbólica e totalmente fictícia."
+      },
+      "the-golden-altar": {
+        "title": "O ALTAR DOURADO",
+        "desc": "Onde a luz das velas encontra o portal triangular do despertar.",
+        "cap": "Luz · Passagem · Despertar",
+        "era": "Câmara III",
+        "body": "Um triângulo de luz incrustado na pedra. Os iniciados se ajoelham não para adorar, mas para olhar através dele. O altar é uma lente na ficção: o que se vê do outro lado é o que você mesmo trouxe."
+      },
+      "the-horned-figure": {
+        "title": "A FIGURA CORNUDA",
+        "desc": "Mito e alegoria que guardam o portal da sabedoria proibida.",
+        "cap": "Mito · Alegoria · Poder",
+        "era": "Câmara IV",
+        "body": "Tomada de séculos de alegoria, a guardiã cornuda é ao mesmo tempo a antagonista e o espelho da história. Representa o medo do conhecimento — o que se interpõe entre o buscador e a quarta câmara."
+      },
+      "the-threshold": {
+        "title": "O LIMIAR",
+        "desc": "Uma silhueta. Um triângulo. Uma escolha para atravessar.",
+        "cap": "Escolha · Passagem · Destino",
+        "era": "Câmara V",
+        "body": "Todo iniciado chega a uma porta da qual ainda pode se afastar. O Limiar é essa cena, congelada: a figura, a chama e o instante antes da escolha."
+      },
+      "the-grimoire": {
+        "title": "O GRIMÓRIO",
+        "desc": "Pergaminhos de sigilos, círculos e perguntas centenárias.",
+        "cap": "Sigilos · História · Mistério",
+        "era": "Câmara VI",
+        "body": "A câmara final guarda um livro que nunca está terminado. Seus sigilos são a linguagem visual de toda a experiência — você os encontrará escondidos em cada página deste site."
+      }
     },
     "symbols": {
-      "the-third-eye": { "name": "O TERCEIRO OLHO", "short": "percepção além da visão", "meaning": "O olho que vê o que está oculto. Na ficção, é a primeira marca que um iniciado recebe — o lembrete de questionar tudo, inclusive a própria Irmandade." },
-      "the-pyramid": { "name": "A PIRÂMIDE", "short": "a ascensão do conhecimento", "meaning": "Larga na base, estreita no topo: o conhecimento é fácil de começar e difícil de terminar. A pedra angular flutua livre porque a ascensão nunca está completa." },
-      "the-shadow": { "name": "A SOMBRA", "short": "o guardião dos segredos", "meaning": "A silhueta encapuzada representa todo guardião que escolheu o anonimato. Rostos nunca são mostrados na iconografia da Irmandade — a história importa mais do que quem a conta." },
-      "the-horned-figure": { "name": "A FIGURA CORNUDA", "short": "mito e alegoria", "meaning": "Tomada de séculos de alegoria e deliberadamente reinterpretada como o medo do conhecimento. A antagonista da ficção, e seu espelho." },
-      "the-black-sun": { "name": "O SOL NEGRO", "short": "a luz oculta", "meaning": "Um sol que não emite luz, apenas contorno. O emblema da vigília: a ideia de que algumas verdades só são visíveis na escuridão." },
-      "the-emblem": { "name": "O EMBLEMA", "short": "selo da irmandade", "meaning": "Triângulo, olho e anel de runas. O selo que cada iniciado recebe na sétima estação e a marca que aparece em cada página desta experiência." },
-      "the-altar-gate": { "name": "O PORTAL DO ALTAR", "short": "a passagem triangular", "meaning": "O triângulo iluminado incrustado na pedra. Não um lugar de culto, mas de contemplação — uma lente através da qual o buscador vê o que ele mesmo trouxe." },
-      "the-grimoire-page": { "name": "A PÁGINA DO GRIMÓRIO", "short": "o livro inacabado", "meaning": "Sigilos, círculos e perguntas centenárias. A linguagem visual de toda a experiência, extraída de um livro que nunca está terminado." }
+      "the-third-eye": {
+        "name": "O TERCEIRO OLHO",
+        "short": "percepção além da visão",
+        "meaning": "O olho que vê o que está oculto. Na ficção, é a primeira marca que um iniciado recebe — o lembrete de questionar tudo, inclusive a própria Irmandade."
+      },
+      "the-pyramid": {
+        "name": "A PIRÂMIDE",
+        "short": "a ascensão do conhecimento",
+        "meaning": "Larga na base, estreita no topo: o conhecimento é fácil de começar e difícil de terminar. A pedra angular flutua livre porque a ascensão nunca está completa."
+      },
+      "the-shadow": {
+        "name": "A SOMBRA",
+        "short": "o guardião dos segredos",
+        "meaning": "A silhueta encapuzada representa todo guardião que escolheu o anonimato. Rostos nunca são mostrados na iconografia da Irmandade — a história importa mais do que quem a conta."
+      },
+      "the-horned-figure": {
+        "name": "A FIGURA CORNUDA",
+        "short": "mito e alegoria",
+        "meaning": "Tomada de séculos de alegoria e deliberadamente reinterpretada como o medo do conhecimento. A antagonista da ficção, e seu espelho."
+      },
+      "the-black-sun": {
+        "name": "O SOL NEGRO",
+        "short": "a luz oculta",
+        "meaning": "Um sol que não emite luz, apenas contorno. O emblema da vigília: a ideia de que algumas verdades só são visíveis na escuridão."
+      },
+      "the-emblem": {
+        "name": "O EMBLEMA",
+        "short": "selo da irmandade",
+        "meaning": "Triângulo, olho e anel de runas. O selo que cada iniciado recebe na sétima estação e a marca que aparece em cada página desta experiência."
+      },
+      "the-altar-gate": {
+        "name": "O PORTAL DO ALTAR",
+        "short": "a passagem triangular",
+        "meaning": "O triângulo iluminado incrustado na pedra. Não um lugar de culto, mas de contemplação — uma lente através da qual o buscador vê o que ele mesmo trouxe."
+      },
+      "the-grimoire-page": {
+        "name": "A PÁGINA DO GRIMÓRIO",
+        "short": "o livro inacabado",
+        "meaning": "Sigilos, círculos e perguntas centenárias. A linguagem visual de toda a experiência, extraída de um livro que nunca está terminado."
+      }
     },
     "channels": {
-      "discord": { "name": "DISCORD", "desc": "Discussão ao vivo, tópicos de teorias e salas de voz.", "members": "48.200 iniciados", "note": "Convite do Discord copiado (demo)" },
-      "telegram": { "name": "TELEGRAM", "desc": "Anúncios, novidades e atualizações da contagem regressiva.", "members": "21.900 iniciados", "note": "Abrindo o Telegram (demo)" },
-      "instagram": { "name": "INSTAGRAM", "desc": "Visuais diários, sigilos e bastidores.", "members": "132 mil seguidores", "note": "Abrindo o Instagram (demo)" },
-      "discussionBoard": { "name": "MURAL DE DISCUSSÃO", "desc": "Ensaios longos e análises profundas do arquivo.", "members": "9.400 iniciados", "note": "Abrindo o Mural de Discussão (demo)" }
+      "discord": {
+        "name": "DISCORD",
+        "desc": "Discussão ao vivo, tópicos de teorias e salas de voz.",
+        "members": "48.200 iniciados",
+        "note": "Convite do Discord copiado (demo)"
+      },
+      "telegram": {
+        "name": "TELEGRAM",
+        "desc": "Anúncios, novidades e atualizações da contagem regressiva.",
+        "members": "21.900 iniciados",
+        "note": "Abrindo o Telegram (demo)"
+      },
+      "instagram": {
+        "name": "INSTAGRAM",
+        "desc": "Visuais diários, sigilos e bastidores.",
+        "members": "132 mil seguidores",
+        "note": "Abrindo o Instagram (demo)"
+      },
+      "discussionBoard": {
+        "name": "MURAL DE DISCUSSÃO",
+        "desc": "Ensaios longos e análises profundas do arquivo.",
+        "members": "9.400 iniciados",
+        "note": "Abrindo o Mural de Discussão (demo)"
+      }
     },
     "timeline": {
-      "origin": { "year": "ORIGEM", "title": "Uma história, não uma alegação", "text": "A Irmandade começou como um projeto criativo: e se a mitologia de sociedades secretas fosse tratada como cinema em vez de conspiração?" },
-      "archive": { "year": "ARQUIVO", "title": "Seis câmaras", "text": "O Arquivo Ritual deu à ficção uma estrutura — seis relíquias, seis câmaras, uma jornada da percepção ao juramento." },
-      "council": { "year": "CONSELHO", "title": "A comunidade", "text": "Os iniciados se juntaram à mesa redonda. Suas teorias, arte e perguntas agora moldam para onde a história vai." },
-      "newOrder": { "year": "2026", "title": "A Nova Ordem", "text": "Em 06 de novembro de 2026, o contador chega a zero e o próximo capítulo da experiência se abre. Fictício, programado e totalmente nosso." }
+      "origin": {
+        "year": "ORIGEM",
+        "title": "Uma história, não uma alegação",
+        "text": "A Irmandade começou como um projeto criativo: e se a mitologia de sociedades secretas fosse tratada como cinema em vez de conspiração?"
+      },
+      "archive": {
+        "year": "ARQUIVO",
+        "title": "Seis câmaras",
+        "text": "O Arquivo Ritual deu à ficção uma estrutura — seis relíquias, seis câmaras, uma jornada da percepção ao juramento."
+      },
+      "council": {
+        "year": "CONSELHO",
+        "title": "A comunidade",
+        "text": "Os iniciados se juntaram à mesa redonda. Suas teorias, arte e perguntas agora moldam para onde a história vai."
+      },
+      "newOrder": {
+        "year": "2026",
+        "title": "A Nova Ordem",
+        "text": "Em 06 de novembro de 2026, o contador chega a zero e o próximo capítulo da experiência se abre. Fictício, programado e totalmente nosso."
+      }
     },
     "faq": {
-      "isReal": { "q": "Alguma coisa disso é real?", "a": "Não. Illuminati Brotherhood é uma experiência de entretenimento ficcional. Os rituais, o conselho, a contagem regressiva e a mitologia foram inventados para contar uma história." },
-      "whoCanJoin": { "q": "Quem pode participar da comunidade?", "a": "Qualquer pessoa que goste de mistério, cinema e mitologia. Recomendado para maiores de 18 anos porque algumas imagens são sombrias e de tom adulto." },
-      "accountDoes": { "q": "O que uma conta faz?", "a": "Iniciados conectados desbloqueiam vídeos e rituais selados e recebem um número de iniciado. Administradores (Guardiões) gerenciam membros e conteúdo selado." },
-      "realWorldClaims": { "q": "Vocês fazem alegações reais sobre pessoas ou organizações?", "a": "Nunca. Qualquer semelhança com pessoas, grupos ou eventos reais é coincidência ou puramente referencial em prol da ficção." }
+      "isReal": {
+        "q": "Alguma coisa disso é real?",
+        "a": "Não. Illuminati Brotherhood é uma experiência de entretenimento ficcional. Os rituais, o conselho, a contagem regressiva e a mitologia foram inventados para contar uma história."
+      },
+      "whoCanJoin": {
+        "q": "Quem pode participar da comunidade?",
+        "a": "Qualquer pessoa que goste de mistério, cinema e mitologia. Recomendado para maiores de 18 anos porque algumas imagens são sombrias e de tom adulto."
+      },
+      "accountDoes": {
+        "q": "O que uma conta faz?",
+        "a": "Iniciados conectados desbloqueiam vídeos e rituais selados e recebem um número de iniciado. Administradores (Guardiões) gerenciam membros e conteúdo selado."
+      },
+      "realWorldClaims": {
+        "q": "Vocês fazem alegações reais sobre pessoas ou organizações?",
+        "a": "Nunca. Qualquer semelhança com pessoas, grupos ou eventos reais é coincidência ou puramente referencial em prol da ficção."
+      }
     }
   }
 }

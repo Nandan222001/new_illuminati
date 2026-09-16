@@ -135,10 +135,22 @@
   },
   "about": {
     "pillars": {
-      "storyFirst": { "title": "L'HISTOIRE D'ABORD", "text": "Chaque page est un chapitre. L'archive, les rituels et le compte à rebours sont des procédés narratifs — pas des affirmations." },
-      "clearlyLabelled": { "title": "CLAIREMENT ÉTIQUETÉ", "text": "Les vidéos sont étiquetées fiction, théorie ou fait afin que vous sachiez toujours ce que vous regardez." },
-      "communityLed": { "title": "DIRIGÉ PAR LA COMMUNAUTÉ", "text": "Les initiés votent sur la suite de l'histoire. Le conseil écoute." },
-      "noClaims": { "title": "AUCUNE AFFIRMATION RÉELLE", "text": "Nous ne visons jamais de vraies personnes ou organisations. Toute ressemblance est fortuite ou référentielle." }
+      "storyFirst": {
+        "title": "L'HISTOIRE D'ABORD",
+        "text": "Chaque page est un chapitre. L'archive, les rituels et le compte à rebours sont des procédés narratifs — pas des affirmations."
+      },
+      "clearlyLabelled": {
+        "title": "CLAIREMENT ÉTIQUETÉ",
+        "text": "Les vidéos sont étiquetées fiction, théorie ou fait afin que vous sachiez toujours ce que vous regardez."
+      },
+      "communityLed": {
+        "title": "DIRIGÉ PAR LA COMMUNAUTÉ",
+        "text": "Les initiés votent sur la suite de l'histoire. Le conseil écoute."
+      },
+      "noClaims": {
+        "title": "AUCUNE AFFIRMATION RÉELLE",
+        "text": "Nous ne visons jamais de vraies personnes ou organisations. Toute ressemblance est fortuite ou référentielle."
+      }
     },
     "pillarsTitle": "CE QUE NOUS DÉFENDONS",
     "pillarsSub": "QUATRE PILIERS DE L'EXPÉRIENCE.",
@@ -174,10 +186,22 @@
   },
   "newOrder": {
     "phases": {
-      "signal": { "title": "LE SIGNAL", "text": "Le compteur apparaît sur chaque page. Les initiés reçoivent le premier message scellé." },
-      "gathering": { "title": "LE RASSEMBLEMENT", "text": "Le conseil se réunit. De nouvelles chambres s'ouvrent dans l'archive et la communauté vote pour le prochain chapitre." },
-      "screening": { "title": "LA PROJECTION", "text": "La Dernière Projection — le final long-métrage de la saison un — est desscellée pour tous les initiés." },
-      "zeroHour": { "title": "LE NOUVEL ORDRE", "text": "L'heure zéro. La prochaine saison de l'expérience commence. Fictive, planifiée et entièrement nôtre." }
+      "signal": {
+        "title": "LE SIGNAL",
+        "text": "Le compteur apparaît sur chaque page. Les initiés reçoivent le premier message scellé."
+      },
+      "gathering": {
+        "title": "LE RASSEMBLEMENT",
+        "text": "Le conseil se réunit. De nouvelles chambres s'ouvrent dans l'archive et la communauté vote pour le prochain chapitre."
+      },
+      "screening": {
+        "title": "LA PROJECTION",
+        "text": "La Dernière Projection — le final long-métrage de la saison un — est desscellée pour tous les initiés."
+      },
+      "zeroHour": {
+        "title": "LE NOUVEL ORDRE",
+        "text": "L'heure zéro. La prochaine saison de l'expérience commence. Fictive, planifiée et entièrement nôtre."
+      }
     },
     "whatHappensTitle": "CE QUI SE PASSE À ZÉRO",
     "whatHappensSub": "QUATRE PHASES. UNE DATE.",
@@ -224,9 +248,18 @@
   },
   "community": {
     "seedPosts": {
-      "p1": { "time": "il y a 2 h", "text": "La quatrième chambre s'ouvre aux initiés cette semaine. Apportez votre interprétation du Soleil Noir — la meilleure lecture sera épinglée." },
-      "p2": { "time": "il y a 5 h", "text": "J'ai revu Hidden Societies. La théorie du treizième siège vide tient si l'on met pause à 06:12." },
-      "p3": { "time": "il y a 1 j", "text": "Quelqu'un a-t-il comparé les sceaux de la page Visuels au parchemin du grimoire ? Trois d'entre eux se répètent." }
+      "p1": {
+        "time": "il y a 2 h",
+        "text": "La quatrième chambre s'ouvre aux initiés cette semaine. Apportez votre interprétation du Soleil Noir — la meilleure lecture sera épinglée."
+      },
+      "p2": {
+        "time": "il y a 5 h",
+        "text": "J'ai revu Hidden Societies. La théorie du treizième siège vide tient si l'on met pause à 06:12."
+      },
+      "p3": {
+        "time": "il y a 1 j",
+        "text": "Quelqu'un a-t-il comparé les sceaux de la page Visuels au parchemin du grimoire ? Trois d'entre eux se répètent."
+      }
     },
     "channelsTitle": "LES CANAUX",
     "channelsSub": "CHOISISSEZ VOTRE PLACE À LA TABLE.",
@@ -310,49 +343,200 @@
   },
   "content": {
     "pages": {
-      "archives": { "kicker": "L'ARCHIVE RITUELLE", "title": "ARCHIVES", "sub": "UN VOYAGE À TRAVERS LES SYMBOLES, LA CÉRÉMONIE ET LE MYSTÈRE.", "intro": "Tout ordre garde une bibliothèque. La nôtre garde les questions que personne n'a osé écrire. Six chambres, six reliques — chacune une porte vers la mythologie sur laquelle la Confrérie a été bâtie." },
-      "rituals": { "kicker": "CÉRÉMONIE ET SERMENT", "title": "RITUELS", "sub": "BOUGIE. CERCLE. SILENCE. LES ÉTAPES DE L'INITIÉ.", "intro": "Les rites de la Confrérie sont du théâtre — mis en scène, symboliques et entièrement fictifs. Lisez-les comme une histoire. Suivez les sept stations, de la première bougie au serment scellé." },
-      "newOrder": { "kicker": "L'EXPÉRIENCE 666 666", "title": "NOUVEL ORDRE", "sub": "06 NOVEMBRE 2026 · 00H00 · LE VOILE S'AMINCIT.", "intro": "Une étape fictive de la campagne : quand le compteur atteint zéro, la Confrérie ouvre le prochain chapitre de l'expérience. Aucune prophétie. Aucune affirmation réelle. Juste une date sur le calendrier et une histoire à découvrir." },
-      "videos": { "kicker": "ARCHIVES INTERDITES", "title": "VIDÉOS", "sub": "EXPLOREZ LES VIDÉOS, DOCUMENTAIRES ET HISTOIRES CACHÉES.", "intro": "Le projecteur bourdonne dans une salle vide. Documentaires, dramatisations et analyses de théories — chacun clairement étiqueté fiction, théorie ou fait afin que vous sachiez toujours ce que vous regardez." },
-      "visuals": { "kicker": "SYMBOLES DE L'INCONNU", "title": "VISUELS", "sub": "SYMBOLES ANCIENS. INTERPRÉTATIONS MODERNES. QUESTIONS SANS FIN.", "intro": "Une galerie de sceaux, emblèmes et images de tout l'univers de la Confrérie. Touchez un symbole pour découvrir le sens que nous lui avons donné dans cette fiction." },
-      "community": { "kicker": "LE CONSEIL", "title": "COMMUNAUTÉ", "sub": "DISCUTEZ. PARTAGEZ. EXPLOREZ.", "intro": "La table ronde est ouverte. Rejoignez les canaux, rencontrez les autres initiés et aidez à décider de la suite de l'histoire. Déconseillé aux moins de 18 ans en raison de thèmes matures." },
-      "about": { "kicker": "LE SEUIL", "title": "À PROPOS", "sub": "QUI NOUS SOMMES. CE QUE C'EST. CE QUE CE N'EST PAS.", "intro": "Illuminati Brotherhood est une expérience de divertissement fictive et immersive sur la mythologie des sociétés secrètes, la culture du complot et le mystère historique. Rien ici n'est une affirmation réelle." }
+      "archives": {
+        "kicker": "L'ARCHIVE RITUELLE",
+        "title": "ARCHIVES",
+        "sub": "UN VOYAGE À TRAVERS LES SYMBOLES, LA CÉRÉMONIE ET LE MYSTÈRE.",
+        "intro": "Tout ordre garde une bibliothèque. La nôtre garde les questions que personne n'a osé écrire. Six chambres, six reliques — chacune une porte vers la mythologie sur laquelle la Confrérie a été bâtie."
+      },
+      "rituals": {
+        "kicker": "CÉRÉMONIE ET SERMENT",
+        "title": "RITUELS",
+        "sub": "BOUGIE. CERCLE. SILENCE. LES ÉTAPES DE L'INITIÉ.",
+        "intro": "Les rites de la Confrérie sont du théâtre — mis en scène, symboliques et entièrement fictifs. Lisez-les comme une histoire. Suivez les sept stations, de la première bougie au serment scellé."
+      },
+      "newOrder": {
+        "kicker": "L'EXPÉRIENCE 666 666",
+        "title": "NOUVEL ORDRE",
+        "sub": "06 NOVEMBRE 2026 · 00H00 · LE VOILE S'AMINCIT.",
+        "intro": "Une étape fictive de la campagne : quand le compteur atteint zéro, la Confrérie ouvre le prochain chapitre de l'expérience. Aucune prophétie. Aucune affirmation réelle. Juste une date sur le calendrier et une histoire à découvrir."
+      },
+      "videos": {
+        "kicker": "ARCHIVES INTERDITES",
+        "title": "VIDÉOS",
+        "sub": "EXPLOREZ LES VIDÉOS, DOCUMENTAIRES ET HISTOIRES CACHÉES.",
+        "intro": "Le projecteur bourdonne dans une salle vide. Documentaires, dramatisations et analyses de théories — chacun clairement étiqueté fiction, théorie ou fait afin que vous sachiez toujours ce que vous regardez."
+      },
+      "visuals": {
+        "kicker": "SYMBOLES DE L'INCONNU",
+        "title": "VISUELS",
+        "sub": "SYMBOLES ANCIENS. INTERPRÉTATIONS MODERNES. QUESTIONS SANS FIN.",
+        "intro": "Une galerie de sceaux, emblèmes et images de tout l'univers de la Confrérie. Touchez un symbole pour découvrir le sens que nous lui avons donné dans cette fiction."
+      },
+      "community": {
+        "kicker": "LE CONSEIL",
+        "title": "COMMUNAUTÉ",
+        "sub": "DISCUTEZ. PARTAGEZ. EXPLOREZ.",
+        "intro": "La table ronde est ouverte. Rejoignez les canaux, rencontrez les autres initiés et aidez à décider de la suite de l'histoire. Déconseillé aux moins de 18 ans en raison de thèmes matures."
+      },
+      "about": {
+        "kicker": "LE SEUIL",
+        "title": "À PROPOS",
+        "sub": "QUI NOUS SOMMES. CE QUE C'EST. CE QUE CE N'EST PAS.",
+        "intro": "Illuminati Brotherhood est une expérience de divertissement fictive et immersive sur la mythologie des sociétés secrètes, la culture du complot et le mystère historique. Rien ici n'est une affirmation réelle."
+      }
     },
     "cards": {
-      "the-third-eye": { "title": "LE TROISIÈME ŒIL", "desc": "Un symbole représentant la connaissance, la perception et la vérité cachée.", "cap": "Connaissance · Perception · Vérité", "era": "Chambre I", "body": "Plus ancien que n'importe quel ordre l'ayant revendiqué, l'œil ouvert apparaît partout où les humains ont voulu dire « nous voyons plus qu'on ne nous dit ». Dans la fiction de la Confrérie, il marque la première chambre : le moment où un initié cesse d'accepter et commence à regarder." },
-      "the-gathering": { "title": "LE RASSEMBLEMENT", "desc": "Des gardiens encapuchonnés entourent la flamme éternelle du conseil.", "cap": "Cérémonie · Confrérie · Serment", "era": "Chambre II", "body": "Treize robes, un cercle, aucun visage. Le Rassemblement est l'image fondatrice de la Confrérie — un conseil où le rang s'efface et où seule la flamme est au-dessus de tous. C'est mis en scène, symbolique et entièrement fictif." },
-      "the-golden-altar": { "title": "L'AUTEL DORÉ", "desc": "Là où la lumière des bougies rencontre la porte triangulaire de l'éveil.", "cap": "Lumière · Passage · Éveil", "era": "Chambre III", "body": "Un triangle de lumière incrusté dans la pierre. Les initiés s'agenouillent non pour vénérer, mais pour regarder à travers. L'autel est une lentille dans la fiction : ce que l'on voit de l'autre côté est ce que l'on a soi-même apporté." },
-      "the-horned-figure": { "title": "LA FIGURE CORNUE", "desc": "Mythe et allégorie gardant la porte du savoir interdit.", "cap": "Mythe · Allégorie · Pouvoir", "era": "Chambre IV", "body": "Empruntée à des siècles d'allégorie, la gardienne cornue est à la fois l'antagoniste et le miroir de l'histoire. Elle représente la peur du savoir — ce qui se dresse entre le chercheur et la quatrième chambre." },
-      "the-threshold": { "title": "LE SEUIL", "desc": "Une silhouette. Un triangle. Un choix à franchir.", "cap": "Choix · Passage · Destin", "era": "Chambre V", "body": "Tout initié atteint une porte dont il peut encore s'éloigner. Le Seuil est cette scène, figée : la silhouette, la flamme, et l'instant avant le choix." },
-      "the-grimoire": { "title": "LE GRIMOIRE", "desc": "Des parchemins de sceaux, de cercles et de questions centenaires.", "cap": "Sceaux · Histoire · Mystère", "era": "Chambre VI", "body": "La chambre finale renferme un livre qui n'est jamais achevé. Ses sceaux sont le langage visuel de toute l'expérience — vous les retrouverez cachés sur chaque page de ce site." }
+      "the-third-eye": {
+        "title": "LE TROISIÈME ŒIL",
+        "desc": "Un symbole représentant la connaissance, la perception et la vérité cachée.",
+        "cap": "Connaissance · Perception · Vérité",
+        "era": "Chambre I",
+        "body": "Plus ancien que n'importe quel ordre l'ayant revendiqué, l'œil ouvert apparaît partout où les humains ont voulu dire « nous voyons plus qu'on ne nous dit ». Dans la fiction de la Confrérie, il marque la première chambre : le moment où un initié cesse d'accepter et commence à regarder."
+      },
+      "the-gathering": {
+        "title": "LE RASSEMBLEMENT",
+        "desc": "Des gardiens encapuchonnés entourent la flamme éternelle du conseil.",
+        "cap": "Cérémonie · Confrérie · Serment",
+        "era": "Chambre II",
+        "body": "Treize robes, un cercle, aucun visage. Le Rassemblement est l'image fondatrice de la Confrérie — un conseil où le rang s'efface et où seule la flamme est au-dessus de tous. C'est mis en scène, symbolique et entièrement fictif."
+      },
+      "the-golden-altar": {
+        "title": "L'AUTEL DORÉ",
+        "desc": "Là où la lumière des bougies rencontre la porte triangulaire de l'éveil.",
+        "cap": "Lumière · Passage · Éveil",
+        "era": "Chambre III",
+        "body": "Un triangle de lumière incrusté dans la pierre. Les initiés s'agenouillent non pour vénérer, mais pour regarder à travers. L'autel est une lentille dans la fiction : ce que l'on voit de l'autre côté est ce que l'on a soi-même apporté."
+      },
+      "the-horned-figure": {
+        "title": "LA FIGURE CORNUE",
+        "desc": "Mythe et allégorie gardant la porte du savoir interdit.",
+        "cap": "Mythe · Allégorie · Pouvoir",
+        "era": "Chambre IV",
+        "body": "Empruntée à des siècles d'allégorie, la gardienne cornue est à la fois l'antagoniste et le miroir de l'histoire. Elle représente la peur du savoir — ce qui se dresse entre le chercheur et la quatrième chambre."
+      },
+      "the-threshold": {
+        "title": "LE SEUIL",
+        "desc": "Une silhouette. Un triangle. Un choix à franchir.",
+        "cap": "Choix · Passage · Destin",
+        "era": "Chambre V",
+        "body": "Tout initié atteint une porte dont il peut encore s'éloigner. Le Seuil est cette scène, figée : la silhouette, la flamme, et l'instant avant le choix."
+      },
+      "the-grimoire": {
+        "title": "LE GRIMOIRE",
+        "desc": "Des parchemins de sceaux, de cercles et de questions centenaires.",
+        "cap": "Sceaux · Histoire · Mystère",
+        "era": "Chambre VI",
+        "body": "La chambre finale renferme un livre qui n'est jamais achevé. Ses sceaux sont le langage visuel de toute l'expérience — vous les retrouverez cachés sur chaque page de ce site."
+      }
     },
     "symbols": {
-      "the-third-eye": { "name": "LE TROISIÈME ŒIL", "short": "une perception au-delà de la vue", "meaning": "L'œil qui voit ce qui est caché. Dans la fiction, c'est la première marque que reçoit un initié — le rappel de tout questionner, y compris la Confrérie elle-même." },
-      "the-pyramid": { "name": "LA PYRAMIDE", "short": "l'ascension du savoir", "meaning": "Large à la base, étroite au sommet : le savoir est facile à commencer et difficile à achever. La pierre de faîte flotte librement car l'ascension n'est jamais terminée." },
-      "the-shadow": { "name": "L'OMBRE", "short": "le gardien des secrets", "meaning": "La silhouette encapuchonnée représente chaque gardien qui a choisi l'anonymat. Les visages ne sont jamais montrés dans l'iconographie de la Confrérie — l'histoire compte plus que le conteur." },
-      "the-horned-figure": { "name": "LA FIGURE CORNUE", "short": "mythe et allégorie", "meaning": "Empruntée à des siècles d'allégorie et délibérément réinterprétée comme la peur du savoir. L'antagoniste de la fiction, et son miroir." },
-      "the-black-sun": { "name": "LE SOLEIL NOIR", "short": "la lumière cachée", "meaning": "Un soleil qui ne donne aucune lumière, seulement un contour. L'emblème de la veillée : l'idée que certaines vérités ne sont visibles que dans l'obscurité." },
-      "the-emblem": { "name": "L'EMBLÈME", "short": "sceau de la confrérie", "meaning": "Triangle, œil et anneau de runes. Le sceau que reçoit chaque initié à la septième station, et la marque présente sur chaque page de cette expérience." },
-      "the-altar-gate": { "name": "LA PORTE DE L'AUTEL", "short": "le passage triangulaire", "meaning": "Le triangle illuminé incrusté dans la pierre. Non un lieu de culte, mais de contemplation — une lentille à travers laquelle le chercheur voit ce qu'il a lui-même apporté." },
-      "the-grimoire-page": { "name": "LA PAGE DU GRIMOIRE", "short": "le livre inachevé", "meaning": "Sceaux, cercles et questions centenaires. Le langage visuel de toute l'expérience, tiré d'un livre qui n'est jamais achevé." }
+      "the-third-eye": {
+        "name": "LE TROISIÈME ŒIL",
+        "short": "une perception au-delà de la vue",
+        "meaning": "L'œil qui voit ce qui est caché. Dans la fiction, c'est la première marque que reçoit un initié — le rappel de tout questionner, y compris la Confrérie elle-même."
+      },
+      "the-pyramid": {
+        "name": "LA PYRAMIDE",
+        "short": "l'ascension du savoir",
+        "meaning": "Large à la base, étroite au sommet : le savoir est facile à commencer et difficile à achever. La pierre de faîte flotte librement car l'ascension n'est jamais terminée."
+      },
+      "the-shadow": {
+        "name": "L'OMBRE",
+        "short": "le gardien des secrets",
+        "meaning": "La silhouette encapuchonnée représente chaque gardien qui a choisi l'anonymat. Les visages ne sont jamais montrés dans l'iconographie de la Confrérie — l'histoire compte plus que le conteur."
+      },
+      "the-horned-figure": {
+        "name": "LA FIGURE CORNUE",
+        "short": "mythe et allégorie",
+        "meaning": "Empruntée à des siècles d'allégorie et délibérément réinterprétée comme la peur du savoir. L'antagoniste de la fiction, et son miroir."
+      },
+      "the-black-sun": {
+        "name": "LE SOLEIL NOIR",
+        "short": "la lumière cachée",
+        "meaning": "Un soleil qui ne donne aucune lumière, seulement un contour. L'emblème de la veillée : l'idée que certaines vérités ne sont visibles que dans l'obscurité."
+      },
+      "the-emblem": {
+        "name": "L'EMBLÈME",
+        "short": "sceau de la confrérie",
+        "meaning": "Triangle, œil et anneau de runes. Le sceau que reçoit chaque initié à la septième station, et la marque présente sur chaque page de cette expérience."
+      },
+      "the-altar-gate": {
+        "name": "LA PORTE DE L'AUTEL",
+        "short": "le passage triangulaire",
+        "meaning": "Le triangle illuminé incrusté dans la pierre. Non un lieu de culte, mais de contemplation — une lentille à travers laquelle le chercheur voit ce qu'il a lui-même apporté."
+      },
+      "the-grimoire-page": {
+        "name": "LA PAGE DU GRIMOIRE",
+        "short": "le livre inachevé",
+        "meaning": "Sceaux, cercles et questions centenaires. Le langage visuel de toute l'expérience, tiré d'un livre qui n'est jamais achevé."
+      }
     },
     "channels": {
-      "discord": { "name": "DISCORD", "desc": "Discussions en direct, fils de théories et salons vocaux.", "members": "48 200 initiés", "note": "Invitation Discord copiée (démo)" },
-      "telegram": { "name": "TELEGRAM", "desc": "Annonces, nouveautés et mises à jour du compte à rebours.", "members": "21 900 initiés", "note": "Ouverture de Telegram (démo)" },
-      "instagram": { "name": "INSTAGRAM", "desc": "Visuels quotidiens, sceaux et coulisses.", "members": "132 k abonnés", "note": "Ouverture d'Instagram (démo)" },
-      "discussionBoard": { "name": "TABLEAU DE DISCUSSION", "desc": "Essais approfondis et analyses détaillées de l'archive.", "members": "9 400 initiés", "note": "Ouverture du Tableau de Discussion (démo)" }
+      "discord": {
+        "name": "DISCORD",
+        "desc": "Discussions en direct, fils de théories et salons vocaux.",
+        "members": "48 200 initiés",
+        "note": "Invitation Discord copiée (démo)"
+      },
+      "telegram": {
+        "name": "TELEGRAM",
+        "desc": "Annonces, nouveautés et mises à jour du compte à rebours.",
+        "members": "21 900 initiés",
+        "note": "Ouverture de Telegram (démo)"
+      },
+      "instagram": {
+        "name": "INSTAGRAM",
+        "desc": "Visuels quotidiens, sceaux et coulisses.",
+        "members": "132 k abonnés",
+        "note": "Ouverture d'Instagram (démo)"
+      },
+      "discussionBoard": {
+        "name": "TABLEAU DE DISCUSSION",
+        "desc": "Essais approfondis et analyses détaillées de l'archive.",
+        "members": "9 400 initiés",
+        "note": "Ouverture du Tableau de Discussion (démo)"
+      }
     },
     "timeline": {
-      "origin": { "year": "ORIGINE", "title": "Une histoire, pas une affirmation", "text": "La Confrérie a débuté comme un projet créatif : et si la mythologie des sociétés secrètes était traitée comme du cinéma plutôt que comme une conspiration ?" },
-      "archive": { "year": "ARCHIVE", "title": "Six chambres", "text": "L'Archive Rituelle a donné à la fiction une structure — six reliques, six chambres, un voyage de la perception au serment." },
-      "council": { "year": "CONSEIL", "title": "La communauté", "text": "Les initiés ont rejoint la table ronde. Leurs théories, leur art et leurs questions façonnent désormais la suite de l'histoire." },
-      "newOrder": { "year": "2026", "title": "Le Nouvel Ordre", "text": "Le 06 novembre 2026, le compteur atteint zéro et le prochain chapitre de l'expérience s'ouvre. Fictif, programmé et entièrement nôtre." }
+      "origin": {
+        "year": "ORIGINE",
+        "title": "Une histoire, pas une affirmation",
+        "text": "La Confrérie a débuté comme un projet créatif : et si la mythologie des sociétés secrètes était traitée comme du cinéma plutôt que comme une conspiration ?"
+      },
+      "archive": {
+        "year": "ARCHIVE",
+        "title": "Six chambres",
+        "text": "L'Archive Rituelle a donné à la fiction une structure — six reliques, six chambres, un voyage de la perception au serment."
+      },
+      "council": {
+        "year": "CONSEIL",
+        "title": "La communauté",
+        "text": "Les initiés ont rejoint la table ronde. Leurs théories, leur art et leurs questions façonnent désormais la suite de l'histoire."
+      },
+      "newOrder": {
+        "year": "2026",
+        "title": "Le Nouvel Ordre",
+        "text": "Le 06 novembre 2026, le compteur atteint zéro et le prochain chapitre de l'expérience s'ouvre. Fictif, programmé et entièrement nôtre."
+      }
     },
     "faq": {
-      "isReal": { "q": "Est-ce que quelque chose ici est réel ?", "a": "Non. Illuminati Brotherhood est une expérience de divertissement fictive. Les rituels, le conseil, le compte à rebours et la mythologie ont été inventés pour raconter une histoire." },
-      "whoCanJoin": { "q": "Qui peut rejoindre la communauté ?", "a": "Toute personne qui aime le mystère, le cinéma et la mythologie. Déconseillé aux moins de 18 ans car certaines images sont sombres et de ton mature." },
-      "accountDoes": { "q": "Que permet un compte ?", "a": "Les initiés connectés débloquent les vidéos et rituels scellés et reçoivent un numéro d'initié. Les administrateurs (Gardiens) gèrent les membres et le contenu scellé." },
-      "realWorldClaims": { "q": "Faites-vous des affirmations réelles sur des personnes ou des organisations ?", "a": "Jamais. Toute ressemblance avec des personnes, groupes ou événements réels est fortuite ou purement référentielle, au service de la fiction." }
+      "isReal": {
+        "q": "Est-ce que quelque chose ici est réel ?",
+        "a": "Non. Illuminati Brotherhood est une expérience de divertissement fictive. Les rituels, le conseil, le compte à rebours et la mythologie ont été inventés pour raconter une histoire."
+      },
+      "whoCanJoin": {
+        "q": "Qui peut rejoindre la communauté ?",
+        "a": "Toute personne qui aime le mystère, le cinéma et la mythologie. Déconseillé aux moins de 18 ans car certaines images sont sombres et de ton mature."
+      },
+      "accountDoes": {
+        "q": "Que permet un compte ?",
+        "a": "Les initiés connectés débloquent les vidéos et rituels scellés et reçoivent un numéro d'initié. Les administrateurs (Gardiens) gèrent les membres et le contenu scellé."
+      },
+      "realWorldClaims": {
+        "q": "Faites-vous des affirmations réelles sur des personnes ou des organisations ?",
+        "a": "Jamais. Toute ressemblance avec des personnes, groupes ou événements réels est fortuite ou purement référentielle, au service de la fiction."
+      }
     }
   }
 }

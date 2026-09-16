@@ -11,6 +11,9 @@ import SymbolIcon from '../components/SymbolIcon'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
 
+const THIRD_EYE_SLUG = 'the-third-eye'
+const THIRD_EYE_URL = 'https://osirisai.live/?layers=jets,maritime,cctv,cctv_previews,live_news,earthquakes,global_incidents,day_night,cables,sdk_sea,sdk_air,sdk_naval'
+
 export default function Visuals() {
   const page = PAGES.visuals
   const { user } = useAuth()
@@ -51,14 +54,31 @@ export default function Visuals() {
         <div className="sigil-layout">
           <div className="symbol-row sigil-grid">
             {SYMBOLS.map((s) => (
-              <button type="button" className={`symbol${active.slug === s.slug ? ' active' : ''}`} key={s.slug} id={s.slug} onClick={() => setActiveSlug(s.slug)}>
+              <button
+                type="button"
+                className={`symbol${active.slug === s.slug ? ' active' : ''}`}
+                key={s.slug}
+                id={s.slug}
+                onClick={() => {
+                  setActiveSlug(s.slug)
+                  if (s.slug === THIRD_EYE_SLUG) window.open(THIRD_EYE_URL, '_blank', 'noopener,noreferrer')
+                }}
+              >
                 <div className="symbol-ring"><SymbolIcon name={s.name} /></div>
                 <b className="symbol-name">{s.name}</b><span>{s.short}</span>
               </button>
             ))}
           </div>
           <article className="sigil-detail" key={active.slug}>
-            <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
+            <div className="sigil-detail-img">
+              {active.slug === THIRD_EYE_SLUG ? (
+                <a href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
+                  <Img src={active.img} alt={active.name} />
+                </a>
+              ) : (
+                <Img src={active.img} alt={active.name} />
+              )}
+            </div>
             <div className="sigil-detail-body">
               <div className="symbol-ring small"><SymbolIcon name={active.name} /></div>
               <span className="chamber-num">{active.short.toUpperCase()}</span>
