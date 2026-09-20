@@ -4,7 +4,7 @@ A multi-page React + Vite site. All lore, rituals, countdowns and imagery are
 fiction created for entertainment; nothing here is a real-world claim.
  
 ## Run
-
+ 
 ```bash
 npm install
 npm run dev        # http://localhost:5173
