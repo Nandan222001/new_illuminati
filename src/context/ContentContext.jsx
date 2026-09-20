@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { apiFetch } from '../api/client'
+import { GALLERY, RITUALS, VIDEOS } from '../data/content'
 import { useAuth } from './AuthContext'
 
 /**
@@ -10,6 +11,29 @@ import { useAuth } from './AuthContext'
  */
 
 const EMPTY = { video: [], ritual: [], image: [] }
+
+// Mirrors the backend's DEFAULT_LOCKED_SLUGS (backend/app/seeds/seed_content.py).
+const SEALED_SLUGS = new Set(['the-black-sun-vigil', 'council-of-thirteen', 'the-last-screening'])
+
+function bundledRaw(rows, slugKey, extraKeys) {
+  return rows.map((row) => ({
+    id: row[slugKey],
+    slug: row[slugKey],
+    title: row.title,
+    description: row.desc ?? null,
+    image_url: row.img,
+    locked: SEALED_SLUGS.has(row[slugKey]),
+    is_custom: false,
+    extra: Object.fromEntries(extraKeys.filter((k) => k in row).map((k) => [k, row[k]])),
+  }))
+}
+
+/** Built-in catalog shown when the API can't be reached (e.g. a frontend-only deploy). */
+const BUNDLED = {
+  video: bundledRaw(VIDEOS, 'slug', ['tag', 'dur', 'views', 'date']),
+  ritual: bundledRaw(RITUALS, 'slug', ['step', 'duration', 'tags']),
+  image: bundledRaw(GALLERY, 'id', ['cap', 'portrait']),
+}
 
 const ContentContext = createContext(null)
 
@@ -62,23 +86,31 @@ export function ContentProvider({ children }) {
   const [ready, setReady] = useState(false)
 
   const loadPublic = useCallback(async () => {
-    const [video, ritual, image] = await Promise.all([
-      apiFetch('/content/video', { auth: false }),
-      apiFetch('/content/ritual', { auth: false }),
-      apiFetch('/content/image', { auth: false }),
-    ])
-    setRaw({ video, ritual, image })
+    try {
+      const [video, ritual, image] = await Promise.all([
+        apiFetch('/content/video', { auth: false }),
+        apiFetch('/content/ritual', { auth: false }),
+        apiFetch('/content/image', { auth: false }),
+      ])
+      setRaw({ video, ritual, image })
+    } catch {
+      setRaw((prev) => (prev === EMPTY ? BUNDLED : prev))
+    }
   }, [])
 
   const loadHidden = useCallback(async () => {
     if (!isAdmin) { setHiddenRaw(EMPTY); return }
-    const [video, ritual, image] = await Promise.all([
-      apiFetch('/content/video/admin/all'),
-      apiFetch('/content/ritual/admin/all'),
-      apiFetch('/content/image/admin/all'),
-    ])
-    const onlyHiddenSeed = (list) => list.filter((i) => i.hidden && !i.is_custom)
-    setHiddenRaw({ video: onlyHiddenSeed(video), ritual: onlyHiddenSeed(ritual), image: onlyHiddenSeed(image) })
+    try {
+      const [video, ritual, image] = await Promise.all([
+        apiFetch('/content/video/admin/all'),
+        apiFetch('/content/ritual/admin/all'),
+        apiFetch('/content/image/admin/all'),
+      ])
+      const onlyHiddenSeed = (list) => list.filter((i) => i.hidden && !i.is_custom)
+      setHiddenRaw({ video: onlyHiddenSeed(video), ritual: onlyHiddenSeed(ritual), image: onlyHiddenSeed(image) })
+    } catch {
+      setHiddenRaw(EMPTY)
+    }
   }, [isAdmin])
 
   useEffect(() => {

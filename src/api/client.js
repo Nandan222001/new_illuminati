@@ -49,11 +49,16 @@ export async function apiFetch(path, { method = 'GET', body, auth = true } = {})
   if (res.status === 204) return null
 
   let data = null
+  let isJson = true
   try {
     data = await res.json()
   } catch {
     data = null
+    isJson = false
   }
+
+  // A 2xx that isn't JSON never reached the API (e.g. a host rewriting /api/* to index.html).
+  if (res.ok && !isJson) throw new Error('Could not reach the server. Check your connection and try again.')
 
   if (!res.ok) {
     if (res.status === 401) setToken(null)
