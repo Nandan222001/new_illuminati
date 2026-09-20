@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
@@ -9,8 +9,11 @@ import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 import TattooIcon from '../components/TattooIcon'
+import SigilFinder from '../components/SigilFinder'
+import DollarDecoder from '../components/DollarDecoder'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
+import drawOn from '../utils/drawOn'
 
 const THIRD_EYE_SLUG = 'the-third-eye'
 const THIRD_EYE_URL = 'https://osirisai.live/?layers=jets,maritime,cctv,cctv_previews,live_news,earthquakes,global_incidents,day_night,cables,sdk_sea,sdk_air,sdk_naval'
@@ -24,9 +27,20 @@ export default function Visuals() {
   const TATTOOS = useLocalizedTattoos()
   const [activeSlug, setActiveSlug] = useState(SYMBOLS[0].slug)
   const active = SYMBOLS.find((s) => s.slug === activeSlug) || SYMBOLS[0]
+  const isThirdEye = active.slug === THIRD_EYE_SLUG
+  const aboutTitle = isThirdEye ? t('visuals.thirdEyeAboutTitle') : t('visuals.sigilAboutTitle')
+  const aboutText = isThirdEye ? t('visuals.thirdEyeAboutText') : active.about
   const [lightbox, setLightbox] = useState(null)
   const [showInitiation, setShowInitiation] = useState(false)
   const { hash } = useLocation()
+  const detailRef = useRef(null)
+  const tattooRef = useRef(null)
+  const [showAllTattoos, setShowAllTattoos] = useState(false)
+
+  useLayoutEffect(() => {
+    const svgs = detailRef.current ? [...detailRef.current.querySelectorAll('.draw-on svg')] : []
+    return drawOn(svgs)
+  }, [active.slug])
 
   useEffect(() => {
     const target = SYMBOLS.find((s) => `#${s.slug}` === hash)
@@ -63,7 +77,7 @@ export default function Visuals() {
                 id={s.slug}
                 onClick={() => {
                   setActiveSlug(s.slug)
-                  if (s.slug === THIRD_EYE_SLUG) window.open(THIRD_EYE_URL, '_blank', 'noopener,noreferrer')
+                  if (window.matchMedia('(max-width: 1100px)').matches) detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
                 }}
               >
                 <div className="symbol-ring"><SymbolIcon slug={s.slug} /></div>
@@ -71,35 +85,46 @@ export default function Visuals() {
               </button>
             ))}
           </div>
-          <article className="sigil-detail" key={active.slug}>
-            {active.slug === THIRD_EYE_SLUG ? (
-              <a className="sigil-detail-link" href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
-                <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
-                <div className="sigil-detail-body">
-                  <div className="symbol-ring small"><SymbolIcon slug={active.slug} /></div>
-                  <span className="chamber-num">{active.short.toUpperCase()}</span>
-                  <h3>{active.name}</h3>
-                  <p>{active.meaning}</p>
-                </div>
-              </a>
+          <article className="sigil-detail" key={active.slug} ref={detailRef}>
+            {active.img ? (
+              <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
             ) : (
-              <>
-                <div className="sigil-detail-img"><Img src={active.img} alt={active.name} /></div>
-                <div className="sigil-detail-body">
-                  <div className="symbol-ring small"><SymbolIcon slug={active.slug} /></div>
-                  <span className="chamber-num">{active.short.toUpperCase()}</span>
-                  <h3>{active.name}</h3>
-                  <p>{active.meaning}</p>
-                </div>
-              </>
+              <div className="sigil-detail-img sigil-detail-art draw-on" role="img" aria-label={active.name}><SymbolIcon slug={active.slug} /></div>
             )}
+            <div className="sigil-detail-body">
+              <div className="symbol-ring small draw-on"><SymbolIcon slug={active.slug} /></div>
+              <span className="chamber-num">{active.short.toUpperCase()}</span>
+              <h3>{active.name}</h3>
+              <p>{active.meaning}</p>
+              {aboutText && (
+                <div className="sigil-more">
+                  <h4 className="sigil-about-title">{aboutTitle}</h4>
+                  <p className="sigil-about-text">{aboutText}</p>
+                  {isThirdEye && (
+                    <a className="btn-gold third-eye-cta" href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
+                      {t('visuals.thirdEyeCta')} ›
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
           </article>
         </div>
       </section>
 
       <section className="page-section">
+        <SectionHead title={t('decoder.title')} sub={t('decoder.sub')} />
+        <DollarDecoder />
+      </section>
+
+      <section className="page-section">
+        <SectionHead title={t('finder.title')} sub={t('finder.sub')} />
+        <SigilFinder />
+      </section>
+
+      <section className="page-section" ref={tattooRef}>
         <SectionHead title={t('visuals.tattoosTitle')} sub={t('visuals.tattoosSub')} />
-        <div className="tattoo-grid">
+        <div className={`tattoo-grid${showAllTattoos ? '' : ' collapsed'}`}>
           {TATTOOS.map((tt) => (
             <article className="tattoo-card" key={tt.slug}>
               <div className="symbol-ring"><TattooIcon slug={tt.slug} /></div>
@@ -107,6 +132,19 @@ export default function Visuals() {
               <p>{tt.meaning}</p>
             </article>
           ))}
+        </div>
+        <div className="see-more-row">
+          <button
+            type="button"
+            className="btn-ghost"
+            aria-expanded={showAllTattoos}
+            onClick={() => {
+              if (showAllTattoos) tattooRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              setShowAllTattoos(!showAllTattoos)
+            }}
+          >
+            {showAllTattoos ? `${t('visuals.seeLess')} ‹` : `${t('visuals.seeMore')} ›`}
+          </button>
         </div>
       </section>
 

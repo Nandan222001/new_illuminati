@@ -246,7 +246,104 @@
     "tattoosTitle": "TÄTOWIERUNGEN DES UNBEKANNTEN",
     "tattoosSub": "TINTE AUS DER SYMBOLSPRACHE DER FIKTION.",
     "sealedUserText": "🔒 Versiegelte Bilder werden freigeschaltet, sobald dein Schwur versiegelt ist. <0>Versiegle deinen Schwur ›</0>",
-    "sealedGuestText": "🔒 Versiegelte Bilder sind für angemeldete Initiierte verfügbar. <0>Initiierter werden ›</0>"
+    "sealedGuestText": "🔒 Versiegelte Bilder sind für angemeldete Initiierte verfügbar. <0>Initiierter werden ›</0>",
+    "thirdEyeAboutTitle": "ÜBER DAS DRITTE AUGE",
+    "thirdEyeAboutText": "Lange bevor es ein Symbol war, war das dritte Auge eine Aussage über den Körper selbst – die Zirbeldrüse, die der Philosoph René Descartes „den Sitz der Seele\" nannte. In der hinduistischen Tradition ist es Ajna, das Stirnchakra der Intuition und inneren Schau; im buddhistischen und theosophischen Denken ist es das Auge, das sich Wahrheiten öffnet, die das gewöhnliche Sehen nicht erreicht. Jede Kultur, die es benannte, war sich in einem einig: Zwischen den Augenbrauen liegt ein Sinn für das, was die anderen beiden Augen nicht sehen können – und sobald er sich öffnet, sieht die Welt anders aus.",
+    "thirdEyeCta": "SIEH, WAS ES SIEHT",
+    "seeMore": "MEHR ANZEIGEN",
+    "seeLess": "WENIGER ANZEIGEN",
+    "sigilAboutTitle": "DIE GESCHICHTE DAHINTER"
+  },
+  "decoder": {
+    "title": "ENTSCHLÜSSLE DEN DOLLAR",
+    "sub": "TIPPE AUF EINEN NUMMERIERTEN PUNKT, UM ZU SEHEN, WAS ER WIRKLICH BEDEUTET – UND WO DIE MYTHEN IRREN.",
+    "factLabel": "FAKTENCHECK",
+    "numbersTitle": "ZÄHLE DIE 13",
+    "caption": "Stilisierte Neuzeichnung der Rückseite des Großen Siegels. Das Siegel wurde am 20. Juni 1782 angenommen und ist seit 1935 auf dem Eindollarschein.",
+    "artLabel": "Zeichnung der Rückseite des Großen Siegels der USA mit fünf interaktiven Punkten",
+    "numbers": {
+      "steps": "13 Stufen an der Pyramide",
+      "annuit": "13 Buchstaben in ANNUIT CŒPTIS",
+      "pluribus": "13 Buchstaben in E PLURIBUS UNUM",
+      "stripes": "13 Streifen im Schild",
+      "stars": "13 Sterne über dem Adler",
+      "arrows": "13 Pfeile in seiner Klaue"
+    },
+    "parts": {
+      "annuit": {
+        "title": "ANNUIT CŒPTIS",
+        "what": "Latein für „Er hat unser Unternehmen begünstigt“ – ein Dank an die Vorsehung, über dem Auge geschrieben. Zähle die Buchstaben: Es sind genau dreizehn.",
+        "fact": "Es klingt wie ein geheimer Eid, aber Thomsons Erklärung von 1782 ist schriftlich überliefert: Sie dankt der Vorsehung für den Erfolg der amerikanischen Sache."
+      },
+      "eye": {
+        "title": "DAS AUGE DER VORSEHUNG",
+        "what": "Ein strahlendes Auge in einem Dreieck schwebt über der Pyramide. Thomson sagte, das Auge und der Wahlspruch „spielen auf die vielen bemerkenswerten Eingriffe der Vorsehung zugunsten der amerikanischen Sache an“ – der Glaube, das Glück habe der Revolution gelächelt.",
+        "fact": "1776 vom Künstler Pierre Eugène du Simitière vorgeschlagen, der kein Freimaurer war. In freimaurerischen Handbüchern taucht das Auge erst 1797 auf, 15 Jahre nach dem Siegel, und in der christlichen Kunst stand es schon 1525 für die Dreifaltigkeit."
+      },
+      "pyramid": {
+        "title": "DIE UNVOLLENDETE PYRAMIDE",
+        "what": "Dreizehn Steinschichten, eine für jeden Gründungsstaat, oben unvollendet. Der Entwerfer Charles Thomson sagte dem Kongress 1782: „Die Pyramide bedeutet Stärke und Dauer.“ Die offene Spitze wird meist als Nation gelesen, die noch im Bau ist.",
+        "fact": "Die Pyramide war die Idee von William Barton (1782). Pyramiden galten im 18. Jahrhundert als gängiges Zeichen für Beständigkeit; Historiker finden keinen Beleg, der sie mit einem Geheimbund verbindet."
+      },
+      "date": {
+        "title": "MDCCLXXVI",
+        "what": "Römische Ziffern für 1776, das Jahr der Unabhängigkeitserklärung, am Fuß der Pyramide eingemeißelt – der Moment, in dem die Zählung der Dreizehn beginnt.",
+        "fact": "Auch die bayerischen Illuminaten wurden 1776 gegründet (am 1. Mai in Ingolstadt) – ein Zufall, der viele Theorien nährt. Kein Beleg verbindet die beiden Ereignisse."
+      },
+      "novus": {
+        "title": "NOVUS ORDO SECLORUM",
+        "what": "Vom römischen Dichter Vergil entlehnt: „eine neue Ordnung der Zeitalter“. Thomson erklärte, es markiere den Beginn der neuen amerikanischen Ära, gezählt ab 1776.",
+        "fact": "Es heißt nicht „Neue Weltordnung“. Das Lateinische sagt ordo seclorum, Ordnung der Zeitalter, und erwähnt nie die Welt. Die andere Wendung ist viel später entstanden."
+      }
+    }
+  },
+  "finder": {
+    "placeholder": "Deine Karte erscheint hier.",
+    "title": "FINDE DEIN SIGILL",
+    "sub": "GIB DEINEN NAMEN UND DEIN GEBURTSDATUM EIN. DAS ARCHIV BENENNT DEIN ZEICHEN.",
+    "nameLabel": "DEIN NAME",
+    "namePlaceholder": "z. B. Arjun Mehta",
+    "dobLabel": "GEBURTSDATUM",
+    "reveal": "MEIN ZEICHEN ENTHÜLLEN",
+    "privacy": "🔒 Alles wird in deinem Browser berechnet – dein Name und dein Geburtsdatum werden weder gesendet noch gespeichert. Gleiche Angaben, gleiches Zeichen, jedes Mal.",
+    "errName": "Bitte gib deinen Namen ein.",
+    "errDate": "Bitte gib ein gültiges Geburtsdatum ein.",
+    "errDownload": "Das Kartenbild konnte nicht erstellt werden. Bitte versuche es erneut.",
+    "cardKicker": "DAS ARCHIV HAT GEWÄHLT",
+    "yourTattoo": "DEINE TÄTOWIERUNG",
+    "yourSigil": "DEIN SIGILL",
+    "intro": "{{tattoo}} zeichnet deine Haut, und {{sigil}} erhellt deinen Weg.",
+    "lifePath": "LEBENSPFAD",
+    "download": "MEINE KARTE HERUNTERLADEN",
+    "footer": "Fiktive Deutung, nur zur Unterhaltung.",
+    "zodiac": {
+      "capricorn": "Steinbock",
+      "aquarius": "Wassermann",
+      "pisces": "Fische",
+      "aries": "Widder",
+      "taurus": "Stier",
+      "gemini": "Zwillinge",
+      "cancer": "Krebs",
+      "leo": "Löwe",
+      "virgo": "Jungfrau",
+      "libra": "Waage",
+      "scorpio": "Skorpion",
+      "sagittarius": "Schütze"
+    },
+    "lifePaths": {
+      "1": "Der Pionier",
+      "2": "Der Friedensstifter",
+      "3": "Der Geschichtenerzähler",
+      "4": "Der Baumeister",
+      "5": "Der Wanderer",
+      "6": "Der Hüter",
+      "7": "Der Suchende",
+      "8": "Der Architekt",
+      "9": "Der Weise",
+      "11": "Der Erleuchter",
+      "22": "Der Meisterbauer",
+      "33": "Der Meisterlehrer"
+    }
   },
   "community": {
     "seedPosts": {
@@ -441,37 +538,92 @@
       "the-pyramid": {
         "name": "DIE PYRAMIDE",
         "short": "der Aufstieg des Wissens",
-        "meaning": "Breit an der Basis, schmal an der Spitze: Wissen ist leicht zu beginnen und schwer zu vollenden. Der Deckstein schwebt frei, weil der Aufstieg nie vollendet ist."
+        "meaning": "Breit an der Basis, schmal an der Spitze: Wissen ist leicht zu beginnen und schwer zu vollenden. Der Deckstein schwebt frei, weil der Aufstieg nie vollendet ist.",
+        "about": "Die Cheops-Pyramide blieb etwa 3.800 Jahre lang das höchste Bauwerk der Erde, bis eine mittelalterliche Kathedrale in England sie übertraf. Die 13-stufige „unvollendete Pyramide“ auf dem Großen Siegel der USA (1782) trägt die Worte Novus Ordo Seclorum, „eine neue Ordnung der Zeitalter“ – auf den Dollarschein kam sie aber erst 1935."
       },
       "the-shadow": {
         "name": "DER SCHATTEN",
         "short": "der Hüter der Geheimnisse",
-        "meaning": "Die verhüllte Silhouette steht für jeden Hüter, der die Anonymität wählte. Gesichter werden in der Bildsprache der Bruderschaft nie gezeigt — die Geschichte zählt mehr als der Erzähler."
+        "meaning": "Die verhüllte Silhouette steht für jeden Hüter, der die Anonymität wählte. Gesichter werden in der Bildsprache der Bruderschaft nie gezeigt — die Geschichte zählt mehr als der Erzähler.",
+        "about": "Anonymität ist so alt wie Geheimbünde. Adam Weishaupt, der 1776 die bayerischen Illuminaten gründete, nannte sich „Spartacus“, und auch seine Mitglieder nahmen antike Decknamen an. Und freimaurerische Kandidaten tragen traditionell eine Augenbinde, die im Englischen „hoodwink“ heißt – ein Wort, das einst schlicht „die Augen bedecken“ bedeutete."
       },
       "the-horned-figure": {
         "name": "DIE GEHÖRNTE GESTALT",
         "short": "Mythos & Allegorie",
-        "meaning": "Aus Jahrhunderten der Allegorie entlehnt und bewusst als die Angst vor dem Wissen neu gedeutet. Der Antagonist der Fiktion, und sein Spiegel."
+        "meaning": "Aus Jahrhunderten der Allegorie entlehnt und bewusst als die Angst vor dem Wissen neu gedeutet. Der Antagonist der Fiktion, und sein Spiegel.",
+        "about": "Der Name „Baphomet“ taucht erstmals 1307 in den Prozessakten gegen die Templer auf – wohl ein unter Folter verballhorntes „Mahomet“. Die berühmte ziegenköpfige Gestalt kam rund 550 Jahre später: Éliphas Lévi zeichnete sie 1856 als Schaubild ausgeglichener Gegensätze – Mensch und Tier, männlich und weiblich –, nicht als Teufel. Seither wird sie missverstanden."
       },
       "the-black-sun": {
         "name": "DIE SCHWARZE SONNE",
         "short": "das verborgene Licht",
-        "meaning": "Eine Sonne, die kein Licht spendet, nur einen Umriss. Das Emblem der Nachtwache: die Idee, dass manche Wahrheiten nur in der Dunkelheit sichtbar sind."
+        "meaning": "Eine Sonne, die kein Licht spendet, nur einen Umriss. Das Emblem der Nachtwache: die Idee, dass manche Wahrheiten nur in der Dunkelheit sichtbar sind.",
+        "about": "Alchemisten hatten ihre eigene schwarze Sonne: den sol niger, die dunkelste Stufe des Großen Werks, in der die Materie zerfällt, bevor sie neu geboren wird. C. G. Jung nutzte das Bild später für den Moment, in dem sich das alte Selbst auflöst. Darum wird die Nachtwache nachts gehalten: Die dunkle Stufe kommt vor der Verwandlung."
       },
       "the-emblem": {
         "name": "DAS EMBLEM",
         "short": "Siegel der Bruderschaft",
-        "meaning": "Dreieck, Auge und Runenring. Das Siegel, das jeder Initiierte an der siebten Station erhält, und das Zeichen, das auf jeder Seite dieses Erlebnisses erscheint."
+        "meaning": "Dreieck, Auge und Runenring. Das Siegel, das jeder Initiierte an der siebten Station erhält, und das Zeichen, das auf jeder Seite dieses Erlebnisses erscheint.",
+        "about": "Siegel sind älter als Unterschriften. Schon um 3500 v. Chr. rollten Schreiber in Mesopotamien geschnittene Rollsiegel über feuchten Ton, um zu beweisen, wer etwas gebilligt hatte. Das Große Siegel der USA brauchte sechs Jahre und drei Ausschüsse (1776–1782) – selbst ein schlichtes Emblem kann eine lange Debatte verbergen."
       },
       "the-altar-gate": {
         "name": "DAS ALTARTOR",
         "short": "der dreieckige Durchgang",
-        "meaning": "Das erleuchtete Dreieck, eingelassen in Stein. Kein Ort der Anbetung, sondern der Betrachtung — eine Linse, durch die der Suchende sieht, was er selbst mitgebracht hat."
+        "meaning": "Das erleuchtete Dreieck, eingelassen in Stein. Kein Ort der Anbetung, sondern der Betrachtung — eine Linse, durch die der Suchende sieht, was er selbst mitgebracht hat.",
+        "about": "In Abu Simbel in Ägypten geschieht zweimal im Jahr etwas Außergewöhnliches: Sonnenlicht wandert 60 Meter tief in den Berg und beleuchtet drei der vier Statuen im Allerheiligsten. Die vierte, Ptah, mit Dunkelheit und Unterwelt verbunden, bleibt im Schatten. Licht auf das Heilige zu richten ist über 3.000 Jahre alt."
       },
       "the-grimoire-page": {
         "name": "DIE GRIMOIRE-SEITE",
         "short": "das unvollendete Buch",
-        "meaning": "Sigillen, Kreise und jahrhundertealte Fragen. Die visuelle Sprache des gesamten Erlebnisses, entnommen aus einem Buch, das nie vollendet ist."
+        "meaning": "Sigillen, Kreise und jahrhundertealte Fragen. Die visuelle Sprache des gesamten Erlebnisses, entnommen aus einem Buch, das nie vollendet ist.",
+        "about": "Das Wort „Grimoire“ stammt vom altfranzösischen Wort für „Grammatik“ – ein Buch des Wissens, so mächtig, dass es gefährlich klang. Das berühmteste echte ist vielleicht das Voynich-Manuskript: rund 240 Seiten unbekannter Schrift und seltsamer Pflanzen, per Radiokarbon auf 1404–1438 datiert und bis heute nicht entziffert. Die Bibliothek in Yale hat es online gestellt – jeder kann es ansehen, niemand kann es lesen."
+      },
+      "the-owl-of-minerva": {
+        "name": "DIE EULE DER MINERVA",
+        "short": "Weisheit im Dunkeln",
+        "meaning": "Das einzige Emblem mit belegtem Bezug: Adam Weishaupts bayerische Illuminaten (1776) wählten eine Eule auf einem aufgeschlagenen Buch, nach Minerva, der Göttin der Weisheit. In der Fiktion wacht sie über den ersten, bescheidensten Grad jedes Initiierten.",
+        "about": "Der Philosoph Hegel schrieb, die Eule der Minerva beginne ihren Flug erst in der Dämmerung – Weisheit kommt, wenn der Tag vorbei ist. 1776 wählten Adam Weishaupts Illuminaten die Eule zu ihrem Zeichen, und ihr Einstiegsgrad hieß „Minerval“. Der Orden hielt keine zehn Jahre: Bayern verbot ihn 1785, und die Legende überlebte ihn um zwei Jahrhunderte."
+      },
+      "the-hexagram": {
+        "name": "DAS HEXAGRAMM",
+        "short": "wie oben, so unten",
+        "meaning": "Zwei ineinander verschränkte Dreiecke: aufsteigendes Feuer, herabsinkendes Wasser. Eine uralte Figur aus Alchemie, Architektur und vielen Glaubenstraditionen – hier: Gegensätze im Gleichgewicht.",
+        "about": "Zwei Dreiecke – eines zeigt nach oben für Feuer, eines nach unten für Wasser. Alchemisten zeichneten das Hexagramm als Vermählung der Gegensätze. Dieselbe Figur hat viele Namen: Siegel Salomos, Davidstern und in Indien Shatkona, die Vereinigung von Shiva und Shakti. Wenige Formen wurden von so vielen Traditionen zugleich beansprucht."
+      },
+      "the-rose-cross": {
+        "name": "DAS ROSENKREUZ",
+        "short": "der geheime Garten",
+        "meaning": "Das Emblem der Rosenkreuzer-Manifeste des 17. Jahrhunderts über eine Bruderschaft, die es womöglich nie gab. Eine Rose im Herzen eines Kreuzes: Geheimnis, das in der Ordnung erblüht.",
+        "about": "1614 erschien in Deutschland eine Flugschrift, die eine Geheimbruderschaft weiser Heiler ankündigte, die Wissen seit Jahrhunderten bewahrt hätten. Bis 1616 folgten zwei weitere Manifeste, und ganz Europa suchte nach den Rosenkreuzern. Historiker können bis heute nicht sagen, ob die Bruderschaft je existierte – oder ob alles ein Schwindel, ein Spiel oder eine Idee war, die einfach geglaubt werden wollte."
+      },
+      "the-obelisk": {
+        "name": "DER OBELISK",
+        "short": "eine Nadel zur Sonne",
+        "meaning": "Ägyptische Sonnensäulen, von Weltreichen nach Rom, Paris und Washington gebracht. In der Fiktion markiert er den Ort, an dem der Initiierte seinen Schwur laut spricht.",
+        "about": "Rom hat 13 antike Obelisken – mehr als jede andere Stadt der Welt. Kaiser ließen sie als Trophäen über das Mittelmeer schaffen. Der Obelisk von Luxor in Paris ist über 3.000 Jahre alt, und auch das Washington Monument ist ein Obelisk. Die Originale hatten vergoldete Spitzen, gemacht, um im ersten Morgenlicht aufzublitzen."
+      },
+      "the-flower-of-life": {
+        "name": "DIE BLUME DES LEBENS",
+        "short": "Geometrie von allem",
+        "meaning": "Überlagerte Kreise an alten Tempelwänden und in moderner Kunst der heiligen Geometrie. In der Fiktion ist sie die Karte, wie jede Frage zur nächsten führt.",
+        "about": "Neunzehn gleich große Kreise, jeder durch die Mittelpunkte seiner Nachbarn – ein so regelmäßiges Muster, dass man es immer wieder findet: im ägyptischen Tempel von Abydos (Fachleute streiten noch über sein Alter), in Tempeln Asiens und in den Notizbüchern Leonardo da Vincis. Ein Kreis plus sechs ergibt den „Samen des Lebens“, den viele als Bild der Schöpfung lesen."
+      },
+      "the-skull": {
+        "name": "DER SCHÄDEL",
+        "short": "Memento mori",
+        "meaning": "Eine Erinnerung an die Sterblichkeit, genutzt von Mönchen, Malern und Studentenverbindungen. In der Fiktion ist er keine Drohung, sondern eine Frage: Was wirst du mit der Zeit anfangen, die du hast?",
+        "about": "Memento mori – „Bedenke, dass du sterben musst“ – ist eine der ältesten Ideen der Kunst. Maler versteckten Totenköpfe in Porträten, eine römische Krypta ist mit den Gebeinen Tausender Kapuzinermönche geschmückt, und die Yale-Gesellschaft Skull and Bones (1832) machte ihn zu ihrem Abzeichen. Hinter dem Schauder liegt ein hoffnungsvoller Ton: Wenn die Zeit knapp ist, zählt jede Entscheidung."
+      },
+      "the-sun-and-moon": {
+        "name": "SONNE UND MOND",
+        "short": "Licht und Spiegelung",
+        "meaning": "Die beiden Gestirne der Alchemie und fester Bestandteil der Decken von Freimaurerlogen. Tag und Nacht, Vernunft und Traum: die zwei Lichter, bei denen der Initiierte lesen lernt.",
+        "about": "Alchemisten ordneten jedem Metall ein Himmelsgestirn zu: Gold der Sonne, Silber dem Mond, dargestellt als König und Königin, deren „chymische Hochzeit“ den Stein der Weisen hervorbrachte. In der Freimaurerei sind Sonne, Mond und der Meister vom Stuhl die „drei kleinen Lichter“. In der alten Symbolik sind Tag und Nacht nie Rivalen – immer Partner."
+      },
+      "the-pentagram": {
+        "name": "DAS PENTAGRAMM",
+        "short": "fünf Spitzen, eine Linie",
+        "meaning": "In einem einzigen Zug gezeichnet, war es ein pythagoreisches Zeichen der Gesundheit und später ein Symbol des menschlichen Körpers. Die Popkultur hat seinen Sinn umgekehrt; die Fiktion stellt ihn wieder her: eine perfekte, geschlossene Linie.",
+        "about": "Zeichne es, ohne abzusetzen, und jede Kreuzung teilt die Linien im Goldenen Schnitt – deshalb nutzten die Pythagoreer, Verehrer der Zahl, es als geheimes Erkennungszeichen und nannten es Hygieia, „Gesundheit“. Auch die Venus spielt mit: In acht Jahren zeichnen ihre Begegnungen mit der Sonne einen ungefähren fünfzackigen Stern an den Himmel."
       }
     },
     "tattoos": {
@@ -480,7 +632,16 @@
       "twin-pillars": { "name": "DIE ZWILLINGSSÄULEN", "meaning": "Zwei Säulen, Licht und Schatten, immer als Paar tätowiert. In der Geschichte stehen sie für das Gleichgewicht, das jeder Initiierte zwischen Frage und Antwort halten muss." },
       "compass-square": { "name": "ZIRKEL & WINKELMASS", "meaning": "Ein Messwerkzeug, das zum Emblem wurde — der Zirkel für die Vision, das Winkelmaß für das Verhalten. In der Fiktion wird es erst nach dem versiegelten Schwur verliehen." },
       "checkered-floor": { "name": "DER SCHACHBRETTBODEN", "meaning": "Helle und dunkle Fliesen, tätowiert als Band um das Handgelenk — eine Erinnerung daran, dass jede Entscheidung in der Geschichte ihr Gegenteil hat." },
-      "ouroboros": { "name": "DER OUROBOROS", "meaning": "Eine Schlange, die sich in den eigenen Schwanz beißt, markiert jene, die einen vollen Zyklus der sieben Stationen abgeschlossen haben. Nur nach der Überquerung getragen." }
+      "ouroboros": { "name": "DER OUROBOROS", "meaning": "Eine Schlange, die sich in den eigenen Schwanz beißt, markiert jene, die einen vollen Zyklus der sieben Stationen abgeschlossen haben. Nur nach der Überquerung getragen." },
+      "thirteen-steps": { "name": "DIE DREIZEHN STUFEN", "meaning": "Eine Stufenpyramide mit schwebendem Schlussstein, eine Linie pro Stufe. Die „unvollendete Pyramide“ auf dem Großen Siegel der USA hat dreizehn Stufen, eine für jede ursprüngliche Kolonie. In der Geschichte: dreizehn Kammern, keine je vollendet." },
+      "coiled-serpent": { "name": "DIE GERINGELTE SCHLANGE", "meaning": "Eine Schlange in langsamer S-Kurve, entlang des Unterarms gestochen. In vielen Kulturen uralt – zugleich Gefahr und Erneuerung; in der Geschichte kennzeichnet sie Initiierte, die ihren ersten Glauben abgelegt haben." },
+      "anubis": { "name": "DER SCHAKAL-FÜHRER", "meaning": "Anubis, der schakalköpfige ägyptische Führer der Toten, im Profil gezeichnet. Gewählt von Menschen, die Schutz an Schwellen suchen; in der Geschichte führt er den Initiierten durch die Überquerung." },
+      "metatrons-cube": { "name": "METATRONS WÜRFEL", "meaning": "Dreizehn Kreise, verbunden durch gerade Linien, ein Liebling der Tätowierer heiliger Geometrie. In der Geschichte ist es das Diagramm des Rates: zwölf Hüter um einen leeren Stuhl." },
+      "double-eagle": { "name": "DER DOPPELADLER", "meaning": "Zwei Köpfe, die in entgegengesetzte Richtungen blicken, Emblem des 33. Grades des Schottischen Ritus und mehrerer alter Reiche. In der Geschichte: ein Auge auf der Vergangenheit, eines auf dem, was kommt." },
+      "lotus-eye": { "name": "DAS LOTUSAUGE", "meaning": "Ein Auge, das sich im Herzen einer Lotusblüte öffnet – das dritte Auge der östlichen Tradition, mit Blütenblättern. In der Geschichte wird es von jenen auf das Brustbein gestochen, die die Nachtwache vollenden." },
+      "hourglass": { "name": "DIE SANDUHR", "meaning": "Die Zeit als Gefäß mit zwei Kammern – eine Mahnung von Malern und Logen, dass der Sand nur in eine Richtung rinnt. In der Geschichte das Zeichen der Ersten Kerze: eine Stunde, kein Wort." },
+      "xiii-numeral": { "name": "DIE ZAHL XIII", "meaning": "Dreizehn in römischen Ziffern – dreizehn Stufen, dreizehn Sitze, dreizehn Kammern. Klein gestochen, hinter dem Ohr oder am Handgelenk, von Freunden der Zahlenlehre." },
+      "the-key": { "name": "DER SCHLÜSSEL DES HÜTERS", "meaning": "Ein alter eiserner Schlüssel mit Kleeblatt-Griff. Schlüssel erscheinen in der Bildwelt der Rosenkreuzer und Freimaurer als das Recht, Verschlossenes zu öffnen. In der Geschichte übergibt der Große Hüter jedem versiegelten Initiierten einen." }
     },
     "channels": {
       "discord": {

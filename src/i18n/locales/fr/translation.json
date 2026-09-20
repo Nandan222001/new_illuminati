@@ -246,7 +246,104 @@
     "tattoosTitle": "TATOUAGES DE L'INCONNU",
     "tattoosSub": "L'ENCRE DU LANGAGE SYMBOLIQUE DE LA FICTION.",
     "sealedUserText": "🔒 Les visuels scellés se débloquent une fois votre serment scellé. <0>Scellez votre serment ›</0>",
-    "sealedGuestText": "🔒 Les visuels scellés sont réservés aux initiés connectés. <0>Devenez initié ›</0>"
+    "sealedGuestText": "🔒 Les visuels scellés sont réservés aux initiés connectés. <0>Devenez initié ›</0>",
+    "thirdEyeAboutTitle": "À PROPOS DU TROISIÈME ŒIL",
+    "thirdEyeAboutText": "Bien avant d'être un symbole, le troisième œil était une affirmation sur le corps lui-même : la glande pinéale, que le philosophe René Descartes appelait « le siège de l'âme ». Dans la tradition hindoue, c'est Ajna, le chakra frontal de l'intuition et de la vision intérieure ; dans la pensée bouddhiste et théosophique, c'est l'œil qui s'ouvre sur des vérités que la vue ordinaire n'atteint pas. Chaque culture qui l'a nommé s'accorde sur un point : entre les sourcils se trouve un sens pour ce que les deux autres yeux ne peuvent voir — et une fois ouvert, le monde n'a plus le même visage.",
+    "thirdEyeCta": "VOIS CE QU'IL VOIT",
+    "seeMore": "VOIR PLUS",
+    "seeLess": "VOIR MOINS",
+    "sigilAboutTitle": "L'HISTOIRE DERRIÈRE LE SYMBOLE"
+  },
+  "decoder": {
+    "title": "DÉCODEZ LE DOLLAR",
+    "sub": "TOUCHEZ UN POINT NUMÉROTÉ POUR VOIR CE QU'IL SIGNIFIE VRAIMENT — ET CE QUE LES MYTHES DÉFORMENT.",
+    "factLabel": "VÉRIFICATION",
+    "numbersTitle": "COMPTEZ LES 13",
+    "caption": "Redessin stylisé du revers du Grand Sceau. Le Sceau a été adopté le 20 juin 1782 et figure sur le billet d'un dollar depuis 1935.",
+    "artLabel": "Dessin du revers du Grand Sceau des États-Unis avec cinq points interactifs",
+    "numbers": {
+      "steps": "13 degrés sur la pyramide",
+      "annuit": "13 lettres dans ANNUIT CŒPTIS",
+      "pluribus": "13 lettres dans E PLURIBUS UNUM",
+      "stripes": "13 bandes sur l'écu",
+      "stars": "13 étoiles au-dessus de l'aigle",
+      "arrows": "13 flèches dans sa serre"
+    },
+    "parts": {
+      "annuit": {
+        "title": "ANNUIT CŒPTIS",
+        "what": "Latin pour « Il a favorisé nos entreprises » : un remerciement à la Providence, écrit au-dessus de l'œil. Comptez les lettres : il y en a exactement treize.",
+        "fact": "On dirait un serment secret, mais l'explication de Thomson en 1782 est consignée : elle remercie la Providence du succès de la cause américaine."
+      },
+      "eye": {
+        "title": "L'ŒIL DE LA PROVIDENCE",
+        "what": "Un œil rayonnant dans un triangle flotte au-dessus de la pyramide. Thomson disait que l'œil et la devise « font allusion aux nombreuses interventions remarquables de la providence en faveur de la cause américaine » : la conviction que la fortune avait souri à la révolution.",
+        "fact": "Proposé en 1776 par l'artiste Pierre Eugène du Simitière, qui n'était pas franc-maçon. L'œil n'apparaît dans les manuels maçonniques qu'en 1797, quinze ans après le sceau, et dans l'art chrétien il représentait déjà la Trinité en 1525."
+      },
+      "pyramid": {
+        "title": "LA PYRAMIDE INACHEVÉE",
+        "what": "Treize assises de pierre, une par État d'origine, avec le sommet laissé ouvert. Le concepteur Charles Thomson déclara au Congrès en 1782 : « La pyramide signifie Force et Durée. » Le sommet ouvert se lit souvent comme une nation encore en construction.",
+        "fact": "La pyramide est une idée de William Barton (1782). Au XVIIIe siècle, les pyramides étaient un signe courant de permanence ; les historiens ne trouvent aucune preuve qui la relie à une société secrète."
+      },
+      "date": {
+        "title": "MDCCLXXVI",
+        "what": "Chiffres romains pour 1776, l'année de la Déclaration d'indépendance, gravés à la base de la pyramide : le moment où commence le décompte de treize.",
+        "fact": "Les Illuminés de Bavière ont eux aussi été fondés en 1776 (le 1er mai, à Ingolstadt), une coïncidence qui nourrit bien des théories. Aucune preuve ne relie les deux événements."
+      },
+      "novus": {
+        "title": "NOVUS ORDO SECLORUM",
+        "what": "Emprunté au poète romain Virgile : « un nouvel ordre des siècles ». Thomson expliqua qu'il marque le début de la nouvelle ère américaine, comptée à partir de 1776.",
+        "fact": "Ce n'est pas « Nouvel Ordre Mondial ». Le latin dit ordo seclorum, l'ordre des siècles, et ne mentionne jamais le monde. L'autre expression est bien plus tardive."
+      }
+    }
+  },
+  "finder": {
+    "placeholder": "Votre carte apparaîtra ici.",
+    "title": "TROUVEZ VOTRE SCEAU",
+    "sub": "ENTREZ VOTRE NOM ET VOTRE DATE DE NAISSANCE. L'ARCHIVE NOMMERA VOTRE MARQUE.",
+    "nameLabel": "VOTRE NOM",
+    "namePlaceholder": "ex. Arjun Mehta",
+    "dobLabel": "DATE DE NAISSANCE",
+    "reveal": "RÉVÉLER MA MARQUE",
+    "privacy": "🔒 Tout est calculé dans votre navigateur : votre nom et votre date de naissance ne sont jamais envoyés ni conservés. Mêmes informations, même marque, à chaque fois.",
+    "errName": "Veuillez entrer votre nom.",
+    "errDate": "Veuillez entrer une date de naissance valide.",
+    "errDownload": "Impossible de créer l'image de la carte. Veuillez réessayer.",
+    "cardKicker": "L'ARCHIVE A CHOISI",
+    "yourTattoo": "VOTRE TATOUAGE",
+    "yourSigil": "VOTRE SCEAU",
+    "intro": "{{tattoo}} marque votre peau, et {{sigil}} éclaire votre chemin.",
+    "lifePath": "CHEMIN DE VIE",
+    "download": "TÉLÉCHARGER MA CARTE",
+    "footer": "Lecture fictive, à des fins de divertissement uniquement.",
+    "zodiac": {
+      "capricorn": "Capricorne",
+      "aquarius": "Verseau",
+      "pisces": "Poissons",
+      "aries": "Bélier",
+      "taurus": "Taureau",
+      "gemini": "Gémeaux",
+      "cancer": "Cancer",
+      "leo": "Lion",
+      "virgo": "Vierge",
+      "libra": "Balance",
+      "scorpio": "Scorpion",
+      "sagittarius": "Sagittaire"
+    },
+    "lifePaths": {
+      "1": "Le Pionnier",
+      "2": "Le Pacificateur",
+      "3": "Le Conteur",
+      "4": "Le Bâtisseur",
+      "5": "Le Voyageur",
+      "6": "Le Gardien",
+      "7": "Le Chercheur",
+      "8": "L'Architecte",
+      "9": "Le Sage",
+      "11": "L'Illuminateur",
+      "22": "Le Maître Bâtisseur",
+      "33": "Le Maître Guide"
+    }
   },
   "community": {
     "seedPosts": {
@@ -441,37 +538,92 @@
       "the-pyramid": {
         "name": "LA PYRAMIDE",
         "short": "l'ascension du savoir",
-        "meaning": "Large à la base, étroite au sommet : le savoir est facile à commencer et difficile à achever. La pierre de faîte flotte librement car l'ascension n'est jamais terminée."
+        "meaning": "Large à la base, étroite au sommet : le savoir est facile à commencer et difficile à achever. La pierre de faîte flotte librement car l'ascension n'est jamais terminée.",
+        "about": "La Grande Pyramide de Gizeh est restée le plus haut édifice de la Terre pendant environ 3 800 ans, jusqu'à ce qu'une cathédrale anglaise médiévale la dépasse. La « pyramide inachevée » à 13 degrés du Grand Sceau des États-Unis (1782) porte la devise Novus Ordo Seclorum, « un nouvel ordre des siècles » — mais elle n'est apparue sur le billet d'un dollar qu'en 1935."
       },
       "the-shadow": {
         "name": "L'OMBRE",
         "short": "le gardien des secrets",
-        "meaning": "La silhouette encapuchonnée représente chaque gardien qui a choisi l'anonymat. Les visages ne sont jamais montrés dans l'iconographie de la Confrérie — l'histoire compte plus que le conteur."
+        "meaning": "La silhouette encapuchonnée représente chaque gardien qui a choisi l'anonymat. Les visages ne sont jamais montrés dans l'iconographie de la Confrérie — l'histoire compte plus que le conteur.",
+        "about": "L'anonymat est aussi ancien que les sociétés secrètes. Adam Weishaupt, fondateur des Illuminés de Bavière en 1776, se faisait appeler « Spartacus », et ses membres adoptaient eux aussi des pseudonymes antiques. Quant aux candidats francs-maçons, ils portent traditionnellement un bandeau que l'on appelle en anglais « hoodwink » — un mot qui signifiait simplement couvrir les yeux."
       },
       "the-horned-figure": {
         "name": "LA FIGURE CORNUE",
         "short": "mythe et allégorie",
-        "meaning": "Empruntée à des siècles d'allégorie et délibérément réinterprétée comme la peur du savoir. L'antagoniste de la fiction, et son miroir."
+        "meaning": "Empruntée à des siècles d'allégorie et délibérément réinterprétée comme la peur du savoir. L'antagoniste de la fiction, et son miroir.",
+        "about": "Le nom « Baphomet » apparaît pour la première fois en 1307, dans les actes du procès des Templiers — probablement un « Mahomet » déformé, consigné sous la torture. La célèbre figure à tête de bouc est venue environ 550 ans plus tard : Éliphas Lévi l'a dessinée en 1856 comme un schéma d'opposés en équilibre, humain et bête, masculin et féminin — et non comme un démon. On la comprend mal depuis."
       },
       "the-black-sun": {
         "name": "LE SOLEIL NOIR",
         "short": "la lumière cachée",
-        "meaning": "Un soleil qui ne donne aucune lumière, seulement un contour. L'emblème de la veillée : l'idée que certaines vérités ne sont visibles que dans l'obscurité."
+        "meaning": "Un soleil qui ne donne aucune lumière, seulement un contour. L'emblème de la veillée : l'idée que certaines vérités ne sont visibles que dans l'obscurité.",
+        "about": "Les alchimistes avaient leur propre soleil noir : le sol niger, l'étape la plus sombre du Grand Œuvre, où la matière se défait avant de renaître. Carl Jung reprendra plus tard cette image pour le moment où l'ancien moi se dissout. C'est pourquoi la Veillée se tient de nuit : l'étape sombre précède le changement."
       },
       "the-emblem": {
         "name": "L'EMBLÈME",
         "short": "sceau de la confrérie",
-        "meaning": "Triangle, œil et anneau de runes. Le sceau que reçoit chaque initié à la septième station, et la marque présente sur chaque page de cette expérience."
+        "meaning": "Triangle, œil et anneau de runes. Le sceau que reçoit chaque initié à la septième station, et la marque présente sur chaque page de cette expérience.",
+        "about": "Les sceaux sont plus anciens que les signatures. Dès 3500 av. J.-C., les scribes de Mésopotamie roulaient des sceaux-cylindres gravés sur l'argile fraîche pour prouver qui avait approuvé quelque chose. Le Grand Sceau des États-Unis a demandé six ans et trois comités (1776–1782) : même un emblème simple peut cacher un long débat."
       },
       "the-altar-gate": {
         "name": "LA PORTE DE L'AUTEL",
         "short": "le passage triangulaire",
-        "meaning": "Le triangle illuminé incrusté dans la pierre. Non un lieu de culte, mais de contemplation — une lentille à travers laquelle le chercheur voit ce qu'il a lui-même apporté."
+        "meaning": "Le triangle illuminé incrusté dans la pierre. Non un lieu de culte, mais de contemplation — une lentille à travers laquelle le chercheur voit ce qu'il a lui-même apporté.",
+        "about": "À Abou Simbel, en Égypte, la lumière du soleil accomplit deux fois par an quelque chose d'extraordinaire : elle s'enfonce de 60 mètres dans la montagne et éclaire trois des quatre statues du sanctuaire. La quatrième, Ptah, lié aux ténèbres et au monde souterrain, reste dans l'ombre. Diriger la lumière vers le sacré remonte à plus de 3 000 ans."
       },
       "the-grimoire-page": {
         "name": "LA PAGE DU GRIMOIRE",
         "short": "le livre inachevé",
-        "meaning": "Sceaux, cercles et questions centenaires. Le langage visuel de toute l'expérience, tiré d'un livre qui n'est jamais achevé."
+        "meaning": "Sceaux, cercles et questions centenaires. Le langage visuel de toute l'expérience, tiré d'un livre qui n'est jamais achevé.",
+        "about": "Le mot « grimoire » vient de l'ancien français pour « grammaire » — un livre de savoir si puissant qu'il semblait dangereux. Le plus célèbre des vrais est peut-être le manuscrit de Voynich : environ 240 pages d'écriture inconnue et de plantes étranges, datées au carbone de 1404–1438, toujours indéchiffrées. La bibliothèque de Yale l'a mis en ligne : chacun peut le regarder, personne ne peut le lire."
+      },
+      "the-owl-of-minerva": {
+        "name": "LA CHOUETTE DE MINERVE",
+        "short": "sagesse dans l'obscurité",
+        "meaning": "Le seul emblème au lien documenté : les Illuminés de Bavière d'Adam Weishaupt (1776) adoptèrent une chouette sur un livre ouvert, en l'honneur de Minerve, déesse de la sagesse. Dans la fiction, elle veille sur le premier grade, le plus humble, de chaque initié.",
+        "about": "Le philosophe Hegel a écrit que la chouette de Minerve ne prend son envol qu'au crépuscule : la sagesse arrive quand la journée est finie. En 1776, les Illuminés d'Adam Weishaupt choisirent la chouette pour emblème, et leur grade d'entrée s'appelait « Minerval ». L'ordre dura moins de dix ans : la Bavière l'interdit en 1785, et la légende lui a survécu deux siècles."
+      },
+      "the-hexagram": {
+        "name": "L'HEXAGRAMME",
+        "short": "comme en haut, ainsi en bas",
+        "meaning": "Deux triangles entrelacés : le feu qui monte, l'eau qui descend. Une figure ancienne, présente en alchimie, en architecture et dans de nombreuses religions ; ici, les opposés tenus en équilibre.",
+        "about": "Deux triangles : l'un pointe vers le haut pour le feu, l'autre vers le bas pour l'eau. Les alchimistes dessinaient l'hexagramme comme l'union des opposés. Cette même figure porte de nombreux noms : sceau de Salomon, étoile de David et, en Inde, Shatkona, l'union de Shiva et de Shakti. Peu de formes ont été revendiquées par autant de traditions à la fois."
+      },
+      "the-rose-cross": {
+        "name": "LA ROSE-CROIX",
+        "short": "le jardin secret",
+        "meaning": "L'emblème des manifestes rosicruciens du XVIIe siècle, à propos d'une confrérie qui n'a peut-être jamais existé. Une rose au cœur d'une croix : le mystère qui fleurit au sein de la structure.",
+        "about": "En 1614, un pamphlet paraît en Allemagne annonçant une confrérie secrète de sages guérisseurs qui gardaient un savoir depuis des siècles. Deux autres manifestes suivent jusqu'en 1616, et toute l'Europe part à la recherche des Rose-Croix. Les historiens ne savent toujours pas si la confrérie a existé — ou si c'était un canular, un jeu, ou une idée qui voulait simplement être crue."
+      },
+      "the-obelisk": {
+        "name": "L'OBÉLISQUE",
+        "short": "une aiguille vers le soleil",
+        "meaning": "Piliers solaires égyptiens transportés par les empires à Rome, Paris et Washington. Dans la fiction, il marque le lieu où l'initié prononce son serment à voix haute.",
+        "about": "Rome compte 13 obélisques antiques — plus que n'importe quelle autre ville au monde. Les empereurs les ont fait traverser la Méditerranée comme trophées. L'obélisque de Louxor, à Paris, a plus de 3 000 ans, et le Washington Monument est lui aussi un obélisque. Les originaux avaient des pointes dorées, conçues pour briller aux premières lueurs de l'aube."
+      },
+      "the-flower-of-life": {
+        "name": "LA FLEUR DE VIE",
+        "short": "la géométrie de toute chose",
+        "meaning": "Des cercles entrelacés que l'on trouve sur d'anciens murs de temples et dans l'art moderne de la géométrie sacrée. Dans la fiction, c'est la carte qui montre comment chaque question mène à la suivante.",
+        "about": "Dix-neuf cercles de même taille, chacun passant par le centre de ses voisins : un motif si régulier qu'on ne cesse de le retrouver — au temple égyptien d'Abydos (les spécialistes débattent encore de son âge), dans des temples d'Asie et dans les carnets de Léonard de Vinci. Un cercle, plus six autres : c'est la « Graine de vie », que beaucoup lisent comme une image de la création."
+      },
+      "the-skull": {
+        "name": "LE CRÂNE",
+        "short": "memento mori",
+        "meaning": "Un rappel de la mortalité utilisé par les moines, les peintres et les sociétés d'étudiants. Dans la fiction, ce n'est pas une menace mais une question : que ferez-vous du temps qui vous est donné ?",
+        "about": "Memento mori — « souviens-toi que tu vas mourir » — est l'une des plus anciennes idées de l'art. Des peintres cachaient des crânes dans leurs portraits, une crypte romaine est décorée des os de milliers de frères capucins, et la société Skull and Bones de Yale (1832) en a fait son emblème. Derrière le frisson, une note d'espoir : si le temps est court, chaque choix compte."
+      },
+      "the-sun-and-moon": {
+        "name": "LE SOLEIL ET LA LUNE",
+        "short": "lumière et reflet",
+        "meaning": "Les deux luminaires de l'alchimie, présents au plafond des loges maçonniques. Jour et nuit, raison et rêve : les deux lumières à la clarté desquelles l'initié apprend à lire.",
+        "about": "Les alchimistes attribuaient à chaque métal un astre : l'or au Soleil, l'argent à la Lune, figurés en roi et en reine dont les « noces chymiques » produisaient la pierre philosophale. En franc-maçonnerie, le Soleil, la Lune et le Vénérable Maître sont les « trois petites lumières ». Dans le symbolisme ancien, le jour et la nuit ne sont jamais rivaux — toujours partenaires."
+      },
+      "the-pentagram": {
+        "name": "LE PENTAGRAMME",
+        "short": "cinq pointes, une ligne",
+        "meaning": "Tracé d'un seul trait continu, il fut un signe pythagoricien de santé, puis un symbole du corps humain. La culture populaire en a inversé le sens ; la fiction le rétablit : une ligne parfaite et fermée.",
+        "about": "Tracez-le sans lever le stylo : chaque croisement divise les lignes selon le nombre d'or — c'est pourquoi les pythagoriciens, dévots du nombre, en faisaient un signe secret de reconnaissance et l'appelaient Hygieia, « la santé ». Vénus joue le jeu aussi : en huit ans, ses rencontres avec le Soleil dessinent dans le ciel une étoile à cinq branches approximative."
       }
     },
     "tattoos": {
@@ -480,7 +632,16 @@
       "twin-pillars": { "name": "LES PILIERS JUMEAUX", "meaning": "Deux colonnes, lumière et ombre, toujours tatouées en paire. Dans l'histoire, elles représentent l'équilibre que chaque initié doit maintenir entre la question et la réponse." },
       "compass-square": { "name": "COMPAS ET ÉQUERRE", "meaning": "Un instrument de mesure devenu emblème — le compas pour la vision, l'équerre pour la conduite. Dans la fiction, il n'est remis qu'après le Serment Scellé." },
       "checkered-floor": { "name": "LE SOL EN DAMIER", "meaning": "Des carreaux clairs et sombres tatoués comme un bracelet autour du poignet, un rappel que chaque choix de l'histoire a son contraire." },
-      "ouroboros": { "name": "L'OUROBOROS", "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée." }
+      "ouroboros": { "name": "L'OUROBOROS", "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée." },
+      "thirteen-steps": { "name": "LES TREIZE MARCHES", "meaning": "Une pyramide à degrés surmontée d'un sommet flottant, un trait par marche. La « pyramide inachevée » du Grand Sceau des États-Unis compte treize degrés, un par colonie d'origine. Dans l'histoire : treize chambres, aucune achevée." },
+      "coiled-serpent": { "name": "LE SERPENT ENROULÉ", "meaning": "Un serpent en une lente courbe en S, tatoué le long de l'avant-bras. Ancien dans de nombreuses cultures, à la fois danger et renouveau ; dans l'histoire, il marque ceux qui ont abandonné leur première croyance." },
+      "anubis": { "name": "LE GUIDE CHACAL", "meaning": "Anubis, guide égyptien des morts à tête de chacal, dessiné de profil. Choisi par ceux qui cherchent une protection aux seuils ; dans l'histoire, il conduit l'initié à travers la Traversée." },
+      "metatrons-cube": { "name": "LE CUBE DE MÉTATRON", "meaning": "Treize cercles reliés par des lignes droites, favori des tatoueurs de géométrie sacrée. Dans l'histoire, c'est le schéma du conseil : douze gardiens autour d'un siège vide." },
+      "double-eagle": { "name": "L'AIGLE BICÉPHALE", "meaning": "Deux têtes tournées en sens opposés, emblème du 33e degré du Rite écossais et de plusieurs anciens empires. Dans l'histoire : un œil sur le passé, l'autre sur ce qui vient." },
+      "lotus-eye": { "name": "L'ŒIL DE LOTUS", "meaning": "Un œil qui s'ouvre au cœur d'un lotus : le troisième œil de la tradition orientale, pourvu de pétales. Dans l'histoire, il est tatoué sur le sternum de ceux qui achèvent la Veillée." },
+      "hourglass": { "name": "LE SABLIER", "meaning": "Le temps comme un vase à deux chambres, rappel des peintres et des loges que le sable ne coule que dans un sens. Dans l'histoire, c'est la marque de la Première Bougie : une heure, sans parler." },
+      "xiii-numeral": { "name": "LE NUMÉRAL XIII", "meaning": "Treize en chiffres romains : treize marches, treize sièges, treize chambres. Tatoué en petit, derrière l’oreille ou au poignet, par les amateurs de numérologie." },
+      "the-key": { "name": "LA CLÉ DU GARDIEN", "meaning": "Une vieille clé de fer à anneau en trèfle. Les clés apparaissent dans l'imagerie rosicrucienne et maçonnique comme le droit d'ouvrir ce qui est fermé. Dans l'histoire, le Grand Gardien en remet une à chaque initié scellé." }
     },
     "channels": {
       "discord": {

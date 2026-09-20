@@ -14,7 +14,7 @@ export function useLocalizedCards() {
   }))
 }
 
-/** Visual sigils, with name/short/meaning translated by slug. */
+/** Visual sigils, with name/short/meaning/about translated by slug. */
 export function useLocalizedSymbols() {
   const { t } = useTranslation()
   return SYMBOLS.map((s) => ({
@@ -22,6 +22,7 @@ export function useLocalizedSymbols() {
     name: t(`content.symbols.${s.slug}.name`),
     short: t(`content.symbols.${s.slug}.short`),
     meaning: t(`content.symbols.${s.slug}.meaning`),
+    about: t(`content.symbols.${s.slug}.about`, { defaultValue: '' }),
   }))
 }
 

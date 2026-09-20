@@ -246,7 +246,104 @@
     "tattoosTitle": "TATUAGENS DO DESCONHECIDO",
     "tattoosSub": "TINTA DA LINGUAGEM SIMBÓLICA DA FICÇÃO.",
     "sealedUserText": "🔒 As imagens seladas são desbloqueadas assim que seu juramento é selado. <0>Sele seu juramento ›</0>",
-    "sealedGuestText": "🔒 As imagens seladas estão disponíveis para iniciados conectados. <0>Torne-se um iniciado ›</0>"
+    "sealedGuestText": "🔒 As imagens seladas estão disponíveis para iniciados conectados. <0>Torne-se um iniciado ›</0>",
+    "thirdEyeAboutTitle": "SOBRE O TERCEIRO OLHO",
+    "thirdEyeAboutText": "Muito antes de ser um símbolo, o terceiro olho era uma afirmação sobre o próprio corpo: a glândula pineal, que o filósofo René Descartes chamou de \"a sede da alma\". Na tradição hindu é Ajna, o chakra frontal da intuição e da visão interior; no pensamento budista e teosófico é o olho que se abre para verdades que a visão comum não alcança. Toda cultura que o nomeou concordou em algo: entre as sobrancelhas existe um sentido para o que os outros dois olhos não conseguem ver — e, uma vez aberto, o mundo nunca mais parece o mesmo.",
+    "thirdEyeCta": "VEJA O QUE ELE VÊ",
+    "seeMore": "VER MAIS",
+    "seeLess": "VER MENOS",
+    "sigilAboutTitle": "A HISTÓRIA POR TRÁS"
+  },
+  "decoder": {
+    "title": "DECIFRE O DÓLAR",
+    "sub": "TOQUE EM UM PONTO NUMERADO PARA VER O QUE ELE REALMENTE SIGNIFICA — E ONDE OS MITOS ERRAM.",
+    "factLabel": "CHECAGEM",
+    "numbersTitle": "CONTE OS 13",
+    "caption": "Redesenho estilizado do verso do Grande Selo. O Selo foi adotado em 20 de junho de 1782 e está na nota de um dólar desde 1935.",
+    "artLabel": "Desenho do verso do Grande Selo dos EUA com cinco pontos interativos",
+    "numbers": {
+      "steps": "13 degraus na pirâmide",
+      "annuit": "13 letras em ANNUIT CŒPTIS",
+      "pluribus": "13 letras em E PLURIBUS UNUM",
+      "stripes": "13 listras no escudo",
+      "stars": "13 estrelas sobre a águia",
+      "arrows": "13 flechas na garra"
+    },
+    "parts": {
+      "annuit": {
+        "title": "ANNUIT CŒPTIS",
+        "what": "Latim para «Ele favoreceu nossos empreendimentos»: um agradecimento à Providência, escrito acima do olho. Conte as letras: são exatamente treze.",
+        "fact": "Soa como um juramento secreto, mas a explicação de Thomson de 1782 está registrada: agradece à Providência pelo sucesso da causa americana."
+      },
+      "eye": {
+        "title": "O OLHO DA PROVIDÊNCIA",
+        "what": "Um olho radiante dentro de um triângulo flutua sobre a pirâmide. Thomson disse que o olho e o lema «aludem às muitas intervenções notáveis da providência a favor da causa americana»: a crença de que a fortuna sorrira à revolução.",
+        "fact": "Proposto em 1776 pelo artista Pierre Eugène du Simitière, que não era maçom. O olho só aparece em manuais maçônicos em 1797, quinze anos depois do selo, e na arte cristã já representava a Trindade em 1525."
+      },
+      "pyramid": {
+        "title": "A PIRÂMIDE INACABADA",
+        "what": "Treze fileiras de pedra, uma para cada estado original, com o topo por terminar. O designer Charles Thomson disse ao Congresso em 1782: «A pirâmide significa Força e Duração.» O topo aberto costuma ser lido como uma nação ainda em construção.",
+        "fact": "A pirâmide foi ideia de William Barton (1782). No século XVIII, pirâmides eram um sinal comum de permanência; os historiadores não encontram provas que a liguem a qualquer sociedade secreta."
+      },
+      "date": {
+        "title": "MDCCLXXVI",
+        "what": "Numerais romanos para 1776, o ano da Declaração de Independência, gravados na base da pirâmide: o momento em que começa a contagem de treze.",
+        "fact": "Os Illuminati da Baviera também foram fundados em 1776 (1º de maio, em Ingolstadt), uma coincidência que alimenta muitas teorias. Nenhuma prova liga os dois eventos."
+      },
+      "novus": {
+        "title": "NOVUS ORDO SECLORUM",
+        "what": "Tomado do poeta romano Virgílio: «uma nova ordem das eras». Thomson explicou que marca o início da nova era americana, contada a partir de 1776.",
+        "fact": "Não é «Nova Ordem Mundial». O latim diz ordo seclorum, ordem das eras, e nunca menciona o mundo. A outra expressão é muito posterior."
+      }
+    }
+  },
+  "finder": {
+    "placeholder": "Seu cartão aparecerá aqui.",
+    "title": "DESCUBRA SEU SIGILO",
+    "sub": "INFORME SEU NOME E DATA DE NASCIMENTO. O ARQUIVO NOMEARÁ SUA MARCA.",
+    "nameLabel": "SEU NOME",
+    "namePlaceholder": "ex.: Arjun Mehta",
+    "dobLabel": "DATA DE NASCIMENTO",
+    "reveal": "REVELAR MINHA MARCA",
+    "privacy": "🔒 Tudo é calculado no seu navegador — seu nome e data de nascimento nunca são enviados nem armazenados. Mesmos dados, mesma marca, sempre.",
+    "errName": "Por favor, informe seu nome.",
+    "errDate": "Por favor, informe uma data de nascimento válida.",
+    "errDownload": "Não foi possível criar a imagem do cartão. Tente novamente.",
+    "cardKicker": "O ARQUIVO ESCOLHEU",
+    "yourTattoo": "SUA TATUAGEM",
+    "yourSigil": "SEU SIGILO",
+    "intro": "{{tattoo}} marca sua pele, e {{sigil}} ilumina seu caminho.",
+    "lifePath": "CAMINHO DE VIDA",
+    "download": "BAIXAR MEU CARTÃO",
+    "footer": "Leitura fictícia, apenas para entretenimento.",
+    "zodiac": {
+      "capricorn": "Capricórnio",
+      "aquarius": "Aquário",
+      "pisces": "Peixes",
+      "aries": "Áries",
+      "taurus": "Touro",
+      "gemini": "Gêmeos",
+      "cancer": "Câncer",
+      "leo": "Leão",
+      "virgo": "Virgem",
+      "libra": "Libra",
+      "scorpio": "Escorpião",
+      "sagittarius": "Sagitário"
+    },
+    "lifePaths": {
+      "1": "O Pioneiro",
+      "2": "O Pacificador",
+      "3": "O Contador de Histórias",
+      "4": "O Construtor",
+      "5": "O Viajante",
+      "6": "O Guardião",
+      "7": "O Buscador",
+      "8": "O Arquiteto",
+      "9": "O Sábio",
+      "11": "O Iluminador",
+      "22": "O Mestre Construtor",
+      "33": "O Mestre Guia"
+    }
   },
   "community": {
     "seedPosts": {
@@ -441,37 +538,92 @@
       "the-pyramid": {
         "name": "A PIRÂMIDE",
         "short": "a ascensão do conhecimento",
-        "meaning": "Larga na base, estreita no topo: o conhecimento é fácil de começar e difícil de terminar. A pedra angular flutua livre porque a ascensão nunca está completa."
+        "meaning": "Larga na base, estreita no topo: o conhecimento é fácil de começar e difícil de terminar. A pedra angular flutua livre porque a ascensão nunca está completa.",
+        "about": "A Grande Pirâmide de Gizé foi o edifício mais alto da Terra por cerca de 3.800 anos, até que uma catedral inglesa medieval a superou. A «pirâmide inacabada» de 13 degraus do Grande Selo dos EUA (1782) traz o lema Novus Ordo Seclorum, «uma nova ordem dos séculos», mas só chegou à nota de um dólar em 1935."
       },
       "the-shadow": {
         "name": "A SOMBRA",
         "short": "o guardião dos segredos",
-        "meaning": "A silhueta encapuzada representa todo guardião que escolheu o anonimato. Rostos nunca são mostrados na iconografia da Irmandade — a história importa mais do que quem a conta."
+        "meaning": "A silhueta encapuzada representa todo guardião que escolheu o anonimato. Rostos nunca são mostrados na iconografia da Irmandade — a história importa mais do que quem a conta.",
+        "about": "O anonimato é tão antigo quanto as sociedades secretas. Adam Weishaupt, fundador dos Illuminati da Baviera em 1776, usava o codinome «Espártaco», e seus membros também adotavam pseudônimos clássicos. Já os candidatos maçons usam tradicionalmente uma venda nos olhos, chamada em inglês de «hoodwink», palavra que antes só significava cobrir os olhos."
       },
       "the-horned-figure": {
         "name": "A FIGURA CORNUDA",
         "short": "mito e alegoria",
-        "meaning": "Tomada de séculos de alegoria e deliberadamente reinterpretada como o medo do conhecimento. A antagonista da ficção, e seu espelho."
+        "meaning": "Tomada de séculos de alegoria e deliberadamente reinterpretada como o medo do conhecimento. A antagonista da ficção, e seu espelho.",
+        "about": "O nome «Baphomet» aparece pela primeira vez em 1307, nos autos do julgamento dos Templários, provavelmente um «Maomé» deturpado, registrado sob tortura. A famosa figura com cabeça de bode surgiu cerca de 550 anos depois: Éliphas Lévi a desenhou em 1856 como um diagrama de opostos em equilíbrio, humano e animal, masculino e feminino, e não como um demônio. Desde então, ela é mal compreendida."
       },
       "the-black-sun": {
         "name": "O SOL NEGRO",
         "short": "a luz oculta",
-        "meaning": "Um sol que não emite luz, apenas contorno. O emblema da vigília: a ideia de que algumas verdades só são visíveis na escuridão."
+        "meaning": "Um sol que não emite luz, apenas contorno. O emblema da vigília: a ideia de que algumas verdades só são visíveis na escuridão.",
+        "about": "Os alquimistas tinham seu próprio sol negro: o sol niger, a etapa mais escura da Grande Obra, em que a matéria se decompõe antes de renascer. Carl Jung depois usaria a imagem para o momento em que o antigo eu se dissolve. Por isso a Vigília acontece à noite: a etapa escura vem antes da mudança."
       },
       "the-emblem": {
         "name": "O EMBLEMA",
         "short": "selo da irmandade",
-        "meaning": "Triângulo, olho e anel de runas. O selo que cada iniciado recebe na sétima estação e a marca que aparece em cada página desta experiência."
+        "meaning": "Triângulo, olho e anel de runas. O selo que cada iniciado recebe na sétima estação e a marca que aparece em cada página desta experiência.",
+        "about": "Os selos são mais antigos que as assinaturas. Já por volta de 3500 a.C., escribas da Mesopotâmia rolavam selos cilíndricos esculpidos sobre argila úmida para provar quem havia aprovado algo. O Grande Selo dos EUA levou seis anos e três comitês para ser desenhado (1776–1782): até um emblema simples pode esconder um longo debate."
       },
       "the-altar-gate": {
         "name": "O PORTAL DO ALTAR",
         "short": "a passagem triangular",
-        "meaning": "O triângulo iluminado incrustado na pedra. Não um lugar de culto, mas de contemplação — uma lente através da qual o buscador vê o que ele mesmo trouxe."
+        "meaning": "O triângulo iluminado incrustado na pedra. Não um lugar de culto, mas de contemplação — uma lente através da qual o buscador vê o que ele mesmo trouxe.",
+        "about": "Em Abu Simbel, no Egito, a luz do sol faz algo extraordinário duas vezes por ano: percorre 60 metros dentro da montanha e ilumina três das quatro estátuas do santuário interior. A quarta, Ptah, ligado à escuridão e ao mundo dos mortos, permanece na sombra. Direcionar a luz ao sagrado tem mais de 3.000 anos."
       },
       "the-grimoire-page": {
         "name": "A PÁGINA DO GRIMÓRIO",
         "short": "o livro inacabado",
-        "meaning": "Sigilos, círculos e perguntas centenárias. A linguagem visual de toda a experiência, extraída de um livro que nunca está terminado."
+        "meaning": "Sigilos, círculos e perguntas centenárias. A linguagem visual de toda a experiência, extraída de um livro que nunca está terminado.",
+        "about": "A palavra «grimório» vem do francês antigo para «gramática»: um livro de saber tão poderoso que soava perigoso. O mais famoso de verdade talvez seja o Manuscrito Voynich: cerca de 240 páginas de escrita desconhecida e plantas estranhas, datado por carbono entre 1404 e 1438 e ainda não decifrado. A biblioteca de Yale o colocou online: qualquer um pode olhar, e ninguém consegue ler."
+      },
+      "the-owl-of-minerva": {
+        "name": "A CORUJA DE MINERVA",
+        "short": "sabedoria no escuro",
+        "meaning": "O único emblema com vínculo documentado: os Illuminati da Baviera de Adam Weishaupt (1776) adotaram uma coruja sobre um livro aberto, em homenagem a Minerva, deusa da sabedoria. Na ficção, ela vela pelo primeiro e mais humilde grau de todo iniciado.",
+        "about": "O filósofo Hegel escreveu que a coruja de Minerva só voa ao anoitecer: a sabedoria chega quando o dia termina. Em 1776, os Illuminati de Adam Weishaupt escolheram a coruja como emblema, e seu grau de entrada se chamava «Minerval». A ordem durou menos de dez anos: a Baviera a proibiu em 1785, e a lenda a sobreviveu por dois séculos."
+      },
+      "the-hexagram": {
+        "name": "O HEXAGRAMA",
+        "short": "assim em cima, como embaixo",
+        "meaning": "Dois triângulos entrelaçados: o fogo que sobe e a água que desce. Uma figura antiga presente na alquimia, na arquitetura e em muitas fés; aqui, os opostos em equilíbrio.",
+        "about": "Dois triângulos: um apontando para cima, o fogo, e outro para baixo, a água. Os alquimistas desenhavam o hexagrama como a união dos opostos. A mesma figura tem muitos nomes: Selo de Salomão, Estrela de Davi e, na Índia, Shatkona, a união de Shiva e Shakti. Poucas formas foram reivindicadas por tantas tradições ao mesmo tempo."
+      },
+      "the-rose-cross": {
+        "name": "A ROSA-CRUZ",
+        "short": "o jardim secreto",
+        "meaning": "O emblema dos manifestos rosacruzes do século XVII, sobre uma irmandade que talvez nunca tenha existido. Uma rosa no coração de uma cruz: o mistério florescendo dentro da estrutura.",
+        "about": "Em 1614, um panfleto apareceu na Alemanha anunciando uma irmandade secreta de sábios curandeiros que guardavam conhecimento havia séculos. Dois manifestos mais se seguiram até 1616, e toda a Europa saiu à procura dos rosacruzes. Os historiadores ainda não sabem dizer se a irmandade existiu ou se foi uma farsa, um jogo, ou uma ideia que simplesmente queria ser acreditada."
+      },
+      "the-obelisk": {
+        "name": "O OBELISCO",
+        "short": "uma agulha para o sol",
+        "meaning": "Pilares solares egípcios levados por impérios a Roma, Paris e Washington. Na ficção, marca o lugar onde o iniciado pronuncia seu juramento em voz alta.",
+        "about": "Roma tem 13 obeliscos antigos, mais do que qualquer outra cidade do mundo. Imperadores os trouxeram pelo Mediterrâneo como troféus. O obelisco de Luxor, em Paris, tem mais de 3.000 anos, e o Monumento a Washington também é um obelisco. Os originais tinham pontas douradas, feitas para brilhar na primeira luz da aurora."
+      },
+      "the-flower-of-life": {
+        "name": "A FLOR DA VIDA",
+        "short": "a geometria de tudo",
+        "meaning": "Círculos sobrepostos encontrados em paredes de templos antigos e na arte moderna de geometria sagrada. Na ficção, é o mapa de como cada pergunta leva à seguinte.",
+        "about": "Dezenove círculos do mesmo tamanho, cada um passando pelo centro de seus vizinhos: um padrão tão regular que as pessoas continuam encontrando, no templo egípcio de Abidos (especialistas ainda debatem sua idade), em templos da Ásia e nos cadernos de Leonardo da Vinci. Um círculo mais seis formam a «Semente da Vida», que muitos leem como uma imagem da criação."
+      },
+      "the-skull": {
+        "name": "A CAVEIRA",
+        "short": "memento mori",
+        "meaning": "Um lembrete da mortalidade usado por monges, pintores e sociedades universitárias. Na ficção, não é uma ameaça, mas uma pergunta: o que você fará com o tempo que tem?",
+        "about": "Memento mori, «lembre-se de que você vai morrer», é uma das ideias mais antigas da arte. Pintores escondiam caveiras em retratos, uma cripta romana é decorada com os ossos de milhares de frades capuchinhos, e a sociedade Skull and Bones de Yale (1832) a fez seu emblema. Por trás do arrepio há uma nota de esperança: se o tempo é curto, cada escolha conta."
+      },
+      "the-sun-and-moon": {
+        "name": "O SOL E A LUA",
+        "short": "luz e reflexo",
+        "meaning": "Os astros gêmeos da alquimia e presença fixa nos tetos das lojas maçônicas. Dia e noite, razão e sonho: as duas luzes com as quais o iniciado aprende a ler.",
+        "about": "Os alquimistas davam a cada metal um astro: o ouro ao Sol, a prata à Lua, imaginados como um rei e uma rainha cuja «boda química» produzia a Pedra Filosofal. Na maçonaria, o Sol, a Lua e o Venerável Mestre são as «três luzes menores». No simbolismo antigo, dia e noite nunca são rivais, e sim parceiros."
+      },
+      "the-pentagram": {
+        "name": "O PENTAGRAMA",
+        "short": "cinco pontas, uma linha",
+        "meaning": "Traçado em um único gesto contínuo, foi um sinal pitagórico de saúde e depois um símbolo do corpo humano. A cultura pop inverteu seu sentido; a ficção o restaura: uma linha perfeita e fechada.",
+        "about": "Desenhe-o sem levantar a caneta e cada cruzamento divide as linhas na proporção áurea, por isso os pitagóricos, devotos do número, o usavam como sinal secreto de reconhecimento e o chamavam de Hígia, «saúde». Vênus também participa: em oito anos, seus encontros com o Sol traçam no céu uma estrela de cinco pontas aproximada."
       }
     },
     "tattoos": {
@@ -480,7 +632,16 @@
       "twin-pillars": { "name": "OS PILARES GÊMEOS", "meaning": "Duas colunas, luz e sombra, sempre tatuadas em par. Na história, representam o equilíbrio que todo iniciado deve manter entre a pergunta e a resposta." },
       "compass-square": { "name": "COMPASSO E ESQUADRO", "meaning": "Uma ferramenta de medição transformada em emblema — o compasso para a visão, o esquadro para a conduta. Na ficção, é dado somente após o Juramento Selado." },
       "checkered-floor": { "name": "O PISO XADREZ", "meaning": "Ladrilhos claros e escuros tatuados como uma faixa ao redor do pulso, um lembrete de que toda escolha na história tem seu oposto." },
-      "ouroboros": { "name": "O OUROBOROS", "meaning": "Uma serpente devorando a própria cauda, marcando aqueles que completam um ciclo inteiro das sete estações. Usado somente após a Travessia." }
+      "ouroboros": { "name": "O OUROBOROS", "meaning": "Uma serpente devorando a própria cauda, marcando aqueles que completam um ciclo inteiro das sete estações. Usado somente após a Travessia." },
+      "thirteen-steps": { "name": "OS TREZE DEGRAUS", "meaning": "Uma pirâmide em degraus com um topo flutuante, uma linha para cada degrau. A «pirâmide inacabada» do Grande Selo dos EUA tem treze degraus, um para cada colônia original. Na história: treze câmaras, nenhuma concluída." },
+      "coiled-serpent": { "name": "A SERPENTE ENROLADA", "meaning": "Uma serpente em uma lenta curva em S, tatuada ao longo do antebraço. Antiga em muitas culturas como perigo e renovação ao mesmo tempo; na história, marca os iniciados que abandonaram sua primeira crença." },
+      "anubis": { "name": "O GUIA CHACAL", "meaning": "Anúbis, o guia egípcio dos mortos com cabeça de chacal, desenhado de perfil. Escolhido por quem busca proteção nos limiares; na história, ele conduz o iniciado pela Travessia." },
+      "metatrons-cube": { "name": "O CUBO DE METATRON", "meaning": "Treze círculos unidos por linhas retas, favorito dos tatuadores de geometria sagrada. Na história, é o diagrama do conselho: doze guardiões em torno de um assento vazio." },
+      "double-eagle": { "name": "A ÁGUIA BICÉFALA", "meaning": "Duas cabeças voltadas para lados opostos, emblema do 33º grau do Rito Escocês e de vários impérios antigos. Na história: um olho no passado, outro no que vem." },
+      "lotus-eye": { "name": "O OLHO DE LÓTUS", "meaning": "Um olho se abrindo no coração de um lótus — o terceiro olho da tradição oriental, com pétalas. Na história, é tatuado sobre o esterno por quem conclui a Vigília." },
+      "hourglass": { "name": "A AMPULHETA", "meaning": "O tempo como um vaso de duas câmaras, lembrete de pintores e lojas de que a areia corre num só sentido. Na história, é a marca da Primeira Vela: uma hora, sem falar." },
+      "xiii-numeral": { "name": "O NUMERAL XIII", "meaning": "Treze em algarismos romanos: treze degraus, treze assentos, treze câmaras. Tatuado pequeno, atrás da orelha ou no pulso, por quem ama a numerologia." },
+      "the-key": { "name": "A CHAVE DO GUARDIÃO", "meaning": "Uma velha chave de ferro com argola em trevo. Chaves aparecem na imagética rosacruz e maçônica como o direito de abrir o que está fechado. Na história, o Grande Guardião entrega uma a cada iniciado selado." }
     },
     "channels": {
       "discord": {

@@ -65,9 +65,18 @@ export const SYMBOLS = [
   { slug: 'the-emblem', img: '/assets/community-emblem.jpg' },
   { slug: 'the-altar-gate', img: '/assets/archive-altar.jpg' },
   { slug: 'the-grimoire-page', img: '/assets/archive-parchment.jpg' },
+  { slug: 'the-owl-of-minerva' },
+  { slug: 'the-hexagram' },
+  { slug: 'the-rose-cross' },
+  { slug: 'the-obelisk' },
+  { slug: 'the-flower-of-life' },
+  { slug: 'the-skull' },
+  { slug: 'the-sun-and-moon' },
+  { slug: 'the-pentagram' },
 ]
 
-/* Tattoo motifs are drawn inline (see TattooIcon.jsx) in the site's own
+/* Sigils without an `img` are drawn as a large inline icon (see Visuals.jsx).
+   Tattoo motifs are drawn inline (see TattooIcon.jsx) in the site's own
    gold-on-dark line-art style, not photographs — see content.tattoos.* for
    translated name/meaning text, keyed by slug. */
 export const TATTOOS = [
@@ -77,6 +86,15 @@ export const TATTOOS = [
   { slug: 'compass-square' },
   { slug: 'checkered-floor' },
   { slug: 'ouroboros' },
+  { slug: 'thirteen-steps' },
+  { slug: 'coiled-serpent' },
+  { slug: 'anubis' },
+  { slug: 'metatrons-cube' },
+  { slug: 'double-eagle' },
+  { slug: 'lotus-eye' },
+  { slug: 'hourglass' },
+  { slug: 'xiii-numeral' },
+  { slug: 'the-key' },
 ]
 
 export const GALLERY = [
