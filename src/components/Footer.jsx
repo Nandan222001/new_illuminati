@@ -44,13 +44,12 @@ export default function Footer() {
             </>
           )}
           <Link to="/about#faq">{t('footer.faq')}</Link>
-          <Link to="/about#disclaimer">{t('footer.disclaimer')}</Link>
+          <Link to="/rules">{t('footer.guidelines')}</Link>
         </div>
         <div className="foot-col">
           <h6>{t('footer.legal')}</h6>
           <Link to="/rules#rule-privacy">{t('footer.privacy')}</Link>
           <Link to="/rules#rules">{t('footer.terms')}</Link>
-          <Link to="/rules">{t('footer.guidelines')}</Link>
           <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.contact')}</a>
         </div>
       </div>

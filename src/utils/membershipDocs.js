@@ -391,7 +391,7 @@ export async function renderCardFront(user) {
   g.textAlign = 'center'
   g.fillStyle = '#4c635e'
   g.font = `28px ${SANS}`
-  g.fillText('FICTIONAL MEMBER CARD — VALID ONLY WITHIN THE EXPERIENCE', W / 2, 955)
+  g.fillText('MEMBER CARD · NOT A GOVERNMENT-ISSUED ID', W / 2, 955)
 
   g.restore()
 
@@ -526,7 +526,9 @@ const toBlob = (canvas) => new Promise((resolve, reject) => canvas.toBlob((b) =>
 const slug = (user) => (user.sealId || formatMemberNo(user.initiate)).replace(/[^\w-]+/g, '')
 
 export async function downloadJoiningLetterPdf(user) {
-  const { canvas } = await renderJoiningLetter(user)
+  // The joining letter is the parchment acceptance transmission, fully
+  // mapped from the signed-in member (name, initiate №, seal, dates).
+  const { canvas } = await renderAcceptanceLetter(user)
   saveBlob(buildPdf([{ canvas, wMm: 210, hMm: 297 }]), `illuminati-joining-letter-${slug(user)}.pdf`)
 }
 

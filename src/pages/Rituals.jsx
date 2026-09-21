@@ -71,7 +71,7 @@ export default function Rituals() {
           </div>
           <div className="band-actions">
             <Link to="/videos" className="btn-gold">{t('rituals.watchDocs')}</Link>
-            <Link to="/about#disclaimer" className="btn-ghost">{t('footer.disclaimer')}</Link>
+            <Link to="/rules" className="btn-ghost">{t('footer.guidelines')}</Link>
           </div>
         </div>
       </section>

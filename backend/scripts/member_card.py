@@ -104,7 +104,7 @@ def render_card(name: str, number: int, seal: str, date: str) -> Image.Image:
         y += 150
 
     # fictional watermark strip
-    strip = "FICTIONAL MEMBER CARD — VALID ONLY WITHIN THE EXPERIENCE"
+    strip = "MEMBER CARD · NOT A GOVERNMENT-ISSUED ID"
     sf = _f(DV, 28)
     sw = d.textlength(strip, font=sf)
     d.text(((W - sw) / 2, 930), strip, font=sf, fill=(76, 99, 94))

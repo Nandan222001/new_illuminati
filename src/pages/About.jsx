@@ -62,18 +62,6 @@ export default function About() {
         </div>
       </section>
 
-      <section className="page-section band" id="disclaimer">
-        <div className="band-inner">
-          <div>
-            <div className="sec-title">{t('footer.disclaimer')}</div>
-            <p className="band-text">{t('about.disclaimerText')}</p>
-          </div>
-          <div className="band-actions">
-            <Link to="/register" className="btn-gold">{t('common.becomeInitiate')} ›</Link>
-            <Link to="/community" className="btn-ghost">{t('common.joinCommunity')}</Link>
-          </div>
-        </div>
-      </section>
     </>
   )
 }

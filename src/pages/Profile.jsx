@@ -9,7 +9,7 @@ import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
-import { downloadAcceptancePdf, downloadCardPdf, downloadCardPng, downloadClearancePdf, downloadJoiningLetterPdf } from '../utils/membershipDocs'
+import { downloadCardPdf, downloadCardPng, downloadClearancePdf, downloadJoiningLetterPdf } from '../utils/membershipDocs'
 
 export default function Profile() {
   const { user, isAdmin, logout, updateProfile } = useAuth()
@@ -135,7 +135,7 @@ export default function Profile() {
               <h4>{t('profile.docs.letterTitle')}</h4>
               <p>{t('profile.docs.letterText')}</p>
               <div className="doc-actions">
-                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('letter', downloadJoiningLetterPdf)}>
+                <button type="button" className="btn-gold small" disabled={!!docBusy} onClick={() => runDownload('letter', downloadJoiningLetterPdf)}>
                   {docBusy === 'letter' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
                 </button>
               </div>
@@ -147,23 +147,11 @@ export default function Profile() {
               <h4>{t('profile.docs.cardTitle')}</h4>
               <p>{t('profile.docs.cardText')}</p>
               <div className="doc-actions">
-                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPng', downloadCardPng)}>
+                <button type="button" className="btn-gold small" disabled={!!docBusy} onClick={() => runDownload('cardPng', downloadCardPng)}>
                   {docBusy === 'cardPng' ? t('profile.docs.preparing') : t('profile.docs.downloadPng')}
                 </button>
-                <button type="button" className="btn-ghost small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPdf', downloadCardPdf)}>
+                <button type="button" className="btn-ghost small" disabled={!!docBusy} onClick={() => runDownload('cardPdf', downloadCardPdf)}>
                   {docBusy === 'cardPdf' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
-                </button>
-              </div>
-            </div>
-          </article>
-          <article className="doc-card">
-            <div className="doc-thumb doc-letter" aria-hidden="true"><i /><i /><i /><i /></div>
-            <div className="doc-body">
-              <h4>{t('profile.docs.acceptanceTitle')}</h4>
-              <p>{t('profile.docs.acceptanceText')}</p>
-              <div className="doc-actions">
-                <button type="button" className="btn-gold small" disabled={!!docBusy} onClick={() => runDownload('acceptance', downloadAcceptancePdf)}>
-                  {docBusy === 'acceptance' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
                 </button>
               </div>
             </div>

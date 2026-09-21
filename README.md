@@ -20,7 +20,7 @@ npm run smoke      # SSR-render every route to catch runtime errors
 | `/` | Home — hero, "choose your path" grid, archive carousel, symbols, countdown, videos, community, Instagram |
 | `/archives`, `/archives/:slug` | The six chambers of the Ritual Archive + detail records |
 | `/rituals` | The seven stations (some sealed for signed-in initiates) |
-| `/new-order` | Live countdown to 06 Nov 2026, phases, notify form |
+| `/new-order` | Live countdown to 31 Dec 2026, 11:59:59 PM IST; phases, notify form |
 | `/videos`, `/videos/:slug` | Filterable episode grid, featured episode, demo player, sealed episodes |
 | `/visuals` | Sigil explorer + key-visual gallery with lightbox |
 | `/community` | Channels, discussion board (post as a member), Instagram |
