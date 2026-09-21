@@ -22,6 +22,18 @@ class Settings(BaseSettings):
 
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 
+    # Public URL of the frontend (links in transactional mail point here).
+    SITE_URL: str = "http://localhost:5173"
+
+    # Initiation-letter delivery. Leave SMTP_HOST empty to write rendered
+    # letters to MAIL_OUTBOX_DIR instead (dev/CI inspection).
+    SMTP_HOST: str = ""
+    SMTP_PORT: int = 587
+    SMTP_USER: str = ""
+    SMTP_PASSWORD: str = ""
+    SMTP_FROM: str = "Illuminati Brotherhood <no-reply@illuminati-brotherhood.io>"
+    MAIL_OUTBOX_DIR: str = "outbox"
+
     @property
     def cors_origins_list(self) -> list[str]:
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]

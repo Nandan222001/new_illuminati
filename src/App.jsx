@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { ContentProvider } from './context/ContentContext'
@@ -6,28 +7,40 @@ import { ConsentProvider } from './context/ConsentContext'
 import Layout from './components/Layout'
 import AdminLayout from './components/AdminLayout'
 import ProtectedRoute from './components/ProtectedRoute'
-import Home from './pages/Home'
-import Archives from './pages/Archives'
-import ArchiveDetail from './pages/ArchiveDetail'
-import Rituals from './pages/Rituals'
-import NewOrder from './pages/NewOrder'
-import Videos from './pages/Videos'
-import VideoDetail from './pages/VideoDetail'
-import Visuals from './pages/Visuals'
-import Community from './pages/Community'
-import About from './pages/About'
-import Rules from './pages/Rules'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Profile from './pages/Profile'
-import AdminDashboard from './pages/admin/Dashboard'
-import AdminRevenue from './pages/admin/Revenue'
-import AdminMembers from './pages/admin/Members'
-import AdminVideos from './pages/admin/VideosAdmin'
-import AdminImages from './pages/admin/ImagesAdmin'
-import AdminRituals from './pages/admin/RitualsAdmin'
-import AdminSettings from './pages/admin/Settings'
-import NotFound from './pages/NotFound'
+
+// Route-level code splitting: each page becomes its own chunk so visitors
+// only download the routes they actually visit. The shared shell (navbar,
+// footer, providers) stays eager.
+const Home = lazy(() => import('./pages/Home'))
+const Archives = lazy(() => import('./pages/Archives'))
+const ArchiveDetail = lazy(() => import('./pages/ArchiveDetail'))
+const Rituals = lazy(() => import('./pages/Rituals'))
+const NewOrder = lazy(() => import('./pages/NewOrder'))
+const Videos = lazy(() => import('./pages/Videos'))
+const VideoDetail = lazy(() => import('./pages/VideoDetail'))
+const Visuals = lazy(() => import('./pages/Visuals'))
+const Community = lazy(() => import('./pages/Community'))
+const About = lazy(() => import('./pages/About'))
+const Rules = lazy(() => import('./pages/Rules'))
+const Login = lazy(() => import('./pages/Login'))
+const Register = lazy(() => import('./pages/Register'))
+const Profile = lazy(() => import('./pages/Profile'))
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
+const AdminRevenue = lazy(() => import('./pages/admin/Revenue'))
+const AdminMembers = lazy(() => import('./pages/admin/Members'))
+const AdminVideos = lazy(() => import('./pages/admin/VideosAdmin'))
+const AdminImages = lazy(() => import('./pages/admin/ImagesAdmin'))
+const AdminRituals = lazy(() => import('./pages/admin/RitualsAdmin'))
+const AdminSettings = lazy(() => import('./pages/admin/Settings'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+
+function RouteFallback() {
+  return (
+    <div className="page-loading">
+      <div className="sigil-spinner" aria-label="Loading" />
+    </div>
+  )
+}
 
 export default function App() {
   return (
@@ -36,6 +49,7 @@ export default function App() {
         <ConsentProvider>
         <AuthProvider>
           <ContentProvider>
+            <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
@@ -70,6 +84,7 @@ export default function App() {
                 <Route path="settings" element={<AdminSettings />} />
               </Route>
             </Routes>
+            </Suspense>
           </ContentProvider>
         </AuthProvider>
         </ConsentProvider>

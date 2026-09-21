@@ -103,9 +103,34 @@ All routes are under `/api/v1`.
 - `GET /admin/revenue?months=6` — real monthly revenue aggregated from `transactions`
 - `GET /admin/transactions` — recent transaction list
 
+## Transactional mail (initiation letter)
+
+On registration (`POST /auth/register`) the backend renders a dynamic
+"your initiation is recorded" transmission — parchment letter, terms, member
+card and seal, personalized with the member's name, initiate number, seal id
+and join date (`app/services/initiation_letter.py`). Artwork lives in
+`public/assets/email/` on the frontend so real mails reference hosted images.
+
+Delivery (`app/services/initiation_mail.py`):
+
+- `SMTP_HOST` set → sent over SMTP (STARTTLS, or TLS on port 465), images by URL.
+- `SMTP_HOST` empty → the fully rendered mail (images embedded) is written to
+  `MAIL_OUTBOX_DIR` (default `outbox/`) for local/CI inspection.
+
+Demo without a database:
+
+```bash
+cd backend && python scripts/demo_initiation_mail.py ["Name" [number]]
+# open outbox/demo-letter.html in a browser
+```
+
+Content guardrails — the experience is fiction: the letter never requests
+money, bank details, IDs or real-world contact, never instructs recipients to
+meet anyone offline, and always carries the fiction disclaimer in its footer.
+
 ## Notes
 
 - Auth is stateless JWT (bearer token in `Authorization: Bearer <token>`), matching a typical SPA + API setup. There is no server-side session/refresh-token flow yet.
 - `content_items` is one table for videos/rituals/gallery images, with a `kind` column and a JSON `extra` column for type-specific fields (duration, tags, view counts, etc.) — this mirrors how the frontend's `ContentContext` already treats all three as one catalog with per-item lock/hidden flags.
-- The ₹999 initiation fee and the Razorpay/SMTP/Twilio settings remain **simulated** — no real payment gateway, email, or SMS provider is called. This matches the existing frontend, which explicitly does the same thing.
+- The ₹999 initiation fee and the Razorpay/Twilio settings remain **simulated** — no real payment gateway or SMS provider is called. Initiation mail is the exception: it is really sent when `SMTP_HOST` is configured (see *Transactional mail* above), and falls back to the outbox otherwise.
 - This backend is not yet wired into the frontend (which still uses localStorage). Swapping the frontend's `src/auth/authService.js`, `src/context/ContentContext.jsx` and `src/admin/adminStore.js` to call this API is a separate follow-up step.
