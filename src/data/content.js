@@ -40,19 +40,19 @@ export const RITUALS = [
   { slug: 'the-circle-of-thirteen', step: 'II', title: 'THE CIRCLE OF THIRTEEN', img: '/assets/archive-ritual.jpg', duration: 'Station 2 · Gathering', desc: 'Twelve keepers and one empty place. The initiate is invited to stand in the gap and complete the circle — the visual heart of the Brotherhood mythology.', tags: ['Circle', 'Council', 'Belonging'] },
   { slug: 'the-reading-of-sigils', step: 'III', title: 'THE READING OF SIGILS', img: '/assets/archive-parchment.jpg', duration: 'Station 3 · Study', desc: 'The grimoire is opened at a random page and the initiate is asked to interpret the sigil. There is no right answer; the reading reveals the reader.', tags: ['Sigils', 'Interpretation', 'Study'] },
   { slug: 'the-black-sun-vigil', step: 'IV', title: 'THE BLACK SUN VIGIL', img: '/assets/rituals-hero.jpg', duration: 'Station 4 · Night Watch', desc: 'From midnight until the first light, the initiate keeps watch alone beneath the black sun emblem. The vigil is the longest station and the one most seekers speak of afterwards.', tags: ['Vigil', 'Endurance', 'Dawn'] },
-  { slug: 'the-mirror-of-the-horned', step: 'V', title: 'THE MIRROR OF THE HORNED', img: '/assets/archive-baphomet.jpg', duration: 'Station 5 · Confrontation', desc: 'The seeker faces the horned allegory — the fear that guards knowledge — and names it aloud. In the fiction, naming the fear is what unlocks the fifth door.', tags: ['Allegory', 'Fear', 'Naming'] },
+  { slug: 'the-mirror-of-the-horned', step: 'V', title: 'THE MIRROR OF THE HORNED', img: '/assets/archive-baphomet.jpg', duration: 'Station 5 · Confrontation', desc: 'The seeker faces the horned allegory — the fear that guards knowledge — and names it aloud. In the story, naming the fear is what unlocks the fifth door.', tags: ['Allegory', 'Fear', 'Naming'] },
   { slug: 'the-crossing', step: 'VI', title: 'THE CROSSING', img: '/assets/archive-silhouette.jpg', duration: 'Station 6 · Passage', desc: 'The initiate walks the candle-lit aisle toward the triangle of light. The doors remain open behind them the entire way; leaving is always allowed.', tags: ['Passage', 'Choice', 'Light'] },
   { slug: 'the-sealed-oath', step: 'VII', title: 'THE SEALED OATH', img: '/assets/community-hero.jpg', duration: 'Station 7 · Oath', desc: 'At the round table the initiate signs the parchment and receives the emblem. The oath is simple: seek, question, and never claim the story is anything but a story.', tags: ['Oath', 'Emblem', 'Brotherhood'] },
 ]
 
 export const VIDEOS = [
-  { slug: 'satanic-mythology', title: 'Satanic Mythology', tag: 'fiction', dur: '12:46', img: '/assets/archive-baphomet.jpg', desc: 'How the horned figure travelled from medieval allegory to modern pop culture — and how the Brotherhood fiction reinterprets it.', views: '1.2M', date: 'Episode 01' },
+  { slug: 'satanic-mythology', title: 'Satanic Mythology', tag: 'fiction', dur: '12:46', img: '/assets/archive-baphomet.jpg', desc: 'How the horned figure travelled from medieval allegory to modern pop culture — and how the Brotherhood story reinterprets it.', views: '1.2M', date: 'Episode 01' },
   { slug: 'hidden-societies', title: 'Hidden Societies', tag: 'theory', dur: '08:20', img: '/assets/archive-ritual.jpg', desc: 'A survey of the real historical societies that inspired the mythology, and the theories that grew around them.', views: '864K', date: 'Episode 02' },
   { slug: 'ancient-mysteries', title: 'Ancient Mysteries', tag: 'fact', dur: '15:02', img: '/assets/forbidden-pyramid.jpg', desc: 'Pyramids, alignments and lost libraries. The documented history behind the symbols used throughout the experience.', views: '2.1M', date: 'Episode 03' },
-  { slug: 'new-world-order', title: 'New World Order', tag: 'theory', dur: '10:44', img: '/assets/forbidden-city.jpg', desc: 'Where the phrase came from, why it stuck, and how the Brotherhood story uses it as a fictional countdown.', views: '990K', date: 'Episode 04' },
+  { slug: 'new-world-order', title: 'New World Order', tag: 'theory', dur: '10:44', img: '/assets/forbidden-city.jpg', desc: 'Where the phrase came from, why it stuck, and how the Brotherhood story uses it as a countdown.', views: '990K', date: 'Episode 04' },
   { slug: 'the-forbidden-library', title: 'The Forbidden Library', tag: 'fiction', dur: '09:31', img: '/assets/archives-hero.jpg', desc: 'A dramatised walk through the six chambers of the Ritual Archive, narrated by the Grand Keeper.', views: '412K', date: 'Episode 05' },
   { slug: 'the-last-screening', title: 'The Last Screening', tag: 'fiction', dur: '18:12', img: '/assets/videos-hero.jpg', desc: 'The feature-length chapter that closes season one. Sealed for initiates until the New Order date.', views: '—', date: 'Episode 06' },
-  { slug: 'council-of-thirteen', title: 'Council of Thirteen', tag: 'fiction', dur: '11:05', img: '/assets/community-hero.jpg', desc: 'Inside the round table: how the fictional council makes its decisions and what the empty thirteenth seat means.', views: '—', date: 'Episode 07' },
+  { slug: 'council-of-thirteen', title: 'Council of Thirteen', tag: 'fiction', dur: '11:05', img: '/assets/community-hero.jpg', desc: 'Inside the round table: how the council makes its decisions and what the empty thirteenth seat means.', views: '—', date: 'Episode 07' },
   { slug: 'the-eye-over-the-city', title: 'The Eye Over The City', tag: 'theory', dur: '07:48', img: '/assets/neworder-hero.jpg', desc: 'Skylines, pyramids and the all-seeing eye — an image breakdown of the New Order key visual.', views: '533K', date: 'Episode 08' },
 ]
 
@@ -142,7 +142,8 @@ export const FAQ = [
   { key: 'realWorldClaims' },
 ]
 
-export const TARGET_DATE = new Date('2026-11-06T00:00:00')
+// 31 December 2026, 11:59:59 PM IST — fixed instant so every visitor counts down to the same moment
+export const TARGET_DATE = new Date('2026-12-31T23:59:59+05:30')
 
 export function getTimeLeft() {
   let diff = TARGET_DATE - new Date()

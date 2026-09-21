@@ -11,6 +11,7 @@ import { useAuth } from './AuthContext'
  */
 
 const EMPTY = { video: [], ritual: [], image: [] }
+const LOAD_TIMEOUT_MS = 5000
 
 // Mirrors the backend's DEFAULT_LOCKED_SLUGS (backend/app/seeds/seed_content.py).
 const SEALED_SLUGS = new Set(['the-black-sun-vigil', 'council-of-thirteen', 'the-last-screening'])
@@ -88,9 +89,9 @@ export function ContentProvider({ children }) {
   const loadPublic = useCallback(async () => {
     try {
       const [video, ritual, image] = await Promise.all([
-        apiFetch('/content/video', { auth: false }),
-        apiFetch('/content/ritual', { auth: false }),
-        apiFetch('/content/image', { auth: false }),
+        apiFetch('/content/video', { auth: false, timeoutMs: LOAD_TIMEOUT_MS }),
+        apiFetch('/content/ritual', { auth: false, timeoutMs: LOAD_TIMEOUT_MS }),
+        apiFetch('/content/image', { auth: false, timeoutMs: LOAD_TIMEOUT_MS }),
       ])
       setRaw({ video, ritual, image })
     } catch {

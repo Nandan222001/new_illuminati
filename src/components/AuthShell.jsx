@@ -20,7 +20,7 @@ export default function AuthShell({ image, imageAlt, quote, kicker, title, sub, 
             <BrandMark className="brand-mark" style={{ width: 52, height: 52 }} />
           </span>
           <blockquote>{quote}</blockquote>
-          <span className="muted">{t('common.fictionalExperience')}</span>
+          <span className="muted">{t('common.tagline')}</span>
         </div>
       </div>
       <div className="auth-panel">

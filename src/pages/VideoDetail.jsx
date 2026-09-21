@@ -73,7 +73,7 @@ export default function VideoDetail() {
           <h1>{video.title}</h1>
           <div className="featured-meta"><span>▶ {video.dur}</span><span>{video.views} {t('common.viewsSuffix')}</span><span>{video.date}</span></div>
           <p>{video.desc}</p>
-          <p className="muted"><Trans i18nKey="videoDetail.labelsLegend" components={{ 0: <b />, 1: <b />, 2: <b /> }} /></p>
+          <p className="muted"><Trans i18nKey="videoDetail.labelsLegend" components={[<b />, <b />, <b />]} /></p>
         </div>
         <div className="video-side">
           <button type="button" className="btn-ghost" onClick={() => toast(user ? t('videoDetail.watchlistToast') : t('videoDetail.watchlistSignInToast'))}>{t('videoDetail.watchlist')}</button>

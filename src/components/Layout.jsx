@@ -1,25 +1,26 @@
-import { useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useContent } from '../context/ContentContext'
+import { useConsent } from '../context/ConsentContext'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import DisclaimerModal from './DisclaimerModal'
+import ConsentGate from './ConsentGate'
 import ScrollToTop from './ScrollToTop'
 
 export default function Layout() {
-  const [modalOpen, setModalOpen] = useState(false)
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
   const { ready: contentReady } = useContent()
+  const { consent } = useConsent()
+  const enterSite = () => navigate('/archives')
 
   return (
     <>
       <ScrollToTop />
-      <Navbar onEnter={() => setModalOpen(true)} />
+      <Navbar onEnter={enterSite} />
       <main>
         {contentReady ? (
-          <Outlet context={{ openDisclaimer: () => setModalOpen(true) }} />
+          <Outlet context={{ enterSite }} />
         ) : (
           <div className="page-loading">
             <div className="sigil-spinner" aria-label="Loading" />
@@ -27,11 +28,7 @@ export default function Layout() {
         )}
       </main>
       {!isAdmin && <Footer />}
-      <DisclaimerModal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onEnter={() => { setModalOpen(false); navigate('/archives') }}
-      />
+      {!consent && pathname !== '/rules' && <ConsentGate />}
     </>
   )
 }

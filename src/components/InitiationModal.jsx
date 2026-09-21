@@ -66,7 +66,7 @@ export default function InitiationModal({ open, onClose }) {
             </svg>
             <h3>{t('modals.initiation.doneTitle')}</h3>
             <p>
-              <Trans i18nKey="modals.initiation.doneBody" values={{ sealId }} components={{ 0: <b style={{ color: 'var(--gold)' }} /> }} />
+              <Trans i18nKey="modals.initiation.doneBody" values={{ sealId }} components={[<b style={{ color: 'var(--gold)' }} />]} />
             </p>
             <div className="modal-actions">
               <button className="btn-gold" onClick={onClose}>{t('modals.initiation.enterSealed')}</button>
@@ -76,7 +76,7 @@ export default function InitiationModal({ open, onClose }) {
           <>
             <h3>{t('modals.initiation.title')}</h3>
             <p>
-              <Trans i18nKey="modals.initiation.bodyIntro" values={{ fee: INITIATION_FEE_INR }} components={{ 0: <b style={{ color: 'var(--gold)' }} /> }} />
+              <Trans i18nKey="modals.initiation.bodyIntro" values={{ fee: INITIATION_FEE_INR }} components={[<b style={{ color: 'var(--gold)' }} />]} />
               <br /><br />
               <span className="muted">{t('modals.initiation.simulatedNote')}</span>
             </p>

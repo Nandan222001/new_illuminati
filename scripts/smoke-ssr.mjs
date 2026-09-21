@@ -10,7 +10,7 @@ import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const routes = ['/', '/archives', '/archives/the-third-eye', '/rituals', '/new-order', '/videos', '/videos/satanic-mythology',
-  '/videos/the-last-screening', '/visuals', '/community', '/about', '/login', '/register', '/profile', '/admin',
+  '/videos/the-last-screening', '/visuals', '/community', '/about', '/rules', '/login', '/register', '/profile', '/admin',
   '/admin/revenue', '/admin/members', '/admin/videos', '/admin/images', '/admin/rituals', '/admin/settings', '/nope']
 
 const out = join(process.cwd(), 'node_modules', '.cache', 'ib-ssr')
@@ -23,6 +23,7 @@ import { MemoryRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from '/src/context/AuthContext'
 import { ContentProvider } from '/src/context/ContentContext'
 import { ToastProvider } from '/src/context/ToastContext'
+import { ConsentProvider } from '/src/context/ConsentContext'
 import Layout from '/src/components/Layout'
 import AdminLayout from '/src/components/AdminLayout'
 import ProtectedRoute from '/src/components/ProtectedRoute'
@@ -36,6 +37,7 @@ import VideoDetail from '/src/pages/VideoDetail'
 import Visuals from '/src/pages/Visuals'
 import Community from '/src/pages/Community'
 import About from '/src/pages/About'
+import Rules from '/src/pages/Rules'
 import Login from '/src/pages/Login'
 import Register from '/src/pages/Register'
 import Profile from '/src/pages/Profile'
@@ -50,7 +52,7 @@ import NotFound from '/src/pages/NotFound'
 export function render(url) {
   return renderToString(
     <MemoryRouter initialEntries={[url]}>
-      <ToastProvider><AuthProvider><ContentProvider>
+      <ToastProvider><ConsentProvider><AuthProvider><ContentProvider>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -63,6 +65,7 @@ export function render(url) {
             <Route path="/visuals" element={<Visuals />} />
             <Route path="/community" element={<Community />} />
             <Route path="/about" element={<About />} />
+            <Route path="/rules" element={<Rules />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
@@ -79,7 +82,7 @@ export function render(url) {
             <Route path="settings" element={<AdminSettings />} />
           </Route>
         </Routes>
-      </ContentProvider></AuthProvider></ToastProvider>
+      </ContentProvider></AuthProvider></ConsentProvider></ToastProvider>
     </MemoryRouter>
   )
 }

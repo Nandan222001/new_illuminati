@@ -15,11 +15,11 @@
     "unsealedBadge": "◈ UNSEALED",
     "becomeInitiate": "BECOME AN INITIATE",
     "joinCommunity": "JOIN THE COMMUNITY",
-    "fictionalExperience": "FICTIONAL / ENTERTAINMENT EXPERIENCE",
-    "fictionalMilestoneNote": "This is a fictional campaign milestone, not a real-world event.",
+    "tagline": "SYMBOLS · MYTH · HISTORY",
+    "milestoneNote": "A campaign milestone for our next release — not a prediction or a real-world event.",
     "sealYourOathCta": "SEAL YOUR OATH ›",
     "followNow": "FOLLOW NOW",
-    "followingToast": "Following @illuminati.brotherhood (demo)",
+    "followingToast": "Instagram follow is coming soon.",
     "instagramPostAlt": "Instagram post",
     "viewsSuffix": "views",
     "explore": "Explore",
@@ -32,7 +32,7 @@
     "keeper": "KEEPER",
     "tags": {
       "all": "ALL",
-      "fiction": "FICTION",
+      "fiction": "STORY",
       "theory": "THEORY",
       "fact": "FACT"
     }
@@ -57,7 +57,7 @@
     "ambientSound": "Ambient sound",
     "toggleAmbientSound": "Toggle ambient sound",
     "search": "Search",
-    "searchToast": "Search the archives (demo)",
+    "searchToast": "Site search is coming soon.",
     "toggleMenu": "Toggle menu",
     "language": "Language",
     "leftCircleToast": "You have left the circle. Until next time.",
@@ -65,7 +65,7 @@
     "initiateNumber": "INITIATE #{{number}}"
   },
   "footer": {
-    "description": "An immersive fictional exploration of secret-society mythology, conspiracy culture and historical mysteries.",
+    "description": "An immersive exploration of secret-society mythology, conspiracy culture and historical mysteries.",
     "explore": "EXPLORE",
     "account": "ACCOUNT",
     "legal": "LEGAL",
@@ -73,25 +73,99 @@
     "disclaimer": "CONTENT DISCLAIMER",
     "privacy": "PRIVACY",
     "terms": "TERMS",
-    "guidelines": "COMMUNITY GUIDELINES",
+    "guidelines": "RULES & INSTRUCTIONS",
     "contact": "CONTACT",
-    "copyright": "© 2026 Illuminati Brotherhood. All rights reserved. A fictional entertainment experience."
+    "copyright": "© 2026 Illuminati Brotherhood. All rights reserved."
+  },
+  "rules": {
+    "kicker": "READ BEFORE YOU ENTER",
+    "title": "RULES & INSTRUCTIONS",
+    "sub": "THE HOUSE RULES FOR EVERY VIEWER AND MEMBER.",
+    "rulesTitle": "THE RULES",
+    "rulesSub": "APPLIES TO EVERYONE WHO USES THIS SITE.",
+    "instrTitle": "INSTRUCTIONS",
+    "instrSub": "HOW TO USE THE SITE AND YOUR MEMBERSHIP.",
+    "wellbeing": "Some themes may be unsettling. If anything on this site affects you, please step away and talk to someone you trust.",
+    "acceptedOn": "Accepted on this device on {{date}}.",
+    "acceptRules": "I ACCEPT THE RULES",
+    "gate": {
+      "title": "BEFORE YOU ENTER",
+      "intro": "Please read the rules below. You can open the full Rules & Instructions again at any time from the footer.",
+      "full": "Open the full page",
+      "agree": "I have read and agree to the Rules & Instructions, and I confirm that I am 18 or older.",
+      "accept": "ACCEPT & CONTINUE",
+      "decline": "DECLINE",
+      "declined": "You need to accept the Rules & Instructions to enter this site."
+    },
+    "items": {
+      "age": {
+        "title": "18+ ONLY",
+        "text": "This site contains dark and mature imagery. You must be 18 or older to continue."
+      },
+      "about": {
+        "title": "WHAT THIS SITE IS",
+        "text": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with any real organisation, and nothing here is a claim about real people, groups or events."
+      },
+      "conduct": {
+        "title": "RESPECTFUL CONDUCT",
+        "text": "No hate speech, harassment, threats or targeting of real people, communities, religions or organisations. Accounts that do this will be removed."
+      },
+      "safety": {
+        "title": "STAY SAFE",
+        "text": "No real rituals are described or encouraged. Never attempt anything harmful, illegal or dangerous inspired by content on this site."
+      },
+      "membership": {
+        "title": "MEMBERSHIPS & DOCUMENTS",
+        "text": "Your joining letter and membership card are personal and non-transferable. The membership card is not a government-issued ID and must not be used as proof of identity or age."
+      },
+      "accounts": {
+        "title": "YOUR ACCOUNT",
+        "text": "Give accurate details, keep your login private and use one account per person."
+      },
+      "purchases": {
+        "title": "PURCHASES",
+        "text": "Memberships and products are subject to the price, delivery and refund terms shown at checkout."
+      },
+      "ownership": {
+        "title": "OWNERSHIP",
+        "text": "All rights reserved. The text, artwork, symbols, video and design on this site may not be copied, resold or redistributed without written permission. Sharing links is welcome."
+      },
+      "privacy": {
+        "title": "PRIVACY",
+        "text": "We use your details only to run your account and orders. We will never ask for your password or card details outside the checkout."
+      },
+      "changes": {
+        "title": "CHANGES & ENFORCEMENT",
+        "text": "We may update these rules. By continuing to use the site you accept the current version. Breaking the rules may lead to suspension."
+      }
+    },
+    "steps": {
+      "explore": {
+        "title": "EXPLORE",
+        "text": "Browse the Archives, Rituals, Videos and Visuals freely. Sealed items are marked with a lock."
+      },
+      "join": {
+        "title": "BECOME A MEMBER",
+        "text": "Create an account, then complete your membership to unlock sealed content."
+      },
+      "documents": {
+        "title": "YOUR DOCUMENTS",
+        "text": "Members can download their joining letter and membership card from their Profile at any time."
+      },
+      "help": {
+        "title": "NEED HELP?",
+        "text": "Questions? Reach the team through the Community page."
+      }
+    }
   },
   "modals": {
-    "disclaimer": {
-      "title": "ENTER THE UNKNOWN?",
-      "body": "You are about to explore a <0>fictional, entertainment-only</0> experience about secret-society mythology. No real-world claims. No real rituals. Just story, symbol and cinema.",
-      "prompt": "Do you wish to proceed?",
-      "enter": "I ENTER ›",
-      "stay": "STAY OUTSIDE"
-    },
     "initiation": {
       "doneTitle": "OATH SEALED",
       "doneBody": "Your initiation is complete. Membership seal <0>{{sealId}}</0> has been recorded. Every sealed chapter across the archive is now open to you.",
       "enterSealed": "ENTER THE SEALED ARCHIVES ›",
       "title": "COMPLETE YOUR INITIATION",
       "bodyIntro": "A one-time fee of <0>₹{{fee}}</0> seals your oath and unlocks every sealed chapter, ritual and reel in the archive.",
-      "simulatedNote": "This is a simulated checkout for a fictional experience — no card details are sent anywhere or stored.",
+      "simulatedNote": "Payments are not live yet — no card details are sent anywhere or stored.",
       "nameOnCard": "NAME ON CARD",
       "namePlaceholder": "As it appears on the card",
       "cardNumber": "CARD NUMBER",
@@ -111,25 +185,25 @@
     "welcomeTo": "WELCOME TO",
     "welcomeBack": "WELCOME BACK, {{name}}",
     "heroSubLine1": "The door has always been open,",
-    "heroSubLine2": "only few know where it is.",
+    "heroSubLine2": "only a few know where it is.",
     "heroTag": "ENTER THE UNKNOWN",
     "ctaMain": "ENTER THE DARK WORLD",
     "railHistory": "HISTORY",
     "railSymbols": "SYMBOLS",
     "railConspiracies": "CONSPIRACIES",
     "railSecrets": "SECRETS",
-    "bottomLeft": "FICTIONAL / ENTERTAINMENT EXPERIENCE",
+    "bottomLeft": "SYMBOLS · MYTH · HISTORY",
     "scrollHint": "SCROLL TO EXPLORE",
     "exploreTitle": "CHOOSE YOUR PATH",
     "exploreSub": "SIX DOORS. EACH ONE LEADS DEEPER.",
     "viewAllChambers": "VIEW ALL CHAMBERS ›",
     "autoplayLabel": "AUTO PLAY · 02 SEC",
     "allVisuals": "ALL VISUALS ›",
-    "countdownDate": "06 NOVEMBER 2026 · 12:00 AM",
+    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM IST",
     "countdownCta": "THE NEW ORDER ›",
     "allVideos": "ALL VIDEOS ›",
     "communityTitle": "ENTER THE COMMUNITY",
-    "communityMatureNote": "18+ recommended for mature content.",
+    "communityMatureNote": "18+ only. Contains mature content.",
     "instagramTitleLine1": "FOLLOW THE BROTHERHOOD",
     "instagramTitleLine2": "ON INSTAGRAM"
   },
@@ -141,7 +215,7 @@
       },
       "clearlyLabelled": {
         "title": "CLEARLY LABELLED",
-        "text": "Videos are tagged fiction, theory or fact so you always know what you are watching."
+        "text": "Videos are tagged story, theory or fact so you always know what you are watching."
       },
       "communityLed": {
         "title": "COMMUNITY LED",
@@ -158,7 +232,7 @@
     "libraryAlt": "The library",
     "faqTitle": "FREQUENTLY ASKED",
     "faqSub": "THE QUESTIONS EVERY INITIATE ASKS FIRST.",
-    "disclaimerText": "Illuminati Brotherhood is a work of fiction created for entertainment. It does not promote, describe or endorse any real ritual, belief system, organisation or ideology. Some imagery is dark and mature in tone; 18+ is recommended. If you are affected by any themes on this site, please step away and reach out to someone you trust."
+    "disclaimerText": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with, and does not promote, describe or endorse, any real ritual, belief system, organisation or ideology. Some imagery is dark and mature in tone; 18+ only. If you are affected by any themes on this site, please step away and reach out to someone you trust."
   },
   "archives": {
     "chambersTitle": "THE SIX CHAMBERS",
@@ -170,7 +244,6 @@
     "bandCtaWatch": "WATCH THE ARCHIVES"
   },
   "archiveDetail": {
-    "fictionalNote": "All records in the Ritual Archive are fictional lore written for this entertainment experience.",
     "seeRituals": "SEE THE RITUALS ›",
     "allChambers": "ALL CHAMBERS"
   },
@@ -180,7 +253,7 @@
     "signUpToUnseal": "SIGN UP TO UNSEAL ›",
     "sealedUserText": "This station is sealed. <0>Seal your oath</0> to read the record.",
     "sealedGuestText": "This station is sealed. <0>Sign in</0> or <1>become an initiate</1> to read the record.",
-    "bandTitle": "STAGED. SYMBOLIC. FICTIONAL.",
+    "bandTitle": "STAGED. SYMBOLIC. STORY-DRIVEN.",
     "bandText": "No real rituals are described or encouraged anywhere in this experience. The stations are narrative devices — scenes in a story you are invited to explore.",
     "watchDocs": "WATCH THE DOCUMENTARIES ›"
   },
@@ -200,19 +273,19 @@
       },
       "zeroHour": {
         "title": "THE NEW ORDER",
-        "text": "Zero hour. The next season of the experience begins. Fictional, scheduled and entirely ours."
+        "text": "Zero hour. The next season begins. Scheduled and entirely ours."
       }
     },
     "whatHappensTitle": "WHAT HAPPENS AT ZERO",
     "whatHappensSub": "FOUR PHASES. ONE DATE.",
-    "roadTitle": "THE ROAD TO 06 · 11 · 2026",
+    "roadTitle": "THE ROAD TO 31 · 12 · 2026",
     "notifyTitle": "BE THE FIRST TO KNOW",
     "alreadyOnList": "You are already on the list, {{name}}. Initiates are notified before anyone else.",
     "viewProfile": "VIEW MY PROFILE ›",
     "notifyPrompt": "Leave an email or become an initiate to receive the signal.",
     "notifyMe": "NOTIFY ME",
     "orBecomeInitiate": "OR BECOME AN INITIATE ›",
-    "notifyToast": "You will be notified when the veil thins (demo)"
+    "notifyToast": "Email alerts are coming soon. Create an account to get the signal first."
   },
   "videos": {
     "nowScreeningTitle": "NOW SCREENING",
@@ -224,27 +297,27 @@
     "emptySearch": "Nothing in the archive matches that search."
   },
   "videoDetail": {
-    "nowPlayingToast": "Now playing: {{title}} (demo)",
+    "nowPlayingToast": "“{{title}}” will be playable soon.",
     "sealedForInitiates": "🔒 SEALED FOR INITIATES",
     "unlocksText": "This episode unlocks once your oath is sealed (a one-time ₹{{fee}} initiation).",
     "availableSignedIn": "This episode is available to signed-in members of the Brotherhood.",
     "signInCta": "SIGN IN ›",
     "becomeInitiatePlain": "BECOME AN INITIATE",
     "watchlist": "＋ WATCHLIST",
-    "watchlistToast": "Saved to your watchlist (demo)",
+    "watchlistToast": "Watchlist is coming soon.",
     "watchlistSignInToast": "Sign in to save episodes",
     "share": "⇪ SHARE",
     "linkCopiedToast": "Link copied",
-    "labelsLegend": "Labels: <0>FICTION</0> = dramatised story · <1>THEORY</1> = popular ideas discussed critically · <2>FACT</2> = documented history.",
+    "labelsLegend": "Labels: <0>STORY</0> = dramatised narrative · <1>THEORY</1> = popular ideas discussed critically · <2>FACT</2> = documented history.",
     "moreFromArchive": "MORE FROM THE ARCHIVE"
   },
   "visuals": {
     "sigilsTitle": "THE SIGILS",
-    "sigilsSub": "TAP A SYMBOL TO REVEAL ITS MEANING IN THE FICTION.",
+    "sigilsSub": "TAP A SYMBOL TO REVEAL ITS MEANING.",
     "galleryTitle": "THE GALLERY",
     "gallerySub": "KEY VISUALS FROM ACROSS THE EXPERIENCE. CLICK TO ENLARGE.",
     "tattoosTitle": "TATTOOS OF THE UNKNOWN",
-    "tattoosSub": "INK FROM THE FICTION'S SYMBOLIC LANGUAGE.",
+    "tattoosSub": "INK FROM THE BROTHERHOOD'S SYMBOLIC LANGUAGE.",
     "sealedUserText": "🔒 Sealed visuals unlock once your oath is sealed. <0>Seal your oath ›</0>",
     "sealedGuestText": "🔒 Sealed visuals are available to signed-in initiates. <0>Become an initiate ›</0>",
     "thirdEyeAboutTitle": "ABOUT THE THIRD EYE",
@@ -315,7 +388,7 @@
     "intro": "{{tattoo}} marks your skin, and {{sigil}} lights your path.",
     "lifePath": "LIFE PATH",
     "download": "DOWNLOAD MY CARD",
-    "footer": "Fictional reading for entertainment only.",
+    "footer": "A symbolic reading, not a prediction.",
     "zodiac": {
       "capricorn": "Capricorn",
       "aquarius": "Aquarius",
@@ -368,25 +441,25 @@
     "post": "POST ›",
     "postLocked": "Only initiates may post. <0>Sign in</0> or <1>register</1> to join the discussion.",
     "justNow": "just now",
-    "postedToast": "Posted to the board (demo — not persisted)",
+    "postedToast": "Posted — visible on this device only for now.",
     "adminNote": "You are viewing the board as a Keeper. Moderation tools live in the <0>admin panel</0>.",
     "emblemTitle": "THE EMBLEM",
     "emblemText": "Every initiate receives the seal at the seventh station. Wear it in your profile.",
     "followInstagram": "FOLLOW ON INSTAGRAM",
-    "matureNote": "18+ recommended for mature content. Be kind — this is a story we tell together."
+    "matureNote": "18+ only. Contains mature content. Be kind — this is a story we tell together."
   },
   "login": {
-    "quote": "“The door has always been open. Only few know where it is.”",
+    "quote": "“The door has always been open. Only a few know where it is.”",
     "kicker": "RETURN TO THE CIRCLE",
     "sub": "Sign in to unseal the archives, the rituals and the community board.",
-    "footerCta": "New to the Brotherhood? <0>Become an initiate ›</0>",
+    "footerCta": "Don't have an account? <0>Register here ›</0>",
     "continueNotice": "Sign in to continue to <0>{{from}}</0>.",
     "opening": "OPENING THE DOOR…",
-    "demoTitle": "▲ ADMIN DEMO ACCESS",
+    "demoTitle": "▲ ADMIN ACCESS (DEV ONLY)",
     "demoCreds": "Email <0>{{email}}</0> · Passphrase <1>{{password}}</1>",
     "fillAdmin": "FILL ADMIN CREDENTIALS",
     "demoGeneratedNote": "Generated for this browser on first visit. Set <0>VITE_ADMIN_PASSWORD</0> to fix it.",
-    "demoManagedNote": "Keeper credentials are managed by the site owner. Set <0>VITE_ADMIN_PASSWORD</0> or clear site data to regenerate the demo account.",
+    "demoManagedNote": "Keeper credentials are managed by the site owner. Set <0>VITE_ADMIN_PASSWORD</0> or clear site data to regenerate the admin account.",
     "welcomeBackKeeper": "Welcome back, Keeper {{name}}.",
     "welcomeBack": "Welcome back, {{name}}."
   },
@@ -394,7 +467,7 @@
     "quote": "“Seek. Question. And never claim the story is anything but a story.”",
     "kicker": "THE SEALED OATH",
     "sub": "Create your initiate account. It takes less than a minute and unlocks the sealed chapters.",
-    "footerCta": "Already an initiate? <0>Sign in ›</0>",
+    "footerCta": "Already have an account? <0>Login here ›</0>",
     "namePlaceholder": "The name the circle will know",
     "confirmLabel": "CONFIRM",
     "passwordPlaceholder": "min. 8 characters",
@@ -406,9 +479,9 @@
       "strong": "STRONG",
       "unbreakable": "UNBREAKABLE"
     },
-    "ageCheck": "I understand this is a <0>fictional, entertainment-only</0> experience and I am 18 or older.",
+    "ageCheck": "I am 18 or older and understand this site is <0>inspired by secret-society symbolism and not affiliated with any real organisation</0>.",
     "errorMismatch": "The two passphrases do not match.",
-    "errorAgree": "You must acknowledge that this is a fictional experience.",
+    "errorAgree": "Please confirm you are 18 or older and accept the above.",
     "sealing": "SEALING THE OATH…",
     "welcomeToast": "Welcome, initiate #{{number}}."
   },
@@ -433,7 +506,21 @@
     "unsealedSubUnpaid": "SEAL YOUR OATH TO UNLOCK THE RECORDS BELOW.",
     "ritualTag": "RITUAL",
     "emptyUnsealed": "Nothing is sealed right now — every record is open to all.",
-    "continueJourney": "CONTINUE THE JOURNEY"
+    "continueJourney": "CONTINUE THE JOURNEY",
+    "docs": {
+      "title": "MEMBERSHIP DOCUMENTS",
+      "sub": "DOWNLOAD YOUR JOINING LETTER AND MEMBERSHIP CARD.",
+      "locked": "Your documents unlock once your membership is sealed.",
+      "letterTitle": "JOINING LETTER",
+      "letterText": "A formal letter confirming your membership. PDF, A4 size.",
+      "cardTitle": "MEMBERSHIP CARD",
+      "cardText": "Front and back of your card. PNG or PDF, credit-card size.",
+      "downloadPdf": "DOWNLOAD PDF",
+      "downloadPng": "DOWNLOAD PNG",
+      "preparing": "PREPARING…",
+      "error": "Couldn't create the document. Please try again.",
+      "note": "Documents are personal and non-transferable. The membership card is not a government-issued ID."
+    }
   },
   "notFound": {
     "kicker": "THE DOOR IS NOT HERE",
@@ -452,37 +539,37 @@
         "kicker": "CEREMONY & OATH",
         "title": "RITUALS",
         "sub": "CANDLE. CIRCLE. SILENCE. THE STAGES OF THE INITIATE.",
-        "intro": "The rites of the Brotherhood are theatre — staged, symbolic and entirely fictional. Read them as story. Follow the seven stations from the first candle to the sealed oath."
+        "intro": "The rites of the Brotherhood are theatre — staged and symbolic. Read them as story. Follow the seven stations from the first candle to the sealed oath."
       },
       "newOrder": {
         "kicker": "THE 666,666 EXPERIENCE",
         "title": "NEW ORDER",
-        "sub": "06 NOVEMBER 2026 · 12:00 AM · THE VEIL THINS.",
-        "intro": "A fictional campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter of the experience. No prophecies. No real-world claims. Just a date on the calendar and a story waiting to unfold."
+        "sub": "31 DECEMBER 2026 · 11:59:59 PM IST · THE VEIL THINS.",
+        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. No prophecies. No real-world claims. Just a date on the calendar and a story waiting to unfold."
       },
       "videos": {
         "kicker": "FORBIDDEN ARCHIVES",
         "title": "VIDEOS",
         "sub": "EXPLORE THE VIDEOS, DOCUMENTARIES AND HIDDEN STORIES.",
-        "intro": "The projector hums in an empty hall. Documentaries, dramatisations and theory breakdowns — each one labelled clearly as fiction, theory or fact so you always know what you are watching."
+        "intro": "The projector hums in an empty hall. Documentaries, dramatisations and theory breakdowns — each one labelled clearly as story, theory or fact so you always know what you are watching."
       },
       "visuals": {
         "kicker": "SYMBOLS OF THE UNKNOWN",
         "title": "VISUALS",
         "sub": "ANCIENT SYMBOLS. MODERN INTERPRETATIONS. ENDLESS QUESTIONS.",
-        "intro": "A gallery of sigils, emblems and imagery from across the Brotherhood universe. Tap any symbol to learn the meaning we assigned it in this fiction."
+        "intro": "A gallery of sigils, emblems and imagery from across the Brotherhood universe. Tap any symbol to learn the meaning we gave it here."
       },
       "community": {
         "kicker": "THE COUNCIL",
         "title": "COMMUNITY",
         "sub": "DISCUSS. SHARE. EXPLORE.",
-        "intro": "The round table is open. Join the channels, meet the other initiates, and help decide where the story goes next. 18+ recommended for mature themes."
+        "intro": "The round table is open. Join the channels, meet the other initiates, and help decide where the story goes next. 18+ only, due to mature themes."
       },
       "about": {
         "kicker": "THE THRESHOLD",
         "title": "ABOUT",
         "sub": "WHO WE ARE. WHAT THIS IS. WHAT IT IS NOT.",
-        "intro": "Illuminati Brotherhood is an immersive, fictional entertainment experience about secret-society mythology, conspiracy culture and historical mystery. Nothing here is a real-world claim."
+        "intro": "Illuminati Brotherhood is an immersive brand and story world about secret-society mythology, conspiracy culture and historical mystery. Nothing here is a claim about any real organisation."
       }
     },
     "cards": {
@@ -491,21 +578,21 @@
         "desc": "A symbol representing knowledge, perception and hidden truth.",
         "cap": "Knowledge · Perception · Truth",
         "era": "Chamber I",
-        "body": "Older than any order that claimed it, the open eye appears wherever humans wanted to say \"we see more than we are told\". In the Brotherhood fiction it marks the first chamber: the moment an initiate stops accepting and starts looking."
+        "body": "Older than any order that claimed it, the open eye appears wherever humans wanted to say \"we see more than we are told\". In the Brotherhood's story it marks the first chamber: the moment an initiate stops accepting and starts looking."
       },
       "the-gathering": {
         "title": "THE GATHERING",
         "desc": "Hooded keepers circle the eternal flame of counsel.",
         "cap": "Ceremony · Brotherhood · Oath",
         "era": "Chamber II",
-        "body": "Thirteen robes, one circle, no faces. The Gathering is the Brotherhood's founding image — a council where rank dissolves and only the flame is above anyone. It is staged, symbolic and entirely fictional."
+        "body": "Thirteen robes, one circle, no faces. The Gathering is the Brotherhood's founding image — a council where rank dissolves and only the flame is above anyone. It is staged and symbolic."
       },
       "the-golden-altar": {
         "title": "THE GOLDEN ALTAR",
         "desc": "Where candlelight meets the triangular gate of awakening.",
         "cap": "Light · Passage · Awakening",
         "era": "Chamber III",
-        "body": "A triangle of light set into the stone. Initiates kneel not to worship, but to look through it. The altar is a lens in the fiction: what you see on the other side is whatever you brought with you."
+        "body": "A triangle of light set into the stone. Initiates kneel not to worship, but to look through it. The altar is a lens in the story: what you see on the other side is whatever you brought with you."
       },
       "the-horned-figure": {
         "title": "THE HORNED FIGURE",
@@ -533,7 +620,7 @@
       "the-third-eye": {
         "name": "THE THIRD EYE",
         "short": "perception beyond sight",
-        "meaning": "The eye that sees what is hidden. In the fiction it is the first mark an initiate receives — the reminder to question everything, including the Brotherhood itself."
+        "meaning": "The eye that sees what is hidden. In the story it is the first mark an initiate receives — the reminder to question everything, including the Brotherhood itself."
       },
       "the-pyramid": {
         "name": "THE PYRAMID",
@@ -550,7 +637,7 @@
       "the-horned-figure": {
         "name": "THE HORNED FIGURE",
         "short": "myth & allegory",
-        "meaning": "Borrowed from centuries of allegory and deliberately reframed as the fear of knowledge. The antagonist of the fiction, and its mirror.",
+        "meaning": "Borrowed from centuries of allegory and deliberately reframed as the fear of knowledge. The antagonist of the story, and its mirror.",
         "about": "The name 'Baphomet' first appears in 1307, in the trial records of the Knights Templar — probably a garbled 'Mahomet' written down under torture. The famous goat-headed figure came about 550 years later: Éliphas Lévi drew it in 1856 as a diagram of balanced opposites, human and beast, male and female — not as a devil. It has been misread ever since."
       },
       "the-black-sun": {
@@ -580,7 +667,7 @@
       "the-owl-of-minerva": {
         "name": "THE OWL OF MINERVA",
         "short": "wisdom in the dark",
-        "meaning": "The one emblem with a documented link: Adam Weishaupt's Bavarian Illuminati (1776) took an owl on an open book, after Minerva, goddess of wisdom. In the fiction it watches over the humblest first grade of every initiate.",
+        "meaning": "The one emblem with a documented link: Adam Weishaupt's Bavarian Illuminati (1776) took an owl on an open book, after Minerva, goddess of wisdom. In the story it watches over the humblest first grade of every initiate.",
         "about": "The philosopher Hegel wrote that the owl of Minerva flies only at dusk — wisdom arrives once the day is done. In 1776 Adam Weishaupt's Illuminati chose the owl as their mark, and their entry rank was called 'Minerval'. The order lasted less than ten years: Bavaria banned it in 1785, and the legend has outlived it by two centuries."
       },
       "the-hexagram": {
@@ -598,19 +685,19 @@
       "the-obelisk": {
         "name": "THE OBELISK",
         "short": "a needle to the sun",
-        "meaning": "Egyptian sun-pillars carried by empires to Rome, Paris and Washington. In the fiction, it marks the spot where an initiate's oath is spoken aloud.",
+        "meaning": "Egyptian sun-pillars carried by empires to Rome, Paris and Washington. In the story, it marks the spot where an initiate's oath is spoken aloud.",
         "about": "Rome has 13 ancient obelisks — more than any other city on Earth. Emperors shipped them across the Mediterranean as trophies. The Luxor obelisk in Paris is over 3,000 years old, and the Washington Monument is an obelisk too. The originals had gilded tips, made to flash in the first light of dawn."
       },
       "the-flower-of-life": {
         "name": "THE FLOWER OF LIFE",
         "short": "geometry of everything",
-        "meaning": "Overlapping circles found on ancient temple walls and in modern sacred-geometry art. In the fiction it is the map of how every question leads to the next.",
+        "meaning": "Overlapping circles found on ancient temple walls and in modern sacred-geometry art. In the story it is the map of how every question leads to the next.",
         "about": "Nineteen circles of equal size, each passing through the centres of its neighbours — a pattern so regular that people keep finding it: at Egypt's temple of Abydos (scholars still debate its age), in temples across Asia, and in Leonardo da Vinci's notebooks. Start with one circle, add six, and you get the 'Seed of Life', which many read as a picture of creation."
       },
       "the-skull": {
         "name": "THE SKULL",
         "short": "memento mori",
-        "meaning": "A reminder of mortality used by monks, painters and college societies alike. In the fiction it is not a threat but a question: what will you do with the time you have?",
+        "meaning": "A reminder of mortality used by monks, painters and college societies alike. In the story it is not a threat but a question: what will you do with the time you have?",
         "about": "Memento mori — 'remember you must die' — is one of the oldest ideas in art. Painters hid skulls in portraits, a Roman crypt is decorated with the bones of thousands of Capuchin friars, and Yale's Skull and Bones society (1832) made it a badge. Behind the shudder is a hopeful note: if time is short, every choice counts."
       },
       "the-sun-and-moon": {
@@ -622,15 +709,15 @@
       "the-pentagram": {
         "name": "THE PENTAGRAM",
         "short": "five points, one line",
-        "meaning": "Drawn in a single unbroken stroke, it was a Pythagorean sign of health and later a symbol of the human body. Pop culture flipped its meaning; the fiction restores it: one perfect closed line.",
+        "meaning": "Drawn in a single unbroken stroke, it was a Pythagorean sign of health and later a symbol of the human body. Pop culture flipped its meaning; the story restores it: one perfect closed line.",
         "about": "Draw it without lifting your pen and every crossing divides the lines in the golden ratio — which is why the Pythagoreans, devoted to number, used it as a secret sign of recognition and named it Hygieia, 'health'. Venus plays along too: over eight years its meetings with the Sun trace a rough five-pointed star across the sky."
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "EYE OF PROVIDENCE", "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the fiction it marks a vow of vigilance — not a claim about any real order." },
-      "silent-owl": { "name": "THE SILENT OWL", "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. A fictional emblem of quiet observation." },
+      "eye-of-providence": { "name": "EYE OF PROVIDENCE", "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the story it marks a vow of vigilance — not a claim about any real order." },
+      "silent-owl": { "name": "THE SILENT OWL", "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. An emblem of quiet observation." },
       "twin-pillars": { "name": "THE TWIN PILLARS", "meaning": "Two columns, light and shadow, always inked as a pair. In the story they represent the balance every initiate must hold between question and answer." },
-      "compass-square": { "name": "COMPASS & SQUARE", "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the fiction it is given only after the Sealed Oath." },
+      "compass-square": { "name": "COMPASS & SQUARE", "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the story it is given only after the Sealed Oath." },
       "checkered-floor": { "name": "THE CHECKERED FLOOR", "meaning": "Light and dark tiles inked as a band around the wrist, a reminder that every choice in the story has its opposite." },
       "ouroboros": { "name": "THE OUROBOROS", "meaning": "A serpent devouring its own tail, marking those who complete a full cycle of the seven stations. Worn only after the Crossing." },
       "thirteen-steps": { "name": "THE THIRTEEN STEPS", "meaning": "A stepped pyramid with a floating capstone, one line for each step. The 'unfinished pyramid' of the US Great Seal has thirteen steps, one per original colony. In the story: thirteen chambers, none ever completed." },
@@ -648,25 +735,25 @@
         "name": "DISCORD",
         "desc": "Live discussion, theory threads and voice rooms.",
         "members": "48,200 initiates",
-        "note": "Discord invite copied (demo)"
+        "note": "Discord invite coming soon."
       },
       "telegram": {
         "name": "TELEGRAM",
         "desc": "Announcements, drops and countdown updates.",
         "members": "21,900 initiates",
-        "note": "Opening Telegram (demo)"
+        "note": "Telegram channel coming soon."
       },
       "instagram": {
         "name": "INSTAGRAM",
         "desc": "Daily visuals, sigils and behind-the-scenes.",
         "members": "132K followers",
-        "note": "Opening Instagram (demo)"
+        "note": "Instagram page coming soon."
       },
       "discussionBoard": {
         "name": "DISCUSSION BOARD",
         "desc": "Long-form essays and archive deep-dives.",
         "members": "9,400 initiates",
-        "note": "Opening Discussion Board (demo)"
+        "note": "The discussion board is just below — scroll down to join."
       }
     },
     "timeline": {
@@ -678,7 +765,7 @@
       "archive": {
         "year": "ARCHIVE",
         "title": "Six chambers",
-        "text": "The Ritual Archive gave the fiction a structure — six relics, six chambers, one journey from perception to oath."
+        "text": "The Ritual Archive gave the story a structure — six relics, six chambers, one journey from perception to oath."
       },
       "council": {
         "year": "COUNCIL",
@@ -688,17 +775,17 @@
       "newOrder": {
         "year": "2026",
         "title": "The New Order",
-        "text": "On 06 November 2026 the counter hits zero and the next chapter of the experience opens. Fictional, scheduled, and entirely ours."
+        "text": "On 31 December 2026 at 11:59:59 PM IST the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
       }
     },
     "faq": {
       "isReal": {
         "q": "Is any of this real?",
-        "a": "No. Illuminati Brotherhood is a fictional entertainment experience. The rituals, council, countdown and lore are invented for storytelling."
+        "a": "The history we cite is real. The Brotherhood itself — its rituals, council, countdown and lore — is our own creation, a story world inspired by secret-society symbolism. We are not affiliated with any real organisation."
       },
       "whoCanJoin": {
         "q": "Who can join the community?",
-        "a": "Anyone who enjoys mystery, cinema and mythology. 18+ is recommended because some visuals are dark and mature in tone."
+        "a": "Anyone who enjoys mystery, cinema and mythology. You must be 18 or older, because some visuals are dark and mature in tone."
       },
       "accountDoes": {
         "q": "What does an account do?",
@@ -706,7 +793,7 @@
       },
       "realWorldClaims": {
         "q": "Do you make real-world claims about people or organisations?",
-        "a": "Never. Any resemblance to real people, groups or events is coincidental or purely referential for the sake of the fiction."
+        "a": "Never. Any resemblance to real people, groups or events is coincidental or purely referential for the sake of the story."
       }
     }
   }

@@ -27,7 +27,6 @@ export default function ArchiveDetail() {
           <div className="detail-body">
             <h2>{card.desc}</h2>
             <p>{card.body}</p>
-            <p className="muted">{t('archiveDetail.fictionalNote')}</p>
             <div className="detail-actions">
               <Link to="/rituals" className="btn-gold">{t('archiveDetail.seeRituals')}</Link>
               <Link to="/archives" className="btn-ghost">{t('archiveDetail.allChambers')}</Link>

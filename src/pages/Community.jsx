@@ -66,7 +66,7 @@ export default function Community() {
             </form>
           ) : (
             <div className="post-locked">
-              <p><Trans i18nKey="community.postLocked" components={{ 0: <Link to="/login" />, 1: <Link to="/register" /> }} /></p>
+              <p><Trans i18nKey="community.postLocked" components={[<Link to="/login" />, <Link to="/register" />]} /></p>
             </div>
           )}
           <ul className="posts">
@@ -80,7 +80,7 @@ export default function Community() {
               </li>
             ))}
           </ul>
-          {isAdmin && <p className="muted"><Trans i18nKey="community.adminNote" components={{ 0: <Link to="/admin" /> }} /></p>}
+          {isAdmin && <p className="muted"><Trans i18nKey="community.adminNote" components={[<Link to="/admin" />]} /></p>}
         </div>
 
         <aside className="community-side">

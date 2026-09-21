@@ -89,7 +89,7 @@ export default function NewOrder() {
                 <Link to="/register" className="sec-link">{t('newOrder.orBecomeInitiate')}</Link>
               </form>
             )}
-            <div className="cd-note"><i>ⓘ</i> {t('common.fictionalMilestoneNote')}</div>
+            <div className="cd-note"><i>ⓘ</i> {t('common.milestoneNote')}</div>
           </div>
         </div>
       </section>

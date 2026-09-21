@@ -51,10 +51,10 @@ export default function Login() {
       kicker={t('login.kicker')}
       title={t('nav.login')}
       sub={t('login.sub')}
-      footer={<Trans i18nKey="login.footerCta" components={{ 0: <Link to="/register" /> }} />}
+      footer={<Trans i18nKey="login.footerCta" components={[<Link to="/register" />]} />}
     >
       {location.state?.from && (
-        <div className="notice"><Trans i18nKey="login.continueNotice" values={{ from: location.state.from }} components={{ 0: <b /> }} /></div>
+        <div className="notice"><Trans i18nKey="login.continueNotice" values={{ from: location.state.from }} components={[<b />]} /></div>
       )}
       <form className="form" onSubmit={submit} noValidate>
         <label>
@@ -72,18 +72,20 @@ export default function Login() {
         <button type="submit" className="btn-gold full" disabled={busy}>{busy ? t('login.opening') : t('common.enterArrow')}</button>
       </form>
 
+      {import.meta.env.DEV && (
       <div className="demo-box">
         <b>{t('login.demoTitle')}</b>
         {demo ? (
           <>
-            <p><Trans i18nKey="login.demoCreds" values={{ email: demo.email, password: demo.password }} components={{ 0: <code />, 1: <code /> }} /></p>
+            <p><Trans i18nKey="login.demoCreds" values={{ email: demo.email, password: demo.password }} components={[<code />, <code />]} /></p>
             <button type="button" className="btn-ghost small" onClick={fillAdmin}>{t('login.fillAdmin')}</button>
-            {!demo.fromEnv && <span className="muted"><Trans i18nKey="login.demoGeneratedNote" components={{ 0: <code /> }} /></span>}
+            {!demo.fromEnv && <span className="muted"><Trans i18nKey="login.demoGeneratedNote" components={[<code />]} /></span>}
           </>
         ) : (
-          <p><Trans i18nKey="login.demoManagedNote" components={{ 0: <code /> }} /></p>
+          <p><Trans i18nKey="login.demoManagedNote" components={[<code />]} /></p>
         )}
       </div>
+      )}
     </AuthShell>
   )
 }

@@ -15,11 +15,11 @@
     "unsealedBadge": "◈ ENTSIEGELT",
     "becomeInitiate": "INITIIERTER WERDEN",
     "joinCommunity": "DER COMMUNITY BEITRETEN",
-    "fictionalExperience": "FIKTIVES / UNTERHALTUNGSERLEBNIS",
-    "fictionalMilestoneNote": "Dies ist ein fiktiver Kampagnen-Meilenstein, kein reales Ereignis.",
+    "tagline": "SYMBOLE · MYTHOS · GESCHICHTE",
+    "milestoneNote": "Ein Kampagnenmeilenstein für unseren nächsten Release – keine Vorhersage und kein reales Ereignis.",
     "sealYourOathCta": "VERSIEGLE DEINEN SCHWUR ›",
     "followNow": "JETZT FOLGEN",
-    "followingToast": "Folgt @illuminati.brotherhood (Demo)",
+    "followingToast": "Instagram-Folgen kommt bald.",
     "instagramPostAlt": "Instagram-Beitrag",
     "viewsSuffix": "Aufrufe",
     "explore": "Entdecken",
@@ -32,7 +32,7 @@
     "keeper": "HÜTER",
     "tags": {
       "all": "ALLE",
-      "fiction": "FIKTION",
+      "fiction": "GESCHICHTE",
       "theory": "THEORIE",
       "fact": "FAKT"
     }
@@ -57,7 +57,7 @@
     "ambientSound": "Umgebungsgeräusch",
     "toggleAmbientSound": "Umgebungsgeräusch umschalten",
     "search": "Suche",
-    "searchToast": "Die Archive durchsuchen (Demo)",
+    "searchToast": "Die Seitensuche kommt bald.",
     "toggleMenu": "Menü öffnen/schließen",
     "language": "Sprache",
     "leftCircleToast": "Du hast den Kreis verlassen. Bis zum nächsten Mal.",
@@ -65,7 +65,7 @@
     "initiateNumber": "INITIIERTER #{{number}}"
   },
   "footer": {
-    "description": "Eine immersive, fiktive Erkundung der Mythologie von Geheimgesellschaften, der Verschwörungskultur und historischer Rätsel.",
+    "description": "Eine immersive Erkundung der Mythologie von Geheimbünden, der Verschwörungskultur und historischer Rätsel.",
     "explore": "ENTDECKEN",
     "account": "KONTO",
     "legal": "RECHTLICHES",
@@ -73,25 +73,99 @@
     "disclaimer": "INHALTSHINWEIS",
     "privacy": "DATENSCHUTZ",
     "terms": "NUTZUNGSBEDINGUNGEN",
-    "guidelines": "COMMUNITY-RICHTLINIEN",
+    "guidelines": "REGELN & ANLEITUNG",
     "contact": "KONTAKT",
-    "copyright": "© 2026 Illuminati Brotherhood. Alle Rechte vorbehalten. Ein fiktives Unterhaltungserlebnis."
+    "copyright": "© 2026 Illuminati Brotherhood. Alle Rechte vorbehalten."
+  },
+  "rules": {
+    "kicker": "VOR DEM EINTRITT LESEN",
+    "title": "REGELN & ANLEITUNG",
+    "sub": "DIE HAUSREGELN FÜR JEDEN BESUCHER UND JEDES MITGLIED.",
+    "rulesTitle": "DIE REGELN",
+    "rulesSub": "GELTEN FÜR ALLE, DIE DIESE SEITE NUTZEN.",
+    "instrTitle": "ANLEITUNG",
+    "instrSub": "SO NUTZT DU DIE SEITE UND DEINE MITGLIEDSCHAFT.",
+    "wellbeing": "Manche Themen können verstörend sein. Wenn dich etwas auf dieser Seite belastet, tritt bitte zurück und sprich mit einer Vertrauensperson.",
+    "acceptedOn": "Auf diesem Gerät am {{date}} akzeptiert.",
+    "acceptRules": "ICH AKZEPTIERE DIE REGELN",
+    "gate": {
+      "title": "BEVOR DU DIE SEITE BETRITTST",
+      "intro": "Bitte lies die Regeln unten. Die vollständigen Regeln & Anleitung kannst du jederzeit im Footer wieder öffnen.",
+      "full": "Vollständige Seite öffnen",
+      "agree": "Ich habe die Regeln & Anleitung gelesen und stimme zu, und ich bestätige, dass ich mindestens 18 bin.",
+      "accept": "AKZEPTIEREN & WEITER",
+      "decline": "ABLEHNEN",
+      "declined": "Du musst die Regeln & Anleitung akzeptieren, um diese Seite zu betreten."
+    },
+    "items": {
+      "age": {
+        "title": "NUR AB 18",
+        "text": "Diese Seite enthält düstere Bilder für Erwachsene. Du musst mindestens 18 Jahre alt sein, um fortzufahren."
+      },
+      "about": {
+        "title": "WAS DIESE SEITE IST",
+        "text": "Illuminati Brotherhood ist eine Marke und Erzählwelt, inspiriert von Geschichte und Symbolik der Geheimbünde. Sie ist mit keiner realen Organisation verbunden, und nichts hier ist eine Behauptung über reale Personen, Gruppen oder Ereignisse."
+      },
+      "conduct": {
+        "title": "RESPEKTVOLLES VERHALTEN",
+        "text": "Keine Hassrede, Belästigung, Drohungen oder Angriffe auf reale Personen, Gemeinschaften, Religionen oder Organisationen. Konten, die dies tun, werden entfernt."
+      },
+      "safety": {
+        "title": "BLEIB SICHER",
+        "text": "Es werden keine echten Rituale beschrieben oder empfohlen. Versuche niemals etwas Schädliches, Illegales oder Gefährliches, das von Inhalten dieser Seite inspiriert ist."
+      },
+      "membership": {
+        "title": "MITGLIEDSCHAFT & DOKUMENTE",
+        "text": "Dein Aufnahmebrief und deine Mitgliedskarte sind persönlich und nicht übertragbar. Die Mitgliedskarte ist kein amtlicher Ausweis und darf nicht als Identitäts- oder Altersnachweis verwendet werden."
+      },
+      "accounts": {
+        "title": "DEIN KONTO",
+        "text": "Mache korrekte Angaben, halte deine Zugangsdaten geheim und nutze ein Konto pro Person."
+      },
+      "purchases": {
+        "title": "KÄUFE",
+        "text": "Mitgliedschaften und Produkte unterliegen den an der Kasse angezeigten Preis-, Liefer- und Rückgabebedingungen."
+      },
+      "ownership": {
+        "title": "EIGENTUM",
+        "text": "Alle Rechte vorbehalten. Texte, Grafiken, Symbole, Videos und das Design dieser Seite dürfen ohne schriftliche Genehmigung nicht kopiert, weiterverkauft oder weiterverbreitet werden. Das Teilen von Links ist willkommen."
+      },
+      "privacy": {
+        "title": "DATENSCHUTZ",
+        "text": "Wir verwenden deine Daten nur, um dein Konto und deine Bestellungen zu verwalten. Wir fragen außerhalb der Kasse niemals nach deinem Passwort oder deinen Kartendaten."
+      },
+      "changes": {
+        "title": "ÄNDERUNGEN & DURCHSETZUNG",
+        "text": "Wir können diese Regeln aktualisieren. Mit der weiteren Nutzung der Seite akzeptierst du die aktuelle Fassung. Verstöße können zur Sperrung führen."
+      }
+    },
+    "steps": {
+      "explore": {
+        "title": "ENTDECKEN",
+        "text": "Stöbere frei in Archiven, Ritualen, Videos und Visuals. Versiegelte Inhalte sind mit einem Schloss markiert."
+      },
+      "join": {
+        "title": "MITGLIED WERDEN",
+        "text": "Erstelle ein Konto und schließe deine Mitgliedschaft ab, um versiegelte Inhalte freizuschalten."
+      },
+      "documents": {
+        "title": "DEINE DOKUMENTE",
+        "text": "Mitglieder können ihren Aufnahmebrief und ihre Mitgliedskarte jederzeit in ihrem Profil herunterladen."
+      },
+      "help": {
+        "title": "HILFE?",
+        "text": "Fragen? Erreiche das Team über die Community-Seite."
+      }
+    }
   },
   "modals": {
-    "disclaimer": {
-      "title": "IN DAS UNBEKANNTE EINTRETEN?",
-      "body": "Du bist dabei, ein <0>fiktives Unterhaltungserlebnis</0> über die Mythologie von Geheimgesellschaften zu erkunden. Keine realen Behauptungen. Keine echten Rituale. Nur Geschichte, Symbol und Kino.",
-      "prompt": "Möchtest du fortfahren?",
-      "enter": "ICH TRETE EIN ›",
-      "stay": "DRAUSSEN BLEIBEN"
-    },
     "initiation": {
       "doneTitle": "SCHWUR VERSIEGELT",
       "doneBody": "Deine Initiation ist abgeschlossen. Das Mitgliedssiegel <0>{{sealId}}</0> wurde registriert. Jedes versiegelte Kapitel des Archivs steht dir nun offen.",
       "enterSealed": "DIE VERSIEGELTEN ARCHIVE BETRETEN ›",
       "title": "SCHLIESSE DEINE INITIATION AB",
       "bodyIntro": "Eine einmalige Gebühr von <0>₹{{fee}}</0> versiegelt deinen Schwur und schaltet jedes versiegelte Kapitel, Ritual und Video im Archiv frei.",
-      "simulatedNote": "Dies ist eine simulierte Kaufabwicklung für ein fiktives Erlebnis — es werden keine Kartendaten gesendet oder gespeichert.",
+      "simulatedNote": "Zahlungen sind noch nicht aktiv – es werden keine Kartendaten gesendet oder gespeichert.",
       "nameOnCard": "NAME AUF DER KARTE",
       "namePlaceholder": "Wie auf der Karte angegeben",
       "cardNumber": "KARTENNUMMER",
@@ -118,18 +192,18 @@
     "railSymbols": "SYMBOLE",
     "railConspiracies": "VERSCHWÖRUNGEN",
     "railSecrets": "GEHEIMNISSE",
-    "bottomLeft": "FIKTIVES / UNTERHALTUNGSERLEBNIS",
+    "bottomLeft": "SYMBOLE · MYTHOS · GESCHICHTE",
     "scrollHint": "SCROLLEN ZUM ENTDECKEN",
     "exploreTitle": "WÄHLE DEINEN WEG",
     "exploreSub": "SECHS TÜREN. JEDE FÜHRT TIEFER.",
     "viewAllChambers": "ALLE KAMMERN ANSEHEN ›",
     "autoplayLabel": "AUTOWIEDERGABE · 02 SEK",
     "allVisuals": "ALLE VISUALS ›",
-    "countdownDate": "06. NOVEMBER 2026 · 00:00 UHR",
+    "countdownDate": "31. DEZEMBER 2026 · 23:59:59 UHR IST",
     "countdownCta": "DIE NEUE ORDNUNG ›",
     "allVideos": "ALLE VIDEOS ›",
     "communityTitle": "TRITT DER COMMUNITY BEI",
-    "communityMatureNote": "Ab 18 Jahren empfohlen (reifer Inhalt).",
+    "communityMatureNote": "Nur ab 18 Jahren (reifer Inhalt).",
     "instagramTitleLine1": "FOLGE DER BRUDERSCHAFT",
     "instagramTitleLine2": "AUF INSTAGRAM"
   },
@@ -141,7 +215,7 @@
       },
       "clearlyLabelled": {
         "title": "KLAR GEKENNZEICHNET",
-        "text": "Videos sind als Fiktion, Theorie oder Fakt gekennzeichnet, damit du immer weißt, was du dir ansiehst."
+        "text": "Videos sind als Geschichte, Theorie oder Fakt gekennzeichnet, damit du immer weißt, was du dir ansiehst."
       },
       "communityLed": {
         "title": "VON DER COMMUNITY GELEITET",
@@ -158,7 +232,7 @@
     "libraryAlt": "Die Bibliothek",
     "faqTitle": "HÄUFIG GESTELLTE FRAGEN",
     "faqSub": "DIE FRAGEN, DIE SICH JEDER INITIIERTE ZUERST STELLT.",
-    "disclaimerText": "Illuminati Brotherhood ist ein fiktives Werk, das zu Unterhaltungszwecken geschaffen wurde. Es fördert, beschreibt oder unterstützt kein reales Ritual, Glaubenssystem, keine Organisation oder Ideologie. Manche Bilder sind düster und reif im Ton; ab 18 Jahren empfohlen. Wenn dich Themen dieser Seite belasten, entferne dich bitte und wende dich an eine Person deines Vertrauens."
+    "disclaimerText": "Illuminati Brotherhood ist eine Marke und Erzählwelt, inspiriert von Geschichte und Symbolik der Geheimbünde. Sie ist mit keinem realen Ritual, Glaubenssystem, keiner Organisation und keiner Ideologie verbunden und bewirbt, beschreibt oder unterstützt sie nicht. Manche Bilder sind düster und von reifem Ton; nur ab 18. Wenn dich Themen dieser Seite belasten, tritt bitte zurück und wende dich an eine Vertrauensperson."
   },
   "archives": {
     "chambersTitle": "DIE SECHS KAMMERN",
@@ -170,7 +244,6 @@
     "bandCtaWatch": "DIE ARCHIVE ANSEHEN"
   },
   "archiveDetail": {
-    "fictionalNote": "Alle Aufzeichnungen im Ritualarchiv sind fiktive Überlieferungen, die für dieses Unterhaltungserlebnis geschrieben wurden.",
     "seeRituals": "DIE RITUALE ANSEHEN ›",
     "allChambers": "ALLE KAMMERN"
   },
@@ -180,7 +253,7 @@
     "signUpToUnseal": "REGISTRIEREN ZUM ENTSIEGELN ›",
     "sealedUserText": "Diese Station ist versiegelt. <0>Versiegle deinen Schwur</0>, um den Bericht zu lesen.",
     "sealedGuestText": "Diese Station ist versiegelt. <0>Melde dich an</0> oder <1>werde Initiierter</1>, um den Bericht zu lesen.",
-    "bandTitle": "INSZENIERT. SYMBOLISCH. FIKTIV.",
+    "bandTitle": "INSZENIERT. SYMBOLISCH. ERZÄHLERISCH.",
     "bandText": "In diesem Erlebnis werden keine echten Rituale beschrieben oder gefördert. Die Stationen sind erzählerische Mittel — Szenen einer Geschichte, die du erkunden darfst.",
     "watchDocs": "DIE DOKUMENTATIONEN ANSEHEN ›"
   },
@@ -200,19 +273,19 @@
       },
       "zeroHour": {
         "title": "DIE NEUE ORDNUNG",
-        "text": "Stunde null. Die nächste Staffel des Erlebnisses beginnt. Fiktiv, geplant und ganz unser eigenes."
+        "text": "Stunde null. Die nächste Staffel beginnt. Geplant und ganz unser."
       }
     },
     "whatHappensTitle": "WAS BEI NULL PASSIERT",
     "whatHappensSub": "VIER PHASEN. EIN DATUM.",
-    "roadTitle": "DER WEG ZUM 06 · 11 · 2026",
+    "roadTitle": "DER WEG ZUM 31 · 12 · 2026",
     "notifyTitle": "SEI DER ERSTE, DER ES ERFÄHRT",
     "alreadyOnList": "Du stehst bereits auf der Liste, {{name}}. Initiierte werden vor allen anderen benachrichtigt.",
     "viewProfile": "MEIN PROFIL ANSEHEN ›",
     "notifyPrompt": "Hinterlasse eine E-Mail oder werde Initiierter, um das Signal zu erhalten.",
     "notifyMe": "BENACHRICHTIGEN",
     "orBecomeInitiate": "ODER INITIIERTER WERDEN ›",
-    "notifyToast": "Du wirst benachrichtigt, wenn sich der Schleier lichtet (Demo)"
+    "notifyToast": "E-Mail-Benachrichtigungen kommen bald. Erstelle ein Konto, um das Signal zuerst zu erhalten."
   },
   "videos": {
     "nowScreeningTitle": "JETZT IM PROGRAMM",
@@ -224,27 +297,27 @@
     "emptySearch": "Nichts im Archiv passt zu dieser Suche."
   },
   "videoDetail": {
-    "nowPlayingToast": "Läuft jetzt: {{title}} (Demo)",
+    "nowPlayingToast": "„{{title}}“ ist bald abspielbar.",
     "sealedForInitiates": "🔒 VERSIEGELT FÜR INITIIERTE",
     "unlocksText": "Diese Folge wird freigeschaltet, sobald dein Schwur versiegelt ist (einmalige Initiation von ₹{{fee}}).",
     "availableSignedIn": "Diese Folge ist für angemeldete Mitglieder der Bruderschaft verfügbar.",
     "signInCta": "ANMELDEN ›",
     "becomeInitiatePlain": "INITIIERTER WERDEN",
     "watchlist": "＋ MERKLISTE",
-    "watchlistToast": "Zur Merkliste hinzugefügt (Demo)",
+    "watchlistToast": "Die Merkliste kommt bald.",
     "watchlistSignInToast": "Melde dich an, um Folgen zu speichern",
     "share": "⇪ TEILEN",
     "linkCopiedToast": "Link kopiert",
-    "labelsLegend": "Kennzeichnungen: <0>FIKTION</0> = dramatisierte Geschichte · <1>THEORIE</1> = populäre Ideen kritisch diskutiert · <2>FAKT</2> = dokumentierte Geschichte.",
+    "labelsLegend": "Kennzeichnungen: <0>GESCHICHTE</0> = dramatisierte Erzählung · <1>THEORIE</1> = populäre Ideen kritisch diskutiert · <2>FAKT</2> = dokumentierte Geschichte.",
     "moreFromArchive": "MEHR AUS DEM ARCHIV"
   },
   "visuals": {
     "sigilsTitle": "DIE SIGILLEN",
-    "sigilsSub": "TIPPE AUF EIN SYMBOL, UM SEINE BEDEUTUNG IN DER FIKTION ZU ENTHÜLLEN.",
+    "sigilsSub": "TIPPE AUF EIN SYMBOL, UM SEINE BEDEUTUNG ZU ENTHÜLLEN.",
     "galleryTitle": "DIE GALERIE",
     "gallerySub": "SCHLÜSSELBILDER AUS DEM GESAMTEN ERLEBNIS. ZUM VERGRÖSSERN KLICKEN.",
     "tattoosTitle": "TÄTOWIERUNGEN DES UNBEKANNTEN",
-    "tattoosSub": "TINTE AUS DER SYMBOLSPRACHE DER FIKTION.",
+    "tattoosSub": "TINTE AUS DER SYMBOLSPRACHE DER BRUDERSCHAFT.",
     "sealedUserText": "🔒 Versiegelte Bilder werden freigeschaltet, sobald dein Schwur versiegelt ist. <0>Versiegle deinen Schwur ›</0>",
     "sealedGuestText": "🔒 Versiegelte Bilder sind für angemeldete Initiierte verfügbar. <0>Initiierter werden ›</0>",
     "thirdEyeAboutTitle": "ÜBER DAS DRITTE AUGE",
@@ -315,7 +388,7 @@
     "intro": "{{tattoo}} zeichnet deine Haut, und {{sigil}} erhellt deinen Weg.",
     "lifePath": "LEBENSPFAD",
     "download": "MEINE KARTE HERUNTERLADEN",
-    "footer": "Fiktive Deutung, nur zur Unterhaltung.",
+    "footer": "Eine symbolische Deutung, keine Vorhersage.",
     "zodiac": {
       "capricorn": "Steinbock",
       "aquarius": "Wassermann",
@@ -368,25 +441,25 @@
     "post": "VERÖFFENTLICHEN ›",
     "postLocked": "Nur Initiierte dürfen posten. <0>Melde dich an</0> oder <1>registriere dich</1>, um an der Diskussion teilzunehmen.",
     "justNow": "gerade eben",
-    "postedToast": "Im Forum veröffentlicht (Demo — nicht gespeichert)",
+    "postedToast": "Veröffentlicht – vorerst nur auf diesem Gerät sichtbar.",
     "adminNote": "Du siehst das Forum als Hüter. Moderationswerkzeuge findest du im <0>Admin-Bereich</0>.",
     "emblemTitle": "DAS EMBLEM",
     "emblemText": "Jeder Initiierte erhält das Siegel an der siebten Station. Trage es in deinem Profil.",
     "followInstagram": "AUF INSTAGRAM FOLGEN",
-    "matureNote": "Ab 18 Jahren empfohlen (reifer Inhalt). Sei freundlich — das ist eine Geschichte, die wir gemeinsam erzählen."
+    "matureNote": "Nur ab 18 Jahren (reifer Inhalt). Sei freundlich — das ist eine Geschichte, die wir gemeinsam erzählen."
   },
   "login": {
     "quote": "„Die Tür stand schon immer offen. Nur wenige wissen, wo sie ist.“",
     "kicker": "ZURÜCK ZUM KREIS",
     "sub": "Melde dich an, um die Archive, die Rituale und das Community-Forum zu entsiegeln.",
-    "footerCta": "Neu in der Bruderschaft? <0>Werde Initiierter ›</0>",
+    "footerCta": "Noch kein Konto? <0>Hier registrieren ›</0>",
     "continueNotice": "Melde dich an, um zu <0>{{from}}</0> fortzufahren.",
     "opening": "TÜR WIRD GEÖFFNET…",
-    "demoTitle": "▲ ADMIN-DEMOZUGANG",
+    "demoTitle": "▲ ADMIN-ZUGANG (NUR ENTWICKLUNG)",
     "demoCreds": "E-Mail <0>{{email}}</0> · Passphrase <1>{{password}}</1>",
     "fillAdmin": "ADMIN-ANMELDEDATEN AUSFÜLLEN",
     "demoGeneratedNote": "Beim ersten Besuch für diesen Browser generiert. Setze <0>VITE_ADMIN_PASSWORD</0>, um es festzulegen.",
-    "demoManagedNote": "Hüter-Anmeldedaten werden vom Seitenbetreiber verwaltet. Setze <0>VITE_ADMIN_PASSWORD</0> oder lösche die Seitendaten, um das Demokonto neu zu erzeugen.",
+    "demoManagedNote": "Hüter-Anmeldedaten werden vom Seitenbetreiber verwaltet. Setze <0>VITE_ADMIN_PASSWORD</0> oder lösche die Seitendaten, um das Administratorkonto neu zu erzeugen.",
     "welcomeBackKeeper": "Willkommen zurück, Hüter {{name}}.",
     "welcomeBack": "Willkommen zurück, {{name}}."
   },
@@ -394,7 +467,7 @@
     "quote": "„Suche. Hinterfrage. Und behaupte nie, dass die Geschichte mehr als eine Geschichte ist.“",
     "kicker": "DER VERSIEGELTE SCHWUR",
     "sub": "Erstelle dein Initiierten-Konto. Es dauert weniger als eine Minute und schaltet die versiegelten Kapitel frei.",
-    "footerCta": "Schon Initiierter? <0>Anmelden ›</0>",
+    "footerCta": "Schon ein Konto? <0>Hier anmelden ›</0>",
     "namePlaceholder": "Der Name, unter dem dich der Kreis kennt",
     "confirmLabel": "BESTÄTIGEN",
     "passwordPlaceholder": "mind. 8 Zeichen",
@@ -406,9 +479,9 @@
       "strong": "STARK",
       "unbreakable": "UNKNACKBAR"
     },
-    "ageCheck": "Ich verstehe, dass dies ein <0>fiktives Unterhaltungserlebnis</0> ist, und ich bin 18 Jahre oder älter.",
+    "ageCheck": "Ich bin mindestens 18 und verstehe, dass diese Seite <0>von der Symbolik der Geheimbünde inspiriert und mit keiner realen Organisation verbunden ist</0>.",
     "errorMismatch": "Die beiden Passphrasen stimmen nicht überein.",
-    "errorAgree": "Du musst bestätigen, dass dies ein fiktives Erlebnis ist.",
+    "errorAgree": "Bitte bestätige, dass du mindestens 18 bist, und stimme dem Obigen zu.",
     "sealing": "SCHWUR WIRD VERSIEGELT…",
     "welcomeToast": "Willkommen, Initiierter #{{number}}."
   },
@@ -433,7 +506,21 @@
     "unsealedSubUnpaid": "VERSIEGLE DEINEN SCHWUR, UM DIE AUFZEICHNUNGEN UNTEN FREIZUSCHALTEN.",
     "ritualTag": "RITUAL",
     "emptyUnsealed": "Gerade ist nichts versiegelt — jede Aufzeichnung ist für alle offen.",
-    "continueJourney": "DIE REISE FORTSETZEN"
+    "continueJourney": "DIE REISE FORTSETZEN",
+    "docs": {
+      "title": "MITGLIEDSDOKUMENTE",
+      "sub": "LADE DEINEN AUFNAHMEBRIEF UND DEINE MITGLIEDSKARTE HERUNTER.",
+      "locked": "Deine Dokumente werden freigeschaltet, sobald deine Mitgliedschaft versiegelt ist.",
+      "letterTitle": "AUFNAHMEBRIEF",
+      "letterText": "Ein förmliches Schreiben, das deine Mitgliedschaft bestätigt. PDF, A4.",
+      "cardTitle": "MITGLIEDSKARTE",
+      "cardText": "Vorder- und Rückseite deiner Karte. PNG oder PDF, Scheckkartenformat.",
+      "downloadPdf": "PDF HERUNTERLADEN",
+      "downloadPng": "PNG HERUNTERLADEN",
+      "preparing": "WIRD VORBEREITET…",
+      "error": "Das Dokument konnte nicht erstellt werden. Bitte versuche es erneut.",
+      "note": "Die Dokumente sind persönlich und nicht übertragbar. Die Mitgliedskarte ist kein amtlicher Ausweis."
+    }
   },
   "notFound": {
     "kicker": "DIE TÜR IST NICHT HIER",
@@ -452,37 +539,37 @@
         "kicker": "ZEREMONIE & SCHWUR",
         "title": "RITUALE",
         "sub": "KERZE. KREIS. STILLE. DIE STUFEN DES INITIIERTEN.",
-        "intro": "Die Riten der Bruderschaft sind Theater — inszeniert, symbolisch und vollständig fiktiv. Lies sie als Geschichte. Folge den sieben Stationen von der ersten Kerze bis zum versiegelten Schwur."
+        "intro": "Die Riten der Bruderschaft sind Theater – inszeniert und symbolisch. Lies sie als Geschichte. Folge den sieben Stationen von der ersten Kerze bis zum versiegelten Schwur."
       },
       "newOrder": {
         "kicker": "DAS 666.666-ERLEBNIS",
         "title": "NEUE ORDNUNG",
-        "sub": "06. NOVEMBER 2026 · 00:00 UHR · DER SCHLEIER LICHTET SICH.",
-        "intro": "Ein fiktiver Kampagnen-Meilenstein: Wenn der Zähler null erreicht, eröffnet die Bruderschaft das nächste Kapitel des Erlebnisses. Keine Prophezeiungen. Keine realen Behauptungen. Nur ein Datum im Kalender und eine Geschichte, die sich entfalten will."
+        "sub": "31. DEZEMBER 2026 · 23:59:59 UHR IST · DER SCHLEIER LICHTET SICH.",
+        "intro": "Ein Kampagnenmeilenstein: Wenn der Zähler null erreicht, öffnet die Bruderschaft das nächste Kapitel. Keine Prophezeiungen. Keine Aussagen über die reale Welt. Nur ein Datum im Kalender und eine Geschichte, die sich entfalten will."
       },
       "videos": {
         "kicker": "VERBOTENE ARCHIVE",
         "title": "VIDEOS",
         "sub": "ENTDECKE DIE VIDEOS, DOKUMENTATIONEN UND VERBORGENEN GESCHICHTEN.",
-        "intro": "Der Projektor summt in einem leeren Saal. Dokumentationen, Dramatisierungen und Theorie-Analysen — jede klar als Fiktion, Theorie oder Fakt gekennzeichnet, damit du immer weißt, was du dir ansiehst."
+        "intro": "Der Projektor summt in einem leeren Saal. Dokumentationen, Dramatisierungen und Theorie-Analysen — jede klar als Geschichte, Theorie oder Fakt gekennzeichnet, damit du immer weißt, was du dir ansiehst."
       },
       "visuals": {
         "kicker": "SYMBOLE DES UNBEKANNTEN",
         "title": "VISUALS",
         "sub": "ALTE SYMBOLE. MODERNE DEUTUNGEN. ENDLOSE FRAGEN.",
-        "intro": "Eine Galerie aus Sigillen, Emblemen und Bildern aus dem gesamten Universum der Bruderschaft. Tippe auf ein Symbol, um die Bedeutung zu erfahren, die wir ihm in dieser Fiktion gegeben haben."
+        "intro": "Eine Galerie aus Sigillen, Emblemen und Bildern aus dem gesamten Universum der Bruderschaft. Tippe auf ein Symbol, um die Bedeutung zu erfahren, die wir ihm hier gegeben haben."
       },
       "community": {
         "kicker": "DER RAT",
         "title": "COMMUNITY",
         "sub": "DISKUTIEREN. TEILEN. ENTDECKEN.",
-        "intro": "Der Runde Tisch ist offen. Tritt den Kanälen bei, triff andere Initiierte und hilf mit, zu entscheiden, wohin die Geschichte als Nächstes geht. Ab 18 Jahren wegen reifer Themen empfohlen."
+        "intro": "Der Runde Tisch ist offen. Tritt den Kanälen bei, triff andere Initiierte und hilf mit, zu entscheiden, wohin die Geschichte als Nächstes geht. Nur ab 18 Jahren wegen reifer Themen."
       },
       "about": {
         "kicker": "DIE SCHWELLE",
         "title": "ÜBER UNS",
         "sub": "WER WIR SIND. WAS DAS IST. WAS ES NICHT IST.",
-        "intro": "Illuminati Brotherhood ist ein immersives, fiktives Unterhaltungserlebnis über die Mythologie von Geheimgesellschaften, die Verschwörungskultur und historische Rätsel. Nichts hier ist eine reale Behauptung."
+        "intro": "Illuminati Brotherhood ist eine immersive Marke und Erzählwelt rund um die Mythologie der Geheimbünde, Verschwörungskultur und historische Rätsel. Nichts hier ist eine Behauptung über eine reale Organisation."
       }
     },
     "cards": {
@@ -491,21 +578,21 @@
         "desc": "Ein Symbol für Wissen, Wahrnehmung und verborgene Wahrheit.",
         "cap": "Wissen · Wahrnehmung · Wahrheit",
         "era": "Kammer I",
-        "body": "Älter als jeder Orden, der es je für sich beanspruchte, erscheint das geöffnete Auge überall dort, wo Menschen sagen wollten: „Wir sehen mehr, als man uns erzählt.“ In der Fiktion der Bruderschaft markiert es die erste Kammer: den Moment, in dem ein Initiierter aufhört zu akzeptieren und anfängt zu schauen."
+        "body": "Älter als jeder Orden, der es je für sich beanspruchte, erscheint das geöffnete Auge überall dort, wo Menschen sagen wollten: „Wir sehen mehr, als man uns erzählt.“ In der Geschichte der Bruderschaft markiert es die erste Kammer: den Moment, in dem ein Initiierter aufhört zu akzeptieren und anfängt zu schauen."
       },
       "the-gathering": {
         "title": "DIE VERSAMMLUNG",
         "desc": "Verhüllte Hüter umkreisen die ewige Flamme des Rates.",
         "cap": "Zeremonie · Bruderschaft · Schwur",
         "era": "Kammer II",
-        "body": "Dreizehn Roben, ein Kreis, keine Gesichter. Die Versammlung ist das Gründungsbild der Bruderschaft — ein Rat, in dem Rang bedeutungslos wird und nur die Flamme über allen steht. Sie ist inszeniert, symbolisch und vollständig fiktiv."
+        "body": "Dreizehn Roben, ein Kreis, keine Gesichter. Die Versammlung ist das Gründungsbild der Bruderschaft — ein Rat, in dem Rang bedeutungslos wird und nur die Flamme über allen steht. Sie ist inszeniert und symbolisch."
       },
       "the-golden-altar": {
         "title": "DER GOLDENE ALTAR",
         "desc": "Wo Kerzenlicht auf das dreieckige Tor des Erwachens trifft.",
         "cap": "Licht · Durchgang · Erwachen",
         "era": "Kammer III",
-        "body": "Ein Lichtdreieck, eingelassen in Stein. Initiierte knien nicht zur Anbetung, sondern um hindurchzublicken. Der Altar ist in der Fiktion eine Linse: Was man auf der anderen Seite sieht, ist das, was man selbst mitgebracht hat."
+        "body": "Ein Lichtdreieck, eingelassen in Stein. Initiierte knien nicht zur Anbetung, sondern um hindurchzublicken. Der Altar ist in der Geschichte eine Linse: Was man auf der anderen Seite sieht, ist das, was man selbst mitgebracht hat."
       },
       "the-horned-figure": {
         "title": "DIE GEHÖRNTE GESTALT",
@@ -533,7 +620,7 @@
       "the-third-eye": {
         "name": "DAS DRITTE AUGE",
         "short": "Wahrnehmung jenseits des Sehens",
-        "meaning": "Das Auge, das sieht, was verborgen ist. In der Fiktion ist es das erste Zeichen, das ein Initiierter erhält — die Erinnerung, alles zu hinterfragen, auch die Bruderschaft selbst."
+        "meaning": "Das Auge, das sieht, was verborgen ist. In der Geschichte ist es das erste Zeichen, das ein Initiierter erhält — die Erinnerung, alles zu hinterfragen, auch die Bruderschaft selbst."
       },
       "the-pyramid": {
         "name": "DIE PYRAMIDE",
@@ -550,7 +637,7 @@
       "the-horned-figure": {
         "name": "DIE GEHÖRNTE GESTALT",
         "short": "Mythos & Allegorie",
-        "meaning": "Aus Jahrhunderten der Allegorie entlehnt und bewusst als die Angst vor dem Wissen neu gedeutet. Der Antagonist der Fiktion, und sein Spiegel.",
+        "meaning": "Aus Jahrhunderten der Allegorie entlehnt und bewusst als die Angst vor dem Wissen neu gedeutet. Der Antagonist der Geschichte, und sein Spiegel.",
         "about": "Der Name „Baphomet“ taucht erstmals 1307 in den Prozessakten gegen die Templer auf – wohl ein unter Folter verballhorntes „Mahomet“. Die berühmte ziegenköpfige Gestalt kam rund 550 Jahre später: Éliphas Lévi zeichnete sie 1856 als Schaubild ausgeglichener Gegensätze – Mensch und Tier, männlich und weiblich –, nicht als Teufel. Seither wird sie missverstanden."
       },
       "the-black-sun": {
@@ -580,7 +667,7 @@
       "the-owl-of-minerva": {
         "name": "DIE EULE DER MINERVA",
         "short": "Weisheit im Dunkeln",
-        "meaning": "Das einzige Emblem mit belegtem Bezug: Adam Weishaupts bayerische Illuminaten (1776) wählten eine Eule auf einem aufgeschlagenen Buch, nach Minerva, der Göttin der Weisheit. In der Fiktion wacht sie über den ersten, bescheidensten Grad jedes Initiierten.",
+        "meaning": "Das einzige Emblem mit belegtem Bezug: Adam Weishaupts bayerische Illuminaten (1776) wählten eine Eule auf einem aufgeschlagenen Buch, nach Minerva, der Göttin der Weisheit. In der Geschichte wacht sie über den ersten, bescheidensten Grad jedes Initiierten.",
         "about": "Der Philosoph Hegel schrieb, die Eule der Minerva beginne ihren Flug erst in der Dämmerung – Weisheit kommt, wenn der Tag vorbei ist. 1776 wählten Adam Weishaupts Illuminaten die Eule zu ihrem Zeichen, und ihr Einstiegsgrad hieß „Minerval“. Der Orden hielt keine zehn Jahre: Bayern verbot ihn 1785, und die Legende überlebte ihn um zwei Jahrhunderte."
       },
       "the-hexagram": {
@@ -598,19 +685,19 @@
       "the-obelisk": {
         "name": "DER OBELISK",
         "short": "eine Nadel zur Sonne",
-        "meaning": "Ägyptische Sonnensäulen, von Weltreichen nach Rom, Paris und Washington gebracht. In der Fiktion markiert er den Ort, an dem der Initiierte seinen Schwur laut spricht.",
+        "meaning": "Ägyptische Sonnensäulen, von Weltreichen nach Rom, Paris und Washington gebracht. In der Geschichte markiert er den Ort, an dem der Initiierte seinen Schwur laut spricht.",
         "about": "Rom hat 13 antike Obelisken – mehr als jede andere Stadt der Welt. Kaiser ließen sie als Trophäen über das Mittelmeer schaffen. Der Obelisk von Luxor in Paris ist über 3.000 Jahre alt, und auch das Washington Monument ist ein Obelisk. Die Originale hatten vergoldete Spitzen, gemacht, um im ersten Morgenlicht aufzublitzen."
       },
       "the-flower-of-life": {
         "name": "DIE BLUME DES LEBENS",
         "short": "Geometrie von allem",
-        "meaning": "Überlagerte Kreise an alten Tempelwänden und in moderner Kunst der heiligen Geometrie. In der Fiktion ist sie die Karte, wie jede Frage zur nächsten führt.",
+        "meaning": "Überlagerte Kreise an alten Tempelwänden und in moderner Kunst der heiligen Geometrie. In der Geschichte ist sie die Karte, wie jede Frage zur nächsten führt.",
         "about": "Neunzehn gleich große Kreise, jeder durch die Mittelpunkte seiner Nachbarn – ein so regelmäßiges Muster, dass man es immer wieder findet: im ägyptischen Tempel von Abydos (Fachleute streiten noch über sein Alter), in Tempeln Asiens und in den Notizbüchern Leonardo da Vincis. Ein Kreis plus sechs ergibt den „Samen des Lebens“, den viele als Bild der Schöpfung lesen."
       },
       "the-skull": {
         "name": "DER SCHÄDEL",
         "short": "Memento mori",
-        "meaning": "Eine Erinnerung an die Sterblichkeit, genutzt von Mönchen, Malern und Studentenverbindungen. In der Fiktion ist er keine Drohung, sondern eine Frage: Was wirst du mit der Zeit anfangen, die du hast?",
+        "meaning": "Eine Erinnerung an die Sterblichkeit, genutzt von Mönchen, Malern und Studentenverbindungen. In der Geschichte ist er keine Drohung, sondern eine Frage: Was wirst du mit der Zeit anfangen, die du hast?",
         "about": "Memento mori – „Bedenke, dass du sterben musst“ – ist eine der ältesten Ideen der Kunst. Maler versteckten Totenköpfe in Porträten, eine römische Krypta ist mit den Gebeinen Tausender Kapuzinermönche geschmückt, und die Yale-Gesellschaft Skull and Bones (1832) machte ihn zu ihrem Abzeichen. Hinter dem Schauder liegt ein hoffnungsvoller Ton: Wenn die Zeit knapp ist, zählt jede Entscheidung."
       },
       "the-sun-and-moon": {
@@ -622,15 +709,15 @@
       "the-pentagram": {
         "name": "DAS PENTAGRAMM",
         "short": "fünf Spitzen, eine Linie",
-        "meaning": "In einem einzigen Zug gezeichnet, war es ein pythagoreisches Zeichen der Gesundheit und später ein Symbol des menschlichen Körpers. Die Popkultur hat seinen Sinn umgekehrt; die Fiktion stellt ihn wieder her: eine perfekte, geschlossene Linie.",
+        "meaning": "In einem einzigen Zug gezeichnet, war es ein pythagoreisches Zeichen der Gesundheit und später ein Symbol des menschlichen Körpers. Die Popkultur hat seinen Sinn umgekehrt; die Geschichte stellt ihn wieder her: eine perfekte, geschlossene Linie.",
         "about": "Zeichne es, ohne abzusetzen, und jede Kreuzung teilt die Linien im Goldenen Schnitt – deshalb nutzten die Pythagoreer, Verehrer der Zahl, es als geheimes Erkennungszeichen und nannten es Hygieia, „Gesundheit“. Auch die Venus spielt mit: In acht Jahren zeichnen ihre Begegnungen mit der Sonne einen ungefähren fünfzackigen Stern an den Himmel."
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "AUGE DER VORSEHUNG", "meaning": "Ein strahlendes Auge in einem Dreieck, das jedem Hüter am Rat auf das Handgelenk tätowiert wird. In der Fiktion markiert es ein Gelübde der Wachsamkeit — keine Behauptung über einen realen Orden." },
-      "silent-owl": { "name": "DIE STILLE EULE", "meaning": "Zwischen den Schulterblättern der ältesten Mitglieder der Geschichte getragen, markiert die Eule jene, die mehr zuhören als sprechen. Ein fiktives Emblem stiller Beobachtung." },
+      "eye-of-providence": { "name": "AUGE DER VORSEHUNG", "meaning": "Ein strahlendes Auge in einem Dreieck, das jedem Hüter am Rat auf das Handgelenk tätowiert wird. In der Geschichte markiert es ein Gelübde der Wachsamkeit — keine Behauptung über einen realen Orden." },
+      "silent-owl": { "name": "DIE STILLE EULE", "meaning": "Zwischen den Schulterblättern der ältesten Mitglieder der Geschichte getragen, markiert die Eule jene, die mehr zuhören als sprechen. Ein Emblem stiller Beobachtung." },
       "twin-pillars": { "name": "DIE ZWILLINGSSÄULEN", "meaning": "Zwei Säulen, Licht und Schatten, immer als Paar tätowiert. In der Geschichte stehen sie für das Gleichgewicht, das jeder Initiierte zwischen Frage und Antwort halten muss." },
-      "compass-square": { "name": "ZIRKEL & WINKELMASS", "meaning": "Ein Messwerkzeug, das zum Emblem wurde — der Zirkel für die Vision, das Winkelmaß für das Verhalten. In der Fiktion wird es erst nach dem versiegelten Schwur verliehen." },
+      "compass-square": { "name": "ZIRKEL & WINKELMASS", "meaning": "Ein Messwerkzeug, das zum Emblem wurde — der Zirkel für die Vision, das Winkelmaß für das Verhalten. In der Geschichte wird es erst nach dem versiegelten Schwur verliehen." },
       "checkered-floor": { "name": "DER SCHACHBRETTBODEN", "meaning": "Helle und dunkle Fliesen, tätowiert als Band um das Handgelenk — eine Erinnerung daran, dass jede Entscheidung in der Geschichte ihr Gegenteil hat." },
       "ouroboros": { "name": "DER OUROBOROS", "meaning": "Eine Schlange, die sich in den eigenen Schwanz beißt, markiert jene, die einen vollen Zyklus der sieben Stationen abgeschlossen haben. Nur nach der Überquerung getragen." },
       "thirteen-steps": { "name": "DIE DREIZEHN STUFEN", "meaning": "Eine Stufenpyramide mit schwebendem Schlussstein, eine Linie pro Stufe. Die „unvollendete Pyramide“ auf dem Großen Siegel der USA hat dreizehn Stufen, eine für jede ursprüngliche Kolonie. In der Geschichte: dreizehn Kammern, keine je vollendet." },
@@ -648,25 +735,25 @@
         "name": "DISCORD",
         "desc": "Live-Diskussionen, Theorie-Threads und Sprachräume.",
         "members": "48.200 Initiierte",
-        "note": "Discord-Einladung kopiert (Demo)"
+        "note": "Die Discord-Einladung kommt bald."
       },
       "telegram": {
         "name": "TELEGRAM",
         "desc": "Ankündigungen, Neuigkeiten und Countdown-Updates.",
         "members": "21.900 Initiierte",
-        "note": "Telegram wird geöffnet (Demo)"
+        "note": "Der Telegram-Kanal kommt bald."
       },
       "instagram": {
         "name": "INSTAGRAM",
         "desc": "Tägliche Visuals, Sigillen und Blicke hinter die Kulissen.",
         "members": "132.000 Follower",
-        "note": "Instagram wird geöffnet (Demo)"
+        "note": "Die Instagram-Seite kommt bald."
       },
       "discussionBoard": {
         "name": "DISKUSSIONSFORUM",
         "desc": "Ausführliche Essays und tiefgehende Archiv-Analysen.",
         "members": "9.400 Initiierte",
-        "note": "Diskussionsforum wird geöffnet (Demo)"
+        "note": "Das Diskussionsforum ist direkt darunter – scrolle nach unten, um mitzumachen."
       }
     },
     "timeline": {
@@ -678,7 +765,7 @@
       "archive": {
         "year": "ARCHIV",
         "title": "Sechs Kammern",
-        "text": "Das Ritualarchiv gab der Fiktion eine Struktur — sechs Relikte, sechs Kammern, eine Reise von der Wahrnehmung zum Schwur."
+        "text": "Das Ritualarchiv gab der Geschichte eine Struktur — sechs Relikte, sechs Kammern, eine Reise von der Wahrnehmung zum Schwur."
       },
       "council": {
         "year": "RAT",
@@ -688,17 +775,17 @@
       "newOrder": {
         "year": "2026",
         "title": "Die Neue Ordnung",
-        "text": "Am 06. November 2026 erreicht der Zähler null, und das nächste Kapitel des Erlebnisses beginnt. Fiktiv, geplant und ganz unser eigenes."
+        "text": "Am 31. Dezember 2026 um 23:59:59 Uhr IST erreicht der Zähler null und das nächste Kapitel beginnt. Geplant und ganz unser."
       }
     },
     "faq": {
       "isReal": {
         "q": "Ist irgendetwas davon real?",
-        "a": "Nein. Illuminati Brotherhood ist ein fiktives Unterhaltungserlebnis. Die Rituale, der Rat, der Countdown und die Überlieferung wurden zum Geschichtenerzählen erfunden."
+        "a": "Die Geschichte, die wir zitieren, ist real. Die Bruderschaft selbst – ihre Rituale, ihr Rat, der Countdown und ihre Mythologie – ist unsere eigene Schöpfung, eine von der Symbolik der Geheimbünde inspirierte Erzählwelt. Wir sind mit keiner realen Organisation verbunden."
       },
       "whoCanJoin": {
         "q": "Wer kann der Community beitreten?",
-        "a": "Jeder, der Mysterien, Kino und Mythologie mag. Ab 18 Jahren empfohlen, da manche Bilder düster und reif im Ton sind."
+        "a": "Jeder, der Mysterien, Kino und Mythologie mag. Nur ab 18 Jahren, da manche Bilder düster und reif im Ton sind."
       },
       "accountDoes": {
         "q": "Was macht ein Konto?",
@@ -706,7 +793,7 @@
       },
       "realWorldClaims": {
         "q": "Stellt ihr reale Behauptungen über Personen oder Organisationen auf?",
-        "a": "Niemals. Jede Ähnlichkeit mit realen Personen, Gruppen oder Ereignissen ist zufällig oder rein referenziell im Dienst der Fiktion."
+        "a": "Niemals. Jede Ähnlichkeit mit realen Personen, Gruppen oder Ereignissen ist zufällig oder rein referenziell, der Geschichte zuliebe."
       }
     }
   }

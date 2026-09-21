@@ -171,9 +171,9 @@ export default function Visuals() {
         </div>
         {GALLERY.some((g) => g.category === 'paid') && (
           user ? (
-            <p className="muted"><Trans i18nKey="visuals.sealedUserText" components={{ 0: <button type="button" className="link-btn" onClick={() => setShowInitiation(true)} /> }} /></p>
+            <p className="muted"><Trans i18nKey="visuals.sealedUserText" components={[<button type="button" className="link-btn" onClick={() => setShowInitiation(true)} />]} /></p>
           ) : (
-            <p className="muted"><Trans i18nKey="visuals.sealedGuestText" components={{ 0: <Link to="/register" /> }} /></p>
+            <p className="muted"><Trans i18nKey="visuals.sealedGuestText" components={[<Link to="/register" />]} /></p>
           )
         )}
       </section>

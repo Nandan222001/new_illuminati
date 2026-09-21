@@ -9,6 +9,7 @@ import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
+import { downloadCardPdf, downloadCardPng, downloadJoiningLetterPdf } from '../utils/membershipDocs'
 
 export default function Profile() {
   const { user, isAdmin, logout, updateProfile } = useAuth()
@@ -19,6 +20,7 @@ export default function Profile() {
   const [name, setName] = useState(user.name)
   const [error, setError] = useState('')
   const [showInitiation, setShowInitiation] = useState(false)
+  const [docBusy, setDocBusy] = useState('')
   const { t } = useTranslation()
 
   const sealedVideos = videos.filter((v) => v.category === 'paid')
@@ -33,6 +35,17 @@ export default function Profile() {
       toast(t('profile.updatedToast'))
     } catch (err) {
       setError(err.message)
+    }
+  }
+
+  const runDownload = async (kind, fn) => {
+    setDocBusy(kind)
+    try {
+      await fn(user)
+    } catch {
+      toast(t('profile.docs.error'))
+    } finally {
+      setDocBusy('')
     }
   }
 
@@ -111,6 +124,45 @@ export default function Profile() {
             <Link to="/community">◎ {t('nav.community')}</Link>
           </div>
         </div>
+      </section>
+
+      <section className="page-section" id="documents">
+        <SectionHead title={t('profile.docs.title')} sub={t('profile.docs.sub')} />
+        <div className="docs-grid">
+          <article className="doc-card">
+            <div className="doc-thumb doc-letter" aria-hidden="true"><i /><i /><i /><i /></div>
+            <div className="doc-body">
+              <h4>{t('profile.docs.letterTitle')}</h4>
+              <p>{t('profile.docs.letterText')}</p>
+              <div className="doc-actions">
+                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('letter', downloadJoiningLetterPdf)}>
+                  {docBusy === 'letter' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
+                </button>
+              </div>
+            </div>
+          </article>
+          <article className="doc-card">
+            <div className="doc-thumb doc-card-thumb" aria-hidden="true"><i /><b /></div>
+            <div className="doc-body">
+              <h4>{t('profile.docs.cardTitle')}</h4>
+              <p>{t('profile.docs.cardText')}</p>
+              <div className="doc-actions">
+                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPng', downloadCardPng)}>
+                  {docBusy === 'cardPng' ? t('profile.docs.preparing') : t('profile.docs.downloadPng')}
+                </button>
+                <button type="button" className="btn-ghost small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPdf', downloadCardPdf)}>
+                  {docBusy === 'cardPdf' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+        {!user.paid && (
+          <p className="docs-locked">
+            {t('profile.docs.locked')} <button type="button" className="link-btn" onClick={() => setShowInitiation(true)}>{t('common.sealYourOathCta')}</button>
+          </p>
+        )}
+        <p className="docs-note">{t('profile.docs.note')}</p>
       </section>
 
       <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />

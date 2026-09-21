@@ -47,11 +47,11 @@ export default function Rituals() {
                       <p>{r.desc}</p>
                     ) : user ? (
                       <p className="sealed-text">
-                        <Trans i18nKey="rituals.sealedUserText" components={{ 0: <button type="button" className="link-btn" onClick={() => setShowInitiation(true)} /> }} />
+                        <Trans i18nKey="rituals.sealedUserText" components={[<button type="button" className="link-btn" onClick={() => setShowInitiation(true)} />]} />
                       </p>
                     ) : (
                       <p className="sealed-text">
-                        <Trans i18nKey="rituals.sealedGuestText" components={{ 0: <Link to="/login" />, 1: <Link to="/register" /> }} />
+                        <Trans i18nKey="rituals.sealedGuestText" components={[<Link to="/login" />, <Link to="/register" />]} />
                       </p>
                     )}
                     <div className="tag-row">{r.tags.map((tag) => <span className="tag fact" key={tag}>{tag.toUpperCase()}</span>)}</div>

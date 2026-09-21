@@ -33,7 +33,7 @@ export default function Home() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { videos, canAccess } = useContent()
-  const { openDisclaimer } = useOutletContext()
+  const { enterSite } = useOutletContext()
   const isMobile = useIsMobile()
   const heroSrc = isMobile ? '/assets/hero-baphomet-mobile.jpg' : '/assets/hero-baphomet.jpg'
   const HOME_VIDEOS = useMemo(() => videos.slice(0, 4), [videos])
@@ -87,7 +87,7 @@ export default function Home() {
             <p className="hero-sub">{t('home.heroSubLine1')}<br />{t('home.heroSubLine2')}</p>
             <div className="hero-tag">{t('home.heroTag')}</div>
             <div className="hero-cta">
-              <button className="btn-gold hero-cta-main" onClick={openDisclaimer}>
+              <button className="btn-gold hero-cta-main" onClick={enterSite}>
                 <BrandFlame button />
                 <span className="cta-label">{t('home.ctaMain')} <i className="cta-arrow">›</i></span>
               </button>
@@ -209,7 +209,7 @@ export default function Home() {
             <div className="cd-box"><b>{String(timeLeft.s).padStart(2, '0')}</b><span>{t('common.seconds')}</span></div>
           </div>
           <Link to="/new-order" className="btn-ghost cd-cta">{t('home.countdownCta')}</Link>
-          <div className="cd-note"><i>ⓘ</i> {t('common.fictionalMilestoneNote')}</div>
+          <div className="cd-note"><i>ⓘ</i> {t('common.milestoneNote')}</div>
         </div>
       </section>
 

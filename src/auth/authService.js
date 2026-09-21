@@ -45,7 +45,7 @@ export function logout() {
 }
 
 export async function fetchMe() {
-  const data = await apiFetch('/auth/me')
+  const data = await apiFetch('/auth/me', { timeoutMs: 6000 })
   return publicUser(data)
 }
 
@@ -74,15 +74,16 @@ export async function deleteUser(id) {
 }
 
 /**
- * Demo credentials shown on the login page, sourced from the frontend's own
- * env (VITE_ADMIN_EMAIL / VITE_ADMIN_PASSWORD). These should match the
+ * Admin credentials shown on the login page in development only, sourced from the
+ * frontend's own env (VITE_ADMIN_EMAIL / VITE_ADMIN_PASSWORD). These should match the
  * backend's ADMIN_EMAIL / ADMIN_PASSWORD so the "fill admin credentials"
  * button actually works against the seeded Keeper account.
  */
 export function getDemoCredentials() {
-  const ENV = (typeof import.meta !== 'undefined' && import.meta.env) || {}
-  const email = ENV.VITE_ADMIN_EMAIL
-  const password = ENV.VITE_ADMIN_PASSWORD
+  // Dev builds only: Vite inlines these values into the bundle, so a production build must never read them.
+  if (!import.meta.env.DEV) return null
+  const email = import.meta.env.VITE_ADMIN_EMAIL
+  const password = import.meta.env.VITE_ADMIN_PASSWORD
   if (!email || !password) return null
   return { email, password, fromEnv: true }
 }

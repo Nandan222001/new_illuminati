@@ -55,7 +55,7 @@ export default function Register() {
       kicker={t('register.kicker')}
       title={t('nav.register')}
       sub={t('register.sub')}
-      footer={<Trans i18nKey="register.footerCta" components={{ 0: <Link to="/login" /> }} />}
+      footer={<Trans i18nKey="register.footerCta" components={[<Link to="/login" />]} />}
     >
       <form className="form" onSubmit={submit} noValidate>
         <label>
@@ -87,7 +87,7 @@ export default function Register() {
         )}
         <label className="check">
           <input type="checkbox" checked={form.agree} onChange={(e) => setForm({ ...form, agree: e.target.checked })} />
-          <span><Trans i18nKey="register.ageCheck" components={{ 0: <b /> }} /></span>
+          <span><Trans i18nKey="register.ageCheck" components={[<b />]} /> <Link to="/rules" target="_blank" rel="noopener noreferrer">{t('rules.title')} ↗</Link></span>
         </label>
         {error && <div className="form-error" role="alert">{error}</div>}
         <button type="submit" className="btn-gold full" disabled={busy}>{busy ? t('register.sealing') : `${t('common.becomeInitiate')} ›`}</button>

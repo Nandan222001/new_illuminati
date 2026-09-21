@@ -48,9 +48,9 @@ export default function Footer() {
         </div>
         <div className="foot-col">
           <h6>{t('footer.legal')}</h6>
-          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.privacy')}</a>
-          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.terms')}</a>
-          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.guidelines')}</a>
+          <Link to="/rules#rule-privacy">{t('footer.privacy')}</Link>
+          <Link to="/rules#rules">{t('footer.terms')}</Link>
+          <Link to="/rules">{t('footer.guidelines')}</Link>
           <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.contact')}</a>
         </div>
       </div>

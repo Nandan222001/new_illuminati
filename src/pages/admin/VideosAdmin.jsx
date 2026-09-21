@@ -5,6 +5,7 @@ import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
 
 const TAGS = ['fiction', 'theory', 'fact']
+const TAG_LABEL = { fiction: 'STORY', theory: 'THEORY', fact: 'FACT' }
 const EMPTY = { title: '', desc: '', img: '', tag: 'fiction', dur: '10:00', category: 'free' }
 
 export default function AdminVideos() {
@@ -51,7 +52,7 @@ export default function AdminVideos() {
           <div className="form-row three">
             <label><span>LABEL</span>
               <select value={form.tag} onChange={(e) => setForm({ ...form, tag: e.target.value })}>
-                {TAGS.map((t) => <option key={t} value={t}>{t.toUpperCase()}</option>)}
+                {TAGS.map((t) => <option key={t} value={t}>{TAG_LABEL[t]}</option>)}
               </select>
             </label>
             <label><span>CATEGORY</span>
@@ -74,7 +75,7 @@ export default function AdminVideos() {
           <div className={`content-row${v.category === 'paid' ? ' sealed' : ''}`} key={v.id}>
             <div className="content-thumb"><Img src={v.img} alt={v.title} /></div>
             <div className="content-body">
-              <span className={`tag ${v.tag}`}>{v.tag.toUpperCase()}</span>
+              <span className={`tag ${v.tag}`}>{TAG_LABEL[v.tag] || v.tag.toUpperCase()}</span>
               {v.custom && <span className="tag custom">CUSTOM</span>}
               <h5>{v.title}</h5>
               <Link to={`/videos/${v.slug}`} className="sec-link">VIEW ›</Link>

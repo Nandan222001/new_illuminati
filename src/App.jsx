@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { ContentProvider } from './context/ContentContext'
 import { ToastProvider } from './context/ToastContext'
+import { ConsentProvider } from './context/ConsentContext'
 import Layout from './components/Layout'
 import AdminLayout from './components/AdminLayout'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -15,6 +16,7 @@ import VideoDetail from './pages/VideoDetail'
 import Visuals from './pages/Visuals'
 import Community from './pages/Community'
 import About from './pages/About'
+import Rules from './pages/Rules'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
@@ -31,6 +33,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ToastProvider>
+        <ConsentProvider>
         <AuthProvider>
           <ContentProvider>
             <Routes>
@@ -45,6 +48,7 @@ export default function App() {
                 <Route path="/visuals" element={<Visuals />} />
                 <Route path="/community" element={<Community />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/rules" element={<Rules />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
@@ -68,6 +72,7 @@ export default function App() {
             </Routes>
           </ContentProvider>
         </AuthProvider>
+        </ConsentProvider>
       </ToastProvider>
     </BrowserRouter>
   )

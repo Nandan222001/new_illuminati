@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useLocalizedSymbols, useLocalizedTattoos } from '../hooks/useLocalizedContent'
 import { normalizeName, parseBirthdate, readSigil } from '../utils/sigilReading'
 import drawOn from '../utils/drawOn'
+import { wrapLines } from '../utils/canvasText'
 import SymbolIcon from './SymbolIcon'
 import TattooIcon from './TattooIcon'
 
@@ -23,22 +24,6 @@ function svgToImage(svgEl, size) {
     img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('svg load failed')) }
     img.src = url
   })
-}
-
-function wrapLines(ctx, text, maxWidth) {
-  const tokens = text.includes(' ') ? text.split(' ').map((w, i, a) => (i < a.length - 1 ? `${w} ` : w)) : Array.from(text)
-  const lines = []
-  let line = ''
-  for (const tok of tokens) {
-    if (line && ctx.measureText(line + tok).width > maxWidth) {
-      lines.push(line.trimEnd())
-      line = tok
-    } else {
-      line += tok
-    }
-  }
-  if (line) lines.push(line.trimEnd())
-  return lines
 }
 
 async function drawCard(cardEl, c) {
