@@ -24,7 +24,7 @@
     "viewsSuffix": "views",
     "explore": "Explore",
     "emailLabel": "EMAIL",
-    "passphraseLabel": "PASSPHRASE",
+    "passwordLabel": "PASSWORD",
     "emailPlaceholder": "initiate@brotherhood.com",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
@@ -456,7 +456,7 @@
     "continueNotice": "Sign in to continue to <0>{{from}}</0>.",
     "opening": "OPENING THE DOOR…",
     "demoTitle": "▲ ADMIN ACCESS (DEV ONLY)",
-    "demoCreds": "Email <0>{{email}}</0> · Passphrase <1>{{password}}</1>",
+    "demoCreds": "Email <0>{{email}}</0> · Password <1>{{password}}</1>",
     "fillAdmin": "FILL ADMIN CREDENTIALS",
     "demoGeneratedNote": "Generated for this browser on first visit. Set <0>VITE_ADMIN_PASSWORD</0> to fix it.",
     "demoManagedNote": "Keeper credentials are managed by the site owner. Set <0>VITE_ADMIN_PASSWORD</0> or clear site data to regenerate the admin account.",
@@ -480,7 +480,7 @@
       "unbreakable": "UNBREAKABLE"
     },
     "ageCheck": "I am 18 or older and understand this site is <0>inspired by secret-society symbolism and not affiliated with any real organisation</0>.",
-    "errorMismatch": "The two passphrases do not match.",
+    "errorMismatch": "The two passwords do not match.",
     "errorAgree": "Please confirm you are 18 or older and accept the above.",
     "sealing": "SEALING THE OATH…",
     "welcomeToast": "Welcome, initiate #{{number}}."

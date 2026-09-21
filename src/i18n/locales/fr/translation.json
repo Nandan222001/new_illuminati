@@ -24,7 +24,7 @@
     "viewsSuffix": "vues",
     "explore": "Explorer",
     "emailLabel": "E-MAIL",
-    "passphraseLabel": "MOT DE PASSE",
+    "passwordLabel": "MOT DE PASSE",
     "emailPlaceholder": "initie@brotherhood.com",
     "showPassword": "Afficher le mot de passe",
     "hidePassword": "Masquer le mot de passe",

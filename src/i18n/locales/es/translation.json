@@ -24,7 +24,7 @@
     "viewsSuffix": "vistas",
     "explore": "Explorar",
     "emailLabel": "CORREO ELECTRÓNICO",
-    "passphraseLabel": "CONTRASEÑA",
+    "passwordLabel": "CONTRASEÑA",
     "emailPlaceholder": "iniciado@brotherhood.com",
     "showPassword": "Mostrar contraseña",
     "hidePassword": "Ocultar contraseña",

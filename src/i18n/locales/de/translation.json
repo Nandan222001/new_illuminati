@@ -24,7 +24,7 @@
     "viewsSuffix": "Aufrufe",
     "explore": "Entdecken",
     "emailLabel": "E-MAIL",
-    "passphraseLabel": "PASSPHRASE",
+    "passwordLabel": "PASSWORT",
     "emailPlaceholder": "initiate@brotherhood.com",
     "showPassword": "Passwort anzeigen",
     "hidePassword": "Passwort verbergen",
@@ -456,7 +456,7 @@
     "continueNotice": "Melde dich an, um zu <0>{{from}}</0> fortzufahren.",
     "opening": "TÜR WIRD GEÖFFNET…",
     "demoTitle": "▲ ADMIN-ZUGANG (NUR ENTWICKLUNG)",
-    "demoCreds": "E-Mail <0>{{email}}</0> · Passphrase <1>{{password}}</1>",
+    "demoCreds": "E-Mail <0>{{email}}</0> · Passwort <1>{{password}}</1>",
     "fillAdmin": "ADMIN-ANMELDEDATEN AUSFÜLLEN",
     "demoGeneratedNote": "Beim ersten Besuch für diesen Browser generiert. Setze <0>VITE_ADMIN_PASSWORD</0>, um es festzulegen.",
     "demoManagedNote": "Hüter-Anmeldedaten werden vom Seitenbetreiber verwaltet. Setze <0>VITE_ADMIN_PASSWORD</0> oder lösche die Seitendaten, um das Administratorkonto neu zu erzeugen.",
@@ -480,7 +480,7 @@
       "unbreakable": "UNKNACKBAR"
     },
     "ageCheck": "Ich bin mindestens 18 und verstehe, dass diese Seite <0>von der Symbolik der Geheimbünde inspiriert und mit keiner realen Organisation verbunden ist</0>.",
-    "errorMismatch": "Die beiden Passphrasen stimmen nicht überein.",
+    "errorMismatch": "Die beiden Passwörter stimmen nicht überein.",
     "errorAgree": "Bitte bestätige, dass du mindestens 18 bist, und stimme dem Obigen zu.",
     "sealing": "SCHWUR WIRD VERSIEGELT…",
     "welcomeToast": "Willkommen, Initiierter #{{number}}."

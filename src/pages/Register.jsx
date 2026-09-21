@@ -68,7 +68,7 @@ export default function Register() {
         </label>
         <div className="form-row">
           <label>
-            <span>{t('common.passphraseLabel')}</span>
+            <span>{t('common.passwordLabel')}</span>
             <div className="pw-wrap">
               <input type={showPw ? 'text' : 'password'} name="password" autoComplete="new-password" required minLength={8} placeholder={t('register.passwordPlaceholder')} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
               <button type="button" className="pw-toggle" onClick={() => setShowPw((v) => !v)} aria-label={showPw ? t('common.hidePassword') : t('common.showPassword')}>{showPw ? '◎' : '◉'}</button>

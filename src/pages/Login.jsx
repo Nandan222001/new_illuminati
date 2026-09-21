@@ -62,7 +62,7 @@ export default function Login() {
           <input type="email" name="email" autoComplete="email" required placeholder={t('common.emailPlaceholder')} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
         </label>
         <label>
-          <span>{t('common.passphraseLabel')}</span>
+          <span>{t('common.passwordLabel')}</span>
           <div className="pw-wrap">
             <input type={showPw ? 'text' : 'password'} name="password" autoComplete="current-password" required placeholder="••••••••" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
             <button type="button" className="pw-toggle" onClick={() => setShowPw((v) => !v)} aria-label={showPw ? t('common.hidePassword') : t('common.showPassword')}>{showPw ? '◎' : '◉'}</button>

@@ -43,13 +43,13 @@ real backend — the rest of the app only talks to `AuthContext`.
 | Keeper (admin) | Everything above + `/admin`: promote/demote, banish, seal/unseal content |
 
 A default Keeper (`admin@illuminati.local`) is seeded on first load. Its
-passphrase is generated randomly per browser and shown in the **Admin demo
+password is generated randomly per browser and shown in the **Admin demo
 access** box on `/login` (one click fills it in). To fix the credentials for a
 deployment, set build-time env vars (see `.env.example`):
 
 ```
 VITE_ADMIN_EMAIL=admin@illuminati.local
-VITE_ADMIN_PASSWORD=<your passphrase>
+VITE_ADMIN_PASSWORD=<your password>
 ```
 
 Safety rails: you cannot demote or banish yourself, and the last Keeper can
