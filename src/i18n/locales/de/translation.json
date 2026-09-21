@@ -519,7 +519,11 @@
       "downloadPng": "PNG HERUNTERLADEN",
       "preparing": "WIRD VORBEREITET…",
       "error": "Das Dokument konnte nicht erstellt werden. Bitte versuche es erneut.",
-      "note": "Die Dokumente sind persönlich und nicht übertragbar. Die Mitgliedskarte ist kein amtlicher Ausweis."
+      "note": "Die Dokumente sind persönlich und nicht übertragbar. Die Mitgliedskarte ist kein amtlicher Ausweis.",
+      "acceptanceTitle": "AUFNAHMEBRIEF",
+      "acceptanceText": "Das Pergament-Schreiben, das beim Beitritt gesendet wird. PDF, A4.",
+      "clearanceTitle": "FREIGABEBESCHEID",
+      "clearanceText": "Dein vertraulicher letzter Freigabebescheid mit dem Termin des Rituals. PDF, A4."
     }
   },
   "notFound": {
@@ -714,21 +718,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "AUGE DER VORSEHUNG", "meaning": "Ein strahlendes Auge in einem Dreieck, das jedem Hüter am Rat auf das Handgelenk tätowiert wird. In der Geschichte markiert es ein Gelübde der Wachsamkeit — keine Behauptung über einen realen Orden." },
-      "silent-owl": { "name": "DIE STILLE EULE", "meaning": "Zwischen den Schulterblättern der ältesten Mitglieder der Geschichte getragen, markiert die Eule jene, die mehr zuhören als sprechen. Ein Emblem stiller Beobachtung." },
-      "twin-pillars": { "name": "DIE ZWILLINGSSÄULEN", "meaning": "Zwei Säulen, Licht und Schatten, immer als Paar tätowiert. In der Geschichte stehen sie für das Gleichgewicht, das jeder Initiierte zwischen Frage und Antwort halten muss." },
-      "compass-square": { "name": "ZIRKEL & WINKELMASS", "meaning": "Ein Messwerkzeug, das zum Emblem wurde — der Zirkel für die Vision, das Winkelmaß für das Verhalten. In der Geschichte wird es erst nach dem versiegelten Schwur verliehen." },
-      "checkered-floor": { "name": "DER SCHACHBRETTBODEN", "meaning": "Helle und dunkle Fliesen, tätowiert als Band um das Handgelenk — eine Erinnerung daran, dass jede Entscheidung in der Geschichte ihr Gegenteil hat." },
-      "ouroboros": { "name": "DER OUROBOROS", "meaning": "Eine Schlange, die sich in den eigenen Schwanz beißt, markiert jene, die einen vollen Zyklus der sieben Stationen abgeschlossen haben. Nur nach der Überquerung getragen." },
-      "thirteen-steps": { "name": "DIE DREIZEHN STUFEN", "meaning": "Eine Stufenpyramide mit schwebendem Schlussstein, eine Linie pro Stufe. Die „unvollendete Pyramide“ auf dem Großen Siegel der USA hat dreizehn Stufen, eine für jede ursprüngliche Kolonie. In der Geschichte: dreizehn Kammern, keine je vollendet." },
-      "coiled-serpent": { "name": "DIE GERINGELTE SCHLANGE", "meaning": "Eine Schlange in langsamer S-Kurve, entlang des Unterarms gestochen. In vielen Kulturen uralt – zugleich Gefahr und Erneuerung; in der Geschichte kennzeichnet sie Initiierte, die ihren ersten Glauben abgelegt haben." },
-      "anubis": { "name": "DER SCHAKAL-FÜHRER", "meaning": "Anubis, der schakalköpfige ägyptische Führer der Toten, im Profil gezeichnet. Gewählt von Menschen, die Schutz an Schwellen suchen; in der Geschichte führt er den Initiierten durch die Überquerung." },
-      "metatrons-cube": { "name": "METATRONS WÜRFEL", "meaning": "Dreizehn Kreise, verbunden durch gerade Linien, ein Liebling der Tätowierer heiliger Geometrie. In der Geschichte ist es das Diagramm des Rates: zwölf Hüter um einen leeren Stuhl." },
-      "double-eagle": { "name": "DER DOPPELADLER", "meaning": "Zwei Köpfe, die in entgegengesetzte Richtungen blicken, Emblem des 33. Grades des Schottischen Ritus und mehrerer alter Reiche. In der Geschichte: ein Auge auf der Vergangenheit, eines auf dem, was kommt." },
-      "lotus-eye": { "name": "DAS LOTUSAUGE", "meaning": "Ein Auge, das sich im Herzen einer Lotusblüte öffnet – das dritte Auge der östlichen Tradition, mit Blütenblättern. In der Geschichte wird es von jenen auf das Brustbein gestochen, die die Nachtwache vollenden." },
-      "hourglass": { "name": "DIE SANDUHR", "meaning": "Die Zeit als Gefäß mit zwei Kammern – eine Mahnung von Malern und Logen, dass der Sand nur in eine Richtung rinnt. In der Geschichte das Zeichen der Ersten Kerze: eine Stunde, kein Wort." },
-      "xiii-numeral": { "name": "DIE ZAHL XIII", "meaning": "Dreizehn in römischen Ziffern – dreizehn Stufen, dreizehn Sitze, dreizehn Kammern. Klein gestochen, hinter dem Ohr oder am Handgelenk, von Freunden der Zahlenlehre." },
-      "the-key": { "name": "DER SCHLÜSSEL DES HÜTERS", "meaning": "Ein alter eiserner Schlüssel mit Kleeblatt-Griff. Schlüssel erscheinen in der Bildwelt der Rosenkreuzer und Freimaurer als das Recht, Verschlossenes zu öffnen. In der Geschichte übergibt der Große Hüter jedem versiegelten Initiierten einen." }
+      "eye-of-providence": {
+        "name": "AUGE DER VORSEHUNG",
+        "meaning": "Ein strahlendes Auge in einem Dreieck, das jedem Hüter am Rat auf das Handgelenk tätowiert wird. In der Geschichte markiert es ein Gelübde der Wachsamkeit — keine Behauptung über einen realen Orden."
+      },
+      "silent-owl": {
+        "name": "DIE STILLE EULE",
+        "meaning": "Zwischen den Schulterblättern der ältesten Mitglieder der Geschichte getragen, markiert die Eule jene, die mehr zuhören als sprechen. Ein Emblem stiller Beobachtung."
+      },
+      "twin-pillars": {
+        "name": "DIE ZWILLINGSSÄULEN",
+        "meaning": "Zwei Säulen, Licht und Schatten, immer als Paar tätowiert. In der Geschichte stehen sie für das Gleichgewicht, das jeder Initiierte zwischen Frage und Antwort halten muss."
+      },
+      "compass-square": {
+        "name": "ZIRKEL & WINKELMASS",
+        "meaning": "Ein Messwerkzeug, das zum Emblem wurde — der Zirkel für die Vision, das Winkelmaß für das Verhalten. In der Geschichte wird es erst nach dem versiegelten Schwur verliehen."
+      },
+      "checkered-floor": {
+        "name": "DER SCHACHBRETTBODEN",
+        "meaning": "Helle und dunkle Fliesen, tätowiert als Band um das Handgelenk — eine Erinnerung daran, dass jede Entscheidung in der Geschichte ihr Gegenteil hat."
+      },
+      "ouroboros": {
+        "name": "DER OUROBOROS",
+        "meaning": "Eine Schlange, die sich in den eigenen Schwanz beißt, markiert jene, die einen vollen Zyklus der sieben Stationen abgeschlossen haben. Nur nach der Überquerung getragen."
+      },
+      "thirteen-steps": {
+        "name": "DIE DREIZEHN STUFEN",
+        "meaning": "Eine Stufenpyramide mit schwebendem Schlussstein, eine Linie pro Stufe. Die „unvollendete Pyramide“ auf dem Großen Siegel der USA hat dreizehn Stufen, eine für jede ursprüngliche Kolonie. In der Geschichte: dreizehn Kammern, keine je vollendet."
+      },
+      "coiled-serpent": {
+        "name": "DIE GERINGELTE SCHLANGE",
+        "meaning": "Eine Schlange in langsamer S-Kurve, entlang des Unterarms gestochen. In vielen Kulturen uralt – zugleich Gefahr und Erneuerung; in der Geschichte kennzeichnet sie Initiierte, die ihren ersten Glauben abgelegt haben."
+      },
+      "anubis": {
+        "name": "DER SCHAKAL-FÜHRER",
+        "meaning": "Anubis, der schakalköpfige ägyptische Führer der Toten, im Profil gezeichnet. Gewählt von Menschen, die Schutz an Schwellen suchen; in der Geschichte führt er den Initiierten durch die Überquerung."
+      },
+      "metatrons-cube": {
+        "name": "METATRONS WÜRFEL",
+        "meaning": "Dreizehn Kreise, verbunden durch gerade Linien, ein Liebling der Tätowierer heiliger Geometrie. In der Geschichte ist es das Diagramm des Rates: zwölf Hüter um einen leeren Stuhl."
+      },
+      "double-eagle": {
+        "name": "DER DOPPELADLER",
+        "meaning": "Zwei Köpfe, die in entgegengesetzte Richtungen blicken, Emblem des 33. Grades des Schottischen Ritus und mehrerer alter Reiche. In der Geschichte: ein Auge auf der Vergangenheit, eines auf dem, was kommt."
+      },
+      "lotus-eye": {
+        "name": "DAS LOTUSAUGE",
+        "meaning": "Ein Auge, das sich im Herzen einer Lotusblüte öffnet – das dritte Auge der östlichen Tradition, mit Blütenblättern. In der Geschichte wird es von jenen auf das Brustbein gestochen, die die Nachtwache vollenden."
+      },
+      "hourglass": {
+        "name": "DIE SANDUHR",
+        "meaning": "Die Zeit als Gefäß mit zwei Kammern – eine Mahnung von Malern und Logen, dass der Sand nur in eine Richtung rinnt. In der Geschichte das Zeichen der Ersten Kerze: eine Stunde, kein Wort."
+      },
+      "xiii-numeral": {
+        "name": "DIE ZAHL XIII",
+        "meaning": "Dreizehn in römischen Ziffern – dreizehn Stufen, dreizehn Sitze, dreizehn Kammern. Klein gestochen, hinter dem Ohr oder am Handgelenk, von Freunden der Zahlenlehre."
+      },
+      "the-key": {
+        "name": "DER SCHLÜSSEL DES HÜTERS",
+        "meaning": "Ein alter eiserner Schlüssel mit Kleeblatt-Griff. Schlüssel erscheinen in der Bildwelt der Rosenkreuzer und Freimaurer als das Recht, Verschlossenes zu öffnen. In der Geschichte übergibt der Große Hüter jedem versiegelten Initiierten einen."
+      }
     },
     "channels": {
       "discord": {

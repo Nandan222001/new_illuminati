@@ -519,7 +519,11 @@
       "downloadPng": "DESCARGAR PNG",
       "preparing": "PREPARANDO…",
       "error": "No se pudo crear el documento. Inténtalo de nuevo.",
-      "note": "Los documentos son personales e intransferibles. La tarjeta de miembro no es un documento de identidad oficial."
+      "note": "Los documentos son personales e intransferibles. La tarjeta de miembro no es un documento de identidad oficial.",
+      "acceptanceTitle": "CARTA DE ACEPTACIÓN",
+      "acceptanceText": "La transmisión en pergamino enviada al unirte. PDF, A4.",
+      "clearanceTitle": "AVISO DE AUTORIZACIÓN",
+      "clearanceText": "Tu aviso confidencial de autorización final con la cita del ritual. PDF, A4."
     }
   },
   "notFound": {
@@ -714,21 +718,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "EL OJO DE LA PROVIDENCIA", "meaning": "Un ojo radiante dentro de un triángulo, tatuado en la muñeca de cada Guardián en el Consejo. En la historia marca un voto de vigilancia — no una afirmación sobre ninguna orden real." },
-      "silent-owl": { "name": "EL BÚHO SILENCIOSO", "meaning": "Llevado entre los omóplatos por los miembros más antiguos de la historia, el búho marca a quienes escuchan más de lo que hablan. Un emblema de observación silenciosa." },
-      "twin-pillars": { "name": "LOS PILARES GEMELOS", "meaning": "Dos columnas, luz y sombra, siempre tatuadas en pareja. En la historia representan el equilibrio que todo iniciado debe mantener entre la pregunta y la respuesta." },
-      "compass-square": { "name": "COMPÁS Y ESCUADRA", "meaning": "Una herramienta de medición convertida en emblema — el compás para la visión, la escuadra para la conducta. En la historia se entrega solo después del Juramento Sellado." },
-      "checkered-floor": { "name": "EL SUELO AJEDREZADO", "meaning": "Baldosas claras y oscuras tatuadas como una banda alrededor de la muñeca, un recordatorio de que toda elección en la historia tiene su opuesto." },
-      "ouroboros": { "name": "EL OUROBOROS", "meaning": "Una serpiente devorando su propia cola, que marca a quienes completan un ciclo entero de las siete estaciones. Se lleva solo después del Cruce." },
-      "thirteen-steps": { "name": "LOS TRECE ESCALONES", "meaning": "Una pirámide escalonada con un remate flotante, una línea por cada escalón. La «pirámide inconclusa» del Gran Sello de EE. UU. tiene trece escalones, uno por cada colonia original. En la historia: trece cámaras, ninguna terminada." },
-      "coiled-serpent": { "name": "LA SERPIENTE ENROSCADA", "meaning": "Una serpiente en una lenta curva en S, tatuada a lo largo del antebrazo. Antigua en muchas culturas como peligro y renovación a la vez; en la historia marca a quienes han abandonado su primera creencia." },
-      "anubis": { "name": "EL GUÍA CHACAL", "meaning": "Anubis, el guía egipcio de los muertos con cabeza de chacal, dibujado de perfil. Lo eligen quienes buscan protección en los umbrales; en la historia guía al iniciado durante el Cruce." },
-      "metatrons-cube": { "name": "EL CUBO DE METATRÓN", "meaning": "Trece círculos unidos por líneas rectas, favorito de los tatuadores de geometría sagrada. En la historia es el diagrama del consejo: doce guardianes alrededor de un asiento vacío." },
-      "double-eagle": { "name": "EL ÁGUILA BICÉFALA", "meaning": "Dos cabezas mirando en direcciones opuestas, emblema del grado 33 del Rito Escocés y de varios imperios antiguos. En la historia: un ojo en el pasado, otro en lo que viene." },
-      "lotus-eye": { "name": "EL OJO DE LOTO", "meaning": "Un ojo que se abre en el corazón de un loto: el tercer ojo de la tradición oriental con pétalos. En la historia lo tatúan sobre el esternón quienes completan la Vigilia." },
-      "hourglass": { "name": "EL RELOJ DE ARENA", "meaning": "El tiempo como vasija de dos cámaras, recordatorio de pintores y logias de que la arena solo corre en un sentido. En la historia es la marca de la Primera Vela: una hora, sin hablar." },
-      "xiii-numeral": { "name": "EL NUMERAL XIII", "meaning": "Trece en números romanos: trece escalones, trece asientos, trece cámaras. Lo tatúan pequeño, tras la oreja o en la muñeca, los amantes de la numerología." },
-      "the-key": { "name": "LA LLAVE DEL GUARDIÁN", "meaning": "Una vieja llave de hierro con arco de trébol. Las llaves aparecen en la imaginería rosacruz y masónica como el derecho a abrir lo cerrado. En la historia el Gran Guardián entrega una a cada iniciado sellado." }
+      "eye-of-providence": {
+        "name": "EL OJO DE LA PROVIDENCIA",
+        "meaning": "Un ojo radiante dentro de un triángulo, tatuado en la muñeca de cada Guardián en el Consejo. En la historia marca un voto de vigilancia — no una afirmación sobre ninguna orden real."
+      },
+      "silent-owl": {
+        "name": "EL BÚHO SILENCIOSO",
+        "meaning": "Llevado entre los omóplatos por los miembros más antiguos de la historia, el búho marca a quienes escuchan más de lo que hablan. Un emblema de observación silenciosa."
+      },
+      "twin-pillars": {
+        "name": "LOS PILARES GEMELOS",
+        "meaning": "Dos columnas, luz y sombra, siempre tatuadas en pareja. En la historia representan el equilibrio que todo iniciado debe mantener entre la pregunta y la respuesta."
+      },
+      "compass-square": {
+        "name": "COMPÁS Y ESCUADRA",
+        "meaning": "Una herramienta de medición convertida en emblema — el compás para la visión, la escuadra para la conducta. En la historia se entrega solo después del Juramento Sellado."
+      },
+      "checkered-floor": {
+        "name": "EL SUELO AJEDREZADO",
+        "meaning": "Baldosas claras y oscuras tatuadas como una banda alrededor de la muñeca, un recordatorio de que toda elección en la historia tiene su opuesto."
+      },
+      "ouroboros": {
+        "name": "EL OUROBOROS",
+        "meaning": "Una serpiente devorando su propia cola, que marca a quienes completan un ciclo entero de las siete estaciones. Se lleva solo después del Cruce."
+      },
+      "thirteen-steps": {
+        "name": "LOS TRECE ESCALONES",
+        "meaning": "Una pirámide escalonada con un remate flotante, una línea por cada escalón. La «pirámide inconclusa» del Gran Sello de EE. UU. tiene trece escalones, uno por cada colonia original. En la historia: trece cámaras, ninguna terminada."
+      },
+      "coiled-serpent": {
+        "name": "LA SERPIENTE ENROSCADA",
+        "meaning": "Una serpiente en una lenta curva en S, tatuada a lo largo del antebrazo. Antigua en muchas culturas como peligro y renovación a la vez; en la historia marca a quienes han abandonado su primera creencia."
+      },
+      "anubis": {
+        "name": "EL GUÍA CHACAL",
+        "meaning": "Anubis, el guía egipcio de los muertos con cabeza de chacal, dibujado de perfil. Lo eligen quienes buscan protección en los umbrales; en la historia guía al iniciado durante el Cruce."
+      },
+      "metatrons-cube": {
+        "name": "EL CUBO DE METATRÓN",
+        "meaning": "Trece círculos unidos por líneas rectas, favorito de los tatuadores de geometría sagrada. En la historia es el diagrama del consejo: doce guardianes alrededor de un asiento vacío."
+      },
+      "double-eagle": {
+        "name": "EL ÁGUILA BICÉFALA",
+        "meaning": "Dos cabezas mirando en direcciones opuestas, emblema del grado 33 del Rito Escocés y de varios imperios antiguos. En la historia: un ojo en el pasado, otro en lo que viene."
+      },
+      "lotus-eye": {
+        "name": "EL OJO DE LOTO",
+        "meaning": "Un ojo que se abre en el corazón de un loto: el tercer ojo de la tradición oriental con pétalos. En la historia lo tatúan sobre el esternón quienes completan la Vigilia."
+      },
+      "hourglass": {
+        "name": "EL RELOJ DE ARENA",
+        "meaning": "El tiempo como vasija de dos cámaras, recordatorio de pintores y logias de que la arena solo corre en un sentido. En la historia es la marca de la Primera Vela: una hora, sin hablar."
+      },
+      "xiii-numeral": {
+        "name": "EL NUMERAL XIII",
+        "meaning": "Trece en números romanos: trece escalones, trece asientos, trece cámaras. Lo tatúan pequeño, tras la oreja o en la muñeca, los amantes de la numerología."
+      },
+      "the-key": {
+        "name": "LA LLAVE DEL GUARDIÁN",
+        "meaning": "Una vieja llave de hierro con arco de trébol. Las llaves aparecen en la imaginería rosacruz y masónica como el derecho a abrir lo cerrado. En la historia el Gran Guardián entrega una a cada iniciado sellado."
+      }
     },
     "channels": {
       "discord": {

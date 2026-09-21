@@ -519,7 +519,11 @@
       "downloadPng": "DOWNLOAD PNG",
       "preparing": "PREPARING…",
       "error": "Couldn't create the document. Please try again.",
-      "note": "Documents are personal and non-transferable. The membership card is not a government-issued ID."
+      "note": "Documents are personal and non-transferable. The membership card is not a government-issued ID.",
+      "acceptanceTitle": "ACCEPTANCE LETTER",
+      "acceptanceText": "The parchment transmission sent when you joined. PDF, A4.",
+      "clearanceTitle": "CLEARANCE NOTICE",
+      "clearanceText": "Your confidential final clearance notice with the ritual appointment. PDF, A4."
     }
   },
   "notFound": {
@@ -714,21 +718,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "EYE OF PROVIDENCE", "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the story it marks a vow of vigilance — not a claim about any real order." },
-      "silent-owl": { "name": "THE SILENT OWL", "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. An emblem of quiet observation." },
-      "twin-pillars": { "name": "THE TWIN PILLARS", "meaning": "Two columns, light and shadow, always inked as a pair. In the story they represent the balance every initiate must hold between question and answer." },
-      "compass-square": { "name": "COMPASS & SQUARE", "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the story it is given only after the Sealed Oath." },
-      "checkered-floor": { "name": "THE CHECKERED FLOOR", "meaning": "Light and dark tiles inked as a band around the wrist, a reminder that every choice in the story has its opposite." },
-      "ouroboros": { "name": "THE OUROBOROS", "meaning": "A serpent devouring its own tail, marking those who complete a full cycle of the seven stations. Worn only after the Crossing." },
-      "thirteen-steps": { "name": "THE THIRTEEN STEPS", "meaning": "A stepped pyramid with a floating capstone, one line for each step. The 'unfinished pyramid' of the US Great Seal has thirteen steps, one per original colony. In the story: thirteen chambers, none ever completed." },
-      "coiled-serpent": { "name": "THE COILED SERPENT", "meaning": "A serpent in a slow S-curve, inked along the forearm. Ancient across cultures as both danger and renewal; in the story it marks initiates who have shed their first belief." },
-      "anubis": { "name": "THE JACKAL GUIDE", "meaning": "Anubis, the jackal-headed Egyptian guide of the dead, drawn in profile. Chosen by people who want protection at thresholds; in the story he leads the initiate through the Crossing." },
-      "metatrons-cube": { "name": "METATRON'S CUBE", "meaning": "Thirteen circles joined by straight lines, a favourite of sacred-geometry tattoo artists. In the story it is the council's diagram: twelve keepers around one empty seat." },
-      "double-eagle": { "name": "THE DOUBLE EAGLE", "meaning": "Two heads facing opposite ways, the emblem of the Scottish Rite's 33rd degree and of several old empires. In the story: one eye on the past, one on what comes next." },
-      "lotus-eye": { "name": "THE LOTUS EYE", "meaning": "An eye opening at the heart of a lotus — the third eye of Eastern tradition given petals. In the story it is inked over the sternum by those who finish the Vigil." },
-      "hourglass": { "name": "THE HOURGLASS", "meaning": "Time as a two-chambered vessel, a reminder from painters and lodge-halls that the sand runs one way. In the story it is the mark of the First Candle: one hour, no speaking." },
-      "xiii-numeral": { "name": "THE NUMERAL XIII", "meaning": "Thirteen in Roman numerals — thirteen steps, thirteen seats, thirteen chambers. Inked small, behind the ear or on the wrist, by those who love number-lore." },
-      "the-key": { "name": "THE KEEPER'S KEY", "meaning": "An old iron key with a trefoil bow. Keys appear in Rosicrucian and Masonic imagery as the right to open what is closed. In the story the Grand Keeper hands one to each sealed initiate." }
+      "eye-of-providence": {
+        "name": "EYE OF PROVIDENCE",
+        "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the story it marks a vow of vigilance — not a claim about any real order."
+      },
+      "silent-owl": {
+        "name": "THE SILENT OWL",
+        "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. An emblem of quiet observation."
+      },
+      "twin-pillars": {
+        "name": "THE TWIN PILLARS",
+        "meaning": "Two columns, light and shadow, always inked as a pair. In the story they represent the balance every initiate must hold between question and answer."
+      },
+      "compass-square": {
+        "name": "COMPASS & SQUARE",
+        "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the story it is given only after the Sealed Oath."
+      },
+      "checkered-floor": {
+        "name": "THE CHECKERED FLOOR",
+        "meaning": "Light and dark tiles inked as a band around the wrist, a reminder that every choice in the story has its opposite."
+      },
+      "ouroboros": {
+        "name": "THE OUROBOROS",
+        "meaning": "A serpent devouring its own tail, marking those who complete a full cycle of the seven stations. Worn only after the Crossing."
+      },
+      "thirteen-steps": {
+        "name": "THE THIRTEEN STEPS",
+        "meaning": "A stepped pyramid with a floating capstone, one line for each step. The 'unfinished pyramid' of the US Great Seal has thirteen steps, one per original colony. In the story: thirteen chambers, none ever completed."
+      },
+      "coiled-serpent": {
+        "name": "THE COILED SERPENT",
+        "meaning": "A serpent in a slow S-curve, inked along the forearm. Ancient across cultures as both danger and renewal; in the story it marks initiates who have shed their first belief."
+      },
+      "anubis": {
+        "name": "THE JACKAL GUIDE",
+        "meaning": "Anubis, the jackal-headed Egyptian guide of the dead, drawn in profile. Chosen by people who want protection at thresholds; in the story he leads the initiate through the Crossing."
+      },
+      "metatrons-cube": {
+        "name": "METATRON'S CUBE",
+        "meaning": "Thirteen circles joined by straight lines, a favourite of sacred-geometry tattoo artists. In the story it is the council's diagram: twelve keepers around one empty seat."
+      },
+      "double-eagle": {
+        "name": "THE DOUBLE EAGLE",
+        "meaning": "Two heads facing opposite ways, the emblem of the Scottish Rite's 33rd degree and of several old empires. In the story: one eye on the past, one on what comes next."
+      },
+      "lotus-eye": {
+        "name": "THE LOTUS EYE",
+        "meaning": "An eye opening at the heart of a lotus — the third eye of Eastern tradition given petals. In the story it is inked over the sternum by those who finish the Vigil."
+      },
+      "hourglass": {
+        "name": "THE HOURGLASS",
+        "meaning": "Time as a two-chambered vessel, a reminder from painters and lodge-halls that the sand runs one way. In the story it is the mark of the First Candle: one hour, no speaking."
+      },
+      "xiii-numeral": {
+        "name": "THE NUMERAL XIII",
+        "meaning": "Thirteen in Roman numerals — thirteen steps, thirteen seats, thirteen chambers. Inked small, behind the ear or on the wrist, by those who love number-lore."
+      },
+      "the-key": {
+        "name": "THE KEEPER'S KEY",
+        "meaning": "An old iron key with a trefoil bow. Keys appear in Rosicrucian and Masonic imagery as the right to open what is closed. In the story the Grand Keeper hands one to each sealed initiate."
+      }
     },
     "channels": {
       "discord": {

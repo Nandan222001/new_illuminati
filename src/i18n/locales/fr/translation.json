@@ -519,7 +519,11 @@
       "downloadPng": "TÉLÉCHARGER LE PNG",
       "preparing": "PRÉPARATION…",
       "error": "Impossible de créer le document. Veuillez réessayer.",
-      "note": "Les documents sont personnels et non transférables. La carte de membre n'est pas une pièce d'identité officielle."
+      "note": "Les documents sont personnels et non transférables. La carte de membre n'est pas une pièce d'identité officielle.",
+      "acceptanceTitle": "LETTRE D'ACCEPTATION",
+      "acceptanceText": "La transmission sur parchemin envoyée à votre adhésion. PDF, A4.",
+      "clearanceTitle": "AVIS D'HABILITATION",
+      "clearanceText": "Votre avis confidentiel d'habilitation finale avec le rendez-vous rituel. PDF, A4."
     }
   },
   "notFound": {
@@ -714,21 +718,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "L'ŒIL DE LA PROVIDENCE", "meaning": "Un œil rayonnant inscrit dans un triangle, tatoué au poignet de chaque Gardien au Conseil. Dans l'histoire, il marque un vœu de vigilance — pas une affirmation sur un ordre réel." },
-      "silent-owl": { "name": "LE HIBOU SILENCIEUX", "meaning": "Porté entre les omoplates par les membres les plus anciens de l'histoire, le hibou marque ceux qui écoutent plus qu'ils ne parlent. Un emblème d'observation silencieuse." },
-      "twin-pillars": { "name": "LES PILIERS JUMEAUX", "meaning": "Deux colonnes, lumière et ombre, toujours tatouées en paire. Dans l'histoire, elles représentent l'équilibre que chaque initié doit maintenir entre la question et la réponse." },
-      "compass-square": { "name": "COMPAS ET ÉQUERRE", "meaning": "Un instrument de mesure devenu emblème — le compas pour la vision, l'équerre pour la conduite. Dans l'histoire, il n'est remis qu'après le Serment Scellé." },
-      "checkered-floor": { "name": "LE SOL EN DAMIER", "meaning": "Des carreaux clairs et sombres tatoués comme un bracelet autour du poignet, un rappel que chaque choix de l'histoire a son contraire." },
-      "ouroboros": { "name": "L'OUROBOROS", "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée." },
-      "thirteen-steps": { "name": "LES TREIZE MARCHES", "meaning": "Une pyramide à degrés surmontée d'un sommet flottant, un trait par marche. La « pyramide inachevée » du Grand Sceau des États-Unis compte treize degrés, un par colonie d'origine. Dans l'histoire : treize chambres, aucune achevée." },
-      "coiled-serpent": { "name": "LE SERPENT ENROULÉ", "meaning": "Un serpent en une lente courbe en S, tatoué le long de l'avant-bras. Ancien dans de nombreuses cultures, à la fois danger et renouveau ; dans l'histoire, il marque ceux qui ont abandonné leur première croyance." },
-      "anubis": { "name": "LE GUIDE CHACAL", "meaning": "Anubis, guide égyptien des morts à tête de chacal, dessiné de profil. Choisi par ceux qui cherchent une protection aux seuils ; dans l'histoire, il conduit l'initié à travers la Traversée." },
-      "metatrons-cube": { "name": "LE CUBE DE MÉTATRON", "meaning": "Treize cercles reliés par des lignes droites, favori des tatoueurs de géométrie sacrée. Dans l'histoire, c'est le schéma du conseil : douze gardiens autour d'un siège vide." },
-      "double-eagle": { "name": "L'AIGLE BICÉPHALE", "meaning": "Deux têtes tournées en sens opposés, emblème du 33e degré du Rite écossais et de plusieurs anciens empires. Dans l'histoire : un œil sur le passé, l'autre sur ce qui vient." },
-      "lotus-eye": { "name": "L'ŒIL DE LOTUS", "meaning": "Un œil qui s'ouvre au cœur d'un lotus : le troisième œil de la tradition orientale, pourvu de pétales. Dans l'histoire, il est tatoué sur le sternum de ceux qui achèvent la Veillée." },
-      "hourglass": { "name": "LE SABLIER", "meaning": "Le temps comme un vase à deux chambres, rappel des peintres et des loges que le sable ne coule que dans un sens. Dans l'histoire, c'est la marque de la Première Bougie : une heure, sans parler." },
-      "xiii-numeral": { "name": "LE NUMÉRAL XIII", "meaning": "Treize en chiffres romains : treize marches, treize sièges, treize chambres. Tatoué en petit, derrière l’oreille ou au poignet, par les amateurs de numérologie." },
-      "the-key": { "name": "LA CLÉ DU GARDIEN", "meaning": "Une vieille clé de fer à anneau en trèfle. Les clés apparaissent dans l'imagerie rosicrucienne et maçonnique comme le droit d'ouvrir ce qui est fermé. Dans l'histoire, le Grand Gardien en remet une à chaque initié scellé." }
+      "eye-of-providence": {
+        "name": "L'ŒIL DE LA PROVIDENCE",
+        "meaning": "Un œil rayonnant inscrit dans un triangle, tatoué au poignet de chaque Gardien au Conseil. Dans l'histoire, il marque un vœu de vigilance — pas une affirmation sur un ordre réel."
+      },
+      "silent-owl": {
+        "name": "LE HIBOU SILENCIEUX",
+        "meaning": "Porté entre les omoplates par les membres les plus anciens de l'histoire, le hibou marque ceux qui écoutent plus qu'ils ne parlent. Un emblème d'observation silencieuse."
+      },
+      "twin-pillars": {
+        "name": "LES PILIERS JUMEAUX",
+        "meaning": "Deux colonnes, lumière et ombre, toujours tatouées en paire. Dans l'histoire, elles représentent l'équilibre que chaque initié doit maintenir entre la question et la réponse."
+      },
+      "compass-square": {
+        "name": "COMPAS ET ÉQUERRE",
+        "meaning": "Un instrument de mesure devenu emblème — le compas pour la vision, l'équerre pour la conduite. Dans l'histoire, il n'est remis qu'après le Serment Scellé."
+      },
+      "checkered-floor": {
+        "name": "LE SOL EN DAMIER",
+        "meaning": "Des carreaux clairs et sombres tatoués comme un bracelet autour du poignet, un rappel que chaque choix de l'histoire a son contraire."
+      },
+      "ouroboros": {
+        "name": "L'OUROBOROS",
+        "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée."
+      },
+      "thirteen-steps": {
+        "name": "LES TREIZE MARCHES",
+        "meaning": "Une pyramide à degrés surmontée d'un sommet flottant, un trait par marche. La « pyramide inachevée » du Grand Sceau des États-Unis compte treize degrés, un par colonie d'origine. Dans l'histoire : treize chambres, aucune achevée."
+      },
+      "coiled-serpent": {
+        "name": "LE SERPENT ENROULÉ",
+        "meaning": "Un serpent en une lente courbe en S, tatoué le long de l'avant-bras. Ancien dans de nombreuses cultures, à la fois danger et renouveau ; dans l'histoire, il marque ceux qui ont abandonné leur première croyance."
+      },
+      "anubis": {
+        "name": "LE GUIDE CHACAL",
+        "meaning": "Anubis, guide égyptien des morts à tête de chacal, dessiné de profil. Choisi par ceux qui cherchent une protection aux seuils ; dans l'histoire, il conduit l'initié à travers la Traversée."
+      },
+      "metatrons-cube": {
+        "name": "LE CUBE DE MÉTATRON",
+        "meaning": "Treize cercles reliés par des lignes droites, favori des tatoueurs de géométrie sacrée. Dans l'histoire, c'est le schéma du conseil : douze gardiens autour d'un siège vide."
+      },
+      "double-eagle": {
+        "name": "L'AIGLE BICÉPHALE",
+        "meaning": "Deux têtes tournées en sens opposés, emblème du 33e degré du Rite écossais et de plusieurs anciens empires. Dans l'histoire : un œil sur le passé, l'autre sur ce qui vient."
+      },
+      "lotus-eye": {
+        "name": "L'ŒIL DE LOTUS",
+        "meaning": "Un œil qui s'ouvre au cœur d'un lotus : le troisième œil de la tradition orientale, pourvu de pétales. Dans l'histoire, il est tatoué sur le sternum de ceux qui achèvent la Veillée."
+      },
+      "hourglass": {
+        "name": "LE SABLIER",
+        "meaning": "Le temps comme un vase à deux chambres, rappel des peintres et des loges que le sable ne coule que dans un sens. Dans l'histoire, c'est la marque de la Première Bougie : une heure, sans parler."
+      },
+      "xiii-numeral": {
+        "name": "LE NUMÉRAL XIII",
+        "meaning": "Treize en chiffres romains : treize marches, treize sièges, treize chambres. Tatoué en petit, derrière l’oreille ou au poignet, par les amateurs de numérologie."
+      },
+      "the-key": {
+        "name": "LA CLÉ DU GARDIEN",
+        "meaning": "Une vieille clé de fer à anneau en trèfle. Les clés apparaissent dans l'imagerie rosicrucienne et maçonnique comme le droit d'ouvrir ce qui est fermé. Dans l'histoire, le Grand Gardien en remet une à chaque initié scellé."
+      }
     },
     "channels": {
       "discord": {

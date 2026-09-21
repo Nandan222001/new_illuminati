@@ -519,7 +519,11 @@
       "downloadPng": "BAIXAR PNG",
       "preparing": "PREPARANDO…",
       "error": "Não foi possível criar o documento. Tente novamente.",
-      "note": "Os documentos são pessoais e intransferíveis. O cartão de membro não é um documento de identidade oficial."
+      "note": "Os documentos são pessoais e intransferíveis. O cartão de membro não é um documento de identidade oficial.",
+      "acceptanceTitle": "CARTA DE ACEITAÇÃO",
+      "acceptanceText": "A transmissão em pergaminho enviada quando você entrou. PDF, A4.",
+      "clearanceTitle": "AVISO DE LIBERAÇÃO",
+      "clearanceText": "Seu aviso confidencial de liberação final com o horário do ritual. PDF, A4."
     }
   },
   "notFound": {
@@ -714,21 +718,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "O OLHO DA PROVIDÊNCIA", "meaning": "Um olho radiante dentro de um triângulo, tatuado no pulso de cada Guardião no Conselho. Na história, marca um voto de vigilância — não uma alegação sobre qualquer ordem real." },
-      "silent-owl": { "name": "A CORUJA SILENCIOSA", "meaning": "Usada entre as omoplatas pelos membros mais antigos da história, a coruja marca aqueles que escutam mais do que falam. Um emblema de observação silenciosa." },
-      "twin-pillars": { "name": "OS PILARES GÊMEOS", "meaning": "Duas colunas, luz e sombra, sempre tatuadas em par. Na história, representam o equilíbrio que todo iniciado deve manter entre a pergunta e a resposta." },
-      "compass-square": { "name": "COMPASSO E ESQUADRO", "meaning": "Uma ferramenta de medição transformada em emblema — o compasso para a visão, o esquadro para a conduta. Na história, é dado somente após o Juramento Selado." },
-      "checkered-floor": { "name": "O PISO XADREZ", "meaning": "Ladrilhos claros e escuros tatuados como uma faixa ao redor do pulso, um lembrete de que toda escolha na história tem seu oposto." },
-      "ouroboros": { "name": "O OUROBOROS", "meaning": "Uma serpente devorando a própria cauda, marcando aqueles que completam um ciclo inteiro das sete estações. Usado somente após a Travessia." },
-      "thirteen-steps": { "name": "OS TREZE DEGRAUS", "meaning": "Uma pirâmide em degraus com um topo flutuante, uma linha para cada degrau. A «pirâmide inacabada» do Grande Selo dos EUA tem treze degraus, um para cada colônia original. Na história: treze câmaras, nenhuma concluída." },
-      "coiled-serpent": { "name": "A SERPENTE ENROLADA", "meaning": "Uma serpente em uma lenta curva em S, tatuada ao longo do antebraço. Antiga em muitas culturas como perigo e renovação ao mesmo tempo; na história, marca os iniciados que abandonaram sua primeira crença." },
-      "anubis": { "name": "O GUIA CHACAL", "meaning": "Anúbis, o guia egípcio dos mortos com cabeça de chacal, desenhado de perfil. Escolhido por quem busca proteção nos limiares; na história, ele conduz o iniciado pela Travessia." },
-      "metatrons-cube": { "name": "O CUBO DE METATRON", "meaning": "Treze círculos unidos por linhas retas, favorito dos tatuadores de geometria sagrada. Na história, é o diagrama do conselho: doze guardiões em torno de um assento vazio." },
-      "double-eagle": { "name": "A ÁGUIA BICÉFALA", "meaning": "Duas cabeças voltadas para lados opostos, emblema do 33º grau do Rito Escocês e de vários impérios antigos. Na história: um olho no passado, outro no que vem." },
-      "lotus-eye": { "name": "O OLHO DE LÓTUS", "meaning": "Um olho se abrindo no coração de um lótus — o terceiro olho da tradição oriental, com pétalas. Na história, é tatuado sobre o esterno por quem conclui a Vigília." },
-      "hourglass": { "name": "A AMPULHETA", "meaning": "O tempo como um vaso de duas câmaras, lembrete de pintores e lojas de que a areia corre num só sentido. Na história, é a marca da Primeira Vela: uma hora, sem falar." },
-      "xiii-numeral": { "name": "O NUMERAL XIII", "meaning": "Treze em algarismos romanos: treze degraus, treze assentos, treze câmaras. Tatuado pequeno, atrás da orelha ou no pulso, por quem ama a numerologia." },
-      "the-key": { "name": "A CHAVE DO GUARDIÃO", "meaning": "Uma velha chave de ferro com argola em trevo. Chaves aparecem na imagética rosacruz e maçônica como o direito de abrir o que está fechado. Na história, o Grande Guardião entrega uma a cada iniciado selado." }
+      "eye-of-providence": {
+        "name": "O OLHO DA PROVIDÊNCIA",
+        "meaning": "Um olho radiante dentro de um triângulo, tatuado no pulso de cada Guardião no Conselho. Na história, marca um voto de vigilância — não uma alegação sobre qualquer ordem real."
+      },
+      "silent-owl": {
+        "name": "A CORUJA SILENCIOSA",
+        "meaning": "Usada entre as omoplatas pelos membros mais antigos da história, a coruja marca aqueles que escutam mais do que falam. Um emblema de observação silenciosa."
+      },
+      "twin-pillars": {
+        "name": "OS PILARES GÊMEOS",
+        "meaning": "Duas colunas, luz e sombra, sempre tatuadas em par. Na história, representam o equilíbrio que todo iniciado deve manter entre a pergunta e a resposta."
+      },
+      "compass-square": {
+        "name": "COMPASSO E ESQUADRO",
+        "meaning": "Uma ferramenta de medição transformada em emblema — o compasso para a visão, o esquadro para a conduta. Na história, é dado somente após o Juramento Selado."
+      },
+      "checkered-floor": {
+        "name": "O PISO XADREZ",
+        "meaning": "Ladrilhos claros e escuros tatuados como uma faixa ao redor do pulso, um lembrete de que toda escolha na história tem seu oposto."
+      },
+      "ouroboros": {
+        "name": "O OUROBOROS",
+        "meaning": "Uma serpente devorando a própria cauda, marcando aqueles que completam um ciclo inteiro das sete estações. Usado somente após a Travessia."
+      },
+      "thirteen-steps": {
+        "name": "OS TREZE DEGRAUS",
+        "meaning": "Uma pirâmide em degraus com um topo flutuante, uma linha para cada degrau. A «pirâmide inacabada» do Grande Selo dos EUA tem treze degraus, um para cada colônia original. Na história: treze câmaras, nenhuma concluída."
+      },
+      "coiled-serpent": {
+        "name": "A SERPENTE ENROLADA",
+        "meaning": "Uma serpente em uma lenta curva em S, tatuada ao longo do antebraço. Antiga em muitas culturas como perigo e renovação ao mesmo tempo; na história, marca os iniciados que abandonaram sua primeira crença."
+      },
+      "anubis": {
+        "name": "O GUIA CHACAL",
+        "meaning": "Anúbis, o guia egípcio dos mortos com cabeça de chacal, desenhado de perfil. Escolhido por quem busca proteção nos limiares; na história, ele conduz o iniciado pela Travessia."
+      },
+      "metatrons-cube": {
+        "name": "O CUBO DE METATRON",
+        "meaning": "Treze círculos unidos por linhas retas, favorito dos tatuadores de geometria sagrada. Na história, é o diagrama do conselho: doze guardiões em torno de um assento vazio."
+      },
+      "double-eagle": {
+        "name": "A ÁGUIA BICÉFALA",
+        "meaning": "Duas cabeças voltadas para lados opostos, emblema do 33º grau do Rito Escocês e de vários impérios antigos. Na história: um olho no passado, outro no que vem."
+      },
+      "lotus-eye": {
+        "name": "O OLHO DE LÓTUS",
+        "meaning": "Um olho se abrindo no coração de um lótus — o terceiro olho da tradição oriental, com pétalas. Na história, é tatuado sobre o esterno por quem conclui a Vigília."
+      },
+      "hourglass": {
+        "name": "A AMPULHETA",
+        "meaning": "O tempo como um vaso de duas câmaras, lembrete de pintores e lojas de que a areia corre num só sentido. Na história, é a marca da Primeira Vela: uma hora, sem falar."
+      },
+      "xiii-numeral": {
+        "name": "O NUMERAL XIII",
+        "meaning": "Treze em algarismos romanos: treze degraus, treze assentos, treze câmaras. Tatuado pequeno, atrás da orelha ou no pulso, por quem ama a numerologia."
+      },
+      "the-key": {
+        "name": "A CHAVE DO GUARDIÃO",
+        "meaning": "Uma velha chave de ferro com argola em trevo. Chaves aparecem na imagética rosacruz e maçônica como o direito de abrir o que está fechado. Na história, o Grande Guardião entrega uma a cada iniciado selado."
+      }
     },
     "channels": {
       "discord": {

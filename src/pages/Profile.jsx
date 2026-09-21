@@ -9,7 +9,7 @@ import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
-import { downloadCardPdf, downloadCardPng, downloadJoiningLetterPdf } from '../utils/membershipDocs'
+import { downloadAcceptancePdf, downloadCardPdf, downloadCardPng, downloadClearancePdf, downloadJoiningLetterPdf } from '../utils/membershipDocs'
 
 export default function Profile() {
   const { user, isAdmin, logout, updateProfile } = useAuth()
@@ -152,6 +152,30 @@ export default function Profile() {
                 </button>
                 <button type="button" className="btn-ghost small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPdf', downloadCardPdf)}>
                   {docBusy === 'cardPdf' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
+                </button>
+              </div>
+            </div>
+          </article>
+          <article className="doc-card">
+            <div className="doc-thumb doc-letter" aria-hidden="true"><i /><i /><i /><i /></div>
+            <div className="doc-body">
+              <h4>{t('profile.docs.acceptanceTitle')}</h4>
+              <p>{t('profile.docs.acceptanceText')}</p>
+              <div className="doc-actions">
+                <button type="button" className="btn-gold small" disabled={!!docBusy} onClick={() => runDownload('acceptance', downloadAcceptancePdf)}>
+                  {docBusy === 'acceptance' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
+                </button>
+              </div>
+            </div>
+          </article>
+          <article className="doc-card">
+            <div className="doc-thumb doc-letter" aria-hidden="true"><i /><i /><i /><i /></div>
+            <div className="doc-body">
+              <h4>{t('profile.docs.clearanceTitle')}</h4>
+              <p>{t('profile.docs.clearanceText')}</p>
+              <div className="doc-actions">
+                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('clearance', downloadClearancePdf)}>
+                  {docBusy === 'clearance' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
                 </button>
               </div>
             </div>
