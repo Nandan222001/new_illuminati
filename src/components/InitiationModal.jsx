@@ -13,7 +13,7 @@ const EMPTY = { cardName: '', cardNumber: '', expiry: '', cvv: '' }
  * short fake delay, unlocking sealed content for their account.
  */
 export default function InitiationModal({ open, onClose }) {
-  const { completeInitiation } = useAuth()
+  const { completeInitiation, user } = useAuth()
   const toast = useToast()
   const { t } = useTranslation()
   const [form, setForm] = useState(EMPTY)
@@ -75,6 +75,9 @@ export default function InitiationModal({ open, onClose }) {
         ) : (
           <>
             <h3>{t('modals.initiation.title')}</h3>
+            <p style={{ color: 'var(--gold)', letterSpacing: 1, fontSize: 12, margin: '4px 0 0' }}>
+              {user?.name} · {user?.email}
+            </p>
             <p>
               <Trans i18nKey="modals.initiation.bodyIntro" values={{ fee: INITIATION_FEE_INR }} components={[<b style={{ color: 'var(--gold)' }} />]} />
               <br /><br />

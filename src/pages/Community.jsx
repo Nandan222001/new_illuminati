@@ -90,7 +90,7 @@ export default function Community() {
             <div className="comm-emblem-wrap"><Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" /></div>
             <h4>{t('community.emblemTitle')}</h4>
             <p>{t('community.emblemText')}</p>
-            {!user && <button type="button" className="btn-gold" onClick={() => setShowJoin(true)}>{t('common.joinUsNow')} ›</button>}
+            {user?.paid && <button type="button" className="btn-gold" onClick={() => setShowJoin(true)}>{t('common.joinUsNow')} ›</button>}
             {user && <Link to="/profile" className="btn-gold">{t('nav.myProfile')} ›</Link>}
             <JoinUsModal open={showJoin} onClose={() => setShowJoin(false)} />
           </div>

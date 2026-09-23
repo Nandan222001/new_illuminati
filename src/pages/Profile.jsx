@@ -19,7 +19,7 @@ export default function Profile() {
   const location = useLocation()
   const [name, setName] = useState(user.name)
   const [error, setError] = useState('')
-  const [showInitiation, setShowInitiation] = useState(false)
+  const [showInitiation, setShowInitiation] = useState(Boolean(location.state?.openInitiation) && !user.paid)
   const [docBusy, setDocBusy] = useState('')
   const { t } = useTranslation()
 

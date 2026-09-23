@@ -26,9 +26,12 @@ export default function Register() {
   const [showPw, setShowPw] = useState(false)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+  const [justRegistered, setJustRegistered] = useState(false)
   const score = useMemo(() => strength(form.password), [form.password])
 
-  useEffect(() => { if (ready && user) navigate('/profile', { replace: true }) }, [ready, user, navigate])
+  useEffect(() => {
+    if (ready && user) navigate('/profile', { replace: true, state: justRegistered ? { openInitiation: true } : undefined })
+  }, [ready, user, navigate, justRegistered])
 
   const submit = async (e) => {
     e.preventDefault()
@@ -38,6 +41,7 @@ export default function Register() {
     setBusy(true)
     try {
       const u = await register(form)
+      setJustRegistered(true)
       toast(t('register.welcomeToast', { number: String(u.initiate).padStart(3, '0') }))
     } catch (err) {
       setError(err.message)

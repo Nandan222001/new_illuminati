@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
 import JoinUsModal from '../components/JoinUsModal'
+import InitiationModal from '../components/InitiationModal'
 import Img from '../components/Img'
 import { useIsMobile } from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
@@ -29,6 +30,13 @@ export default function Home() {
   const [heroBgLoaded, setHeroBgLoaded] = useState(false)
   const [countdownBgLoaded, setCountdownBgLoaded] = useState(false)
   const [showJoin, setShowJoin] = useState(false)
+  const [showInitiation, setShowInitiation] = useState(false)
+
+  const onEnter = () => {
+    if (user?.paid) return enterSite()
+    if (user) return setShowInitiation(true)
+    navigate('/register')
+  }
   const cardRefs = useRef([])
   const carouselRef = useRef(null)
   const toast = useToast()
@@ -89,13 +97,15 @@ export default function Home() {
             <p className="hero-sub">{t('home.heroSubLine1')}<br />{t('home.heroSubLine2')}</p>
             <div className="hero-tag">{t('home.heroTag')}</div>
             <div className="hero-cta">
-              <button className="btn-gold hero-cta-main" onClick={enterSite}>
+              <button className="btn-gold hero-cta-main" onClick={onEnter}>
                 <BrandFlame button />
                 <span className="cta-label">{t('home.ctaMain')} <i className="cta-arrow">›</i></span>
               </button>
-              {user
-                ? <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>
-                : <button type="button" className="btn-ghost" onClick={() => setShowJoin(true)}>△ {t('common.joinUsNow')}</button>}
+              {user?.paid
+                ? <button type="button" className="btn-ghost" onClick={() => setShowJoin(true)}>△ {t('common.joinUsNow')}</button>
+                : user
+                  ? <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>
+                  : null}
             </div>
             <div className="social-row">
               {SOCIAL_LINKS.map((s) => (
@@ -103,6 +113,7 @@ export default function Home() {
               ))}
             </div>
             <JoinUsModal open={showJoin} onClose={() => setShowJoin(false)} />
+            <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />
           </div>
           <div className="hero-rail">
             <div>

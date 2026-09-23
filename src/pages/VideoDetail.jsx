@@ -61,7 +61,7 @@ export default function VideoDetail() {
                 <p>{t('videoDetail.availableSignedIn')}</p>
                 <div className="detail-actions">
                   <Link to="/login" state={{ from: `/videos/${video.slug}` }} className="btn-gold">{t('videoDetail.signInCta')}</Link>
-                  <button type="button" className="btn-ghost" onClick={() => setShowJoin(true)}>{t('common.joinUsNow')}</button>
+                  {user?.paid && <button type="button" className="btn-ghost" onClick={() => setShowJoin(true)}>{t('common.joinUsNow')}</button>}
                 </div>
                 <JoinUsModal open={showJoin} onClose={() => setShowJoin(false)} />
               </>
