@@ -1280,3 +1280,8 @@ input[type="search"]{padding:9px 14px;font-size:12px}
   .form-row.three{grid-template-columns:1fr}
   .admin-toolbar{align-items:flex-start}
 }
+
+/* Join Us Now modal */
+.join-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.join-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 8px;border:1px solid rgba(230,200,120,.35);background:rgba(230,200,120,.06);color:var(--gold-light,#e6c878);font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:8px}
+.join-btn:hover{background:rgba(230,200,120,.14);color:#fff}

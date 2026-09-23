@@ -35,7 +35,8 @@
       "fiction": "RÉCIT",
       "theory": "THÉORIE",
       "fact": "FAIT"
-    }
+    },
+    "joinUsNow": "REJOIGNEZ-NOUS"
   },
   "nav": {
     "home": "ACCUEIL",
@@ -845,5 +846,9 @@
         "a": "Jamais. Toute ressemblance avec des personnes, groupes ou événements réels est fortuite ou purement référentielle, au service de l'histoire."
       }
     }
+  },
+  "joinUs": {
+    "title": "REJOIGNEZ LES CANAUX",
+    "sub": "L'Ordre vous garde une place sur chaque canal. Choisissez où être appelé."
   }
 }

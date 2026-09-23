@@ -90,7 +90,7 @@ export default function Register() {
           <span><Trans i18nKey="register.ageCheck" components={[<b />]} /> <Link to="/rules" target="_blank" rel="noopener noreferrer">{t('rules.title')} ↗</Link></span>
         </label>
         {error && <div className="form-error" role="alert">{error}</div>}
-        <button type="submit" className="btn-gold full" disabled={busy}>{busy ? t('register.sealing') : `${t('common.becomeInitiate')} ›`}</button>
+        <button type="submit" className="btn-gold full" disabled={busy}>{busy ? t('register.sealing') : `${t('common.joinUsNow')} ›`}</button>
       </form>
     </AuthShell>
   )

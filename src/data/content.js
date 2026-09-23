@@ -128,6 +128,15 @@ export const CHANNELS = [
   { key: 'discussionBoard', icon: '💬' },
 ]
 
+// Community channels for the "Join Us Now" modal and social icons.
+// TODO: replace the dummy handles below with the live community links.
+export const SOCIAL_LINKS = [
+  { key: 'instagram', label: 'Instagram', icon: '📷', url: 'https://instagram.com/thirdeyevaultindia666' },
+  { key: 'whatsapp', label: 'WhatsApp', icon: '💬', url: 'https://wa.me/910000000000' },
+  { key: 'telegram', label: 'Telegram', icon: '✈', url: 'https://t.me/illuminati_brotherhood' },
+  { key: 'discord', label: 'Discord', icon: '🎮', url: 'https://discord.gg/illuminati' },
+]
+
 export const TIMELINE = [
   { key: 'origin' },
   { key: 'archive' },

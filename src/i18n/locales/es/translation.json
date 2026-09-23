@@ -35,7 +35,8 @@
       "fiction": "RELATO",
       "theory": "TEORÍA",
       "fact": "HECHO"
-    }
+    },
+    "joinUsNow": "ÚNETE AHORA"
   },
   "nav": {
     "home": "INICIO",
@@ -845,5 +846,9 @@
         "a": "Nunca. Cualquier parecido con personas, grupos o hechos reales es casual o meramente referencial por el bien de la historia."
       }
     }
+  },
+  "joinUs": {
+    "title": "ÚNETE EN LOS CANALES",
+    "sub": "La Orden guarda un asiento para ti en cada canal. Elige dónde quieres ser llamado."
   }
 }

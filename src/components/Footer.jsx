@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { SOCIAL_LINKS } from '../data/content'
 import { useTranslation } from 'react-i18next'
 import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
@@ -19,11 +20,9 @@ export default function Footer() {
           </div>
           <p className="foot-desc">{t('footer.description')}</p>
           <div className="social-row">
-            <a href="#" title="Instagram" onClick={(e) => e.preventDefault()}>📷</a>
-            <a href="#" title="Discord" onClick={(e) => e.preventDefault()}>🎮</a>
-            <a href="#" title="Telegram" onClick={(e) => e.preventDefault()}>✈</a>
-            <a href="#" title="YouTube" onClick={(e) => e.preventDefault()}>▶</a>
-            <a href="#" title="X" onClick={(e) => e.preventDefault()}>𝕏</a>
+            {SOCIAL_LINKS.map((s) => (
+              <a key={s.key} href={s.url} target="_blank" rel="noopener noreferrer" title={s.label}>{s.icon}</a>
+            ))}
           </div>
         </div>
         <div className="foot-col">

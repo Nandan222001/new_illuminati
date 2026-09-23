@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { INSTA_IMAGES, PAGES, getTimeLeft } from '../data/content'
+import { INSTA_IMAGES, PAGES, SOCIAL_LINKS, getTimeLeft } from '../data/content'
 import { useLocalizedCards, useLocalizedSymbols } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
+import JoinUsModal from '../components/JoinUsModal'
 import Img from '../components/Img'
 import { useIsMobile } from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
@@ -27,6 +28,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft)
   const [heroBgLoaded, setHeroBgLoaded] = useState(false)
   const [countdownBgLoaded, setCountdownBgLoaded] = useState(false)
+  const [showJoin, setShowJoin] = useState(false)
   const cardRefs = useRef([])
   const carouselRef = useRef(null)
   const toast = useToast()
@@ -93,15 +95,14 @@ export default function Home() {
               </button>
               {user
                 ? <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>
-                : <Link className="btn-ghost" to="/register">△ {t('common.becomeInitiate')}</Link>}
+                : <button type="button" className="btn-ghost" onClick={() => setShowJoin(true)}>△ {t('common.joinUsNow')}</button>}
             </div>
             <div className="social-row">
-              <a href="#" title="Instagram" onClick={(e) => e.preventDefault()}>📷</a>
-              <a href="#" title="Discord" onClick={(e) => e.preventDefault()}>🎮</a>
-              <a href="#" title="Telegram" onClick={(e) => e.preventDefault()}>✈</a>
-              <a href="#" title="YouTube" onClick={(e) => e.preventDefault()}>▶</a>
-              <a href="#" title="X" onClick={(e) => e.preventDefault()}>𝕏</a>
+              {SOCIAL_LINKS.map((s) => (
+                <a key={s.key} href={s.url} target="_blank" rel="noopener noreferrer" title={s.label}>{s.icon}</a>
+              ))}
             </div>
+            <JoinUsModal open={showJoin} onClose={() => setShowJoin(false)} />
           </div>
           <div className="hero-rail">
             <div>

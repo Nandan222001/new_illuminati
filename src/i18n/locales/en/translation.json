@@ -35,7 +35,8 @@
       "fiction": "STORY",
       "theory": "THEORY",
       "fact": "FACT"
-    }
+    },
+    "joinUsNow": "JOIN US NOW"
   },
   "nav": {
     "home": "HOME",
@@ -845,5 +846,9 @@
         "a": "Never. Any resemblance to real people, groups or events is coincidental or purely referential for the sake of the story."
       }
     }
+  },
+  "joinUs": {
+    "title": "JOIN US ON THE CHANNELS",
+    "sub": "The Order keeps a seat for you on every channel. Choose where you want to be called."
   }
 }

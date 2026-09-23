@@ -35,7 +35,8 @@
       "fiction": "GESCHICHTE",
       "theory": "THEORIE",
       "fact": "FAKT"
-    }
+    },
+    "joinUsNow": "JETZT BEITRETEN"
   },
   "nav": {
     "home": "START",
@@ -845,5 +846,9 @@
         "a": "Niemals. Jede Ähnlichkeit mit realen Personen, Gruppen oder Ereignissen ist zufällig oder rein referenziell, der Geschichte zuliebe."
       }
     }
+  },
+  "joinUs": {
+    "title": "TRITT DEN KANÄLEN BEI",
+    "sub": "Der Orden hält auf jedem Kanal einen Platz für dich frei. Wähle, wo du gerufen werden willst."
   }
 }

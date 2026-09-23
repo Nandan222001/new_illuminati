@@ -8,6 +8,7 @@ import { INITIATION_FEE_INR } from '../auth/authService'
 import Img from '../components/Img'
 import SectionHead from '../components/SectionHead'
 import InitiationModal from '../components/InitiationModal'
+import JoinUsModal from '../components/JoinUsModal'
 
 export default function VideoDetail() {
   const { slug } = useParams()
@@ -15,6 +16,7 @@ export default function VideoDetail() {
   const video = VIDEOS.find((v) => v.slug === slug)
   const [playing, setPlaying] = useState(false)
   const [showInitiation, setShowInitiation] = useState(false)
+  const [showJoin, setShowJoin] = useState(false)
   const { user } = useAuth()
   const toast = useToast()
   const { t } = useTranslation()
@@ -59,8 +61,9 @@ export default function VideoDetail() {
                 <p>{t('videoDetail.availableSignedIn')}</p>
                 <div className="detail-actions">
                   <Link to="/login" state={{ from: `/videos/${video.slug}` }} className="btn-gold">{t('videoDetail.signInCta')}</Link>
-                  <Link to="/register" className="btn-ghost">{t('common.becomeInitiate')}</Link>
+                  <button type="button" className="btn-ghost" onClick={() => setShowJoin(true)}>{t('common.joinUsNow')}</button>
                 </div>
+                <JoinUsModal open={showJoin} onClose={() => setShowJoin(false)} />
               </>
             )}
           </div>

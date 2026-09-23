@@ -8,6 +8,7 @@ import { useToast } from '../context/ToastContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
+import JoinUsModal from '../components/JoinUsModal'
 
 const SEED_POSTS = [
   { id: 'p1', author: 'Grand Keeper', role: 'admin', key: 'p1' },
@@ -23,6 +24,7 @@ export default function Community() {
   const channels = useLocalizedChannels()
   const [posts, setPosts] = useState(SEED_POSTS.map((p) => ({ ...p, time: t(`community.seedPosts.${p.key}.time`), text: t(`community.seedPosts.${p.key}.text`) })))
   const [draft, setDraft] = useState('')
+  const [showJoin, setShowJoin] = useState(false)
 
   const submit = (e) => {
     e.preventDefault()
@@ -88,8 +90,9 @@ export default function Community() {
             <div className="comm-emblem-wrap"><Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" /></div>
             <h4>{t('community.emblemTitle')}</h4>
             <p>{t('community.emblemText')}</p>
-            {!user && <Link to="/register" className="btn-gold">{t('common.becomeInitiate')} ›</Link>}
+            {!user && <button type="button" className="btn-gold" onClick={() => setShowJoin(true)}>{t('common.joinUsNow')} ›</button>}
             {user && <Link to="/profile" className="btn-gold">{t('nav.myProfile')} ›</Link>}
+            <JoinUsModal open={showJoin} onClose={() => setShowJoin(false)} />
           </div>
           <div className="side-card">
             <h4>{t('community.followInstagram')}</h4>

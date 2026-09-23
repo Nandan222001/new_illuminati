@@ -35,7 +35,8 @@
       "fiction": "HISTÓRIA",
       "theory": "TEORIA",
       "fact": "FATO"
-    }
+    },
+    "joinUsNow": "JUNTE-SE AGORA"
   },
   "nav": {
     "home": "INÍCIO",
@@ -845,5 +846,9 @@
         "a": "Nunca. Qualquer semelhança com pessoas, grupos ou eventos reais é coincidência ou puramente referencial, em nome da história."
       }
     }
+  },
+  "joinUs": {
+    "title": "JUNTE-SE NOS CANAIS",
+    "sub": "A Ordem guarda um lugar para você em cada canal. Escolha onde quer ser chamado."
   }
 }
