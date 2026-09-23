@@ -41,12 +41,12 @@ export default function AdminImages() {
         <h3>ADD AN IMAGE</h3>
         <form className="form upload-form" onSubmit={submit}>
           <div className="form-row">
-            <label><span>TITLE</span><input type="text" placeholder="The Second Seal" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
-            <label><span>CAPTION</span><input type="text" placeholder="Key visual · Chapter II" value={form.cap} onChange={(e) => setForm({ ...form, cap: e.target.value })} /></label>
+            <label><span>Title</span><input type="text" placeholder="The Second Seal" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
+            <label><span>Caption</span><input type="text" placeholder="Key visual · Chapter II" value={form.cap} onChange={(e) => setForm({ ...form, cap: e.target.value })} /></label>
           </div>
-          <label><span>IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <label><span>Image URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
           <div className="form-row three">
-            <label><span>CATEGORY</span>
+            <label><span>Category</span>
               <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
                 <option value="free">FREE</option>
                 <option value="paid">PAID (sealed)</option>

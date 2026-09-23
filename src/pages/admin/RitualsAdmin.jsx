@@ -45,17 +45,17 @@ export default function AdminRituals() {
         <h3>ADD A RITUAL</h3>
         <form className="form upload-form" onSubmit={submit}>
           <div className="form-row">
-            <label><span>TITLE</span><input type="text" placeholder="THE MIDNIGHT VOW" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
-            <label><span>STEP LABEL</span><input type="text" placeholder="VIII" value={form.step} onChange={(e) => setForm({ ...form, step: e.target.value })} /></label>
+            <label><span>Title</span><input type="text" placeholder="THE MIDNIGHT VOW" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
+            <label><span>Step label</span><input type="text" placeholder="VIII" value={form.step} onChange={(e) => setForm({ ...form, step: e.target.value })} /></label>
           </div>
-          <label><span>IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
-          <label><span>DESCRIPTION</span><input type="text" placeholder="What happens at this station" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
+          <label><span>Image URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <label><span>Description</span><input type="text" placeholder="What happens at this station" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row">
             <label><span>DURATION / SUBTITLE</span><input type="text" placeholder="Station 8 · Custom" value={form.duration} onChange={(e) => setForm({ ...form, duration: e.target.value })} /></label>
             <label><span>TAGS (comma separated)</span><input type="text" placeholder="Silence, Flame" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} /></label>
           </div>
           <div className="form-row three">
-            <label><span>CATEGORY</span>
+            <label><span>Category</span>
               <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
                 <option value="free">FREE</option>
                 <option value="paid">PAID (sealed)</option>

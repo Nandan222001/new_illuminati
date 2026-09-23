@@ -771,7 +771,7 @@ input::placeholder,textarea::placeholder{color:#5d554a}
 input[type="search"]{padding:9px 14px;font-size:12px}
 .form{display:flex;flex-direction:column;gap:14px;width:100%}
 .form label{display:flex;flex-direction:column;gap:6px}
-.form label>span{font-size:9px;letter-spacing:3px;font-weight:700;color:#8d8474}
+.form label>span{font-size:11px;letter-spacing:.6px;font-weight:600;color:#8d8474}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pw-wrap{position:relative}
 .pw-wrap input{padding-right:44px}

@@ -58,12 +58,12 @@ export default function AdminMembers() {
               const self = u.id === user.id
               return (
                 <tr key={u.id} className={self ? 'self' : ''}>
-                  <td data-label="INITIATE"><span className={`avatar${u.role === ROLES.ADMIN ? ' admin' : ''}`}>{u.name[0]}</span><b>{u.name}</b>{self && <em className="you">YOU</em>}</td>
-                  <td data-label="EMAIL">{u.email}</td>
-                  <td data-label="RANK"><em className={`role-pill ${u.role}`}>{u.role === ROLES.ADMIN ? 'KEEPER' : `INITIATE #${String(u.initiate || 0).padStart(3, '0')}`}</em></td>
-                  <td data-label="MEMBERSHIP">{u.paid ? <em className="status-pill paid">◈ SEALED · {u.sealId}</em> : <em className="status-pill">UNSEALED</em>}</td>
-                  <td data-label="JOINED">{new Date(u.createdAt).toLocaleDateString()}</td>
-                  <td data-label="ACTIONS" className="right">
+                  <td data-label="Initiate"><span className={`avatar${u.role === ROLES.ADMIN ? ' admin' : ''}`}>{u.name[0]}</span><b>{u.name}</b>{self && <em className="you">YOU</em>}</td>
+                  <td data-label="Email">{u.email}</td>
+                  <td data-label="Rank"><em className={`role-pill ${u.role}`}>{u.role === ROLES.ADMIN ? 'KEEPER' : `INITIATE #${String(u.initiate || 0).padStart(3, '0')}`}</em></td>
+                  <td data-label="Membership">{u.paid ? <em className="status-pill paid">◈ SEALED · {u.sealId}</em> : <em className="status-pill">UNSEALED</em>}</td>
+                  <td data-label="Joined">{new Date(u.createdAt).toLocaleDateString()}</td>
+                  <td data-label="Actions" className="right">
                     <div className="row-actions">
                       <button type="button" className="btn-ghost small" disabled={self} onClick={() => toggleRole(u)}>{u.role === ROLES.ADMIN ? 'DEMOTE' : 'PROMOTE'}</button>
                       {confirm === u.id ? (

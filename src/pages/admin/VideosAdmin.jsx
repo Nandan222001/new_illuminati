@@ -44,18 +44,18 @@ export default function AdminVideos() {
         <h3>UPLOAD A VIDEO</h3>
         <form className="form upload-form" onSubmit={submit}>
           <div className="form-row">
-            <label><span>TITLE</span><input type="text" placeholder="The Hidden Chapter" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
-            <label><span>DURATION</span><input type="text" placeholder="12:30" value={form.dur} onChange={(e) => setForm({ ...form, dur: e.target.value })} /></label>
+            <label><span>Title</span><input type="text" placeholder="The Hidden Chapter" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
+            <label><span>Duration</span><input type="text" placeholder="12:30" value={form.dur} onChange={(e) => setForm({ ...form, dur: e.target.value })} /></label>
           </div>
           <label><span>THUMBNAIL / VIDEO IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
-          <label><span>DESCRIPTION</span><input type="text" placeholder="One line about the episode" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
+          <label><span>Description</span><input type="text" placeholder="One line about the episode" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row three">
-            <label><span>LABEL</span>
+            <label><span>Label</span>
               <select value={form.tag} onChange={(e) => setForm({ ...form, tag: e.target.value })}>
                 {TAGS.map((t) => <option key={t} value={t}>{TAG_LABEL[t]}</option>)}
               </select>
             </label>
-            <label><span>CATEGORY</span>
+            <label><span>Category</span>
               <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
                 <option value="free">FREE</option>
                 <option value="paid">PAID (sealed)</option>

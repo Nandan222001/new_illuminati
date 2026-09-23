@@ -90,12 +90,12 @@ export default function AdminRevenue() {
             <tbody>
               {transactions.map((t) => (
                 <tr key={t.id}>
-                  <td data-label="PAYMENT ID"><code>{t.id}</code></td>
-                  <td data-label="INITIATE">{t.name}</td>
-                  <td data-label="NOTE">{t.note}</td>
-                  <td data-label="DATE">{t.date.toLocaleDateString()}</td>
-                  <td data-label="AMOUNT" className="right">{formatINR(t.amount)}</td>
-                  <td data-label="STATUS" className="right"><em className={`status-pill ${t.status}`}>{t.status.toUpperCase()}</em></td>
+                  <td data-label="Payment ID"><code>{t.id}</code></td>
+                  <td data-label="Initiate">{t.name}</td>
+                  <td data-label="Note">{t.note}</td>
+                  <td data-label="Date">{t.date.toLocaleDateString()}</td>
+                  <td data-label="Amount" className="right">{formatINR(t.amount)}</td>
+                  <td data-label="Status" className="right"><em className={`status-pill ${t.status}`}>{t.status.toUpperCase()}</em></td>
                 </tr>
               ))}
             </tbody>
