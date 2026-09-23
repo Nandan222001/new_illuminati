@@ -277,80 +277,69 @@ async function loadImg(src) {
 export async function renderCardFront(user) {
   await loadFonts()
   const f = memberFields(user)
-  const emblem = await loadImg('/assets/email/emblem.jpg')
   const W = 1600
   const H = 1000
   const [c, g] = newCanvas(W, H)
 
-  // rounded-corner backdrop
-  g.fillStyle = '#d9cdb4'
-  g.fillRect(0, 0, W, H)
-  g.save()
-  roundRect(g, 0, 0, W, H, 70)
-  g.clip()
-
-  g.fillStyle = '#edf3f1'
+  // dark base, same palette as the card back
+  const bg = g.createLinearGradient(0, 0, W, H)
+  bg.addColorStop(0, '#15100c')
+  bg.addColorStop(1, '#050203')
+  g.fillStyle = bg
   g.fillRect(0, 0, W, H)
 
-  // guilloche watermark
-  g.strokeStyle = '#c9dbd6'
-  g.lineWidth = 2
-  for (let r = 80; r < 940; r += 26) { g.beginPath(); g.arc(430, 540, r, 0, Math.PI * 2); g.stroke() }
-  g.strokeStyle = '#bccfc9'
-  g.lineWidth = 3
-  g.beginPath(); g.moveTo(430, 240); g.lineTo(150, 830); g.lineTo(710, 830); g.closePath(); g.stroke()
-  g.beginPath(); g.ellipse(430, 640, 120, 60, 0, 0, Math.PI * 2); g.stroke()
-  g.beginPath(); g.ellipse(430, 650, 35, 35, 0, 0, Math.PI * 2); g.stroke()
+  // faint gold watermark emblem
+  g.globalAlpha = 0.08
+  drawEmblem(g, 430, 560, 560, GOLD_LIGHT, 4)
+  g.globalAlpha = 1
 
-  // borders
-  g.strokeStyle = '#7d9a94'
+  // gold borders
+  g.strokeStyle = GOLD
   g.lineWidth = 6
   roundRect(g, 18, 18, W - 36, H - 36, 70)
   g.stroke()
-  g.strokeStyle = '#96b4af'
+  g.strokeStyle = 'rgba(230,200,120,.25)'
   g.lineWidth = 2
   roundRect(g, 36, 36, W - 72, H - 72, 58)
   g.stroke()
 
-  // gothic title
+  // gothic title in gold
   g.textAlign = 'left'
   g.textBaseline = 'alphabetic'
-  g.fillStyle = '#0a0e10'
-  g.font = `168px ${GOTHIC}`
+  g.fillStyle = GOLD_LIGHT
+  g.font = `150px ${GOTHIC}`
   g.fillText('Illuminati', 80, 195)
 
-  // framed emblem + caption
-  const ew = 250
-  g.drawImage(emblem, W - 330, 58, ew, ew)
-  g.strokeStyle = '#7d9a94'
-  g.lineWidth = 3
-  g.strokeRect(W - 330, 58, ew, ew)
-  g.fillStyle = '#171a18'
-  g.font = `700 30px ${SANS}`
+  // emblem + house caption, top right
+  drawEmblem(g, W - 220, 165, 170, GOLD_LIGHT, 4)
+  g.textAlign = 'center'
+  g.fillStyle = '#a8905a'
+  g.font = `700 26px ${SANS}`
+  spacing(g, 8)
+  g.fillText('ILLUMINATI', W - 220, 300)
+  g.font = `600 15px ${SANS}`
   spacing(g, 6)
-  const cap = 'ILLUMINATI'
-  const cw = g.measureText(cap).width
-  g.fillText(cap, W - 330 + Math.max(0, (ew - cw) / 2), 350)
+  g.fillText('BROTHERHOOD', W - 220, 328)
   spacing(g, 0)
 
-  // photo panel with hooded silhouette (no real person)
+  // photo panel with hooded silhouette
   const px0 = W - 560
   const py0 = 400
   const px1 = W - 110
   const py1 = 880
-  g.fillStyle = '#262d2b'
+  g.fillStyle = '#0b0705'
   g.fillRect(px0, py0, px1 - px0, py1 - py0)
   const pcx = (px0 + px1) / 2
-  g.fillStyle = '#0c100f'
+  g.fillStyle = '#000'
   g.beginPath(); g.moveTo(pcx - 195, py1); g.lineTo(pcx - 140, 700); g.lineTo(pcx + 140, 700); g.lineTo(pcx + 195, py1); g.closePath(); g.fill()
   g.beginPath(); g.ellipse(pcx, 615, 150, 165, 0, 0, Math.PI * 2); g.fill()
-  g.fillStyle = '#161c1a'
+  g.fillStyle = '#161009'
   g.beginPath(); g.ellipse(pcx, 620, 95, 120, 0, 0, Math.PI * 2); g.fill()
-  g.fillStyle = '#3a4441'
+  g.fillStyle = '#7a5c22'
   g.beginPath(); g.ellipse(pcx - 37, 607, 7, 7, 0, 0, Math.PI * 2); g.fill()
   g.beginPath(); g.ellipse(pcx + 37, 607, 7, 7, 0, 0, Math.PI * 2); g.fill()
-  g.strokeStyle = '#7d9a94'
-  g.lineWidth = 5
+  g.strokeStyle = GOLD
+  g.lineWidth = 4
   g.strokeRect(px0, py0, px1 - px0, py1 - py0)
 
   // vertical motto
@@ -358,42 +347,43 @@ export async function renderCardFront(user) {
   g.translate(W - 612, 640)
   g.rotate(-Math.PI / 2)
   g.textAlign = 'center'
-  g.fillStyle = '#4c635e'
+  g.fillStyle = '#8d8474'
   g.font = `700 28px ${SANS}`
   spacing(g, 8)
   g.fillText('AD LUCEM · MMXXVI', 0, 0)
   g.restore()
   spacing(g, 0)
 
-  // fields
+  // fields — labels in Inter, values in Cinzel gold-white
   const num = String(user.initiate ?? 0).padStart(4, '0')
   const rows = [
-    ['MEMBER NAME', f.name.toUpperCase()],
-    ['INITIATE №', num],
-    ['SEAL', f.sealId || '—'],
-    ['INITIATED', f.memberSince],
+    ['Member name', f.name.toUpperCase()],
+    ['Initiate №', num],
+    ['Seal', f.sealId || '—'],
+    ['Initiated', f.memberSince],
   ]
   let y = 372
   for (const [label, value] of rows) {
     g.textAlign = 'left'
-    g.fillStyle = '#4c635e'
-    g.font = `30px ${SANS}`
+    g.fillStyle = '#8d8474'
+    g.font = `600 28px ${SANS}`
     spacing(g, 4)
     g.fillText(label, 92, y + 26)
     spacing(g, 0)
-    g.fillStyle = '#131a18'
-    fitText(g, value, 700, SANS, 60, 28, 860)
+    g.fillStyle = '#f0e6cf'
+    fitText(g, value, 700, SERIF, 58, 26, 860)
     g.fillText(value, 92, y + 92)
+    g.strokeStyle = 'rgba(230,200,120,.35)'
+    g.lineWidth = 2
+    g.beginPath(); g.moveTo(92, y + 108); g.lineTo(92 + Math.min(560, g.measureText(value).width), y + 108); g.stroke()
     y += 150
   }
 
-  // fictional strip
+  // honest strip
   g.textAlign = 'center'
-  g.fillStyle = '#4c635e'
-  g.font = `28px ${SANS}`
+  g.fillStyle = '#8d8474'
+  g.font = `26px ${SANS}`
   g.fillText('MEMBER CARD · NOT A GOVERNMENT-ISSUED ID', W / 2, 955)
-
-  g.restore()
 
   const { w: CW, h: CH } = CARD_PX
   const [canvas, ctx] = newCanvas(CW, CH)

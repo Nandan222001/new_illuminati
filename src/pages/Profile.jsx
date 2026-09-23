@@ -135,7 +135,7 @@ export default function Profile() {
               <h4>{t('profile.docs.letterTitle')}</h4>
               <p>{t('profile.docs.letterText')}</p>
               <div className="doc-actions">
-                <button type="button" className="btn-gold small" disabled={!!docBusy} onClick={() => runDownload('letter', downloadJoiningLetterPdf)}>
+                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('letter', downloadJoiningLetterPdf)}>
                   {docBusy === 'letter' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
                 </button>
               </div>
@@ -147,10 +147,10 @@ export default function Profile() {
               <h4>{t('profile.docs.cardTitle')}</h4>
               <p>{t('profile.docs.cardText')}</p>
               <div className="doc-actions">
-                <button type="button" className="btn-gold small" disabled={!!docBusy} onClick={() => runDownload('cardPng', downloadCardPng)}>
+                <button type="button" className="btn-gold small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPng', downloadCardPng)}>
                   {docBusy === 'cardPng' ? t('profile.docs.preparing') : t('profile.docs.downloadPng')}
                 </button>
-                <button type="button" className="btn-ghost small" disabled={!!docBusy} onClick={() => runDownload('cardPdf', downloadCardPdf)}>
+                <button type="button" className="btn-ghost small" disabled={!user.paid || !!docBusy} onClick={() => runDownload('cardPdf', downloadCardPdf)}>
                   {docBusy === 'cardPdf' ? t('profile.docs.preparing') : t('profile.docs.downloadPdf')}
                 </button>
               </div>
