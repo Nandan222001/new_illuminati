@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import { INITIATION_FEE_INR } from '../auth/authService'
+import { trackPayment } from '../utils/analytics'
 
 const EMPTY = { cardName: '', cardNumber: '', expiry: '', cvv: '' }
 
@@ -35,10 +36,10 @@ export default function InitiationModal({ open, onClose }) {
   const submit = (e) => {
     e.preventDefault()
     setError('')
-    if (form.cardName.trim().length < 2) { setError(t('modals.initiation.errorName')); return }
-    if (form.cardNumber.replace(/\s/g, '').length < 12) { setError(t('modals.initiation.errorCardNumber')); return }
-    if (!/^\d{2}\s*\/\s*\d{2}$/.test(form.expiry)) { setError(t('modals.initiation.errorExpiry')); return }
-    if (form.cvv.length < 3) { setError(t('modals.initiation.errorCvv')); return }
+    if (form.cardName.trim().length < 2) { setError(t('modals.initiation.errorName')); trackPayment('failed', 'name'); return }
+    if (form.cardNumber.replace(/\s/g, '').length < 12) { setError(t('modals.initiation.errorCardNumber')); trackPayment('failed', 'card_number'); return }
+    if (!/^\d{2}\s*\/\s*\d{2}$/.test(form.expiry)) { setError(t('modals.initiation.errorExpiry')); trackPayment('failed', 'expiry'); return }
+    if (form.cvv.length < 3) { setError(t('modals.initiation.errorCvv')); trackPayment('failed', 'cvv'); return }
 
     setStage('processing')
     window.setTimeout(async () => {
@@ -46,6 +47,7 @@ export default function InitiationModal({ open, onClose }) {
         const updated = await completeInitiation()
         setSealId(updated?.sealId || '')
         setStage('done')
+        trackPayment('success')
         toast(t('modals.initiation.sealedToast'))
       } catch (err) {
         setError(err.message)

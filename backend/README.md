@@ -134,3 +134,13 @@ meet anyone offline, and always carries the fiction disclaimer in its footer.
 - `content_items` is one table for videos/rituals/gallery images, with a `kind` column and a JSON `extra` column for type-specific fields (duration, tags, view counts, etc.) — this mirrors how the frontend's `ContentContext` already treats all three as one catalog with per-item lock/hidden flags.
 - The ₹999 initiation fee and the Razorpay/Twilio settings remain **simulated** — no real payment gateway or SMS provider is called. Initiation mail is the exception: it is really sent when `SMTP_HOST` is configured (see *Transactional mail* above), and falls back to the outbox otherwise.
 - This backend is not yet wired into the frontend (which still uses localStorage). Swapping the frontend's `src/auth/authService.js`, `src/context/ContentContext.jsx` and `src/admin/adminStore.js` to call this API is a separate follow-up step.
+
+## Analytics
+
+- `POST /api/v1/analytics/track` — public fire-and-forget beacon (`visit`,
+  `payment_success`, `payment_failed`) written to `analytics_events`.
+- `GET /api/v1/analytics/summary` — admin only: 7-day visits, unique devices,
+  payment attempts/failures, daily series and the latest failed payments.
+- Migration `4c1e9a2b77d0` adds the table. The frontend falls back to a
+  device-local buffer (badged "LOCAL MODE" on the dashboard) when no backend
+  is reachable, so the static deployment still shows per-device numbers.

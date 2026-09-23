@@ -4,6 +4,7 @@ import { ROLES } from '../../auth/authService'
 import { useAuth } from '../../context/AuthContext'
 import { useContent } from '../../context/ContentContext'
 import { fetchRevenueSeries, formatINR } from '../../admin/adminStore'
+import { fetchSummary } from '../../utils/analytics'
 
 const QUICK_LINKS = [
   { to: '/admin/videos', icon: '▶', label: 'Upload a video' },
@@ -18,10 +19,16 @@ export default function AdminDashboard() {
   const { user, users } = useAuth()
   const { videos, rituals, gallery } = useContent()
   const [series, setSeries] = useState(EMPTY_SERIES)
+  const [stats, setStats] = useState(null)
 
   useEffect(() => {
     fetchRevenueSeries(6).then(setSeries).catch(() => {})
+    fetchSummary().then(setStats).catch(() => {})
   }, [])
+
+  const attempts = (stats?.payment_success || 0) + (stats?.payment_failed || 0)
+  const failRate = attempts ? Math.round(((stats?.payment_failed || 0) / attempts) * 100) : 0
+  const maxDay = stats ? Math.max(...stats.days.map((d) => d.visits), 1) : 1
 
   const admins = users.filter((u) => u.role === ROLES.ADMIN).length
   const members = users.length - admins
@@ -59,6 +66,66 @@ export default function AdminDashboard() {
           <span className="kpi-delta">across videos, rituals &amp; visuals</span>
         </div>
       </div>
+
+      <div className="admin-subhead">
+        <h2>TRAFFIC &amp; PAYMENTS</h2>
+        {stats && (
+          <span className={`mode-badge ${stats.mode === 'live' ? 'live' : 'local'}`}>
+            {stats.mode === 'live' ? 'LIVE API' : 'THIS DEVICE · LOCAL MODE'}
+          </span>
+        )}
+      </div>
+      {stats && (
+        <>
+          <div className="kpi-grid">
+            <div className="kpi-card">
+              <span className="kpi-label">VISITS · 7 DAYS</span>
+              <b className="kpi-value">{stats.visits_7d}</b>
+              <span className="kpi-delta">{stats.visits_total} all-time</span>
+            </div>
+            <div className="kpi-card">
+              <span className="kpi-label">UNIQUE VISITORS · 7D</span>
+              <b className="kpi-value">{stats.unique_7d}</b>
+              <span className="kpi-delta">distinct devices</span>
+            </div>
+            <div className="kpi-card">
+              <span className="kpi-label">PAYMENT ATTEMPTS · 7D</span>
+              <b className="kpi-value">{attempts}</b>
+              <span className="kpi-delta">{stats.payment_success} sealed</span>
+            </div>
+            <div className="kpi-card">
+              <span className="kpi-label">FAILED PAYMENTS · 7D</span>
+              <b className="kpi-value">{stats.payment_failed}</b>
+              <span className="kpi-delta">{failRate}% failure rate</span>
+            </div>
+          </div>
+          <div className="admin-duo">
+            <div className="kpi-card">
+              <span className="kpi-label">VISITS · LAST 7 DAYS</span>
+              <div className="bars">
+                {stats.days.map((d, i) => (
+                  <div className="bar-col" key={i}>
+                    <div className="bar" style={{ height: `${Math.max(4, Math.round((d.visits / maxDay) * 100))}%` }} title={`${d.visits}`} />
+                    <span>{d.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="kpi-card">
+              <span className="kpi-label">RECENT FAILED PAYMENTS</span>
+              {stats.recent_failed.length === 0 ? (
+                <p className="kpi-empty">No failed payments recorded.</p>
+              ) : (
+                <ul className="fail-list">
+                  {stats.recent_failed.map((f, i) => (
+                    <li key={i}><b>{f.at}</b><span>{f.reason}</span></li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="admin-columns">
         <section className="admin-card">

@@ -5,10 +5,12 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import ConsentGate from './ConsentGate'
 import ScrollToTop from './ScrollToTop'
+import usePageView from '../hooks/usePageView'
 
 export default function Layout() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  usePageView()
   const isAdmin = pathname.startsWith('/admin')
   const { ready: contentReady } = useContent()
   const { consent } = useConsent()

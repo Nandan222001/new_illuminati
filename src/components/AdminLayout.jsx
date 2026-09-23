@@ -4,6 +4,7 @@ import { useToast } from '../context/ToastContext'
 import BrandMark from './BrandMark'
 import BrandFlame from './BrandFlame'
 import ScrollToTop from './ScrollToTop'
+import usePageView from '../hooks/usePageView'
 
 const LINKS = [
   { to: '/admin', end: true, icon: '◆', label: 'Dashboard' },
@@ -27,6 +28,7 @@ function initials(name = '') {
  */
 export default function AdminLayout() {
   const { user, logout } = useAuth()
+  usePageView()
   const toast = useToast()
   const navigate = useNavigate()
 
