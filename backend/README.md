@@ -98,6 +98,9 @@ All routes are under `/api/v1`.
 - `DELETE /content/{kind}/{id}` — admin: fully delete a custom item, or hide a built-in one (reversible)
 - `POST /content/{kind}/{id}/restore` — admin: unhide a built-in item
 
+**Public** (`/public`)
+- `GET /public/stats` — aggregate count of registered member accounts only; no member-level information is exposed
+
 **Admin** (`/admin`, admin only)
 - `GET /admin/settings` / `PUT /admin/settings` — Razorpay/SMTP/Twilio integration config (stored only, no live calls are made — same demo behavior as the frontend's Keeper console)
 - `GET /admin/revenue?months=6` — real monthly revenue aggregated from `transactions`
@@ -108,4 +111,4 @@ All routes are under `/api/v1`.
 - Auth is stateless JWT (bearer token in `Authorization: Bearer <token>`), matching a typical SPA + API setup. There is no server-side session/refresh-token flow yet.
 - `content_items` is one table for videos/rituals/gallery images, with a `kind` column and a JSON `extra` column for type-specific fields (duration, tags, view counts, etc.) — this mirrors how the frontend's `ContentContext` already treats all three as one catalog with per-item lock/hidden flags.
 - The ₹999 initiation fee and the Razorpay/SMTP/Twilio settings remain **simulated** — no real payment gateway, email, or SMS provider is called. This matches the existing frontend, which explicitly does the same thing.
-- This backend is not yet wired into the frontend (which still uses localStorage). Swapping the frontend's `src/auth/authService.js`, `src/context/ContentContext.jsx` and `src/admin/adminStore.js` to call this API is a separate follow-up step.
+- The frontend uses this API for authentication, content and the public aggregate member counter. In local development, Vite proxies `/api` to `http://127.0.0.1:8000`; configure the production API origin and CORS for deployment. The bearer token is stored in browser localStorage.

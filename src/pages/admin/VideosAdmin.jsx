@@ -17,7 +17,7 @@ export default function AdminVideos() {
   const submit = async (e) => {
     e.preventDefault()
     if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
-    await addVideo({ ...form, views: '—', date: 'New' })
+    await addVideo({ ...form, date: 'New' })
     toast(`"${form.title}" uploaded as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
   }

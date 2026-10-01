@@ -43,7 +43,6 @@ export function useLocalizedChannels() {
     ...c,
     name: t(`content.channels.${c.key}.name`),
     desc: t(`content.channels.${c.key}.desc`),
-    members: t(`content.channels.${c.key}.members`),
     note: t(`content.channels.${c.key}.note`),
   }))
 }

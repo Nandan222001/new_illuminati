@@ -4,7 +4,9 @@ const MOBILE_QUERY = '(max-width: 720px)'
 
 /** True when the viewport matches the mobile breakpoint (SSR-safe). */
 export function useIsMobile(query = MOBILE_QUERY) {
-  const [mobile, setMobile] = useState(() => (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(query).matches : false))
+  // Start with the same value during SSR and browser hydration, then apply the
+  // viewport-specific art direction after mount.
+  const [mobile, setMobile] = useState(false)
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return undefined
     const mq = window.matchMedia(query)

@@ -23,14 +23,14 @@ RITUALS = [
 ]
 
 VIDEOS = [
-    {"slug": "satanic-mythology", "title": "Satanic Mythology", "tag": "fiction", "dur": "12:46", "img": "/assets/archive-baphomet.jpg", "desc": "How the horned figure travelled from medieval allegory to modern pop culture — and how the Brotherhood story reinterprets it.", "views": "1.2M", "date": "Episode 01"},
-    {"slug": "hidden-societies", "title": "Hidden Societies", "tag": "theory", "dur": "08:20", "img": "/assets/archive-ritual.jpg", "desc": "A survey of the real historical societies that inspired the mythology, and the theories that grew around them.", "views": "864K", "date": "Episode 02"},
-    {"slug": "ancient-mysteries", "title": "Ancient Mysteries", "tag": "fact", "dur": "15:02", "img": "/assets/forbidden-pyramid.jpg", "desc": "Pyramids, alignments and lost libraries. The documented history behind the symbols used throughout the experience.", "views": "2.1M", "date": "Episode 03"},
-    {"slug": "new-world-order", "title": "New World Order", "tag": "theory", "dur": "10:44", "img": "/assets/forbidden-city.jpg", "desc": "Where the phrase came from, why it stuck, and how the Brotherhood story uses it as a countdown.", "views": "990K", "date": "Episode 04"},
-    {"slug": "the-forbidden-library", "title": "The Forbidden Library", "tag": "fiction", "dur": "09:31", "img": "/assets/archives-hero.jpg", "desc": "A dramatised walk through the six chambers of the Ritual Archive, narrated by the Grand Keeper.", "views": "412K", "date": "Episode 05"},
-    {"slug": "the-last-screening", "title": "The Last Screening", "tag": "fiction", "dur": "18:12", "img": "/assets/videos-hero.jpg", "desc": "The feature-length chapter that closes season one. Sealed for initiates until the New Order date.", "views": "—", "date": "Episode 06"},
-    {"slug": "council-of-thirteen", "title": "Council of Thirteen", "tag": "fiction", "dur": "11:05", "img": "/assets/community-hero.jpg", "desc": "Inside the round table: how the council makes its decisions and what the empty thirteenth seat means.", "views": "—", "date": "Episode 07"},
-    {"slug": "the-eye-over-the-city", "title": "The Eye Over The City", "tag": "theory", "dur": "07:48", "img": "/assets/neworder-hero.jpg", "desc": "Skylines, pyramids and the all-seeing eye — an image breakdown of the New Order key visual.", "views": "533K", "date": "Episode 08"},
+    {"slug": "satanic-mythology", "title": "Satanic Mythology", "tag": "fiction", "dur": "12:46", "img": "/assets/archive-baphomet.jpg", "desc": "How the horned figure travelled from medieval allegory to modern pop culture — and how the Brotherhood story reinterprets it.", "date": "Episode 01"},
+    {"slug": "hidden-societies", "title": "Hidden Societies", "tag": "theory", "dur": "08:20", "img": "/assets/archive-ritual.jpg", "desc": "A survey of the real historical societies that inspired the mythology, and the theories that grew around them.", "date": "Episode 02"},
+    {"slug": "ancient-mysteries", "title": "Ancient Mysteries", "tag": "fact", "dur": "15:02", "img": "/assets/forbidden-pyramid.jpg", "desc": "Pyramids, alignments and lost libraries. The documented history behind the symbols used throughout the experience.", "date": "Episode 03"},
+    {"slug": "new-world-order", "title": "New World Order", "tag": "theory", "dur": "10:44", "img": "/assets/forbidden-city.jpg", "desc": "Where the phrase came from, why it stuck, and how the Brotherhood story uses it as a countdown.", "date": "Episode 04"},
+    {"slug": "the-forbidden-library", "title": "The Forbidden Library", "tag": "fiction", "dur": "09:31", "img": "/assets/archives-hero.jpg", "desc": "A dramatised walk through the six chambers of the Ritual Archive, narrated by the Grand Keeper.", "date": "Episode 05"},
+    {"slug": "the-last-screening", "title": "The Last Screening", "tag": "fiction", "dur": "18:12", "img": "/assets/videos-hero.jpg", "desc": "The feature-length chapter that closes season one. Sealed for initiates until the New Order date.", "date": "Episode 06"},
+    {"slug": "council-of-thirteen", "title": "Council of Thirteen", "tag": "fiction", "dur": "11:05", "img": "/assets/community-hero.jpg", "desc": "Inside the round table: how the council makes its decisions and what the empty thirteenth seat means.", "date": "Episode 07"},
+    {"slug": "the-eye-over-the-city", "title": "The Eye Over The City", "tag": "theory", "dur": "07:48", "img": "/assets/neworder-hero.jpg", "desc": "Skylines, pyramids and the all-seeing eye — an image breakdown of the New Order key visual.", "date": "Episode 08"},
 ]
 
 GALLERY = [
@@ -71,7 +71,7 @@ def run(db: Session) -> None:
         return
 
     _seed_kind(db, Ritual, RITUALS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["step", "duration", "tags"])
-    _seed_kind(db, Video, VIDEOS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["tag", "dur", "views", "date"])
+    _seed_kind(db, Video, VIDEOS, slug_key="slug", title_key="title", desc_key="desc", img_key="img", extra_keys=["tag", "dur", "date"])
     _seed_kind(db, Image, GALLERY, slug_key="id", title_key="title", desc_key=None, img_key="img", extra_keys=["cap", "portrait"])
 
     db.commit()

@@ -31,7 +31,7 @@ function bundledRaw(rows, slugKey, extraKeys) {
 
 /** Built-in catalog shown when the API can't be reached (e.g. a frontend-only deploy). */
 const BUNDLED = {
-  video: bundledRaw(VIDEOS, 'slug', ['tag', 'dur', 'views', 'date']),
+  video: bundledRaw(VIDEOS, 'slug', ['tag', 'dur', 'date']),
   ritual: bundledRaw(RITUALS, 'slug', ['step', 'duration', 'tags']),
   image: bundledRaw(GALLERY, 'id', ['cap', 'portrait']),
 }
@@ -82,9 +82,11 @@ function makeKindApi(kind, reload) {
 
 export function ContentProvider({ children }) {
   const { user, isAdmin, ready: authReady } = useAuth()
-  const [raw, setRaw] = useState(EMPTY)
+  // Ship the bundled catalog in the first render so static HTML and the first
+  // client render both contain useful page content before the API responds.
+  const [raw, setRaw] = useState(BUNDLED)
   const [hiddenRaw, setHiddenRaw] = useState(EMPTY)
-  const [ready, setReady] = useState(false)
+  const [ready, setReady] = useState(true)
 
   const loadPublic = useCallback(async () => {
     try {

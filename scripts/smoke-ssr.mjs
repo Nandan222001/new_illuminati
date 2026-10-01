@@ -17,7 +17,6 @@ const out = join(process.cwd(), 'node_modules', '.cache', 'ib-ssr')
 await rm(out, { recursive: true, force: true })
 await mkdir(out, { recursive: true })
 await writeFile(join(out, 'entry.jsx'), `
-import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { MemoryRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from '/src/context/AuthContext'
