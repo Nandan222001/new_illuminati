@@ -3,7 +3,7 @@ import { CARDS, PAGES, VIDEOS } from '../data/content.js'
 export const SITE_NAME = 'Illuminati Brotherhood'
 // The seed admin address uses this brand domain. Override it with the exact
 // production origin through VITE_SITE_URL before deployment if it differs.
-export const DEFAULT_SITE_URL = 'https://illuminati-brotherhood.io'
+export const DEFAULT_SITE_URL = 'https://illuminati-brotherhood.org'
 
 const PAGE_SEO = {
   '/': {

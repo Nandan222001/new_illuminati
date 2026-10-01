@@ -20,7 +20,7 @@ public route gets a unique title, description, canonical URL, Open Graph/Twitter
 metadata and JSON-LD; the build also writes `dist/sitemap.xml`, `dist/robots.txt`
 and a custom 404 page. `VITE_SITE_URL` must be the exact canonical production
 origin (for example `https://your-domain.example`) before deploying. The
-fallback is `https://illuminati-brotherhood.io`, inferred from the seeded admin
+fallback is `https://illuminati-brotherhood.org`, inferred from the seeded admin
 email; change it if that is not the live domain. Avoid building with a preview
 or localhost URL as the canonical origin.
 

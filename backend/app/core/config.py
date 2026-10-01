@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
 
-    ADMIN_EMAIL: str = "admin@illuminati-brotherhood.io"
+    ADMIN_EMAIL: str = "admin@illuminati-brotherhood.org"
     ADMIN_PASSWORD: str = "GrandKeeper#2026"
 
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
