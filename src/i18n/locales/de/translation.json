@@ -21,7 +21,6 @@
     "followNow": "JETZT FOLGEN",
     "followingToast": "Instagram-Folgen kommt bald.",
     "instagramPostAlt": "Instagram-Beitrag",
-    "viewsSuffix": "Aufrufe",
     "explore": "Entdecken",
     "emailLabel": "E-MAIL",
     "passphraseLabel": "PASSPHRASE",
@@ -734,25 +733,21 @@
       "discord": {
         "name": "DISCORD",
         "desc": "Live-Diskussionen, Theorie-Threads und Sprachräume.",
-        "members": "48.200 Initiierte",
         "note": "Die Discord-Einladung kommt bald."
       },
       "telegram": {
         "name": "TELEGRAM",
         "desc": "Ankündigungen, Neuigkeiten und Countdown-Updates.",
-        "members": "21.900 Initiierte",
         "note": "Der Telegram-Kanal kommt bald."
       },
       "instagram": {
         "name": "INSTAGRAM",
         "desc": "Tägliche Visuals, Sigillen und Blicke hinter die Kulissen.",
-        "members": "132.000 Follower",
         "note": "Die Instagram-Seite kommt bald."
       },
       "discussionBoard": {
         "name": "DISKUSSIONSFORUM",
         "desc": "Ausführliche Essays und tiefgehende Archiv-Analysen.",
-        "members": "9.400 Initiierte",
         "note": "Das Diskussionsforum ist direkt darunter – scrolle nach unten, um mitzumachen."
       }
     },

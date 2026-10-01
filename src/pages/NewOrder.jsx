@@ -18,7 +18,7 @@ const PHASES = [
 
 export default function NewOrder() {
   const page = PAGES.newOrder
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+  const [timeLeft, setTimeLeft] = useState(null)
   const [email, setEmail] = useState('')
   const { user } = useAuth()
   const toast = useToast()
@@ -26,6 +26,7 @@ export default function NewOrder() {
   const timeline = useLocalizedTimeline()
 
   useEffect(() => {
+    setTimeLeft(getTimeLeft())
     const tick = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
     return () => clearInterval(tick)
   }, [])
@@ -40,10 +41,10 @@ export default function NewOrder() {
     <>
       <PageHero kicker={t('content.pages.newOrder.kicker')} title={t('content.pages.newOrder.title')} sub={t('content.pages.newOrder.sub')} image={page.hero} imageMobile={page.heroMobile}>
         <div className="cd-boxes big">
-          <div className="cd-box"><b>{String(timeLeft.d).padStart(3, '0')}</b><span>{t('common.days')}</span></div>
-          <div className="cd-box"><b>{String(timeLeft.h).padStart(2, '0')}</b><span>{t('common.hours')}</span></div>
-          <div className="cd-box"><b>{String(timeLeft.m).padStart(2, '0')}</b><span>{t('common.minutes')}</span></div>
-          <div className="cd-box"><b>{String(timeLeft.s).padStart(2, '0')}</b><span>{t('common.seconds')}</span></div>
+          <div className="cd-box"><b>{timeLeft ? String(timeLeft.d).padStart(3, '0') : '---'}</b><span>{t('common.days')}</span></div>
+          <div className="cd-box"><b>{timeLeft ? String(timeLeft.h).padStart(2, '0') : '--'}</b><span>{t('common.hours')}</span></div>
+          <div className="cd-box"><b>{timeLeft ? String(timeLeft.m).padStart(2, '0') : '--'}</b><span>{t('common.minutes')}</span></div>
+          <div className="cd-box"><b>{timeLeft ? String(timeLeft.s).padStart(2, '0') : '--'}</b><span>{t('common.seconds')}</span></div>
         </div>
         <div className="cd-big hero-big">666,666</div>
       </PageHero>

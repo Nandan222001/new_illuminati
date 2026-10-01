@@ -27,11 +27,11 @@ export default function Footer() {
           </div>
         </div>
         <div className="foot-col">
-          <h6>{t('footer.explore')}</h6>
+          <h2 className="foot-heading">{t('footer.explore')}</h2>
           {NAV_LINKS.map((l) => <Link key={l.to} to={l.to}>{t(`nav.${l.key}`)}</Link>)}
         </div>
         <div className="foot-col">
-          <h6>{t('footer.account')}</h6>
+          <h2 className="foot-heading">{t('footer.account')}</h2>
           {user ? (
             <>
               <Link to="/profile">{t('nav.myProfile')}</Link>
@@ -47,7 +47,7 @@ export default function Footer() {
           <Link to="/about#disclaimer">{t('footer.disclaimer')}</Link>
         </div>
         <div className="foot-col">
-          <h6>{t('footer.legal')}</h6>
+          <h2 className="foot-heading">{t('footer.legal')}</h2>
           <Link to="/rules#rule-privacy">{t('footer.privacy')}</Link>
           <Link to="/rules#rules">{t('footer.terms')}</Link>
           <Link to="/rules">{t('footer.guidelines')}</Link>

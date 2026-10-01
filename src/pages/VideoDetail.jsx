@@ -71,7 +71,7 @@ export default function VideoDetail() {
         <div>
           <span className={`tag ${video.tag}`}>{t(`common.tags.${video.tag}`)}</span>
           <h1>{video.title}</h1>
-          <div className="featured-meta"><span>▶ {video.dur}</span><span>{video.views} {t('common.viewsSuffix')}</span><span>{video.date}</span></div>
+          <div className="featured-meta"><span>▶ {video.dur}</span><span>{video.date}</span></div>
           <p>{video.desc}</p>
           <p className="muted"><Trans i18nKey="videoDetail.labelsLegend" components={[<b />, <b />, <b />]} /></p>
         </div>

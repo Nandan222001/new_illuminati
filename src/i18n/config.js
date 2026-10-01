@@ -1,13 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
 import en from './locales/en/translation.json'
-import es from './locales/es/translation.json'
-import fr from './locales/fr/translation.json'
-import de from './locales/de/translation.json'
-import pt from './locales/pt/translation.json'
-import hi from './locales/hi/translation.json'
-import zh from './locales/zh/translation.json'
 
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English' },
@@ -19,27 +12,38 @@ export const SUPPORTED_LANGUAGES = [
   { code: 'zh', label: '中文' },
 ]
 
+const localeLoaders = {
+  es: () => import('./locales/es/translation.json'),
+  fr: () => import('./locales/fr/translation.json'),
+  de: () => import('./locales/de/translation.json'),
+  pt: () => import('./locales/pt/translation.json'),
+  hi: () => import('./locales/hi/translation.json'),
+  zh: () => import('./locales/zh/translation.json'),
+}
+
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      en: { translation: en },
-      es: { translation: es },
-      fr: { translation: fr },
-      de: { translation: de },
-      pt: { translation: pt },
-      hi: { translation: hi },
-      zh: { translation: zh },
-    },
+    // English is stable for SSR and the first hydrated render. Browser locale
+    // preferences are applied in an effect after hydration.
+    lng: 'en',
+    resources: { en: { translation: en } },
     fallbackLng: 'en',
-    supportedLngs: SUPPORTED_LANGUAGES.map((l) => l.code),
+    supportedLngs: SUPPORTED_LANGUAGES.map((language) => language.code),
     interpolation: { escapeValue: false },
-    detection: {
-      order: ['localStorage', 'navigator'],
-      caches: ['localStorage'],
-      lookupLocalStorage: 'ib_lang',
-    },
   })
+
+/** Load translations on demand so a first-time visitor downloads only English. */
+export async function changeLanguage(language) {
+  const code = SUPPORTED_LANGUAGES.some((item) => item.code === language) ? language : 'en'
+  if (!i18n.hasResourceBundle(code, 'translation')) {
+    const loader = localeLoaders[code]
+    if (loader) {
+      const module = await loader()
+      i18n.addResourceBundle(code, 'translation', module.default, true, true)
+    }
+  }
+  return i18n.changeLanguage(code)
+}
 
 export default i18n

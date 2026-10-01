@@ -21,7 +21,6 @@
     "followNow": "立即关注",
     "followingToast": "Instagram 关注功能即将上线。",
     "instagramPostAlt": "Instagram 帖子",
-    "viewsSuffix": "次观看",
     "explore": "探索",
     "emailLabel": "电子邮箱",
     "passphraseLabel": "密码",
@@ -734,25 +733,21 @@
       "discord": {
         "name": "DISCORD",
         "desc": "实时讨论、理论讨论帖与语音房间。",
-        "members": "48,200 名入会者",
         "note": "Discord 邀请链接即将上线。"
       },
       "telegram": {
         "name": "TELEGRAM",
         "desc": "公告、最新动态与倒计时更新。",
-        "members": "21,900 名入会者",
         "note": "Telegram 频道即将上线。"
       },
       "instagram": {
         "name": "INSTAGRAM",
         "desc": "每日视觉内容、秘符与幕后花絮。",
-        "members": "132K 名关注者",
         "note": "Instagram 主页即将上线。"
       },
       "discussionBoard": {
         "name": "讨论区",
         "desc": "长篇文章与档案馆深度解析。",
-        "members": "9,400 名入会者",
         "note": "讨论区就在下方——向下滚动即可加入。"
       }
     },

@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect'
 import { useTranslation } from 'react-i18next'
 import { useLocalizedSymbols, useLocalizedTattoos } from '../hooks/useLocalizedContent'
 import { normalizeName, parseBirthdate, readSigil } from '../utils/sigilReading'
@@ -129,7 +130,7 @@ export default function SigilFinder() {
     setReading({ displayName: name.trim().replace(/\s+/g, ' '), ...readSigil(name, birthdate) })
   }
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!reading || !cardRef.current) return undefined
     return drawOn([...cardRef.current.querySelectorAll('.finder-mark svg')])
   }, [reading])

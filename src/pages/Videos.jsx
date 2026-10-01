@@ -41,7 +41,7 @@ export default function Videos() {
               <span className={`tag ${featured.tag}`}>{t(`common.tags.${featured.tag}`)}</span>
               <h3>{featured.title}</h3>
               <p>{featured.desc}</p>
-              <div className="featured-meta"><span>▶ {featured.dur}</span><span>{featured.views} {t('common.viewsSuffix')}</span><span>{featured.date}</span></div>
+              <div className="featured-meta"><span>▶ {featured.dur}</span><span>{featured.date}</span></div>
             </div>
             {(() => {
               const open = canAccess(featured.category) && !!user
@@ -91,7 +91,7 @@ export default function Videos() {
                   </div>
                   <div className="vid-body">
                     <h5>{v.title}</h5>
-                    <span className="vid-sub">{v.date} · {v.views} {t('common.viewsSuffix')}</span>
+                    <span className="vid-sub">{v.date}</span>
                     <span className={`tag ${v.tag}`}>{t(`common.tags.${v.tag}`)}</span>
                   </div>
                 </Link>

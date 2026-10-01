@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect'
 import { Link, useLocation } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
@@ -37,7 +38,7 @@ export default function Visuals() {
   const tattooRef = useRef(null)
   const [showAllTattoos, setShowAllTattoos] = useState(false)
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const svgs = detailRef.current ? [...detailRef.current.querySelectorAll('.draw-on svg')] : []
     return drawOn(svgs)
   }, [active.slug])

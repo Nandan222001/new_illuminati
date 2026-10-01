@@ -47,7 +47,7 @@ export default function Community() {
               <span className="channel-icon">{c.icon}</span>
               <h3>{c.name}</h3>
               <p>{c.desc}</p>
-              <em>{c.members}</em>
+              <em>{c.note}</em>
             </button>
           ))}
         </div>

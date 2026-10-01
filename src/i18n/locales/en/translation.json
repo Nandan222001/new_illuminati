@@ -21,7 +21,6 @@
     "followNow": "FOLLOW NOW",
     "followingToast": "Instagram follow is coming soon.",
     "instagramPostAlt": "Instagram post",
-    "viewsSuffix": "views",
     "explore": "Explore",
     "emailLabel": "EMAIL",
     "passphraseLabel": "PASSPHRASE",
@@ -204,6 +203,18 @@
     "allVideos": "ALL VIDEOS ›",
     "communityTitle": "ENTER THE COMMUNITY",
     "communityMatureNote": "18+ only. Contains mature content.",
+    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
+    "statsTitle": "THE UNIVERSE, IN NUMBERS",
+    "statsSub": "A live total of registered members alongside verifiable story-catalogue counts.",
+    "membersStatLabel": "MEMBERS JOINED",
+    "membersStatNote": "Live count of registered member accounts.",
+    "membersUnavailable": "Live total appears when the member service is connected.",
+    "chambersStatLabel": "ARCHIVE CHAMBERS",
+    "chambersStatNote": "Illustrated records in the story archive.",
+    "stationsStatLabel": "STORY STATIONS",
+    "stationsStatNote": "Fictional narrative stages—not real practices.",
+    "episodesStatLabel": "VIDEO EPISODES",
+    "episodesStatNote": "Episodes in the current public catalogue.",
     "instagramTitleLine1": "FOLLOW THE BROTHERHOOD",
     "instagramTitleLine2": "ON INSTAGRAM"
   },
@@ -734,25 +745,21 @@
       "discord": {
         "name": "DISCORD",
         "desc": "Live discussion, theory threads and voice rooms.",
-        "members": "48,200 initiates",
         "note": "Discord invite coming soon."
       },
       "telegram": {
         "name": "TELEGRAM",
         "desc": "Announcements, drops and countdown updates.",
-        "members": "21,900 initiates",
         "note": "Telegram channel coming soon."
       },
       "instagram": {
         "name": "INSTAGRAM",
         "desc": "Daily visuals, sigils and behind-the-scenes.",
-        "members": "132K followers",
         "note": "Instagram page coming soon."
       },
       "discussionBoard": {
         "name": "DISCUSSION BOARD",
         "desc": "Long-form essays and archive deep-dives.",
-        "members": "9,400 initiates",
         "note": "The discussion board is just below — scroll down to join."
       }
     },

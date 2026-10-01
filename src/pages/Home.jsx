@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { INSTA_IMAGES, PAGES, getTimeLeft } from '../data/content'
+import { CARDS, INSTA_IMAGES, PAGES, RITUALS, getTimeLeft } from '../data/content'
+import { apiFetch } from '../api/client'
 import { useLocalizedCards, useLocalizedSymbols } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
@@ -11,6 +12,7 @@ import { useIsMobile } from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 import BrandFlame from '../components/BrandFlame'
+import CountUpNumber from '../components/CountUpNumber'
 
 const EXPLORE = [
   { to: '/archives', key: 'archives', page: PAGES.archives },
@@ -24,9 +26,10 @@ const EXPLORE = [
 export default function Home() {
   const [current, setCurrent] = useState(0)
   const [playing, setPlaying] = useState(true)
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+  const [timeLeft, setTimeLeft] = useState(null)
   const [heroBgLoaded, setHeroBgLoaded] = useState(false)
   const [countdownBgLoaded, setCountdownBgLoaded] = useState(false)
+  const [membersJoined, setMembersJoined] = useState(null)
   const cardRefs = useRef([])
   const carouselRef = useRef(null)
   const toast = useToast()
@@ -51,6 +54,26 @@ export default function Home() {
     countdown.src = '/assets/archive-baphomet.jpg'
   }, [heroSrc])
 
+  useEffect(() => {
+    let active = true
+    const loadMemberCount = async () => {
+      try {
+        const stats = await apiFetch('/public/stats', { auth: false, timeoutMs: 3000 })
+        if (active && Number.isSafeInteger(stats?.members_joined) && stats.members_joined >= 0) {
+          setMembersJoined(stats.members_joined)
+        }
+      } catch {
+        // Keep the last successful aggregate while the API is temporarily unavailable.
+      }
+    }
+    loadMemberCount()
+    const refresh = window.setInterval(loadMemberCount, 60_000)
+    return () => {
+      active = false
+      window.clearInterval(refresh)
+    }
+  }, [])
+
   const showCard = (i) => {
     setCurrent(() => {
       const next = (i + CARDS.length) % CARDS.length
@@ -72,6 +95,7 @@ export default function Home() {
   }, [current, playing])
 
   useEffect(() => {
+    setTimeLeft(getTimeLeft())
     const tick = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
     return () => clearInterval(tick)
   }, [])
@@ -124,6 +148,38 @@ export default function Home() {
           <div className="scroll-hint">{t('home.scrollHint')} <span className="mouse"></span></div>
         </div>
       </header>
+
+      <section className="stats-section" aria-labelledby="home-stats-title">
+        <div className="stats-wrap">
+          <div className="stats-heading">
+            <span>{t('home.statsKicker')}</span>
+            <h2 id="home-stats-title">{t('home.statsTitle')}</h2>
+            <p>{t('home.statsSub')}</p>
+          </div>
+          <div className="stats-grid">
+            <article className="stat-card live-stat">
+              <div className="stat-value"><CountUpNumber value={membersJoined} /></div>
+              <h3>{t('home.membersStatLabel')}</h3>
+              <p>{membersJoined === null ? t('home.membersUnavailable') : t('home.membersStatNote')}</p>
+            </article>
+            <article className="stat-card">
+              <div className="stat-value"><CountUpNumber value={CARDS.length} /></div>
+              <h3>{t('home.chambersStatLabel')}</h3>
+              <p>{t('home.chambersStatNote')}</p>
+            </article>
+            <article className="stat-card">
+              <div className="stat-value"><CountUpNumber value={RITUALS.length} /></div>
+              <h3>{t('home.stationsStatLabel')}</h3>
+              <p>{t('home.stationsStatNote')}</p>
+            </article>
+            <article className="stat-card">
+              <div className="stat-value"><CountUpNumber value={videos.length} /></div>
+              <h3>{t('home.episodesStatLabel')}</h3>
+              <p>{t('home.episodesStatNote')}</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
       {/* ---------- EXPLORE THE PAGES ---------- */}
       <section className="explore" id="explore">
@@ -203,10 +259,10 @@ export default function Home() {
           <div className="cd-date">{t('home.countdownDate')}</div>
           <div className="cd-big">666,666</div>
           <div className="cd-boxes">
-            <div className="cd-box"><b>{String(timeLeft.d).padStart(3, '0')}</b><span>{t('common.days')}</span></div>
-            <div className="cd-box"><b>{String(timeLeft.h).padStart(2, '0')}</b><span>{t('common.hours')}</span></div>
-            <div className="cd-box"><b>{String(timeLeft.m).padStart(2, '0')}</b><span>{t('common.minutes')}</span></div>
-            <div className="cd-box"><b>{String(timeLeft.s).padStart(2, '0')}</b><span>{t('common.seconds')}</span></div>
+            <div className="cd-box"><b>{timeLeft ? String(timeLeft.d).padStart(3, '0') : '---'}</b><span>{t('common.days')}</span></div>
+            <div className="cd-box"><b>{timeLeft ? String(timeLeft.h).padStart(2, '0') : '--'}</b><span>{t('common.hours')}</span></div>
+            <div className="cd-box"><b>{timeLeft ? String(timeLeft.m).padStart(2, '0') : '--'}</b><span>{t('common.minutes')}</span></div>
+            <div className="cd-box"><b>{timeLeft ? String(timeLeft.s).padStart(2, '0') : '--'}</b><span>{t('common.seconds')}</span></div>
           </div>
           <Link to="/new-order" className="btn-ghost cd-cta">{t('home.countdownCta')}</Link>
           <div className="cd-note"><i>ⓘ</i> {t('common.milestoneNote')}</div>
