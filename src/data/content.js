@@ -166,7 +166,7 @@ export const FAQ = [
 // down to the same moment. All published times on the site are GMT.
 export const TARGET_DATE = new Date('2026-12-31T23:59:59Z')
 
-/** Joined-members figure shown on the countdown bar and the home stat card. */
+/** Joined-members figure shown on the home countdown block and the New World Order hero. */
 export const MEMBERS_JOINED_DISPLAY = '3.6M+'
 
 export function getTimeLeft() {
