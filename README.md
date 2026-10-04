@@ -46,7 +46,7 @@ actual catalogue.
 | 4 | Ritual stations take a film URL + thumbnail from the admin console and play it on the public page | `src/pages/admin/RitualsAdmin.jsx`, `src/pages/Rituals.jsx`, `src/components/MediaPlayer.jsx` |
 | 5 | Only valid, non-disposable email addresses are accepted (client + API) | `src/utils/validation.js`, `backend/app/schemas/user.py` |
 | 6 | The whole site stays locked (inert, scroll-locked) until the terms are acknowledged | `src/components/ConsentGate.jsx`, `src/components/Layout.jsx` |
-| 7 | Membership countdown on the upper row, joined-members total (`3.6M+`) directly below it | `src/components/CountdownBar.jsx`, `src/pages/Home.jsx`, `src/pages/NewOrder.jsx` |
+| 7 | Membership countdown and joined-members total (`3.6M+`) on Home and the New World Order hero — the separate top strip above the header was **removed** (v1.1.7) | `src/pages/Home.jsx`, `src/pages/NewOrder.jsx` |
 | 8 | Every published time is GMT/UTC | `src/data/content.js` (`TARGET_DATE`), `src/utils/validation.js` |
 | 9, 15, 16 | Campaign-milestone disclaimer, “No real-world claims” and “A story, not a claim” removed from the New World Order page | `src/i18n/locales/*/translation.json` |
 | 10 | OSIRIS moved to **Archives → The Third Eye** | `src/pages/ArchiveDetail.jsx`, `src/pages/Visuals.jsx` |

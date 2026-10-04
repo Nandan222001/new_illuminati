@@ -4,7 +4,6 @@ import { useConsent } from '../context/ConsentContext'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import ConsentGate from './ConsentGate'
-import CountdownBar from './CountdownBar'
 import ScrollToTop from './ScrollToTop'
 
 export default function Layout() {
@@ -20,8 +19,6 @@ export default function Layout() {
       <ScrollToTop />
       {/* Everything inside #site-shell is inert while the consent gate is up. */}
       <div id="site-shell">
-        {/* Membership countdown (upper row) + joined-members total (below it). */}
-        <CountdownBar />
         <Navbar onEnter={enterSite} />
         <main id="site-main">
           {contentReady ? (
