@@ -4,16 +4,8 @@ import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import AuthShell from '../components/AuthShell'
+import { PASSWORD_RULE_ORDER, passwordScore, validateEmail, validatePassword } from '../utils/validation'
 
-function strength(pw) {
-  let score = 0
-  if (pw.length >= 8) score++
-  if (pw.length >= 12) score++
-  if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++
-  if (/\d/.test(pw)) score++
-  if (/[^A-Za-z0-9]/.test(pw)) score++
-  return Math.min(score, 4)
-}
 const STRENGTH_KEYS = ['', 'weak', 'fair', 'strong', 'unbreakable']
 
 export default function Register() {
@@ -25,19 +17,44 @@ export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '', agree: false })
   const [showPw, setShowPw] = useState(false)
   const [error, setError] = useState('')
+  const [emailError, setEmailError] = useState('')
   const [busy, setBusy] = useState(false)
-  const score = useMemo(() => strength(form.password), [form.password])
+  const score = useMemo(() => passwordScore(form.password), [form.password])
+  const pwCheck = useMemo(() => validatePassword(form.password), [form.password])
+  const emailCheck = useMemo(() => (form.email ? validateEmail(form.email) : null), [form.email])
 
   useEffect(() => { if (ready && user) navigate('/profile', { replace: true }) }, [ready, user, navigate])
+
+  const emailMessage = (result) => {
+    if (!result || result.ok) return ''
+    const suffix = { required: 'Required', disposable: 'Disposable', length: 'Length', tld: 'Tld' }[result.reason] || 'Invalid'
+    return t(`validation.email${suffix}`)
+  }
 
   const submit = async (e) => {
     e.preventDefault()
     setError('')
+    setEmailError('')
+
+    // The site only ever stores valid, deliverable-looking addresses.
+    const email = validateEmail(form.email)
+    if (!email.ok) {
+      const message = emailMessage(email)
+      setEmailError(message)
+      setError(message)
+      return
+    }
+    const password = validatePassword(form.password)
+    if (!password.ok) {
+      setError(t('validation.passwordMissing', { list: password.missing.map((rule) => t(`validation.passwordRule.${rule}`)).join(', ') }))
+      return
+    }
     if (form.password !== form.confirm) { setError(t('register.errorMismatch')); return }
     if (!form.agree) { setError(t('register.errorAgree')); return }
+
     setBusy(true)
     try {
-      const u = await register(form)
+      const u = await register({ name: form.name, email: email.value, password: form.password })
       toast(t('register.welcomeToast', { number: String(u.initiate).padStart(3, '0') }))
     } catch (err) {
       setError(err.message)
@@ -64,7 +81,20 @@ export default function Register() {
         </label>
         <label>
           <span>{t('common.emailLabel')}</span>
-          <input type="email" name="email" autoComplete="email" required placeholder={t('common.emailPlaceholder')} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            required
+            inputMode="email"
+            spellCheck="false"
+            placeholder={t('common.emailPlaceholder')}
+            value={form.email}
+            aria-invalid={!!emailError}
+            onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailError('') }}
+          />
+          {emailError && <em className="field-hint error">{emailError}</em>}
+          {!emailError && emailCheck?.ok && <em className="field-hint ok">✓ {emailCheck.value}</em>}
         </label>
         <div className="form-row">
           <label>
@@ -85,6 +115,16 @@ export default function Register() {
             <span>{t(`register.strength.${STRENGTH_KEYS[score] || 'tooShort'}`)}</span>
           </div>
         )}
+        {/* Special characters are mandatory — the checklist shows exactly
+            which character classes are still missing. */}
+        <ul className={`pw-rules${pwCheck.ok ? ' ok' : ''}`}>
+          {PASSWORD_RULE_ORDER.map((rule) => (
+            <li key={rule} className={pwCheck.checks[rule] ? 'met' : ''}>
+              <i aria-hidden="true">{pwCheck.checks[rule] ? '✓' : '•'}</i>
+              {t(`validation.passwordRule.${rule}`)}
+            </li>
+          ))}
+        </ul>
         <label className="check">
           <input type="checkbox" checked={form.agree} onChange={(e) => setForm({ ...form, agree: e.target.checked })} />
           <span><Trans i18nKey="register.ageCheck" components={[<b />]} /> <Link to="/rules" target="_blank" rel="noopener noreferrer">{t('rules.title')} ↗</Link></span>

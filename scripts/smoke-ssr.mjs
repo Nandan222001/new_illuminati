@@ -11,7 +11,8 @@ import { pathToFileURL } from 'node:url'
 
 const routes = ['/', '/archives', '/archives/the-third-eye', '/rituals', '/new-order', '/videos', '/videos/satanic-mythology',
   '/videos/the-last-screening', '/visuals', '/community', '/about', '/rules', '/login', '/register', '/profile', '/admin',
-  '/admin/revenue', '/admin/members', '/admin/videos', '/admin/images', '/admin/rituals', '/admin/settings', '/nope']
+  '/admin/revenue', '/admin/members', '/admin/videos', '/admin/images', '/admin/rituals',
+  '/admin/books', '/admin/archives', '/admin/messages', '/admin/settings', '/new-world-order', '/nope']
 
 const out = join(process.cwd(), 'node_modules', '.cache', 'ib-ssr')
 await rm(out, { recursive: true, force: true })
@@ -23,6 +24,7 @@ import { AuthProvider } from '/src/context/AuthContext'
 import { ContentProvider } from '/src/context/ContentContext'
 import { ToastProvider } from '/src/context/ToastContext'
 import { ConsentProvider } from '/src/context/ConsentContext'
+import { SiteSettingsProvider } from '/src/context/SiteSettingsContext'
 import Layout from '/src/components/Layout'
 import AdminLayout from '/src/components/AdminLayout'
 import ProtectedRoute from '/src/components/ProtectedRoute'
@@ -46,12 +48,15 @@ import AdminMembers from '/src/pages/admin/Members'
 import AdminVideos from '/src/pages/admin/VideosAdmin'
 import AdminImages from '/src/pages/admin/ImagesAdmin'
 import AdminRituals from '/src/pages/admin/RitualsAdmin'
+import AdminBooks from '/src/pages/admin/BooksAdmin'
+import AdminArchives from '/src/pages/admin/ArchivesAdmin'
+import AdminMessages from '/src/pages/admin/Messages'
 import AdminSettings from '/src/pages/admin/Settings'
 import NotFound from '/src/pages/NotFound'
 export function render(url) {
   return renderToString(
     <MemoryRouter initialEntries={[url]}>
-      <ToastProvider><ConsentProvider><AuthProvider><ContentProvider>
+      <ToastProvider><ConsentProvider><AuthProvider><ContentProvider><SiteSettingsProvider>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -59,6 +64,7 @@ export function render(url) {
             <Route path="/archives/:slug" element={<ArchiveDetail />} />
             <Route path="/rituals" element={<Rituals />} />
             <Route path="/new-order" element={<NewOrder />} />
+            <Route path="/new-world-order" element={<Navigate to="/new-order" replace />} />
             <Route path="/videos" element={<Videos />} />
             <Route path="/videos/:slug" element={<VideoDetail />} />
             <Route path="/visuals" element={<Visuals />} />
@@ -78,10 +84,13 @@ export function render(url) {
             <Route path="videos" element={<AdminVideos />} />
             <Route path="images" element={<AdminImages />} />
             <Route path="rituals" element={<AdminRituals />} />
+            <Route path="books" element={<AdminBooks />} />
+            <Route path="archives" element={<AdminArchives />} />
+            <Route path="messages" element={<AdminMessages />} />
             <Route path="settings" element={<AdminSettings />} />
           </Route>
         </Routes>
-      </ContentProvider></AuthProvider></ConsentProvider></ToastProvider>
+      </SiteSettingsProvider></ContentProvider></AuthProvider></ConsentProvider></ToastProvider>
     </MemoryRouter>
   )
 }

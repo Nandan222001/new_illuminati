@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { PAGES, getTimeLeft } from '../data/content'
+import { MEMBERS_JOINED_DISPLAY, PAGES, getTimeLeft } from '../data/content'
 import { useLocalizedTimeline } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
+import { validateEmail } from '../utils/validation'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
@@ -20,6 +21,7 @@ export default function NewOrder() {
   const page = PAGES.newOrder
   const [timeLeft, setTimeLeft] = useState(null)
   const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
   const { user } = useAuth()
   const toast = useToast()
   const { t } = useTranslation()
@@ -33,6 +35,12 @@ export default function NewOrder() {
 
   const notify = (e) => {
     e.preventDefault()
+    const result = validateEmail(email)
+    if (!result.ok) {
+      setError(t(`validation.email${result.reason === 'required' ? 'Required' : result.reason === 'disposable' ? 'Disposable' : result.reason === 'length' ? 'Length' : result.reason === 'tld' ? 'Tld' : 'Invalid'}`))
+      return
+    }
+    setError('')
     toast(t('newOrder.notifyToast'))
     setEmail('')
   }
@@ -40,13 +48,20 @@ export default function NewOrder() {
   return (
     <>
       <PageHero kicker={t('content.pages.newOrder.kicker')} title={t('content.pages.newOrder.title')} sub={t('content.pages.newOrder.sub')} image={page.hero} imageMobile={page.heroMobile}>
+        {/* Countdown timer on the upper side … */}
         <div className="cd-boxes big">
           <div className="cd-box"><b>{timeLeft ? String(timeLeft.d).padStart(3, '0') : '---'}</b><span>{t('common.days')}</span></div>
           <div className="cd-box"><b>{timeLeft ? String(timeLeft.h).padStart(2, '0') : '--'}</b><span>{t('common.hours')}</span></div>
           <div className="cd-box"><b>{timeLeft ? String(timeLeft.m).padStart(2, '0') : '--'}</b><span>{t('common.minutes')}</span></div>
           <div className="cd-box"><b>{timeLeft ? String(timeLeft.s).padStart(2, '0') : '--'}</b><span>{t('common.seconds')}</span></div>
         </div>
+        {/* … joined members directly below it. */}
+        <div className="cd-members hero-members">
+          <b>{MEMBERS_JOINED_DISPLAY}</b>
+          <span>{t('countdownBar.membersJoined')}</span>
+        </div>
         <div className="cd-big hero-big">666,666</div>
+        <p className="cd-gmt">{t('countdownBar.allTimesGmt')}</p>
       </PageHero>
 
       <section className="page-section">
@@ -81,16 +96,24 @@ export default function NewOrder() {
                 <Link to="/profile" className="btn-gold">{t('newOrder.viewProfile')}</Link>
               </>
             ) : (
-              <form onSubmit={notify}>
+              <form onSubmit={notify} noValidate>
                 <p>{t('newOrder.notifyPrompt')}</p>
                 <div className="notify-row">
-                  <input type="email" required placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <input
+                    type="email"
+                    required
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setError('') }}
+                    aria-invalid={!!error}
+                  />
                   <button type="submit" className="btn-gold">{t('newOrder.notifyMe')}</button>
                 </div>
+                {error && <div className="form-error" role="alert">{error}</div>}
                 <Link to="/register" className="sec-link">{t('newOrder.orBecomeInitiate')}</Link>
               </form>
             )}
-            <div className="cd-note"><i>ⓘ</i> {t('common.milestoneNote')}</div>
+            <div className="cd-note"><i>🕘</i> {t('countdownBar.allTimesGmt')}</div>
           </div>
         </div>
       </section>

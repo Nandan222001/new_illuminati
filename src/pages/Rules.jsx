@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
 import { useConsent } from '../context/ConsentContext'
+import { CONSENT_VERSION } from '../utils/consent'
 import { RULE_KEYS } from '../components/ConsentGate'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
@@ -16,6 +17,10 @@ export default function Rules() {
   return (
     <>
       <PageHero kicker={t('rules.kicker')} title={t('rules.title')} sub={t('rules.sub')} image={page.hero} imageMobile={page.heroMobile} />
+
+      <p className="rules-version" id="terms">
+        <b>{t('rules.version')}</b> · {t('rules.versionNote', { version: CONSENT_VERSION })}
+      </p>
 
       <section className="page-section" id="rules">
         <SectionHead title={t('rules.rulesTitle')} sub={t('rules.rulesSub')} />
@@ -44,7 +49,7 @@ export default function Rules() {
         <p className="rules-wellbeing">{t('rules.wellbeing')}</p>
         <div className="rules-consent">
           {consent
-            ? <span>✓ {t('rules.acceptedOn', { date: acceptedOn })}</span>
+            ? <span>✓ {t('rules.acceptedOn', { date: acceptedOn, version: consent.version || CONSENT_VERSION })}</span>
             : <button type="button" className="btn-gold" onClick={accept}>{t('rules.acceptRules')}</button>}
         </div>
       </section>

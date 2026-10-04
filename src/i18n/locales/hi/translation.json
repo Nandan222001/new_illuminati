@@ -16,7 +16,6 @@
     "becomeInitiate": "इनिशिएट बनें",
     "joinCommunity": "समुदाय से जुड़ें",
     "tagline": "प्रतीक · मिथक · इतिहास",
-    "milestoneNote": "हमारी अगली रिलीज़ के लिए एक कैंपेन माइलस्टोन — यह कोई भविष्यवाणी या असल दुनिया की घटना नहीं है।",
     "sealYourOathCta": "अपनी शपथ सील करें ›",
     "followNow": "अभी फ़ॉलो करें",
     "followingToast": "इंस्टाग्राम फ़ॉलो जल्द आ रहा है।",
@@ -39,7 +38,7 @@
   "nav": {
     "home": "होम",
     "archives": "आर्काइव्स",
-    "newOrder": "नई व्यवस्था",
+    "newOrder": "नई विश्व व्यवस्था",
     "rituals": "रिचुअल्स",
     "videos": "वीडियोज़",
     "visuals": "विज़ुअल्स",
@@ -61,7 +60,8 @@
     "language": "भाषा",
     "leftCircleToast": "आपने सर्कल छोड़ दिया है। अगली बार तक।",
     "keeperAdmin": "कीपर · एडमिन",
-    "initiateNumber": "इनिशिएट #{{number}}"
+    "initiateNumber": "इनिशिएट #{{number}}",
+    "library": "पुस्तकालय"
   },
   "footer": {
     "description": "गुप्त संस्थाओं की पौराणिक कथाओं, कॉन्सपिरेसी संस्कृति और ऐतिहासिक रहस्यों की एक इमर्सिव खोज।",
@@ -77,83 +77,96 @@
     "copyright": "© 2026 Illuminati Brotherhood. सर्वाधिकार सुरक्षित।"
   },
   "rules": {
-    "kicker": "प्रवेश से पहले पढ़ें",
-    "title": "नियम और निर्देश",
-    "sub": "हर दर्शक और सदस्य के लिए घर के नियम।",
-    "rulesTitle": "नियम",
-    "rulesSub": "इस साइट का उपयोग करने वाले हर व्यक्ति पर लागू।",
-    "instrTitle": "निर्देश",
-    "instrSub": "साइट और अपनी सदस्यता का उपयोग कैसे करें।",
-    "wellbeing": "कुछ विषय विचलित करने वाले हो सकते हैं। अगर इस साइट की कोई बात आपको प्रभावित करे, तो कृपया पीछे हटें और किसी भरोसेमंद व्यक्ति से बात करें।",
-    "acceptedOn": "इस डिवाइस पर {{date}} को स्वीकार किया गया।",
-    "acceptRules": "मैं नियम स्वीकार करता/करती हूँ",
+    "kicker": "READ BEFORE YOU ENTER",
+    "title": "RULES & INSTRUCTIONS",
+    "sub": "THE HOUSE RULES FOR EVERY VIEWER AND MEMBER.",
+    "version": "VERSION 1.1.6",
+    "versionNote": "Terms version {{version}} · all times are GMT.",
+    "rulesTitle": "THE RULES",
+    "rulesSub": "APPLIES TO EVERYONE WHO USES THIS SITE.",
+    "instrTitle": "INSTRUCTIONS",
+    "instrSub": "HOW TO USE THE SITE AND YOUR MEMBERSHIP.",
+    "wellbeing": "Some themes may be unsettling. If anything on this site affects you, take a step back and talk to someone you trust.",
+    "acceptedOn": "Accepted on this device on {{date}} · terms version {{version}}.",
+    "acceptRules": "I ACCEPT THE RULES",
     "gate": {
-      "title": "प्रवेश से पहले",
-      "intro": "कृपया नीचे दिए नियम पढ़ें। पूरे नियम और निर्देश आप कभी भी फ़ुटर से दोबारा खोल सकते हैं।",
-      "full": "पूरा पेज खोलें",
-      "agree": "मैंने नियम और निर्देश पढ़ लिए हैं और स्वीकार करता/करती हूँ, और पुष्टि करता/करती हूँ कि मैं 18 वर्ष या उससे अधिक का/की हूँ।",
-      "accept": "स्वीकार करें और आगे बढ़ें",
-      "decline": "अस्वीकार करें",
-      "declined": "इस साइट में प्रवेश के लिए आपको नियम और निर्देश स्वीकार करने होंगे।"
+      "title": "BEFORE YOU ENTER",
+      "version": "TERMS VERSION 1.1.6",
+      "intro": "Proceed only if you understand and accept the following conditions. Everything on this site stays locked until your acknowledgement is received.",
+      "full": "Open the full page",
+      "agree": "I have read, understood and accept the Terms & Conditions (version 1.1.6), and I confirm that I am 18 or older.",
+      "accept": "ACCEPT & ENTER",
+      "decline": "DECLINE",
+      "declined": "You need to acknowledge the Terms & Conditions to enter. Everything stays locked until you do.",
+      "locked": "🔒 Everything on this site is locked until you acknowledge the Terms & Conditions.",
+      "lockNote": "Everything on this site is locked until you acknowledge the terms."
     },
     "items": {
       "age": {
-        "title": "केवल 18+",
-        "text": "इस साइट में गहरी और वयस्क प्रकृति की छवियाँ हैं। आगे बढ़ने के लिए आपकी उम्र 18 वर्ष या उससे अधिक होनी चाहिए।"
+        "title": "18+ ONLY",
+        "text": "This site contains dark and mature imagery. You must be 18 or older to continue."
+      },
+      "entry": {
+        "title": "ENTRY WINDOW",
+        "text": "Act now before access closes — the entry window is open for a limited period only. You are one step away from entering the dark environment."
       },
       "about": {
-        "title": "यह साइट क्या है",
-        "text": "इल्यूमिनाती ब्रदरहुड गुप्त संस्थाओं के इतिहास और प्रतीकवाद से प्रेरित एक ब्रांड और कथा-जगत है। यह किसी वास्तविक संगठन से संबद्ध नहीं है, और यहाँ कुछ भी असली लोगों, समूहों या घटनाओं के बारे में दावा नहीं है।"
+        "title": "WHAT THIS SITE IS",
+        "text": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with any real organisation, and nothing here is a claim about real people, groups or events."
+      },
+      "noCertify": {
+        "title": "NO VOUCHING FOR ANYONE",
+        "text": "The Network does not certify the identity, credentials, intentions, or trustworthiness of any member, vendor, contributor, or administrator."
+      },
+      "documents": {
+        "title": "ARCHIVES & TESTIMONIES",
+        "text": "Documents, testimonies, archives, and recordings presented within this network may be incomplete, inaccurate, fictional, manipulated, or authentic. Determine validity at your own risk."
       },
       "conduct": {
-        "title": "सम्मानजनक व्यवहार",
-        "text": "असली लोगों, समुदायों, धर्मों या संगठनों के ख़िलाफ़ नफ़रत भरी बातें, उत्पीड़न, धमकी या निशाना बनाना मना है। ऐसा करने वाले अकाउंट हटा दिए जाएँगे।"
+        "title": "RESPECTFUL CONDUCT",
+        "text": "No hate speech, harassment, threats or targeting of real people, communities, religions or organisations. Accounts that do this will be removed."
       },
       "safety": {
-        "title": "सुरक्षित रहें",
-        "text": "यहाँ किसी असली अनुष्ठान का वर्णन या प्रोत्साहन नहीं है। इस साइट की सामग्री से प्रेरित होकर कभी कोई हानिकारक, अवैध या ख़तरनाक काम न करें।"
+        "title": "STAY SAFE",
+        "text": "No real rituals are described or encouraged. Never attempt anything harmful, illegal or dangerous inspired by content on this site."
       },
       "membership": {
-        "title": "सदस्यता और दस्तावेज़",
-        "text": "आपका जॉइनिंग लेटर और मेंबरशिप कार्ड व्यक्तिगत हैं और हस्तांतरणीय नहीं हैं। मेंबरशिप कार्ड सरकारी पहचान-पत्र नहीं है और इसे पहचान या उम्र के प्रमाण के रूप में इस्तेमाल नहीं किया जाना चाहिए।"
+        "title": "MEMBERSHIPS & PURCHASES",
+        "text": "Memberships and products are subject to the price, delivery and refund terms shown. Your joining letter and membership card are personal, non-transferable, and are not a government-issued ID."
       },
-      "accounts": {
-        "title": "आपका अकाउंट",
-        "text": "सही जानकारी दें, अपना लॉगिन गोपनीय रखें और प्रति व्यक्ति एक ही अकाउंट रखें।"
-      },
-      "purchases": {
-        "title": "ख़रीदारी",
-        "text": "सदस्यता और उत्पाद चेकआउट पर दिखाई गई कीमत, डिलीवरी और रिफ़ंड की शर्तों के अधीन हैं।"
+      "hidden": {
+        "title": "HIDDEN MATERIAL",
+        "text": "Some information is hidden because it is dangerous and is revealed at any point of time. Stay tuned."
       },
       "ownership": {
-        "title": "स्वामित्व",
-        "text": "सर्वाधिकार सुरक्षित। इस साइट के टेक्स्ट, आर्टवर्क, प्रतीक, वीडियो और डिज़ाइन को लिखित अनुमति के बिना कॉपी, दोबारा बेचा या वितरित नहीं किया जा सकता। लिंक साझा करने का स्वागत है।"
+        "title": "OWNERSHIP",
+        "text": "All rights reserved. The text, artwork, symbols, video, and design on this site may not be copied, resold or redistributed without written permission. Sharing links is welcome."
       },
       "privacy": {
-        "title": "गोपनीयता",
-        "text": "हम आपकी जानकारी का उपयोग केवल आपका अकाउंट और ऑर्डर चलाने के लिए करते हैं। हम चेकआउट के बाहर कभी आपका पासवर्ड या कार्ड विवरण नहीं माँगेंगे।"
+        "title": "PRIVACY",
+        "text": "We use your details only to run your account and orders. We will never ask for your password or card details outside the checkout."
       },
-      "changes": {
-        "title": "बदलाव और अनुपालन",
-        "text": "हम ये नियम बदल सकते हैं। साइट का उपयोग जारी रखने का मतलब है कि आप मौजूदा संस्करण स्वीकार करते हैं। नियम तोड़ने पर अकाउंट निलंबित किया जा सकता है।"
+      "conditions": {
+        "title": "CONDITIONS OF ENTRY",
+        "text": "Proceed only if you understand and accept the following conditions. We may update these rules; by continuing to use the site you accept the current version, and breaking the rules may lead to suspension."
       }
     },
     "steps": {
       "explore": {
-        "title": "एक्सप्लोर करें",
-        "text": "आर्काइव्स, रिचुअल्स, वीडियोज़ और विज़ुअल्स को खुलकर देखें। सील्ड आइटम पर ताला लगा होता है।"
+        "title": "EXPLORE",
+        "text": "Browse the Archives, Rituals, Videos, Visuals and Library freely. Sealed items are marked with a lock."
       },
       "join": {
-        "title": "सदस्य बनें",
-        "text": "अकाउंट बनाएँ, फिर सील्ड कंटेंट अनलॉक करने के लिए अपनी सदस्यता पूरी करें।"
+        "title": "BECOME A MEMBER",
+        "text": "Create an account, then complete your membership to unlock sealed content."
       },
       "documents": {
-        "title": "आपके दस्तावेज़",
-        "text": "सदस्य कभी भी अपनी प्रोफ़ाइल से अपना जॉइनिंग लेटर और मेंबरशिप कार्ड डाउनलोड कर सकते हैं।"
+        "title": "YOUR DOCUMENTS",
+        "text": "Members can download their joining letter and membership card from their Profile at any time."
       },
       "help": {
-        "title": "मदद चाहिए?",
-        "text": "सवाल हैं? कम्युनिटी पेज के ज़रिए टीम से संपर्क करें।"
+        "title": "NEED HELP?",
+        "text": "Questions? Address the Keepers privately from the Community page — only you and the council can read the thread."
       }
     }
   },
@@ -198,13 +211,16 @@
     "viewAllChambers": "सभी चैंबर देखें ›",
     "autoplayLabel": "ऑटोप्ले · 02 सेकंड",
     "allVisuals": "सभी विज़ुअल्स ›",
-    "countdownDate": "31 दिसंबर 2026 · 11:59:59 PM IST",
-    "countdownCta": "नई व्यवस्था ›",
+    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
+    "countdownCta": "नई विश्व व्यवस्था ›",
     "allVideos": "सभी वीडियोज़ ›",
     "communityTitle": "समुदाय में प्रवेश करें",
     "communityMatureNote": "केवल 18+ के लिए। इसमें परिपक्व कंटेंट है।",
     "instagramTitleLine1": "ब्रदरहुड को फ़ॉलो करें",
-    "instagramTitleLine2": "इंस्टाग्राम पर"
+    "instagramTitleLine2": "इंस्टाग्राम पर",
+    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
+    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
+    "membersStatNote": "Joined members across the Network."
   },
   "about": {
     "pillars": {
@@ -434,14 +450,14 @@
     },
     "channelsTitle": "चैनल्स",
     "channelsSub": "मेज़ पर अपनी सीट चुनें।",
-    "boardTitle": "डिस्कशन बोर्ड",
-    "boardSub": "इनिशिएट्स की नवीनतम पोस्ट्स।",
-    "sharePlaceholder": "एक थ्योरी शेयर करें, {{name}}…",
-    "post": "पोस्ट करें ›",
+    "boardTitle": "YOUR THREADS WITH THE COUNCIL",
+    "boardSub": "PRIVATE. ONLY YOU AND THE KEEPERS CAN READ THIS.",
+    "sharePlaceholder": "Address the council, {{name}}…",
+    "post": "SEND TO THE COUNCIL ›",
     "postLocked": "केवल इनिशिएट्स ही पोस्ट कर सकते हैं। चर्चा में शामिल होने के लिए <0>साइन इन करें</0> या <1>रजिस्टर करें</1>।",
     "justNow": "अभी-अभी",
-    "postedToast": "पोस्ट हो गया — फ़िलहाल केवल इसी डिवाइस पर दिखेगा।",
-    "adminNote": "आप बोर्ड को कीपर के रूप में देख रहे हैं। मॉडरेशन टूल्स <0>एडमिन पैनल</0> में हैं।",
+    "postedToast": "Received. Only the Keepers can read this thread.",
+    "adminNote": "You are viewing the board as a Keeper. Every thread is visible to you alone — reply here or open the <0>council inbox</0>.",
     "emblemTitle": "एम्ब्लम",
     "emblemText": "हर इनिशिएट को सातवें स्टेशन पर सील मिलती है। इसे अपनी प्रोफ़ाइल में पहनें।",
     "followInstagram": "इंस्टाग्राम पर फ़ॉलो करें",
@@ -542,9 +558,9 @@
       },
       "newOrder": {
         "kicker": "666,666 अनुभव",
-        "title": "नई व्यवस्था",
-        "sub": "31 दिसंबर 2026 · 11:59:59 PM IST · पर्दा हटने लगता है।",
-        "intro": "एक कैंपेन माइलस्टोन: जब काउंटर शून्य पर पहुँचेगा, ब्रदरहुड अगला अध्याय खोलेगा। कोई भविष्यवाणी नहीं। असल दुनिया के बारे में कोई दावा नहीं। बस कैलेंडर पर एक तारीख और सामने खुलने को तैयार एक कहानी।"
+        "title": "नई विश्व व्यवस्था",
+        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
+        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
       },
       "videos": {
         "kicker": "प्रतिबंधित आर्काइव्स",
@@ -713,21 +729,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "प्रोविडेंस की आंख", "meaning": "एक त्रिकोण के अंदर एक चमकती आंख, जो काउंसिल में हर कीपर की कलाई पर गुदवाई जाती है। कहानी में यह सतर्कता की शपथ को दर्शाती है — किसी असली संगठन के बारे में कोई दावा नहीं।" },
-      "silent-owl": { "name": "मौन उल्लू", "meaning": "कहानी के सबसे पुराने सदस्यों द्वारा कंधों के बीच गुदवाया गया, उल्लू उन लोगों को चिह्नित करता है जो बोलने से ज़्यादा सुनते हैं। मौन अवलोकन का एक प्रतीक।" },
-      "twin-pillars": { "name": "जुड़वां स्तंभ", "meaning": "प्रकाश और छाया के दो स्तंभ, हमेशा जोड़े में गुदवाए जाते हैं। कहानी में ये उस संतुलन को दर्शाते हैं जो हर इनिशिएट को सवाल और जवाब के बीच बनाए रखना होता है।" },
-      "compass-square": { "name": "कम्पास और स्क्वायर", "meaning": "एक मापने वाला औज़ार जो प्रतीक बन गया — दृष्टि के लिए कम्पास, आचरण के लिए स्क्वायर। कहानी में यह सील्ड शपथ के बाद ही दिया जाता है।" },
-      "checkered-floor": { "name": "चेकर्ड फ़्लोर", "meaning": "हल्की और गहरी टाइलें कलाई के चारों ओर एक बैंड के रूप में गुदवाई जाती हैं, यह याद दिलाने के लिए कि कहानी के हर चुनाव का एक विपरीत पक्ष होता है।" },
-      "ouroboros": { "name": "ओरोबोरोस", "meaning": "अपनी ही पूंछ निगलता हुआ सांप, जो सात स्टेशनों के पूरे चक्र को पूरा करने वालों को चिह्नित करता है। इसे केवल क्रॉसिंग के बाद ही पहना जाता है।" },
-      "thirteen-steps": { "name": "तेरह सीढ़ियाँ", "meaning": "तैरती चोटी वाला सीढ़ीदार पिरामिड, हर सीढ़ी के लिए एक रेखा। अमेरिका की ग्रेट सील का 'अधूरा पिरामिड' तेरह सीढ़ियों वाला है, हर मूल कॉलोनी के लिए एक। कहानी में: तेरह कक्ष, कोई भी कभी पूरा नहीं।" },
-      "coiled-serpent": { "name": "कुंडली मारा सर्प", "meaning": "बाँह पर गुदवाया गया धीमे S-मोड़ वाला सर्प। कई संस्कृतियों में प्राचीन — ख़तरा भी और नवजीवन भी; कहानी में यह उन इनिशिएट्स को दर्शाता है जिन्होंने अपनी पहली मान्यता छोड़ दी।" },
-      "anubis": { "name": "सियार पथप्रदर्शक", "meaning": "अनुबिस, मृतकों के मिस्री मार्गदर्शक, सियार के सिर वाले, बग़ल से बने हुए। दहलीज़ों पर सुरक्षा चाहने वाले इसे चुनते हैं; कहानी में वह इनिशिएट को क्रॉसिंग से पार कराता है।" },
-      "metatrons-cube": { "name": "मेटाट्रॉन का घन", "meaning": "सीधी रेखाओं से जुड़े तेरह वृत्त, पवित्र-ज्यामिति टैटू कलाकारों का पसंदीदा। कहानी में यह काउंसिल का नक्शा है: एक ख़ाली आसन के चारों ओर बारह रक्षक।" },
-      "double-eagle": { "name": "दो सिर वाला गरुड़", "meaning": "विपरीत दिशाओं में देखते दो सिर, स्कॉटिश रीति की 33वीं डिग्री और कई प्राचीन साम्राज्यों का प्रतीक। कहानी में: एक आँख अतीत पर, दूसरी आने वाले कल पर।" },
-      "lotus-eye": { "name": "कमल-नेत्र", "meaning": "कमल के हृदय में खुलती एक आँख — पूर्वी परंपरा की तीसरी आँख, पंखुड़ियों के साथ। कहानी में इसे वे लोग सीने पर गुदवाते हैं जो विजिल पूरा करते हैं।" },
-      "hourglass": { "name": "रेत की घड़ी", "meaning": "समय एक दो-कक्षीय पात्र के रूप में — चित्रकारों और लॉजों की याद कि रेत एक ही दिशा में बहती है। कहानी में यह पहली मोमबत्ती का चिह्न है: एक घंटा, कोई शब्द नहीं।" },
-      "xiii-numeral": { "name": "अंक XIII", "meaning": "रोमन अंकों में तेरह — तेरह सीढ़ियाँ, तेरह आसन, तेरह कक्ष। अंक-विद्या के शौकीन इसे छोटा करके कान के पीछे या कलाई पर गुदवाते हैं।" },
-      "the-key": { "name": "रक्षक की चाबी", "meaning": "तिपतिया मूठ वाली पुरानी लोहे की चाबी। रोज़िक्रूशियन और मेसोनिक चित्रों में चाबी बंद को खोलने के अधिकार का प्रतीक है। कहानी में ग्रैंड कीपर हर सील्ड इनिशिएट को एक चाबी सौंपता है।" }
+      "eye-of-providence": {
+        "name": "प्रोविडेंस की आंख",
+        "meaning": "एक त्रिकोण के अंदर एक चमकती आंख, जो काउंसिल में हर कीपर की कलाई पर गुदवाई जाती है। कहानी में यह सतर्कता की शपथ को दर्शाती है — किसी असली संगठन के बारे में कोई दावा नहीं।"
+      },
+      "silent-owl": {
+        "name": "मौन उल्लू",
+        "meaning": "कहानी के सबसे पुराने सदस्यों द्वारा कंधों के बीच गुदवाया गया, उल्लू उन लोगों को चिह्नित करता है जो बोलने से ज़्यादा सुनते हैं। मौन अवलोकन का एक प्रतीक।"
+      },
+      "twin-pillars": {
+        "name": "जुड़वां स्तंभ",
+        "meaning": "प्रकाश और छाया के दो स्तंभ, हमेशा जोड़े में गुदवाए जाते हैं। कहानी में ये उस संतुलन को दर्शाते हैं जो हर इनिशिएट को सवाल और जवाब के बीच बनाए रखना होता है।"
+      },
+      "compass-square": {
+        "name": "कम्पास और स्क्वायर",
+        "meaning": "एक मापने वाला औज़ार जो प्रतीक बन गया — दृष्टि के लिए कम्पास, आचरण के लिए स्क्वायर। कहानी में यह सील्ड शपथ के बाद ही दिया जाता है।"
+      },
+      "checkered-floor": {
+        "name": "चेकर्ड फ़्लोर",
+        "meaning": "हल्की और गहरी टाइलें कलाई के चारों ओर एक बैंड के रूप में गुदवाई जाती हैं, यह याद दिलाने के लिए कि कहानी के हर चुनाव का एक विपरीत पक्ष होता है।"
+      },
+      "ouroboros": {
+        "name": "ओरोबोरोस",
+        "meaning": "अपनी ही पूंछ निगलता हुआ सांप, जो सात स्टेशनों के पूरे चक्र को पूरा करने वालों को चिह्नित करता है। इसे केवल क्रॉसिंग के बाद ही पहना जाता है।"
+      },
+      "thirteen-steps": {
+        "name": "तेरह सीढ़ियाँ",
+        "meaning": "तैरती चोटी वाला सीढ़ीदार पिरामिड, हर सीढ़ी के लिए एक रेखा। अमेरिका की ग्रेट सील का 'अधूरा पिरामिड' तेरह सीढ़ियों वाला है, हर मूल कॉलोनी के लिए एक। कहानी में: तेरह कक्ष, कोई भी कभी पूरा नहीं।"
+      },
+      "coiled-serpent": {
+        "name": "कुंडली मारा सर्प",
+        "meaning": "बाँह पर गुदवाया गया धीमे S-मोड़ वाला सर्प। कई संस्कृतियों में प्राचीन — ख़तरा भी और नवजीवन भी; कहानी में यह उन इनिशिएट्स को दर्शाता है जिन्होंने अपनी पहली मान्यता छोड़ दी।"
+      },
+      "anubis": {
+        "name": "सियार पथप्रदर्शक",
+        "meaning": "अनुबिस, मृतकों के मिस्री मार्गदर्शक, सियार के सिर वाले, बग़ल से बने हुए। दहलीज़ों पर सुरक्षा चाहने वाले इसे चुनते हैं; कहानी में वह इनिशिएट को क्रॉसिंग से पार कराता है।"
+      },
+      "metatrons-cube": {
+        "name": "मेटाट्रॉन का घन",
+        "meaning": "सीधी रेखाओं से जुड़े तेरह वृत्त, पवित्र-ज्यामिति टैटू कलाकारों का पसंदीदा। कहानी में यह काउंसिल का नक्शा है: एक ख़ाली आसन के चारों ओर बारह रक्षक।"
+      },
+      "double-eagle": {
+        "name": "दो सिर वाला गरुड़",
+        "meaning": "विपरीत दिशाओं में देखते दो सिर, स्कॉटिश रीति की 33वीं डिग्री और कई प्राचीन साम्राज्यों का प्रतीक। कहानी में: एक आँख अतीत पर, दूसरी आने वाले कल पर।"
+      },
+      "lotus-eye": {
+        "name": "कमल-नेत्र",
+        "meaning": "कमल के हृदय में खुलती एक आँख — पूर्वी परंपरा की तीसरी आँख, पंखुड़ियों के साथ। कहानी में इसे वे लोग सीने पर गुदवाते हैं जो विजिल पूरा करते हैं।"
+      },
+      "hourglass": {
+        "name": "रेत की घड़ी",
+        "meaning": "समय एक दो-कक्षीय पात्र के रूप में — चित्रकारों और लॉजों की याद कि रेत एक ही दिशा में बहती है। कहानी में यह पहली मोमबत्ती का चिह्न है: एक घंटा, कोई शब्द नहीं।"
+      },
+      "xiii-numeral": {
+        "name": "अंक XIII",
+        "meaning": "रोमन अंकों में तेरह — तेरह सीढ़ियाँ, तेरह आसन, तेरह कक्ष। अंक-विद्या के शौकीन इसे छोटा करके कान के पीछे या कलाई पर गुदवाते हैं।"
+      },
+      "the-key": {
+        "name": "रक्षक की चाबी",
+        "meaning": "तिपतिया मूठ वाली पुरानी लोहे की चाबी। रोज़िक्रूशियन और मेसोनिक चित्रों में चाबी बंद को खोलने के अधिकार का प्रतीक है। कहानी में ग्रैंड कीपर हर सील्ड इनिशिएट को एक चाबी सौंपता है।"
+      }
     },
     "channels": {
       "discord": {
@@ -754,7 +815,7 @@
     "timeline": {
       "origin": {
         "year": "उत्पत्ति",
-        "title": "एक कहानी, कोई दावा नहीं",
+        "title": "The first spark",
         "text": "ब्रदरहुड एक रचनात्मक प्रोजेक्ट के रूप में शुरू हुआ: क्या हो अगर गुप्त-समाज पौराणिक कथा को षड्यंत्र के बजाय सिनेमा की तरह देखा जाए?"
       },
       "archive": {
@@ -769,8 +830,8 @@
       },
       "newOrder": {
         "year": "2026",
-        "title": "नई व्यवस्था",
-        "text": "31 दिसंबर 2026 को रात 11:59:59 बजे IST पर काउंटर शून्य पर पहुँचता है और अगला अध्याय खुलता है। तय समय पर, और पूरी तरह हमारा।"
+        "title": "The New World Order",
+        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
       }
     },
     "faq": {

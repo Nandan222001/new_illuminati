@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useToast } from '../../context/ToastContext'
+import { useSiteSettings } from '../../context/SiteSettingsContext'
 import { DEFAULT_SETTINGS, fetchSettings, saveSettings } from '../../admin/adminStore'
 
 function SecretField({ label, value, onChange, placeholder }) {
@@ -15,8 +17,12 @@ function SecretField({ label, value, onChange, placeholder }) {
   )
 }
 
+const SOCIAL_FIELDS = ['instagram', 'discord', 'telegram', 'youtube', 'x', 'facebook']
+
 export default function AdminSettings() {
   const toast = useToast()
+  const { t } = useTranslation()
+  const { updateSocial } = useSiteSettings()
   const [settings, setSettings] = useState(DEFAULT_SETTINGS)
 
   useEffect(() => {
@@ -26,6 +32,9 @@ export default function AdminSettings() {
   const save = async (section) => {
     try {
       await saveSettings(settings)
+      // Mirror the social links into the public site immediately (they are
+      // also served by GET /public/settings once the API is reachable).
+      if (section === 'Social media') updateSocial(settings.social)
       toast(`${section} settings saved (demo — no live provider is called).`)
     } catch (err) {
       toast(err.message)
@@ -49,6 +58,33 @@ export default function AdminSettings() {
       <div className="notice">
         ⚠ <b>Demo only.</b> Values below are saved to the database but are never sent to Razorpay, an SMTP server, Twilio, or anywhere else — no live provider call is ever made. Wire <code>backend/app/crud/admin.py</code> to real provider SDKs before accepting real credentials.
       </div>
+
+      <section className="admin-card">
+        <div className="settings-card-head">
+          <h3>{t('social.adminTitle')} <span className="muted-inline">— footer, home &amp; community</span></h3>
+        </div>
+        <p className="muted">{t('social.adminHint')}</p>
+        <form className="form" onSubmit={(e) => { e.preventDefault(); save('Social media') }}>
+          <div className="form-row">
+            {SOCIAL_FIELDS.map((platform) => (
+              <label key={platform}>
+                <span>{t('social.adminLabel', { name: t(`social.${platform}`) })}</span>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  placeholder={t('social.placeholder')}
+                  value={settings.social[platform] || ''}
+                  onChange={(e) => patch('social', { [platform]: e.target.value })}
+                />
+              </label>
+            ))}
+          </div>
+          <div className="settings-actions">
+            <button type="submit" className="btn-gold">SAVE SOCIAL LINKS</button>
+            <button type="button" className="btn-ghost" onClick={() => reset('social')}>{t('social.reset')}</button>
+          </div>
+        </form>
+      </section>
 
       <section className="admin-card">
         <div className="settings-card-head">

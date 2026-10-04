@@ -30,7 +30,23 @@ class TwilioSettings(BaseModel):
     fromNumber: str = ""
 
 
+class SocialSettings(BaseModel):
+    """Public profile links — surface in the footer, home and community pages."""
+    instagram: str = ""
+    discord: str = ""
+    telegram: str = ""
+    youtube: str = ""
+    x: str = ""
+    facebook: str = ""
+
+
+class PublicSettingsPayload(BaseModel):
+    """Anonymous-safe subset of the settings that public pages may read."""
+    social: SocialSettings = SocialSettings()
+
+
 class AdminSettingsPayload(BaseModel):
+    social: SocialSettings = SocialSettings()
     razorpay: RazorpaySettings = RazorpaySettings()
     smtp: SmtpSettings = SmtpSettings()
     twilio: TwilioSettings = TwilioSettings()

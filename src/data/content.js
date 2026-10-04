@@ -10,6 +10,7 @@ export const NAV_LINKS = [
   { to: '/videos', key: 'videos' },
   { to: '/visuals', key: 'visuals' },
   { to: '/community', key: 'community' },
+  { to: '/archives#library', key: 'library' },
   { to: '/about', key: 'about' },
 ]
 
@@ -73,6 +74,25 @@ export const SYMBOLS = [
   { slug: 'the-skull' },
   { slug: 'the-sun-and-moon' },
   { slug: 'the-pentagram' },
+  /* The eight sigils added in v1.1.6 — all drawn as inline icons. */
+  { slug: 'the-ankh' },
+  { slug: 'the-triskelion' },
+  { slug: 'the-ascending-flame' },
+  { slug: 'the-sphinx' },
+  { slug: 'the-grail' },
+  { slug: 'the-dove-and-serpent' },
+  { slug: 'the-compass-rose' },
+  { slug: 'the-lamp-of-diogenes' },
+]
+
+/* E-books shelved in the Archive. `file` is filled in from Admin → Books (a
+   PDF/library link); entries without a file show as "awaiting print". */
+export const EBOOKS = [
+  { slug: 'the-book-of-the-thirteenth-seat', img: '/assets/archive-parchment.jpg', pages: 148, file: '', category: 'free' },
+  { slug: 'sigils-of-the-ritual-archive', img: '/assets/archive-eye.jpg', pages: 96, file: '', category: 'free' },
+  { slug: 'a-field-guide-to-hidden-symbols', img: '/assets/visuals-hero.jpg', pages: 212, file: '', category: 'paid' },
+  { slug: 'the-new-world-order-dossier', img: '/assets/forbidden-city.jpg', pages: 74, file: '', category: 'paid' },
+  { slug: 'rituals-a-stage-manual', img: '/assets/rituals-hero.jpg', pages: 130, file: '', category: 'paid' },
 ]
 
 /* Sigils without an `img` are drawn as a large inline icon (see Visuals.jsx).
@@ -142,8 +162,12 @@ export const FAQ = [
   { key: 'realWorldClaims' },
 ]
 
-// 31 December 2026, 11:59:59 PM IST — fixed instant so every visitor counts down to the same moment
-export const TARGET_DATE = new Date('2026-12-31T23:59:59+05:30')
+// 31 December 2026, 11:59:59 PM GMT — fixed instant so every visitor counts
+// down to the same moment. All published times on the site are GMT.
+export const TARGET_DATE = new Date('2026-12-31T23:59:59Z')
+
+/** Joined-members figure shown on the countdown bar and the home stat card. */
+export const MEMBERS_JOINED_DISPLAY = '3.6M+'
 
 export function getTimeLeft() {
   let diff = TARGET_DATE - new Date()

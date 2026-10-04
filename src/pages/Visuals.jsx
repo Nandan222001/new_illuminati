@@ -16,21 +16,22 @@ import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
 import drawOn from '../utils/drawOn'
 
-const THIRD_EYE_SLUG = 'the-third-eye'
-const THIRD_EYE_URL = 'https://osirisai.live/?layers=jets,maritime,cctv,cctv_previews,live_news,earthquakes,global_incidents,day_night,cables,sdk_sea,sdk_air,sdk_naval'
-
+/**
+ * Section order (item 19): DECODE THE DOLLAR → FIND YOUR SIGIL → THE SIGILS →
+ * TATTOOS OF THE UNKNOWN → THE GALLERY.
+ *
+ * The OSIRIS interface that used to hang off the Third Eye sigil now lives in
+ * ARCHIVES → THE THIRD EYE (see ArchiveDetail.jsx).
+ */
 export default function Visuals() {
   const page = PAGES.visuals
-  const { user } = useAuth()
+  const { user, isAdmin } = useAuth()
   const { gallery: GALLERY, canAccess } = useContent()
   const { t } = useTranslation()
   const SYMBOLS = useLocalizedSymbols()
   const TATTOOS = useLocalizedTattoos()
   const [activeSlug, setActiveSlug] = useState(SYMBOLS[0].slug)
   const active = SYMBOLS.find((s) => s.slug === activeSlug) || SYMBOLS[0]
-  const isThirdEye = active.slug === THIRD_EYE_SLUG
-  const aboutTitle = isThirdEye ? t('visuals.thirdEyeAboutTitle') : t('visuals.sigilAboutTitle')
-  const aboutText = isThirdEye ? t('visuals.thirdEyeAboutText') : active.about
   const [lightbox, setLightbox] = useState(null)
   const [showInitiation, setShowInitiation] = useState(false)
   const { hash } = useLocation()
@@ -66,7 +67,20 @@ export default function Visuals() {
         <p className="page-intro">{t('content.pages.visuals.intro')}</p>
       </PageHero>
 
-      <section className="page-section">
+      {/* ---------- 1. DECODE THE DOLLAR ---------- */}
+      <section className="page-section" id="decoder">
+        <SectionHead title={t('decoder.title')} sub={t('decoder.sub')} />
+        <DollarDecoder />
+      </section>
+
+      {/* ---------- 2. FIND YOUR SIGIL ---------- */}
+      <section className="page-section" id="finder">
+        <SectionHead title={t('finder.title')} sub={t('finder.sub')} />
+        <SigilFinder />
+      </section>
+
+      {/* ---------- 3. THE SIGILS ---------- */}
+      <section className="page-section" id="sigils">
         <SectionHead title={t('visuals.sigilsTitle')} sub={t('visuals.sigilsSub')} />
         <div className="sigil-layout">
           <div className="symbol-row sigil-grid">
@@ -97,33 +111,22 @@ export default function Visuals() {
               <span className="chamber-num">{active.short.toUpperCase()}</span>
               <h3>{active.name}</h3>
               <p>{active.meaning}</p>
-              {aboutText && (
-                <div className="sigil-more">
-                  <h4 className="sigil-about-title">{aboutTitle}</h4>
-                  <p className="sigil-about-text">{aboutText}</p>
-                  {isThirdEye && (
-                    <a className="btn-gold third-eye-cta" href={THIRD_EYE_URL} target="_blank" rel="noopener noreferrer">
-                      {t('visuals.thirdEyeCta')} ›
-                    </a>
-                  )}
-                </div>
-              )}
+              <div className="sigil-more">
+                {active.about && <h4 className="sigil-about-title">{t('visuals.sigilAboutTitle')}</h4>}
+                {active.about && <p className="sigil-about-text">{active.about}</p>}
+                {active.slug === 'the-third-eye' && (
+                  <Link className="btn-gold sigil-archive-link" to="/archives/the-third-eye#osiris">
+                    {t('archiveDetail.osirisTitle')} ›
+                  </Link>
+                )}
+              </div>
             </div>
           </article>
         </div>
       </section>
 
-      <section className="page-section">
-        <SectionHead title={t('decoder.title')} sub={t('decoder.sub')} />
-        <DollarDecoder />
-      </section>
-
-      <section className="page-section">
-        <SectionHead title={t('finder.title')} sub={t('finder.sub')} />
-        <SigilFinder />
-      </section>
-
-      <section className="page-section" ref={tattooRef}>
+      {/* ---------- 4. TATTOOS OF THE UNKNOWN ---------- */}
+      <section className="page-section" id="tattoos" ref={tattooRef}>
         <SectionHead title={t('visuals.tattoosTitle')} sub={t('visuals.tattoosSub')} />
         <div className={`tattoo-grid${showAllTattoos ? '' : ' collapsed'}`}>
           {TATTOOS.map((tt) => (
@@ -149,8 +152,9 @@ export default function Visuals() {
         </div>
       </section>
 
-      <section className="page-section">
-        <SectionHead title={t('visuals.galleryTitle')} sub={t('visuals.gallerySub')} />
+      {/* ---------- 5. THE GALLERY ---------- */}
+      <section className="page-section" id="gallery">
+        <SectionHead title={t('visuals.galleryTitle')} sub={isAdmin ? t('visuals.gallerySub') : undefined} />
         <div className="gallery">
           {GALLERY.map((g, i) => {
             const open = canAccess(g.category)
@@ -163,9 +167,10 @@ export default function Visuals() {
                 onClick={() => { if (open) setLightbox(i); else if (user) setShowInitiation(true) }}
                 disabled={!clickable}
               >
-                <Img src={g.img} alt={g.title} />
+                <Img src={g.img} alt={isAdmin ? g.title : ''} />
                 {!open && <span className="seal-badge">{t('common.sealedBadge')}</span>}
-                <span className="gallery-cap"><b>{g.title}</b><small>{g.cap}</small></span>
+                {/* Key-visual captions are Keeper-only metadata, hidden from viewers. */}
+                {isAdmin && <span className="gallery-cap"><b>{g.title}</b><small>{g.cap}</small></span>}
               </button>
             )
           })}
@@ -184,8 +189,8 @@ export default function Visuals() {
           <button type="button" className="lb-close" aria-label={t('common.close')} onClick={() => setLightbox(null)}>✕</button>
           <button type="button" className="lb-nav prev" aria-label={t('common.previous')} onClick={() => setLightbox((i) => (i - 1 + GALLERY.length) % GALLERY.length)}>‹</button>
           <figure>
-            <img src={GALLERY[lightbox].img} alt={GALLERY[lightbox].title} />
-            <figcaption><b>{GALLERY[lightbox].title}</b><span>{GALLERY[lightbox].cap}</span><em>{lightbox + 1} / {GALLERY.length}</em></figcaption>
+            <img src={GALLERY[lightbox].img} alt={isAdmin ? GALLERY[lightbox].title : ''} />
+            {isAdmin && <figcaption><b>{GALLERY[lightbox].title}</b><span>{GALLERY[lightbox].cap}</span><em>{lightbox + 1} / {GALLERY.length}</em></figcaption>}
           </figure>
           <button type="button" className="lb-nav next" aria-label={t('common.next')} onClick={() => setLightbox((i) => (i + 1) % GALLERY.length)}>›</button>
         </div>

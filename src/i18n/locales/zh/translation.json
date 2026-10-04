@@ -16,7 +16,6 @@
     "becomeInitiate": "成为入会者",
     "joinCommunity": "加入社区",
     "tagline": "符号 · 神话 · 历史",
-    "milestoneNote": "我们下一次发布的活动里程碑——并非预言，也不是现实世界中的事件。",
     "sealYourOathCta": "封印你的誓言 ›",
     "followNow": "立即关注",
     "followingToast": "Instagram 关注功能即将上线。",
@@ -39,7 +38,7 @@
   "nav": {
     "home": "首页",
     "archives": "档案馆",
-    "newOrder": "新秩序",
+    "newOrder": "新世界秩序",
     "rituals": "仪式",
     "videos": "视频",
     "visuals": "视觉",
@@ -61,7 +60,8 @@
     "language": "语言",
     "leftCircleToast": "你已离开这个圈子。下次再见。",
     "keeperAdmin": "守护者 · 管理员",
-    "initiateNumber": "入会者 #{{number}}"
+    "initiateNumber": "入会者 #{{number}}",
+    "library": "藏书阁"
   },
   "footer": {
     "description": "对秘密社团神话、阴谋文化与历史谜团的沉浸式探索。",
@@ -77,83 +77,96 @@
     "copyright": "© 2026 Illuminati Brotherhood。保留所有权利。"
   },
   "rules": {
-    "kicker": "进入前请阅读",
-    "title": "规则与说明",
-    "sub": "适用于每位访客和会员的守则。",
-    "rulesTitle": "规则",
-    "rulesSub": "适用于所有使用本站的人。",
-    "instrTitle": "使用说明",
-    "instrSub": "如何使用本站和你的会员资格。",
-    "wellbeing": "部分主题可能令人不安。如果本站的任何内容让你感到不适，请暂时离开，并与你信任的人聊聊。",
-    "acceptedOn": "已于 {{date}} 在此设备上接受。",
-    "acceptRules": "我接受规则",
+    "kicker": "READ BEFORE YOU ENTER",
+    "title": "RULES & INSTRUCTIONS",
+    "sub": "THE HOUSE RULES FOR EVERY VIEWER AND MEMBER.",
+    "version": "VERSION 1.1.6",
+    "versionNote": "Terms version {{version}} · all times are GMT.",
+    "rulesTitle": "THE RULES",
+    "rulesSub": "APPLIES TO EVERYONE WHO USES THIS SITE.",
+    "instrTitle": "INSTRUCTIONS",
+    "instrSub": "HOW TO USE THE SITE AND YOUR MEMBERSHIP.",
+    "wellbeing": "Some themes may be unsettling. If anything on this site affects you, take a step back and talk to someone you trust.",
+    "acceptedOn": "Accepted on this device on {{date}} · terms version {{version}}.",
+    "acceptRules": "I ACCEPT THE RULES",
     "gate": {
-      "title": "进入之前",
-      "intro": "请阅读下方规则。你可以随时在页脚重新打开完整的规则与说明。",
-      "full": "打开完整页面",
-      "agree": "我已阅读并同意规则与说明，并确认我已年满18岁。",
-      "accept": "接受并继续",
-      "decline": "拒绝",
-      "declined": "你需要接受规则与说明才能进入本站。"
+      "title": "BEFORE YOU ENTER",
+      "version": "TERMS VERSION 1.1.6",
+      "intro": "Proceed only if you understand and accept the following conditions. Everything on this site stays locked until your acknowledgement is received.",
+      "full": "Open the full page",
+      "agree": "I have read, understood and accept the Terms & Conditions (version 1.1.6), and I confirm that I am 18 or older.",
+      "accept": "ACCEPT & ENTER",
+      "decline": "DECLINE",
+      "declined": "You need to acknowledge the Terms & Conditions to enter. Everything stays locked until you do.",
+      "locked": "🔒 Everything on this site is locked until you acknowledge the Terms & Conditions.",
+      "lockNote": "Everything on this site is locked until you acknowledge the terms."
     },
     "items": {
       "age": {
-        "title": "仅限18岁以上",
-        "text": "本站含有阴暗、成人向的画面。你必须年满18岁才能继续。"
+        "title": "18+ ONLY",
+        "text": "This site contains dark and mature imagery. You must be 18 or older to continue."
+      },
+      "entry": {
+        "title": "ENTRY WINDOW",
+        "text": "Act now before access closes — the entry window is open for a limited period only. You are one step away from entering the dark environment."
       },
       "about": {
-        "title": "本站是什么",
-        "text": "Illuminati Brotherhood 是一个受秘密社团历史与符号启发的品牌与故事世界。它与任何真实组织无关联，本站内容不是对真实人物、团体或事件的断言。"
+        "title": "WHAT THIS SITE IS",
+        "text": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with any real organisation, and nothing here is a claim about real people, groups or events."
+      },
+      "noCertify": {
+        "title": "NO VOUCHING FOR ANYONE",
+        "text": "The Network does not certify the identity, credentials, intentions, or trustworthiness of any member, vendor, contributor, or administrator."
+      },
+      "documents": {
+        "title": "ARCHIVES & TESTIMONIES",
+        "text": "Documents, testimonies, archives, and recordings presented within this network may be incomplete, inaccurate, fictional, manipulated, or authentic. Determine validity at your own risk."
       },
       "conduct": {
-        "title": "文明守规",
-        "text": "禁止仇恨言论、骚扰、威胁，或针对真实的个人、社区、宗教或组织。违反者的账号将被移除。"
+        "title": "RESPECTFUL CONDUCT",
+        "text": "No hate speech, harassment, threats or targeting of real people, communities, religions or organisations. Accounts that do this will be removed."
       },
       "safety": {
-        "title": "注意安全",
-        "text": "本站不描述也不鼓励任何真实仪式。切勿模仿本站内容做出任何有害、违法或危险的行为。"
+        "title": "STAY SAFE",
+        "text": "No real rituals are described or encouraged. Never attempt anything harmful, illegal or dangerous inspired by content on this site."
       },
       "membership": {
-        "title": "会员资格与文件",
-        "text": "你的入会函和会员卡属于个人，不可转让。会员卡不是政府签发的身份证件，不得用作身份或年龄证明。"
+        "title": "MEMBERSHIPS & PURCHASES",
+        "text": "Memberships and products are subject to the price, delivery and refund terms shown. Your joining letter and membership card are personal, non-transferable, and are not a government-issued ID."
       },
-      "accounts": {
-        "title": "你的账号",
-        "text": "请提供真实信息，妥善保管登录信息，每人仅使用一个账号。"
-      },
-      "purchases": {
-        "title": "购买",
-        "text": "会员资格和商品受结账时显示的价格、配送和退款条款约束。"
+      "hidden": {
+        "title": "HIDDEN MATERIAL",
+        "text": "Some information is hidden because it is dangerous and is revealed at any point of time. Stay tuned."
       },
       "ownership": {
-        "title": "所有权",
-        "text": "保留所有权利。未经书面许可，不得复制、转售或再分发本站的文字、美术、符号、视频和设计。欢迎分享链接。"
+        "title": "OWNERSHIP",
+        "text": "All rights reserved. The text, artwork, symbols, video, and design on this site may not be copied, resold or redistributed without written permission. Sharing links is welcome."
       },
       "privacy": {
-        "title": "隐私",
-        "text": "我们仅使用你的信息来管理账号和订单。除结账环节外，我们绝不会向你索要密码或银行卡信息。"
+        "title": "PRIVACY",
+        "text": "We use your details only to run your account and orders. We will never ask for your password or card details outside the checkout."
       },
-      "changes": {
-        "title": "变更与执行",
-        "text": "我们可能更新这些规则。继续使用本站即表示你接受当前版本。违反规则可能导致账号被暂停。"
+      "conditions": {
+        "title": "CONDITIONS OF ENTRY",
+        "text": "Proceed only if you understand and accept the following conditions. We may update these rules; by continuing to use the site you accept the current version, and breaking the rules may lead to suspension."
       }
     },
     "steps": {
       "explore": {
-        "title": "探索",
-        "text": "自由浏览档案、仪式、视频与视觉内容。带锁的内容为封印内容。"
+        "title": "EXPLORE",
+        "text": "Browse the Archives, Rituals, Videos, Visuals and Library freely. Sealed items are marked with a lock."
       },
       "join": {
-        "title": "成为会员",
-        "text": "创建账号并完成会员资格，即可解锁封印内容。"
+        "title": "BECOME A MEMBER",
+        "text": "Create an account, then complete your membership to unlock sealed content."
       },
       "documents": {
-        "title": "你的文件",
-        "text": "会员可随时在个人资料页下载入会函和会员卡。"
+        "title": "YOUR DOCUMENTS",
+        "text": "Members can download their joining letter and membership card from their Profile at any time."
       },
       "help": {
-        "title": "需要帮助？",
-        "text": "有疑问？请通过社区页面联系团队。"
+        "title": "NEED HELP?",
+        "text": "Questions? Address the Keepers privately from the Community page — only you and the council can read the thread."
       }
     }
   },
@@ -198,13 +211,16 @@
     "viewAllChambers": "查看所有密室 ›",
     "autoplayLabel": "自动播放 · 02 秒",
     "allVisuals": "所有视觉内容 ›",
-    "countdownDate": "2026年12月31日 · 晚上11:59:59 IST",
-    "countdownCta": "新秩序 ›",
+    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
+    "countdownCta": "新世界秩序 ›",
     "allVideos": "所有视频 ›",
     "communityTitle": "进入社区",
     "communityMatureNote": "仅限18岁以上（成人内容）。",
     "instagramTitleLine1": "在 Instagram 上",
-    "instagramTitleLine2": "关注兄弟会"
+    "instagramTitleLine2": "关注兄弟会",
+    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
+    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
+    "membersStatNote": "Joined members across the Network."
   },
   "about": {
     "pillars": {
@@ -434,14 +450,14 @@
     },
     "channelsTitle": "渠道",
     "channelsSub": "在这张桌子上选择你的位置。",
-    "boardTitle": "讨论区",
-    "boardSub": "入会者的最新动态。",
-    "sharePlaceholder": "分享一个理论吧，{{name}}…",
-    "post": "发布 ›",
+    "boardTitle": "YOUR THREADS WITH THE COUNCIL",
+    "boardSub": "PRIVATE. ONLY YOU AND THE KEEPERS CAN READ THIS.",
+    "sharePlaceholder": "Address the council, {{name}}…",
+    "post": "SEND TO THE COUNCIL ›",
     "postLocked": "只有入会者才能发帖。<0>登录</0>或<1>注册</1>以加入讨论。",
     "justNow": "刚刚",
-    "postedToast": "已发布——目前仅在此设备上可见。",
-    "adminNote": "你正以守护者身份查看此讨论区。管理工具位于<0>管理面板</0>中。",
+    "postedToast": "Received. Only the Keepers can read this thread.",
+    "adminNote": "You are viewing the board as a Keeper. Every thread is visible to you alone — reply here or open the <0>council inbox</0>.",
     "emblemTitle": "徽章",
     "emblemText": "每位入会者都会在第七站获得印记，把它佩戴在你的个人主页上。",
     "followInstagram": "在 Instagram 上关注我们",
@@ -542,9 +558,9 @@
       },
       "newOrder": {
         "kicker": "666,666 体验",
-        "title": "新秩序",
-        "sub": "2026年12月31日 · 晚上11:59:59 IST · 帷幕变薄之时。",
-        "intro": "一个活动里程碑：当倒计时归零，兄弟会将开启下一章。没有预言，也不对现实世界作任何断言。只有日历上的一个日期，和一个等待展开的故事。"
+        "title": "新世界秩序",
+        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
+        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
       },
       "videos": {
         "kicker": "禁忌档案",
@@ -713,21 +729,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "天佑之眼", "meaning": "一只嵌在三角形中的光芒之眼，在议会仪式上被纹在每位守护者的手腕上。在这个故事中，它代表着警觉的誓言——而非对任何真实组织的主张。" },
-      "silent-owl": { "name": "沉默猫头鹰", "meaning": "由故事中最年长的成员纹在肩胛骨之间，这只猫头鹰标志着那些倾听多于言说的人。一枚代表静默观察的徽记。" },
-      "twin-pillars": { "name": "双子石柱", "meaning": "光明与阴影两根石柱，总是成对纹刻。在故事中，它们代表着每位入会者必须在疑问与答案之间保持的平衡。" },
-      "compass-square": { "name": "圆规与曲尺", "meaning": "一件测量工具演变而来的徽记——圆规代表远见，曲尺代表品行。在这个故事中，它只有在封印的誓言之后才会被授予。" },
-      "checkered-floor": { "name": "棋盘格地板", "meaning": "深浅交错的方格纹在手腕上形成一条环带，提醒着故事中的每一次选择都有其对立面。" },
-      "ouroboros": { "name": "衔尾蛇", "meaning": "一条吞噬自己尾巴的蛇，标志着完成七大站点完整循环的人。只有在「跨越」之后才会佩戴。" },
-      "thirteen-steps": { "name": "十三级阶梯", "meaning": "带有悬浮塔尖的阶梯金字塔，每级阶梯一条线。美国国徽上的「未完成金字塔」有十三级，每级代表一个最初的殖民地。在故事中：十三间密室，无一完成。" },
-      "coiled-serpent": { "name": "盘蛇", "meaning": "沿前臂纹刻的缓缓S形曲线之蛇。在许多文化中自古既象征危险也象征新生；在故事中，它标记已摆脱最初信念的入会者。" },
-      "anubis": { "name": "豺首引路人", "meaning": "阿努比斯，长着豺头的古埃及亡者引路神，以侧面绘出。渴望在门槛处获得庇护的人会选择它；在故事中，他引领入会者走过「渡越」。" },
-      "metatrons-cube": { "name": "梅塔特隆立方体", "meaning": "十三个圆以直线相连，是神圣几何纹身师的最爱。在故事中，它是议会的示意图：十二位守护者围绕一个空座。" },
-      "double-eagle": { "name": "双头鹰", "meaning": "两个头朝向相反的方向，是苏格兰礼第33级和若干古老帝国的徽记。在故事中：一只眼望向过去，一只眼望向将来。" },
-      "lotus-eye": { "name": "莲花之眼", "meaning": "在莲花中心睁开的眼睛——东方传统中的第三只眼，长出了花瓣。在故事中，完成「守夜」的人会将它纹在胸骨上。" },
-      "hourglass": { "name": "沙漏", "meaning": "时间是一只双腔容器，是画家与会所对「沙只朝一个方向流」的提醒。在故事中，它是「第一支蜡烛」的印记：一小时，不发一言。" },
-      "xiii-numeral": { "name": "罗马数字XIII", "meaning": "罗马数字的十三——十三级阶梯、十三个座位、十三间密室。数字学爱好者会把它小小地纹在耳后或手腕上。" },
-      "the-key": { "name": "守护者之钥", "meaning": "一把带三叶形柄的旧铁钥匙。钥匙在玫瑰十字会和共济会的图像中，象征开启封闭之物的权利。在故事中，大守护者会将一把钥匙交给每位受封印的入会者。" }
+      "eye-of-providence": {
+        "name": "天佑之眼",
+        "meaning": "一只嵌在三角形中的光芒之眼，在议会仪式上被纹在每位守护者的手腕上。在这个故事中，它代表着警觉的誓言——而非对任何真实组织的主张。"
+      },
+      "silent-owl": {
+        "name": "沉默猫头鹰",
+        "meaning": "由故事中最年长的成员纹在肩胛骨之间，这只猫头鹰标志着那些倾听多于言说的人。一枚代表静默观察的徽记。"
+      },
+      "twin-pillars": {
+        "name": "双子石柱",
+        "meaning": "光明与阴影两根石柱，总是成对纹刻。在故事中，它们代表着每位入会者必须在疑问与答案之间保持的平衡。"
+      },
+      "compass-square": {
+        "name": "圆规与曲尺",
+        "meaning": "一件测量工具演变而来的徽记——圆规代表远见，曲尺代表品行。在这个故事中，它只有在封印的誓言之后才会被授予。"
+      },
+      "checkered-floor": {
+        "name": "棋盘格地板",
+        "meaning": "深浅交错的方格纹在手腕上形成一条环带，提醒着故事中的每一次选择都有其对立面。"
+      },
+      "ouroboros": {
+        "name": "衔尾蛇",
+        "meaning": "一条吞噬自己尾巴的蛇，标志着完成七大站点完整循环的人。只有在「跨越」之后才会佩戴。"
+      },
+      "thirteen-steps": {
+        "name": "十三级阶梯",
+        "meaning": "带有悬浮塔尖的阶梯金字塔，每级阶梯一条线。美国国徽上的「未完成金字塔」有十三级，每级代表一个最初的殖民地。在故事中：十三间密室，无一完成。"
+      },
+      "coiled-serpent": {
+        "name": "盘蛇",
+        "meaning": "沿前臂纹刻的缓缓S形曲线之蛇。在许多文化中自古既象征危险也象征新生；在故事中，它标记已摆脱最初信念的入会者。"
+      },
+      "anubis": {
+        "name": "豺首引路人",
+        "meaning": "阿努比斯，长着豺头的古埃及亡者引路神，以侧面绘出。渴望在门槛处获得庇护的人会选择它；在故事中，他引领入会者走过「渡越」。"
+      },
+      "metatrons-cube": {
+        "name": "梅塔特隆立方体",
+        "meaning": "十三个圆以直线相连，是神圣几何纹身师的最爱。在故事中，它是议会的示意图：十二位守护者围绕一个空座。"
+      },
+      "double-eagle": {
+        "name": "双头鹰",
+        "meaning": "两个头朝向相反的方向，是苏格兰礼第33级和若干古老帝国的徽记。在故事中：一只眼望向过去，一只眼望向将来。"
+      },
+      "lotus-eye": {
+        "name": "莲花之眼",
+        "meaning": "在莲花中心睁开的眼睛——东方传统中的第三只眼，长出了花瓣。在故事中，完成「守夜」的人会将它纹在胸骨上。"
+      },
+      "hourglass": {
+        "name": "沙漏",
+        "meaning": "时间是一只双腔容器，是画家与会所对「沙只朝一个方向流」的提醒。在故事中，它是「第一支蜡烛」的印记：一小时，不发一言。"
+      },
+      "xiii-numeral": {
+        "name": "罗马数字XIII",
+        "meaning": "罗马数字的十三——十三级阶梯、十三个座位、十三间密室。数字学爱好者会把它小小地纹在耳后或手腕上。"
+      },
+      "the-key": {
+        "name": "守护者之钥",
+        "meaning": "一把带三叶形柄的旧铁钥匙。钥匙在玫瑰十字会和共济会的图像中，象征开启封闭之物的权利。在故事中，大守护者会将一把钥匙交给每位受封印的入会者。"
+      }
     },
     "channels": {
       "discord": {
@@ -754,7 +815,7 @@
     "timeline": {
       "origin": {
         "year": "起源",
-        "title": "一个故事，而非主张",
+        "title": "The first spark",
         "text": "兄弟会最初是一个创意项目：如果把秘密社团的神话当作电影而非阴谋论来对待，会怎样？"
       },
       "archive": {
@@ -769,8 +830,8 @@
       },
       "newOrder": {
         "year": "2026",
-        "title": "新秩序",
-        "text": "2026年12月31日晚上11:59:59（IST），倒计时归零，下一章开启。按计划进行，完全属于我们。"
+        "title": "The New World Order",
+        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
       }
     },
     "faq": {

@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CARDS, INSTA_IMAGES, PAGES, RITUALS, getTimeLeft } from '../data/content'
-import { apiFetch } from '../api/client'
+import { CARDS, INSTA_IMAGES, MEMBERS_JOINED_DISPLAY, PAGES, RITUALS, getTimeLeft } from '../data/content'
 import { useLocalizedCards, useLocalizedSymbols } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
@@ -13,6 +12,15 @@ import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 import BrandFlame from '../components/BrandFlame'
 import CountUpNumber from '../components/CountUpNumber'
+import SocialLinks from '../components/SocialLinks'
+import { useSiteSettings } from '../context/SiteSettingsContext'
+import { socialHandle } from '../utils/social'
+
+function ChannelButton({ platform, label, note, social, toast, t }) {
+  const href = social?.[platform]
+  if (!href) return <button type="button" onClick={() => toast(note)}>{label}</button>
+  return <a className="channel-btn" href={href} target="_blank" rel="noopener noreferrer me">{label} ↗</a>
+}
 
 const EXPLORE = [
   { to: '/archives', key: 'archives', page: PAGES.archives },
@@ -29,13 +37,13 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState(null)
   const [heroBgLoaded, setHeroBgLoaded] = useState(false)
   const [countdownBgLoaded, setCountdownBgLoaded] = useState(false)
-  const [membersJoined, setMembersJoined] = useState(null)
   const cardRefs = useRef([])
   const carouselRef = useRef(null)
   const toast = useToast()
   const navigate = useNavigate()
   const { user } = useAuth()
-  const { videos, canAccess } = useContent()
+  const { videos, books, canAccess } = useContent()
+  const { social } = useSiteSettings()
   const { enterSite } = useOutletContext()
   const isMobile = useIsMobile()
   const heroSrc = isMobile ? '/assets/hero-baphomet-mobile.jpg' : '/assets/hero-baphomet.jpg'
@@ -54,32 +62,12 @@ export default function Home() {
     countdown.src = '/assets/archive-baphomet.jpg'
   }, [heroSrc])
 
-  useEffect(() => {
-    let active = true
-    const loadMemberCount = async () => {
-      try {
-        const stats = await apiFetch('/public/stats', { auth: false, timeoutMs: 3000 })
-        if (active && Number.isSafeInteger(stats?.members_joined) && stats.members_joined >= 0) {
-          setMembersJoined(stats.members_joined)
-        }
-      } catch {
-        // Keep the last successful aggregate while the API is temporarily unavailable.
-      }
-    }
-    loadMemberCount()
-    const refresh = window.setInterval(loadMemberCount, 60_000)
-    return () => {
-      active = false
-      window.clearInterval(refresh)
-    }
-  }, [])
-
   const showCard = (i) => {
     setCurrent(() => {
       const next = (i + CARDS.length) % CARDS.length
       const track = carouselRef.current
       const card = cardRefs.current[next]
-      if (track && card) {
+      if (track && card && typeof track.scrollTo === 'function') {
         const target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2
         track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' })
       }
@@ -119,13 +107,7 @@ export default function Home() {
                 ? <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>
                 : <Link className="btn-ghost" to="/register">△ {t('common.becomeInitiate')}</Link>}
             </div>
-            <div className="social-row">
-              <a href="#" title="Instagram" onClick={(e) => e.preventDefault()}>📷</a>
-              <a href="#" title="Discord" onClick={(e) => e.preventDefault()}>🎮</a>
-              <a href="#" title="Telegram" onClick={(e) => e.preventDefault()}>✈</a>
-              <a href="#" title="YouTube" onClick={(e) => e.preventDefault()}>▶</a>
-              <a href="#" title="X" onClick={(e) => e.preventDefault()}>𝕏</a>
-            </div>
+            <SocialLinks className="social-row hero-social" labels={false} />
           </div>
           <div className="hero-rail">
             <div>
@@ -158,9 +140,9 @@ export default function Home() {
           </div>
           <div className="stats-grid">
             <article className="stat-card live-stat">
-              <div className="stat-value"><CountUpNumber value={membersJoined} /></div>
+              <div className="stat-value members-value">{MEMBERS_JOINED_DISPLAY}</div>
               <h3>{t('home.membersStatLabel')}</h3>
-              <p>{membersJoined === null ? t('home.membersUnavailable') : t('home.membersStatNote')}</p>
+              <p>{t('home.membersStatNote')}</p>
             </article>
             <article className="stat-card">
               <div className="stat-value"><CountUpNumber value={CARDS.length} /></div>
@@ -258,14 +240,39 @@ export default function Home() {
           <div className="cd-kicker">{t('content.pages.newOrder.kicker')}</div>
           <div className="cd-date">{t('home.countdownDate')}</div>
           <div className="cd-big">666,666</div>
+          {/* Countdown timer on the upper side … */}
           <div className="cd-boxes">
             <div className="cd-box"><b>{timeLeft ? String(timeLeft.d).padStart(3, '0') : '---'}</b><span>{t('common.days')}</span></div>
             <div className="cd-box"><b>{timeLeft ? String(timeLeft.h).padStart(2, '0') : '--'}</b><span>{t('common.hours')}</span></div>
             <div className="cd-box"><b>{timeLeft ? String(timeLeft.m).padStart(2, '0') : '--'}</b><span>{t('common.minutes')}</span></div>
             <div className="cd-box"><b>{timeLeft ? String(timeLeft.s).padStart(2, '0') : '--'}</b><span>{t('common.seconds')}</span></div>
           </div>
+          {/* … and the joined-members total directly below it. */}
+          <div className="cd-members">
+            <b>{MEMBERS_JOINED_DISPLAY}</b>
+            <span>{t('countdownBar.membersJoined')}</span>
+          </div>
           <Link to="/new-order" className="btn-ghost cd-cta">{t('home.countdownCta')}</Link>
-          <div className="cd-note"><i>ⓘ</i> {t('common.milestoneNote')}</div>
+          <div className="cd-note"><i>🕘</i> {t('countdownBar.allTimesGmt')}</div>
+        </div>
+      </section>
+
+      {/* ---------- LIBRARY / E-BOOKS ---------- */}
+      <section className="page-section library-teaser" id="library-teaser">
+        <SectionHead
+          title={t('library.title')}
+          sub={t('library.sub')}
+          right={<Link to="/archives#library" className="sec-link">{t('library.count', { shown: books.length, total: books.length })}</Link>}
+        />
+        <div className="book-row">
+          {books.slice(0, 4).map((b) => (
+            <Link className={`book-card${b.category === 'paid' ? ' sealed' : ''}`} key={b.slug} to="/archives#library">
+              <div className="book-cover"><Img src={b.img} alt={b.title} />{b.category === 'paid' && <span className="seal-badge">{t('library.sealed')}</span>}</div>
+              <h4>{b.title}</h4>
+              <p>{b.desc}</p>
+              <em>{b.file ? t('library.open') : t('library.awaiting')}</em>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -304,27 +311,27 @@ export default function Home() {
               <Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" />
             </div>
             <div className="comm-btns">
-              <button onClick={() => toast(t('content.channels.discord.note'))}>🎮 {t('content.channels.discord.name')}</button>
-              <button onClick={() => toast(t('content.channels.telegram.note'))}>✈ {t('content.channels.telegram.name')}</button>
-              <button onClick={() => toast(t('content.channels.instagram.note'))}>📷 {t('content.channels.instagram.name')}</button>
+              <ChannelButton platform="discord" label={t('content.channels.discord.name')} note={t('content.channels.discord.note')} social={social} toast={toast} t={t} />
+              <ChannelButton platform="telegram" label={t('content.channels.telegram.name')} note={t('content.channels.telegram.note')} social={social} toast={toast} t={t} />
+              <ChannelButton platform="instagram" label={t('content.channels.instagram.name')} note={t('content.channels.instagram.note')} social={social} toast={toast} t={t} />
               <button onClick={() => navigate('/community')}>💬 {t('content.channels.discussionBoard.name')}</button>
             </div>
           </div>
           <div className="comm-note">{t('home.communityMatureNote')}</div>
-          <div className="comm-social">
-            <a href="#" onClick={(e) => e.preventDefault()}>📷</a><a href="#" onClick={(e) => e.preventDefault()}>🎮</a><a href="#" onClick={(e) => e.preventDefault()}>✈</a><a href="#" onClick={(e) => e.preventDefault()}>▶</a><a href="#" onClick={(e) => e.preventDefault()}>𝕏</a>
-          </div>
+          <SocialLinks className="comm-social social-row" labels={false} />
         </div>
         <div>
           <SectionHead title={<>{t('home.instagramTitleLine1')}<br />{t('home.instagramTitleLine2')}</>} size={13} />
           <div className="insta-grid">
             {INSTA_IMAGES.map((img, i) => (
-              <a href="#" key={i} onClick={(e) => { e.preventDefault(); toast(t('content.channels.instagram.note')) }}><Img src={img} alt={t('common.instagramPostAlt')} /></a>
+              social.instagram
+                ? <a href={social.instagram} key={i} target="_blank" rel="noopener noreferrer me"><Img src={img} alt={t('common.instagramPostAlt')} /></a>
+                : <button type="button" className="insta-tile" key={i} onClick={() => toast(t('social.comingSoon', { name: t('social.instagram') }))}><Img src={img} alt={t('common.instagramPostAlt')} /></button>
             ))}
           </div>
           <div className="insta-foot">
-            <button className="follow-btn" onClick={() => toast(t('common.followingToast'))}>📷 {t('common.followNow')}</button>
-            <span className="handle">@illuminati.brotherhood</span>
+            <a className="follow-btn" href={social.instagram || undefined} target={social.instagram ? '_blank' : undefined} rel={social.instagram ? 'noopener noreferrer me' : undefined} onClick={(e) => { if (!social.instagram) { e.preventDefault(); toast(t('social.comingSoon', { name: t('social.instagram') })) } }}>📷 {t('common.followNow')}</a>
+            <span className="handle">{socialHandle(social.instagram) || t('social.notLinked', { name: t('social.instagram') })}</span>
           </div>
         </div>
       </section>

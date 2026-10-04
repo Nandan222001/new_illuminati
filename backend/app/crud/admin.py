@@ -11,15 +11,16 @@ from app.models.user import User
 def get_settings(db: Session) -> AdminSettings:
     settings_row = db.get(AdminSettings, 1)
     if not settings_row:
-        settings_row = AdminSettings(id=1, razorpay={}, smtp={}, twilio={})
+        settings_row = AdminSettings(id=1, social={}, razorpay={}, smtp={}, twilio={})
         db.add(settings_row)
         db.commit()
         db.refresh(settings_row)
     return settings_row
 
 
-def save_settings(db: Session, *, razorpay: dict, smtp: dict, twilio: dict) -> AdminSettings:
+def save_settings(db: Session, *, social: dict, razorpay: dict, smtp: dict, twilio: dict) -> AdminSettings:
     settings_row = get_settings(db)
+    settings_row.social = social
     settings_row.razorpay = razorpay
     settings_row.smtp = smtp
     settings_row.twilio = twilio

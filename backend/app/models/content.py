@@ -12,6 +12,8 @@ class ContentKind(str, enum.Enum):
     VIDEO = "video"
     RITUAL = "ritual"
     IMAGE = "image"
+    BOOK = "book"
+    ARCHIVE = "archive"
 
 
 class ContentFields:
@@ -48,9 +50,21 @@ class Image(Base, TimestampMixin, ContentFields):
     __tablename__ = "images"
 
 
+class Book(Base, TimestampMixin, ContentFields):
+    """E-book shelved in the Library (extra holds pages/file/format)."""
+    __tablename__ = "books"
+
+
+class Archive(Base, TimestampMixin, ContentFields):
+    """A Ritual Archive record/chamber (extra holds era/cap/body)."""
+    __tablename__ = "archive_records"
+
+
 # kind -> table lookup used by the shared /content/{kind} routes and CRUD helpers.
-CONTENT_MODELS: dict[ContentKind, type[Video] | type[Ritual] | type[Image]] = {
+CONTENT_MODELS: dict[ContentKind, type] = {
     ContentKind.VIDEO: Video,
     ContentKind.RITUAL: Ritual,
     ContentKind.IMAGE: Image,
+    ContentKind.BOOK: Book,
+    ContentKind.ARCHIVE: Archive,
 }

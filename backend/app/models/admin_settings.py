@@ -10,6 +10,7 @@ class AdminSettings(Base, TimestampMixin):
     __tablename__ = "admin_settings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    social: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)
     razorpay: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)
     smtp: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)
     twilio: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)

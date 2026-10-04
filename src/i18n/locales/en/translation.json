@@ -16,7 +16,6 @@
     "becomeInitiate": "BECOME AN INITIATE",
     "joinCommunity": "JOIN THE COMMUNITY",
     "tagline": "SYMBOLS · MYTH · HISTORY",
-    "milestoneNote": "A campaign milestone for our next release — not a prediction or a real-world event.",
     "sealYourOathCta": "SEAL YOUR OATH ›",
     "followNow": "FOLLOW NOW",
     "followingToast": "Instagram follow is coming soon.",
@@ -34,12 +33,13 @@
       "fiction": "STORY",
       "theory": "THEORY",
       "fact": "FACT"
-    }
+    },
+    "loading": "Opening the thread…"
   },
   "nav": {
     "home": "HOME",
     "archives": "ARCHIVES",
-    "newOrder": "NEW ORDER",
+    "newOrder": "NEW WORLD ORDER",
     "rituals": "RITUALS",
     "videos": "VIDEOS",
     "visuals": "VISUALS",
@@ -61,7 +61,8 @@
     "language": "Language",
     "leftCircleToast": "You have left the circle. Until next time.",
     "keeperAdmin": "KEEPER · ADMIN",
-    "initiateNumber": "INITIATE #{{number}}"
+    "initiateNumber": "INITIATE #{{number}}",
+    "library": "LIBRARY"
   },
   "footer": {
     "description": "An immersive exploration of secret-society mythology, conspiracy culture and historical mysteries.",
@@ -73,37 +74,54 @@
     "privacy": "PRIVACY",
     "terms": "TERMS",
     "guidelines": "RULES & INSTRUCTIONS",
-    "contact": "CONTACT",
+    "contact": "CONTACT THE KEEPERS",
     "copyright": "© 2026 Illuminati Brotherhood. All rights reserved."
   },
   "rules": {
     "kicker": "READ BEFORE YOU ENTER",
     "title": "RULES & INSTRUCTIONS",
     "sub": "THE HOUSE RULES FOR EVERY VIEWER AND MEMBER.",
+    "version": "VERSION 1.1.6",
+    "versionNote": "Terms version {{version}} · all times are GMT.",
     "rulesTitle": "THE RULES",
     "rulesSub": "APPLIES TO EVERYONE WHO USES THIS SITE.",
     "instrTitle": "INSTRUCTIONS",
     "instrSub": "HOW TO USE THE SITE AND YOUR MEMBERSHIP.",
-    "wellbeing": "Some themes may be unsettling. If anything on this site affects you, please step away and talk to someone you trust.",
-    "acceptedOn": "Accepted on this device on {{date}}.",
+    "wellbeing": "Some themes may be unsettling. If anything on this site affects you, take a step back and talk to someone you trust.",
+    "acceptedOn": "Accepted on this device on {{date}} · terms version {{version}}.",
     "acceptRules": "I ACCEPT THE RULES",
     "gate": {
       "title": "BEFORE YOU ENTER",
-      "intro": "Please read the rules below. You can open the full Rules & Instructions again at any time from the footer.",
+      "version": "TERMS VERSION 1.1.6",
+      "intro": "Proceed only if you understand and accept the following conditions. Everything on this site stays locked until your acknowledgement is received.",
       "full": "Open the full page",
-      "agree": "I have read and agree to the Rules & Instructions, and I confirm that I am 18 or older.",
-      "accept": "ACCEPT & CONTINUE",
+      "agree": "I have read, understood and accept the Terms & Conditions (version 1.1.6), and I confirm that I am 18 or older.",
+      "accept": "ACCEPT & ENTER",
       "decline": "DECLINE",
-      "declined": "You need to accept the Rules & Instructions to enter this site."
+      "declined": "You need to acknowledge the Terms & Conditions to enter. Everything stays locked until you do.",
+      "locked": "🔒 Everything on this site is locked until you acknowledge the Terms & Conditions.",
+      "lockNote": "Everything on this site is locked until you acknowledge the terms."
     },
     "items": {
       "age": {
         "title": "18+ ONLY",
         "text": "This site contains dark and mature imagery. You must be 18 or older to continue."
       },
+      "entry": {
+        "title": "ENTRY WINDOW",
+        "text": "Act now before access closes — the entry window is open for a limited period only. You are one step away from entering the dark environment."
+      },
       "about": {
         "title": "WHAT THIS SITE IS",
         "text": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with any real organisation, and nothing here is a claim about real people, groups or events."
+      },
+      "noCertify": {
+        "title": "NO VOUCHING FOR ANYONE",
+        "text": "The Network does not certify the identity, credentials, intentions, or trustworthiness of any member, vendor, contributor, or administrator."
+      },
+      "documents": {
+        "title": "ARCHIVES & TESTIMONIES",
+        "text": "Documents, testimonies, archives, and recordings presented within this network may be incomplete, inaccurate, fictional, manipulated, or authentic. Determine validity at your own risk."
       },
       "conduct": {
         "title": "RESPECTFUL CONDUCT",
@@ -114,34 +132,30 @@
         "text": "No real rituals are described or encouraged. Never attempt anything harmful, illegal or dangerous inspired by content on this site."
       },
       "membership": {
-        "title": "MEMBERSHIPS & DOCUMENTS",
-        "text": "Your joining letter and membership card are personal and non-transferable. The membership card is not a government-issued ID and must not be used as proof of identity or age."
+        "title": "MEMBERSHIPS & PURCHASES",
+        "text": "Memberships and products are subject to the price, delivery and refund terms shown. Your joining letter and membership card are personal, non-transferable, and are not a government-issued ID."
       },
-      "accounts": {
-        "title": "YOUR ACCOUNT",
-        "text": "Give accurate details, keep your login private and use one account per person."
-      },
-      "purchases": {
-        "title": "PURCHASES",
-        "text": "Memberships and products are subject to the price, delivery and refund terms shown at checkout."
+      "hidden": {
+        "title": "HIDDEN MATERIAL",
+        "text": "Some information is hidden because it is dangerous and is revealed at any point of time. Stay tuned."
       },
       "ownership": {
         "title": "OWNERSHIP",
-        "text": "All rights reserved. The text, artwork, symbols, video and design on this site may not be copied, resold or redistributed without written permission. Sharing links is welcome."
+        "text": "All rights reserved. The text, artwork, symbols, video, and design on this site may not be copied, resold or redistributed without written permission. Sharing links is welcome."
       },
       "privacy": {
         "title": "PRIVACY",
         "text": "We use your details only to run your account and orders. We will never ask for your password or card details outside the checkout."
       },
-      "changes": {
-        "title": "CHANGES & ENFORCEMENT",
-        "text": "We may update these rules. By continuing to use the site you accept the current version. Breaking the rules may lead to suspension."
+      "conditions": {
+        "title": "CONDITIONS OF ENTRY",
+        "text": "Proceed only if you understand and accept the following conditions. We may update these rules; by continuing to use the site you accept the current version, and breaking the rules may lead to suspension."
       }
     },
     "steps": {
       "explore": {
         "title": "EXPLORE",
-        "text": "Browse the Archives, Rituals, Videos and Visuals freely. Sealed items are marked with a lock."
+        "text": "Browse the Archives, Rituals, Videos, Visuals and Library freely. Sealed items are marked with a lock."
       },
       "join": {
         "title": "BECOME A MEMBER",
@@ -153,7 +167,7 @@
       },
       "help": {
         "title": "NEED HELP?",
-        "text": "Questions? Reach the team through the Community page."
+        "text": "Questions? Address the Keepers privately from the Community page — only you and the council can read the thread."
       }
     }
   },
@@ -198,16 +212,16 @@
     "viewAllChambers": "VIEW ALL CHAMBERS ›",
     "autoplayLabel": "AUTO PLAY · 02 SEC",
     "allVisuals": "ALL VISUALS ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM IST",
-    "countdownCta": "THE NEW ORDER ›",
+    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
+    "countdownCta": "THE NEW WORLD ORDER ›",
     "allVideos": "ALL VIDEOS ›",
     "communityTitle": "ENTER THE COMMUNITY",
     "communityMatureNote": "18+ only. Contains mature content.",
     "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
     "statsTitle": "THE UNIVERSE, IN NUMBERS",
-    "statsSub": "A live total of registered members alongside verifiable story-catalogue counts.",
+    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
     "membersStatLabel": "MEMBERS JOINED",
-    "membersStatNote": "Live count of registered member accounts.",
+    "membersStatNote": "Joined members across the Network.",
     "membersUnavailable": "Live total appears when the member service is connected.",
     "chambersStatLabel": "ARCHIVE CHAMBERS",
     "chambersStatNote": "Illustrated records in the story archive.",
@@ -256,7 +270,12 @@
   },
   "archiveDetail": {
     "seeRituals": "SEE THE RITUALS ›",
-    "allChambers": "ALL CHAMBERS"
+    "allChambers": "ALL CHAMBERS",
+    "osirisTitle": "BASIC INFORMATION — OSIRIS",
+    "osirisText": "OSIRIS is the live observation layer the Third Eye chamber points at: a real-time map of open signals — aviation layers, maritime traffic, public cameras, live news, seismic activity, global incidents, undersea cables and day/night terrain. It is a viewing instrument, not a claim: the chamber simply keeps the eye where it has always been aimed. Look, then decide what you are looking at.",
+    "osirisCta": "OPEN THE OSIRIS INTERFACE",
+    "osirisFrame": "The interface opens in a new tab (osirisai.live).",
+    "osirisBadge": "LIVE FEED"
   },
   "rituals": {
     "stationsTitle": "THE SEVEN STATIONS",
@@ -266,7 +285,11 @@
     "sealedGuestText": "This station is sealed. <0>Sign in</0> or <1>become an initiate</1> to read the record.",
     "bandTitle": "STAGED. SYMBOLIC. STORY-DRIVEN.",
     "bandText": "No real rituals are described or encouraged anywhere in this experience. The stations are narrative devices — scenes in a story you are invited to explore.",
-    "watchDocs": "WATCH THE DOCUMENTARIES ›"
+    "watchDocs": "WATCH THE DOCUMENTARIES ›",
+    "filmTitle": "THE STATION FILM",
+    "play": "PLAY THE STATION FILM",
+    "noFilm": "The station film has not been linked yet.",
+    "filmNote": "Every station is a scene from the story, staged and symbolic."
   },
   "newOrder": {
     "phases": {
@@ -446,18 +469,31 @@
     },
     "channelsTitle": "THE CHANNELS",
     "channelsSub": "PICK YOUR SEAT AT THE TABLE.",
-    "boardTitle": "DISCUSSION BOARD",
-    "boardSub": "LATEST FROM THE INITIATES.",
-    "sharePlaceholder": "Share a theory, {{name}}…",
-    "post": "POST ›",
-    "postLocked": "Only initiates may post. <0>Sign in</0> or <1>register</1> to join the discussion.",
+    "boardTitle": "YOUR THREADS WITH THE COUNCIL",
+    "boardSub": "PRIVATE. ONLY YOU AND THE KEEPERS CAN READ THIS.",
+    "sharePlaceholder": "Address the council, {{name}}…",
+    "post": "SEND TO THE COUNCIL ›",
+    "postLocked": "Only initiates may open a thread. <0>Sign in</0> or <1>register</1> to speak with the council.",
     "justNow": "just now",
-    "postedToast": "Posted — visible on this device only for now.",
-    "adminNote": "You are viewing the board as a Keeper. Moderation tools live in the <0>admin panel</0>.",
+    "postedToast": "Received. Only the Keepers can read this thread.",
+    "adminNote": "You are viewing the board as a Keeper. Every thread is visible to you alone — reply here or open the <0>council inbox</0>.",
     "emblemTitle": "THE EMBLEM",
     "emblemText": "Every initiate receives the seal at the seventh station. Wear it in your profile.",
     "followInstagram": "FOLLOW ON INSTAGRAM",
-    "matureNote": "18+ only. Contains mature content. Be kind — this is a story we tell together."
+    "matureNote": "18+ only. Contains mature content. Be kind — this is a story we tell together.",
+    "privateNote": "Everything you send here is read by the Keepers only. No other initiate can see your thread — not even its title.",
+    "newThread": "NEW THREAD",
+    "threadEmpty": "You have not addressed the council yet. Send the first message below.",
+    "replyPlaceholder": "Add to this thread…",
+    "reply": "REPLY ›",
+    "replyToast": "Reply sent.",
+    "statusOpen": "AWAITING THE COUNCIL",
+    "statusAnswered": "ANSWERED BY THE COUNCIL",
+    "privateThread": "PRIVATE THREAD",
+    "you": "YOU",
+    "keeper": "KEEPER",
+    "viewerBoardNote": "Your submissions are visible to the Keepers and to you. Third parties can never read them.",
+    "signedOutThreads": "Sign in to open a private thread with the council."
   },
   "login": {
     "quote": "“The door has always been open. Only a few know where it is.”",
@@ -554,9 +590,9 @@
       },
       "newOrder": {
         "kicker": "THE 666,666 EXPERIENCE",
-        "title": "NEW ORDER",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM IST · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. No prophecies. No real-world claims. Just a date on the calendar and a story waiting to unfold."
+        "title": "NEW WORLD ORDER",
+        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
+        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
       },
       "videos": {
         "kicker": "FORBIDDEN ARCHIVES",
@@ -631,7 +667,8 @@
       "the-third-eye": {
         "name": "THE THIRD EYE",
         "short": "perception beyond sight",
-        "meaning": "The eye that sees what is hidden. In the story it is the first mark an initiate receives — the reminder to question everything, including the Brotherhood itself."
+        "meaning": "The eye that sees what is hidden. In the story it is the first mark an initiate receives — the reminder to question everything, including the Brotherhood itself.",
+        "about": "Every tradition that drew this eye meant the same thing: sight that does not depend on the eyes. In Hindu practice it is Ajna, the brow centre, opened in meditation; Descartes placed the soul in the pineal gland at the middle of the brain; the Great Seal of 1782 set a radiant eye above a pyramid. The Brotherhood keeps it as the first chamber — the mark that says a seeker has begun to look past the obvious. Its live instrument, OSIRIS, is described in the Third Eye chamber of the Archive."
       },
       "the-pyramid": {
         "name": "THE PYRAMID",
@@ -722,24 +759,117 @@
         "short": "five points, one line",
         "meaning": "Drawn in a single unbroken stroke, it was a Pythagorean sign of health and later a symbol of the human body. Pop culture flipped its meaning; the story restores it: one perfect closed line.",
         "about": "Draw it without lifting your pen and every crossing divides the lines in the golden ratio — which is why the Pythagoreans, devoted to number, used it as a secret sign of recognition and named it Hygieia, 'health'. Venus plays along too: over eight years its meetings with the Sun trace a rough five-pointed star across the sky."
+      },
+      "the-ankh": {
+        "name": "THE ANKH",
+        "short": "life at the threshold",
+        "meaning": "The looped cross of ancient Egypt: a key, a sandal strap, and the breath of life in one shape. In the story it is carried at the Threshold, where an initiate decides whether to cross.",
+        "about": "The ankh appears in Egyptian art for more than three thousand years — held by gods, offered to kings, drawn on tomb walls as the sign of life itself. Coptic Christians adopted it as a cross with a loop, and it survives in jewellery today as the most recognisable Egyptian symbol of all. Nobody agrees whether the loop means a sandal strap, a mirror, or the union of opposites; what is certain is that it always means life."
+      },
+      "the-triskelion": {
+        "name": "THE TRISKELION",
+        "short": "three turns, one motion",
+        "meaning": "Three legs or three spirals chasing one another around a centre. In the story it marks the three deaths an initiate must pass: of certainty, of pride, and of fear.",
+        "about": "The triskelion is old enough to be ambiguous: it is carved on Sicilian coins, painted by Celtic artists, and woven into the Manx flag, where three armoured legs race in a circle. The Greek word means 'three-legged', and the motif usually reads as motion — progress, cycles, the passing of time. Carl Jung borrowed it for his own writing as an image of the psyche turning on itself."
+      },
+      "the-ascending-flame": {
+        "name": "THE ASCENDING FLAME",
+        "short": "the spark that rises",
+        "meaning": "A fire that burns upward out of the vessel holding it. In the story it is the mark of the First Candle: intent, offered in silence, answered only by its own light.",
+        "about": "Fire was the first technology and the first altar. Zoroastrian fire temples tend a flame said to burn for centuries; the Olympic flame retraces an ancient relay; the word 'focus' is Latin for hearth. Alchemists drew flame as the element that transforms — the only one that turns matter into something else and climbs away from it."
+      },
+      "the-sphinx": {
+        "name": "THE SPHINX",
+        "short": "the riddle at the gate",
+        "meaning": "A lion's body with a human head, patient at the doorway. In the story it asks nothing at all — it simply waits to see whether the seeker asks the right question.",
+        "about": "The Great Sphinx of Giza has watched the Nile since roughly 2500 BCE, one of the largest monoliths ever carved. Greek tradition turned the sphinx into a riddler who killed those who answered wrongly; the Egyptian sphinx, by contrast, mostly guards. Standing between the two traditions, the sphinx became shorthand for the question you cannot answer until you know yourself."
+      },
+      "the-grail": {
+        "name": "THE GRAIL",
+        "short": "the vessel that cannot be held",
+        "meaning": "A cup written about for nine centuries and never found. In the story it is what the seeker is carrying all along — the question that shaped them.",
+        "about": "The grail first appears in a twelfth-century French romance by Chrétien de Troyes as a mysterious serving dish, and becomes a cup of the Last Supper only in later retellings. Medieval writers disagreed about what it was; modern archaeology has looked for it from Glastonbury to Valencia without success. Its real subject was never an object but the search."
+      },
+      "the-dove-and-serpent": {
+        "name": "THE DOVE & SERPENT",
+        "short": "gentleness with teeth",
+        "meaning": "Two creatures in one roundel: the serpent's wisdom and the dove's innocence. In the story an initiate must keep both, or the archive eats them.",
+        "about": "The pairing comes from a line in the Gospel of Matthew — 'wise as serpents, and harmless as doves' — quoted for two thousand years as a working rule for anyone moving through dangerous rooms. Renaissance emblem books drew it constantly. The dove carries the olive branch; the serpent carries knowledge. Neither alone is enough."
+      },
+      "the-compass-rose": {
+        "name": "THE COMPASS ROSE",
+        "short": "eight winds, one centre",
+        "meaning": "Eight points radiating from a single hub. In the story it is the map-maker's sigil: the reminder that the centre of every chart is the person holding it.",
+        "about": "Medieval chart-makers drew the compass rose to make a portolan chart usable at sea, adding eight half-winds and sixteen quarter-winds until the rose became a small piece of precision engineering. The oldest surviving roses date from the 1200s in Italy and Majorca. Sailors trusted them long before they trusted the magnetic needle that named them."
+      },
+      "the-lamp-of-diogenes": {
+        "name": "THE LAMP OF DIOGENES",
+        "short": "a light carried in daylight",
+        "meaning": "The cynic's lantern, held up at noon to search for one honest person. In the story it hangs in the sixth chamber — the archive's last joke and its strictest test.",
+        "about": "Diogenes of Sinope, who lived in a barrel and mocked Alexander the Great to his face, is said to have walked through Athens in broad daylight carrying a lit lamp, and when asked what he was doing, answered: 'I am looking for an honest man.' The story is probably a legend, and it has outlasted almost every real event of his life."
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "EYE OF PROVIDENCE", "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the story it marks a vow of vigilance — not a claim about any real order." },
-      "silent-owl": { "name": "THE SILENT OWL", "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. An emblem of quiet observation." },
-      "twin-pillars": { "name": "THE TWIN PILLARS", "meaning": "Two columns, light and shadow, always inked as a pair. In the story they represent the balance every initiate must hold between question and answer." },
-      "compass-square": { "name": "COMPASS & SQUARE", "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the story it is given only after the Sealed Oath." },
-      "checkered-floor": { "name": "THE CHECKERED FLOOR", "meaning": "Light and dark tiles inked as a band around the wrist, a reminder that every choice in the story has its opposite." },
-      "ouroboros": { "name": "THE OUROBOROS", "meaning": "A serpent devouring its own tail, marking those who complete a full cycle of the seven stations. Worn only after the Crossing." },
-      "thirteen-steps": { "name": "THE THIRTEEN STEPS", "meaning": "A stepped pyramid with a floating capstone, one line for each step. The 'unfinished pyramid' of the US Great Seal has thirteen steps, one per original colony. In the story: thirteen chambers, none ever completed." },
-      "coiled-serpent": { "name": "THE COILED SERPENT", "meaning": "A serpent in a slow S-curve, inked along the forearm. Ancient across cultures as both danger and renewal; in the story it marks initiates who have shed their first belief." },
-      "anubis": { "name": "THE JACKAL GUIDE", "meaning": "Anubis, the jackal-headed Egyptian guide of the dead, drawn in profile. Chosen by people who want protection at thresholds; in the story he leads the initiate through the Crossing." },
-      "metatrons-cube": { "name": "METATRON'S CUBE", "meaning": "Thirteen circles joined by straight lines, a favourite of sacred-geometry tattoo artists. In the story it is the council's diagram: twelve keepers around one empty seat." },
-      "double-eagle": { "name": "THE DOUBLE EAGLE", "meaning": "Two heads facing opposite ways, the emblem of the Scottish Rite's 33rd degree and of several old empires. In the story: one eye on the past, one on what comes next." },
-      "lotus-eye": { "name": "THE LOTUS EYE", "meaning": "An eye opening at the heart of a lotus — the third eye of Eastern tradition given petals. In the story it is inked over the sternum by those who finish the Vigil." },
-      "hourglass": { "name": "THE HOURGLASS", "meaning": "Time as a two-chambered vessel, a reminder from painters and lodge-halls that the sand runs one way. In the story it is the mark of the First Candle: one hour, no speaking." },
-      "xiii-numeral": { "name": "THE NUMERAL XIII", "meaning": "Thirteen in Roman numerals — thirteen steps, thirteen seats, thirteen chambers. Inked small, behind the ear or on the wrist, by those who love number-lore." },
-      "the-key": { "name": "THE KEEPER'S KEY", "meaning": "An old iron key with a trefoil bow. Keys appear in Rosicrucian and Masonic imagery as the right to open what is closed. In the story the Grand Keeper hands one to each sealed initiate." }
+      "eye-of-providence": {
+        "name": "EYE OF PROVIDENCE",
+        "meaning": "A radiant eye set inside a triangle, inked on every Keeper's wrist at the Council. In the story it marks a vow of vigilance — not a claim about any real order."
+      },
+      "silent-owl": {
+        "name": "THE SILENT OWL",
+        "meaning": "Worn between the shoulder blades by the story's oldest members, the owl marks those who listen more than they speak. An emblem of quiet observation."
+      },
+      "twin-pillars": {
+        "name": "THE TWIN PILLARS",
+        "meaning": "Two columns, light and shadow, always inked as a pair. In the story they represent the balance every initiate must hold between question and answer."
+      },
+      "compass-square": {
+        "name": "COMPASS & SQUARE",
+        "meaning": "A measuring tool turned emblem — the compass for vision, the square for conduct. In the story it is given only after the Sealed Oath."
+      },
+      "checkered-floor": {
+        "name": "THE CHECKERED FLOOR",
+        "meaning": "Light and dark tiles inked as a band around the wrist, a reminder that every choice in the story has its opposite."
+      },
+      "ouroboros": {
+        "name": "THE OUROBOROS",
+        "meaning": "A serpent devouring its own tail, marking those who complete a full cycle of the seven stations. Worn only after the Crossing."
+      },
+      "thirteen-steps": {
+        "name": "THE THIRTEEN STEPS",
+        "meaning": "A stepped pyramid with a floating capstone, one line for each step. The 'unfinished pyramid' of the US Great Seal has thirteen steps, one per original colony. In the story: thirteen chambers, none ever completed."
+      },
+      "coiled-serpent": {
+        "name": "THE COILED SERPENT",
+        "meaning": "A serpent in a slow S-curve, inked along the forearm. Ancient across cultures as both danger and renewal; in the story it marks initiates who have shed their first belief."
+      },
+      "anubis": {
+        "name": "THE JACKAL GUIDE",
+        "meaning": "Anubis, the jackal-headed Egyptian guide of the dead, drawn in profile. Chosen by people who want protection at thresholds; in the story he leads the initiate through the Crossing."
+      },
+      "metatrons-cube": {
+        "name": "METATRON'S CUBE",
+        "meaning": "Thirteen circles joined by straight lines, a favourite of sacred-geometry tattoo artists. In the story it is the council's diagram: twelve keepers around one empty seat."
+      },
+      "double-eagle": {
+        "name": "THE DOUBLE EAGLE",
+        "meaning": "Two heads facing opposite ways, the emblem of the Scottish Rite's 33rd degree and of several old empires. In the story: one eye on the past, one on what comes next."
+      },
+      "lotus-eye": {
+        "name": "THE LOTUS EYE",
+        "meaning": "An eye opening at the heart of a lotus — the third eye of Eastern tradition given petals. In the story it is inked over the sternum by those who finish the Vigil."
+      },
+      "hourglass": {
+        "name": "THE HOURGLASS",
+        "meaning": "Time as a two-chambered vessel, a reminder from painters and lodge-halls that the sand runs one way. In the story it is the mark of the First Candle: one hour, no speaking."
+      },
+      "xiii-numeral": {
+        "name": "THE NUMERAL XIII",
+        "meaning": "Thirteen in Roman numerals — thirteen steps, thirteen seats, thirteen chambers. Inked small, behind the ear or on the wrist, by those who love number-lore."
+      },
+      "the-key": {
+        "name": "THE KEEPER'S KEY",
+        "meaning": "An old iron key with a trefoil bow. Keys appear in Rosicrucian and Masonic imagery as the right to open what is closed. In the story the Grand Keeper hands one to each sealed initiate."
+      }
     },
     "channels": {
       "discord": {
@@ -766,7 +896,7 @@
     "timeline": {
       "origin": {
         "year": "ORIGIN",
-        "title": "A story, not a claim",
+        "title": "The first spark",
         "text": "The Brotherhood began as a creative project: what if secret-society mythology were treated as cinema instead of conspiracy?"
       },
       "archive": {
@@ -781,8 +911,8 @@
       },
       "newOrder": {
         "year": "2026",
-        "title": "The New Order",
-        "text": "On 31 December 2026 at 11:59:59 PM IST the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
+        "title": "The New World Order",
+        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
       }
     },
     "faq": {
@@ -803,5 +933,81 @@
         "a": "Never. Any resemblance to real people, groups or events is coincidental or purely referential for the sake of the story."
       }
     }
+  },
+  "validation": {
+    "emailRequired": "Enter your email address.",
+    "emailInvalid": "That email address is not valid. Check for typos and try again.",
+    "emailDisposable": "Disposable or temporary inboxes are not accepted. Use a permanent address.",
+    "emailLength": "That email address is too long.",
+    "emailTld": "That email domain is not valid.",
+    "nameShort": "Enter your full name (at least 2 characters).",
+    "passwordRules": "Passphrase rules: {{list}}.",
+    "passwordMissing": "Your passphrase still needs: {{list}}.",
+    "passwordRule.length": "at least 8 characters",
+    "passwordRule.upper": "an uppercase letter",
+    "passwordRule.lower": "a lowercase letter",
+    "passwordRule.digit": "a number",
+    "passwordRule.special": "a special character (!@#$%&*…)",
+    "passwordOk": "Passphrase meets every rule."
+  },
+  "countdownBar": {
+    "aria": "Membership countdown and joined members",
+    "countdownLabel": "MEMBERSHIP COUNTDOWN · NEW WORLD ORDER",
+    "membersJoined": "MEMBERS JOINED",
+    "allTimesGmt": "ALL TIMES GMT (UTC)"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "discord": "Discord",
+    "telegram": "Telegram",
+    "youtube": "YouTube",
+    "x": "X",
+    "facebook": "Facebook",
+    "comingSoon": "The {{name}} account is not linked yet — the Keepers are still setting it up.",
+    "notLinked": "{{name}} — link coming soon",
+    "follow": "FOLLOW",
+    "adminTitle": "SOCIAL MEDIA",
+    "adminHint": "Paste each profile URL (or @handle). Leave a field empty and the logo appears greyed out with a “coming soon” note — no dead links.",
+    "adminLabel": "{{name}} URL",
+    "placeholder": "@illuminati.brotherhood or https://…",
+    "savedToast": "Social links saved. The footer, home page and community page now use them.",
+    "reset": "CLEAR LINKS"
+  },
+  "library": {
+    "title": "THE LIBRARY",
+    "sub": "E-BOOKS AND SEALED VOLUMES FROM THE ARCHIVE.",
+    "count": "{{shown}} OF {{total}} VOLUMES",
+    "open": "OPEN THE VOLUME ›",
+    "download": "DOWNLOAD PDF",
+    "read": "READ ONLINE",
+    "awaiting": "AWAITING PRINT",
+    "awaitingNote": "This volume has not been linked yet. The Keeper uploads the file from the admin console.",
+    "pages": "{{count}} pages",
+    "sealed": "🔒 SEALED",
+    "unsealed": "◈ UNSEALED",
+    "signInToRead": "SIGN IN TO READ",
+    "sealedUserText": "This volume is sealed. <0>Seal your oath</0> to read it.",
+    "sealedGuestText": "This volume is sealed. <0>Sign in</0> or <1>become an initiate</1> to read it.",
+    "empty": "The shelves are being catalogued.",
+    "viewerNote": "Volumes marked sealed unlock for members whose oath is sealed."
+  },
+  "admin": {
+    "inboxTitle": "COUNCIL INBOX",
+    "inboxHint": "Private one-to-one threads between initiates and the Keepers. No third member can read them.",
+    "threadsCount": "{{count}} THREADS",
+    "noThreads": "No initiate has addressed the council yet.",
+    "threadFrom": "FROM {{name}}",
+    "threadMeta": "{{count}} messages · last activity {{when}}",
+    "replyAsKeeper": "REPLY AS KEEPER",
+    "resolve": "MARK ANSWERED",
+    "reopen": "REOPEN",
+    "back": "‹ ALL THREADS",
+    "booksTitle": "E-BOOKS",
+    "booksHint": "Upload or link the volumes shelved in the Library.",
+    "archivesTitle": "ARCHIVE RECORDS",
+    "archivesHint": "Add chambers to the Ritual Archive.",
+    "uploadFile": "FILE / LINK",
+    "statusAnswered": "ANSWERED",
+    "statusOpen": "OPEN"
   }
 }
