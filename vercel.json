@@ -3,30 +3,124 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/symbols", "destination": "/visuals", "permanent": true },
-    { "source": "/countdown", "destination": "/new-order", "permanent": true }
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/symbols",
+      "destination": "/visuals",
+      "permanent": true
+    },
+    {
+      "source": "/countdown",
+      "destination": "/new-order",
+      "permanent": true
+    },
+    {
+      "source": "/new-world-order",
+      "destination": "/new-order",
+      "permanent": true
+    },
+    {
+      "source": "/library",
+      "destination": "/archives",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/archives", "destination": "/archives/index.html" },
-    { "source": "/archives/:slug", "destination": "/archives/:slug/index.html" },
-    { "source": "/rituals", "destination": "/rituals/index.html" },
-    { "source": "/new-order", "destination": "/new-order/index.html" },
-    { "source": "/videos", "destination": "/videos/index.html" },
-    { "source": "/videos/:slug", "destination": "/videos/:slug/index.html" },
-    { "source": "/visuals", "destination": "/visuals/index.html" },
-    { "source": "/community", "destination": "/community/index.html" },
-    { "source": "/about", "destination": "/about/index.html" },
-    { "source": "/rules", "destination": "/rules/index.html" },
-    { "source": "/login", "destination": "/login/index.html" },
-    { "source": "/register", "destination": "/register/index.html" },
-    { "source": "/profile", "destination": "/profile/index.html" },
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/revenue", "destination": "/admin/revenue/index.html" },
-    { "source": "/admin/members", "destination": "/admin/members/index.html" },
-    { "source": "/admin/videos", "destination": "/admin/videos/index.html" },
-    { "source": "/admin/images", "destination": "/admin/images/index.html" },
-    { "source": "/admin/rituals", "destination": "/admin/rituals/index.html" },
-    { "source": "/admin/settings", "destination": "/admin/settings/index.html" }
+    {
+      "source": "/archives",
+      "destination": "/archives/index.html"
+    },
+    {
+      "source": "/archives/:slug",
+      "destination": "/archives/:slug/index.html"
+    },
+    {
+      "source": "/rituals",
+      "destination": "/rituals/index.html"
+    },
+    {
+      "source": "/new-order",
+      "destination": "/new-order/index.html"
+    },
+    {
+      "source": "/videos",
+      "destination": "/videos/index.html"
+    },
+    {
+      "source": "/videos/:slug",
+      "destination": "/videos/:slug/index.html"
+    },
+    {
+      "source": "/visuals",
+      "destination": "/visuals/index.html"
+    },
+    {
+      "source": "/community",
+      "destination": "/community/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/rules",
+      "destination": "/rules/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login/index.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/register/index.html"
+    },
+    {
+      "source": "/profile",
+      "destination": "/profile/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/revenue",
+      "destination": "/admin/revenue/index.html"
+    },
+    {
+      "source": "/admin/members",
+      "destination": "/admin/members/index.html"
+    },
+    {
+      "source": "/admin/videos",
+      "destination": "/admin/videos/index.html"
+    },
+    {
+      "source": "/admin/images",
+      "destination": "/admin/images/index.html"
+    },
+    {
+      "source": "/admin/rituals",
+      "destination": "/admin/rituals/index.html"
+    },
+    {
+      "source": "/admin/settings",
+      "destination": "/admin/settings/index.html"
+    },
+    {
+      "source": "/admin/books",
+      "destination": "/admin/books/index.html"
+    },
+    {
+      "source": "/admin/archives",
+      "destination": "/admin/archives/index.html"
+    },
+    {
+      "source": "/admin/messages",
+      "destination": "/admin/messages/index.html"
+    }
   ]
 }

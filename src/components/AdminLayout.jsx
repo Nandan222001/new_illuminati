@@ -10,8 +10,11 @@ const LINKS = [
   { to: '/admin/revenue', icon: '₹', label: 'Revenue' },
   { to: '/admin/members', icon: '◈', label: 'Members' },
   { to: '/admin/videos', icon: '▶', label: 'Videos' },
-  { to: '/admin/images', icon: '▣', label: 'Images' },
   { to: '/admin/rituals', icon: '✦', label: 'Rituals' },
+  { to: '/admin/archives', icon: '▤', label: 'Archives' },
+  { to: '/admin/books', icon: '❧', label: 'E-Books' },
+  { to: '/admin/images', icon: '▣', label: 'Images' },
+  { to: '/admin/messages', icon: '✉', label: 'Council Inbox' },
   { to: '/admin/settings', icon: '⚙', label: 'Settings' },
 ]
 

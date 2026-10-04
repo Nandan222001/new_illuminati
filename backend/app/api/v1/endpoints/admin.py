@@ -5,7 +5,7 @@ from app.api.deps import require_admin
 from app.crud import admin as admin_crud
 from app.db.session import get_db
 from app.models.user import User
-from app.schemas.admin import AdminSettingsPayload, RevenuePoint, TransactionPublic
+from app.schemas.admin import AdminSettingsPayload, PublicSettingsPayload, RevenuePoint, TransactionPublic
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
@@ -13,7 +13,7 @@ router = APIRouter(prefix="/admin", tags=["admin"])
 @router.get("/settings", response_model=AdminSettingsPayload)
 def get_settings(db: Session = Depends(get_db), _: User = Depends(require_admin)):
     row = admin_crud.get_settings(db)
-    return AdminSettingsPayload(razorpay=row.razorpay, smtp=row.smtp, twilio=row.twilio)
+    return AdminSettingsPayload(social=row.social, razorpay=row.razorpay, smtp=row.smtp, twilio=row.twilio)
 
 
 @router.put("/settings", response_model=AdminSettingsPayload)
@@ -24,11 +24,12 @@ def put_settings(
 ):
     row = admin_crud.save_settings(
         db,
+        social=payload.social.model_dump(),
         razorpay=payload.razorpay.model_dump(),
         smtp=payload.smtp.model_dump(),
         twilio=payload.twilio.model_dump(),
     )
-    return AdminSettingsPayload(razorpay=row.razorpay, smtp=row.smtp, twilio=row.twilio)
+    return AdminSettingsPayload(social=row.social, razorpay=row.razorpay, smtp=row.smtp, twilio=row.twilio)
 
 
 @router.get("/revenue", response_model=list[RevenuePoint])

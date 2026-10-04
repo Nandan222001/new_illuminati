@@ -12,8 +12,8 @@ const PAGE_SEO = {
     image: '/assets/hero-baphomet.jpg',
   },
   '/archives': {
-    title: 'Secret-Society Archive | Illuminati Brotherhood',
-    description: 'Browse six illustrated chambers of secret-society myths, historical symbols and original fiction. Clear labels separate documented history from the story.',
+    title: 'Secret-Society Archive & Library | Illuminati Brotherhood',
+    description: 'Browse the illustrated chambers of secret-society myth, history and original fiction — plus the Library of e-books shelved with the archive.',
     image: PAGES.archives.hero,
   },
   '/rituals': {
@@ -22,8 +22,8 @@ const PAGE_SEO = {
     image: PAGES.rituals.hero,
   },
   '/new-order': {
-    title: 'New Order Story Countdown | Illuminati Brotherhood',
-    description: 'Follow the fictional New Order countdown, campaign milestones and story phases in an immersive mystery inspired by historical symbols.',
+    title: 'New World Order Story Countdown | Illuminati Brotherhood',
+    description: 'Follow the New World Order countdown, campaign phases and joined-members total of an immersive story world inspired by historical symbols.',
     image: PAGES.newOrder.hero,
   },
   '/videos': {
@@ -32,13 +32,13 @@ const PAGE_SEO = {
     image: PAGES.videos.hero,
   },
   '/visuals': {
-    title: 'Secret-Society Symbols & Meanings | Illuminati Brotherhood',
-    description: 'Explore illustrated secret-society symbols, their cultural histories and original Brotherhood artwork in an interactive guide to myth and meaning.',
+    title: 'Secret-Society Symbols, Sigils & Tattoos | Illuminati Brotherhood',
+    description: 'Decode the dollar, find your sigil and explore illustrated secret-society symbols, tattoos and key visuals in an interactive guide to myth and meaning.',
     image: PAGES.visuals.hero,
   },
   '/community': {
-    title: 'Community | Illuminati Brotherhood',
-    description: 'Join readers discussing secret-society history, symbolism and original fiction in the Illuminati Brotherhood community. Mature themes; adults 18+ only.',
+    title: 'Community & Council Board | Illuminati Brotherhood',
+    description: 'The channels, the emblem and a private thread to the Keepers — every message one-to-one. Mature themes; adults 18+ only.',
     image: PAGES.community.hero,
   },
   '/about': {
@@ -47,8 +47,8 @@ const PAGE_SEO = {
     image: PAGES.about.hero,
   },
   '/rules': {
-    title: 'Rules & Safety | Illuminati Brotherhood',
-    description: 'Read the age, safety, privacy and community rules for Illuminati Brotherhood, an 18+ fictional entertainment experience inspired by historical mystery.',
+    title: 'Terms, Rules & Instructions (v1.1.6) | Illuminati Brotherhood',
+    description: 'Terms & Conditions version 1.1.6: entry conditions, age rules, membership terms, privacy and ownership for the Illuminati Brotherhood experience.',
     image: PAGES.about.hero,
   },
   '/login': {
@@ -68,7 +68,7 @@ const PAGE_SEO = {
 const STATIC_BREADCRUMBS = {
   '/archives': [{ name: 'Home', path: '/' }, { name: 'Archives', path: '/archives' }],
   '/rituals': [{ name: 'Home', path: '/' }, { name: 'Rituals', path: '/rituals' }],
-  '/new-order': [{ name: 'Home', path: '/' }, { name: 'New Order', path: '/new-order' }],
+  '/new-order': [{ name: 'Home', path: '/' }, { name: 'New World Order', path: '/new-order' }],
   '/videos': [{ name: 'Home', path: '/' }, { name: 'Videos', path: '/videos' }],
   '/visuals': [{ name: 'Home', path: '/' }, { name: 'Visuals', path: '/visuals' }],
   '/community': [{ name: 'Home', path: '/' }, { name: 'Community', path: '/community' }],
@@ -123,7 +123,7 @@ function absoluteUrl(siteUrl, assetOrPath) {
   return new URL(assetOrPath || '/assets/hero-baphomet.jpg', `${siteUrl}/`).toString()
 }
 
-export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_URL) {
+export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_URL, extraArchives = []) {
   const path = normalizePath(pathname)
   const siteUrl = normalizeSiteUrl(siteUrlValue)
   const record = PAGE_SEO[path]
@@ -151,7 +151,20 @@ export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_
         { name: title, path },
       ]
     } else {
-      robots = 'noindex,follow'
+      const custom = extraArchives.find((item) => item.slug === slug)
+      if (custom) {
+        pageName = `${custom.title} | Archive Chamber | ${SITE_NAME}`
+        description = excerpt(`${custom.body || custom.desc} A chapter of the Illuminati Brotherhood archive.`)
+        image = custom.img
+        ogType = 'article'
+        breadcrumbs = [
+          { name: 'Home', path: '/' },
+          { name: 'Archives', path: '/archives' },
+          { name: title, path },
+        ]
+      } else {
+        robots = 'noindex,follow'
+      }
     }
   }
 
@@ -179,7 +192,8 @@ export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_
   if (!record && !archiveMatch && !videoMatch && path !== '/profile' && !path.startsWith('/admin')) robots = 'noindex,follow'
 
   const routeExists = Boolean(record)
-    || (archiveMatch && CARDS.some((card) => card.slug === decodeSegment(archiveMatch[1])))
+    || (archiveMatch && (CARDS.some((card) => card.slug === decodeSegment(archiveMatch[1]))
+      || extraArchives.some((card) => card.slug === decodeSegment(archiveMatch[1]))))
     || (videoMatch && VIDEOS.some((video) => video.slug === decodeSegment(videoMatch[1])))
     || path === '/profile'
     || path === '/admin'

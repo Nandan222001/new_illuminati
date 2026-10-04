@@ -2,12 +2,18 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
+import { socialHandle } from '../utils/social'
 import BrandMark from './BrandMark'
 import BrandFlame from './BrandFlame'
+import SocialLinks from './SocialLinks'
 
 export default function Footer() {
   const { user, isAdmin } = useAuth()
   const { t } = useTranslation()
+  const { social } = useSiteSettings()
+  const handle = socialHandle(social.instagram)
+
   return (
     <footer>
       <div className="foot-top">
@@ -18,13 +24,8 @@ export default function Footer() {
             <span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span>
           </div>
           <p className="foot-desc">{t('footer.description')}</p>
-          <div className="social-row">
-            <a href="#" title="Instagram" onClick={(e) => e.preventDefault()}>📷</a>
-            <a href="#" title="Discord" onClick={(e) => e.preventDefault()}>🎮</a>
-            <a href="#" title="Telegram" onClick={(e) => e.preventDefault()}>✈</a>
-            <a href="#" title="YouTube" onClick={(e) => e.preventDefault()}>▶</a>
-            <a href="#" title="X" onClick={(e) => e.preventDefault()}>𝕏</a>
-          </div>
+          {handle && <p className="foot-handle">{handle}</p>}
+          <SocialLinks className="social-row footer-social" labels={false} />
         </div>
         <div className="foot-col">
           <h2 className="foot-heading">{t('footer.explore')}</h2>
@@ -49,12 +50,14 @@ export default function Footer() {
         <div className="foot-col">
           <h2 className="foot-heading">{t('footer.legal')}</h2>
           <Link to="/rules#rule-privacy">{t('footer.privacy')}</Link>
-          <Link to="/rules#rules">{t('footer.terms')}</Link>
+          <Link to="/rules#terms">{t('footer.terms')}</Link>
           <Link to="/rules">{t('footer.guidelines')}</Link>
-          <a href="#" onClick={(e) => e.preventDefault()}>{t('footer.contact')}</a>
+          <Link to="/community#threads">{t('footer.contact')}</Link>
         </div>
       </div>
-      <div className="foot-copy">{t('footer.copyright')}</div>
+      <div className="foot-copy">
+        {t('footer.copyright')} · <span className="foot-version">{t('rules.versionNote', { version: '1.1.6' })}</span>
+      </div>
     </footer>
   )
 }

@@ -34,6 +34,9 @@ const renderRoutes = [
   '/admin/videos',
   '/admin/images',
   '/admin/rituals',
+  '/admin/books',
+  '/admin/archives',
+  '/admin/messages',
   '/admin/settings',
   '/__not-found',
 ]

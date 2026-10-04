@@ -16,7 +16,6 @@
     "becomeInitiate": "DEVENIR INITIÉ",
     "joinCommunity": "REJOINDRE LA COMMUNAUTÉ",
     "tagline": "SYMBOLES · MYTHE · HISTOIRE",
-    "milestoneNote": "Une étape de campagne pour notre prochaine sortie — ni une prédiction ni un événement réel.",
     "sealYourOathCta": "SCELLEZ VOTRE SERMENT ›",
     "followNow": "SUIVRE MAINTENANT",
     "followingToast": "Le suivi sur Instagram arrive bientôt.",
@@ -39,7 +38,7 @@
   "nav": {
     "home": "ACCUEIL",
     "archives": "ARCHIVES",
-    "newOrder": "NOUVEL ORDRE",
+    "newOrder": "NOUVEL ORDRE MONDIAL",
     "rituals": "RITUELS",
     "videos": "VIDÉOS",
     "visuals": "VISUELS",
@@ -61,7 +60,8 @@
     "language": "Langue",
     "leftCircleToast": "Vous avez quitté le cercle. À bientôt.",
     "keeperAdmin": "GARDIEN · ADMIN",
-    "initiateNumber": "INITIÉ N° {{number}}"
+    "initiateNumber": "INITIÉ N° {{number}}",
+    "library": "BIBLIOTHÈQUE"
   },
   "footer": {
     "description": "Une exploration immersive de la mythologie des sociétés secrètes, de la culture du complot et des mystères historiques.",
@@ -77,83 +77,96 @@
     "copyright": "© 2026 Illuminati Brotherhood. Tous droits réservés."
   },
   "rules": {
-    "kicker": "À LIRE AVANT D'ENTRER",
-    "title": "RÈGLES ET INSTRUCTIONS",
-    "sub": "LES RÈGLES DE LA MAISON POUR CHAQUE VISITEUR ET MEMBRE.",
-    "rulesTitle": "LES RÈGLES",
-    "rulesSub": "S'APPLIQUENT À TOUTE PERSONNE UTILISANT CE SITE.",
+    "kicker": "READ BEFORE YOU ENTER",
+    "title": "RULES & INSTRUCTIONS",
+    "sub": "THE HOUSE RULES FOR EVERY VIEWER AND MEMBER.",
+    "version": "VERSION 1.1.6",
+    "versionNote": "Terms version {{version}} · all times are GMT.",
+    "rulesTitle": "THE RULES",
+    "rulesSub": "APPLIES TO EVERYONE WHO USES THIS SITE.",
     "instrTitle": "INSTRUCTIONS",
-    "instrSub": "COMMENT UTILISER LE SITE ET VOTRE ADHÉSION.",
-    "wellbeing": "Certains thèmes peuvent être troublants. Si quelque chose sur ce site vous affecte, éloignez-vous et parlez-en à une personne de confiance.",
-    "acceptedOn": "Accepté sur cet appareil le {{date}}.",
-    "acceptRules": "J'ACCEPTE LES RÈGLES",
+    "instrSub": "HOW TO USE THE SITE AND YOUR MEMBERSHIP.",
+    "wellbeing": "Some themes may be unsettling. If anything on this site affects you, take a step back and talk to someone you trust.",
+    "acceptedOn": "Accepted on this device on {{date}} · terms version {{version}}.",
+    "acceptRules": "I ACCEPT THE RULES",
     "gate": {
-      "title": "AVANT D'ENTRER",
-      "intro": "Veuillez lire les règles ci-dessous. Vous pouvez rouvrir les Règles et Instructions complètes à tout moment depuis le pied de page.",
-      "full": "Ouvrir la page complète",
-      "agree": "J'ai lu et j'accepte les Règles et Instructions, et je confirme avoir 18 ans ou plus.",
-      "accept": "ACCEPTER ET CONTINUER",
-      "decline": "REFUSER",
-      "declined": "Vous devez accepter les Règles et Instructions pour accéder à ce site."
+      "title": "BEFORE YOU ENTER",
+      "version": "TERMS VERSION 1.1.6",
+      "intro": "Proceed only if you understand and accept the following conditions. Everything on this site stays locked until your acknowledgement is received.",
+      "full": "Open the full page",
+      "agree": "I have read, understood and accept the Terms & Conditions (version 1.1.6), and I confirm that I am 18 or older.",
+      "accept": "ACCEPT & ENTER",
+      "decline": "DECLINE",
+      "declined": "You need to acknowledge the Terms & Conditions to enter. Everything stays locked until you do.",
+      "locked": "🔒 Everything on this site is locked until you acknowledge the Terms & Conditions.",
+      "lockNote": "Everything on this site is locked until you acknowledge the terms."
     },
     "items": {
       "age": {
-        "title": "18+ UNIQUEMENT",
-        "text": "Ce site contient des images sombres et destinées à un public adulte. Vous devez avoir 18 ans ou plus pour continuer."
+        "title": "18+ ONLY",
+        "text": "This site contains dark and mature imagery. You must be 18 or older to continue."
+      },
+      "entry": {
+        "title": "ENTRY WINDOW",
+        "text": "Act now before access closes — the entry window is open for a limited period only. You are one step away from entering the dark environment."
       },
       "about": {
-        "title": "CE QU'EST CE SITE",
-        "text": "Illuminati Brotherhood est une marque et un univers narratif inspirés de l'histoire et du symbolisme des sociétés secrètes. Elle n'est affiliée à aucune organisation réelle, et rien ici n'est une affirmation sur des personnes, groupes ou événements réels."
+        "title": "WHAT THIS SITE IS",
+        "text": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with any real organisation, and nothing here is a claim about real people, groups or events."
+      },
+      "noCertify": {
+        "title": "NO VOUCHING FOR ANYONE",
+        "text": "The Network does not certify the identity, credentials, intentions, or trustworthiness of any member, vendor, contributor, or administrator."
+      },
+      "documents": {
+        "title": "ARCHIVES & TESTIMONIES",
+        "text": "Documents, testimonies, archives, and recordings presented within this network may be incomplete, inaccurate, fictional, manipulated, or authentic. Determine validity at your own risk."
       },
       "conduct": {
-        "title": "CONDUITE RESPECTUEUSE",
-        "text": "Aucun discours de haine, harcèlement, menace ni ciblage de personnes, communautés, religions ou organisations réelles. Les comptes qui le font seront supprimés."
+        "title": "RESPECTFUL CONDUCT",
+        "text": "No hate speech, harassment, threats or targeting of real people, communities, religions or organisations. Accounts that do this will be removed."
       },
       "safety": {
-        "title": "RESTEZ EN SÉCURITÉ",
-        "text": "Aucun rituel réel n'est décrit ni encouragé. Ne tentez jamais rien de nuisible, d'illégal ou de dangereux inspiré du contenu de ce site."
+        "title": "STAY SAFE",
+        "text": "No real rituals are described or encouraged. Never attempt anything harmful, illegal or dangerous inspired by content on this site."
       },
       "membership": {
-        "title": "ADHÉSIONS ET DOCUMENTS",
-        "text": "Votre lettre d'adhésion et votre carte de membre sont personnelles et non transférables. La carte de membre n'est pas une pièce d'identité officielle et ne doit pas servir de preuve d'identité ni d'âge."
+        "title": "MEMBERSHIPS & PURCHASES",
+        "text": "Memberships and products are subject to the price, delivery and refund terms shown. Your joining letter and membership card are personal, non-transferable, and are not a government-issued ID."
       },
-      "accounts": {
-        "title": "VOTRE COMPTE",
-        "text": "Fournissez des informations exactes, gardez vos identifiants privés et n'utilisez qu'un compte par personne."
-      },
-      "purchases": {
-        "title": "ACHATS",
-        "text": "Les adhésions et les produits sont soumis aux conditions de prix, de livraison et de remboursement affichées lors du paiement."
+      "hidden": {
+        "title": "HIDDEN MATERIAL",
+        "text": "Some information is hidden because it is dangerous and is revealed at any point of time. Stay tuned."
       },
       "ownership": {
-        "title": "PROPRIÉTÉ",
-        "text": "Tous droits réservés. Les textes, illustrations, symboles, vidéos et le design de ce site ne peuvent être copiés, revendus ni redistribués sans autorisation écrite. Le partage de liens est bienvenu."
+        "title": "OWNERSHIP",
+        "text": "All rights reserved. The text, artwork, symbols, video, and design on this site may not be copied, resold or redistributed without written permission. Sharing links is welcome."
       },
       "privacy": {
-        "title": "CONFIDENTIALITÉ",
-        "text": "Nous utilisons vos données uniquement pour gérer votre compte et vos commandes. Nous ne vous demanderons jamais votre mot de passe ni vos données de carte en dehors du paiement."
+        "title": "PRIVACY",
+        "text": "We use your details only to run your account and orders. We will never ask for your password or card details outside the checkout."
       },
-      "changes": {
-        "title": "MODIFICATIONS ET SANCTIONS",
-        "text": "Nous pouvons mettre à jour ces règles. En continuant à utiliser le site, vous acceptez la version en vigueur. Le non-respect des règles peut entraîner une suspension."
+      "conditions": {
+        "title": "CONDITIONS OF ENTRY",
+        "text": "Proceed only if you understand and accept the following conditions. We may update these rules; by continuing to use the site you accept the current version, and breaking the rules may lead to suspension."
       }
     },
     "steps": {
       "explore": {
-        "title": "EXPLOREZ",
-        "text": "Parcourez librement les Archives, Rituels, Vidéos et Visuels. Les éléments scellés sont marqués d'un cadenas."
+        "title": "EXPLORE",
+        "text": "Browse the Archives, Rituals, Videos, Visuals and Library freely. Sealed items are marked with a lock."
       },
       "join": {
-        "title": "DEVENEZ MEMBRE",
-        "text": "Créez un compte, puis finalisez votre adhésion pour débloquer le contenu scellé."
+        "title": "BECOME A MEMBER",
+        "text": "Create an account, then complete your membership to unlock sealed content."
       },
       "documents": {
-        "title": "VOS DOCUMENTS",
-        "text": "Les membres peuvent télécharger leur lettre d'adhésion et leur carte de membre depuis leur Profil à tout moment."
+        "title": "YOUR DOCUMENTS",
+        "text": "Members can download their joining letter and membership card from their Profile at any time."
       },
       "help": {
-        "title": "BESOIN D'AIDE ?",
-        "text": "Des questions ? Contactez l'équipe via la page Communauté."
+        "title": "NEED HELP?",
+        "text": "Questions? Address the Keepers privately from the Community page — only you and the council can read the thread."
       }
     }
   },
@@ -198,13 +211,16 @@
     "viewAllChambers": "VOIR TOUTES LES CHAMBRES ›",
     "autoplayLabel": "LECTURE AUTOMATIQUE · 02 S",
     "allVisuals": "TOUS LES VISUELS ›",
-    "countdownDate": "31 DÉCEMBRE 2026 · 23H59'59 IST",
-    "countdownCta": "LE NOUVEL ORDRE ›",
+    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
+    "countdownCta": "NOUVEL ORDRE MONDIAL ›",
     "allVideos": "TOUTES LES VIDÉOS ›",
     "communityTitle": "ENTREZ DANS LA COMMUNAUTÉ",
     "communityMatureNote": "Réservé aux 18 ans et plus (contenu mature).",
     "instagramTitleLine1": "SUIVEZ LA CONFRÉRIE",
-    "instagramTitleLine2": "SUR INSTAGRAM"
+    "instagramTitleLine2": "SUR INSTAGRAM",
+    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
+    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
+    "membersStatNote": "Joined members across the Network."
   },
   "about": {
     "pillars": {
@@ -434,14 +450,14 @@
     },
     "channelsTitle": "LES CANAUX",
     "channelsSub": "CHOISISSEZ VOTRE PLACE À LA TABLE.",
-    "boardTitle": "TABLEAU DE DISCUSSION",
-    "boardSub": "LES DERNIÈRES NOUVELLES DES INITIÉS.",
-    "sharePlaceholder": "Partagez une théorie, {{name}}…",
-    "post": "PUBLIER ›",
+    "boardTitle": "YOUR THREADS WITH THE COUNCIL",
+    "boardSub": "PRIVATE. ONLY YOU AND THE KEEPERS CAN READ THIS.",
+    "sharePlaceholder": "Address the council, {{name}}…",
+    "post": "SEND TO THE COUNCIL ›",
     "postLocked": "Seuls les initiés peuvent publier. <0>Connectez-vous</0> ou <1>inscrivez-vous</1> pour rejoindre la discussion.",
     "justNow": "à l'instant",
-    "postedToast": "Publié — pour l'instant visible uniquement sur cet appareil.",
-    "adminNote": "Vous consultez le tableau en tant que Gardien. Les outils de modération se trouvent dans le <0>panneau d'administration</0>.",
+    "postedToast": "Received. Only the Keepers can read this thread.",
+    "adminNote": "You are viewing the board as a Keeper. Every thread is visible to you alone — reply here or open the <0>council inbox</0>.",
     "emblemTitle": "L'EMBLÈME",
     "emblemText": "Chaque initié reçoit le sceau à la septième station. Portez-le sur votre profil.",
     "followInstagram": "SUIVRE SUR INSTAGRAM",
@@ -542,9 +558,9 @@
       },
       "newOrder": {
         "kicker": "L'EXPÉRIENCE 666 666",
-        "title": "NOUVEL ORDRE",
-        "sub": "31 DÉCEMBRE 2026 · 23H59'59 IST · LE VOILE S'AMINCIT.",
-        "intro": "Une étape de campagne : lorsque le compteur atteindra zéro, la Confrérie ouvrira le prochain chapitre. Aucune prophétie. Aucune affirmation sur le monde réel. Juste une date au calendrier et une histoire qui n'attend qu'à se déployer."
+        "title": "NOUVEL ORDRE MONDIAL",
+        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
+        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
       },
       "videos": {
         "kicker": "ARCHIVES INTERDITES",
@@ -713,21 +729,66 @@
       }
     },
     "tattoos": {
-      "eye-of-providence": { "name": "L'ŒIL DE LA PROVIDENCE", "meaning": "Un œil rayonnant inscrit dans un triangle, tatoué au poignet de chaque Gardien au Conseil. Dans l'histoire, il marque un vœu de vigilance — pas une affirmation sur un ordre réel." },
-      "silent-owl": { "name": "LE HIBOU SILENCIEUX", "meaning": "Porté entre les omoplates par les membres les plus anciens de l'histoire, le hibou marque ceux qui écoutent plus qu'ils ne parlent. Un emblème d'observation silencieuse." },
-      "twin-pillars": { "name": "LES PILIERS JUMEAUX", "meaning": "Deux colonnes, lumière et ombre, toujours tatouées en paire. Dans l'histoire, elles représentent l'équilibre que chaque initié doit maintenir entre la question et la réponse." },
-      "compass-square": { "name": "COMPAS ET ÉQUERRE", "meaning": "Un instrument de mesure devenu emblème — le compas pour la vision, l'équerre pour la conduite. Dans l'histoire, il n'est remis qu'après le Serment Scellé." },
-      "checkered-floor": { "name": "LE SOL EN DAMIER", "meaning": "Des carreaux clairs et sombres tatoués comme un bracelet autour du poignet, un rappel que chaque choix de l'histoire a son contraire." },
-      "ouroboros": { "name": "L'OUROBOROS", "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée." },
-      "thirteen-steps": { "name": "LES TREIZE MARCHES", "meaning": "Une pyramide à degrés surmontée d'un sommet flottant, un trait par marche. La « pyramide inachevée » du Grand Sceau des États-Unis compte treize degrés, un par colonie d'origine. Dans l'histoire : treize chambres, aucune achevée." },
-      "coiled-serpent": { "name": "LE SERPENT ENROULÉ", "meaning": "Un serpent en une lente courbe en S, tatoué le long de l'avant-bras. Ancien dans de nombreuses cultures, à la fois danger et renouveau ; dans l'histoire, il marque ceux qui ont abandonné leur première croyance." },
-      "anubis": { "name": "LE GUIDE CHACAL", "meaning": "Anubis, guide égyptien des morts à tête de chacal, dessiné de profil. Choisi par ceux qui cherchent une protection aux seuils ; dans l'histoire, il conduit l'initié à travers la Traversée." },
-      "metatrons-cube": { "name": "LE CUBE DE MÉTATRON", "meaning": "Treize cercles reliés par des lignes droites, favori des tatoueurs de géométrie sacrée. Dans l'histoire, c'est le schéma du conseil : douze gardiens autour d'un siège vide." },
-      "double-eagle": { "name": "L'AIGLE BICÉPHALE", "meaning": "Deux têtes tournées en sens opposés, emblème du 33e degré du Rite écossais et de plusieurs anciens empires. Dans l'histoire : un œil sur le passé, l'autre sur ce qui vient." },
-      "lotus-eye": { "name": "L'ŒIL DE LOTUS", "meaning": "Un œil qui s'ouvre au cœur d'un lotus : le troisième œil de la tradition orientale, pourvu de pétales. Dans l'histoire, il est tatoué sur le sternum de ceux qui achèvent la Veillée." },
-      "hourglass": { "name": "LE SABLIER", "meaning": "Le temps comme un vase à deux chambres, rappel des peintres et des loges que le sable ne coule que dans un sens. Dans l'histoire, c'est la marque de la Première Bougie : une heure, sans parler." },
-      "xiii-numeral": { "name": "LE NUMÉRAL XIII", "meaning": "Treize en chiffres romains : treize marches, treize sièges, treize chambres. Tatoué en petit, derrière l’oreille ou au poignet, par les amateurs de numérologie." },
-      "the-key": { "name": "LA CLÉ DU GARDIEN", "meaning": "Une vieille clé de fer à anneau en trèfle. Les clés apparaissent dans l'imagerie rosicrucienne et maçonnique comme le droit d'ouvrir ce qui est fermé. Dans l'histoire, le Grand Gardien en remet une à chaque initié scellé." }
+      "eye-of-providence": {
+        "name": "L'ŒIL DE LA PROVIDENCE",
+        "meaning": "Un œil rayonnant inscrit dans un triangle, tatoué au poignet de chaque Gardien au Conseil. Dans l'histoire, il marque un vœu de vigilance — pas une affirmation sur un ordre réel."
+      },
+      "silent-owl": {
+        "name": "LE HIBOU SILENCIEUX",
+        "meaning": "Porté entre les omoplates par les membres les plus anciens de l'histoire, le hibou marque ceux qui écoutent plus qu'ils ne parlent. Un emblème d'observation silencieuse."
+      },
+      "twin-pillars": {
+        "name": "LES PILIERS JUMEAUX",
+        "meaning": "Deux colonnes, lumière et ombre, toujours tatouées en paire. Dans l'histoire, elles représentent l'équilibre que chaque initié doit maintenir entre la question et la réponse."
+      },
+      "compass-square": {
+        "name": "COMPAS ET ÉQUERRE",
+        "meaning": "Un instrument de mesure devenu emblème — le compas pour la vision, l'équerre pour la conduite. Dans l'histoire, il n'est remis qu'après le Serment Scellé."
+      },
+      "checkered-floor": {
+        "name": "LE SOL EN DAMIER",
+        "meaning": "Des carreaux clairs et sombres tatoués comme un bracelet autour du poignet, un rappel que chaque choix de l'histoire a son contraire."
+      },
+      "ouroboros": {
+        "name": "L'OUROBOROS",
+        "meaning": "Un serpent dévorant sa propre queue, marquant ceux qui achèvent un cycle complet des sept stations. Porté seulement après la Traversée."
+      },
+      "thirteen-steps": {
+        "name": "LES TREIZE MARCHES",
+        "meaning": "Une pyramide à degrés surmontée d'un sommet flottant, un trait par marche. La « pyramide inachevée » du Grand Sceau des États-Unis compte treize degrés, un par colonie d'origine. Dans l'histoire : treize chambres, aucune achevée."
+      },
+      "coiled-serpent": {
+        "name": "LE SERPENT ENROULÉ",
+        "meaning": "Un serpent en une lente courbe en S, tatoué le long de l'avant-bras. Ancien dans de nombreuses cultures, à la fois danger et renouveau ; dans l'histoire, il marque ceux qui ont abandonné leur première croyance."
+      },
+      "anubis": {
+        "name": "LE GUIDE CHACAL",
+        "meaning": "Anubis, guide égyptien des morts à tête de chacal, dessiné de profil. Choisi par ceux qui cherchent une protection aux seuils ; dans l'histoire, il conduit l'initié à travers la Traversée."
+      },
+      "metatrons-cube": {
+        "name": "LE CUBE DE MÉTATRON",
+        "meaning": "Treize cercles reliés par des lignes droites, favori des tatoueurs de géométrie sacrée. Dans l'histoire, c'est le schéma du conseil : douze gardiens autour d'un siège vide."
+      },
+      "double-eagle": {
+        "name": "L'AIGLE BICÉPHALE",
+        "meaning": "Deux têtes tournées en sens opposés, emblème du 33e degré du Rite écossais et de plusieurs anciens empires. Dans l'histoire : un œil sur le passé, l'autre sur ce qui vient."
+      },
+      "lotus-eye": {
+        "name": "L'ŒIL DE LOTUS",
+        "meaning": "Un œil qui s'ouvre au cœur d'un lotus : le troisième œil de la tradition orientale, pourvu de pétales. Dans l'histoire, il est tatoué sur le sternum de ceux qui achèvent la Veillée."
+      },
+      "hourglass": {
+        "name": "LE SABLIER",
+        "meaning": "Le temps comme un vase à deux chambres, rappel des peintres et des loges que le sable ne coule que dans un sens. Dans l'histoire, c'est la marque de la Première Bougie : une heure, sans parler."
+      },
+      "xiii-numeral": {
+        "name": "LE NUMÉRAL XIII",
+        "meaning": "Treize en chiffres romains : treize marches, treize sièges, treize chambres. Tatoué en petit, derrière l’oreille ou au poignet, par les amateurs de numérologie."
+      },
+      "the-key": {
+        "name": "LA CLÉ DU GARDIEN",
+        "meaning": "Une vieille clé de fer à anneau en trèfle. Les clés apparaissent dans l'imagerie rosicrucienne et maçonnique comme le droit d'ouvrir ce qui est fermé. Dans l'histoire, le Grand Gardien en remet une à chaque initié scellé."
+      }
     },
     "channels": {
       "discord": {
@@ -754,7 +815,7 @@
     "timeline": {
       "origin": {
         "year": "ORIGINE",
-        "title": "Une histoire, pas une affirmation",
+        "title": "The first spark",
         "text": "La Confrérie a débuté comme un projet créatif : et si la mythologie des sociétés secrètes était traitée comme du cinéma plutôt que comme une conspiration ?"
       },
       "archive": {
@@ -769,8 +830,8 @@
       },
       "newOrder": {
         "year": "2026",
-        "title": "Le Nouvel Ordre",
-        "text": "Le 31 décembre 2026 à 23h59'59 IST, le compteur atteint zéro et le prochain chapitre s'ouvre. Planifié, et entièrement à nous."
+        "title": "The New World Order",
+        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
       }
     },
     "faq": {

@@ -4,7 +4,7 @@ import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
 
-const EMPTY = { title: '', desc: '', img: '', step: '', duration: '', tags: '', category: 'free' }
+const EMPTY = { title: '', desc: '', img: '', video: '', step: '', duration: '', tags: '', category: 'free' }
 
 export default function AdminRituals() {
   const { rituals, hiddenRituals, addRitual, updateRitual, deleteRitual, restoreRitual } = useContent()
@@ -14,11 +14,11 @@ export default function AdminRituals() {
 
   const submit = async (e) => {
     e.preventDefault()
-    if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
+    if (!form.title.trim() || !form.img.trim()) { toast('Title and thumbnail image URL are required.'); return }
     const step = form.step.trim() || String(rituals.length + 1)
     const duration = form.duration.trim() || `Station ${rituals.length + 1} · Custom`
     const tags = form.tags.split(',').map((t) => t.trim()).filter(Boolean)
-    await addRitual({ title: form.title, desc: form.desc, img: form.img, category: form.category, step, duration, tags })
+    await addRitual({ title: form.title, desc: form.desc, img: form.img, category: form.category, step, duration, tags, video_url: form.video.trim() })
     toast(`"${form.title}" added as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
   }
@@ -38,7 +38,7 @@ export default function AdminRituals() {
     <>
       <div className="admin-head">
         <h1>RITUALS</h1>
-        <p>{rituals.length} stations on the path of the initiate. Mark any station FREE or PAID.</p>
+        <p>{rituals.length} stations on the path of the initiate. Set each station&apos;s film and thumbnail, then mark it FREE or PAID.</p>
       </div>
 
       <section className="admin-card">
@@ -48,7 +48,8 @@ export default function AdminRituals() {
             <label><span>TITLE</span><input type="text" placeholder="THE MIDNIGHT VOW" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
             <label><span>STEP LABEL</span><input type="text" placeholder="VIII" value={form.step} onChange={(e) => setForm({ ...form, step: e.target.value })} /></label>
           </div>
-          <label><span>IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <label><span>THUMBNAIL IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <label><span>STATION FILM URL (mp4 / YouTube / Vimeo — optional)</span><input type="text" placeholder="https://…/station.mp4 or https://youtu.be/…" value={form.video} onChange={(e) => setForm({ ...form, video: e.target.value })} /></label>
           <label><span>DESCRIPTION</span><input type="text" placeholder="What happens at this station" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row">
             <label><span>DURATION / SUBTITLE</span><input type="text" placeholder="Station 8 · Custom" value={form.duration} onChange={(e) => setForm({ ...form, duration: e.target.value })} /></label>
@@ -76,6 +77,7 @@ export default function AdminRituals() {
             <div className="content-thumb"><Img src={r.img} alt={r.title} /></div>
             <div className="content-body">
               <span className="tag fact">STATION {r.step}</span>
+              <span className={`tag ${r.video_url ? 'custom' : ''}`}>{r.video_url ? 'FILM LINKED' : 'NO FILM'}</span>
               {r.custom && <span className="tag custom">CUSTOM</span>}
               <h5>{r.title}</h5>
               <Link to={`/rituals#${r.slug}`} className="sec-link">VIEW ›</Link>

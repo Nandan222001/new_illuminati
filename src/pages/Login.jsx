@@ -5,6 +5,7 @@ import { getDemoCredentials } from '../auth/authService'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import AuthShell from '../components/AuthShell'
+import { validateEmail } from '../utils/validation'
 
 export default function Login() {
   const { user, login, ready } = useAuth()
@@ -29,9 +30,15 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault()
     setError('')
+    const email = validateEmail(form.email)
+    if (!email.ok) {
+      const suffix = { required: 'Required', disposable: 'Disposable', length: 'Length', tld: 'Tld' }[email.reason] || 'Invalid'
+      setError(t(`validation.email${suffix}`))
+      return
+    }
     setBusy(true)
     try {
-      const u = await login(form)
+      const u = await login({ email: email.value, password: form.password })
       toast(u.role === 'admin' ? t('login.welcomeBackKeeper', { name: u.name }) : t('login.welcomeBack', { name: u.name }))
     } catch (err) {
       setError(err.message)

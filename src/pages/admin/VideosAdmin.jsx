@@ -6,7 +6,7 @@ import Img from '../../components/Img'
 
 const TAGS = ['fiction', 'theory', 'fact']
 const TAG_LABEL = { fiction: 'STORY', theory: 'THEORY', fact: 'FACT' }
-const EMPTY = { title: '', desc: '', img: '', tag: 'fiction', dur: '10:00', category: 'free' }
+const EMPTY = { title: '', desc: '', img: '', video: '', tag: 'fiction', dur: '10:00', category: 'free' }
 
 export default function AdminVideos() {
   const { videos, hiddenVideos, addVideo, updateVideo, deleteVideo, restoreVideo } = useContent()
@@ -16,8 +16,8 @@ export default function AdminVideos() {
 
   const submit = async (e) => {
     e.preventDefault()
-    if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
-    await addVideo({ ...form, date: 'New' })
+    if (!form.title.trim() || !form.img.trim()) { toast('Title and thumbnail image URL are required.'); return }
+    await addVideo({ ...form, date: 'New', video_url: form.video.trim() })
     toast(`"${form.title}" uploaded as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
   }
@@ -47,7 +47,8 @@ export default function AdminVideos() {
             <label><span>TITLE</span><input type="text" placeholder="The Hidden Chapter" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
             <label><span>DURATION</span><input type="text" placeholder="12:30" value={form.dur} onChange={(e) => setForm({ ...form, dur: e.target.value })} /></label>
           </div>
-          <label><span>THUMBNAIL / VIDEO IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <label><span>THUMBNAIL IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <label><span>VIDEO FILE / EMBED URL (mp4 / YouTube / Vimeo)</span><input type="text" placeholder="https://…/episode.mp4 or https://youtu.be/…" value={form.video} onChange={(e) => setForm({ ...form, video: e.target.value })} /></label>
           <label><span>DESCRIPTION</span><input type="text" placeholder="One line about the episode" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row three">
             <label><span>LABEL</span>
@@ -76,6 +77,7 @@ export default function AdminVideos() {
             <div className="content-thumb"><Img src={v.img} alt={v.title} /></div>
             <div className="content-body">
               <span className={`tag ${v.tag}`}>{TAG_LABEL[v.tag] || v.tag.toUpperCase()}</span>
+              <span className="tag custom">{v.video_url ? 'VIDEO LINKED' : 'NO VIDEO'}</span>
               {v.custom && <span className="tag custom">CUSTOM</span>}
               <h5>{v.title}</h5>
               <Link to={`/videos/${v.slug}`} className="sec-link">VIEW ›</Link>

@@ -1,20 +1,56 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { apiFetch } from '../api/client'
-import { GALLERY, RITUALS, VIDEOS } from '../data/content'
+import { CARDS, EBOOKS, GALLERY, RITUALS, VIDEOS } from '../data/content'
 import { useAuth } from './AuthContext'
 
 /**
  * Content catalog — backed by the FastAPI backend's /content/{kind}
- * endpoints (kind is 'video' | 'ritual' | 'image'). `category` is 'paid'
- * (sealed for signed-in initiates only) or 'free'; `custom` marks
- * admin-added items. See /backend/app/models/content.py.
+ * endpoints (kind is 'video' | 'ritual' | 'image' | 'book' | 'archive').
+ * `category` is 'paid' (sealed for signed-in initiates only) or 'free';
+ * `custom` marks admin-added items. See /backend/app/models/content.py.
+ *
+ * If the API is unreachable the console keeps working: uploads are written to
+ * a local browser store and merged into the public lists, so the Keeper can
+ * still publish an archive record, e-book or video on the day of a launch.
  */
 
-const EMPTY = { video: [], ritual: [], image: [] }
+const EMPTY = { video: [], ritual: [], image: [], book: [], archive: [] }
+const KINDS = ['video', 'ritual', 'image', 'book', 'archive']
 const LOAD_TIMEOUT_MS = 5000
+const LOCAL_KEY = 'ib_local_content_v1'
+const HIDDEN_KEY = 'ib_local_hidden_v1'
 
 // Mirrors the backend's DEFAULT_LOCKED_SLUGS (backend/app/seeds/seed_content.py).
-const SEALED_SLUGS = new Set(['the-black-sun-vigil', 'council-of-thirteen', 'the-last-screening'])
+const SEALED_SLUGS = new Set([
+  'the-black-sun-vigil', 'council-of-thirteen', 'the-last-screening',
+  'a-field-guide-to-hidden-symbols', 'the-new-world-order-dossier', 'rituals-a-stage-manual',
+])
+
+function emptyMap() {
+  return KINDS.reduce((acc, kind) => ({ ...acc, [kind]: [] }), {})
+}
+
+function readJSON(key, fallback) {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(key))
+    return parsed && typeof parsed === 'object' ? parsed : fallback
+  } catch {
+    return fallback
+  }
+}
+
+function writeJSON(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)) } catch { /* private mode */ }
+  try { window.dispatchEvent(new CustomEvent('ib:content-updated')) } catch { /* SSR */ }
+}
+
+function localSlug(title, taken) {
+  const base = String(title || 'item').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item'
+  let slug = base
+  let n = 2
+  while (taken.has(slug)) slug = `${base}-${n++}`
+  return slug
+}
 
 function bundledRaw(rows, slugKey, extraKeys) {
   return rows.map((row) => ({
@@ -31,9 +67,11 @@ function bundledRaw(rows, slugKey, extraKeys) {
 
 /** Built-in catalog shown when the API can't be reached (e.g. a frontend-only deploy). */
 const BUNDLED = {
-  video: bundledRaw(VIDEOS, 'slug', ['tag', 'dur', 'date']),
-  ritual: bundledRaw(RITUALS, 'slug', ['step', 'duration', 'tags']),
+  video: bundledRaw(VIDEOS, 'slug', ['tag', 'dur', 'date', 'video_url']),
+  ritual: bundledRaw(RITUALS, 'slug', ['step', 'duration', 'tags', 'video_url']),
   image: bundledRaw(GALLERY, 'id', ['cap', 'portrait']),
+  book: bundledRaw(EBOOKS, 'slug', ['pages', 'file', 'format']),
+  archive: bundledRaw(CARDS, 'slug', ['era', 'cap', 'body']),
 }
 
 const ContentContext = createContext(null)
@@ -58,23 +96,79 @@ function toCreatePayload(fields) {
 }
 
 function makeKindApi(kind, reload) {
+  /** Offline path: write the item into the local store so it appears immediately. */
+  const addLocal = (fields) => {
+    const store = { ...emptyMap(), ...readJSON(LOCAL_KEY, {}) }
+    const { title, desc, img, category, ...extra } = fields
+    const existing = new Set([
+      ...store[kind].map((i) => i.slug),
+      ...(BUNDLED[kind] || []).map((i) => i.slug),
+    ])
+    const slug = localSlug(title, existing)
+    const item = {
+      ...extra,
+      id: `local-${kind}-${Date.now()}`,
+      slug,
+      title,
+      desc: desc || '',
+      img: img || '',
+      category: category === 'paid' ? 'paid' : 'free',
+      custom: true,
+      local: true,
+    }
+    store[kind] = [item, ...store[kind]]
+    writeJSON(LOCAL_KEY, store)
+    return item
+  }
+
   return {
     add: async (fields) => {
-      await apiFetch(`/content/${kind}`, { method: 'POST', body: toCreatePayload(fields) })
+      try {
+        await apiFetch(`/content/${kind}`, { method: 'POST', body: toCreatePayload(fields) })
+      } catch {
+        addLocal(fields)
+      }
       await reload.public()
     },
     update: async (id, patch) => {
-      if (patch.category !== undefined) {
-        await apiFetch(`/content/${kind}/${id}/lock`, { method: 'PATCH', body: { locked: patch.category === 'paid' } })
+      try {
+        if (patch.category !== undefined) {
+          await apiFetch(`/content/${kind}/${id}/lock`, { method: 'PATCH', body: { locked: patch.category === 'paid' } })
+        }
+      } catch {
+        const store = { ...emptyMap(), ...readJSON(LOCAL_KEY, {}) }
+        store[kind] = store[kind].map((item) => (
+          item.id === id ? { ...item, ...(patch.category ? { category: patch.category } : {}), ...patch } : item
+        ))
+        writeJSON(LOCAL_KEY, store)
       }
       await reload.public()
     },
     remove: async (id) => {
-      await apiFetch(`/content/${kind}/${id}`, { method: 'DELETE' })
+      try {
+        await apiFetch(`/content/${kind}/${id}`, { method: 'DELETE' })
+      } catch {
+        const store = { ...emptyMap(), ...readJSON(LOCAL_KEY, {}) }
+        const local = store[kind].find((item) => item.id === id)
+        if (local) {
+          store[kind] = store[kind].filter((item) => item.id !== id)
+          writeJSON(LOCAL_KEY, store)
+        } else {
+          const hidden = readJSON(HIDDEN_KEY, {})
+          hidden[kind] = [...new Set([...(hidden[kind] || []), String(id)])]
+          writeJSON(HIDDEN_KEY, hidden)
+        }
+      }
       await reload.all()
     },
     restore: async (id) => {
-      await apiFetch(`/content/${kind}/${id}/restore`, { method: 'POST' })
+      try {
+        await apiFetch(`/content/${kind}/${id}/restore`, { method: 'POST' })
+      } catch {
+        const hidden = readJSON(HIDDEN_KEY, {})
+        hidden[kind] = (hidden[kind] || []).filter((slugOrId) => String(slugOrId) !== String(id))
+        writeJSON(HIDDEN_KEY, hidden)
+      }
       await reload.all()
     },
   }
@@ -85,32 +179,39 @@ export function ContentProvider({ children }) {
   // Ship the bundled catalog in the first render so static HTML and the first
   // client render both contain useful page content before the API responds.
   const [raw, setRaw] = useState(BUNDLED)
+  const [local, setLocal] = useState(emptyMap)
+  const [hiddenLocal, setHiddenLocal] = useState({})
   const [hiddenRaw, setHiddenRaw] = useState(EMPTY)
   const [ready, setReady] = useState(true)
 
+  const loadLocal = useCallback(() => {
+    setLocal({ ...emptyMap(), ...readJSON(LOCAL_KEY, {}) })
+    setHiddenLocal(readJSON(HIDDEN_KEY, {}))
+  }, [])
+
   const loadPublic = useCallback(async () => {
+    loadLocal()
     try {
-      const [video, ritual, image] = await Promise.all([
-        apiFetch('/content/video', { auth: false, timeoutMs: LOAD_TIMEOUT_MS }),
-        apiFetch('/content/ritual', { auth: false, timeoutMs: LOAD_TIMEOUT_MS }),
-        apiFetch('/content/image', { auth: false, timeoutMs: LOAD_TIMEOUT_MS }),
-      ])
-      setRaw({ video, ritual, image })
+      const results = await Promise.all(KINDS.map((kind) => (
+        apiFetch(`/content/${kind}`, { auth: false, timeoutMs: LOAD_TIMEOUT_MS }).catch(() => null)
+      )))
+      // Keep the bundled list for any kind the API does not serve yet.
+      setRaw((prev) => Object.fromEntries(KINDS.map((kind, i) => (
+        [kind, Array.isArray(results[i]) ? results[i] : (prev[kind] ?? BUNDLED[kind])]
+      ))))
     } catch {
       setRaw((prev) => (prev === EMPTY ? BUNDLED : prev))
     }
-  }, [])
+  }, [loadLocal])
 
   const loadHidden = useCallback(async () => {
     if (!isAdmin) { setHiddenRaw(EMPTY); return }
     try {
-      const [video, ritual, image] = await Promise.all([
-        apiFetch('/content/video/admin/all'),
-        apiFetch('/content/ritual/admin/all'),
-        apiFetch('/content/image/admin/all'),
-      ])
-      const onlyHiddenSeed = (list) => list.filter((i) => i.hidden && !i.is_custom)
-      setHiddenRaw({ video: onlyHiddenSeed(video), ritual: onlyHiddenSeed(ritual), image: onlyHiddenSeed(image) })
+      const results = await Promise.all(KINDS.map((kind) => (
+        apiFetch(`/content/${kind}/admin/all`, { timeoutMs: LOAD_TIMEOUT_MS }).catch(() => null)
+      )))
+      const onlyHiddenSeed = (list) => (Array.isArray(list) ? list : []).filter((i) => i.hidden && !i.is_custom)
+      setHiddenRaw(Object.fromEntries(KINDS.map((kind, i) => [kind, onlyHiddenSeed(results[i])])))
     } catch {
       setHiddenRaw(EMPTY)
     }
@@ -125,18 +226,25 @@ export function ContentProvider({ children }) {
   }, [authReady, isAdmin, loadHidden])
 
   const reload = useMemo(() => ({ public: loadPublic, all: async () => { await loadPublic(); await loadHidden() } }), [loadPublic, loadHidden])
-  const videoApi = useMemo(() => makeKindApi('video', reload), [reload])
-  const ritualApi = useMemo(() => makeKindApi('ritual', reload), [reload])
-  const imageApi = useMemo(() => makeKindApi('image', reload), [reload])
+  const apis = useMemo(() => Object.fromEntries(KINDS.map((kind) => [kind, makeKindApi(kind, reload)])), [reload])
 
-  const videos = useMemo(() => raw.video.map(toClientItem), [raw.video])
-  const rituals = useMemo(() => raw.ritual.map(toClientItem), [raw.ritual])
-  const gallery = useMemo(() => raw.image.map(toClientItem), [raw.image])
+  /** API rows + locally published rows, minus anything hidden on this device. */
+  const clientList = useCallback((kind) => {
+    const hiddenHere = new Set((hiddenLocal[kind] || []).map(String))
+    const apiRows = (raw[kind] || []).filter((row) => (
+      !hiddenHere.has(String(row.id)) && !hiddenHere.has(String(row.slug))
+    ))
+    const rows = [...(local[kind] || []), ...apiRows]
+    return rows.map((row) => (row.local ? row : toClientItem(row)))
+  }, [raw, local, hiddenLocal])
+
+  const videos = useMemo(() => clientList('video'), [clientList])
+  const rituals = useMemo(() => clientList('ritual'), [clientList])
+  const gallery = useMemo(() => clientList('image'), [clientList])
+  const books = useMemo(() => clientList('book'), [clientList])
+  const archives = useMemo(() => clientList('archive'), [clientList])
 
   const toHiddenList = (list) => list.map((i) => ({ id: i.id, title: i.title }))
-  const hiddenVideos = useMemo(() => toHiddenList(hiddenRaw.video), [hiddenRaw.video])
-  const hiddenRituals = useMemo(() => toHiddenList(hiddenRaw.ritual), [hiddenRaw.ritual])
-  const hiddenImages = useMemo(() => toHiddenList(hiddenRaw.image), [hiddenRaw.image])
 
   const value = useMemo(() => ({
     ready,
@@ -145,22 +253,19 @@ export function ContentProvider({ children }) {
     videos,
     rituals,
     gallery,
-    hiddenVideos,
-    hiddenRituals,
-    hiddenImages,
-    addVideo: videoApi.add,
-    updateVideo: videoApi.update,
-    deleteVideo: videoApi.remove,
-    restoreVideo: videoApi.restore,
-    addRitual: ritualApi.add,
-    updateRitual: ritualApi.update,
-    deleteRitual: ritualApi.remove,
-    restoreRitual: ritualApi.restore,
-    addImage: imageApi.add,
-    updateImage: imageApi.update,
-    deleteImage: imageApi.remove,
-    restoreImage: imageApi.restore,
-  }), [ready, user, videos, rituals, gallery, hiddenVideos, hiddenRituals, hiddenImages, videoApi, ritualApi, imageApi])
+    books,
+    archives,
+    hiddenVideos: toHiddenList(hiddenRaw.video),
+    hiddenRituals: toHiddenList(hiddenRaw.ritual),
+    hiddenImages: toHiddenList(hiddenRaw.image),
+    hiddenBooks: toHiddenList(hiddenRaw.book),
+    hiddenArchives: toHiddenList(hiddenRaw.archive),
+    addVideo: apis.video.add, updateVideo: apis.video.update, deleteVideo: apis.video.remove, restoreVideo: apis.video.restore,
+    addRitual: apis.ritual.add, updateRitual: apis.ritual.update, deleteRitual: apis.ritual.remove, restoreRitual: apis.ritual.restore,
+    addImage: apis.image.add, updateImage: apis.image.update, deleteImage: apis.image.remove, restoreImage: apis.image.restore,
+    addBook: apis.book.add, updateBook: apis.book.update, deleteBook: apis.book.remove, restoreBook: apis.book.restore,
+    addArchive: apis.archive.add, updateArchive: apis.archive.update, deleteArchive: apis.archive.remove, restoreArchive: apis.archive.restore,
+  }), [ready, user, videos, rituals, gallery, books, archives, hiddenRaw, apis])
 
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>
 }

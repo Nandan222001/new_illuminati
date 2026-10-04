@@ -286,9 +286,9 @@ section{position:relative}
 .comm-social a:hover{color:var(--gold)}
 /* insta */
 .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 24px 0}
-.insta-grid a{position:relative;aspect-ratio:1;overflow:hidden;border-radius:4px;border:1px solid rgba(230,200,120,.12)}
+.insta-grid a,.insta-grid .insta-tile{position:relative;aspect-ratio:1;overflow:hidden;border-radius:4px;border:1px solid rgba(230,200,120,.12);padding:0;background:none;display:block}
 .insta-grid img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.insta-grid a:hover img{transform:scale(1.1)}
+.insta-grid a:hover img,.insta-grid .insta-tile:hover img{transform:scale(1.1)}
 .insta-foot{display:flex;align-items:center;gap:12px;padding:14px 24px 0}
 .follow-btn{background:rgba(230,200,120,.08);border:1px solid var(--gold2);color:var(--gold);font-size:10px;letter-spacing:2px;
   font-weight:700;padding:9px 20px;border-radius:20px;transition:.3s}
@@ -1304,4 +1304,137 @@ input[type="search"]{padding:9px 14px;font-size:12px}
   .kpi-grid{grid-template-columns:1fr}
   .form-row.three{grid-template-columns:1fr}
   .admin-toolbar{align-items:flex-start}
+}
+
+/* ================= v1.1.6 additions ================= */
+
+/* ---------- top countdown bar (timer up top, members below) ---------- */
+.countdown-bar{position:relative;z-index:60;background:linear-gradient(180deg,#0b0605,#050303);border-bottom:1px solid rgba(230,200,120,.16)}
+.cb-row{display:flex;align-items:center;gap:18px;max-width:1300px;margin:0 auto;padding:7px 40px}
+.cb-timer{border-bottom:1px solid rgba(230,200,120,.08);flex-wrap:wrap}
+.cb-label{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;color:var(--gold)}
+.cb-dot{width:7px;height:7px;border-radius:50%;background:#c1121f;box-shadow:0 0 12px #c1121f;animation:pulseDot 1.6s infinite}
+@keyframes pulseDot{50%{opacity:.35;transform:scale(.75)}}
+.cb-units{display:flex;gap:14px;margin-left:auto}
+.cb-units span{display:flex;flex-direction:column;align-items:center;min-width:44px}
+.cb-units b{font-family:'Cinzel',serif;font-size:15px;color:#f2e7cd;line-height:1}
+.cb-units em{font-style:normal;font-size:7.5px;letter-spacing:2px;color:#6e665a;margin-top:3px}
+.cb-gmt{font-size:10px;letter-spacing:2px;color:#8d8474;font-variant-numeric:tabular-nums;min-width:104px;text-align:right}
+.cb-members{gap:10px;font-size:10px;letter-spacing:2.5px}
+.cb-members-value{font-family:'Cinzel',serif;font-size:13px;color:var(--gold)}
+.cb-members-label{color:#b9ad96}
+.cb-gmt-note{margin-left:auto;color:#6e665a;font-size:9px;letter-spacing:2px}
+.members-value{font-family:'Cinzel',serif;letter-spacing:2px}
+.cd-members{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:14px}
+.cd-members b{font-family:'Cinzel',serif;font-size:22px;color:var(--gold)}
+.cd-members span{font-size:8.5px;letter-spacing:3px;color:#8d8474}
+.cd-gmt{margin-top:10px;font-size:9px;letter-spacing:2.5px;color:#8d8474;text-align:center}
+
+/* ---------- social links (real brand logos) ---------- */
+.social-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:34px;height:34px;border:1px solid transparent;border-radius:50%;color:#b9ad96;background:none;transition:.25s;cursor:pointer}
+.social-link:hover{color:var(--gold);border-color:var(--line);background:rgba(230,200,120,.06)}
+.social-link.empty{color:#5d554a;cursor:not-allowed}
+.social-link.empty:hover{border-color:rgba(230,200,120,.2);background:rgba(255,255,255,.02);color:#6e665a}
+.social-link.with-label{width:auto;border-radius:20px;padding:8px 14px;font-size:10px;letter-spacing:1.5px}
+.social-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:#b9ad96}
+.hero-social{margin-top:22px}
+.footer-social{padding:0;margin-top:8px}
+.side-social{padding:6px 0 0}
+.foot-handle{font-size:10px;letter-spacing:2px;color:var(--gold2)}
+a.channel{text-decoration:none}
+.comm-btns .channel-btn{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);color:#ddd3c0;font-size:10px;letter-spacing:2px;font-weight:600;padding:10px 14px;border-radius:20px;transition:.25s;text-transform:uppercase}
+.comm-btns .channel-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(230,200,120,.06);transform:translateX(4px)}
+a.follow-btn{display:inline-block;text-decoration:none;cursor:pointer}
+
+/* ---------- library / e-books ---------- */
+.book-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:8px 40px 0}
+.book-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:8px 40px 0}
+.book-card{display:flex;flex-direction:column;gap:8px;border:1px solid rgba(230,200,120,.14);border-radius:12px;background:#0a0706;padding:18px;transition:.3s}
+.book-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.6)}
+.book-cover{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:8px;border:1px solid rgba(230,200,120,.2)}
+.book-cover img{width:100%;height:100%;object-fit:cover}
+.book-row .book-cover{aspect-ratio:4/3}
+.book-card h4{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;color:var(--gold);line-height:1.5}
+.book-card p{font-size:11.5px;line-height:1.65;color:#b9ad96}
+.book-card em{font-style:normal;font-size:9px;letter-spacing:2px;color:#6e665a;margin-top:auto}
+.book-meta{display:flex;gap:12px;font-size:9px;letter-spacing:2px;color:#6e665a}
+.small-note{font-size:10px;letter-spacing:1px;line-height:1.6}
+
+/* ---------- OSIRIS panel (Archive → Third Eye) ---------- */
+.osiris-panel{margin:34px auto 0;max-width:1000px;border:1px solid rgba(230,200,120,.28);border-radius:14px;background:linear-gradient(180deg,#0d0806,#050303);padding:26px 28px}
+.osiris-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.osiris-head h3{font-family:'Cinzel',serif;font-size:15px;letter-spacing:3px;color:var(--gold)}
+.osiris-badge{font-size:8.5px;letter-spacing:2.5px;font-weight:700;color:#ff8080;border:1px solid rgba(193,18,31,.5);background:rgba(193,18,31,.16);border-radius:4px;padding:4px 10px}
+.osiris-text{font-size:13px;line-height:1.85;color:#cbbfa8}
+.osiris-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}
+.sigil-archive-link{margin-top:14px;align-self:flex-start;display:inline-block}
+
+/* ---------- media player (ritual station films & episodes) ---------- */
+.media-player{width:100%;height:100%;min-height:260px;display:block;border:0;background:#000;object-fit:cover}
+.player .media-player{position:absolute;inset:0}
+.player-close{position:absolute;top:12px;right:12px;z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid rgba(230,200,120,.4);background:rgba(0,0,0,.6);color:var(--gold);font-size:14px}
+.ritual-film{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.ritual-film-label{font-size:9px;letter-spacing:3px;color:var(--gold)}
+.ritual-film .media-player{min-height:220px;border:1px solid rgba(230,200,120,.2);border-radius:10px}
+
+/* ---------- private threads (community board & council inbox) ---------- */
+.board-note{font-size:11px;line-height:1.6;color:#8d8474;margin-bottom:10px}
+.thread-subject{width:100%;margin-bottom:8px}
+.thread-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.thread{border:1px solid rgba(230,200,120,.16);border-radius:12px;background:#080504;padding:16px}
+.thread.answered{border-color:rgba(230,200,120,.34)}
+.thread-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.thread-private{font-size:8.5px;letter-spacing:2.5px;color:var(--gold2)}
+.thread-head h4{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--gold);margin-top:5px}
+.thread-meta{font-size:10px;letter-spacing:1px;color:#6e665a;margin-top:4px}
+.thread-status{font-size:8.5px;letter-spacing:2px;font-weight:700;border-radius:4px;padding:5px 10px;border:1px solid rgba(230,200,120,.3);color:var(--gold);white-space:nowrap}
+.thread-status.answered{background:rgba(230,200,120,.14)}
+.thread-status.open{background:rgba(193,18,31,.14);border-color:rgba(193,18,31,.4);color:#ff8f8f}
+.thread-messages{list-style:none;display:flex;flex-direction:column;gap:10px;margin:14px 0}
+.msg{border-radius:10px;padding:12px 14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+.msg.from-keeper{border-color:rgba(230,200,120,.28);background:rgba(230,200,120,.05)}
+.msg-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.msg-head b{font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;color:var(--gold)}
+.msg-head em{font-style:normal;font-size:8.5px;letter-spacing:2px;color:#8d8474;border:1px solid rgba(230,200,120,.2);border-radius:3px;padding:2px 6px}
+.msg-head span{font-size:9.5px;color:#6e665a;margin-left:auto}
+.msg p{font-size:12.5px;line-height:1.75;color:#ddd3c0;word-break:break-word}
+.thread-reply{display:flex;flex-direction:column;gap:8px}
+.thread-reply textarea{width:100%;resize:vertical}
+
+/* ---------- form validation ---------- */
+.field-hint{display:block;margin-top:6px;font-style:normal;font-size:10.5px;letter-spacing:.5px}
+.field-hint.error{color:#ff8f8f}
+.field-hint.ok{color:var(--gold2)}
+.pw-rules{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:6px 14px;margin:10px 0 4px}
+.pw-rules li{display:flex;align-items:center;gap:8px;font-size:10.5px;color:#8d8474}
+.pw-rules li.met{color:var(--gold2)}
+.pw-rules li i{font-style:normal;color:#5d554a}
+.pw-rules li.met i{color:var(--gold)}
+.pw-rules.ok{opacity:.85}
+
+/* ---------- terms version notes ---------- */
+.consent-version{margin:6px 0 0;text-align:center;font-size:9px;letter-spacing:3px;color:var(--gold2)}
+.consent-lock-note{margin:10px 0 0;text-align:center;font-size:10.5px;letter-spacing:1px;color:#8d8474}
+.consent-meta{margin:12px 0 0;text-align:center;font-size:9px;letter-spacing:2px;color:#5d554a}
+.rules-version{padding:22px 40px 0;text-align:center;font-size:10px;letter-spacing:3px;color:#8d8474}
+.rules-version b{color:var(--gold2);font-weight:600}
+.foot-version{color:#5d554a}
+
+/* ---------- responsive ---------- */
+@media(max-width:1100px){
+  .book-row,.book-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .cb-row{padding:7px 16px}
+  .cb-units{margin-left:0;gap:10px}
+  .cb-gmt,.cb-gmt-note{display:none}
+  .book-row,.book-grid{padding-left:16px;padding-right:16px}
+  .pw-rules{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .cb-label{font-size:9px;letter-spacing:1.8px}
+  .cb-units b{font-size:13px}
+  .book-row,.book-grid{grid-template-columns:1fr}
+  .osiris-panel{padding:20px 16px;margin-top:26px}
+  .rules-version{padding-left:16px;padding-right:16px}
 }

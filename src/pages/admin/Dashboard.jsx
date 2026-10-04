@@ -7,27 +7,33 @@ import { fetchRevenueSeries, formatINR } from '../../admin/adminStore'
 
 const QUICK_LINKS = [
   { to: '/admin/videos', icon: '▶', label: 'Upload a video' },
+  { to: '/admin/archives', icon: '▤', label: 'Publish an archive record' },
+  { to: '/admin/books', icon: '❧', label: 'Shelve an e-book' },
+  { to: '/admin/rituals', icon: '✦', label: 'Add a ritual + film' },
   { to: '/admin/images', icon: '▣', label: 'Add an image' },
-  { to: '/admin/rituals', icon: '✦', label: 'Add a ritual' },
-  { to: '/admin/settings', icon: '⚙', label: 'Configure payments' },
+  { to: '/admin/messages', icon: '✉', label: 'Read the council inbox' },
+  { to: '/admin/settings', icon: '⚙', label: 'Social links & providers' },
 ]
 
 const EMPTY_SERIES = Array.from({ length: 6 }, () => ({ label: '—', subscriptions: 0, revenue: 0 }))
 
 export default function AdminDashboard() {
   const { user, users } = useAuth()
-  const { videos, rituals, gallery } = useContent()
+  const { videos, rituals, gallery, books, archives } = useContent()
   const [series, setSeries] = useState(EMPTY_SERIES)
 
   useEffect(() => {
-    fetchRevenueSeries(6).then(setSeries).catch(() => {})
+    // Guard against a partial response: the KPI row must never break the page.
+    fetchRevenueSeries(6)
+      .then((data) => { if (Array.isArray(data) && data.length) setSeries(data) })
+      .catch(() => {})
   }, [])
 
   const admins = users.filter((u) => u.role === ROLES.ADMIN).length
   const members = users.length - admins
-  const paidCount = [...videos, ...rituals, ...gallery].filter((i) => i.category === 'paid').length
-  const thisMonth = series[series.length - 1]
-  const lastMonth = series[series.length - 2]
+  const paidCount = [...videos, ...rituals, ...gallery, ...books, ...archives].filter((i) => i.category === 'paid').length
+  const thisMonth = series[series.length - 1] || { revenue: 0, subscriptions: 0 }
+  const lastMonth = series[series.length - 2] || { revenue: 0 }
   const growth = lastMonth && lastMonth.revenue ? Math.round(((thisMonth.revenue - lastMonth.revenue) / lastMonth.revenue) * 100) : 0
 
   return (
@@ -78,6 +84,8 @@ export default function AdminDashboard() {
             <li><span>Videos</span><b>{videos.length}</b></li>
             <li><span>Rituals</span><b>{rituals.length}</b></li>
             <li><span>Gallery images</span><b>{gallery.length}</b></li>
+            <li><span>Archive records</span><b>{archives.length}</b></li>
+            <li><span>E-books</span><b>{books.length}</b></li>
             <li><span>Sealed / paid content</span><b>{paidCount}</b></li>
           </ul>
           <p className="muted">Toggle any item between FREE and PAID from its own section.</p>

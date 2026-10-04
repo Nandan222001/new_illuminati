@@ -54,7 +54,8 @@ export function formatMemberNo(n) {
 export function formatLongDate(iso) {
   const d = new Date(iso)
   if (Number.isNaN(d.getTime())) return ''
-  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  // Membership documents print dates in GMT, matching the countdown.
+  return `${d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })} (GMT)`
 }
 
 /** Maps the signed-in user onto the document fields. */

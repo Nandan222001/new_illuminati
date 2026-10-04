@@ -7,6 +7,7 @@ import { AppRoutes } from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { ConsentProvider } from './context/ConsentContext.jsx'
 import { ContentProvider } from './context/ContentContext.jsx'
+import { SiteSettingsProvider } from './context/SiteSettingsContext.jsx'
 import { ToastProvider } from './context/ToastContext.jsx'
 
 /** Render one route after any lazy page chunk is ready for build-time HTML. */
@@ -27,7 +28,9 @@ export function render(url) {
             <ConsentProvider>
               <AuthProvider>
                 <ContentProvider>
-                  <AppRoutes />
+                  <SiteSettingsProvider>
+                    <AppRoutes />
+                  </SiteSettingsProvider>
                 </ContentProvider>
               </AuthProvider>
             </ConsentProvider>

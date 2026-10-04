@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext'
 import { ContentProvider } from './context/ContentContext'
 import { ToastProvider } from './context/ToastContext'
 import { ConsentProvider } from './context/ConsentContext'
+import { SiteSettingsProvider } from './context/SiteSettingsContext'
 import Layout from './components/Layout'
 import AdminLayout from './components/AdminLayout'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -32,6 +33,9 @@ const AdminVideos = lazy(() => import('./pages/admin/VideosAdmin.jsx'))
 const AdminImages = lazy(() => import('./pages/admin/ImagesAdmin.jsx'))
 const AdminRituals = lazy(() => import('./pages/admin/RitualsAdmin.jsx'))
 const AdminSettings = lazy(() => import('./pages/admin/Settings.jsx'))
+const AdminBooks = lazy(() => import('./pages/admin/BooksAdmin.jsx'))
+const AdminArchives = lazy(() => import('./pages/admin/ArchivesAdmin.jsx'))
+const AdminMessages = lazy(() => import('./pages/admin/Messages.jsx'))
 
 function RouteLoading() {
   return <div className="page-loading"><div className="sigil-spinner" aria-label="Loading" /></div>
@@ -62,6 +66,8 @@ export function AppRoutes() {
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/symbols" element={<Navigate to="/visuals" replace />} />
             <Route path="/countdown" element={<Navigate to="/new-order" replace />} />
+            <Route path="/new-world-order" element={<Navigate to="/new-order" replace />} />
+            <Route path="/library" element={<Navigate to="/archives#library" replace />} />
             <Route path="*" element={<NotFound />} />
           </Route>
 
@@ -73,6 +79,9 @@ export function AppRoutes() {
             <Route path="videos" element={<AdminVideos />} />
             <Route path="images" element={<AdminImages />} />
             <Route path="rituals" element={<AdminRituals />} />
+            <Route path="books" element={<AdminBooks />} />
+            <Route path="archives" element={<AdminArchives />} />
+            <Route path="messages" element={<AdminMessages />} />
             <Route path="settings" element={<AdminSettings />} />
           </Route>
         </Routes>
@@ -88,8 +97,10 @@ export default function App() {
         <ConsentProvider>
           <AuthProvider>
             <ContentProvider>
-              <LanguagePreference />
-              <AppRoutes />
+              <SiteSettingsProvider>
+                <LanguagePreference />
+                <AppRoutes />
+              </SiteSettingsProvider>
             </ContentProvider>
           </AuthProvider>
         </ConsentProvider>

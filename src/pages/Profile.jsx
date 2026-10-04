@@ -10,6 +10,7 @@ import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
 import { downloadCardPdf, downloadCardPng, downloadJoiningLetterPdf } from '../utils/membershipDocs'
+import { isValidName } from '../utils/validation'
 
 export default function Profile() {
   const { user, isAdmin, logout, updateProfile } = useAuth()
@@ -30,8 +31,10 @@ export default function Profile() {
   const save = async (e) => {
     e.preventDefault()
     setError('')
+    const clean = isValidName(name)
+    if (!clean.ok) { setError(t('validation.nameShort')); return }
     try {
-      await updateProfile({ name })
+      await updateProfile({ name: clean.value })
       toast(t('profile.updatedToast'))
     } catch (err) {
       setError(err.message)

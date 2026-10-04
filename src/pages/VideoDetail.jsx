@@ -6,6 +6,7 @@ import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
 import { INITIATION_FEE_INR } from '../auth/authService'
 import Img from '../components/Img'
+import MediaPlayer from '../components/MediaPlayer'
 import SectionHead from '../components/SectionHead'
 import InitiationModal from '../components/InitiationModal'
 

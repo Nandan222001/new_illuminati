@@ -171,6 +171,88 @@ export default function SymbolIcon({ slug }) {
           <path d="M50 22L68.8 77.1 20.7 43.3H79.3L31.2 77.1z" strokeLinejoin="round" />
         </svg>
       )
+    case 'the-ankh':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <ellipse cx="50" cy="30" rx="11" ry="14" />
+          <path d="M50 44v38M38 56h24" strokeWidth="2.2" />
+          <path d="M38 82h24" strokeWidth="1.2" opacity=".7" />
+        </svg>
+      )
+    case 'the-triskelion':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <circle cx="50" cy="50" r="6" fill="#e6c878" stroke="none" />
+          <path d="M50 50c0-16 12-26 26-24 8 8 6 24-6 32-8 5-20 2-20-8z" fill="rgba(230,200,120,.08)" />
+          <path d="M50 50c-14-8-16-24-7-34 12-2 22 8 22 22 0 9-8 16-15 12z" fill="rgba(230,200,120,.08)" />
+          <path d="M50 50c-14 8-28 4-33-7 6-11 22-14 34-5 7 6 6 14-1 12z" fill="rgba(230,200,120,.08)" />
+        </svg>
+      )
+    case 'the-ascending-flame':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <path d="M50 16c10 12 16 20 16 30a16 16 0 0 1-32 0c0-8 6-14 10-20 2 6 5 8 8 10-1-8-2-14-2-20z" fill="rgba(230,200,120,.14)" />
+          <path d="M34 78h32M38 84h24" strokeWidth="1.6" />
+        </svg>
+      )
+    case 'the-sphinx':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <path d="M30 76V50h40v26z" fill="rgba(230,200,120,.08)" />
+          <circle cx="50" cy="34" r="13" />
+          <path d="M38 30l-6-10 10 4M62 30l6-10-10 4" strokeLinecap="round" />
+          <circle cx="45" cy="34" r="1.6" fill="#e6c878" stroke="none" />
+          <circle cx="55" cy="34" r="1.6" fill="#e6c878" stroke="none" />
+          <path d="M22 76h56" strokeWidth="1.6" />
+          <path d="M42 60h16M42 68h16" strokeWidth="1.2" opacity=".7" />
+        </svg>
+      )
+    case 'the-grail':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <path d="M30 24h40c0 18-9 28-20 28s-20-10-20-28z" fill="rgba(230,200,120,.12)" />
+          <path d="M28 24h44" strokeWidth="2" />
+          <path d="M50 52v16M38 74h24" strokeWidth="1.8" />
+          <circle cx="50" cy="68" r="4" strokeWidth="1.4" />
+        </svg>
+      )
+    case 'the-dove-and-serpent':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <path d="M24 60c10-16 26-20 38-12 6 4 10 3 14 0-4 10-12 16-24 16-8 0-16-2-28-4z" fill="rgba(230,200,120,.1)" />
+          <path d="M38 58l-8 6M56 52l-4-8" strokeWidth="1.2" opacity=".8" />
+          <path d="M76 78c-8 4-16 0-16-8s8-14 14-10c5 3 4 9-1 10-4 1-6-2-4-5" strokeLinecap="round" />
+        </svg>
+      )
+    case 'the-compass-rose':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <circle cx="50" cy="50" r="30" strokeWidth="1.2" opacity=".8" />
+          <path d="M50 14l7 30-7 6-7-6z" fill="#e6c878" stroke="none" opacity=".9" />
+          <path d="M50 86l-7-30 7-6 7 6z" opacity=".8" />
+          <path d="M14 50l30-7 6 7-6 7z" opacity=".8" />
+          <path d="M86 50l-30 7-6-7 6-7z" opacity=".8" />
+          <path d="M27 27l20 20M73 27L53 47M27 73l20-20M73 73L53 53" strokeWidth="1" opacity=".55" />
+        </svg>
+      )
+    case 'the-lamp-of-diogenes':
+      return (
+        <svg viewBox="0 0 100 100" {...stroke}>
+          <circle cx="50" cy="50" r="46" strokeWidth="1" opacity=".6" />
+          <path d="M38 42h24l-3 30H41z" fill="rgba(230,200,120,.1)" />
+          <path d="M42 42c0-8 16-8 16 0" strokeWidth="1.6" />
+          <path d="M50 26c5 6 8 10 8 14a8 8 0 0 1-16 0c0-4 3-8 8-14z" fill="#e6c878" stroke="none" opacity=".85" />
+          <path d="M35 78h30" strokeWidth="1.6" />
+          <path d="M50 12v6M28 30l5 4M72 30l-5 4" strokeWidth="1.2" opacity=".7" />
+        </svg>
+      )
     default:
       return null
   }

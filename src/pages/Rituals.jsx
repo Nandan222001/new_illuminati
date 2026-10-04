@@ -8,6 +8,7 @@ import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
+import MediaPlayer from '../components/MediaPlayer'
 
 export default function Rituals() {
   const page = PAGES.rituals
@@ -54,7 +55,15 @@ export default function Rituals() {
                         <Trans i18nKey="rituals.sealedGuestText" components={[<Link to="/login" />, <Link to="/register" />]} />
                       </p>
                     )}
-                    <div className="tag-row">{r.tags.map((tag) => <span className="tag fact" key={tag}>{tag.toUpperCase()}</span>)}</div>
+                    <div className="tag-row">{(r.tags || []).map((tag) => <span className="tag fact" key={tag}>{tag.toUpperCase()}</span>)}</div>
+                    {/* Station film: plays the URL the Keeper linked in Admin → Rituals. */}
+                    {open && r.video_url && (
+                      <div className="ritual-film">
+                        <span className="ritual-film-label">{t('rituals.filmTitle')}</span>
+                        <MediaPlayer src={r.video_url} title={r.title} poster={r.img} />
+                      </div>
+                    )}
+                    {open && !r.video_url && <p className="muted small-note">{t('rituals.noFilm')}</p>}
                   </div>
                 </div>
               </li>
