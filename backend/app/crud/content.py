@@ -1,6 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.models.content import Book
+
 
 def slugify(text: str) -> str:
     lowered = "".join(c if c.isalnum() else "-" for c in text.lower()).strip("-")
@@ -57,6 +59,41 @@ def update_item(db: Session, item, patch: dict):
             setattr(item, field, patch[field])
     if patch.get("extra") is not None:
         item.extra = {**item.extra, **patch["extra"]}
+    db.add(item)
+    db.commit()
+    db.refresh(item)
+    return item
+
+
+def find_book_by_file_key(db: Session, key: str) -> Book | None:
+    """The book a stored upload belongs to, or None when the file is unattached.
+
+    The library is a handful of volumes, so a Python scan avoids relying on
+    JSON-path SQL, which differs between MySQL and the SQLite dev fallback.
+    """
+    if not key:
+        return None
+    for book in db.scalars(select(Book)):
+        if (book.extra or {}).get("file_key") == key:
+            return book
+    return None
+
+
+def books_using_file_key(db: Session, key: str) -> list[Book]:
+    if not key:
+        return []
+    return [book for book in db.scalars(select(Book)) if (book.extra or {}).get("file_key") == key]
+
+
+def merge_extra(db: Session, item, patch: dict):
+    """Shallow-merges keys into item.extra and clears any key whose value is None."""
+    extra = dict(item.extra or {})
+    for name, value in patch.items():
+        if value is None:
+            extra.pop(name, None)
+        else:
+            extra[name] = value
+    item.extra = extra
     db.add(item)
     db.commit()
     db.refresh(item)

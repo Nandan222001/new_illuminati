@@ -39,3 +39,13 @@ class ContentItemUpdate(BaseModel):
 
 class LockUpdate(BaseModel):
     locked: bool
+
+
+class FileAttach(BaseModel):
+    """Attach a stored upload (key from POST /library/ebooks) to a content item.
+
+    `key=None` detaches whatever file the item currently serves.
+    """
+
+    key: str | None = None
+    filename: str | None = None

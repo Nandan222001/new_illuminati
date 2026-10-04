@@ -5,3 +5,11 @@ venv/
 .env
 *.egg-info/
 .pytest_cache/
+
+# Admin-uploaded e-book volumes (PDF/EPUB). Files stay on the server that
+# serves them — never commit volumes to the repo. The folder is created on
+# startup (app/services/storage.ensure_ebook_dirs), so a fresh clone needs nothing here.
+uploads/
+
+# Local SQLite dev database (DATABASE_URL=sqlite:///./dev.db)
+dev.db
