@@ -1438,3 +1438,46 @@ a.follow-btn{display:inline-block;text-decoration:none;cursor:pointer}
   .osiris-panel{padding:20px 16px;margin-top:26px}
   .rules-version{padding-left:16px;padding-right:16px}
 }
+
+/* ---------- E-BOOK UPLOADS (Keeper console) ---------- */
+.upload-drop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;border:1px dashed rgba(230,200,120,.35);
+  border-radius:10px;background:rgba(230,200,120,.03);padding:20px 18px;margin:2px 0 12px;transition:.25s}
+.upload-drop.drag{border-color:var(--gold);background:rgba(230,200,120,.09)}
+.upload-drop.has-file{border-style:solid;border-color:rgba(230,200,120,.5)}
+.upload-file-name{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;color:var(--gold);word-break:break-word}
+.upload-drop-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.link-btn{background:none;border:none;padding:0;font:inherit;color:var(--gold);text-decoration:underline;cursor:pointer}
+.link-btn:hover{color:#fff}
+.upload-progress{position:relative;width:100%;height:16px;margin-top:10px;border:1px solid rgba(230,200,120,.35);border-radius:9px;overflow:hidden;background:#050203}
+.upload-progress i{display:block;height:100%;background:linear-gradient(90deg,#7a5c22,var(--gold));transition:width .2s}
+.upload-progress span{position:absolute;inset:0;display:grid;place-items:center;font-size:8.5px;letter-spacing:2px;color:#050203;font-weight:700}
+.content-body .row-actions{margin-top:6px}
+
+/* ---------- IN-PAGE E-BOOK READER ---------- */
+.ebook-viewer{align-items:center}
+.ebook-modal{max-width:1000px;width:100%;padding:20px 22px 18px;text-align:left;display:flex;flex-direction:column;gap:14px}
+.ebook-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.ebook-head h3{font-size:15px;letter-spacing:2px;margin-bottom:4px}
+.ebook-kicker{display:block;font-size:8.5px;letter-spacing:3px;color:#8d8474;margin-bottom:6px}
+.ebook-meta{font-size:9px;letter-spacing:2px;color:#6e665a}
+.ebook-close{flex-shrink:0;width:32px;height:32px;border-radius:50%;border:1px solid rgba(230,200,120,.4);background:rgba(0,0,0,.4);
+  color:var(--gold);font-size:13px;line-height:1;cursor:pointer;transition:.2s}
+.ebook-close:hover{border-color:var(--gold);color:#fff}
+.ebook-stage{position:relative;height:min(70vh,760px);border:1px solid rgba(230,200,120,.22);border-radius:10px;overflow:hidden;background:#0a0706}
+.ebook-frame{width:100%;height:100%;border:0;background:#12100c}
+.ebook-status{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+.ebook-status p{font-size:12px;line-height:1.7;color:#b9ad96;margin:0;max-width:420px}
+.ebook-status.error span{font-size:26px}
+.ebook-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+
+/* ---------- LIBRARY CARD ACTIONS ---------- */
+.book-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.book-actions .btn-gold.small,.book-actions .btn-ghost.small{flex:1;text-align:center;justify-content:center}
+
+@media(max-width:900px){
+  .ebook-modal{max-width:100%;padding:16px 14px 14px}
+  .ebook-stage{height:min(64vh,560px)}
+}
+@media(max-width:560px){
+  .book-actions .btn-gold.small,.book-actions .btn-ghost.small{flex:1 1 100%}
+}

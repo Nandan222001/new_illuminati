@@ -17,9 +17,11 @@ backend/
     schemas/     # Pydantic request/response models
     crud/        # DB read/write logic, one module per domain
     api/v1/      # FastAPI routers (one file per resource) + auth dependency
+    services/    # e-book file storage (uploads, safe keys, magic-byte checks)
     seeds/       # One-time data seeding (built-in videos/rituals/gallery)
     main.py      # App wiring, CORS, startup seeding
   alembic/       # DB migrations
+  uploads/       # Keeper-uploaded e-book volumes (gitignored, never static)
   requirements.txt
   .env.example   # Copy to .env and fill in
 ```
@@ -72,6 +74,9 @@ backend/
 | `JWT_SECRET_KEY`, `JWT_ALGORITHM`, `ACCESS_TOKEN_EXPIRE_MINUTES` | Auth tokens |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Seed admin account, created once on first startup |
 | `CORS_ORIGINS` | Comma-separated origins allowed to call the API (the Vite dev server) |
+| `UPLOAD_DIR` | Folder for uploaded e-book volumes, relative to `backend/` (default `uploads`) |
+| `MAX_EBOOK_SIZE_MB` | Largest accepted PDF/EPUB upload (default 100) |
+| `DATABASE_URL`, `AUTO_CREATE_TABLES` | Optional dev-only SQLite fallback (e.g. `sqlite:///./dev.db`) for machines without MySQL |
 
 ## API overview
 
@@ -97,6 +102,21 @@ All routes are under `/api/v1`.
 - `PATCH /content/{kind}/{id}/lock` — admin: toggle free/paid (sealed)
 - `DELETE /content/{kind}/{id}` — admin: fully delete a custom item, or hide a built-in one (reversible)
 - `POST /content/{kind}/{id}/restore` — admin: unhide a built-in item
+
+**Library** (`/library` — sealed e-books)
+
+- `POST /library/ebooks` — Keeper: upload a PDF/EPUB volume (multipart, streamed to disk in 1 MiB chunks, extension + magic-byte + size checked). Returns the opaque `key` the book record stores in `extra.file_key`
+- `GET /library/ebooks` — Keeper: list the files on the shelf with size, mtime and the volume serving each one
+- `DELETE /library/ebooks/{key}` — Keeper: delete an unattached file (attached files are refused with `409`)
+- `GET /library/books/{book_id}/file?inline=1` — **the members-only door**: free books for anyone, sealed books only for a signed-in member whose `paid` flag is set (Keeper always). `401` when signed out, `402` when unpaid, otherwise the file with `Content-Disposition` per `inline`
+- `GET /library/files/{key}` — same gate, by storage key (Keeper previews of unattached files)
+- `GET /library/limits` — public: accepted types and size cap for the console's client-side checks
+- `PATCH /content/{kind}/{id}/file` — Keeper: attach (`{key, filename}`) or detach (`{key: null}`) an uploaded volume on a content item
+
+Files are stored outside any statically served folder and are never given a
+public URL; `extra.file` holds only `/api/v1/library/files/{key}`, which still
+requires an entitled account. Uploaded volumes are gitignored — back up
+`uploads/` like any other user data.
 
 **Public** (`/public`)
 - `GET /public/stats` — aggregate count of registered member accounts only; no member-level information is exposed

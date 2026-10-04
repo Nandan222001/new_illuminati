@@ -26,6 +26,23 @@ def get_current_user(
     return user
 
 
+def get_optional_user(
+    token: str | None = Depends(oauth2_scheme),
+    db: Session = Depends(get_db),
+) -> User | None:
+    """Like get_current_user, but anonymous requests are allowed through as None.
+
+    Used by endpoints that serve everyone something, with extra fields for
+    entitled readers (e.g. an e-book's file link only for sealed members).
+    """
+    if not token:
+        return None
+    user_id = decode_access_token(token)
+    if user_id is None:
+        return None
+    return user_crud.get_by_id(db, user_id)
+
+
 def require_admin(user: User = Depends(get_current_user)) -> User:
     if user.role != Role.ADMIN:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Keeper access required")

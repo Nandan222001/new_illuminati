@@ -989,7 +989,11 @@
     "sealedUserText": "This volume is sealed. <0>Seal your oath</0> to read it.",
     "sealedGuestText": "This volume is sealed. <0>Sign in</0> or <1>become an initiate</1> to read it.",
     "empty": "The shelves are being catalogued.",
-    "viewerNote": "Volumes marked sealed unlock for members whose oath is sealed."
+    "viewerNote": "Volumes marked sealed unlock for members whose oath is sealed.",
+    "viewerLoading": "Opening the volume…",
+    "viewerError": "The volume could not be opened. Please try again.",
+    "saved": "{{name}} saved.",
+    "sealedNote": "Sealed volumes are kept behind the membership desk: the file is only served to a signed-in member whose initiation has been paid."
   },
   "admin": {
     "inboxTitle": "COUNCIL INBOX",

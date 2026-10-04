@@ -122,24 +122,56 @@ function makeKindApi(kind, reload) {
   }
 
   return {
+    /** Returns the shelved item so callers can immediately attach an uploaded file to it. */
     add: async (fields) => {
+      let created = null
       try {
-        await apiFetch(`/content/${kind}`, { method: 'POST', body: toCreatePayload(fields) })
+        created = toClientItem(await apiFetch(`/content/${kind}`, { method: 'POST', body: toCreatePayload(fields) }))
       } catch {
-        addLocal(fields)
+        created = addLocal(fields)
       }
       await reload.public()
+      return created
     },
     update: async (id, patch) => {
       try {
-        if (patch.category !== undefined) {
-          await apiFetch(`/content/${kind}/${id}/lock`, { method: 'PATCH', body: { locked: patch.category === 'paid' } })
+        const { category, ...rest } = patch
+        if (category !== undefined) {
+          await apiFetch(`/content/${kind}/${id}/lock`, { method: 'PATCH', body: { locked: category === 'paid' } })
+        }
+        // Only books edit free-form fields today, but the mapping is generic.
+        const payload = {}
+        if (rest.title !== undefined) payload.title = rest.title
+        if (rest.desc !== undefined) payload.description = rest.desc
+        if (rest.img !== undefined) payload.image_url = rest.img
+        const extra = Object.fromEntries(Object.entries(rest).filter(([key]) => !['title', 'desc', 'img'].includes(key)))
+        if (Object.keys(extra).length) payload.extra = extra
+        if (Object.keys(payload).length) {
+          await apiFetch(`/content/${kind}/${id}`, { method: 'PATCH', body: payload })
         }
       } catch {
         const store = { ...emptyMap(), ...readJSON(LOCAL_KEY, {}) }
         store[kind] = store[kind].map((item) => (
           item.id === id ? { ...item, ...(patch.category ? { category: patch.category } : {}), ...patch } : item
         ))
+        writeJSON(LOCAL_KEY, store)
+      }
+      await reload.public()
+    },
+    /**
+     * Attach an uploaded volume (key from POST /library/ebooks) to an item, or
+     * detach it with `key: null`. The key is validated server-side, so the file
+     * handle can only ever point at a real file on the upload shelf.
+     */
+    attachFile: async (id, key, filename) => {
+      try {
+        await apiFetch(`/content/${kind}/${id}/file`, { method: 'PATCH', body: { key, filename: filename || null } })
+      } catch {
+        // Offline: the upload itself never reached the server, so only the local
+        // reference is kept — the volume stays listed as awaiting its file.
+        const store = { ...emptyMap(), ...readJSON(LOCAL_KEY, {}) }
+        const patch = { file: '', file_key: key || '', file_name: filename || '' }
+        store[kind] = store[kind].map((item) => (String(item.id) === String(id) ? { ...item, ...patch } : item))
         writeJSON(LOCAL_KEY, store)
       }
       await reload.public()
@@ -192,8 +224,10 @@ export function ContentProvider({ children }) {
   const loadPublic = useCallback(async () => {
     loadLocal()
     try {
+      // The token is sent when one exists: sealed e-books only hand their file
+      // link to an entitled reader (see backend content.py `_view_for`).
       const results = await Promise.all(KINDS.map((kind) => (
-        apiFetch(`/content/${kind}`, { auth: false, timeoutMs: LOAD_TIMEOUT_MS }).catch(() => null)
+        apiFetch(`/content/${kind}`, { timeoutMs: LOAD_TIMEOUT_MS }).catch(() => null)
       )))
       // Keep the bundled list for any kind the API does not serve yet.
       setRaw((prev) => Object.fromEntries(KINDS.map((kind, i) => (
@@ -218,8 +252,10 @@ export function ContentProvider({ children }) {
   }, [isAdmin])
 
   useEffect(() => {
+    // Re-reads whenever the session changes: sealed volumes only hand over their
+    // file link to an entitled reader, so paying (or signing out) must re-fetch.
     loadPublic().finally(() => setReady(true))
-  }, [loadPublic])
+  }, [loadPublic, user?.id, user?.paid])
 
   useEffect(() => {
     if (authReady) loadHidden()
@@ -264,6 +300,7 @@ export function ContentProvider({ children }) {
     addRitual: apis.ritual.add, updateRitual: apis.ritual.update, deleteRitual: apis.ritual.remove, restoreRitual: apis.ritual.restore,
     addImage: apis.image.add, updateImage: apis.image.update, deleteImage: apis.image.remove, restoreImage: apis.image.restore,
     addBook: apis.book.add, updateBook: apis.book.update, deleteBook: apis.book.remove, restoreBook: apis.book.restore,
+    attachBookFile: apis.book.attachFile,
     addArchive: apis.archive.add, updateArchive: apis.archive.update, deleteArchive: apis.archive.remove, restoreArchive: apis.archive.restore,
   }), [ready, user, videos, rituals, gallery, books, archives, hiddenRaw, apis])
 
