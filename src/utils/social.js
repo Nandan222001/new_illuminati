@@ -8,7 +8,7 @@
 
 const KEY = 'ib_social_v1'
 
-export const SOCIAL_PLATFORMS = ['instagram', 'discord', 'telegram', 'youtube', 'x', 'facebook']
+export const SOCIAL_PLATFORMS = ['instagram', 'discord', 'telegram', 'youtube', 'x', 'facebook', 'whatsapp']
 
 export const DEFAULT_SOCIAL = {
   instagram: '',
@@ -17,6 +17,7 @@ export const DEFAULT_SOCIAL = {
   youtube: '',
   x: '',
   facebook: '',
+  whatsapp: '',
 }
 
 /** Turns whatever the Keeper typed into an absolute https URL (or ''). */
@@ -25,6 +26,10 @@ export function normalizeSocialUrl(platform, raw) {
   if (!value) return ''
   if (/^https?:\/\//i.test(value)) return value
   if (/^mailto:|^tel:/i.test(value)) return value
+  if (platform === 'whatsapp' && /^\+?[\d\s().-]+$/.test(value)) {
+    const phone = value.replace(/\D/g, '')
+    return phone.length >= 7 && phone.length <= 15 ? `https://wa.me/${phone}` : ''
+  }
   if (value.startsWith('@')) {
     const handle = value.slice(1).replace(/^\/+/, '')
     const bases = {
@@ -34,6 +39,7 @@ export function normalizeSocialUrl(platform, raw) {
       youtube: 'https://youtube.com/@',
       x: 'https://x.com/',
       facebook: 'https://facebook.com/',
+      whatsapp: 'https://wa.me/',
     }
     return `${bases[platform] || 'https://'}${handle}`
   }

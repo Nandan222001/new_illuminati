@@ -21,13 +21,13 @@ export default function Register() {
   const [busy, setBusy] = useState(false)
   const score = useMemo(() => passwordScore(form.password), [form.password])
   const pwCheck = useMemo(() => validatePassword(form.password), [form.password])
-  const emailCheck = useMemo(() => (form.email ? validateEmail(form.email) : null), [form.email])
+  const emailCheck = useMemo(() => (form.email ? validateEmail(form.email, { requireSupportedProvider: true }) : null), [form.email])
 
   useEffect(() => { if (ready && user) navigate('/profile', { replace: true }) }, [ready, user, navigate])
 
   const emailMessage = (result) => {
     if (!result || result.ok) return ''
-    const suffix = { required: 'Required', disposable: 'Disposable', length: 'Length', tld: 'Tld' }[result.reason] || 'Invalid'
+    const suffix = { required: 'Required', disposable: 'Disposable', length: 'Length', tld: 'Tld', provider: 'Provider' }[result.reason] || 'Invalid'
     return t(`validation.email${suffix}`)
   }
 
@@ -36,8 +36,8 @@ export default function Register() {
     setError('')
     setEmailError('')
 
-    // The site only ever stores valid, deliverable-looking addresses.
-    const email = validateEmail(form.email)
+    // Apply the supported-provider policy before calling the API.
+    const email = validateEmail(form.email, { requireSupportedProvider: true })
     if (!email.ok) {
       const message = emailMessage(email)
       setEmailError(message)
@@ -93,6 +93,7 @@ export default function Register() {
             aria-invalid={!!emailError}
             onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailError('') }}
           />
+          <em className="field-hint provider-note">{t('validation.emailProviderHint')}</em>
           {emailError && <em className="field-hint error">{emailError}</em>}
           {!emailError && emailCheck?.ok && <em className="field-hint ok">✓ {emailCheck.value}</em>}
         </label>

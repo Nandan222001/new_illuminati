@@ -1,12 +1,12 @@
 /**
  * Shared input validation for the whole site.
  *
- * Emails are validated strictly (structure + TLD + disposable-domain
- * blocklist) so the site never stores an address that cannot receive mail.
- * Passwords must contain at least one uppercase letter, one lowercase
- * letter, one number and one special character — the same rules are enforced
- * again by the API (backend/app/schemas/user.py), because client-side checks
- * alone can be bypassed.
+ * Emails are syntax-checked and known disposable domains are rejected. Auth
+ * forms additionally require a supported consumer provider. This checks the
+ * provider domain, not whether a specific mailbox exists. Passwords must
+ * contain at least one uppercase letter, one lowercase letter, one number and
+ * one special character — the same rules are enforced again by the API
+ * (backend/app/schemas/user.py), because client-side checks alone can be bypassed.
  */
 
 // Deliberately conservative: no consecutive dots, no leading/trailing dot,
@@ -23,16 +23,33 @@ export const DISPOSABLE_DOMAINS = new Set([
   'burnermail.io', 'mohmal.com', 'emailondeck.com', 'moakt.com', 'linshiyouxiang.net',
 ])
 
+/** Established consumer mail providers accepted for member registration. */
+export const SUPPORTED_EMAIL_DOMAINS = new Set([
+  'gmail.com', 'googlemail.com',
+  'hotmail.com', 'hotmail.co.uk', 'hotmail.de', 'hotmail.fr', 'hotmail.es', 'hotmail.it', 'hotmail.ca', 'hotmail.co.in', 'hotmail.in', 'hotmail.com.au',
+  'outlook.com', 'outlook.co.uk', 'outlook.de', 'outlook.fr', 'outlook.es', 'outlook.it', 'outlook.ca', 'outlook.co.in', 'outlook.in', 'outlook.com.au', 'outlook.com.br', 'outlook.jp',
+  'live.com', 'live.co.uk', 'live.de', 'live.fr', 'live.it', 'live.in', 'msn.com',
+  'yahoo.com', 'yahoo.co.in', 'yahoo.in', 'yahoo.co.uk', 'yahoo.ca', 'yahoo.com.au', 'yahoo.fr', 'yahoo.de', 'yahoo.es', 'yahoo.it', 'yahoo.co.jp', 'yahoo.com.br', 'yahoo.com.sg', 'yahoo.co.nz', 'yahoo.co.za', 'ymail.com',
+  'icloud.com', 'me.com', 'mac.com',
+  'proton.me', 'protonmail.com', 'protonmail.ch', 'pm.me',
+  'aol.com', 'gmx.com', 'gmx.net', 'gmx.de', 'mail.com', 'fastmail.com', 'fastmail.fm',
+  'zoho.com', 'zohomail.com', 'rediffmail.com', 'yandex.com', 'yandex.ru',
+  'tuta.com', 'tutanota.com', 'tutanota.de', 'hey.com',
+  'qq.com', '163.com', '126.com', 'yeah.net', 'foxmail.com', 'naver.com', 'daum.net', 'hanmail.net', 'mail.ru',
+])
+
 export function normalizeEmail(value) {
   return String(value ?? '').trim().toLowerCase()
 }
 
 /**
  * Returns `{ ok, value, reason }`. `reason` is one of `required`, `format`,
- * `length`, `domain`, `tld` or `disposable`, so the UI can show a precise
- * message instead of a generic "invalid email".
+ * `length`, `domain`, `tld`, `disposable` or `provider`, so the UI can show a
+ * precise message instead of a generic "invalid email". Auth forms enable
+ * `requireSupportedProvider`; `allowAddresses` is reserved for the configured
+ * Keeper login. Other contact forms retain general email validation.
  */
-export function validateEmail(value) {
+export function validateEmail(value, { requireSupportedProvider = false, allowAddresses = [] } = {}) {
   const email = normalizeEmail(value)
   if (!email) return { ok: false, value: email, reason: 'required' }
   if (email.length > 254) return { ok: false, value: email, reason: 'length' }
@@ -53,6 +70,10 @@ export function validateEmail(value) {
   const tld = domain.slice(domain.lastIndexOf('.') + 1)
   if (!/^[a-z]{2,24}$/.test(tld)) return { ok: false, value: email, reason: 'tld' }
   if (DISPOSABLE_DOMAINS.has(domain)) return { ok: false, value: email, reason: 'disposable' }
+  const isAllowedKeeperAddress = allowAddresses.some((address) => normalizeEmail(address) === email)
+  if (requireSupportedProvider && !SUPPORTED_EMAIL_DOMAINS.has(domain) && !isAllowedKeeperAddress) {
+    return { ok: false, value: email, reason: 'provider' }
+  }
 
   return { ok: true, value: email, reason: null }
 }

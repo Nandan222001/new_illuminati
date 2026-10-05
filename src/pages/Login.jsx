@@ -7,6 +7,9 @@ import { useToast } from '../context/ToastContext'
 import AuthShell from '../components/AuthShell'
 import { validateEmail } from '../utils/validation'
 
+// Preserve Keeper access when the configured seed account uses a custom domain.
+const ADMIN_LOGIN_EMAILS = ['admin@illuminati-brotherhood.org', import.meta.env.VITE_ADMIN_EMAIL].filter(Boolean)
+
 export default function Login() {
   const { user, login, ready } = useAuth()
   const toast = useToast()
@@ -30,9 +33,9 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault()
     setError('')
-    const email = validateEmail(form.email)
+    const email = validateEmail(form.email, { requireSupportedProvider: true, allowAddresses: ADMIN_LOGIN_EMAILS })
     if (!email.ok) {
-      const suffix = { required: 'Required', disposable: 'Disposable', length: 'Length', tld: 'Tld' }[email.reason] || 'Invalid'
+      const suffix = { required: 'Required', disposable: 'Disposable', length: 'Length', tld: 'Tld', provider: 'Provider' }[email.reason] || 'Invalid'
       setError(t(`validation.email${suffix}`))
       return
     }
@@ -66,7 +69,8 @@ export default function Login() {
       <form className="form" onSubmit={submit} noValidate>
         <label>
           <span>{t('common.emailLabel')}</span>
-          <input type="email" name="email" autoComplete="email" required placeholder={t('common.emailPlaceholder')} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+          <input type="email" name="email" autoComplete="email" required placeholder={t('common.emailPlaceholder')} value={form.email} onChange={(e) => { setForm({ ...form, email: e.target.value }); setError('') }} />
+          <em className="field-hint provider-note">{t('validation.emailProviderHint')}</em>
         </label>
         <label>
           <span>{t('common.passphraseLabel')}</span>

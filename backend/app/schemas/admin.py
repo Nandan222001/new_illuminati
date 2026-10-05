@@ -38,6 +38,7 @@ class SocialSettings(BaseModel):
     youtube: str = ""
     x: str = ""
     facebook: str = ""
+    whatsapp: str = ""
 
 
 class PublicSettingsPayload(BaseModel):
