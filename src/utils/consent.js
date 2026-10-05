@@ -4,8 +4,11 @@
  * The version string is part of the record: bumping it re-locks the site for
  * every visitor, which is what item “Everything will be locked post
  * acknowledgement” requires — a new terms version must be acknowledged again.
+ * The wording of the terms themselves lives in src/data/terms.js.
  */
-export const CONSENT_VERSION = '1.1.6'
+import { TERMS_VERSION } from '../data/terms'
+
+export const CONSENT_VERSION = TERMS_VERSION
 const KEY = 'ib_consent'
 
 /** Returns the stored consent record for the current terms version, or null. */

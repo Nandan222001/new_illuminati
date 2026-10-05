@@ -60,6 +60,19 @@ actual catalogue.
 | 19 | Visuals page order: Decode the Dollar → Find Your Sigil → The Sigils → Tattoos of the Unknown → The Gallery | `src/pages/Visuals.jsx` |
 | 20 | Key-visual captions are Keeper-only | `src/pages/Visuals.jsx` |
 | 22 | Private discussion board: an initiate only ever sees their own threads with the Keepers; a Keeper sees them all | `src/api/community.js`, `src/pages/Community.jsx`, `src/pages/admin/Messages.jsx`, `backend/app/api/v1/endpoints/community.py` |
+| 24 | The Terms & Conditions are shown **verbatim** (the full entry warning, every acknowledgement point and every condition, in the original order and wording) in the entry gate and on `/rules` | `src/data/terms.js`, `src/components/TermsDocument.jsx`, `src/components/ConsentGate.jsx`, `src/pages/Rules.jsx` |
+
+### Terms & Conditions wording
+
+The legal text is not written inside the translation files any more: it lives in
+one place, `src/data/terms.js`, and is rendered as-is by both the entry gate and
+`/rules` via `<TermsDocument />`, so the wording a visitor accepts is always the
+same document. Edit that file to change the terms — and bump
+`TERMS_VERSION` there, which re-locks the site for every visitor (the accepted
+version is stored with the consent record). The text stays in English on every
+language so the accepted wording never varies; only the surrounding interface
+(buttons, headings, instructions) is translated. The `/rules` page keeps the
+account-privacy statement at `#rule-privacy` for the footer link.
 
 ## Sealed e-book library (admin PDF uploads)
 
