@@ -4,30 +4,15 @@ import { useTranslation } from 'react-i18next'
 import { useConsent } from '../context/ConsentContext'
 import { CONSENT_VERSION } from '../utils/consent'
 import BrandMark from './BrandMark'
-
-/**
- * Rule order shown both in the gate and on /rules. The consent gate and the
- * Rules page stay in sync by sharing this list.
- */
-export const RULE_KEYS = [
-  'age',
-  'entry',
-  'about',
-  'noCertify',
-  'documents',
-  'conduct',
-  'safety',
-  'membership',
-  'hidden',
-  'ownership',
-  'privacy',
-  'conditions',
-]
+import TermsDocument from './TermsDocument'
 
 /**
  * Blocks the entire public site until the viewer has acknowledged the Terms &
  * Conditions. While it is open the page behind is inert (scroll locked, no
  * clicks, no tab focus) so nothing can be used before acknowledgement.
+ *
+ * The terms shown here are the verbatim document from src/data/terms.js — the
+ * same text the /rules page renders.
  */
 export default function ConsentGate() {
   const { t } = useTranslation()
@@ -65,11 +50,7 @@ export default function ConsentGate() {
         <p className="consent-version">{t('rules.gate.version')}</p>
         <p className="consent-intro">{t('rules.gate.intro')}</p>
         <div className="consent-scroll" tabIndex={0}>
-          <ol>
-            {RULE_KEYS.map((k) => (
-              <li key={k}><b>{t(`rules.items.${k}.title`)}</b><span>{t(`rules.items.${k}.text`)}</span></li>
-            ))}
-          </ol>
+          <TermsDocument compact />
           <p className="consent-wellbeing">{t('rules.wellbeing')}</p>
         </div>
         <p className="consent-lock-note">🔒 {t('rules.gate.lockNote')}</p>
