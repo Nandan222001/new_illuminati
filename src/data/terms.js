@@ -23,7 +23,7 @@ export const TERMS_LEAD = [
 
 export const TERMS_ACK_INTRO = 'By clicking ENTER, you acknowledge that:'
 
-/** The acknowledgement list shown under “By clicking ENTER, you acknowledge that:”. */
+/** The acknowledgement paragraphs shown under “By clicking ENTER, you acknowledge that:”. */
 export const TERMS_ACK_ITEMS = [
   'This site contains dark and mature imagery. You must be 18 or older to continue.',
   'Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with any real organisation, and nothing here is a claim about real people, groups or events.',
@@ -41,7 +41,7 @@ export const TERMS_PARAGRAPHS = [
   'Serving members worldwide since 2015.',
   'The information available on this network is highly confidential and not to disclose anywhere.',
   'Members should conceal their identity within the secret society and not to disclosed with anyone and anywhere.',
-  'Don’t miss this opportunity, this link might get hidden or suspended at any time.',
+  "Don't miss this opportunity, this link might get hidden or suspended at any time.",
   'Once certain information is seen, it cannot be unseen.',
   'Nobody can trace you; this is fully secured website, The network does not verify who you are, nor can it guarantee who others claim to be.',
   'Some doors are locked for a reason, Others are left open intentionally, The difference is rarely discovered until it is too late.',

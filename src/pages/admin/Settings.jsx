@@ -17,7 +17,7 @@ function SecretField({ label, value, onChange, placeholder }) {
   )
 }
 
-const SOCIAL_FIELDS = ['instagram', 'discord', 'telegram', 'youtube', 'x', 'facebook']
+const SOCIAL_FIELDS = ['instagram', 'discord', 'telegram', 'youtube', 'x', 'facebook', 'whatsapp']
 
 export default function AdminSettings() {
   const toast = useToast()

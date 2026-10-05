@@ -6,7 +6,7 @@
 import { apiFetch } from '../api/client'
 
 export const DEFAULT_SETTINGS = {
-  social: { instagram: '', discord: '', telegram: '', youtube: '', x: '', facebook: '' },
+  social: { instagram: '', discord: '', telegram: '', youtube: '', x: '', facebook: '', whatsapp: '' },
   razorpay: { enabled: false, mode: 'test', keyId: '', keySecret: '' },
   smtp: { enabled: false, host: '', port: '587', secure: true, username: '', password: '', fromName: 'Illuminati Brotherhood', fromEmail: '' },
   twilio: { enabled: false, accountSid: '', authToken: '', fromNumber: '' },

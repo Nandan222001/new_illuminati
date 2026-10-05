@@ -13,13 +13,16 @@ import SymbolIcon from '../components/SymbolIcon'
 import BrandFlame from '../components/BrandFlame'
 import CountUpNumber from '../components/CountUpNumber'
 import SocialLinks from '../components/SocialLinks'
+import { SOCIAL_ICONS } from '../components/SocialIcons'
 import { useSiteSettings } from '../context/SiteSettingsContext'
 import { socialHandle } from '../utils/social'
 
-function ChannelButton({ platform, label, note, social, toast, t }) {
+function ChannelButton({ platform, label, note, social, toast }) {
   const href = social?.[platform]
-  if (!href) return <button type="button" onClick={() => toast(note)}>{label}</button>
-  return <a className="channel-btn" href={href} target="_blank" rel="noopener noreferrer me">{label} ↗</a>
+  const Icon = SOCIAL_ICONS[platform]
+  const content = <>{Icon && <Icon className="channel-social-icon" width={18} height={18} />}<span>{label}</span></>
+  if (!href) return <button type="button" onClick={() => toast(note)}>{content}</button>
+  return <a className="channel-btn" href={href} target="_blank" rel="noopener noreferrer me">{content} <span aria-hidden="true">↗</span></a>
 }
 
 const EXPLORE = [
@@ -311,9 +314,9 @@ export default function Home() {
               <Img className="comm-emblem" src="/assets/community-emblem.jpg" alt="Brotherhood emblem" />
             </div>
             <div className="comm-btns">
-              <ChannelButton platform="discord" label={t('content.channels.discord.name')} note={t('content.channels.discord.note')} social={social} toast={toast} t={t} />
-              <ChannelButton platform="telegram" label={t('content.channels.telegram.name')} note={t('content.channels.telegram.note')} social={social} toast={toast} t={t} />
-              <ChannelButton platform="instagram" label={t('content.channels.instagram.name')} note={t('content.channels.instagram.note')} social={social} toast={toast} t={t} />
+              <ChannelButton platform="discord" label={t('content.channels.discord.name')} note={t('content.channels.discord.note')} social={social} toast={toast} />
+              <ChannelButton platform="telegram" label={t('content.channels.telegram.name')} note={t('content.channels.telegram.note')} social={social} toast={toast} />
+              <ChannelButton platform="instagram" label={t('content.channels.instagram.name')} note={t('content.channels.instagram.note')} social={social} toast={toast} />
               <button onClick={() => navigate('/community')}>💬 {t('content.channels.discussionBoard.name')}</button>
             </div>
           </div>
