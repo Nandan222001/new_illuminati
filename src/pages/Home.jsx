@@ -333,7 +333,9 @@ export default function Home() {
             ))}
           </div>
           <div className="insta-foot">
-            <a className="follow-btn" href={social.instagram || undefined} target={social.instagram ? '_blank' : undefined} rel={social.instagram ? 'noopener noreferrer me' : undefined} onClick={(e) => { if (!social.instagram) { e.preventDefault(); toast(t('social.comingSoon', { name: t('social.instagram') })) } }}>📷 {t('common.followNow')}</a>
+            {social.instagram
+              ? <a className="follow-btn" href={social.instagram} target="_blank" rel="noopener noreferrer me">📷 {t('common.followNow')}</a>
+              : <button type="button" className="follow-btn" onClick={() => toast(t('social.comingSoon', { name: t('social.instagram') }))}>📷 {t('common.followNow')}</button>}
             <span className="handle">{socialHandle(social.instagram) || t('social.notLinked', { name: t('social.instagram') })}</span>
           </div>
         </div>
