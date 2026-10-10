@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://illuminati-brotherhood.org/sitemap.xml
+Disallow: /admin

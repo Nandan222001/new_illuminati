@@ -146,8 +146,8 @@ button{font-family:inherit;cursor:pointer}
   font-size:11px;letter-spacing:2px;padding:13px 26px;border-radius:8px;transition:.3s;display:inline-flex;align-items:center;gap:10px}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 .social-row{display:flex;gap:16px;margin-top:22px;font-size:15px;color:#b9ad96}
-.social-row a{width:32px;height:32px;display:grid;place-items:center;border:1px solid transparent;border-radius:50%;transition:.25s}
-.social-row a:hover{color:var(--gold);border-color:var(--line);background:rgba(230,200,120,.06)}
+.social-row a,.social-row .social-link{width:34px;height:34px;display:inline-grid;place-items:center;border:1px solid transparent;border-radius:50%;transition:.25s}
+.social-row a:hover,.social-row .social-link:hover{color:var(--gold);border-color:var(--line);background:rgba(230,200,120,.06)}
 .hero-rail{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
 .hero-rail a{font-size:10px;letter-spacing:3px;color:#8d8474;font-weight:600;padding:4px 0;transition:.25s;border-right:2px solid transparent;padding-right:12px}
 .hero-rail a:hover{color:var(--gold);border-color:var(--gold)}
@@ -320,23 +320,23 @@ footer{border-top:1px solid var(--line);background:#020101;padding:34px 40px 22p
 .consent-box .form-error{flex-shrink:0;margin-bottom:12px}
 /* ---------- verbatim Terms & Conditions document ---------- */
 .terms-wrap{max-width:860px;margin:0 auto;padding:8px 40px 0}
-.terms-doc{font-size:12.5px;line-height:1.8;color:#cbbfa8}
-.terms-doc .terms-heading{font-family:'Cinzel',serif;font-size:15px;letter-spacing:3px;color:var(--gold);text-align:center;margin:0 0 12px}
-.terms-doc .terms-line{margin:0 0 12px}
-.terms-doc .terms-ack-intro{color:#e2d8c2;margin:18px 0 8px;font-weight:500}
-.terms-doc .terms-foot{margin:22px 0 0;text-align:center;font-size:10px;letter-spacing:3px;color:var(--gold2)}
-.terms-doc-compact{font-size:11.5px;line-height:1.7}
-.terms-doc-compact .terms-heading{font-size:12px;letter-spacing:2px;margin-bottom:10px}
+.terms-doc{font-size:13px;line-height:2;color:#cbbfa8;font-family:'Courier Prime','Special Elite','Courier New',monospace;font-variant-ligatures:none;letter-spacing:.3px;word-spacing:2px}
+.terms-doc .terms-heading{font-family:'Special Elite','Courier Prime','Courier New',monospace;font-size:16px;letter-spacing:2px;color:var(--gold);text-align:center;margin:0 0 14px;font-weight:400}
+.terms-doc .terms-line{margin:0 0 13px}
+.terms-doc .terms-ack-intro{color:#e2d8c2;margin:18px 0 8px;font-weight:700}
+.terms-doc .terms-foot{margin:22px 0 0;text-align:center;font-size:11px;letter-spacing:2px;color:var(--gold2);font-family:'Courier Prime','Special Elite','Courier New',monospace}
+.terms-doc-compact{font-size:12px;line-height:1.8;font-family:'Courier Prime','Special Elite','Courier New',monospace}
+.terms-doc-compact .terms-heading{font-size:13px;letter-spacing:2px;margin-bottom:10px}
 .terms-doc-compact .terms-line{margin:0 0 10px}
 .step-grid{list-style:none;display:grid;gap:16px;padding:8px 40px 0}
 .step-grid{grid-template-columns:repeat(4,1fr)}
 .step-card{position:relative;border:1px solid rgba(230,200,120,.16);border-radius:12px;background:#0a0706;padding:22px 22px 20px 64px;scroll-margin-top:96px}
 .step-card{padding-left:22px;padding-top:56px}
 .rule-num{position:absolute;left:20px;top:20px;font-family:'Cinzel',serif;font-size:20px;color:rgba(230,200,120,.5)}
-.step-card h4{font-size:12px;letter-spacing:3px;color:var(--gold);margin-bottom:8px}
-.step-card p{font-size:13px;line-height:1.75;color:#cbbfa8}
-.rules-wellbeing{padding:22px 40px 0;font-size:12.5px;line-height:1.75;color:#8d8474;text-align:center;max-width:820px;margin:0 auto}
-.rules-consent{padding:18px 40px 0;text-align:center;font-size:12px;letter-spacing:1px;color:#9a9084}
+.step-card h4{font-size:12px;letter-spacing:3px;color:var(--gold);margin-bottom:8px;font-family:'Special Elite','Courier Prime','Courier New',monospace;font-weight:400}
+.step-card p{font-size:13px;line-height:1.85;color:#cbbfa8;font-family:'Courier Prime','Special Elite','Courier New',monospace;letter-spacing:.2px}
+.rules-wellbeing{padding:22px 40px 0;font-size:12.5px;line-height:1.85;color:#8d8474;text-align:center;max-width:820px;margin:0 auto;font-family:'Courier Prime','Special Elite','Courier New',monospace;letter-spacing:.2px}
+.rules-consent{padding:18px 40px 0;text-align:center;font-size:12px;letter-spacing:1px;color:#9a9084;font-family:'Courier Prime','Special Elite','Courier New',monospace}
 @media(max-width:1100px){.step-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.terms-wrap{padding-left:24px;padding-right:24px}}
 @media(max-width:560px){.step-grid{grid-template-columns:1fr}.step-grid,.rules-wellbeing,.rules-consent{padding-left:16px;padding-right:16px}.terms-wrap{padding-left:16px;padding-right:16px}.terms-doc{font-size:12px}.consent-box{padding:20px 16px 18px}}
@@ -1019,8 +1019,8 @@ input[type="search"]{padding:9px 14px;font-size:12px}
   .hero.hero-portrait{min-height:100svh;background-position:center top;background-size:cover;justify-content:flex-end}
   .hero.hero-portrait::before{background:linear-gradient(180deg,rgba(3,1,1,.55) 0%,rgba(3,1,1,0) 22%,rgba(3,1,1,0) 42%,rgba(3,1,1,.72) 66%,rgba(3,1,1,.96) 100%)}
   .hero.hero-portrait::after{background:radial-gradient(ellipse 80% 40% at 50% 30%,rgba(255,30,30,.12),transparent 70%)}
-  .hero.hero-portrait .hero-inner{padding:0 20px 18px;align-items:end;gap:14px}
-  .hero.hero-portrait .hero-inner>div:first-child{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero.hero-portrait .hero-inner{padding:0 20px 18px;align-items:end;gap:14px;grid-template-columns:1fr}
+  .hero.hero-portrait .hero-inner>div:first-child{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
   .hero.hero-portrait .eyebrow{margin-bottom:8px}
   .hero.hero-portrait h1{font-size:clamp(34px,10.5vw,52px);letter-spacing:3px;text-align:center}
   .hero.hero-portrait .hero-sub{font-size:14px;margin-top:10px;max-width:300px}
@@ -1311,7 +1311,7 @@ input[type="search"]{padding:9px 14px;font-size:12px}
 /* ================= v1.1.6 additions ================= */
 
 /* ---------- countdown + joined members (home / New World Order blocks) ---------- */
-.members-value{font-family:'Cinzel',serif;letter-spacing:2px}
+.members-value{font-family:'Cinzel',serif;letter-spacing:1px;font-variant-numeric:tabular-nums}
 .cd-members{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:14px}
 .cd-members b{font-family:'Cinzel',serif;font-size:22px;color:var(--gold)}
 .cd-members span{font-size:8.5px;letter-spacing:3px;color:#8d8474}
@@ -1402,8 +1402,8 @@ a.follow-btn{display:inline-block;text-decoration:none;cursor:pointer}
 .pw-rules.ok{opacity:.85}
 
 /* ---------- terms version notes ---------- */
-.rules-version{padding:22px 40px 0;text-align:center;font-size:10px;letter-spacing:3px;color:#8d8474}
-.rules-version b{color:var(--gold2);font-weight:600}
+.rules-version{padding:22px 40px 0;text-align:center;font-size:11px;letter-spacing:2px;color:#8d8474;font-family:'Courier Prime','Special Elite','Courier New',monospace}
+.rules-version b{color:var(--gold2);font-weight:700}
 .foot-version{color:#5d554a}
 
 /* ---------- responsive ---------- */
@@ -1462,3 +1462,34 @@ a.follow-btn{display:inline-block;text-decoration:none;cursor:pointer}
 @media(max-width:560px){
   .book-actions .btn-gold.small,.book-actions .btn-ghost.small{flex:1 1 100%}
 }
+
+/* ================= v1.1.7 additions ================= */
+
+/* ---------- CONTENT PROTECTION (lock everything) ---------- */
+/* Disable text selection on sensitive/protected content areas */
+.terms-doc,.terms-doc *,.consent-scroll,.consent-scroll *,
+.step-card,.step-card *,.rules-wellbeing,.rules-consent,
+.hero h1,.hero .eyebrow,.stat-value,.cd-big,.cd-members b,
+.ebook-stage,.ebook-frame{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+/* Allow selection inside form fields and inputs always */
+input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+/* Disable drag on images site-wide to prevent easy saving */
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none}
+
+/* ---------- SOCIAL MEDIA — MOBILE FIX ---------- */
+/* Ensure social links render correctly in the mobile hero (override old .social-row a conflict) */
+.hero.hero-portrait .social-row{display:flex!important;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-top:14px;visibility:visible;opacity:1}
+.hero.hero-portrait .social-row .social-link,
+.hero.hero-portrait .social-row .social-link svg{display:inline-flex!important;visibility:visible;opacity:1}
+/* Community section social row on mobile */
+.comm-social.social-row{display:flex!important;flex-wrap:wrap;visibility:visible;opacity:1}
+.comm-social.social-row .social-link{display:inline-flex!important}
+/* Ensure footer social row is always visible */
+.footer-social.social-row{display:flex!important;flex-wrap:wrap;visibility:visible;opacity:1}
+.footer-social.social-row .social-link{display:inline-flex!important}
+
+/* ---------- RULES & REGULATIONS — TYPEWRITER / MONOSPACED FONT ---------- */
+/* The terms-doc and rules elements already use Courier Prime / Special Elite above.
+   Reinforce monospace metrics for all nested text nodes. */
+.terms-doc,.terms-doc *{font-feature-settings:"tnum" 0;kerning:normal;text-rendering:optimizeSpeed}
+.step-card h4,.step-card p,.rules-wellbeing,.rules-consent,.rules-version{font-variant-ligatures:none}

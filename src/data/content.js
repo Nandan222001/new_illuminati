@@ -167,7 +167,7 @@ export const FAQ = [
 export const TARGET_DATE = new Date('2026-12-31T23:59:59Z')
 
 /** Joined-members figure shown on the home countdown block and the New World Order hero. */
-export const MEMBERS_JOINED_DISPLAY = '3.6M+'
+export const MEMBERS_JOINED_DISPLAY = '3,600,000'
 
 export function getTimeLeft() {
   let diff = TARGET_DATE - new Date()
