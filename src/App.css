@@ -1324,7 +1324,53 @@ input[type="search"]{padding:9px 14px;font-size:12px}
 .social-link.empty:hover{border-color:rgba(230,200,120,.2);background:rgba(255,255,255,.02);color:var(--gold)}
 .social-link.with-label{width:auto;border-radius:20px;padding:8px 14px;font-size:10px;letter-spacing:1.5px}
 .social-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:#b9ad96}
-.hero-social{margin-top:22px}
+/* The home hero sits over a deliberately dark and busy image. Give the icon
+   row its own high-contrast surface so every brand mark remains visible below
+   the primary calls to action, regardless of the selected hero artwork. */
+.hero-social{
+  position:relative;
+  z-index:3;
+  display:flex!important;
+  width:max-content;
+  max-width:100%;
+  min-height:42px;
+  margin-top:22px;
+  padding:4px;
+  gap:6px;
+  border:1px solid rgba(230,200,120,.28);
+  border-radius:24px;
+  background:rgba(3,1,1,.72);
+  box-shadow:0 8px 22px rgba(0,0,0,.38);
+  backdrop-filter:blur(5px);
+}
+.hero-social .social-link{
+  display:inline-flex!important;
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  color:#f4dfaa;
+  opacity:1!important;
+  visibility:visible!important;
+  border-color:rgba(230,200,120,.2);
+  background:rgba(230,200,120,.07);
+}
+.hero-social .social-link svg{
+  display:block!important;
+  width:19px;
+  height:19px;
+  max-width:none;
+  overflow:visible;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.hero-social .social-link:hover,
+.hero-social .social-link:focus-visible{
+  color:#fff8e7;
+  border-color:var(--gold);
+  background:rgba(230,200,120,.2);
+  outline:none;
+}
+.hero-social .social-link:focus-visible{box-shadow:0 0 0 3px rgba(230,200,120,.28)}
 .footer-social{padding:0;margin-top:8px}
 .side-social{padding:6px 0 0}
 .foot-handle{font-size:10px;letter-spacing:2px;color:var(--gold2)}
