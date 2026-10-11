@@ -13,6 +13,26 @@ function initials(name = '') {
   return name.split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0].toUpperCase()).join('') || '?'
 }
 
+function SoundIcon({ muted = false }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <path d="M4 10v4h3l5 4V6l-5 4H4Z" />
+      {muted
+        ? <path d="m16 9 5 6m0-6-5 6" />
+        : <><path d="M16 9.5a4 4 0 0 1 0 5" /><path d="M18.5 7a7.5 7.5 0 0 1 0 10" /></>}
+    </svg>
+  )
+}
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true" focusable="false">
+      <circle cx="10.8" cy="10.8" r="6.3" />
+      <path d="m15.5 15.5 4.2 4.2" />
+    </svg>
+  )
+}
+
 export default function Navbar({ onEnter }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -84,10 +104,12 @@ export default function Navbar({ onEnter }) {
 
       <div className="nav-right">
         <button className="icon-btn" title={t('nav.ambientSound')} aria-label={t('nav.toggleAmbientSound')} aria-pressed={soundOn} onClick={toggleSound}>
-          {soundOn ? '🔊' : '🔈'}
+          <SoundIcon muted={!soundOn} />
         </button>
         <LanguageSwitcher />
-        <button className="icon-btn" title={t('nav.search')} aria-label={t('nav.search')} onClick={() => toast(t('nav.searchToast'))}>⌕</button>
+        <button className="icon-btn" title={t('nav.search')} aria-label={t('nav.search')} onClick={() => toast(t('nav.searchToast'))}>
+          <SearchIcon />
+        </button>
 
         {user ? (
           <div className="account" ref={menuRef}>
