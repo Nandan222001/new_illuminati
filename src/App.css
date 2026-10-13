@@ -775,7 +775,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;colo
 .insta-grid.tight{gap:4px}
 
 /* about */
-.pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:8px 40px 0}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:8px 40px 0}
 .pillar{border:1px solid rgba(230,200,120,.14);border-radius:10px;padding:26px 22px;background:#0a0706;transition:.3s}
 .pillar:hover{border-color:rgba(230,200,120,.5);transform:translateY(-3px)}
 .pillar-icon{display:block;font-size:30px;color:var(--gold);margin-bottom:12px;filter:drop-shadow(0 0 12px rgba(230,200,120,.4))}

@@ -7,8 +7,8 @@ import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 
-const PILLARS = ['storyFirst', 'clearlyLabelled', 'communityLed', 'noClaims']
-const PILLAR_ICONS = { storyFirst: '◬', clearlyLabelled: '◈', communityLed: '◎', noClaims: '⊘' }
+const PILLARS = ['storyFirst', 'clearlyLabelled', 'communityLed']
+const PILLAR_ICONS = { storyFirst: '◬', clearlyLabelled: '◈', communityLed: '◎' }
 
 export default function About() {
   const page = PAGES.about
