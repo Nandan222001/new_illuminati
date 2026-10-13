@@ -273,10 +273,10 @@
   "archiveDetail": {
     "seeRituals": "SEE THE RITUALS ›",
     "allChambers": "ALL CHAMBERS",
-    "osirisTitle": "BASIC INFORMATION — OSIRIS",
-    "osirisText": "OSIRIS is the live observation layer the Third Eye chamber points at: a real-time map of open signals — aviation layers, maritime traffic, public cameras, live news, seismic activity, global incidents, undersea cables and day/night terrain. It is a viewing instrument, not a claim: the chamber simply keeps the eye where it has always been aimed. Look, then decide what you are looking at.",
-    "osirisCta": "OPEN THE OSIRIS INTERFACE",
-    "osirisFrame": "The interface opens in a new tab (osirisai.live).",
+    "osirisTitle": "EVERYTHING UNDER CONTROL",
+    "osirisText": "Everything Under Control is the live observation layer the Third Eye chamber points at: a real-time map of open signals — aviation layers, maritime traffic, public cameras, live news, seismic activity, global incidents, undersea cables and day/night terrain. It is a viewing instrument, not a claim: the chamber simply keeps the eye where it has always been aimed. Look, then decide what you are looking at.",
+    "osirisCta": "OPEN THE LIVE INTERFACE",
+    "osirisFrame": "The interface opens in a new tab.",
     "osirisBadge": "LIVE FEED"
   },
   "rituals": {
@@ -670,7 +670,7 @@
         "name": "THE THIRD EYE",
         "short": "perception beyond sight",
         "meaning": "The eye that sees what is hidden. In the story it is the first mark an initiate receives — the reminder to question everything, including the Brotherhood itself.",
-        "about": "Every tradition that drew this eye meant the same thing: sight that does not depend on the eyes. In Hindu practice it is Ajna, the brow centre, opened in meditation; Descartes placed the soul in the pineal gland at the middle of the brain; the Great Seal of 1782 set a radiant eye above a pyramid. The Brotherhood keeps it as the first chamber — the mark that says a seeker has begun to look past the obvious. Its live instrument, OSIRIS, is described in the Third Eye chamber of the Archive."
+        "about": "Every tradition that drew this eye meant the same thing: sight that does not depend on the eyes. In Hindu practice it is Ajna, the brow centre, opened in meditation; Descartes placed the soul in the pineal gland at the middle of the brain; the Great Seal of 1782 set a radiant eye above a pyramid. The Brotherhood keeps it as the first chamber — the mark that says a seeker has begun to look past the obvious. Its live instrument, Everything Under Control, is described in the Third Eye chamber of the Archive."
       },
       "the-pyramid": {
         "name": "THE PYRAMID",
