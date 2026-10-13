@@ -149,7 +149,6 @@ export default function Home() {
             <article className="stat-card">
               <div className="stat-value">6K+</div>
               <h3>{t('home.chambersStatLabel')}</h3>
-              <p>{t('home.chambersStatNote')}</p>
             </article>
           </div>
         </div>
