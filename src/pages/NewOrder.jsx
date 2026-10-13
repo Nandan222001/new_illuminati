@@ -57,7 +57,7 @@ export default function NewOrder() {
         </div>
         {/* … joined members directly below it. */}
         <div className="cd-members hero-members">
-          <b>{MEMBERS_JOINED_DISPLAY}</b>
+          <b><span className="live-dot" aria-hidden="true"></span>{MEMBERS_JOINED_DISPLAY}</b>
           <span>{t('countdownBar.membersJoined')}</span>
         </div>
         <div className="cd-big hero-big">666,666</div>

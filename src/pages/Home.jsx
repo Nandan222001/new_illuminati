@@ -142,7 +142,7 @@ export default function Home() {
           </div>
           <div className="stats-grid">
             <article className="stat-card live-stat">
-              <div className="stat-value members-value">{MEMBERS_JOINED_DISPLAY}</div>
+              <div className="stat-value members-value"><span className="live-dot" aria-hidden="true"></span>{MEMBERS_JOINED_DISPLAY}</div>
               <h3>{t('home.membersStatLabel')}</h3>
               <p>{t('home.membersStatNote')}</p>
             </article>
@@ -239,7 +239,7 @@ export default function Home() {
           </div>
           {/* … and the joined-members total directly below it. */}
           <div className="cd-members">
-            <b>{MEMBERS_JOINED_DISPLAY}</b>
+            <b><span className="live-dot" aria-hidden="true"></span>{MEMBERS_JOINED_DISPLAY}</b>
             <span>{t('countdownBar.membersJoined')}</span>
           </div>
           <Link to="/new-order" className="btn-ghost cd-cta">{t('home.countdownCta')}</Link>

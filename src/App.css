@@ -1588,3 +1588,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   .auth,.profile-grid,.quick-links,.content-grid,.content-row,.kpi-grid,.admin-columns,
   .quick-grid,.book-row,.book-grid,.pw-rules
 ) > *{min-width:0}
+
+/* blinking green "live" dot beside the joined-members figure */
+.live-dot{display:inline-block;width:9px;height:9px;margin-right:10px;border-radius:50%;background:#2ee66b;box-shadow:0 0 10px #2ee66b;vertical-align:middle;position:relative;top:-2px;animation:live-blink 1.2s ease-in-out infinite}
+@keyframes live-blink{0%,100%{opacity:1}50%{opacity:.15}}
+@media (prefers-reduced-motion:reduce){.live-dot{animation:none}}
