@@ -1345,8 +1345,8 @@ input[type="search"]{padding:9px 14px;font-size:12px}
 /* ---------- social links (real brand logos) ---------- */
 .social-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:34px;height:34px;border:1px solid transparent;border-radius:50%;color:#b9ad96;background:none;transition:.25s;cursor:pointer}
 .social-link:hover{color:var(--gold);border-color:var(--line);background:rgba(230,200,120,.06)}
-.social-link.empty{color:#b9ad96;cursor:pointer}
-.social-link.empty:hover{border-color:rgba(230,200,120,.2);background:rgba(255,255,255,.02);color:var(--gold)}
+.social-link.is-empty{color:#b9ad96;cursor:pointer}
+.social-link.is-empty:hover{border-color:rgba(230,200,120,.2);background:rgba(255,255,255,.02);color:var(--gold)}
 .social-link.with-label{width:auto;border-radius:20px;padding:8px 14px;font-size:10px;letter-spacing:1.5px}
 .social-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:#b9ad96}
 /* The home hero sits over a deliberately dark and busy image. Give the icon
@@ -1568,7 +1568,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 /* Ensure footer social row is always visible */
 .footer-social.social-row{display:flex!important;flex-wrap:wrap;visibility:visible;opacity:1}
 .footer-social.social-row .social-link,
-.footer-social.social-row .social-link.empty{display:inline-flex!important;color:#d9c48a;opacity:1;visibility:visible;border:1px solid rgba(230,200,120,.25);flex:0 0 34px}
+.footer-social.social-row .social-link.is-empty{display:inline-flex!important;color:#d9c48a;opacity:1;visibility:visible;border:1px solid rgba(230,200,120,.25);flex:0 0 34px}
 .footer-social.social-row .social-link svg{display:block;width:18px;height:18px;opacity:1;visibility:visible}
 
 /* ---------- RULES & REGULATIONS — TYPEWRITER / MONOSPACED FONT ---------- */

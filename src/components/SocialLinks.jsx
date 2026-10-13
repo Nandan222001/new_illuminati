@@ -27,7 +27,7 @@ export default function SocialLinks({ className = 'social-row', size = 18, platf
             <button
               key={platform}
               type="button"
-              className={`social-link empty${labels ? ' with-label' : ''}`}
+              className={`social-link is-empty${labels ? ' with-label' : ''}`}
               title={t('social.notLinked', { name })}
               aria-label={t('social.notLinked', { name })}
               onClick={() => toast(t('social.comingSoon', { name }))}
