@@ -215,7 +215,6 @@ export default function Home() {
             <div><h4>{CARDS[current].title}</h4><p>{CARDS[current].desc}</p></div>
           </div>
           <div className="autoplay">
-            {t('home.autoplayLabel')}
             <button className="pause-btn" aria-label={playing ? t('common.pause') : t('common.play')} onClick={() => setPlaying((p) => !p)}>{playing ? '❚❚' : '▶'}</button>
           </div>
         </div>

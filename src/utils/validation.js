@@ -36,6 +36,7 @@ export const SUPPORTED_EMAIL_DOMAINS = new Set([
   'zoho.com', 'zohomail.com', 'rediffmail.com', 'yandex.com', 'yandex.ru',
   'tuta.com', 'tutanota.com', 'tutanota.de', 'hey.com',
   'qq.com', '163.com', '126.com', 'yeah.net', 'foxmail.com', 'naver.com', 'daum.net', 'hanmail.net', 'mail.ru',
+  'inbox.com', 'web.de', 'freenet.de', 't-online.de', 'orange.fr', 'laposte.net', 'free.fr', 'libero.it', 'virgilio.it', 'wp.pl', 'onet.pl', 'interia.pl', 'seznam.cz', 'centrum.cz', 'rediff.com', 'sify.com', 'btinternet.com', 'virginmedia.com', 'comcast.net', 'att.net', 'verizon.net',
 ])
 
 export function normalizeEmail(value) {
