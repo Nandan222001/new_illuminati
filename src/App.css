@@ -319,10 +319,10 @@ footer{border-top:1px solid var(--line);background:#020101;padding:34px 40px 22p
 .foot-about .social-row{margin-top:6px}
 .foot-copy{font-size:10px;color:#5d554a;margin-top:26px;padding-top:16px;border-top:1px solid rgba(230,200,120,.08);text-align:center;letter-spacing:1px}
 /* ---------- consent gate + rules page ---------- */
-.consent-gate{position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);padding:16px}
-.consent-box{width:100%;max-width:660px;height:min(92vh,800px);max-height:min(92vh,800px);display:flex;flex-direction:column;background:linear-gradient(180deg,#120b08,#050203);border:1px solid rgba(230,200,120,.35);border-radius:14px;padding:26px 26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.consent-gate{position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom));overflow:hidden;height:100vh;height:100dvh}
+.consent-box{width:100%;max-width:660px;height:auto;max-height:min(92vh,800px);max-height:min(calc(100dvh - 32px),800px);display:flex;flex-direction:column;background:linear-gradient(180deg,#120b08,#050203);border:1px solid rgba(230,200,120,.35);border-radius:14px;padding:26px 26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .consent-mark{display:block;flex:0 0 auto;margin:0 auto 10px}
-.consent-scroll{flex:1 1 0;overflow:auto;overscroll-behavior:contain;min-height:0;border:1px solid rgba(230,200,120,.16);border-radius:10px;padding:8px 18px;background:rgba(255,255,255,.02)}
+.consent-scroll{flex:1 1 auto;max-height:max(180px,calc(100dvh - 330px));overflow:auto;overscroll-behavior:contain;min-height:0;border:1px solid rgba(230,200,120,.16);border-radius:10px;padding:8px 18px;background:rgba(255,255,255,.02)}
 /* The gate shows the complete TermsDocument; only its viewport scrolls. */
 .consent-scroll .terms-doc{padding:8px 2px}
 .consent-check{display:flex;flex-direction:row;align-items:flex-start;flex-shrink:0;gap:12px;margin:12px 0 14px;font-size:12px;line-height:1.55;text-align:left}
