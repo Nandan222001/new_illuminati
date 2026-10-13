@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CARDS, INSTA_IMAGES, MEMBERS_JOINED_DISPLAY, PAGES, RITUALS, getTimeLeft } from '../data/content'
+import { CARDS, INSTA_IMAGES, MEMBERS_JOINED_DISPLAY, PAGES, getTimeLeft } from '../data/content'
 import { useLocalizedCards, useLocalizedSymbols } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
@@ -11,7 +11,6 @@ import { useIsMobile } from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import SymbolIcon from '../components/SymbolIcon'
 import BrandFlame from '../components/BrandFlame'
-import CountUpNumber from '../components/CountUpNumber'
 import SocialLinks from '../components/SocialLinks'
 import { SOCIAL_ICONS } from '../components/SocialIcons'
 import { useSiteSettings } from '../context/SiteSettingsContext'
@@ -148,19 +147,9 @@ export default function Home() {
               <p>{t('home.membersStatNote')}</p>
             </article>
             <article className="stat-card">
-              <div className="stat-value"><CountUpNumber value={CARDS.length} /></div>
+              <div className="stat-value">6K+</div>
               <h3>{t('home.chambersStatLabel')}</h3>
               <p>{t('home.chambersStatNote')}</p>
-            </article>
-            <article className="stat-card">
-              <div className="stat-value"><CountUpNumber value={RITUALS.length} /></div>
-              <h3>{t('home.stationsStatLabel')}</h3>
-              <p>{t('home.stationsStatNote')}</p>
-            </article>
-            <article className="stat-card">
-              <div className="stat-value"><CountUpNumber value={videos.length} /></div>
-              <h3>{t('home.episodesStatLabel')}</h3>
-              <p>{t('home.episodesStatNote')}</p>
             </article>
           </div>
         </div>
