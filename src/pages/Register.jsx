@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
@@ -12,6 +12,8 @@ export default function Register() {
   const { user, register, ready } = useAuth()
   const toast = useToast()
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from || '/archives'
   const { t } = useTranslation()
 
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '', agree: false })
@@ -23,7 +25,7 @@ export default function Register() {
   const pwCheck = useMemo(() => validatePassword(form.password), [form.password])
   const emailCheck = useMemo(() => (form.email ? validateEmail(form.email, { requireSupportedProvider: true }) : null), [form.email])
 
-  useEffect(() => { if (ready && user) navigate('/profile', { replace: true }) }, [ready, user, navigate])
+  useEffect(() => { if (ready && user) navigate(from, { replace: true }) }, [ready, user, from, navigate])
 
   const emailMessage = (result) => {
     if (!result || result.ok) return ''
@@ -72,7 +74,7 @@ export default function Register() {
       kicker={t('register.kicker')}
       title={t('nav.register')}
       sub={t('register.sub')}
-      footer={<Trans i18nKey="register.footerCta" components={[<Link to="/login" />]} />}
+      footer={<Trans i18nKey="register.footerCta" components={[<Link to="/login" state={location.state} />]} />}
     >
       <form className="form" onSubmit={submit} noValidate>
         <label>

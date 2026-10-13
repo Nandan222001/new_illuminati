@@ -8,6 +8,7 @@ import { SiteSettingsProvider } from './context/SiteSettingsContext'
 import Layout from './components/Layout'
 import AdminLayout from './components/AdminLayout'
 import ProtectedRoute from './components/ProtectedRoute'
+import PaidRoute from './components/PaidRoute'
 import SeoManager from './components/SeoManager'
 import LanguagePreference from './components/LanguagePreference'
 
@@ -49,14 +50,14 @@ export function AppRoutes() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/archives" element={<Archives />} />
-            <Route path="/archives/:slug" element={<ArchiveDetail />} />
-            <Route path="/rituals" element={<Rituals />} />
-            <Route path="/new-order" element={<NewOrder />} />
-            <Route path="/videos" element={<Videos />} />
-            <Route path="/videos/:slug" element={<VideoDetail />} />
-            <Route path="/visuals" element={<Visuals />} />
-            <Route path="/community" element={<Community />} />
+            <Route path="/archives" element={<PaidRoute><Archives /></PaidRoute>} />
+            <Route path="/archives/:slug" element={<PaidRoute><ArchiveDetail /></PaidRoute>} />
+            <Route path="/rituals" element={<PaidRoute><Rituals /></PaidRoute>} />
+            <Route path="/new-order" element={<PaidRoute><NewOrder /></PaidRoute>} />
+            <Route path="/videos" element={<PaidRoute><Videos /></PaidRoute>} />
+            <Route path="/videos/:slug" element={<PaidRoute><VideoDetail /></PaidRoute>} />
+            <Route path="/visuals" element={<PaidRoute><Visuals /></PaidRoute>} />
+            <Route path="/community" element={<PaidRoute><Community /></PaidRoute>} />
             <Route path="/about" element={<About />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/login" element={<Login />} />

@@ -61,7 +61,7 @@ export default function Login() {
       kicker={t('login.kicker')}
       title={t('nav.login')}
       sub={t('login.sub')}
-      footer={<Trans i18nKey="login.footerCta" components={[<Link to="/register" />]} />}
+      footer={<Trans i18nKey="login.footerCta" components={[<Link to="/register" state={location.state} />]} />}
     >
       {location.state?.from && (
         <div className="notice"><Trans i18nKey="login.continueNotice" values={{ from: location.state.from }} components={[<b />]} /></div>

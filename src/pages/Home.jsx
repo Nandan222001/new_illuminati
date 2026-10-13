@@ -106,9 +106,9 @@ export default function Home() {
                 <BrandFlame button />
                 <span className="cta-label">{t('home.ctaMain')} <i className="cta-arrow">›</i></span>
               </button>
-              {user
-                ? <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>
-                : <Link className="btn-ghost" to="/register">△ {t('common.becomeInitiate')}</Link>}
+              {user && <Link className="btn-ghost" to="/community">👥 {t('common.joinCommunity')}</Link>}
+              {/* "Become an initiate" button hidden for now — registration starts from ENTER THE DARK WORLD.
+              {!user && <Link className="btn-ghost" to="/register">△ {t('common.becomeInitiate')}</Link>} */}
             </div>
             <SocialLinks className="social-row hero-social" labels={false} />
           </div>
