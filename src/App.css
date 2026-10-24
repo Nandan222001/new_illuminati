@@ -1109,7 +1109,7 @@ input[type="search"]{padding:9px 14px;font-size:12px}
   .comm-body{padding:8px 16px 0}
   .comm-emblem-wrap,.comm-emblem{width:140px;height:140px}
   .comm-btns{width:100%}
-  .comm-btns .channel-btn{justify-content:flex-start}
+  .comm-btns .channel-btn{justify-content:center}
 
   /* ---- symbols: bigger rings, horizontal snap row ---- */
   .symbol-row:not(.sigil-grid){display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:10px 16px 6px;scrollbar-width:none}
@@ -1411,7 +1411,7 @@ input[type="search"]{padding:9px 14px;font-size:12px}
 .foot-handle{font-size:10px;letter-spacing:2px;color:var(--gold2)}
 a.channel{text-decoration:none}
 .channel-social-icon{flex:0 0 18px}
-.comm-btns .channel-btn{display:flex;align-items:center;justify-content:flex-start;text-align:left;width:100%;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);color:#ddd3c0;font-size:10px;letter-spacing:2px;font-weight:600;padding:10px 14px;border-radius:20px;transition:.25s;text-transform:uppercase}
+.comm-btns .channel-btn{display:flex;align-items:center;justify-content:center;text-align:center;width:100%;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);color:#ddd3c0;font-size:10px;letter-spacing:2px;font-weight:600;padding:10px 14px;border-radius:20px;transition:.25s;text-transform:uppercase}
 .comm-btns .channel-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(230,200,120,.06);transform:translateX(4px)}
 a.follow-btn{display:inline-block;text-decoration:none;cursor:pointer}
 
