@@ -1,3 +1,4 @@
+import logging
 import secrets
 from datetime import datetime, timezone
 
@@ -123,9 +124,21 @@ PENDING_PREFIX = "razorpay-unclaimed:"
 
 
 def claim_pending_payment(db: Session, user: User) -> User:
-    """Seal a member whose Razorpay payment arrived before they registered / matched their email."""
+    """Seal a member whose Razorpay payment arrived before they registered / matched their email.
+
+    Best effort: a failure here must never break registration or /auth/me.
+    """
     if user.paid:
         return user
+    try:
+        return _claim_pending_payment(db, user)
+    except Exception:  # noqa: BLE001
+        db.rollback()
+        logging.getLogger(__name__).exception("claim_pending_payment failed")
+        return user
+
+
+def _claim_pending_payment(db: Session, user: User) -> User:
     row = db.scalar(
         select(Transaction).where(
             Transaction.user_id.is_(None),
