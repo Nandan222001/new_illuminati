@@ -1595,3 +1595,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 @media (prefers-reduced-motion:reduce){.live-dot{animation:none}}
 
 .comm-btns .channel-social-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;font-size:15px;line-height:1}
+
+/* paywall page: clear the fixed header and sit centred instead of hiding under it */
+.paywall{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px}
+.paywall .initiation-notice{max-width:760px;width:100%;margin:0 auto}
