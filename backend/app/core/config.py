@@ -33,6 +33,8 @@ class Settings(BaseSettings):
 
     # Fallback only: the webhook secret is normally read from the database (Admin -> Settings -> Razorpay).
     RAZORPAY_WEBHOOK_SECRET: str = ""
+    RAZORPAY_KEY_ID: str = ""
+    RAZORPAY_KEY_SECRET: str = ""
 
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 

@@ -27,9 +27,24 @@ ORDER_PREFIX = "razorpay-order:"
 RAZORPAY_ORDERS_URL = "https://api.razorpay.com/v1/orders"
 
 
+def _pick(cfg: dict, *names: str) -> str:
+    for name in names:
+        value = cfg.get(name)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return ""
+
+
 def _razorpay_config(db: Session) -> dict:
-    """Razorpay credentials live in the database (Admin -> Settings -> Razorpay)."""
-    return admin_crud.get_settings(db).razorpay or {}
+    """Razorpay credentials live in the database (Admin -> Settings -> Razorpay); env vars are a fallback."""
+    cfg = admin_crud.get_settings(db).razorpay or {}
+    if not isinstance(cfg, dict):
+        cfg = {}
+    return {
+        "keyId": _pick(cfg, "keyId", "key_id", "razorpay_key_id", "RAZORPAY_KEY_ID") or settings.RAZORPAY_KEY_ID,
+        "keySecret": _pick(cfg, "keySecret", "key_secret", "razorpay_key_secret", "RAZORPAY_KEY_SECRET") or settings.RAZORPAY_KEY_SECRET,
+        "webhookSecret": _pick(cfg, "webhookSecret", "webhook_secret", "razorpay_webhook_secret") or settings.RAZORPAY_WEBHOOK_SECRET,
+    }
 
 
 def _create_razorpay_order(key_id: str, key_secret: str, payload: dict) -> dict:
@@ -75,6 +90,7 @@ def create_order(user: User = Depends(get_current_user), db: Session = Depends(g
     cfg = _razorpay_config(db)
     key_id, key_secret = cfg.get("keyId", ""), cfg.get("keySecret", "")
     if not key_id or not key_secret:
+        log.error("Razorpay keyId/keySecret missing in admin_settings.razorpay (id=1) and env; cannot create order")
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Payments are not configured yet.")
 
     amount = user_crud.INITIATION_FEE_INR * 100  # paise
@@ -130,7 +146,7 @@ def verify_payment(payload: VerifyRequest, user: User = Depends(get_current_user
 @router.post("/paymentwebhook")
 async def razorpay_webhook(request: Request, db: Session = Depends(get_db)):
     """Razorpay webhook (backup path): unlocks the member when a payment is captured."""
-    secret = _razorpay_config(db).get("webhookSecret") or settings.RAZORPAY_WEBHOOK_SECRET
+    secret = _razorpay_config(db).get("webhookSecret")
     if not secret:
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Payment webhook is not configured.")
 
