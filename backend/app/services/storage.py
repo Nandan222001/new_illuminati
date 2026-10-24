@@ -182,3 +182,104 @@ def size_label(num_bytes: int | None) -> str:
 
 def too_large_message() -> str:
     return f"The volume is larger than the {settings.MAX_EBOOK_SIZE_MB} MB limit ({_human_mb(settings.max_ebook_bytes)})."
+
+
+# ---------------------------------------------------------------------------
+# Videos (admin uploads) — same rules as e-books: stored outside any web root,
+# opaque keys, streamed only through an entitlement-checked endpoint.
+# ---------------------------------------------------------------------------
+
+VIDEO_KEY_RE = KEY_RE
+ALLOWED_VIDEO_TYPES: dict[str, str] = {
+    ".mp4": "video/mp4",
+    ".m4v": "video/mp4",
+    ".mov": "video/quicktime",
+    ".webm": "video/webm",
+    ".ogv": "video/ogg",
+}
+ALLOWED_VIDEO_LABEL = "MP4, WebM, MOV, M4V or OGV"
+
+
+def ensure_video_dir() -> Path:
+    settings.videos_dir.mkdir(parents=True, exist_ok=True)
+    return settings.videos_dir
+
+
+def _looks_like_video(extension: str, head: bytes) -> bool:
+    if extension in (".mp4", ".m4v", ".mov"):
+        return head[4:8] == b"ftyp" or head[4:8] in (b"moov", b"mdat", b"free", b"wide", b"skip")
+    if extension == ".webm":
+        return head.startswith(b"\x1a\x45\xdf\xa3")
+    if extension == ".ogv":
+        return head.startswith(b"OggS")
+    return False
+
+
+def resolve_video_path(key: str) -> Path:
+    if not key or not VIDEO_KEY_RE.match(key):
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Invalid video reference.")
+    directory = ensure_video_dir()
+    path = (directory / key).resolve()
+    if path.parent != directory.resolve() or path.suffix.lower() not in ALLOWED_VIDEO_TYPES:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Invalid video reference.")
+    if not path.is_file():
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "The video file is no longer on the shelf.")
+    return path
+
+
+async def save_video_upload(upload: UploadFile) -> StoredEbook:
+    """Streams an uploaded video to disk in 1 MiB chunks, enforcing type and size."""
+    original_name = Path(upload.filename or "video.mp4").name
+    extension = Path(original_name).suffix.lower()
+    if extension not in ALLOWED_VIDEO_TYPES:
+        raise HTTPException(status.HTTP_415_UNSUPPORTED_MEDIA_TYPE, f"Only {ALLOWED_VIDEO_LABEL} videos are accepted.")
+
+    directory = ensure_video_dir()
+    key = f"{_clean_stem(original_name)}-{secrets.token_hex(8)}{extension}"
+    target = directory / key
+    scratch = directory / f".{secrets.token_hex(8)}.part"
+
+    digest = hashlib.sha256()
+    size = 0
+    try:
+        with scratch.open("wb") as handle:
+            first_chunk = True
+            while True:
+                chunk = await upload.read(CHUNK_SIZE)
+                if not chunk:
+                    break
+                if first_chunk:
+                    first_chunk = False
+                    if not _looks_like_video(extension, chunk[:16]):
+                        raise HTTPException(
+                            status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+                            f"That file is not a valid {extension.lstrip('.').upper()} video.",
+                        )
+                size += len(chunk)
+                if size > settings.max_video_bytes:
+                    raise HTTPException(
+                        status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                        f"The video is larger than the {settings.MAX_VIDEO_SIZE_MB} MB limit.",
+                    )
+                digest.update(chunk)
+                handle.write(chunk)
+        if size == 0:
+            raise HTTPException(status.HTTP_400_BAD_REQUEST, "The uploaded file is empty.")
+        scratch.replace(target)
+    except BaseException:
+        scratch.unlink(missing_ok=True)
+        raise
+
+    return StoredEbook(
+        key=key,
+        path=target,
+        original_name=original_name,
+        size=size,
+        sha256=digest.hexdigest(),
+        content_type=ALLOWED_VIDEO_TYPES[extension],
+        extension=extension,
+    )
+
+
+def delete_stored_video(key: str) -> None:
+    resolve_video_path(key).unlink(missing_ok=True)

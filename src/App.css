@@ -1599,3 +1599,20 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 /* paywall page: clear the fixed header and sit centred instead of hiding under it */
 .paywall{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px}
 .paywall .initiation-notice{max-width:760px;width:100%;margin:0 auto}
+
+/* ---------- e-book reader: canvas pages, read-only ---------- */
+.ebook-stage{overflow:auto;-webkit-overflow-scrolling:touch}
+.ebook-pages{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px}
+.ebook-page{display:block;max-width:100%;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.5);-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;pointer-events:none}
+.ebook-watermark{position:absolute;inset:0;overflow:hidden;pointer-events:none;display:flex;flex-wrap:wrap;gap:60px 40px;align-content:flex-start;justify-content:center;opacity:.07;transform:rotate(-24deg) scale(1.4);color:#000;font-size:13px;letter-spacing:2px;mix-blend-mode:multiply}
+.ebook-readonly{margin-right:auto;font-size:10px;letter-spacing:1.5px;color:#8d8474;align-self:center}
+@media print{.ebook-viewer,body.ebook-open #site-main{display:none!important}}
+
+/* admin video form: upload / link switch + progress */
+.source-toggle{display:flex;gap:8px}
+.source-toggle button{flex:1;padding:10px 12px;border:1px solid rgba(230,200,120,.25);border-radius:8px;background:rgba(255,255,255,.02);color:#b9ad96;font-size:10px;letter-spacing:2px;font-weight:600}
+.source-toggle button.active{border-color:var(--gold);color:var(--gold);background:rgba(230,200,120,.08)}
+.upload-progress{position:relative;height:22px;border:1px solid rgba(230,200,120,.3);border-radius:6px;overflow:hidden}
+.upload-progress span{position:absolute;inset:0 auto 0 0;background:rgba(230,200,120,.35);transition:width .2s}
+.upload-progress em{position:relative;display:block;text-align:center;font-style:normal;font-size:9px;letter-spacing:2px;line-height:22px;color:#e6c878}
+.player-loading{position:absolute;inset:0;display:grid;place-items:center;background:#000}

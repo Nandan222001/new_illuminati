@@ -1009,6 +1009,8 @@
     "empty": "The shelves are being catalogued.",
     "viewerNote": "Volumes marked sealed unlock for members whose oath is sealed.",
     "viewerLoading": "Opening the volume…",
+    "viewerPdfOnly": "The reader opens PDF volumes. This file is not a PDF.",
+    "readOnlyNote": "Read-only — downloading and copying are disabled.",
     "viewerError": "The volume could not be opened. Please try again.",
     "saved": "{{name}} saved.",
     "sealedNote": "Sealed volumes are kept behind the membership desk: the file is only served to a signed-in member whose initiation has been paid."

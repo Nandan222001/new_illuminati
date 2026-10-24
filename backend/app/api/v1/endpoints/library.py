@@ -14,15 +14,16 @@ Flow
 3. Free volumes are served to everyone, and unattached uploads are Keeper-only.
 """
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_optional_user, require_admin
 from app.core.config import settings
+from app.core.security import create_stream_token, stream_token_matches
 from app.crud import content as content_crud
 from app.db.session import get_db
-from app.models.content import Book
+from app.models.content import Book, Video
 from app.models.user import Role, User
 from app.schemas.library import EbookUploadResult, StoredEbookAdmin
 from app.services import storage
@@ -134,11 +135,13 @@ def _serve(key: str, book: Book | None, viewer: User | None, inline: bool, db: S
         # Sealed volumes must never sit in a shared/proxy cache.
         "Cache-Control": "private, no-store" if (book and book.locked) else "private, max-age=300",
     }
+    # Volumes are read-only for members: only a Keeper may ever receive an attachment.
+    as_attachment = (not inline) and viewer is not None and viewer.role == Role.ADMIN
     return FileResponse(
         path,
         media_type=storage.ALLOWED_EBOOK_TYPES.get(path.suffix.lower(), ("application/octet-stream", b""))[0],
         filename=f"{_display_name(book, key)}{path.suffix.lower()}",
-        content_disposition_type="inline" if inline else "attachment",
+        content_disposition_type="attachment" if as_attachment else "inline",
         headers=headers,
     )
 
@@ -185,3 +188,82 @@ def upload_limits():
         "accepted": sorted(storage.ALLOWED_EBOOK_TYPES),
         "label": storage.ALLOWED_EBOOK_LABEL,
     }
+
+
+# ---------------------------------------------------------------------------
+# Uploaded videos
+# ---------------------------------------------------------------------------
+
+
+@router.post("/videos", status_code=status.HTTP_201_CREATED)
+async def upload_video(file: UploadFile = File(...), _: User = Depends(require_admin)):
+    """Keeper: store a video file and return the key to put on a video record."""
+    stored = await storage.save_video_upload(file)
+    return {
+        "key": stored.key,
+        "filename": stored.original_name,
+        "size": stored.size,
+        "content_type": stored.content_type,
+    }
+
+
+@router.get("/video-limits")
+def video_limits():
+    return {
+        "max_size_mb": settings.MAX_VIDEO_SIZE_MB,
+        "max_size_bytes": settings.max_video_bytes,
+        "accepted": sorted(storage.ALLOWED_VIDEO_TYPES),
+        "label": storage.ALLOWED_VIDEO_LABEL,
+    }
+
+
+def _get_video(db: Session, video_id: int) -> Video:
+    video = content_crud.get_by_id(db, Video, video_id)
+    if not video or video.hidden:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Content item not found.")
+    return video
+
+
+def _authorize_video(video: Video, viewer: User | None) -> None:
+    if not video.locked:
+        return
+    if viewer is None:
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Sign in to watch this video.")
+    if not (viewer.paid or viewer.role == Role.ADMIN):
+        raise HTTPException(status.HTTP_402_PAYMENT_REQUIRED, "This video is sealed. Complete your initiation to watch it.")
+
+
+@router.get("/videos/{video_id}/stream-url")
+def video_stream_url(
+    video_id: int,
+    db: Session = Depends(get_db),
+    viewer: User | None = Depends(get_optional_user),
+):
+    """Entitlement check, then a tokened URL for the <video> tag (free videos need no account)."""
+    video = _get_video(db, video_id)
+    _authorize_video(video, viewer)
+    if not (video.extra or {}).get("video_key"):
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "This video has no uploaded file.")
+    return {"url": f"/api/v1/library/videos/{video.id}/stream?t={create_stream_token(video.id)}"}
+
+
+@router.get("/videos/{video_id}/stream")
+def stream_video(
+    video_id: int,
+    t: str = Query(...),
+    db: Session = Depends(get_db),
+):
+    """Serves the uploaded file with HTTP Range support (seeking), inline only."""
+    if not stream_token_matches(t, video_id):
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "This video link has expired. Reload the page.")
+    video = _get_video(db, video_id)
+    key = (video.extra or {}).get("video_key")
+    if not key:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "This video has no uploaded file.")
+    path = storage.resolve_video_path(key)
+    return FileResponse(
+        path,
+        media_type=storage.ALLOWED_VIDEO_TYPES[path.suffix.lower()],
+        content_disposition_type="inline",
+        headers={"X-Content-Type-Options": "nosniff", "Cache-Control": "private, no-store"},
+    )

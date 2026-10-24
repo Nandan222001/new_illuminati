@@ -43,6 +43,8 @@ class Settings(BaseSettings):
     # /api/v1/library/files/{key} endpoint in app/api/v1/endpoints/library.py.
     UPLOAD_DIR: str = "uploads"
     MAX_EBOOK_SIZE_MB: int = 100
+    # Admin-uploaded video files, streamed (with Range support) to entitled viewers only.
+    MAX_VIDEO_SIZE_MB: int = 1024
 
     @property
     def cors_origins_list(self) -> list[str]:
@@ -57,6 +59,14 @@ class Settings(BaseSettings):
     @property
     def ebooks_dir(self) -> Path:
         return self.uploads_root / "ebooks"
+
+    @property
+    def videos_dir(self) -> Path:
+        return self.uploads_root / "videos"
+
+    @property
+    def max_video_bytes(self) -> int:
+        return max(1, int(self.MAX_VIDEO_SIZE_MB)) * 1024 * 1024
 
     @property
     def max_ebook_bytes(self) -> int:

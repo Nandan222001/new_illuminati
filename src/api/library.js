@@ -94,26 +94,6 @@ export function deleteStoredEbook(key) {
 
 /* ------------------------------- reading it ------------------------------- */
 
-const objectUrls = new Set()
-
-function rememberObjectUrl(blob) {
-  const url = URL.createObjectURL(blob)
-  objectUrls.add(url)
-  // Long-lived enough for a full read, and revoked on unload either way.
-  setTimeout(() => releaseObjectUrl(url), 30 * 60 * 1000)
-  return url
-}
-
-export function releaseObjectUrl(url) {
-  if (!url) return
-  try { URL.revokeObjectURL(url) } catch { /* already gone */ }
-  objectUrls.delete(url)
-}
-
-if (typeof window !== 'undefined') {
-  window.addEventListener('beforeunload', () => { objectUrls.forEach((url) => releaseObjectUrl(url)) })
-}
-
 /**
  * The API path that serves this volume. Book records are preferred — the id is
  * public while the storage key is withheld from anyone who hasn't paid, so a
@@ -133,53 +113,54 @@ export function ebookRequestPath(book, { inline = false } = {}) {
   return `/library/files/${encodeURIComponent(key)}${query}`
 }
 
-/** Fetch a volume's bytes (bearer-authenticated) and return a Blob URL. */
-export async function fetchEbookObjectUrl(book, { inline = false } = {}) {
-  const blob = await apiFetchBlob(ebookRequestPath(book, { inline }))
-  return rememberObjectUrl(blob)
-}
-
-/** Open the volume in a new tab (falls back to a download if the tab is blocked). */
-export async function readEbook(book) {
-  const tab = typeof window !== 'undefined' ? window.open('', '_blank') : null
-  if (tab) {
-    tab.document.write('<title>Opening the volume…</title><body style="background:#050203;color:#c9a24b;font-family:Georgia,serif;display:grid;place-items:center;height:100vh;margin:0">Opening the volume…</body>')
-  }
-  try {
-    const url = await fetchEbookObjectUrl(book, { inline: true })
-    if (tab && !tab.closed) tab.location.replace(url)
-    else await downloadEbook(book)
-    return url
-  } catch (err) {
-    try { tab?.close() } catch { /* ignore */ }
-    throw err
-  }
-}
-
-function saveUrl(url, filename) {
-  const link = document.createElement('a')
-  link.href = url
-  link.download = filename
-  document.body.appendChild(link)
-  link.click()
-  link.remove()
-}
-
-/** Save the volume to disk with its proper name. */
-export async function downloadEbook(book) {
-  const url = await fetchEbookObjectUrl(book)
-  saveUrl(url, ebookFilename(book))
-  return url
-}
-
-export function ebookFilename(book) {
-  const base = String(field(book, 'file_name') || book?.title || 'volume').replace(/\.[a-z0-9]+$/i, '')
-  const safe = base.replace(/[^\w\s.-]+/g, '').trim().replace(/\s+/g, '-').slice(0, 80) || 'volume'
-  const ext = ebookKey(book).toLowerCase().endsWith('.epub') ? 'epub' : 'pdf'
-  return `${safe}.${ext}`
+/** Fetch a volume's bytes (bearer-authenticated) for the in-page, read-only reader. */
+export async function fetchEbookData(book) {
+  const blob = await apiFetchBlob(ebookRequestPath(book, { inline: true }))
+  return blob.arrayBuffer()
 }
 
 /** A linked (external) volume can be opened directly; stored ones cannot. */
 export function isExternalEbook(book) {
   return !isStoredEbook(book) && !!field(book, 'file')
+}
+
+
+/* --------------------------------- videos --------------------------------- */
+
+export const VIDEO_LIMITS = { maxSizeMb: 1024, accepted: ['.m4v', '.mov', '.mp4', '.ogv', '.webm'], label: 'MP4, WebM, MOV, M4V or OGV' }
+export const ACCEPTED_VIDEO_ATTR = '.mp4,.m4v,.mov,.webm,.ogv,video/mp4,video/webm,video/quicktime,video/ogg'
+
+export async function fetchVideoLimits() {
+  try {
+    const data = await apiFetch('/library/video-limits', { auth: false })
+    return {
+      maxSizeMb: Number(data?.max_size_mb) || VIDEO_LIMITS.maxSizeMb,
+      maxSizeBytes: Number(data?.max_size_bytes) || VIDEO_LIMITS.maxSizeMb * 1024 * 1024,
+      accepted: Array.isArray(data?.accepted) && data.accepted.length ? data.accepted : VIDEO_LIMITS.accepted,
+      label: data?.label || VIDEO_LIMITS.label,
+    }
+  } catch {
+    return { ...VIDEO_LIMITS, maxSizeBytes: VIDEO_LIMITS.maxSizeMb * 1024 * 1024 }
+  }
+}
+
+export function validateVideoFile(file, limits = VIDEO_LIMITS) {
+  if (!file) return 'Choose a video file to upload.'
+  const name = (file.name || '').toLowerCase()
+  if (!limits.accepted.some((ext) => name.endsWith(ext))) return `Only ${limits.label} videos are accepted.`
+  if (limits.maxSizeBytes && file.size > limits.maxSizeBytes) {
+    return `That video is ${formatBytes(file.size)} — the limit is ${limits.maxSizeMb} MB.`
+  }
+  return ''
+}
+
+/** Keeper: upload a video file, reporting progress. Resolves { key, filename, size }. */
+export function uploadVideo(file, { onProgress } = {}) {
+  return apiUpload('/library/videos', file, { onProgress })
+}
+
+/** Entitlement check + tokened stream URL for an uploaded video (free videos need no account). */
+export async function fetchVideoStreamUrl(videoId) {
+  const data = await apiFetch(`/library/videos/${encodeURIComponent(videoId)}/stream-url`)
+  return data.url
 }

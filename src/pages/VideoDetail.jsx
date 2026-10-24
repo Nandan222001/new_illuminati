@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
@@ -9,6 +9,20 @@ import Img from '../components/Img'
 import MediaPlayer from '../components/MediaPlayer'
 import SectionHead from '../components/SectionHead'
 import InitiationModal from '../components/InitiationModal'
+import { fetchVideoStreamUrl } from '../api/library'
+
+/** Plays an uploaded file (tokened stream URL) or a linked video; null while loading/failed. */
+function VideoSource({ video, onError }) {
+  const [src, setSrc] = useState(video.video_key ? '' : video.video_url || '')
+  useEffect(() => {
+    if (!video.video_key) return undefined
+    let alive = true
+    fetchVideoStreamUrl(video.id).then((u) => { if (alive) setSrc(u) }).catch((err) => { if (alive) onError(err.message) })
+    return () => { alive = false }
+  }, [video.id, video.video_key, onError])
+  if (!src) return <div className="player-loading"><span className="sigil-spinner" /></div>
+  return <MediaPlayer src={src} title={video.title} poster={video.img} />
+}
 
 export default function VideoDetail() {
   const { slug } = useParams()
@@ -22,6 +36,7 @@ export default function VideoDetail() {
 
   if (!video) return <Navigate to="/videos" replace />
   const open = canAccess(video.category) && !!user
+  const hasSource = !!(video.video_key || video.video_url)
   const related = VIDEOS.filter((v) => v.slug !== video.slug).slice(0, 4)
 
   return (
@@ -37,7 +52,8 @@ export default function VideoDetail() {
             {!playing && (
               <button type="button" className="play big-play" aria-label={t('common.play')} onClick={() => { setPlaying(true); toast(t('videoDetail.nowPlayingToast', { title: video.title })) }}>▶</button>
             )}
-            {playing && (
+            {playing && hasSource && <VideoSource video={video} onError={(m) => { setPlaying(false); toast(m) }} />}
+            {playing && !hasSource && (
               <div className="player-bar">
                 <button type="button" onClick={() => setPlaying(false)} aria-label={t('common.pause')}>❚❚</button>
                 <div className="progress"><span /></div>

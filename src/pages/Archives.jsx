@@ -10,7 +10,7 @@ import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import InitiationModal from '../components/InitiationModal'
 import EbookViewer from '../components/EbookViewer'
-import { downloadEbook, ebookFilename, isExternalEbook, isStoredEbook } from '../api/library'
+import { isExternalEbook } from '../api/library'
 import { useState } from 'react'
 
 export default function Archives() {
@@ -21,7 +21,6 @@ export default function Archives() {
   const toast = useToast()
   const [showInitiation, setShowInitiation] = useState(false)
   const [viewerBook, setViewerBook] = useState(null)
-  const [savingKey, setSavingKey] = useState('')
   const cards = useLocalizedCards()
 
   /** Stored volumes open in the in-page reader (they need the member's token);
@@ -32,23 +31,6 @@ export default function Archives() {
       return
     }
     setViewerBook(book)
-  }
-
-  const saveVolume = async (book) => {
-    setSavingKey(book.slug)
-    try {
-      if (isExternalEbook(book)) {
-        // Hosted elsewhere: hand it to the browser, we cannot count or gate it.
-        window.open(book.file, '_blank', 'noopener')
-      } else {
-        await downloadEbook(book)
-        toast(t('library.saved', { name: ebookFilename(book) }))
-      }
-    } catch (err) {
-      toast(err.message)
-    } finally {
-      setSavingKey('')
-    }
   }
 
   // Keeper-added chambers come from the API; built-in chambers stay translated.
@@ -93,7 +75,6 @@ export default function Archives() {
               const sealed = b.category === 'paid' && !open
               // Redacted rows carry `has_file` instead of a file link.
               const hasFile = !!b.file || !!b.has_file
-              const browsing = savingKey === b.slug
               return (
                 <article className={`book-card${sealed ? ' sealed' : ''}`} key={b.slug}>
                   <div className="book-cover">
@@ -115,9 +96,6 @@ export default function Archives() {
                   ) : hasFile ? (
                     <div className="book-actions">
                       <button type="button" className="btn-gold small" onClick={() => readVolume(b)}>{t('library.read')}</button>
-                      <button type="button" className="btn-ghost small" onClick={() => saveVolume(b)} disabled={browsing}>
-                        {browsing ? `${t('library.download')} …` : `${t('library.download')} ⤓`}
-                      </button>
                     </div>
                   ) : (
                     <>

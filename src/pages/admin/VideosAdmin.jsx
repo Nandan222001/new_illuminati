@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
+import { ACCEPTED_VIDEO_ATTR, fetchVideoLimits, formatBytes, uploadVideo, validateVideoFile, VIDEO_LIMITS } from '../../api/library'
 
 const TAGS = ['fiction', 'theory', 'fact']
 const TAG_LABEL = { fiction: 'STORY', theory: 'THEORY', fact: 'FACT' }
@@ -13,13 +14,45 @@ export default function AdminVideos() {
   const toast = useToast()
   const [form, setForm] = useState(EMPTY)
   const [showHidden, setShowHidden] = useState(false)
+  const [source, setSource] = useState('upload') // 'upload' | 'link'
+  const [file, setFile] = useState(null)
+  const [progress, setProgress] = useState(0)
+  const [busy, setBusy] = useState(false)
+  const [limits, setLimits] = useState({ ...VIDEO_LIMITS, maxSizeBytes: VIDEO_LIMITS.maxSizeMb * 1024 * 1024 })
+
+  useEffect(() => { fetchVideoLimits().then(setLimits) }, [])
 
   const submit = async (e) => {
     e.preventDefault()
+    if (busy) return
     if (!form.title.trim() || !form.img.trim()) { toast('Title and thumbnail image URL are required.'); return }
-    await addVideo({ ...form, date: 'New', video_url: form.video.trim() })
-    toast(`"${form.title}" uploaded as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
-    setForm(EMPTY)
+    let stored = {}
+    if (source === 'upload') {
+      const problem = validateVideoFile(file, limits)
+      if (problem) { toast(problem); return }
+      setBusy(true)
+      try {
+        const res = await uploadVideo(file, { onProgress: setProgress })
+        stored = { video_key: res.key, video_name: res.filename, video_size: res.size }
+      } catch (err) {
+        toast(err.message)
+        setBusy(false)
+        setProgress(0)
+        return
+      }
+    } else if (!form.video.trim()) {
+      toast('Paste a video link (mp4 / YouTube / Vimeo) or switch to Upload.')
+      return
+    }
+    try {
+      await addVideo({ ...form, ...stored, date: 'New', video_url: source === 'link' ? form.video.trim() : '' })
+      toast(`"${form.title}" added as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
+      setForm(EMPTY)
+      setFile(null)
+    } finally {
+      setBusy(false)
+      setProgress(0)
+    }
   }
 
   const toggleCategory = async (v) => {
@@ -37,7 +70,7 @@ export default function AdminVideos() {
     <>
       <div className="admin-head">
         <h1>VIDEOS</h1>
-        <p>{videos.length} episodes live. Upload new footage and mark it FREE or PAID (sealed for initiates).</p>
+        <p>{videos.length} episodes live. Upload a video file or paste a link, and mark it FREE or PAID (sealed for initiates).</p>
       </div>
 
       <section className="admin-card">
@@ -48,7 +81,20 @@ export default function AdminVideos() {
             <label><span>DURATION</span><input type="text" placeholder="12:30" value={form.dur} onChange={(e) => setForm({ ...form, dur: e.target.value })} /></label>
           </div>
           <label><span>THUMBNAIL IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
-          <label><span>VIDEO FILE / EMBED URL (mp4 / YouTube / Vimeo)</span><input type="text" placeholder="https://…/episode.mp4 or https://youtu.be/…" value={form.video} onChange={(e) => setForm({ ...form, video: e.target.value })} /></label>
+          <div className="source-toggle" role="tablist" aria-label="Video source">
+            <button type="button" role="tab" aria-selected={source === 'upload'} className={source === 'upload' ? 'active' : ''} onClick={() => setSource('upload')}>⬆ UPLOAD FILE</button>
+            <button type="button" role="tab" aria-selected={source === 'link'} className={source === 'link' ? 'active' : ''} onClick={() => setSource('link')}>🔗 PASTE LINK</button>
+          </div>
+          {source === 'upload' ? (
+            <label>
+              <span>VIDEO FILE ({limits.label}, up to {limits.maxSizeMb} MB)</span>
+              <input type="file" accept={ACCEPTED_VIDEO_ATTR} disabled={busy} onChange={(e) => setFile(e.target.files?.[0] || null)} />
+              {file && <small className="muted">{file.name} · {formatBytes(file.size)}</small>}
+            </label>
+          ) : (
+            <label><span>VIDEO LINK (mp4 / YouTube / Vimeo)</span><input type="text" placeholder="https://…/episode.mp4 or https://youtu.be/…" value={form.video} onChange={(e) => setForm({ ...form, video: e.target.value })} /></label>
+          )}
+          {busy && <div className="upload-progress" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}><span style={{ width: `${progress}%` }} /><em>UPLOADING {progress}%</em></div>}
           <label><span>DESCRIPTION</span><input type="text" placeholder="One line about the episode" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row three">
             <label><span>LABEL</span>
@@ -62,7 +108,7 @@ export default function AdminVideos() {
                 <option value="paid">PAID (sealed)</option>
               </select>
             </label>
-            <div className="upload-submit"><button type="submit" className="btn-gold full">UPLOAD ▲</button></div>
+            <div className="upload-submit"><button type="submit" className="btn-gold full" disabled={busy}>{busy ? `UPLOADING ${progress}%` : (source === 'upload' ? 'UPLOAD ▲' : 'ADD VIDEO ▲')}</button></div>
           </div>
         </form>
       </section>
@@ -77,7 +123,7 @@ export default function AdminVideos() {
             <div className="content-thumb"><Img src={v.img} alt={v.title} /></div>
             <div className="content-body">
               <span className={`tag ${v.tag}`}>{TAG_LABEL[v.tag] || v.tag.toUpperCase()}</span>
-              <span className="tag custom">{v.video_url ? 'VIDEO LINKED' : 'NO VIDEO'}</span>
+              <span className="tag custom">{v.video_key ? 'VIDEO UPLOADED' : v.video_url ? 'VIDEO LINKED' : 'NO VIDEO'}</span>
               {v.custom && <span className="tag custom">CUSTOM</span>}
               <h5>{v.title}</h5>
               <Link to={`/videos/${v.slug}`} className="sec-link">VIEW ›</Link>

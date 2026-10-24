@@ -22,7 +22,7 @@ from app.services.storage import FILE_URL_PREFIX
 router = APIRouter(prefix="/content", tags=["content"])
 
 # extra.* keys that point at (or describe) a downloadable volume's file.
-FILE_EXTRA_KEYS = ("file", "file_key", "file_name", "file_size", "file_uploaded_at")
+FILE_EXTRA_KEYS = ("file", "file_key", "file_name", "file_size", "file_uploaded_at", "video_url", "video_key", "video_name", "video_size")
 
 
 def _model_for(kind: ContentKind):
@@ -47,6 +47,8 @@ def _view_for(item, viewer: User | None):
         return item
     raw = item.extra or {}
     extra = {k: v for k, v in raw.items() if k not in FILE_EXTRA_KEYS}
+    if raw.get("video_url") or raw.get("video_key"):
+        extra["has_video"] = True
     if raw.get("file"):
         extra["has_file"] = True
         # Lets the Library know whether the hidden file is ours (fetchable with a
@@ -187,7 +189,13 @@ def delete(
     """Custom items are fully removed; built-in (seed) items are hidden and can be restored."""
     item = _get_or_404(db, kind, item_id)
     file_key = (item.extra or {}).get("file_key")
+    video_key = (item.extra or {}).get("video_key")
     result = content_crud.delete_or_hide(db, item)
+    if kind == ContentKind.VIDEO and result is None and video_key:
+        try:
+            storage.delete_stored_video(video_key)
+        except HTTPException:
+            pass
     if kind == ContentKind.BOOK and result is None and file_key:
         # The book is gone for good: don't leave its PDF orphaned on disk.
         try:

@@ -7,12 +7,10 @@ import EbookViewer from '../../components/EbookViewer'
 import {
   ACCEPTED_EBOOK_ATTR,
   deleteStoredEbook,
-  fetchEbookObjectUrl,
   fetchLibraryLimits,
   formatBytes,
   isStoredEbook,
   listStoredEbooks,
-  releaseObjectUrl,
   uploadEbook,
   validateEbookFile,
 } from '../../api/library'
@@ -158,9 +156,7 @@ export default function AdminBooks() {
 
   const peek = async (entry) => {
     try {
-      const url = await fetchEbookObjectUrl({ file_key: entry.key })
-      window.open(url, '_blank', 'noopener')
-      setTimeout(() => releaseObjectUrl(url), 60000)
+      setPreviewBook({ file_key: entry.key, title: entry.key })
     } catch (err) {
       toast(err.message)
     }
