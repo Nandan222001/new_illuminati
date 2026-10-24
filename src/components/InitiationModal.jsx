@@ -33,10 +33,23 @@ export default function InitiationModal({ open, onClose }) {
         order_id: order.orderId,
         amount: order.amount,
         currency: order.currency,
-        name: 'Illuminati Brotherhood',
-        description: t('modals.initiation.title'),
+        name: 'ILLUMINATI BROTHERHOOD',
+        description: t('modals.initiation.checkoutDescription'),
+        image: `${window.location.origin}/assets/community-emblem.jpg`,
         prefill: { name: user?.name || '', email: user?.email || '' },
-        theme: { color: '#c9a24a' },
+        // Razorpay's popup is their hosted UI; these are the knobs it exposes.
+        theme: { color: '#b8892f', backdrop_color: '#050203' },
+        config: {
+          display: {
+            blocks: {
+              upi: { name: t('modals.initiation.payUpi'), instruments: [{ method: 'upi' }] },
+              cards: { name: t('modals.initiation.payCard'), instruments: [{ method: 'card' }] },
+              other: { name: t('modals.initiation.payOther'), instruments: [{ method: 'netbanking' }, { method: 'wallet' }] },
+            },
+            sequence: ['block.upi', 'block.cards', 'block.other'],
+            preferences: { show_default_blocks: false },
+          },
+        },
         modal: {
           escape: true,
           ondismiss: () => { if (stageRef.current === 'checkout') { setStageBoth('idle'); onClose() } },
