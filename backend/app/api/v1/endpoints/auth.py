@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
-from app.core.config import settings
 from app.core.security import create_access_token
 from app.crud import user as user_crud
 from app.db.session import get_db
@@ -44,11 +43,3 @@ def update_me(payload: UpdateProfileRequest, user: User = Depends(get_current_us
         return user_crud.update_profile(db, user=user, name=payload.name)
     except ValueError as exc:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, str(exc)) from exc
-
-
-@router.post("/initiate", response_model=UserPublic)
-def initiate(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    """Simulated payment — disabled unless ALLOW_SIMULATED_PAYMENT is set; real payments arrive via the Razorpay webhook."""
-    if not settings.ALLOW_SIMULATED_PAYMENT:
-        raise HTTPException(status.HTTP_403_FORBIDDEN, "Payment is completed through the checkout; it cannot be marked paid here.")
-    return user_crud.seal_initiation(db, user)

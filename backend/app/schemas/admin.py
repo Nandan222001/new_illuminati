@@ -10,6 +10,8 @@ class RazorpaySettings(BaseModel):
     mode: str = "test"
     keyId: str = ""
     keySecret: str = ""
+    webhookSecret: str = ""
+    paymentButtonId: str = ""
 
 
 class SmtpSettings(BaseModel):
@@ -44,6 +46,8 @@ class SocialSettings(BaseModel):
 class PublicSettingsPayload(BaseModel):
     """Anonymous-safe subset of the settings that public pages may read."""
     social: SocialSettings = SocialSettings()
+    # Only the public Razorpay Payment Button id — never keys or secrets.
+    paymentButtonId: str = ""
 
 
 class AdminSettingsPayload(BaseModel):

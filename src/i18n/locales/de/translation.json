@@ -179,7 +179,6 @@
       "enterSealed": "DIE VERSIEGELTEN ARCHIVE BETRETEN ›",
       "title": "SCHLIESSE DEINE INITIATION AB",
       "bodyIntro": "Eine einmalige Gebühr von <0>₹{{fee}}</0> versiegelt deinen Schwur und schaltet jedes versiegelte Kapitel, Ritual und Video im Archiv frei.",
-      "simulatedNote": "Zahlungen sind noch nicht aktiv – es werden keine Kartendaten gesendet oder gespeichert.",
       "nameOnCard": "NAME AUF DER KARTE",
       "namePlaceholder": "Wie auf der Karte angegeben",
       "cardNumber": "KARTENNUMMER",

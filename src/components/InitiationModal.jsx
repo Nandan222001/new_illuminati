@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 import { INITIATION_FEE_INR } from '../auth/authService'
 
-// Razorpay Payment Button id (public). Override per environment with VITE_RAZORPAY_BUTTON_ID.
-const RAZORPAY_BUTTON_ID = import.meta.env.VITE_RAZORPAY_BUTTON_ID || 'pl_TrqclJ8VZTqGew'
+// The Payment Button id is saved in the database (Admin → Settings → Razorpay) and served by
+// GET /public/settings; this is only the fallback until that loads.
+const FALLBACK_BUTTON_ID = import.meta.env.VITE_RAZORPAY_BUTTON_ID || 'pl_TrqclJ8VZTqGew'
 const POLL_MS = 4000
 
 /**
@@ -17,6 +19,8 @@ const POLL_MS = 4000
 export default function InitiationModal({ open, onClose }) {
   const { user, refreshUser } = useAuth()
   const toast = useToast()
+  const { paymentButtonId } = useSiteSettings()
+  const buttonId = paymentButtonId || FALLBACK_BUTTON_ID
   const { t } = useTranslation()
   const formRef = useRef(null)
   const [checking, setChecking] = useState(false)
@@ -36,10 +40,10 @@ export default function InitiationModal({ open, onClose }) {
     const script = document.createElement('script')
     script.src = 'https://checkout.razorpay.com/v1/payment-button.js'
     script.async = true
-    script.dataset.payment_button_id = RAZORPAY_BUTTON_ID
+    script.dataset.payment_button_id = buttonId
     form.appendChild(script)
     return () => { form.innerHTML = '' }
-  }, [open, user?.paid])
+  }, [open, user?.paid, buttonId])
 
   // Watch for the webhook to confirm the payment.
   useEffect(() => {

@@ -12,6 +12,7 @@ const SiteSettingsContext = createContext(null)
  */
 export function SiteSettingsProvider({ children }) {
   const [social, setSocial] = useState({ ...DEFAULT_SOCIAL })
+  const [paymentButtonId, setPaymentButtonId] = useState('')
 
   useEffect(() => {
     setSocial(readStoredSocial())
@@ -21,7 +22,9 @@ export function SiteSettingsProvider({ children }) {
     let alive = true
     apiFetch('/public/settings', { auth: false, timeoutMs: 4000 })
       .then((data) => {
-        if (!alive || !data?.social) return
+        if (!alive) return
+        if (data?.paymentButtonId) setPaymentButtonId(data.paymentButtonId)
+        if (!data?.social) return
         const merged = Object.fromEntries(SOCIAL_PLATFORMS.map((p) => [p, data.social[p] || '']))
         const hasAny = SOCIAL_PLATFORMS.some((p) => merged[p])
         if (hasAny) setSocial(saveStoredSocial({ ...readStoredSocial(), ...merged }))
@@ -38,9 +41,10 @@ export function SiteSettingsProvider({ children }) {
 
   const value = useMemo(() => ({
     social,
+    paymentButtonId,
     updateSocial,
     setSocial: (next) => setSocial(saveStoredSocial(next)),
-  }), [social, updateSocial])
+  }), [social, paymentButtonId, updateSocial])
 
   return <SiteSettingsContext.Provider value={value}>{children}</SiteSettingsContext.Provider>
 }

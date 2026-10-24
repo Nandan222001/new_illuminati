@@ -179,7 +179,6 @@
       "enterSealed": "进入封印档案馆 ›",
       "title": "完成你的入会仪式",
       "bodyIntro": "一次性支付 <0>₹{{fee}}</0> 即可封印你的誓言，解锁档案馆中所有被封印的章节、仪式与视频。",
-      "simulatedNote": "支付尚未开通——不会发送或保存任何银行卡信息。",
       "nameOnCard": "卡片上的姓名",
       "namePlaceholder": "与卡片上显示一致",
       "cardNumber": "卡号",

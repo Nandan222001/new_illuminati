@@ -15,9 +15,9 @@ class TransactionStatus(str, enum.Enum):
 
 class Transaction(Base):
     """
-    Simulated payment record. Nothing here talks to a real payment gateway —
-    rows are created when a user completes the fictional ₹999 initiation fee,
-    and read back to build the admin revenue dashboard.
+    Payment record created by the Razorpay webhook (app/api/v1/endpoints/payments.py)
+    when a member's initiation fee is captured, and read back to build the admin
+    revenue dashboard.
     """
 
     __tablename__ = "transactions"

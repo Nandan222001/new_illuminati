@@ -184,7 +184,6 @@
       "alreadyPaid": "I HAVE PAID — CHECK STATUS",
       "checking": "CHECKING…",
       "notConfirmedYet": "Payment not confirmed yet. It can take a minute — this window updates automatically.",
-      "simulatedNote": "Payments are not live yet — no card details are sent anywhere or stored.",
       "nameOnCard": "NAME ON CARD",
       "namePlaceholder": "As it appears on the card",
       "cardNumber": "CARD NUMBER",

@@ -179,7 +179,6 @@
       "enterSealed": "ENTRAR A LOS ARCHIVOS SELLADOS ›",
       "title": "COMPLETA TU INICIACIÓN",
       "bodyIntro": "Una tarifa única de <0>₹{{fee}}</0> sella tu juramento y desbloquea todos los capítulos, rituales y videos sellados del archivo.",
-      "simulatedNote": "Los pagos aún no están activos: no se envían ni almacenan datos de tarjeta.",
       "nameOnCard": "NOMBRE EN LA TARJETA",
       "namePlaceholder": "Como aparece en la tarjeta",
       "cardNumber": "NÚMERO DE TARJETA",

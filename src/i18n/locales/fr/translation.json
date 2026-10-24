@@ -179,7 +179,6 @@
       "enterSealed": "ENTRER DANS LES ARCHIVES SCELLÉES ›",
       "title": "COMPLÉTEZ VOTRE INITIATION",
       "bodyIntro": "Des frais uniques de <0>₹{{fee}}</0> scellent votre serment et débloquent chaque chapitre, rituel et vidéo scellés de l'archive.",
-      "simulatedNote": "Les paiements ne sont pas encore actifs — aucune donnée de carte n'est envoyée ni stockée.",
       "nameOnCard": "NOM SUR LA CARTE",
       "namePlaceholder": "Tel qu'il apparaît sur la carte",
       "cardNumber": "NUMÉRO DE CARTE",

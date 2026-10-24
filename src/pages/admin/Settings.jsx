@@ -35,7 +35,7 @@ export default function AdminSettings() {
       // Mirror the social links into the public site immediately (they are
       // also served by GET /public/settings once the API is reachable).
       if (section === 'Social media') updateSocial(settings.social)
-      toast(`${section} settings saved (demo — no live provider is called).`)
+      toast(`${section} settings saved.`)
     } catch (err) {
       toast(err.message)
     }
@@ -56,7 +56,7 @@ export default function AdminSettings() {
       </div>
 
       <div className="notice">
-        ⚠ <b>Demo only.</b> Values below are saved to the database but are never sent to Razorpay, an SMTP server, Twilio, or anywhere else — no live provider call is ever made. Wire <code>backend/app/crud/admin.py</code> to real provider SDKs before accepting real credentials.
+        <b>Razorpay</b> is live: the webhook secret and payment button id below are used for real payments. SMTP and Twilio values are stored only; nothing sends email or SMS yet.
       </div>
 
       <section className="admin-card">
@@ -105,6 +105,9 @@ export default function AdminSettings() {
             <label><span>KEY ID</span><input type="text" autoComplete="off" placeholder="rzp_test_xxxxxxxxxxxx" value={rp.keyId} onChange={(e) => patch('razorpay', { keyId: e.target.value })} /></label>
           </div>
           <SecretField label="KEY SECRET" placeholder="••••••••••••••••" value={rp.keySecret} onChange={(v) => patch('razorpay', { keySecret: v })} />
+          <SecretField label="WEBHOOK SECRET" placeholder="••••••••••••••••" value={rp.webhookSecret} onChange={(v) => patch('razorpay', { webhookSecret: v })} />
+          <label><span>PAYMENT BUTTON ID</span><input type="text" autoComplete="off" placeholder="pl_xxxxxxxxxxxxxx" value={rp.paymentButtonId} onChange={(e) => patch('razorpay', { paymentButtonId: e.target.value })} /></label>
+          <p className="muted">Webhook URL: <code>https://api.illuminati-brotherhood.org/api/v1/paymentwebhook</code> — enable the <code>payment.captured</code> event.</p>
           <div className="settings-actions">
             <button type="submit" className="btn-gold">SAVE RAZORPAY</button>
             <button type="button" className="btn-ghost" onClick={() => reset('razorpay')}>RESET</button>

@@ -9,7 +9,6 @@ import {
   login as loginRequest,
   logout as logoutRequest,
   register as registerRequest,
-  sealInitiation,
   updateProfile as updateProfileRequest,
 } from '../auth/authService'
 import { TOKEN_STORAGE_KEY } from '../api/client'
@@ -95,12 +94,6 @@ export function AuthProvider({ children }) {
     return updated
   }, [])
 
-  const completeInitiation = useCallback(async () => {
-    const updated = await sealInitiation()
-    setUser(updated)
-    return updated
-  }, [])
-
   // Re-reads the signed-in member (e.g. after a Razorpay payment is confirmed by the webhook).
   const refreshUser = useCallback(async () => {
     const me = await fetchMe()
@@ -119,9 +112,8 @@ export function AuthProvider({ children }) {
     updateRole,
     removeUser,
     updateProfile,
-    completeInitiation,
     refreshUser,
-  }), [ready, user, users, isAdmin, login, register, logout, updateRole, removeUser, updateProfile, completeInitiation, refreshUser])
+  }), [ready, user, users, isAdmin, login, register, logout, updateRole, removeUser, updateProfile, refreshUser])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

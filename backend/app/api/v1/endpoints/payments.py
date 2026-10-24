@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
+from app.crud import admin as admin_crud
 from app.crud import user as user_crud
 from app.db.session import get_db
 from app.models.transaction import Transaction, TransactionStatus
@@ -26,7 +27,8 @@ def _payment_entity(event: dict) -> dict:
 @router.post("/paymentwebhook")
 async def razorpay_webhook(request: Request, db: Session = Depends(get_db)):
     """Razorpay webhook: verifies the signature, then unlocks the member whose email paid."""
-    secret = settings.RAZORPAY_WEBHOOK_SECRET
+    # Credentials are stored in the database (Admin -> Settings -> Razorpay); the env var is only a fallback.
+    secret = (admin_crud.get_settings(db).razorpay or {}).get("webhookSecret") or settings.RAZORPAY_WEBHOOK_SECRET
     if not secret:
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Payment webhook is not configured.")
 

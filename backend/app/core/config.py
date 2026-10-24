@@ -31,10 +31,8 @@ class Settings(BaseSettings):
     ADMIN_EMAIL: str = "admin@illuminati-brotherhood.org"
     ADMIN_PASSWORD: str = "GrandKeeper#2026"
 
-    # Razorpay webhook signing secret (Dashboard -> Webhooks). Never commit the real value.
+    # Fallback only: the webhook secret is normally read from the database (Admin -> Settings -> Razorpay).
     RAZORPAY_WEBHOOK_SECRET: str = ""
-    # Dev only: lets a signed-in member mark themselves paid without paying.
-    ALLOW_SIMULATED_PAYMENT: bool = False
 
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 

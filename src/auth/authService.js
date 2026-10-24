@@ -54,11 +54,6 @@ export async function updateProfile(patch) {
   return publicUser(data)
 }
 
-export async function sealInitiation() {
-  const data = await apiFetch('/auth/initiate', { method: 'POST' })
-  return publicUser(data)
-}
-
 export async function listUsers() {
   const data = await apiFetch('/users')
   return data.map(publicUser)

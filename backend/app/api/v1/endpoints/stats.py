@@ -16,7 +16,7 @@ def public_settings(response: Response, db: Session = Depends(get_db)) -> Public
     """The Keeper's social links, so public pages can render correct profiles."""
     response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
     row = admin_crud.get_settings(db)
-    return PublicSettingsPayload(social=row.social or {})
+    return PublicSettingsPayload(social=row.social or {}, paymentButtonId=(row.razorpay or {}).get("paymentButtonId", ""))
 
 
 @router.get("/stats", response_model=PublicStats)
