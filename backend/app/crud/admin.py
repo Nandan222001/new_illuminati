@@ -4,7 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models.admin_settings import AdminSettings
-from app.models.transaction import Transaction
+from app.models.transaction import Transaction, TransactionStatus
 from app.models.user import User
 
 
@@ -63,7 +63,7 @@ def revenue_series(db: Session, months: int = 6) -> list[dict]:
             year -= 1
     buckets.reverse()
 
-    rows = list(db.scalars(select(Transaction)))
+    rows = list(db.scalars(select(Transaction).where(Transaction.status == TransactionStatus.CAPTURED)))
     out = []
     for year, month, label in buckets:
         matching = [tx for tx in rows if tx.created_at.year == year and tx.created_at.month == month]

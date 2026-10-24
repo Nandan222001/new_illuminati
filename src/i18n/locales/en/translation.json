@@ -180,6 +180,12 @@
       "enterSealed": "ENTER THE SEALED ARCHIVES ›",
       "title": "COMPLETE YOUR INITIATION",
       "bodyIntro": "A one-time fee of <0>₹{{fee}}</0> seals your oath and unlocks every sealed chapter, ritual and reel in the archive.",
+      "openingCheckout": "Opening secure payment for ₹{{fee}}…",
+      "paymentFailed": "The payment did not go through. You have not been charged.",
+      "errorTitle": "PAYMENT NOT COMPLETED",
+      "tryAgain": "TRY AGAIN",
+      "confirmingTitle": "CONFIRMING PAYMENT",
+      "confirmingText": "Payment received. Sealing your oath — this takes a few seconds.",
       "payEmailNote": "Pay with the same email you registered with ({{email}}) so your account unlocks automatically.",
       "alreadyPaid": "I HAVE PAID — CHECK STATUS",
       "checking": "CHECKING…",
@@ -535,7 +541,7 @@
   "paywall": {
     "title": "This page is sealed",
     "text": "Complete your initiation for a one-time fee of ₹{{fee}} to open this link and every sealed chapter, ritual and reel.",
-    "cta": "PAY ₹{{fee}} & ENTER"
+    "cta": "PAY ₹{{fee}} TO JOIN THE DARK WORLD"
   },
   "profile": {
     "keeperKicker": "KEEPER OF THE ARCHIVE",

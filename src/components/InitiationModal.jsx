@@ -1,74 +1,86 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
-import { useToast } from '../context/ToastContext'
-import { useSiteSettings } from '../context/SiteSettingsContext'
+import { createOrder, loadRazorpay, verifyPayment } from '../api/payments'
 import { INITIATION_FEE_INR } from '../auth/authService'
 
-// The Payment Button id is saved in the database (Admin → Settings → Razorpay) and served by
-// GET /public/settings; this is only the fallback until that loads.
-const FALLBACK_BUTTON_ID = import.meta.env.VITE_RAZORPAY_BUTTON_ID || 'pl_TrqclJ8VZTqGew'
 const POLL_MS = 4000
 
 /**
- * "Complete your initiation" checkout. Payment happens on Razorpay; once it is
- * captured, Razorpay calls our webhook (POST /api/v1/paymentwebhook), which
- * unlocks the account whose email paid. While this modal is open we poll the
- * member's profile so it flips to the success state on its own.
+ * Opens Razorpay Checkout directly (no form of our own). Flow:
+ *   1. POST /payments/order creates a Razorpay order for this member,
+ *   2. Checkout opens as a popup,
+ *   3. on success POST /payments/verify checks the signature and unlocks the account,
+ *   4. the signed webhook (/paymentwebhook) is the backup if the browser never reports back.
+ * The modal only shows progress, "sealed", or an error with a retry — never a card form.
  */
 export default function InitiationModal({ open, onClose }) {
   const { user, refreshUser } = useAuth()
-  const toast = useToast()
-  const { paymentButtonId } = useSiteSettings()
-  const buttonId = paymentButtonId || FALLBACK_BUTTON_ID
   const { t } = useTranslation()
-  const formRef = useRef(null)
-  const [checking, setChecking] = useState(false)
-
-  useEffect(() => {
-    if (!open) return undefined
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, onClose])
-
-  // Mount the Razorpay button script inside the form (it renders next to itself).
-  useEffect(() => {
-    const form = formRef.current
-    if (!open || !form || user?.paid) return undefined
-    form.innerHTML = ''
-    const script = document.createElement('script')
-    script.src = 'https://checkout.razorpay.com/v1/payment-button.js'
-    script.async = true
-    script.dataset.payment_button_id = buttonId
-    form.appendChild(script)
-    return () => { form.innerHTML = '' }
-  }, [open, user?.paid, buttonId])
-
-  // Watch for the webhook to confirm the payment.
-  useEffect(() => {
-    if (!open || user?.paid) return undefined
-    const timer = window.setInterval(() => { refreshUser().catch(() => {}) }, POLL_MS)
-    return () => window.clearInterval(timer)
-  }, [open, user?.paid, refreshUser])
-
-  const checkNow = async () => {
-    setChecking(true)
-    try {
-      const me = await refreshUser()
-      if (me.paid) toast(t('modals.initiation.sealedToast'))
-      else toast(t('modals.initiation.notConfirmedYet'))
-    } catch (err) {
-      toast(err.message)
-    } finally {
-      setChecking(false)
-    }
-  }
-
+  const [stage, setStage] = useState('idle') // idle | starting | checkout | confirming | error
+  const [error, setError] = useState('')
+  const stageRef = useRef('idle')
+  const setStageBoth = (s) => { stageRef.current = s; setStage(s) }
   const paid = !!user?.paid
 
+  const start = useCallback(async () => {
+    setError('')
+    setStageBoth('starting')
+    try {
+      const [Razorpay, order] = await Promise.all([loadRazorpay(), createOrder()])
+      const rzp = new Razorpay({
+        key: order.keyId,
+        order_id: order.orderId,
+        amount: order.amount,
+        currency: order.currency,
+        name: 'Illuminati Brotherhood',
+        description: t('modals.initiation.title'),
+        prefill: { name: user?.name || '', email: user?.email || '' },
+        theme: { color: '#c9a24a' },
+        modal: {
+          escape: true,
+          ondismiss: () => { if (stageRef.current === 'checkout') { setStageBoth('idle'); onClose() } },
+        },
+        handler: async (response) => {
+          setStageBoth('confirming')
+          try {
+            await verifyPayment(response)
+            await refreshUser()
+          } catch {
+            // The webhook will still unlock the account; keep watching below.
+          }
+        },
+      })
+      rzp.on('payment.failed', (res) => {
+        setError(res?.error?.description || t('modals.initiation.paymentFailed'))
+        setStageBoth('error')
+      })
+      setStageBoth('checkout')
+      rzp.open()
+    } catch (err) {
+      setError(err.message)
+      setStageBoth('error')
+    }
+  }, [onClose, refreshUser, t, user?.email, user?.name])
+
+  // Open Checkout as soon as the modal is requested.
+  useEffect(() => {
+    if (open && !paid && stageRef.current === 'idle') start()
+    if (!open && stageRef.current !== 'checkout') setStageBoth('idle')
+  }, [open, paid, start])
+
+  // After a payment, wait for the account to flip to paid (verify or webhook).
+  useEffect(() => {
+    if (!open || paid || stage !== 'confirming') return undefined
+    const timer = window.setInterval(() => { refreshUser().catch(() => {}) }, POLL_MS)
+    return () => window.clearInterval(timer)
+  }, [open, paid, stage, refreshUser])
+
+  const close = () => { setStageBoth('idle'); onClose() }
+
+  const visible = open && (paid || stage === 'starting' || stage === 'confirming' || stage === 'error')
   return (
-    <div className={`modal${open ? ' open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) onClose() }} role="dialog" aria-modal="true" aria-hidden={!open}>
+    <div className={`modal${visible ? ' open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget && stage !== 'confirming') close() }} role="dialog" aria-modal="true" aria-hidden={!visible}>
       <div className="modal-box init-modal">
         {paid ? (
           <>
@@ -82,22 +94,29 @@ export default function InitiationModal({ open, onClose }) {
               <Trans i18nKey="modals.initiation.doneBody" values={{ sealId: user.sealId || '' }} components={[<b style={{ color: 'var(--gold)' }} />]} />
             </p>
             <div className="modal-actions">
-              <button className="btn-gold" onClick={onClose}>{t('modals.initiation.enterSealed')}</button>
+              <button className="btn-gold" onClick={close}>{t('modals.initiation.enterSealed')}</button>
             </div>
+          </>
+        ) : stage === 'error' ? (
+          <>
+            <h3>{t('modals.initiation.errorTitle')}</h3>
+            <p>{error}</p>
+            <div className="modal-actions">
+              <button type="button" className="btn-gold" onClick={start}>{t('modals.initiation.tryAgain')}</button>
+              <button type="button" className="btn-ghost" onClick={close}>{t('modals.initiation.notNow')}</button>
+            </div>
+          </>
+        ) : stage === 'confirming' ? (
+          <>
+            <h3>{t('modals.initiation.confirmingTitle')}</h3>
+            <p>{t('modals.initiation.confirmingText')}</p>
+            <div className="sigil-spinner" aria-label="Loading" />
           </>
         ) : (
           <>
             <h3>{t('modals.initiation.title')}</h3>
-            <p>
-              <Trans i18nKey="modals.initiation.bodyIntro" values={{ fee: INITIATION_FEE_INR }} components={[<b style={{ color: 'var(--gold)' }} />]} />
-              <br /><br />
-              <span className="muted">{t('modals.initiation.payEmailNote', { email: user?.email || '' })}</span>
-            </p>
-            <form className="init-form razorpay-form" ref={formRef} />
-            <div className="modal-actions">
-              <button type="button" className="btn-gold" onClick={checkNow} disabled={checking}>{checking ? t('modals.initiation.checking') : t('modals.initiation.alreadyPaid')}</button>
-              <button type="button" className="btn-ghost" onClick={onClose}>{t('modals.initiation.notNow')}</button>
-            </div>
+            <p>{t('modals.initiation.openingCheckout', { fee: INITIATION_FEE_INR })}</p>
+            <div className="sigil-spinner" aria-label="Loading" />
           </>
         )}
       </div>

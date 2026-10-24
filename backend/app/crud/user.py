@@ -64,21 +64,24 @@ def ensure_admin_seeded(db: Session, *, email: str, password: str) -> None:
     create_user(db, name="Grand Keeper", email=email, password=password, role=Role.ADMIN)
 
 
-def seal_initiation(db: Session, user: User, *, amount: int = INITIATION_FEE_INR, note: str = "Sealed content unlock") -> User:
+def seal_initiation(
+    db: Session, user: User, *, amount: int = INITIATION_FEE_INR, note: str = "Sealed content unlock", record: bool = True
+) -> User:
     if user.paid:
         return user
     user.paid = True
     user.paid_at = datetime.now(timezone.utc)
     user.seal_id = f"IB-{secrets.token_hex(3).upper()}"
     db.add(user)
-    db.add(
-        Transaction(
-            user_id=user.id,
-            amount=amount,
-            note=note,
-            status=TransactionStatus.CAPTURED,
+    if record:
+        db.add(
+            Transaction(
+                user_id=user.id,
+                amount=amount,
+                note=note,
+                status=TransactionStatus.CAPTURED,
+            )
         )
-    )
     db.commit()
     db.refresh(user)
     return user
