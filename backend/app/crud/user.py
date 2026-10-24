@@ -63,7 +63,7 @@ def ensure_admin_seeded(db: Session, *, email: str, password: str) -> None:
     create_user(db, name="Grand Keeper", email=email, password=password, role=Role.ADMIN)
 
 
-def seal_initiation(db: Session, user: User) -> User:
+def seal_initiation(db: Session, user: User, *, amount: int = INITIATION_FEE_INR, note: str = "Sealed content unlock") -> User:
     if user.paid:
         return user
     user.paid = True
@@ -73,8 +73,8 @@ def seal_initiation(db: Session, user: User) -> User:
     db.add(
         Transaction(
             user_id=user.id,
-            amount=INITIATION_FEE_INR,
-            note="Sealed content unlock",
+            amount=amount,
+            note=note,
             status=TransactionStatus.CAPTURED,
         )
     )
@@ -117,3 +117,30 @@ def delete_user(db: Session, *, target: User, actor: User) -> None:
             raise ValueError("The Brotherhood must keep at least one Keeper.")
     db.delete(target)
     db.commit()
+
+
+PENDING_PREFIX = "razorpay-unclaimed:"
+
+
+def claim_pending_payment(db: Session, user: User) -> User:
+    """Seal a member whose Razorpay payment arrived before they registered / matched their email."""
+    if user.paid:
+        return user
+    row = db.scalar(
+        select(Transaction).where(
+            Transaction.user_id.is_(None),
+            Transaction.note.like(f"{PENDING_PREFIX}%|{user.email.lower()}"),
+        )
+    )
+    if not row:
+        return user
+    row.user_id = user.id
+    row.note = "Razorpay " + row.note[len(PENDING_PREFIX):].split("|")[0]
+    db.add(row)
+    user.paid = True
+    user.paid_at = datetime.now(timezone.utc)
+    user.seal_id = f"IB-{secrets.token_hex(3).upper()}"
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user

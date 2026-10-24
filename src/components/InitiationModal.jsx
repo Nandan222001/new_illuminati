@@ -1,63 +1,72 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import { INITIATION_FEE_INR } from '../auth/authService'
 
-const EMPTY = { cardName: '', cardNumber: '', expiry: '', cvv: '' }
+// Razorpay Payment Button id (public). Override per environment with VITE_RAZORPAY_BUTTON_ID.
+const RAZORPAY_BUTTON_ID = import.meta.env.VITE_RAZORPAY_BUTTON_ID || 'pl_TrqclJ8VZTqGew'
+const POLL_MS = 4000
 
 /**
- * Themed "complete your initiation" checkout modal, entirely simulated —
- * no payment gateway is called and none of these fields are ever stored.
- * On submit it just flips the signed-in user's local `paid` flag after a
- * short fake delay, unlocking sealed content for their account.
+ * "Complete your initiation" checkout. Payment happens on Razorpay; once it is
+ * captured, Razorpay calls our webhook (POST /api/v1/paymentwebhook), which
+ * unlocks the account whose email paid. While this modal is open we poll the
+ * member's profile so it flips to the success state on its own.
  */
 export default function InitiationModal({ open, onClose }) {
-  const { completeInitiation } = useAuth()
+  const { user, refreshUser } = useAuth()
   const toast = useToast()
   const { t } = useTranslation()
-  const [form, setForm] = useState(EMPTY)
-  const [stage, setStage] = useState('form') // 'form' | 'processing' | 'done'
-  const [sealId, setSealId] = useState('')
-  const [error, setError] = useState('')
+  const formRef = useRef(null)
+  const [checking, setChecking] = useState(false)
 
   useEffect(() => {
     if (!open) return undefined
-    const onKey = (e) => { if (e.key === 'Escape' && stage !== 'processing') onClose() }
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [open, onClose, stage])
+  }, [open, onClose])
 
+  // Mount the Razorpay button script inside the form (it renders next to itself).
   useEffect(() => {
-    if (open) { setForm(EMPTY); setStage('form'); setError('') }
-  }, [open])
+    const form = formRef.current
+    if (!open || !form || user?.paid) return undefined
+    form.innerHTML = ''
+    const script = document.createElement('script')
+    script.src = 'https://checkout.razorpay.com/v1/payment-button.js'
+    script.async = true
+    script.dataset.payment_button_id = RAZORPAY_BUTTON_ID
+    form.appendChild(script)
+    return () => { form.innerHTML = '' }
+  }, [open, user?.paid])
 
-  const submit = (e) => {
-    e.preventDefault()
-    setError('')
-    if (form.cardName.trim().length < 2) { setError(t('modals.initiation.errorName')); return }
-    if (form.cardNumber.replace(/\s/g, '').length < 12) { setError(t('modals.initiation.errorCardNumber')); return }
-    if (!/^\d{2}\s*\/\s*\d{2}$/.test(form.expiry)) { setError(t('modals.initiation.errorExpiry')); return }
-    if (form.cvv.length < 3) { setError(t('modals.initiation.errorCvv')); return }
+  // Watch for the webhook to confirm the payment.
+  useEffect(() => {
+    if (!open || user?.paid) return undefined
+    const timer = window.setInterval(() => { refreshUser().catch(() => {}) }, POLL_MS)
+    return () => window.clearInterval(timer)
+  }, [open, user?.paid, refreshUser])
 
-    setStage('processing')
-    window.setTimeout(async () => {
-      try {
-        const updated = await completeInitiation()
-        setSealId(updated?.sealId || '')
-        setStage('done')
-        toast(t('modals.initiation.sealedToast'))
-      } catch (err) {
-        setError(err.message)
-        setStage('form')
-      }
-    }, 900)
+  const checkNow = async () => {
+    setChecking(true)
+    try {
+      const me = await refreshUser()
+      if (me.paid) toast(t('modals.initiation.sealedToast'))
+      else toast(t('modals.initiation.notConfirmedYet'))
+    } catch (err) {
+      toast(err.message)
+    } finally {
+      setChecking(false)
+    }
   }
 
+  const paid = !!user?.paid
+
   return (
-    <div className={`modal${open ? ' open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget && stage !== 'processing') onClose() }} role="dialog" aria-modal="true" aria-hidden={!open}>
+    <div className={`modal${open ? ' open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) onClose() }} role="dialog" aria-modal="true" aria-hidden={!open}>
       <div className="modal-box init-modal">
-        {stage === 'done' ? (
+        {paid ? (
           <>
             <svg className="m-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
               <polygon points="50,6 95,88 5,88" stroke="#e6c878" strokeWidth="3" />
@@ -66,7 +75,7 @@ export default function InitiationModal({ open, onClose }) {
             </svg>
             <h3>{t('modals.initiation.doneTitle')}</h3>
             <p>
-              <Trans i18nKey="modals.initiation.doneBody" values={{ sealId }} components={[<b style={{ color: 'var(--gold)' }} />]} />
+              <Trans i18nKey="modals.initiation.doneBody" values={{ sealId: user.sealId || '' }} components={[<b style={{ color: 'var(--gold)' }} />]} />
             </p>
             <div className="modal-actions">
               <button className="btn-gold" onClick={onClose}>{t('modals.initiation.enterSealed')}</button>
@@ -78,35 +87,13 @@ export default function InitiationModal({ open, onClose }) {
             <p>
               <Trans i18nKey="modals.initiation.bodyIntro" values={{ fee: INITIATION_FEE_INR }} components={[<b style={{ color: 'var(--gold)' }} />]} />
               <br /><br />
-              <span className="muted">{t('modals.initiation.simulatedNote')}</span>
+              <span className="muted">{t('modals.initiation.payEmailNote', { email: user?.email || '' })}</span>
             </p>
-            <form className="form init-form" onSubmit={submit} noValidate>
-              <label>
-                <span>{t('modals.initiation.nameOnCard')}</span>
-                <input type="text" autoComplete="cc-name" placeholder={t('modals.initiation.namePlaceholder')} value={form.cardName} onChange={(e) => setForm({ ...form, cardName: e.target.value })} disabled={stage === 'processing'} />
-              </label>
-              <label>
-                <span>{t('modals.initiation.cardNumber')}</span>
-                <input type="text" inputMode="numeric" autoComplete="cc-number" placeholder="0000 0000 0000 0000" maxLength={19} value={form.cardNumber} onChange={(e) => setForm({ ...form, cardNumber: e.target.value })} disabled={stage === 'processing'} />
-              </label>
-              <div className="form-row">
-                <label>
-                  <span>{t('modals.initiation.expiry')}</span>
-                  <input type="text" autoComplete="cc-exp" placeholder="MM/YY" maxLength={5} value={form.expiry} onChange={(e) => setForm({ ...form, expiry: e.target.value })} disabled={stage === 'processing'} />
-                </label>
-                <label>
-                  <span>{t('modals.initiation.cvv')}</span>
-                  <input type="text" inputMode="numeric" autoComplete="cc-csc" placeholder="•••" maxLength={4} value={form.cvv} onChange={(e) => setForm({ ...form, cvv: e.target.value })} disabled={stage === 'processing'} />
-                </label>
-              </div>
-              {error && <div className="form-error" role="alert">{error}</div>}
-              <div className="modal-actions">
-                <button type="submit" className="btn-gold" disabled={stage === 'processing'}>
-                  {stage === 'processing' ? t('modals.initiation.sealing') : t('modals.initiation.payAndSeal', { fee: INITIATION_FEE_INR })}
-                </button>
-                <button type="button" className="btn-ghost" onClick={onClose} disabled={stage === 'processing'}>{t('modals.initiation.notNow')}</button>
-              </div>
-            </form>
+            <form className="init-form razorpay-form" ref={formRef} />
+            <div className="modal-actions">
+              <button type="button" className="btn-gold" onClick={checkNow} disabled={checking}>{checking ? t('modals.initiation.checking') : t('modals.initiation.alreadyPaid')}</button>
+              <button type="button" className="btn-ghost" onClick={onClose}>{t('modals.initiation.notNow')}</button>
+            </div>
           </>
         )}
       </div>

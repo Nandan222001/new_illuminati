@@ -101,6 +101,13 @@ export function AuthProvider({ children }) {
     return updated
   }, [])
 
+  // Re-reads the signed-in member (e.g. after a Razorpay payment is confirmed by the webhook).
+  const refreshUser = useCallback(async () => {
+    const me = await fetchMe()
+    setUser(me)
+    return me
+  }, [])
+
   const value = useMemo(() => ({
     ready,
     user,
@@ -113,7 +120,8 @@ export function AuthProvider({ children }) {
     removeUser,
     updateProfile,
     completeInitiation,
-  }), [ready, user, users, isAdmin, login, register, logout, updateRole, removeUser, updateProfile, completeInitiation])
+    refreshUser,
+  }), [ready, user, users, isAdmin, login, register, logout, updateRole, removeUser, updateProfile, completeInitiation, refreshUser])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
