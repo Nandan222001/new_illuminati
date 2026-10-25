@@ -8,7 +8,7 @@
  * bytes with the bearer token and hands the browser a short-lived Blob URL —
  * good for both reading inline and downloading.
  */
-import { apiFetch, apiFetchBlob, apiUpload } from './client'
+import { API_BASE, apiFetch, apiFetchBlob, apiUpload } from './client'
 
 /** Default limits, refreshed from GET /library/limits when the console loads. */
 export const EBOOK_LIMITS = { maxSizeMb: 100, accepted: ['.pdf', '.epub'], label: 'PDF or EPUB' }
@@ -163,4 +163,43 @@ export function uploadVideo(file, { onProgress } = {}) {
 export async function fetchVideoStreamUrl(videoId) {
   const data = await apiFetch(`/library/videos/${encodeURIComponent(videoId)}/stream-url`)
   return data.url
+}
+
+
+/* --------------------------------- images --------------------------------- */
+
+export const IMAGE_LIMITS = { maxSizeMb: 10, accepted: ['.avif', '.gif', '.jpeg', '.jpg', '.png', '.webp'], label: 'JPG, PNG, WebP, GIF or AVIF' }
+export const ACCEPTED_IMAGE_ATTR = '.jpg,.jpeg,.png,.webp,.gif,.avif,image/jpeg,image/png,image/webp,image/gif,image/avif'
+
+export async function fetchImageLimits() {
+  try {
+    const data = await apiFetch('/library/image-limits', { auth: false })
+    return {
+      maxSizeMb: Number(data?.max_size_mb) || IMAGE_LIMITS.maxSizeMb,
+      maxSizeBytes: Number(data?.max_size_bytes) || IMAGE_LIMITS.maxSizeMb * 1024 * 1024,
+      accepted: Array.isArray(data?.accepted) && data.accepted.length ? data.accepted : IMAGE_LIMITS.accepted,
+      label: data?.label || IMAGE_LIMITS.label,
+    }
+  } catch {
+    return { ...IMAGE_LIMITS, maxSizeBytes: IMAGE_LIMITS.maxSizeMb * 1024 * 1024 }
+  }
+}
+
+export function validateImageFile(file, limits = IMAGE_LIMITS) {
+  if (!file) return 'Choose an image to upload.'
+  const name = (file.name || '').toLowerCase()
+  if (!limits.accepted.some((ext) => name.endsWith(ext))) return `Only ${limits.label} images are accepted.`
+  if (limits.maxSizeBytes && file.size > limits.maxSizeBytes) return `That image is ${formatBytes(file.size)} — the limit is ${limits.maxSizeMb} MB.`
+  return ''
+}
+
+/** Public URL of an uploaded image (absolute when the API lives on another host). */
+export function imageUrlForKey(key) {
+  return `${API_BASE}/library/images/${encodeURIComponent(key)}`
+}
+
+/** Keeper: upload an image; resolves with its public URL. */
+export async function uploadImage(file, { onProgress } = {}) {
+  const res = await apiUpload('/library/images', file, { onProgress })
+  return imageUrlForKey(res.key)
 }

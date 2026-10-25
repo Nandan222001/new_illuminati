@@ -267,3 +267,37 @@ def stream_video(
         content_disposition_type="inline",
         headers={"X-Content-Type-Options": "nosniff", "Cache-Control": "private, no-store"},
     )
+
+
+# ---------------------------------------------------------------------------
+# Uploaded images (public: thumbnails, covers, gallery)
+# ---------------------------------------------------------------------------
+
+
+@router.post("/images", status_code=status.HTTP_201_CREATED)
+async def upload_image(file: UploadFile = File(...), _: User = Depends(require_admin)):
+    """Keeper: store an image and return the key; the console builds the public URL from it."""
+    stored = await storage.save_image_upload(file)
+    return {"key": stored.key, "filename": stored.original_name, "size": stored.size, "content_type": stored.content_type}
+
+
+@router.get("/image-limits")
+def image_limits():
+    return {
+        "max_size_mb": settings.MAX_IMAGE_SIZE_MB,
+        "max_size_bytes": settings.max_image_bytes,
+        "accepted": sorted(storage.ALLOWED_IMAGE_TYPES),
+        "label": storage.ALLOWED_IMAGE_LABEL,
+    }
+
+
+@router.get("/images/{key}")
+def serve_image(key: str):
+    """Public image (random, unguessable key); cached hard because the key never changes its content."""
+    path = storage.resolve_image_path(key)
+    return FileResponse(
+        path,
+        media_type=storage.ALLOWED_IMAGE_TYPES[path.suffix.lower()],
+        content_disposition_type="inline",
+        headers={"X-Content-Type-Options": "nosniff", "Cache-Control": "public, max-age=31536000, immutable"},
+    )

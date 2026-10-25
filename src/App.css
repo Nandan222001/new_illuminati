@@ -1616,3 +1616,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 .upload-progress span{position:absolute;inset:0 auto 0 0;background:rgba(230,200,120,.35);transition:width .2s}
 .upload-progress em{position:relative;display:block;text-align:center;font-style:normal;font-size:9px;letter-spacing:2px;line-height:22px;color:#e6c878}
 .player-loading{position:absolute;inset:0;display:grid;place-items:center;background:#000}
+
+/* admin image field */
+.image-field{display:flex;flex-direction:column;gap:8px}
+.image-field-label{font-size:9px;letter-spacing:2.5px;color:#8d8474}
+.image-field-preview{display:flex;align-items:center;gap:12px}
+.image-field-preview img{width:96px;height:64px;object-fit:cover;border-radius:8px;border:1px solid rgba(230,200,120,.25);background:#0a0706}

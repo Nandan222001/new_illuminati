@@ -4,6 +4,7 @@ import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
 import { ACCEPTED_VIDEO_ATTR, fetchVideoLimits, formatBytes, uploadVideo, validateVideoFile, VIDEO_LIMITS } from '../../api/library'
+import ImageField from '../../components/ImageField'
 
 const TAGS = ['fiction', 'theory', 'fact']
 const TAG_LABEL = { fiction: 'STORY', theory: 'THEORY', fact: 'FACT' }
@@ -25,7 +26,7 @@ export default function AdminVideos() {
   const submit = async (e) => {
     e.preventDefault()
     if (busy) return
-    if (!form.title.trim() || !form.img.trim()) { toast('Title and thumbnail image URL are required.'); return }
+    if (!form.title.trim() || !form.img.trim()) { toast('Title and a thumbnail image are required.'); return }
     let stored = {}
     if (source === 'upload') {
       const problem = validateVideoFile(file, limits)
@@ -80,7 +81,7 @@ export default function AdminVideos() {
             <label><span>TITLE</span><input type="text" placeholder="The Hidden Chapter" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
             <label><span>DURATION</span><input type="text" placeholder="12:30" value={form.dur} onChange={(e) => setForm({ ...form, dur: e.target.value })} /></label>
           </div>
-          <label><span>THUMBNAIL IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <ImageField label="THUMBNAIL IMAGE" value={form.img} onChange={(img) => setForm((prev) => ({ ...prev, img }))} />
           <div className="source-toggle" role="tablist" aria-label="Video source">
             <button type="button" role="tab" aria-selected={source === 'upload'} className={source === 'upload' ? 'active' : ''} onClick={() => setSource('upload')}>⬆ UPLOAD FILE</button>
             <button type="button" role="tab" aria-selected={source === 'link'} className={source === 'link' ? 'active' : ''} onClick={() => setSource('link')}>🔗 PASTE LINK</button>

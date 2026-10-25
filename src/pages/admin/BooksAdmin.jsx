@@ -4,6 +4,7 @@ import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
 import EbookViewer from '../../components/EbookViewer'
+import ImageField from '../../components/ImageField'
 import {
   ACCEPTED_EBOOK_ATTR,
   deleteStoredEbook,
@@ -72,7 +73,7 @@ export default function AdminBooks() {
   const submit = async (e) => {
     e.preventDefault()
     if (!form.title.trim()) { toast('A title is required.'); return }
-    if (!form.img.trim()) { toast('A cover image URL is required.'); return }
+    if (!form.img.trim()) { toast('A cover image is required.'); return }
     if (!file && !form.file.trim()) { toast('Choose a PDF to upload, or paste a link to a hosted volume.'); return }
 
     setBusy('create')
@@ -216,7 +217,7 @@ export default function AdminBooks() {
             )}
           </div>
 
-          <label><span>COVER IMAGE URL</span><input type="text" placeholder="/assets/your-cover.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <ImageField label="COVER IMAGE" value={form.img} onChange={(img) => setForm((prev) => ({ ...prev, img }))} />
           <label><span>OR LINK TO A HOSTED VOLUME (used only when no PDF is uploaded)</span><input type="text" placeholder="https://…/volume.pdf" value={form.file} onChange={(e) => setForm({ ...form, file: e.target.value })} /></label>
           <label><span>DESCRIPTION</span><input type="text" placeholder="One line about the volume" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row three">

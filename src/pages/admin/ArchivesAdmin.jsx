@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
+import ImageField from '../../components/ImageField'
 
 const EMPTY = { title: '', desc: '', img: '', era: '', cap: '', body: '', category: 'free' }
 
@@ -19,7 +20,7 @@ export default function AdminArchives() {
 
   const submit = async (e) => {
     e.preventDefault()
-    if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
+    if (!form.title.trim() || !form.img.trim()) { toast('Title and an image are required.'); return }
     await addArchive({
       title: form.title,
       desc: form.desc,
@@ -58,7 +59,7 @@ export default function AdminArchives() {
             <label><span>TITLE</span><input type="text" placeholder="THE SEVENTH CHAMBER" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
             <label><span>ERA / CHAMBER LABEL</span><input type="text" placeholder="Chamber VII" value={form.era} onChange={(e) => setForm({ ...form, era: e.target.value })} /></label>
           </div>
-          <label><span>IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <ImageField label="IMAGE" value={form.img} onChange={(img) => setForm((prev) => ({ ...prev, img }))} />
           <div className="form-row">
             <label><span>SHORT DESCRIPTION</span><input type="text" placeholder="One line shown on the card" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
             <label><span>CAPTION</span><input type="text" placeholder="Knowledge · Truth · Passage" value={form.cap} onChange={(e) => setForm({ ...form, cap: e.target.value })} /></label>

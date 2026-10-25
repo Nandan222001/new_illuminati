@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
+import ImageField from '../../components/ImageField'
 
 const EMPTY = { title: '', desc: '', img: '', video: '', step: '', duration: '', tags: '', category: 'free' }
 
@@ -14,7 +15,7 @@ export default function AdminRituals() {
 
   const submit = async (e) => {
     e.preventDefault()
-    if (!form.title.trim() || !form.img.trim()) { toast('Title and thumbnail image URL are required.'); return }
+    if (!form.title.trim() || !form.img.trim()) { toast('Title and a thumbnail image are required.'); return }
     const step = form.step.trim() || String(rituals.length + 1)
     const duration = form.duration.trim() || `Station ${rituals.length + 1} · Custom`
     const tags = form.tags.split(',').map((t) => t.trim()).filter(Boolean)
@@ -48,7 +49,7 @@ export default function AdminRituals() {
             <label><span>TITLE</span><input type="text" placeholder="THE MIDNIGHT VOW" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
             <label><span>STEP LABEL</span><input type="text" placeholder="VIII" value={form.step} onChange={(e) => setForm({ ...form, step: e.target.value })} /></label>
           </div>
-          <label><span>THUMBNAIL IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <ImageField label="THUMBNAIL IMAGE" value={form.img} onChange={(img) => setForm((prev) => ({ ...prev, img }))} />
           <label><span>STATION FILM URL (mp4 / YouTube / Vimeo — optional)</span><input type="text" placeholder="https://…/station.mp4 or https://youtu.be/…" value={form.video} onChange={(e) => setForm({ ...form, video: e.target.value })} /></label>
           <label><span>DESCRIPTION</span><input type="text" placeholder="What happens at this station" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
           <div className="form-row">

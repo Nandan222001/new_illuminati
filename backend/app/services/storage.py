@@ -283,3 +283,104 @@ async def save_video_upload(upload: UploadFile) -> StoredEbook:
 
 def delete_stored_video(key: str) -> None:
     resolve_video_path(key).unlink(missing_ok=True)
+
+
+# ---------------------------------------------------------------------------
+# Images (admin uploads: thumbnails, covers, gallery). Public by design — they
+# are shown on public pages — so only the type/size checks matter. SVG is not
+# accepted (it can carry script).
+# ---------------------------------------------------------------------------
+
+ALLOWED_IMAGE_TYPES: dict[str, str] = {
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
+    ".gif": "image/gif",
+    ".avif": "image/avif",
+}
+ALLOWED_IMAGE_LABEL = "JPG, PNG, WebP, GIF or AVIF"
+
+
+def ensure_image_dir() -> Path:
+    settings.images_dir.mkdir(parents=True, exist_ok=True)
+    return settings.images_dir
+
+
+def _looks_like_image(extension: str, head: bytes) -> bool:
+    if extension in (".jpg", ".jpeg"):
+        return head.startswith(b"\xff\xd8\xff")
+    if extension == ".png":
+        return head.startswith(b"\x89PNG\r\n\x1a\n")
+    if extension == ".gif":
+        return head[:6] in (b"GIF87a", b"GIF89a")
+    if extension == ".webp":
+        return head[:4] == b"RIFF" and head[8:12] == b"WEBP"
+    if extension == ".avif":
+        return head[4:8] == b"ftyp"
+    return False
+
+
+def resolve_image_path(key: str) -> Path:
+    if not key or not KEY_RE.match(key):
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Invalid image reference.")
+    directory = ensure_image_dir()
+    path = (directory / key).resolve()
+    if path.parent != directory.resolve() or path.suffix.lower() not in ALLOWED_IMAGE_TYPES:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Invalid image reference.")
+    if not path.is_file():
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Image not found.")
+    return path
+
+
+async def save_image_upload(upload: UploadFile) -> StoredEbook:
+    original_name = Path(upload.filename or "image.jpg").name
+    extension = Path(original_name).suffix.lower()
+    if extension not in ALLOWED_IMAGE_TYPES:
+        raise HTTPException(status.HTTP_415_UNSUPPORTED_MEDIA_TYPE, f"Only {ALLOWED_IMAGE_LABEL} images are accepted.")
+
+    directory = ensure_image_dir()
+    key = f"{_clean_stem(original_name)}-{secrets.token_hex(8)}{extension}"
+    target = directory / key
+    scratch = directory / f".{secrets.token_hex(8)}.part"
+
+    digest = hashlib.sha256()
+    size = 0
+    try:
+        with scratch.open("wb") as handle:
+            first_chunk = True
+            while True:
+                chunk = await upload.read(CHUNK_SIZE)
+                if not chunk:
+                    break
+                if first_chunk:
+                    first_chunk = False
+                    if not _looks_like_image(extension, chunk[:16]):
+                        raise HTTPException(
+                            status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+                            f"That file is not a valid {extension.lstrip('.').upper()} image.",
+                        )
+                size += len(chunk)
+                if size > settings.max_image_bytes:
+                    raise HTTPException(
+                        status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                        f"The image is larger than the {settings.MAX_IMAGE_SIZE_MB} MB limit.",
+                    )
+                digest.update(chunk)
+                handle.write(chunk)
+        if size == 0:
+            raise HTTPException(status.HTTP_400_BAD_REQUEST, "The uploaded file is empty.")
+        scratch.replace(target)
+    except BaseException:
+        scratch.unlink(missing_ok=True)
+        raise
+
+    return StoredEbook(
+        key=key,
+        path=target,
+        original_name=original_name,
+        size=size,
+        sha256=digest.hexdigest(),
+        content_type=ALLOWED_IMAGE_TYPES[extension],
+        extension=extension,
+    )

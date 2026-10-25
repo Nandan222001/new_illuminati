@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useContent } from '../../context/ContentContext'
 import { useToast } from '../../context/ToastContext'
 import Img from '../../components/Img'
+import ImageField from '../../components/ImageField'
 
 const EMPTY = { title: '', cap: '', img: '', portrait: false, category: 'free' }
 
@@ -13,7 +14,7 @@ export default function AdminImages() {
 
   const submit = async (e) => {
     e.preventDefault()
-    if (!form.title.trim() || !form.img.trim()) { toast('Title and image URL are required.'); return }
+    if (!form.title.trim() || !form.img.trim()) { toast('Title and an image are required.'); return }
     await addImage(form)
     toast(`"${form.title}" added as ${form.category === 'paid' ? 'PAID' : 'FREE'}.`)
     setForm(EMPTY)
@@ -44,7 +45,7 @@ export default function AdminImages() {
             <label><span>TITLE</span><input type="text" placeholder="The Second Seal" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
             <label><span>CAPTION</span><input type="text" placeholder="Key visual · Chapter II" value={form.cap} onChange={(e) => setForm({ ...form, cap: e.target.value })} /></label>
           </div>
-          <label><span>IMAGE URL</span><input type="text" placeholder="/assets/your-image.jpg or https://…" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} /></label>
+          <ImageField label="IMAGE" value={form.img} onChange={(img) => setForm((prev) => ({ ...prev, img }))} />
           <div className="form-row three">
             <label><span>CATEGORY</span>
               <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>

@@ -45,6 +45,8 @@ class Settings(BaseSettings):
     MAX_EBOOK_SIZE_MB: int = 100
     # Admin-uploaded video files, streamed (with Range support) to entitled viewers only.
     MAX_VIDEO_SIZE_MB: int = 1024
+    # Admin-uploaded images (thumbnails, covers, gallery); served publicly with long cache.
+    MAX_IMAGE_SIZE_MB: int = 10
 
     @property
     def cors_origins_list(self) -> list[str]:
@@ -59,6 +61,14 @@ class Settings(BaseSettings):
     @property
     def ebooks_dir(self) -> Path:
         return self.uploads_root / "ebooks"
+
+    @property
+    def images_dir(self) -> Path:
+        return self.uploads_root / "images"
+
+    @property
+    def max_image_bytes(self) -> int:
+        return max(1, int(self.MAX_IMAGE_SIZE_MB)) * 1024 * 1024
 
     @property
     def videos_dir(self) -> Path:
