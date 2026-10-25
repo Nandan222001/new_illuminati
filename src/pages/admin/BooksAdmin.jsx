@@ -241,7 +241,7 @@ export default function AdminBooks() {
           </div>
           <p className="muted small-note">
             {form.category === 'paid'
-              ? 'Sealed: the file is stored on the server and only served after the member’s ₹999 initiation payment is complete.'
+              ? 'Sealed: the file is stored on the server and only served after the member’s initiation payment is complete.'
               : 'Free: every visitor can read and download this volume.'}
           </p>
         </form>

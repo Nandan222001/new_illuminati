@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
-import { INITIATION_FEE_INR } from '../auth/authService'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 import Img from '../components/Img'
 import MediaPlayer from '../components/MediaPlayer'
 import SectionHead from '../components/SectionHead'
@@ -31,6 +31,7 @@ export default function VideoDetail() {
   const [playing, setPlaying] = useState(false)
   const [showInitiation, setShowInitiation] = useState(false)
   const { user } = useAuth()
+  const { joiningFee } = useSiteSettings()
   const toast = useToast()
   const { t } = useTranslation()
 
@@ -66,7 +67,7 @@ export default function VideoDetail() {
             <b>{t('videoDetail.sealedForInitiates')}</b>
             {user ? (
               <>
-                <p>{t('videoDetail.unlocksText', { fee: INITIATION_FEE_INR })}</p>
+                <p>{t('videoDetail.unlocksText', { fee: joiningFee })}</p>
                 <div className="detail-actions">
                   <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>{t('common.sealYourOathCta')}</button>
                 </div>

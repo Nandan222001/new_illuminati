@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { apiFetch } from '../api/client'
+import { INITIATION_FEE_INR } from '../auth/authService'
 import { DEFAULT_SOCIAL, readStoredSocial, saveStoredSocial, SOCIAL_PLATFORMS } from '../utils/social'
 
 const SiteSettingsContext = createContext(null)
@@ -13,6 +14,7 @@ const SiteSettingsContext = createContext(null)
 export function SiteSettingsProvider({ children }) {
   const [social, setSocial] = useState({ ...DEFAULT_SOCIAL })
   const [paymentButtonId, setPaymentButtonId] = useState('')
+  const [joiningFee, setJoiningFee] = useState(INITIATION_FEE_INR)
 
   useEffect(() => {
     setSocial(readStoredSocial())
@@ -24,6 +26,7 @@ export function SiteSettingsProvider({ children }) {
       .then((data) => {
         if (!alive) return
         if (data?.paymentButtonId) setPaymentButtonId(data.paymentButtonId)
+        if (Number(data?.joiningFee) > 0) setJoiningFee(Number(data.joiningFee))
         if (!data?.social) return
         const merged = Object.fromEntries(SOCIAL_PLATFORMS.map((p) => [p, data.social[p] || '']))
         const hasAny = SOCIAL_PLATFORMS.some((p) => merged[p])
@@ -42,9 +45,10 @@ export function SiteSettingsProvider({ children }) {
   const value = useMemo(() => ({
     social,
     paymentButtonId,
+    joiningFee,
     updateSocial,
     setSocial: (next) => setSocial(saveStoredSocial(next)),
-  }), [social, paymentButtonId, updateSocial])
+  }), [social, paymentButtonId, joiningFee, updateSocial])
 
   return <SiteSettingsContext.Provider value={value}>{children}</SiteSettingsContext.Provider>
 }

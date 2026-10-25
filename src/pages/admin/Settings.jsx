@@ -31,7 +31,8 @@ export default function AdminSettings() {
 
   const save = async (section) => {
     try {
-      await saveSettings(settings)
+      if (section === 'Razorpay' && !(Number(settings.razorpay.joiningFee) >= 1)) { toast('Enter a joining fee of at least ₹1.'); return }
+      await saveSettings({ ...settings, razorpay: { ...settings.razorpay, joiningFee: Number(settings.razorpay.joiningFee) || 999 } })
       // Mirror the social links into the public site immediately (they are
       // also served by GET /public/settings once the API is reachable).
       if (section === 'Social media') updateSocial(settings.social)
@@ -106,6 +107,7 @@ export default function AdminSettings() {
           </div>
           <SecretField label="KEY SECRET" placeholder="••••••••••••••••" value={rp.keySecret} onChange={(v) => patch('razorpay', { keySecret: v })} />
           <SecretField label="WEBHOOK SECRET" placeholder="••••••••••••••••" value={rp.webhookSecret} onChange={(v) => patch('razorpay', { webhookSecret: v })} />
+          <label><span>JOINING FEE (₹) — one-time amount members pay</span><input type="number" min="1" max="500000" step="1" inputMode="numeric" value={rp.joiningFee} onChange={(e) => patch('razorpay', { joiningFee: e.target.value === '' ? '' : Math.max(0, Math.floor(Number(e.target.value))) })} /></label>
           <label><span>PAYMENT BUTTON ID</span><input type="text" autoComplete="off" placeholder="pl_xxxxxxxxxxxxxx" value={rp.paymentButtonId} onChange={(e) => patch('razorpay', { paymentButtonId: e.target.value })} /></label>
           <p className="muted">Webhook URL: <code>https://api.illuminati-brotherhood.org/api/v1/paymentwebhook</code> — enable the <code>payment.captured</code> event.</p>
           <div className="settings-actions">

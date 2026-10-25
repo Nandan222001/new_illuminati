@@ -93,7 +93,8 @@ def create_order(user: User = Depends(get_current_user), db: Session = Depends(g
         log.error("Razorpay keyId/keySecret missing in admin_settings.razorpay (id=1) and env; cannot create order")
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Payments are not configured yet.")
 
-    amount = user_crud.INITIATION_FEE_INR * 100  # paise
+    fee = admin_crud.joining_fee(db)  # rupees, set by the Keeper
+    amount = fee * 100  # paise
     order = _create_razorpay_order(
         key_id,
         key_secret,
@@ -107,7 +108,7 @@ def create_order(user: User = Depends(get_current_user), db: Session = Depends(g
     db.add(
         Transaction(
             user_id=user.id,
-            amount=user_crud.INITIATION_FEE_INR,
+            amount=fee,
             note=f"{ORDER_PREFIX}{order['id']}",
             status=TransactionStatus.PENDING,
         )

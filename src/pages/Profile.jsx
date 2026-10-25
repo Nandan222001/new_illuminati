@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
-import { INITIATION_FEE_INR } from '../auth/authService'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
@@ -14,6 +14,7 @@ import { isValidName } from '../utils/validation'
 
 export default function Profile() {
   const { user, isAdmin, logout, updateProfile } = useAuth()
+  const { joiningFee } = useSiteSettings()
   const { videos, rituals } = useContent()
   const toast = useToast()
   const navigate = useNavigate()
@@ -76,7 +77,7 @@ export default function Profile() {
           <div className="notice initiation-notice">
             <div>
               <b>{t('profile.oathNotSealed')}</b>
-              <p>{t('profile.completeInitiationText', { fee: INITIATION_FEE_INR })}</p>
+              <p>{t('profile.completeInitiationText', { fee: joiningFee })}</p>
             </div>
             <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>{t('common.sealYourOathCta')}</button>
           </div>

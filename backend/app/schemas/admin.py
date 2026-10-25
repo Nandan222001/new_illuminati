@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.models.transaction import TransactionStatus
 
@@ -12,6 +12,7 @@ class RazorpaySettings(BaseModel):
     keySecret: str = ""
     webhookSecret: str = ""
     paymentButtonId: str = ""
+    joiningFee: int = Field(default=999, ge=1, le=500000)
 
 
 class SmtpSettings(BaseModel):
@@ -46,8 +47,9 @@ class SocialSettings(BaseModel):
 class PublicSettingsPayload(BaseModel):
     """Anonymous-safe subset of the settings that public pages may read."""
     social: SocialSettings = SocialSettings()
-    # Only the public Razorpay Payment Button id — never keys or secrets.
+    # Only the public Razorpay Payment Button id and the joining fee — never keys or secrets.
     paymentButtonId: str = ""
+    joiningFee: int = 999
 
 
 class AdminSettingsPayload(BaseModel):

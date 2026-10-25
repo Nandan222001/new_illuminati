@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { createOrder, loadRazorpay, verifyPayment } from '../api/payments'
-import { INITIATION_FEE_INR } from '../auth/authService'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 
 const POLL_MS = 4000
 
@@ -16,6 +16,7 @@ const POLL_MS = 4000
  */
 export default function InitiationModal({ open, onClose }) {
   const { user, refreshUser } = useAuth()
+  const { joiningFee } = useSiteSettings()
   const { t } = useTranslation()
   const [stage, setStage] = useState('idle') // idle | starting | checkout | confirming | error
   const [error, setError] = useState('')
@@ -128,7 +129,7 @@ export default function InitiationModal({ open, onClose }) {
         ) : (
           <>
             <h3>{t('modals.initiation.title')}</h3>
-            <p>{t('modals.initiation.openingCheckout', { fee: INITIATION_FEE_INR })}</p>
+            <p>{t('modals.initiation.openingCheckout', { fee: joiningFee })}</p>
             <div className="sigil-spinner" aria-label="Loading" />
           </>
         )}

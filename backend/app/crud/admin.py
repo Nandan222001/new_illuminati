@@ -7,6 +7,8 @@ from app.models.admin_settings import AdminSettings
 from app.models.transaction import Transaction, TransactionStatus
 from app.models.user import User
 
+DEFAULT_JOINING_FEE = 999
+
 
 def get_settings(db: Session) -> AdminSettings:
     settings_row = db.get(AdminSettings, 1)
@@ -16,6 +18,16 @@ def get_settings(db: Session) -> AdminSettings:
         db.commit()
         db.refresh(settings_row)
     return settings_row
+
+
+def joining_fee(db: Session) -> int:
+    """The initiation fee in rupees, set by the Keeper (Admin -> Settings -> Razorpay); defaults to 999."""
+    raw = (get_settings(db).razorpay or {}).get("joiningFee")
+    try:
+        fee = int(raw)
+    except (TypeError, ValueError):
+        return DEFAULT_JOINING_FEE
+    return fee if 1 <= fee <= 500000 else DEFAULT_JOINING_FEE
 
 
 def save_settings(db: Session, *, social: dict, razorpay: dict, smtp: dict, twilio: dict) -> AdminSettings:

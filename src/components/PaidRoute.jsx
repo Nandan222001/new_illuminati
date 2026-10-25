@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
-import { INITIATION_FEE_INR } from '../auth/authService'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 import InitiationModal from './InitiationModal'
 
 /**
@@ -12,6 +12,7 @@ import InitiationModal from './InitiationModal'
  */
 export default function PaidRoute({ children }) {
   const { ready, user, isAdmin } = useAuth()
+  const { joiningFee } = useSiteSettings()
   const location = useLocation()
   const { t } = useTranslation()
   const [dismissed, setDismissed] = useState(false)
@@ -31,9 +32,9 @@ export default function PaidRoute({ children }) {
       <div className="notice initiation-notice">
         <div>
           <b>🔒 {t('paywall.title')}</b>
-          <p>{t('paywall.text', { fee: INITIATION_FEE_INR })}</p>
+          <p>{t('paywall.text', { fee: joiningFee })}</p>
         </div>
-        <button type="button" className="btn-gold" onClick={() => setDismissed(false)}>{t('paywall.cta', { fee: INITIATION_FEE_INR })}</button>
+        <button type="button" className="btn-gold" onClick={() => setDismissed(false)}>{t('paywall.cta', { fee: joiningFee })}</button>
       </div>
       <InitiationModal open={!dismissed} onClose={() => setDismissed(true)} />
     </section>
