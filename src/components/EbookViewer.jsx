@@ -19,11 +19,13 @@ import { useAuth } from '../context/AuthContext'
 const MAX_SCALE = 2
 
 async function loadPdfjs() {
-  const [pdfjs, worker] = await Promise.all([
+  // The worker is bundled as a normal .js chunk (`?worker`): a separate .mjs file is
+  // served with the wrong MIME type by some web servers, which breaks module loading.
+  const [pdfjs, workerModule] = await Promise.all([
     import('pdfjs-dist'),
-    import('pdfjs-dist/build/pdf.worker.min.mjs?url'),
+    import('pdfjs-dist/build/pdf.worker.min.mjs?worker'),
   ])
-  pdfjs.GlobalWorkerOptions.workerSrc = worker.default
+  if (!pdfjs.GlobalWorkerOptions.workerPort) pdfjs.GlobalWorkerOptions.workerPort = new workerModule.default()
   return pdfjs
 }
 
