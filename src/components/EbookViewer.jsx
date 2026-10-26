@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { fetchEbookData } from '../api/library'
+import { fetchEbookData, fetchPageImage, fetchReaderInfo } from '../api/library'
 import { useAuth } from '../context/AuthContext'
 
 /**
@@ -40,11 +40,52 @@ export default function EbookViewer({ book, open, onClose }) {
     if (!open || !book) return undefined
     let alive = true
     let doc = null
+    let observer = null
+    const urls = []
     setState({ status: 'loading', error: '', pages: 0 })
     if (pagesRef.current) pagesRef.current.innerHTML = ''
 
     ;(async () => {
       try {
+        // Preferred: the server draws each page and sends images only (correct rendering,
+        // and the volume file never reaches this device). Falls back to in-browser pdf.js.
+        const info = await fetchReaderInfo(book).catch(() => ({ mode: 'pdfjs', pages: 0 }))
+        if (info.mode === 'images' && info.pages > 0) {
+          if (!alive) return
+          setState({ status: 'ready', error: '', pages: info.pages })
+          const container = pagesRef.current
+          const stageWidth = (stageRef.current?.clientWidth || 600) * Math.min(window.devicePixelRatio || 1, 2)
+          const width = stageWidth > 900 ? 1200 : stageWidth > 640 ? 900 : 640
+          observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return
+              const slot = entry.target
+              observer.unobserve(slot)
+              fetchPageImage(book, Number(slot.dataset.page), width)
+                .then((url) => {
+                  urls.push(url)
+                  if (!alive) { URL.revokeObjectURL(url); return }
+                  const img = document.createElement('img')
+                  img.className = 'ebook-page'
+                  img.draggable = false
+                  img.alt = ''
+                  img.onload = () => { slot.style.minHeight = '0' }
+                  img.src = url
+                  slot.appendChild(img)
+                })
+                .catch(() => { slot.textContent = '⚠' })
+            })
+          }, { root: stageRef.current, rootMargin: '600px 0px' })
+          for (let n = 1; n <= info.pages; n += 1) {
+            const slot = document.createElement('div')
+            slot.className = 'ebook-slot'
+            slot.dataset.page = String(n)
+            container.appendChild(slot)
+            observer.observe(slot)
+          }
+          return
+        }
+
         const data = await fetchEbookData(book)
         const bytes = new Uint8Array(data)
         if (String.fromCharCode(...bytes.slice(0, 4)) !== '%PDF') {
@@ -79,6 +120,8 @@ export default function EbookViewer({ book, open, onClose }) {
 
     return () => {
       alive = false
+      observer?.disconnect()
+      urls.forEach((u) => URL.revokeObjectURL(u))
       try { doc?.destroy() } catch { /* already gone */ }
       if (pagesRef.current) pagesRef.current.innerHTML = ''
     }

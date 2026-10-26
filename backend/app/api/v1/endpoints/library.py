@@ -26,7 +26,7 @@ from app.db.session import get_db
 from app.models.content import Book, Video
 from app.models.user import Role, User
 from app.schemas.library import EbookUploadResult, StoredEbookAdmin
-from app.services import storage
+from app.services import pdf_render, storage
 from app.services.storage import FILE_URL_PREFIX
 
 router = APIRouter(prefix="/library", tags=["library"])
@@ -301,3 +301,77 @@ def serve_image(key: str):
         content_disposition_type="inline",
         headers={"X-Content-Type-Options": "nosniff", "Cache-Control": "public, max-age=31536000, immutable"},
     )
+
+
+# ---------------------------------------------------------------------------
+# Server-rendered reader (page images) — the volume file never reaches the browser
+# ---------------------------------------------------------------------------
+
+
+def _reader_info(path, book: Book | None, viewer: User | None) -> dict:
+    _authorize(book, viewer)
+    if path.suffix.lower() == ".pdf" and pdf_render.available():
+        return {"mode": "images", "pages": pdf_render.page_count(path)}
+    return {"mode": "pdfjs", "pages": 0}
+
+
+def _reader_page(path, book: Book | None, viewer: User | None, page: int, width: int) -> FileResponse:
+    _authorize(book, viewer)
+    if path.suffix.lower() != ".pdf" or not pdf_render.available():
+        raise HTTPException(status.HTTP_501_NOT_IMPLEMENTED, "Page rendering is not available on this server.")
+    image = pdf_render.render_page(path, page, width)
+    return FileResponse(
+        image,
+        media_type="image/png",
+        content_disposition_type="inline",
+        headers={
+            "X-Content-Type-Options": "nosniff",
+            "Cache-Control": "private, no-store" if (book and book.locked) else "private, max-age=600",
+        },
+    )
+
+
+def _book_path(db: Session, book_id: int):
+    book = content_crud.get_by_id(db, Book, book_id)
+    if not book or book.hidden:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Content item not found.")
+    key = (book.extra or {}).get("file_key")
+    if not key:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "This volume has no file on the shelf yet.")
+    return book, storage.resolve_ebook_path(key)
+
+
+@router.get("/books/{book_id}/reader")
+def book_reader(book_id: int, db: Session = Depends(get_db), viewer: User | None = Depends(get_optional_user)):
+    book, path = _book_path(db, book_id)
+    return _reader_info(path, book, viewer)
+
+
+@router.get("/books/{book_id}/pages/{page}")
+def book_page(
+    book_id: int,
+    page: int,
+    w: int = pdf_render.DEFAULT_WIDTH,
+    db: Session = Depends(get_db),
+    viewer: User | None = Depends(get_optional_user),
+):
+    book, path = _book_path(db, book_id)
+    return _reader_page(path, book, viewer, page, w)
+
+
+@router.get("/files/{key}/reader")
+def key_reader(key: str, db: Session = Depends(get_db), viewer: User | None = Depends(get_optional_user)):
+    path = storage.resolve_ebook_path(key)
+    return _reader_info(path, content_crud.find_book_by_file_key(db, key), viewer)
+
+
+@router.get("/files/{key}/pages/{page}")
+def key_page(
+    key: str,
+    page: int,
+    w: int = pdf_render.DEFAULT_WIDTH,
+    db: Session = Depends(get_db),
+    viewer: User | None = Depends(get_optional_user),
+):
+    path = storage.resolve_ebook_path(key)
+    return _reader_page(path, content_crud.find_book_by_file_key(db, key), viewer, page, w)

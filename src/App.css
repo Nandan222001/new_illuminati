@@ -1622,3 +1622,6 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 .image-field-label{font-size:9px;letter-spacing:2.5px;color:#8d8474}
 .image-field-preview{display:flex;align-items:center;gap:12px}
 .image-field-preview img{width:96px;height:64px;object-fit:cover;border-radius:8px;border:1px solid rgba(230,200,120,.25);background:#0a0706}
+
+.ebook-slot{width:100%;min-height:560px;display:flex;justify-content:center;align-items:flex-start}
+.ebook-slot .ebook-page{width:100%;height:auto}

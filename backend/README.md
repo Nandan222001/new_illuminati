@@ -66,6 +66,16 @@ backend/
 
    Interactive API docs: http://127.0.0.1:8000/docs
 
+## E-book page rendering (recommended)
+
+The reader shows server-rendered page images, which draws every PDF correctly and keeps the file off the reader's device. It needs poppler on the server:
+
+```bash
+sudo apt install poppler-utils   # provides pdftoppm and pdfinfo
+```
+
+Without it the reader falls back to in-browser rendering, which can mis-draw gradients in some PDFs. Rendered pages are cached under `uploads/render-cache/`.
+
 ## Environment variables (`.env`)
 
 | Variable | Purpose |

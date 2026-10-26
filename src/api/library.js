@@ -113,6 +113,23 @@ export function ebookRequestPath(book, { inline = false } = {}) {
   return `/library/files/${encodeURIComponent(key)}${query}`
 }
 
+/** Base API path for reader endpoints (book record preferred, storage key as fallback). */
+function readerBase(book) {
+  const path = ebookRequestPath(book, { inline: true })
+  return path.replace(/\/file\?inline=1$/, '').replace(/\?inline=1$/, '')
+}
+
+/** { mode: 'images' | 'pdfjs', pages } — images means the server renders pages for us. */
+export function fetchReaderInfo(book) {
+  return apiFetch(`${readerBase(book)}/reader`)
+}
+
+/** Blob URL of one server-rendered page (bearer-authenticated). */
+export async function fetchPageImage(book, page, width = 900) {
+  const blob = await apiFetchBlob(`${readerBase(book)}/pages/${page}?w=${width}`)
+  return URL.createObjectURL(blob)
+}
+
 /** Fetch a volume's bytes (bearer-authenticated) for the in-page, read-only reader. */
 export async function fetchEbookData(book) {
   const blob = await apiFetchBlob(ebookRequestPath(book, { inline: true }))
