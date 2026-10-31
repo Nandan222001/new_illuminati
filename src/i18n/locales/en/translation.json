@@ -546,7 +546,7 @@
   "whyFee": {
     "kicker": "BEFORE YOU PAY",
     "title": "WHY ₹{{fee}}?",
-    "sub": "Three things to know before you continue. One payment, no renewals — here is exactly what the one-time initiation fee does, and what it does not.",
+    "sub": "Three things to know before you continue — what the one-time initiation fee includes, and how the payment works.",
     "shortLink": "Why ₹{{fee}}?",
     "badges": {
       "oneTime": "ONE-TIME",
@@ -559,12 +559,12 @@
         "body": "₹{{fee}} is charged once, at initiation. It does not renew and there is no monthly or yearly charge. Paying it opens every sealed chapter, ritual, reel and library volume for as long as your account is active."
       },
       "seal": {
-        "title": "A MEMBERSHIP IN YOUR OWN NAME",
-        "body": "The fee issues your unique initiate number and membership seal, plus the joining letter and member card you download from your profile. They are personal and cannot be transferred or resold."
+        "title": "MEMBERSHIP ISSUED IN YOUR OWN NAME",
+        "body": "Paying records a membership seal ID against your account and unlocks the joining letter and member card in your Profile, issued in your name with your initiate number. They are personal and cannot be transferred or resold."
       },
       "network": {
-        "title": "MEMBERS KEEP THE ARCHIVE OPEN",
-        "body": "The fee covers what keeps this archive running: hosting, secure storage for the films and e-books, and moderation of the community. There is no ad network here — members fund the doors."
+        "title": "ONE FEE, THE WHOLE ARCHIVE",
+        "body": "The single fee covers the entire sealed archive on your account — every chamber, ritual station, reel and e-book volume, plus the community channel. There is no separate charge for the documents and no advertising on the site."
       }
     },
     "honestTitle": "GOOD TO KNOW",

@@ -61,7 +61,7 @@ actual catalogue.
 | 20 | Key-visual captions are Keeper-only | `src/pages/Visuals.jsx` |
 | 22 | Private discussion board: an initiate only ever sees their own threads with the Keepers; a Keeper sees them all | `src/api/community.js`, `src/pages/Community.jsx`, `src/pages/admin/Messages.jsx`, `backend/app/api/v1/endpoints/community.py` |
 | 24 | The Terms & Conditions are shown **verbatim** (the full entry warning, every acknowledgement point and every condition, in the original order and wording) in the entry gate and on `/rules` | `src/data/terms.js`, `src/components/TermsDocument.jsx`, `src/components/ConsentGate.jsx`, `src/pages/Rules.jsx` |
-| 25 | A **“Why ₹{{fee}}?”** step now comes before any payment: the same three reasons (one payment only, a membership in the member's own name, and the running costs of the archive) are shown in the initiation popup and on the public `/why-999` page, so the fee is explained before Razorpay Checkout ever opens | `src/components/WhyFee.jsx`, `src/components/InitiationModal.jsx`, `src/pages/Why999.jsx`, `src/App.jsx`, `src/i18n/locales/*/translation.json`, `src/App.css` |
+| 25 | A **“Why ₹{{fee}}?”** step now comes before any payment: the same three reasons (one payment only, a membership issued in the member's own name, and what the single fee includes) are shown in the initiation popup and on the public `/why-999` page, so the fee is explained before Razorpay Checkout ever opens | `src/components/WhyFee.jsx`, `src/components/InitiationModal.jsx`, `src/pages/Why999.jsx`, `src/App.jsx`, `src/i18n/locales/*/translation.json`, `src/App.css` |
 
 ### Terms & Conditions wording
 
@@ -84,10 +84,16 @@ buttons) first shows a **reasons screen** built from
 
 1. **One payment, permanent access** — charged once at initiation, no
    subscription and no auto-renewal.
-2. **A membership in your own name** — the initiate number, membership seal,
-   joining letter and member card, downloadable from `/profile`.
-3. **Members keep the archive open** — hosting, secure storage for the films and
-   e-books, and community moderation (no ad network).
+2. **Membership issued in your own name** — the seal ID recorded on payment,
+   plus the joining letter and member card (with the initiate number),
+   downloadable from `/profile`.
+3. **One fee, the whole archive** — every chamber, ritual station, reel,
+   e-book volume and the community channel on one account; no per-item charge
+   and no advertising.
+
+Only product facts go here: what the fee is charged, what it unlocks, and the
+payment terms. No claims about how the money is spent, member numbers or
+results are asserted.
 
 The same block is also a public page at **`/why-999`**, linked from the terms
 page strip, the register form's terms row, the paywall notice, the profile
