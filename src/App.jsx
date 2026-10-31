@@ -23,6 +23,7 @@ const Visuals = lazy(() => import('./pages/Visuals.jsx'))
 const Community = lazy(() => import('./pages/Community.jsx'))
 const About = lazy(() => import('./pages/About.jsx'))
 const Rules = lazy(() => import('./pages/Rules.jsx'))
+const Why999 = lazy(() => import('./pages/Why999.jsx'))
 const Login = lazy(() => import('./pages/Login.jsx'))
 const Register = lazy(() => import('./pages/Register.jsx'))
 const Profile = lazy(() => import('./pages/Profile.jsx'))
@@ -60,6 +61,7 @@ export function AppRoutes() {
             <Route path="/community" element={<PaidRoute><Community /></PaidRoute>} />
             <Route path="/about" element={<About />} />
             <Route path="/rules" element={<Rules />} />
+            <Route path="/why-999" element={<Why999 />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

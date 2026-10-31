@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
 import { useConsent } from '../context/ConsentContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 import { CONSENT_VERSION } from '../utils/consent'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
@@ -11,6 +13,7 @@ const STEP_KEYS = ['explore', 'join', 'documents', 'help']
 export default function Rules() {
   const { t } = useTranslation()
   const { consent, accept } = useConsent()
+  const { joiningFee } = useSiteSettings()
   const page = PAGES.about
   const acceptedOn = consent && new Date(consent.at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
 
@@ -28,6 +31,17 @@ export default function Rules() {
         <SectionHead title={t('rules.termsTitle')} sub={t('rules.termsSub')} />
         <div className="terms-wrap">
           <TermsDocument />
+        </div>
+      </section>
+
+      {/* The fee the terms refer to is explained in full before any payment. */}
+      <section className="page-section">
+        <div className="initiation-notice why-rule-strip">
+          <div>
+            <b>{t('whyFee.stripTitle', { fee: joiningFee })}</b>
+            <p>{t('whyFee.strip', { fee: joiningFee })}</p>
+          </div>
+          <Link className="btn-gold" to="/why-999">{t('whyFee.stripCta', { fee: joiningFee })}</Link>
         </div>
       </section>
 

@@ -78,6 +78,7 @@ export default function Profile() {
             <div>
               <b>{t('profile.oathNotSealed')}</b>
               <p>{t('profile.completeInitiationText', { fee: joiningFee })}</p>
+              <Link className="notice-link" to="/why-999">{t('whyFee.shortLink', { fee: joiningFee })} ↗</Link>
             </div>
             <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>{t('common.sealYourOathCta')}</button>
           </div>

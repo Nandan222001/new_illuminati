@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
+import { useSiteSettings } from '../context/SiteSettingsContext'
 import AuthShell from '../components/AuthShell'
 import { PASSWORD_RULE_ORDER, passwordScore, validateEmail, validatePassword } from '../utils/validation'
 
@@ -11,6 +12,7 @@ const STRENGTH_KEYS = ['', 'weak', 'fair', 'strong', 'unbreakable']
 export default function Register() {
   const { user, register, ready } = useAuth()
   const toast = useToast()
+  const { joiningFee } = useSiteSettings()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from || '/archives'
@@ -130,7 +132,7 @@ export default function Register() {
         </ul>
         <label className="check">
           <input type="checkbox" checked={form.agree} onChange={(e) => setForm({ ...form, agree: e.target.checked })} />
-          <span><Trans i18nKey="register.ageCheck" components={[<b />]} /> <Link to="/rules" target="_blank" rel="noopener noreferrer">{t('rules.title')} ↗</Link></span>
+          <span><Trans i18nKey="register.ageCheck" components={[<b />]} /> <Link to="/rules" target="_blank" rel="noopener noreferrer">{t('rules.title')} ↗</Link> · <Link to="/why-999" target="_blank" rel="noopener noreferrer">{t('whyFee.shortLink', { fee: joiningFee })} ↗</Link></span>
         </label>
         {error && <div className="form-error" role="alert">{error}</div>}
         <button type="submit" className="btn-gold full" disabled={busy}>{busy ? t('register.sealing') : `${t('common.becomeInitiate')} ›`}</button>

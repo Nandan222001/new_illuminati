@@ -10,7 +10,7 @@ import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const routes = ['/', '/archives', '/archives/the-third-eye', '/rituals', '/new-order', '/videos', '/videos/satanic-mythology',
-  '/videos/the-last-screening', '/visuals', '/community', '/about', '/rules', '/login', '/register', '/profile', '/admin',
+  '/videos/the-last-screening', '/visuals', '/community', '/about', '/rules', '/why-999', '/login', '/register', '/profile', '/admin',
   '/admin/revenue', '/admin/members', '/admin/videos', '/admin/images', '/admin/rituals',
   '/admin/books', '/admin/archives', '/admin/messages', '/admin/settings', '/new-world-order', '/nope']
 
@@ -39,6 +39,7 @@ import Visuals from '/src/pages/Visuals'
 import Community from '/src/pages/Community'
 import About from '/src/pages/About'
 import Rules from '/src/pages/Rules'
+import Why999 from '/src/pages/Why999'
 import Login from '/src/pages/Login'
 import Register from '/src/pages/Register'
 import Profile from '/src/pages/Profile'
@@ -71,6 +72,7 @@ export function render(url) {
             <Route path="/community" element={<Community />} />
             <Route path="/about" element={<About />} />
             <Route path="/rules" element={<Rules />} />
+            <Route path="/why-999" element={<Why999 />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

@@ -66,6 +66,7 @@
   },
   "footer": {
     "description": "An immersive exploration of secret-society mythology, conspiracy culture and historical mysteries.",
+    "whyFee": "WHY ₹{{fee}}?",
     "explore": "EXPLORE",
     "account": "ACCOUNT",
     "legal": "LEGAL",
@@ -541,6 +542,46 @@
     "errorAgree": "Please confirm you are 18 or older and accept the above.",
     "sealing": "SEALING THE OATH…",
     "welcomeToast": "Welcome, initiate #{{number}}."
+  },
+  "whyFee": {
+    "kicker": "BEFORE YOU PAY",
+    "title": "WHY ₹{{fee}}?",
+    "sub": "Three things to know before you continue — what the one-time initiation fee includes, and how the payment works.",
+    "shortLink": "Why ₹{{fee}}?",
+    "badges": {
+      "oneTime": "ONE-TIME",
+      "noRenewal": "NO AUTO-RENEWAL",
+      "noRefund": "NO REFUNDS"
+    },
+    "reasons": {
+      "once": {
+        "title": "ONE PAYMENT, PERMANENT ACCESS",
+        "body": "₹{{fee}} is charged once, at initiation. It does not renew and there is no monthly or yearly charge. Paying it opens every sealed chapter, ritual, reel and library volume for as long as your account is active."
+      },
+      "seal": {
+        "title": "MEMBERSHIP ISSUED IN YOUR OWN NAME",
+        "body": "Paying records a membership seal ID against your account and unlocks the joining letter and member card in your Profile, issued in your name with your initiate number. They are personal and cannot be transferred or resold."
+      },
+      "network": {
+        "title": "ONE FEE, THE WHOLE ARCHIVE",
+        "body": "The single fee covers the entire sealed archive on your account — every chamber, ritual station, reel and e-book volume, plus the community channel. There is no separate charge for the documents and no advertising on the site."
+      }
+    },
+    "honestTitle": "GOOD TO KNOW",
+    "honest": "₹{{fee}} is charged once, at initiation — there is no monthly or yearly charge, and nothing renews automatically. As set out in the Terms & Conditions, all payments are final and non-refundable.",
+    "secure": "Secure payment via Razorpay · UPI, cards, netbanking · you choose the method on the next step.",
+    "continue": "CONTINUE TO PAY ₹{{fee}} ›",
+    "later": "NOT NOW",
+    "readTerms": "Read the full Terms & Conditions",
+    "pageKicker": "THE INITIATION FEE",
+    "pageTitle": "WHY ₹{{fee}}?",
+    "pageSub": "ONE PAYMENT · ONE SEAL · NO RENEWALS",
+    "ctaRegister": "BECOME AN INITIATE ›",
+    "ctaPaid": "ENTER THE SEALED ARCHIVES ›",
+    "back": "BACK TO THE SITE",
+    "stripTitle": "WHY ₹{{fee}}?",
+    "strip": "The initiation fee is charged once and opens the sealed archive permanently. Read exactly what it covers before you pay.",
+    "stripCta": "WHY ₹{{fee}}? ›"
   },
   "paywall": {
     "title": "This page is sealed",

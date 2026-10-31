@@ -61,6 +61,7 @@ actual catalogue.
 | 20 | Key-visual captions are Keeper-only | `src/pages/Visuals.jsx` |
 | 22 | Private discussion board: an initiate only ever sees their own threads with the Keepers; a Keeper sees them all | `src/api/community.js`, `src/pages/Community.jsx`, `src/pages/admin/Messages.jsx`, `backend/app/api/v1/endpoints/community.py` |
 | 24 | The Terms & Conditions are shown **verbatim** (the full entry warning, every acknowledgement point and every condition, in the original order and wording) in the entry gate and on `/rules` | `src/data/terms.js`, `src/components/TermsDocument.jsx`, `src/components/ConsentGate.jsx`, `src/pages/Rules.jsx` |
+| 25 | A **“Why ₹{{fee}}?”** step now comes before any payment: the same three reasons (one payment only, a membership issued in the member's own name, and what the single fee includes) are shown in the initiation popup and on the public `/why-999` page, so the fee is explained before Razorpay Checkout ever opens | `src/components/WhyFee.jsx`, `src/components/InitiationModal.jsx`, `src/pages/Why999.jsx`, `src/App.jsx`, `src/i18n/locales/*/translation.json`, `src/App.css` |
 
 ### Terms & Conditions wording
 
@@ -73,6 +74,39 @@ version is stored with the consent record). The text stays in English on every
 language so the accepted wording never varies; only the surrounding interface
 (buttons, headings, instructions) is translated. The `/rules` page keeps the
 account-privacy statement at `#rule-privacy` for the footer link.
+
+## Why the ₹999 fee? (pre-payment explanation)
+
+`InitiationModal` never opens Razorpay Checkout on its own any more. Every entry
+point (the paywalled pages, the profile notice, the video/ritual/archive
+buttons) first shows a **reasons screen** built from
+`src/components/WhyFee.jsx`:
+
+1. **One payment, permanent access** — charged once at initiation, no
+   subscription and no auto-renewal.
+2. **Membership issued in your own name** — the seal ID recorded on payment,
+   plus the joining letter and member card (with the initiate number),
+   downloadable from `/profile`.
+3. **One fee, the whole archive** — every chamber, ritual station, reel,
+   e-book volume and the community channel on one account; no per-item charge
+   and no advertising.
+
+Only product facts go here: what the fee is charged, what it unlocks, and the
+payment terms. No claims about how the money is spent, member numbers or
+results are asserted.
+
+The same block is also a public page at **`/why-999`**, linked from the terms
+page strip, the register form's terms row, the paywall notice, the profile
+notice and the footer, and it is prerendered with its own SEO metadata, sitemap
+entry and breadcrumbs. The copy lives under the `whyFee` key in
+`src/i18n/locales/*/translation.json` (English and Hindi provided; other
+languages fall back to English), and every `₹{{fee}}` is interpolated from the
+Keeper's **Admin → Settings → Razorpay → joining fee**, so changing the price
+changes the explanation everywhere.
+
+A short “good to know” box repeats the payment facts — charged once at
+initiation, no monthly or yearly charge, nothing auto-renews — and that
+payments are final, matching the Terms & Conditions.
 
 ## Sealed e-book library (admin PDF uploads)
 
@@ -142,6 +176,7 @@ out automatically when the file is available.
 | `/about` | Pillars, story timeline, FAQ, content disclaimer |
 | `/login`, `/register` | Auth pages |
 | `/profile` | Member area (protected) |
+| `/why-999` | Public explanation of the one-time initiation fee, with the payment CTA |
 | `/admin` | Keeper console (admin only): members, videos, rituals, archives, e-books, council inbox, social links |
 
 ## Accounts & roles
