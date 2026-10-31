@@ -567,8 +567,8 @@
         "body": "The fee covers what keeps this archive running: hosting, secure storage for the films and e-books, and moderation of the community. There is no ad network here — members fund the doors."
       }
     },
-    "honestTitle": "WHAT IT IS NOT",
-    "honest": "It is not a recurring charge, a donation, or a promise of real-world results. Everything here is an authored story world (see the Terms), and all payments are final and non-refundable.",
+    "honestTitle": "GOOD TO KNOW",
+    "honest": "₹{{fee}} is charged once, at initiation — there is no monthly or yearly charge, and nothing renews automatically. As set out in the Terms & Conditions, all payments are final and non-refundable.",
     "secure": "Secure payment via Razorpay · UPI, cards, netbanking · you choose the method on the next step.",
     "continue": "CONTINUE TO PAY ₹{{fee}} ›",
     "later": "NOT NOW",

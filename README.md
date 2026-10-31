@@ -98,9 +98,9 @@ languages fall back to English), and every `₹{{fee}}` is interpolated from the
 Keeper's **Admin → Settings → Razorpay → joining fee**, so changing the price
 changes the explanation everywhere.
 
-The screen deliberately states what the fee is *not* (not a recurring charge,
-not a donation, not a promise of real-world results) and that payments are
-final, matching the Terms & Conditions.
+A short “good to know” box repeats the payment facts — charged once at
+initiation, no monthly or yearly charge, nothing auto-renews — and that
+payments are final, matching the Terms & Conditions.
 
 ## Sealed e-book library (admin PDF uploads)
 

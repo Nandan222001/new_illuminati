@@ -45,7 +45,7 @@ export default function WhyFee({ fee, compact = false, showTermsLink = false }) 
 
       <div className="why-fee-honest">
         <b>{t('whyFee.honestTitle')}</b>
-        <p>{t('whyFee.honest')}</p>
+        <p>{t('whyFee.honest', { fee })}</p>
       </div>
 
       {showTermsLink && (
