@@ -11,7 +11,7 @@ import SocialLinks from './SocialLinks'
 export default function Footer() {
   const { user, isAdmin } = useAuth()
   const { t } = useTranslation()
-  const { social } = useSiteSettings()
+  const { social, joiningFee } = useSiteSettings()
   const handle = socialHandle(social.instagram)
 
   return (
@@ -44,6 +44,7 @@ export default function Footer() {
               <Link to="/register">{t('nav.register')}</Link>
             </>
           )}
+          <Link to="/why-999">{t('footer.whyFee', { fee: joiningFee })}</Link>
           <Link to="/about#faq">{t('footer.faq')}</Link>
           <Link to="/about#disclaimer">{t('footer.disclaimer')}</Link>
         </div>

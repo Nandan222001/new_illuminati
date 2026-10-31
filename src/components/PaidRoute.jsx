@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useSiteSettings } from '../context/SiteSettingsContext'
@@ -33,6 +33,7 @@ export default function PaidRoute({ children }) {
         <div>
           <b>🔒 {t('paywall.title')}</b>
           <p>{t('paywall.text', { fee: joiningFee })}</p>
+          <Link className="notice-link" to="/why-999">{t('whyFee.shortLink', { fee: joiningFee })} ↗</Link>
         </div>
         <button type="button" className="btn-gold" onClick={() => setDismissed(false)}>{t('paywall.cta', { fee: joiningFee })}</button>
       </div>

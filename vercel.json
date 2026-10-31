@@ -71,6 +71,10 @@
       "destination": "/rules/index.html"
     },
     {
+      "source": "/why-999",
+      "destination": "/why-999/index.html"
+    },
+    {
       "source": "/login",
       "destination": "/login/index.html"
     },

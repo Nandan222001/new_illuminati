@@ -3,22 +3,26 @@ import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { createOrder, loadRazorpay, verifyPayment } from '../api/payments'
 import { useSiteSettings } from '../context/SiteSettingsContext'
+import WhyFee from './WhyFee'
 
 const POLL_MS = 4000
 
 /**
- * Opens Razorpay Checkout directly (no form of our own). Flow:
- *   1. POST /payments/order creates a Razorpay order for this member,
+ * Opens Razorpay Checkout, but never straight away. Flow:
+ *   0. the "why ₹{fee}?" screen explains what the one-time fee pays for,
+ *   1. the member taps Continue → POST /payments/order creates a Razorpay order,
  *   2. Checkout opens as a popup,
  *   3. on success POST /payments/verify checks the signature and unlocks the account,
  *   4. the signed webhook (/paymentwebhook) is the backup if the browser never reports back.
- * The modal only shows progress, "sealed", or an error with a retry — never a card form.
+ * The modal only shows reasons, progress, "sealed", or an error with a retry —
+ * never a card form of our own.
  */
 export default function InitiationModal({ open, onClose }) {
   const { user, refreshUser } = useAuth()
   const { joiningFee } = useSiteSettings()
   const { t } = useTranslation()
-  const [stage, setStage] = useState('idle') // idle | starting | checkout | confirming | error
+  // idle | reasons | starting | checkout | confirming | error
+  const [stage, setStage] = useState('idle')
   const [error, setError] = useState('')
   const stageRef = useRef('idle')
   const setStageBoth = (s) => { stageRef.current = s; setStage(s) }
@@ -53,7 +57,7 @@ export default function InitiationModal({ open, onClose }) {
         },
         modal: {
           escape: true,
-          ondismiss: () => { if (stageRef.current === 'checkout') { setStageBoth('idle'); onClose() } },
+          ondismiss: () => { if (stageRef.current === 'checkout') { setStageBoth('reasons'); onClose() } },
         },
         handler: async (response) => {
           setStageBoth('confirming')
@@ -77,11 +81,11 @@ export default function InitiationModal({ open, onClose }) {
     }
   }, [onClose, refreshUser, t, user?.email, user?.name])
 
-  // Open Checkout as soon as the modal is requested.
+  // Show the reasons screen first — Checkout only opens when the member asks for it.
   useEffect(() => {
-    if (open && !paid && stageRef.current === 'idle') start()
+    if (open && !paid && stageRef.current === 'idle') setStageBoth('reasons')
     if (!open && stageRef.current !== 'checkout') setStageBoth('idle')
-  }, [open, paid, start])
+  }, [open, paid])
 
   // After a payment, wait for the account to flip to paid (verify or webhook).
   useEffect(() => {
@@ -92,10 +96,10 @@ export default function InitiationModal({ open, onClose }) {
 
   const close = () => { setStageBoth('idle'); onClose() }
 
-  const visible = open && (paid || stage === 'starting' || stage === 'confirming' || stage === 'error')
+  const visible = open && (paid || stage !== 'idle')
   return (
     <div className={`modal${visible ? ' open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget && stage !== 'confirming') close() }} role="dialog" aria-modal="true" aria-hidden={!visible}>
-      <div className="modal-box init-modal">
+      <div className={`modal-box init-modal${stage === 'reasons' && !paid ? ' why-modal' : ''}`}>
         {paid ? (
           <>
             <svg className="m-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
@@ -126,11 +130,21 @@ export default function InitiationModal({ open, onClose }) {
             <p>{t('modals.initiation.confirmingText')}</p>
             <div className="sigil-spinner" aria-label="Loading" />
           </>
-        ) : (
+        ) : stage === 'starting' || stage === 'checkout' ? (
           <>
             <h3>{t('modals.initiation.title')}</h3>
             <p>{t('modals.initiation.openingCheckout', { fee: joiningFee })}</p>
             <div className="sigil-spinner" aria-label="Loading" />
+          </>
+        ) : (
+          <>
+            <button type="button" className="why-modal-x" onClick={close} aria-label={t('common.close')}>✕</button>
+            <WhyFee fee={joiningFee} compact showTermsLink />
+            <div className="modal-actions why-modal-actions">
+              <button type="button" className="btn-gold" onClick={start}>{t('whyFee.continue', { fee: joiningFee })}</button>
+              <button type="button" className="btn-ghost" onClick={close}>{t('whyFee.later')}</button>
+            </div>
+            <p className="why-modal-secure">{t('whyFee.secure')}</p>
           </>
         )}
       </div>

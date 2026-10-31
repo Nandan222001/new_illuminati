@@ -51,6 +51,11 @@ const PAGE_SEO = {
     description: 'Terms & Conditions version 1.1.6: entry conditions, age rules, membership terms, privacy and ownership for the Illuminati Brotherhood experience.',
     image: PAGES.about.hero,
   },
+  '/why-999': {
+    title: 'Why ₹999? What the Initiation Fee Covers | Illuminati Brotherhood',
+    description: 'Exactly what the one-time ₹999 initiation fee pays for: permanent access to the sealed archive, a personal membership seal and documents, and the running costs of the network. No subscription, no renewals.',
+    image: '/assets/about-hero.jpg',
+  },
   '/login': {
     title: 'Sign In | Illuminati Brotherhood',
     description: 'Sign in to your Illuminati Brotherhood account.',
@@ -74,6 +79,7 @@ const STATIC_BREADCRUMBS = {
   '/community': [{ name: 'Home', path: '/' }, { name: 'Community', path: '/community' }],
   '/about': [{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }],
   '/rules': [{ name: 'Home', path: '/' }, { name: 'Rules', path: '/rules' }],
+  '/why-999': [{ name: 'Home', path: '/' }, { name: 'Why ₹999', path: '/why-999' }],
 }
 
 export function normalizeSiteUrl(value = DEFAULT_SITE_URL) {

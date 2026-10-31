@@ -22,6 +22,7 @@ const publicRoutes = [
   '/community',
   '/about',
   '/rules',
+  '/why-999',
 ]
 const renderRoutes = [
   ...publicRoutes,
