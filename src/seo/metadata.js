@@ -56,6 +56,11 @@ const PAGE_SEO = {
     description: 'Exactly what the one-time ₹999 initiation fee pays for: permanent access to the sealed archive, a personal membership seal and documents, and the running costs of the network. No subscription, no renewals.',
     image: '/assets/about-hero.jpg',
   },
+  '/book': {
+    title: 'Buy the Book | Illuminati Brotherhood',
+    description: 'One book, one price, instant download after payment. The current volume on sale is set by the publisher.',
+    image: '/assets/hero-baphomet.jpg',
+  },
   '/login': {
     title: 'Sign In | Illuminati Brotherhood',
     description: 'Sign in to your Illuminati Brotherhood account.',

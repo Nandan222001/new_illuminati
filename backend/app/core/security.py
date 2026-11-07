@@ -45,3 +45,32 @@ def stream_token_matches(token: str, video_id: int) -> bool:
         return payload.get("scope") == "video" and int(payload.get("vid", -1)) == video_id
     except (JWTError, ValueError, TypeError):
         return False
+
+
+STORE_TOKEN_HOURS = 24
+
+
+def create_store_download_token(payment_id: str, book_id: int) -> str:
+    """Short-lived link a buyer can use to download the volume they just paid for.
+
+    The /book page sells to visitors with no account, so there is no bearer
+    token to check: the signed payment id in the URL is the entitlement, and the
+    endpoint re-checks that the payment is still captured on every request.
+    """
+    expire = datetime.now(timezone.utc) + timedelta(hours=STORE_TOKEN_HOURS)
+    return jwt.encode(
+        {"scope": "store", "pid": str(payment_id), "bid": int(book_id), "exp": expire},
+        settings.JWT_SECRET_KEY,
+        algorithm=settings.JWT_ALGORITHM,
+    )
+
+
+def store_download_token_claims(token: str) -> tuple[str, int] | None:
+    """(`payment_id`, `book_id`) for a valid download token, else None."""
+    try:
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+        if payload.get("scope") != "store":
+            return None
+        return str(payload["pid"]), int(payload["bid"])
+    except (JWTError, KeyError, ValueError, TypeError):
+        return None

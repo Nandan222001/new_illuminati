@@ -4,11 +4,13 @@ import { ROLES } from '../../auth/authService'
 import { useAuth } from '../../context/AuthContext'
 import { useContent } from '../../context/ContentContext'
 import { fetchRevenueSeries, formatINR } from '../../admin/adminStore'
+import { fetchStoreListing } from '../../api/store'
 
 const QUICK_LINKS = [
   { to: '/admin/videos', icon: '▶', label: 'Upload a video' },
   { to: '/admin/archives', icon: '▤', label: 'Publish an archive record' },
   { to: '/admin/books', icon: '❧', label: 'Shelve an e-book' },
+  { to: '/admin/book', icon: '₹', label: 'Set up the /book sale page' },
   { to: '/admin/rituals', icon: '✦', label: 'Add a ritual + film' },
   { to: '/admin/images', icon: '▣', label: 'Add an image' },
   { to: '/admin/messages', icon: '✉', label: 'Read the council inbox' },
@@ -21,11 +23,16 @@ export default function AdminDashboard() {
   const { user, users } = useAuth()
   const { videos, rituals, gallery, books, archives } = useContent()
   const [series, setSeries] = useState(EMPTY_SERIES)
+  const [listing, setListing] = useState(null)
 
   useEffect(() => {
     // Guard against a partial response: the KPI row must never break the page.
     fetchRevenueSeries(6)
       .then((data) => { if (Array.isArray(data) && data.length) setSeries(data) })
+      .catch(() => {})
+    // What the standalone /book page is selling right now.
+    fetchStoreListing()
+      .then(setListing)
       .catch(() => {})
   }, [])
 
@@ -89,6 +96,24 @@ export default function AdminDashboard() {
             <li><span>Sealed / paid content</span><b>{paidCount}</b></li>
           </ul>
           <p className="muted">Toggle any item between FREE and PAID from its own section.</p>
+        </section>
+
+        <section className="admin-card">
+          <h3>ONE-BOOK SALE PAGE</h3>
+          {listing?.book ? (
+            <ul className="mini-list">
+              <li><span>Selling</span><b>{listing.book.title}</b></li>
+              <li><span>Price</span><b>{formatINR(listing.price)}</b></li>
+              <li><span>File</span><b>{listing.book.has_file ? (listing.book.file_name || 'attached') : 'none attached'}</b></li>
+              <li><span>/book</span><b>{listing.active ? 'LIVE' : 'hidden'}</b></li>
+            </ul>
+          ) : (
+            <p className="muted">Nothing is on sale yet — /book currently shows no card.</p>
+          )}
+          <p className="muted small-note" style={{ marginTop: '10px' }}>
+            <Link to="/admin/book">Choose the book &amp; price →</Link>{' · '}
+            <a href="/book" target="_blank" rel="noreferrer">open /book ↗</a>
+          </p>
         </section>
       </div>
     </>

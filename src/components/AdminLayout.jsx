@@ -13,6 +13,7 @@ const LINKS = [
   { to: '/admin/rituals', icon: '✦', label: 'Rituals' },
   { to: '/admin/archives', icon: '▤', label: 'Archives' },
   { to: '/admin/books', icon: '❧', label: 'E-Books' },
+  { to: '/admin/book', icon: '₹', label: 'Book Sale' },
   { to: '/admin/images', icon: '▣', label: 'Images' },
   { to: '/admin/messages', icon: '✉', label: 'Council Inbox' },
   { to: '/admin/settings', icon: '⚙', label: 'Settings' },

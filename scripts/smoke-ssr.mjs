@@ -12,7 +12,7 @@ import { pathToFileURL } from 'node:url'
 const routes = ['/', '/archives', '/archives/the-third-eye', '/rituals', '/new-order', '/videos', '/videos/satanic-mythology',
   '/videos/the-last-screening', '/visuals', '/community', '/about', '/rules', '/why-999', '/login', '/register', '/profile', '/admin',
   '/admin/revenue', '/admin/members', '/admin/videos', '/admin/images', '/admin/rituals',
-  '/admin/books', '/admin/archives', '/admin/messages', '/admin/settings', '/new-world-order', '/nope']
+  '/admin/books', '/admin/book', '/admin/archives', '/admin/messages', '/admin/settings', '/new-world-order', '/book', '/nope']
 
 const out = join(process.cwd(), 'node_modules', '.cache', 'ib-ssr')
 await rm(out, { recursive: true, force: true })
@@ -50,15 +50,20 @@ import AdminVideos from '/src/pages/admin/VideosAdmin'
 import AdminImages from '/src/pages/admin/ImagesAdmin'
 import AdminRituals from '/src/pages/admin/RitualsAdmin'
 import AdminBooks from '/src/pages/admin/BooksAdmin'
+import AdminStore from '/src/pages/admin/StoreAdmin'
 import AdminArchives from '/src/pages/admin/ArchivesAdmin'
 import AdminMessages from '/src/pages/admin/Messages'
 import AdminSettings from '/src/pages/admin/Settings'
+import Store from '/src/pages/Store'
 import NotFound from '/src/pages/NotFound'
 export function render(url) {
   return renderToString(
     <MemoryRouter initialEntries={[url]}>
       <ToastProvider><ConsentProvider><AuthProvider><ContentProvider><SiteSettingsProvider>
         <Routes>
+          {/* The standalone one-book sale page renders without the site shell. */}
+          <Route path="/book" element={<Store />} />
+
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/archives" element={<Archives />} />
@@ -87,6 +92,7 @@ export function render(url) {
             <Route path="images" element={<AdminImages />} />
             <Route path="rituals" element={<AdminRituals />} />
             <Route path="books" element={<AdminBooks />} />
+            <Route path="book" element={<AdminStore />} />
             <Route path="archives" element={<AdminArchives />} />
             <Route path="messages" element={<AdminMessages />} />
             <Route path="settings" element={<AdminSettings />} />
@@ -114,7 +120,8 @@ let failed = 0
 for (const r of routes) {
   try {
     const html = render(r)
-    const ok = html.includes('class="nav"') || html.includes('page-loading')
+    // /book is the standalone sale page: one card, no nav, so it has its own marker.
+    const ok = html.includes('class="nav"') || html.includes('page-loading') || html.includes('store-page')
     console.log(`${ok ? 'PASS' : 'WARN'} ${r.padEnd(32)} ${html.length} chars`)
     if (!ok) failed++
   } catch (e) {
