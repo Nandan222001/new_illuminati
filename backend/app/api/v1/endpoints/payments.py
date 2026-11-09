@@ -1,10 +1,7 @@
-import base64
 import hashlib
 import hmac
 import json
 import logging
-import urllib.error
-import urllib.request
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from pydantic import BaseModel
@@ -12,57 +9,25 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
-from app.core.config import settings
 from app.crud import admin as admin_crud
+from app.crud import store as store_crud
 from app.crud import user as user_crud
 from app.db.session import get_db
 from app.models.transaction import Transaction, TransactionStatus
 from app.models.user import User
+from app.services import razorpay
 
 router = APIRouter(tags=["payments"])
 log = logging.getLogger(__name__)
 
 PAID_EVENTS = {"payment.captured", "order.paid"}
 ORDER_PREFIX = "razorpay-order:"
-RAZORPAY_ORDERS_URL = "https://api.razorpay.com/v1/orders"
 
 
-def _pick(cfg: dict, *names: str) -> str:
-    for name in names:
-        value = cfg.get(name)
-        if isinstance(value, str) and value.strip():
-            return value.strip()
-    return ""
-
-
-def _razorpay_config(db: Session) -> dict:
-    """Razorpay credentials live in the database (Admin -> Settings -> Razorpay); env vars are a fallback."""
-    cfg = admin_crud.get_settings(db).razorpay or {}
-    if not isinstance(cfg, dict):
-        cfg = {}
-    return {
-        "keyId": _pick(cfg, "keyId", "key_id", "razorpay_key_id", "RAZORPAY_KEY_ID") or settings.RAZORPAY_KEY_ID,
-        "keySecret": _pick(cfg, "keySecret", "key_secret", "razorpay_key_secret", "RAZORPAY_KEY_SECRET") or settings.RAZORPAY_KEY_SECRET,
-        "webhookSecret": _pick(cfg, "webhookSecret", "webhook_secret", "razorpay_webhook_secret") or settings.RAZORPAY_WEBHOOK_SECRET,
-    }
-
-
-def _create_razorpay_order(key_id: str, key_secret: str, payload: dict) -> dict:
-    token = base64.b64encode(f"{key_id}:{key_secret}".encode()).decode()
-    req = urllib.request.Request(
-        RAZORPAY_ORDERS_URL,
-        data=json.dumps(payload).encode(),
-        headers={"Authorization": f"Basic {token}", "Content-Type": "application/json"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=15) as res:  # noqa: S310 (fixed https URL)
-            return json.loads(res.read())
-    except urllib.error.HTTPError as exc:
-        log.error("Razorpay order creation failed: %s %s", exc.code, exc.read()[:300])
-    except Exception:  # noqa: BLE001
-        log.exception("Razorpay order creation failed")
-    raise HTTPException(status.HTTP_502_BAD_GATEWAY, "Could not start the payment. Please try again.")
+# Razorpay credentials + order creation live in app/services/razorpay.py, shared
+# with the one-book sale page (/store).
+_razorpay_config = razorpay.razorpay_config
+_create_razorpay_order = razorpay.create_order
 
 
 def _order_row(db: Session, order_id: str) -> Transaction | None:
@@ -87,11 +52,8 @@ def create_order(user: User = Depends(get_current_user), db: Session = Depends(g
     """Create a Razorpay order for the initiation fee; the browser opens Checkout with it."""
     if user.paid:
         raise HTTPException(status.HTTP_409_CONFLICT, "Your initiation is already sealed.")
-    cfg = _razorpay_config(db)
-    key_id, key_secret = cfg.get("keyId", ""), cfg.get("keySecret", "")
-    if not key_id or not key_secret:
-        log.error("Razorpay keyId/keySecret missing in admin_settings.razorpay (id=1) and env; cannot create order")
-        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Payments are not configured yet.")
+    cfg = razorpay.require_keys(db)
+    key_id, key_secret = cfg["keyId"], cfg["keySecret"]
 
     fee = admin_crud.joining_fee(db)  # rupees, set by the Keeper
     amount = fee * 100  # paise
@@ -178,6 +140,16 @@ async def razorpay_webhook(request: Request, db: Session = Depends(get_db)):
         if row is not None:
             _seal_from_order(db, row, payment_id)
             return {"status": "sealed"}
+
+    # A purchase from the one-book sale page (/book) records the sale but never
+    # unlocks a membership — the buyer may not even have an account.
+    store_row = store_crud.order_row(db, order_id) if order_id else None
+    if store_row is None:
+        store_row = store_crud.find_payment_row(db, payment_id)
+    if store_row is not None:
+        if store_row.status != TransactionStatus.CAPTURED:
+            store_crud.capture(db, store_row, payment_id, email=email, amount=amount or None)
+        return {"status": "store-captured"}
 
     # Idempotent: Razorpay retries deliveries.
     if db.scalar(select(Transaction.id).where(Transaction.note.like(f"%{payment_id}%"))):

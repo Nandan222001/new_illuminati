@@ -23,6 +23,7 @@ const publicRoutes = [
   '/about',
   '/rules',
   '/why-999',
+  '/book',
 ]
 const renderRoutes = [
   ...publicRoutes,
@@ -36,6 +37,7 @@ const renderRoutes = [
   '/admin/images',
   '/admin/rituals',
   '/admin/books',
+  '/admin/book',
   '/admin/archives',
   '/admin/messages',
   '/admin/settings',

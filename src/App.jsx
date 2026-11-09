@@ -28,6 +28,7 @@ const Login = lazy(() => import('./pages/Login.jsx'))
 const Register = lazy(() => import('./pages/Register.jsx'))
 const Profile = lazy(() => import('./pages/Profile.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+const Store = lazy(() => import('./pages/Store.jsx'))
 const AdminDashboard = lazy(() => import('./pages/admin/Dashboard.jsx'))
 const AdminRevenue = lazy(() => import('./pages/admin/Revenue.jsx'))
 const AdminMembers = lazy(() => import('./pages/admin/Members.jsx'))
@@ -38,6 +39,7 @@ const AdminSettings = lazy(() => import('./pages/admin/Settings.jsx'))
 const AdminBooks = lazy(() => import('./pages/admin/BooksAdmin.jsx'))
 const AdminArchives = lazy(() => import('./pages/admin/ArchivesAdmin.jsx'))
 const AdminMessages = lazy(() => import('./pages/admin/Messages.jsx'))
+const AdminStore = lazy(() => import('./pages/admin/StoreAdmin.jsx'))
 
 function RouteLoading() {
   return <div className="page-loading"><div className="sigil-spinner" aria-label="Loading" /></div>
@@ -49,6 +51,9 @@ export function AppRoutes() {
       <SeoManager />
       <Suspense fallback={<RouteLoading />}>
         <Routes>
+          {/* Standalone one-book sale page: one card, no header, no footer, no gate. */}
+          <Route path="/book" element={<Store />} />
+
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/archives" element={<PaidRoute><Archives /></PaidRoute>} />
@@ -83,6 +88,7 @@ export function AppRoutes() {
             <Route path="images" element={<AdminImages />} />
             <Route path="rituals" element={<AdminRituals />} />
             <Route path="books" element={<AdminBooks />} />
+            <Route path="book" element={<AdminStore />} />
             <Route path="archives" element={<AdminArchives />} />
             <Route path="messages" element={<AdminMessages />} />
             <Route path="settings" element={<AdminSettings />} />

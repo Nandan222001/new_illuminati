@@ -31,6 +31,10 @@
   ],
   "rewrites": [
     {
+      "source": "/book",
+      "destination": "/book/index.html"
+    },
+    {
       "source": "/archives",
       "destination": "/archives/index.html"
     },
@@ -113,6 +117,10 @@
     {
       "source": "/admin/settings",
       "destination": "/admin/settings/index.html"
+    },
+    {
+      "source": "/admin/book",
+      "destination": "/admin/book/index.html"
     },
     {
       "source": "/admin/books",

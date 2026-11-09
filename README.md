@@ -155,6 +155,43 @@ allow that origin in `CORS_ORIGINS`. Uploaded volumes are gitignored
 (`backend/uploads/`) and are not part of the repository; back the folder up as
 you would any other user data.
 
+## One-book sale page (`/book`)
+
+`/book` is a standalone sales page: **one card, one volume, one price** — no
+navbar, no footer, no consent gate, no other content. It is not wrapped in the
+site's `Layout`, so nothing else on the site appears on it.
+
+Everything it shows is set by the Keeper from **Admin → Book Sale**
+(`/admin/book`), and the dashboard shows the current state at a glance:
+
+| Setting | Effect on `/book` |
+| --- | --- |
+| **The book** | Which shelved e-book is sold — its cover, title and description come from the book record (added under Admin → E-Books) |
+| **Price (₹)** | The amount charged, in whole rupees (converted to paise for Razorpay) |
+| **Button label** | Optional CTA text; defaults to "Buy now — ₹{price}" |
+| **Page live / hidden** | Off = `/book` answers `404` and renders "Nothing here yet" |
+
+Buying needs **no account and no membership**: the visitor taps the button,
+Razorpay Checkout collects their details, and the API hands back a signed,
+24-hour download link for the volume.
+
+| Call | What it does |
+| --- | --- |
+| `GET /api/v1/store/book` | Public: cover, title, blurb, price (+ Razorpay key). `404` when the page is switched off |
+| `POST /api/v1/store/order` | Public: raises a Razorpay order for exactly that price |
+| `POST /api/v1/store/verify` | Public: verifies Checkout's signature, records the sale, returns the download link |
+| `GET /api/v1/store/download?t=` | Serves the bought volume; the signed token is re-checked and the payment must still be captured |
+| `GET`/`PUT /api/v1/store/listing` | Keeper only: read/set the one book, its price and the on/off switch |
+
+Sales are written to the existing `transactions` table tagged `store-order:` /
+`store-sale:`, so they appear under **Admin → Revenue** — but they never set
+`user.paid`, so a book purchase cannot unlock the sealed membership areas (the
+Razorpay webhook routes store orders the same way).
+
+The listing lives in a new `store_listing` table: run
+`alembic upgrade head` on MySQL (dev SQLite with `AUTO_CREATE_TABLES=true`
+creates it on startup).
+
 ## Website music
 
 `useAmbientSound` plays “The New World Order” — a four-chord cathedral
@@ -177,7 +214,8 @@ out automatically when the file is available.
 | `/login`, `/register` | Auth pages |
 | `/profile` | Member area (protected) |
 | `/why-999` | Public explanation of the one-time initiation fee, with the payment CTA |
-| `/admin` | Keeper console (admin only): members, videos, rituals, archives, e-books, council inbox, social links |
+| `/book` | Standalone one-book sale page: a single card, no site chrome (book + price set in Admin → Book Sale) |
+| `/admin` | Keeper console (admin only): members, videos, rituals, archives, e-books, book sale, council inbox, social links |
 
 ## Accounts & roles
 
@@ -215,12 +253,12 @@ the end of `App.css` switches the grids to image-led poster layouts
 ```
 public/assets/        page hero images, ritual & video artwork
 src/
-  api/                FastAPI client (auth, content, sealed e-book library)
+  api/                FastAPI client (auth, content, sealed e-book library, /book sale)
   auth/authService.js FastAPI authentication client
   context/            AuthContext, ContentContext (sealed items), ToastContext
   components/         Navbar, Footer, Layout, PageHero, SEO metadata, ...
   data/content.js     bundled page content and fallback catalogue
-  pages/              one file per route
+  pages/              one file per route (Store.jsx is the standalone /book card)
 scripts/prerender.mjs build-time public route rendering, sitemap and robots
 scripts/smoke-ssr.mjs render-every-route smoke test
 ```
