@@ -20,8 +20,17 @@ export const verifyStorePayment = (body) =>
   apiFetch('/store/verify', { method: 'POST', auth: false, body })
 
 /** Absolute URL of a bought volume (the token is the entitlement). */
-export const storeDownloadUrl = (tokenOrPath) =>
-  String(tokenOrPath || '').startsWith('http') ? String(tokenOrPath) : `${API_BASE}${tokenOrPath}`
+export const storeDownloadUrl = (tokenOrPath) => {
+  const value = String(tokenOrPath || '')
+  if (value.startsWith('http')) return value
+  // The server already returns a rooted path ("/api/v1/store/download?t=…"):
+  // prefixing API_BASE again would double it to /api/v1/api/v1/….
+  if (value.startsWith('/api/')) {
+    const origin = /^https?:\/\//.test(API_BASE) ? new URL(API_BASE).origin : ''
+    return `${origin}${value}`
+  }
+  return `${API_BASE}${value}`
+}
 
 /* --------------------------- Keeper console --------------------------- */
 
