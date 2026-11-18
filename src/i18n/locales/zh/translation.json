@@ -6,10 +6,6 @@
     "play": "播放",
     "pause": "暂停",
     "close": "关闭",
-    "days": "天",
-    "hours": "小时",
-    "minutes": "分钟",
-    "seconds": "秒",
     "sealedBadge": "🔒 已封印",
     "signInBadge": "🔒 登录后观看",
     "unsealedBadge": "◈ 已解封",
@@ -18,8 +14,6 @@
     "tagline": "符号 · 神话 · 历史",
     "sealYourOathCta": "封印你的誓言 ›",
     "followNow": "立即关注",
-    "followingToast": "Instagram 关注功能即将上线。",
-    "instagramPostAlt": "Instagram 帖子",
     "explore": "探索",
     "emailLabel": "电子邮箱",
     "passphraseLabel": "密码",
@@ -195,60 +189,8 @@
     }
   },
   "home": {
-    "welcomeTo": "欢迎来到",
-    "welcomeBack": "欢迎回来，{{name}}",
-    "heroSubLine1": "那扇门始终敞开着，",
-    "heroSubLine2": "只是很少有人知道它在哪里。",
-    "heroTag": "进入未知世界",
-    "ctaMain": "进入黑暗世界",
-    "railHistory": "历史",
-    "railSymbols": "符号",
-    "railConspiracies": "阴谋论",
-    "railSecrets": "秘密",
-    "bottomLeft": "符号 · 神话 · 历史",
-    "scrollHint": "向下滚动以探索",
-    "exploreTitle": "选择你的道路",
-    "exploreSub": "六扇门，每一扇都通向更深处。",
-    "viewAllChambers": "查看所有密室 ›",
-    "autoplayLabel": "自动播放 · 02 秒",
     "allVisuals": "所有视觉内容 ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
-    "countdownCta": "新世界秩序 ›",
-    "allVideos": "所有视频 ›",
-    "communityTitle": "进入社区",
-    "communityMatureNote": "仅限18岁以上（成人内容）。",
-    "instagramTitleLine1": "在 Instagram 上",
-    "instagramTitleLine2": "关注兄弟会",
-    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
-    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
-    "membersStatNote": "Joined members across the Network."
-  },
-  "about": {
-    "pillars": {
-      "storyFirst": {
-        "title": "故事优先",
-        "text": "每一页都是一个篇章。档案馆、仪式和倒计时都是叙事手法——而非真实主张。"
-      },
-      "clearlyLabelled": {
-        "title": "标签清晰",
-        "text": "所有视频都标注为故事、理论或事实，让你始终清楚自己在看什么。"
-      },
-      "communityLed": {
-        "title": "社区主导",
-        "text": "入会者投票决定故事的走向，议会会倾听。"
-      },
-      "noClaims": {
-        "title": "不涉及真实主张",
-        "text": "我们从不针对真实的人物或组织。任何相似之处纯属巧合或仅作参考。"
-      }
-    },
-    "pillarsTitle": "我们的理念",
-    "pillarsSub": "本体验的四大支柱。",
-    "storyTitle": "故事至今",
-    "libraryAlt": "图书馆",
-    "faqTitle": "常见问题",
-    "faqSub": "每位入会者最先问的问题。",
-    "disclaimerText": "Illuminati Brotherhood 是一个受秘密社团历史与符号启发的品牌与故事世界。它与任何真实的仪式、信仰体系、组织或意识形态均无关联，也不宣传、描述或支持它们。部分画面阴暗、基调成熟，仅限18岁以上观看。如果本站的任何主题让你感到不适，请暂时离开，并向你信任的人求助。"
+    "allVideos": "所有视频 ›"
   },
   "archives": {
     "chambersTitle": "六大密室",
@@ -272,36 +214,6 @@
     "bandTitle": "舞台化。象征性。故事驱动。",
     "bandText": "本体验中不描述也不鼓励任何真实的仪式。这些站点是叙事手法——是一段邀请你去探索的故事场景。",
     "watchDocs": "观看纪录片 ›"
-  },
-  "newOrder": {
-    "phases": {
-      "signal": {
-        "title": "信号",
-        "text": "计数器出现在每一个页面上。入会者会收到第一条封印消息。"
-      },
-      "gathering": {
-        "title": "集会",
-        "text": "议会召开集会。档案馆中开启新的密室，社区为下一章投票。"
-      },
-      "screening": {
-        "title": "放映",
-        "text": "《最终放映》——第一季的长篇终章——将向所有入会者解封。"
-      },
-      "zeroHour": {
-        "title": "新秩序",
-        "text": "零点时刻。新一季开启。按计划进行，完全属于我们。"
-      }
-    },
-    "whatHappensTitle": "归零时会发生什么",
-    "whatHappensSub": "四个阶段，一个日期。",
-    "roadTitle": "通往 2026年12月31日 之路",
-    "notifyTitle": "第一时间知晓",
-    "alreadyOnList": "你已经在名单上了，{{name}}。入会者会比任何人都先收到通知。",
-    "viewProfile": "查看我的主页 ›",
-    "notifyPrompt": "留下邮箱或成为入会者以接收信号。",
-    "notifyMe": "通知我",
-    "orBecomeInitiate": "或成为入会者 ›",
-    "notifyToast": "邮件提醒即将上线。创建账号即可第一时间收到信号。"
   },
   "videos": {
     "nowScreeningTitle": "正在放映",
@@ -557,12 +469,6 @@
         "sub": "蜡烛。圆圈。沉默。入会者的各个阶段。",
         "intro": "兄弟会的仪式是一场戏剧——经过编排，充满象征。请把它们当作故事来读。从第一支蜡烛到封印誓言，依次走过七个站点。"
       },
-      "newOrder": {
-        "kicker": "666,666 体验",
-        "title": "新世界秩序",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
-      },
       "videos": {
         "kicker": "禁忌档案",
         "title": "视频",
@@ -812,46 +718,32 @@
         "desc": "长篇文章与档案馆深度解析。",
         "note": "讨论区就在下方——向下滚动即可加入。"
       }
+    }
+  },
+  "editorial": {
+    "stories": "文章",
+    "symbols": "符号",
+    "signIn": "登录",
+    "latest": "最新文章",
+    "allStories": "所有文章",
+    "updated": "最后更新",
+    "learnMore": "关于本项目",
+    "instagram": "在 Instagram 上关注我们",
+    "viewProfile": "查看主页",
+    "skip": "跳到正文",
+    "disclaimer": "这是一个关于神话、符号和历史的独立教育项目。我们与任何真实的秘密社团无关。",
+    "accessDisclosure": "付费访问及购买仅提供数字内容，不代表加入任何真实组织，也不会授予任何入会资格。",
+    "privacy": "隐私政策",
+    "terms": "条款与条件",
+    "contact": {
+      "title": "联系我们"
     },
-    "timeline": {
-      "origin": {
-        "year": "起源",
-        "title": "The first spark",
-        "text": "兄弟会最初是一个创意项目：如果把秘密社团的神话当作电影而非阴谋论来对待，会怎样？"
-      },
-      "archive": {
-        "year": "档案",
-        "title": "六大密室",
-        "text": "仪式档案馆为这部作品赋予了结构——六件圣物，六间密室，一段从感知到誓言的旅程。"
-      },
-      "council": {
-        "year": "议会",
-        "title": "社区",
-        "text": "入会者们加入了圆桌。他们的理论、创作与提问如今正塑造着这个故事的走向。"
-      },
-      "newOrder": {
-        "year": "2026",
-        "title": "The New World Order",
-        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
-      }
-    },
-    "faq": {
-      "isReal": {
-        "q": "这里面有真实的东西吗？",
-        "a": "我们引用的历史是真实的。兄弟会本身——它的仪式、议会、倒计时和传说——是我们自己的创作，一个受秘密社团符号启发的故事世界。我们与任何真实组织无关联。"
-      },
-      "whoCanJoin": {
-        "q": "谁可以加入社区？",
-        "a": "任何喜欢悬疑、影像与神话的人都可以。由于部分视觉内容风格黑暗且带有成人色彩，仅限18岁以上人群参与。"
-      },
-      "accountDoes": {
-        "q": "账户有什么用？",
-        "a": "已登录的入会者可以解锁被封印的视频与仪式，并获得一个入会者编号。管理员（守护者）负责管理成员与被封印的内容。"
-      },
-      "realWorldClaims": {
-        "q": "你们会对真实的人物或组织提出主张吗？",
-        "a": "绝不。与真实人物、团体或事件的任何相似之处均属巧合，或仅为故事需要而作的引用。"
-      }
+    "home": {
+      "kicker": "历史 · 符号 · 神话",
+      "title": "符号背后的故事",
+      "description": "了解巴伐利亚光明会、美元上的眼睛及其衍生神话的真实历史，并亲自查阅资料。",
+      "explore": "阅读文章",
+      "exploreSymbols": "探索符号"
     }
   }
 }

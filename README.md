@@ -1,10 +1,9 @@
-# Illuminati Brotherhood — immersive story-world site (v1.1.6)
+# Illuminati Brotherhood — myths, symbols and history
 
-A multi-page React + Vite site backed by a FastAPI + MySQL service. The lore,
-rituals, countdown and imagery are an authored story world; the Terms &
-Conditions (version 1.1.6) shown in the entry gate and on `/rules` are the
-governing text for visitors and members.
- 
+A React + Vite site backed by a FastAPI service. Public articles explain myths,
+symbols and history using linked sources. The paid archive is a separate
+fictional experience. The Terms & Conditions (version 1.1.6) are unchanged.
+
 ## Run
  
 ```bash
@@ -12,10 +11,11 @@ npm install
 npm run dev        # http://localhost:5173
 npm run build      # production build + prerendered SEO pages, sitemap.xml and robots.txt in dist/
 npm run preview    # serve the production build
-npm run smoke      # SSR-render every route to catch runtime errors
+npm run smoke      # SSR-render the application routes
+npm test           # audit regression checks against dist/ (run npm run build first)
 ```
 
-## SEO, indexing & live member totals
+## SEO and indexing
 
 The app now prerenders its public routes to crawlable HTML at build time. Every
 public route gets a unique title, description, canonical URL, Open Graph/Twitter
@@ -24,18 +24,45 @@ and a custom 404 page. `VITE_SITE_URL` must be the exact canonical production
 origin (for example `https://your-domain.example`) before deploying. The
 fallback is `https://illuminati-brotherhood.org`, inferred from the seeded admin
 email; change it if that is not the live domain. Avoid building with a preview
-or localhost URL as the canonical origin.
+or localhost URL as the canonical origin. Vercel clean URLs serve the static
+HTML first. Newly published archive and video records resolve through a
+client-side catalogue fallback, so their direct links work before a rebuild.
+The bundled previews are public build artifacts; runtime API visibility changes
+hide items in the hydrated page but do not rewrite those static files.
 
 After deployment, verify the live sitemap and robots file, add the domain in
 Google Search Console, submit `/sitemap.xml`, and use URL Inspection to request
 crawling of the homepage and key pages. Indexing and rankings are ultimately
 controlled by Google and are not guaranteed by metadata alone.
 
-The homepage shows the published joined-members figure (`3.6M+`, see
-`MEMBERS_JOINED_DISPLAY` in `src/data/content.js`) alongside the GMT countdown;
-`GET /api/v1/public/stats` still exposes the aggregate registered-account count
-for internal use. Archive, station, episode and volume figures come from the
-actual catalogue.
+## November 2026 website audit: 15 fixes
+
+| # | Audit issue | Resolution |
+| --- | --- | --- |
+| 1 | Unverified member and archive totals | Removed both claims. The home page counts only the published, linkable editorial articles. |
+| 2 | Site presented as a real secret society | The home hero, About page, footer and account gate distinguish the educational project and fictional archive from any real affiliation or initiation. Existing charges are disclosed as payment for digital content only. |
+| 3 | New World Order framed as fact | `/new-order` is a public, sourced myth-vs-history article with the documented context and no signup prompt. |
+| 4 | Broken countdown | Removed it from Home and New World Order, along with the nonfunctional notification form. Legacy links go to the explainer. |
+| 5 | Instagram placeholder | No prompt, icon or section is rendered until a valid profile is configured. Clearing it hides the links again. |
+| 6 | Missing trust and legal links | The footer links to About, Contact, Privacy Policy, Terms and the content disclaimer, with copyright. Account holders can submit support messages without paying. |
+| 7 | Unclear navigation | The fixed header exposes Stories, Symbols, Archives, New World Order, Videos and About, with an accessible mobile menu. |
+| 8 | Links appeared dead or redirected to sign-in | The public links open real articles or labelled catalogue previews. Paid pages, readers and playback still require the original entitlement. |
+| 9 | Browser icon and mobile title | Added a 512×512 PNG favicon, SVG favicon and Apple touch icon; set route-specific browser titles. |
+| 10 | Thin homepage | Added reading notes on the historical Illuminati and the symbols, with three featured article previews. |
+| 11 | Search-result copy | Updated titles, descriptions and social metadata to reflect the educational content. |
+| 12 | No article catalogue | Added `/stories` and five articles of at least 800 words each, with an editorial byline and linked sources. |
+| 13 | Weak internal discovery | The new pages have breadcrumbs, related reading, canonical URLs, structured data and entries in the generated sitemap. |
+| 14 | No freshness signal | The latest-stories section shows the newest article publication or revision date, not the build date. |
+| 15 | Hard-to-use archive carousel | Replaced autoplay and arrow-only navigation with six labelled links in a responsive, keyboard-accessible grid. |
+
+Articles also have Share and Copy link controls. Edit the source files in
+`src/data/stories/`; bump an article's `updatedAt` only for a material revision.
+To offer a no-login contact option, set `VITE_CONTACT_EMAIL` to a monitored
+public inbox and rebuild. The signed-in form delivers through the existing
+FastAPI threads endpoint to **Admin → Messages**; it does not report offline
+submissions as sent. Set Instagram under **Admin → Settings → Social media**
+after checking that the profile belongs to the project. The article links and
+public catalogue previews work without either setting.
 
 ## What changed in 1.1.6
 
@@ -43,16 +70,13 @@ actual catalogue.
 | --- | --- | --- |
 | 1 | Rules & Terms rewritten (no vouching, archives caution, entry window, hidden material, conditions) and versioned `1.1.6` | `src/i18n/locales/*/translation.json`, `src/utils/consent.js`, `src/components/ConsentGate.jsx`, `src/pages/Rules.jsx` |
 | 2, 3, 21, 23 | Social accounts link correctly with real brand logos; the URLs are edited in **Admin → Settings → Social media** | `src/components/SocialIcons.jsx`, `src/components/SocialLinks.jsx`, `src/context/SiteSettingsContext.jsx`, `src/pages/admin/Settings.jsx` |
-| 4 | Ritual stations take a film URL + thumbnail from the admin console and play it on the public page | `src/pages/admin/RitualsAdmin.jsx`, `src/pages/Rituals.jsx`, `src/components/MediaPlayer.jsx` |
+| 4 | Ritual stations take a film URL + thumbnail from the admin console and play it in the member area | `src/pages/admin/RitualsAdmin.jsx`, `src/pages/Rituals.jsx`, `src/components/MediaPlayer.jsx` |
 | 5 | Only valid, non-disposable email addresses are accepted (client + API) | `src/utils/validation.js`, `backend/app/schemas/user.py` |
-| 6 | The whole site stays locked (inert, scroll-locked) until the terms are acknowledged | `src/components/ConsentGate.jsx`, `src/components/Layout.jsx` |
-| 7 | Membership countdown and joined-members total (`3.6M+`) on Home and the New World Order hero — the separate top strip above the header was **removed** (v1.1.7) | `src/pages/Home.jsx`, `src/pages/NewOrder.jsx` |
-| 8 | Every published time is GMT/UTC | `src/data/content.js` (`TARGET_DATE`), `src/utils/validation.js` |
-| 9, 15, 16 | Campaign-milestone disclaimer, “No real-world claims” and “A story, not a claim” removed from the New World Order page | `src/i18n/locales/*/translation.json` |
+| 6 | Terms acknowledgement locks the account and member experience until accepted; public reading pages are exempt | `src/components/ConsentGate.jsx`, `src/components/Layout.jsx` |
 | 10 | OSIRIS moved to **Archives → The Third Eye** | `src/pages/ArchiveDetail.jsx`, `src/pages/Visuals.jsx` |
 | 11 | Passphrases must carry a special character (plus upper/lower/digit, 8+) | `src/utils/validation.js`, `backend/app/schemas/user.py` |
 | 12 | New original synthesized score, with `/public/assets/site-ambient.mp3` as an optional override | `src/hooks/useAmbientSound.js` |
-| 13 | Hyperlinks corrected (no dead `#` links; unset platforms say “coming soon”) | `src/components/Footer.jsx`, `src/components/SocialLinks.jsx` |
+| 13 | Hyperlinks corrected (no dead `#` links; unset platforms are hidden) | `src/components/Footer.jsx`, `src/components/SocialLinks.jsx` |
 | 14 | “New Order” renamed to **New World Order** (`/new-world-order` redirects) | all locales, `src/App.jsx`, `vercel.json` |
 | 17, 23 | E-book Library with admin shelving, plus Keeper-added archive records | `src/pages/Archives.jsx`, `src/pages/admin/BooksAdmin.jsx`, `src/pages/admin/ArchivesAdmin.jsx` |
 | — | Keeper uploads the e-book PDF from the console; sealed volumes are served only to paid members (see *Sealed e-book library* below) | `backend/app/api/v1/endpoints/library.py`, `src/components/EbookViewer.jsx` |
@@ -69,11 +93,11 @@ The legal text is not written inside the translation files any more: it lives in
 one place, `src/data/terms.js`, and is rendered as-is by both the entry gate and
 `/rules` via `<TermsDocument />`, so the wording a visitor accepts is always the
 same document. Edit that file to change the terms — and bump
-`TERMS_VERSION` there, which re-locks the site for every visitor (the accepted
-version is stored with the consent record). The text stays in English on every
+`TERMS_VERSION` there to require a new acknowledgement before access to
+member pages (the accepted version is stored with the consent record). The text stays in English on every
 language so the accepted wording never varies; only the surrounding interface
-(buttons, headings, instructions) is translated. The `/rules` page keeps the
-account-privacy statement at `#rule-privacy` for the footer link.
+(buttons, headings, instructions) is translated. The footer links to the standalone `/privacy` page; the older
+`/rules#rule-privacy` anchor links there too.
 
 ## Why the ₹999 fee? (pre-payment explanation)
 
@@ -134,10 +158,10 @@ the sealed state with a working call to action. Because of this, a member who
 pays while the page is open gets the volume immediately — the Library asks for
 it by the book's public id, and the entitlement is re-checked server-side.
 
-On the public Library (`/archives#library`) an unlocked volume shows
-**READ ONLINE** (an in-page PDF reader fed by a Blob URL, so the file is never a
-public link) and **DOWNLOAD PDF**. Each successful download is counted on the
-book record and shown in the Keeper console.
+In the member Library (`/archives#library`), an unlocked uploaded PDF opens in
+the in-page reader, which fetches the file with the member's token. The member
+reader has no download button; standalone `/book` purchases use a separate
+fulfillment flow.
 
 Housekeeping in the console:
 
@@ -149,9 +173,10 @@ Housekeeping in the console:
 - Uploads are limited to PDF/EPUB, checked by extension **and** magic bytes, and
   capped by `MAX_EBOOK_SIZE_MB` (default 100 MB) in `backend/.env`.
 
-Deployment notes: this needs the FastAPI service (and its disk) — a
-frontend-only Vercel deploy must set `VITE_API_BASE_URL` to the API origin and
-allow that origin in `CORS_ORIGINS`. Uploaded volumes are gitignored
+Deployment notes: this needs the FastAPI service (and its disk). A
+frontend-only Vercel deploy must set `VITE_API_BASE_URL` to the full API base
+including `/api/v1`, and the API must allow the frontend origin in
+`CORS_ORIGINS`. Uploaded volumes are gitignored
 (`backend/uploads/`) and are not part of the repository; back the folder up as
 you would any other user data.
 
@@ -203,14 +228,15 @@ out automatically when the file is available.
 
 | Route | Page |
 | --- | --- |
-| `/` | Home — hero, "choose your path" grid, archive carousel, symbols, countdown + members, library, videos, community, Instagram |
-| `/archives`, `/archives/:slug` | Ritual Archive chambers, OSIRIS (Third Eye) + the e-book Library (`#library`) |
+| `/` | Home — educational introduction, latest stories and six archive previews |
+| `/stories`, `/stories/:slug` | Public articles with linked sources and sharing controls |
+| `/archives`, `/archives/:slug` | Public chamber previews; full archive, OSIRIS and Library for entitled readers |
 | `/rituals` | The seven stations (some sealed for signed-in initiates) |
-| `/new-order` | Live countdown to 31 Dec 2026 23:59:59 GMT, phases, notify form |
-| `/videos`, `/videos/:slug` | Filterable episode grid, featured episode, demo player, sealed episodes |
-| `/visuals` | Sigil explorer + key-visual gallery with lightbox |
+| `/new-order` | Public explainer on the myth and the historical record |
+| `/videos`, `/videos/:slug` | Public catalogue; the member area shows available video playback |
+| `/visuals` | Public symbol guides; sigil explorer and gallery in the member area |
 | `/community` | Channels, private board (your threads with the Keepers), Instagram |
-| `/about` | Pillars, story timeline, FAQ, content disclaimer |
+| `/about`, `/contact`, `/privacy`, `/rules` | Editorial policy, contact, privacy and Terms & Conditions |
 | `/login`, `/register` | Auth pages |
 | `/profile` | Member area (protected) |
 | `/why-999` | Public explanation of the one-time initiation fee, with the payment CTA |
@@ -227,8 +253,8 @@ and configure the backend CORS origins to match the site.
 
 | Role | Access |
 | --- | --- |
-| Visitor | All public pages; sealed rituals/videos show a sign-in prompt |
-| Initiate (member) | Everything above + sealed content, discussion board posting, profile |
+| Visitor | Articles, previews and trust pages without signing in |
+| Initiate (member) | Profile and private support form; the full experience requires paid access |
 | Keeper (admin) | Everything above + `/admin`: promote/demote, banish, seal/unseal content |
 
 The backend seeds a Keeper from `ADMIN_EMAIL` and `ADMIN_PASSWORD` in

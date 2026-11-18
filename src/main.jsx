@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './i18n/config'
 import './App.css'
+import './Editorial.css'
 
 const rootElement = document.getElementById('root')
 const app = (

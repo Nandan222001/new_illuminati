@@ -1,50 +1,41 @@
 import { defineConfig, mergeConfig } from 'vite'
+import { createReadStream } from 'node:fs'
+import { join } from 'node:path'
 import baseConfig from './vite.config.js'
-import { CARDS, VIDEOS } from './src/data/content.js'
+import { CATALOGUE_FALLBACK, documentFile, isCatalogueDetailPath, renderRoutes } from './src/seo/routes.js'
 
-const staticRoutes = new Set([
-  '/',
-  '/archives',
-  '/rituals',
-  '/new-order',
-  '/videos',
-  '/visuals',
-  '/community',
-  '/about',
-  '/rules',
-  '/login',
-  '/register',
-  '/profile',
-  '/admin',
-  '/admin/revenue',
-  '/admin/members',
-  '/admin/videos',
-  '/admin/images',
-  '/admin/rituals',
-  '/admin/settings',
-  ...CARDS.map((card) => `/archives/${card.slug}`),
-  ...VIDEOS.map((video) => `/videos/${video.slug}`),
+const staticRoutes = new Set(renderRoutes.filter((route) => route !== '/__not-found'))
+const aliases = new Map([
+  ['/home', '/'], ['/symbols', '/visuals'], ['/countdown', '/new-order'],
+  ['/new-world-order', '/new-order'], ['/library', '/archives#library'],
 ])
 
 const prerenderedRoutePreview = {
   name: 'prerendered-route-preview',
   configurePreviewServer(server) {
-    server.middlewares.use((request, _response, next) => {
+    server.middlewares.use((request, response, next) => {
       if (!request.url || !['GET', 'HEAD'].includes(request.method || 'GET')) return next()
       const queryIndex = request.url.indexOf('?')
+      const query = queryIndex < 0 ? '' : request.url.slice(queryIndex)
       const pathname = (queryIndex < 0 ? request.url : request.url.slice(0, queryIndex)).replace(/\/+$/, '') || '/'
-      const isKnownDynamicPage = /^\/(archives|videos)\/[^/]+$/.test(pathname)
-      if (staticRoutes.has(pathname) || isKnownDynamicPage) {
-        const query = queryIndex < 0 ? '' : request.url.slice(queryIndex)
-        request.url = `${pathname === '/' ? '' : pathname}/index.html${query}`
+      if (aliases.has(pathname)) {
+        const [location, hash] = aliases.get(pathname).split('#')
+        response.writeHead(308, { Location: `${location}${query}${hash ? `#${hash}` : ''}` }).end()
+        return
       }
-      next()
+      if (staticRoutes.has(pathname) || isCatalogueDetailPath(pathname)) {
+        const file = staticRoutes.has(pathname) ? documentFile(pathname) : CATALOGUE_FALLBACK
+        request.url = `/${file}${query}`
+        return next()
+      }
+      if (!request.headers.accept?.includes('text/html') || pathname.startsWith('/api/') || /\.[^/]+$/.test(pathname)) return next()
+      response.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' })
+      if (request.method === 'HEAD') return response.end()
+      createReadStream(join(server.config.root, server.config.build.outDir, '404.html')).on('error', () => response.end()).pipe(response)
     })
   },
 }
 
-// Serve the generated per-route HTML during preview instead of falling back to
-// the root document, so local checks reflect the SEO files shipped to Vercel.
 export default mergeConfig(baseConfig, defineConfig({
   appType: 'mpa',
   plugins: [prerenderedRoutePreview],

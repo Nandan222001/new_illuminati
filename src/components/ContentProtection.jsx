@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 /**
- * Site-wide content protection layer.
+ * Member-area content protection layer.
  * - Disables right-click context menu
  * - Blocks common dev-tools keyboard shortcuts (F12, Ctrl+Shift+I/J/C, Ctrl+U)
  * - Prevents copy/cut on protected elements
@@ -52,11 +52,7 @@ export default function ContentProtection() {
         target.closest('.consent-scroll') ||
         target.closest('.step-card') ||
         target.closest('.rules-wellbeing') ||
-        target.closest('.rules-consent') ||
-        target.closest('.cd-big') ||
-        target.closest('.cd-members') ||
-        target.closest('.stat-value') ||
-        target.closest('.hero h1')
+        target.closest('.rules-consent')
       )) {
         e.preventDefault()
       }

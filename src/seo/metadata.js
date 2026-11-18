@@ -1,15 +1,17 @@
-import { CARDS, PAGES, VIDEOS } from '../data/content.js'
+import { CARDS, PAGES, VIDEOS, videoDescription } from '../data/content.js'
+import { findStory, storyDate, STORY_AUTHOR, STORY_INDEX_PATH } from '../data/stories/index.js'
+import { DEFAULT_SITE_URL, SITE_NAME, normalizeSiteUrl } from './site.js'
 
-export const SITE_NAME = 'Illuminati Brotherhood'
-// The seed admin address uses this brand domain. Override it with the exact
-// production origin through VITE_SITE_URL before deployment if it differs.
-export const DEFAULT_SITE_URL = 'https://illuminati-brotherhood.org'
+const EDITORIAL_IMAGE = '/assets/editorial-share.png'
+const EDITORIAL_IMAGE_ALT = 'Illuminati Brotherhood: myths, symbols and history'
+const HOME_DESCRIPTION = 'Explore myths, symbols and the history behind the Bavarian Illuminati, the Eye of Providence and the New World Order. Free articles with sources.'
 
 const PAGE_SEO = {
   '/': {
-    title: 'Illuminati Brotherhood | Secret-Society Myths & Symbols',
-    description: 'Explore secret-society myths, historical mysteries and symbols through original fiction. An immersive story world, not a real organization.',
-    image: '/assets/hero-baphomet.jpg',
+    title: 'Illuminati Brotherhood | Myths, Symbols & History Explained',
+    description: HOME_DESCRIPTION,
+    image: EDITORIAL_IMAGE,
+    preloadImage: '/assets/editorial-emblem.svg',
   },
   '/archives': {
     title: 'Secret-Society Archive & Library | Illuminati Brotherhood',
@@ -20,31 +22,43 @@ const PAGE_SEO = {
     title: 'Fictional Ritual Stories | Illuminati Brotherhood',
     description: 'Explore seven fictional ritual stations, from the First Candle to the Sealed Oath. These theatrical stories use symbolism, not real-world practices.',
     image: PAGES.rituals.hero,
+    robots: 'noindex,follow',
   },
-  '/new-order': {
-    title: 'New World Order Story Countdown | Illuminati Brotherhood',
-    description: 'Follow the New World Order countdown, campaign phases and joined-members total of an immersive story world inspired by historical symbols.',
-    image: PAGES.newOrder.hero,
+  '/stories': {
+    title: `Sourced Stories on Myths, Symbols & History | ${SITE_NAME}`,
+    description: 'Read free educational features on the Bavarian Illuminati, the Eye of Providence, pyramids, grimoires and the origins of conspiracy theories.',
+    image: EDITORIAL_IMAGE,
   },
   '/videos': {
-    title: 'Secret-Society Videos & Stories | Illuminati Brotherhood',
-    description: 'Watch short films and explainers about secret societies, symbols and historical mysteries. Every episode is clearly labelled as story, theory or fact.',
+    title: 'Video Catalogue | Illuminati Brotherhood',
+    description: 'Browse episode previews about symbols, history and fictional stories. Playback, where published, is part of the member experience.',
     image: PAGES.videos.hero,
   },
   '/visuals': {
-    title: 'Secret-Society Symbols, Sigils & Tattoos | Illuminati Brotherhood',
-    description: 'Decode the dollar, find your sigil and explore illustrated secret-society symbols, tattoos and key visuals in an interactive guide to myth and meaning.',
+    title: 'Symbol Guides: Eye of Providence & Pyramid | Illuminati Brotherhood',
+    description: 'Explore the history of the Eye of Providence, the pyramid and other familiar motifs. Read sourced guides and learn how to tell myth from history.',
     image: PAGES.visuals.hero,
   },
   '/community': {
     title: 'Community & Council Board | Illuminati Brotherhood',
     description: 'The channels, the emblem and a private thread to the Keepers — every message one-to-one. Mature themes; adults 18+ only.',
     image: PAGES.community.hero,
+    robots: 'noindex,follow',
   },
   '/about': {
-    title: 'About Illuminati Brotherhood | Fiction & History',
-    description: 'Learn what Illuminati Brotherhood is: a fictional entertainment brand inspired by secret-society history, symbolism and mystery—not a real organization.',
-    image: PAGES.about.hero,
+    title: 'About the Project | Illuminati Brotherhood',
+    description: 'Learn how this independent educational storytelling project sources articles, distinguishes myth from history and labels its fictional archive.',
+    image: EDITORIAL_IMAGE,
+  },
+  '/privacy': {
+    title: `Privacy Policy | ${SITE_NAME}`,
+    description: 'How the site uses information from browsing, accounts, private messages and payments, and how to request a correction or deletion.',
+    image: EDITORIAL_IMAGE,
+  },
+  '/contact': {
+    title: `Contact | ${SITE_NAME}`,
+    description: 'Contact the site team about a story, account, purchase or privacy request. No purchase is required to send a support message.',
+    image: EDITORIAL_IMAGE,
   },
   '/rules': {
     title: 'Terms, Rules & Instructions (v1.1.6) | Illuminati Brotherhood',
@@ -52,8 +66,8 @@ const PAGE_SEO = {
     image: PAGES.about.hero,
   },
   '/why-999': {
-    title: 'Why ₹999? What the Initiation Fee Covers | Illuminati Brotherhood',
-    description: 'Exactly what the one-time ₹999 initiation fee pays for: permanent access to the sealed archive, a personal membership seal and documents, and the running costs of the network. No subscription, no renewals.',
+    title: 'What Paid Site Access Covers | Illuminati Brotherhood',
+    description: 'See what the one-time fee covers: digital archive access and in-world documents. No automatic renewal or real-world membership.',
     image: '/assets/about-hero.jpg',
   },
   '/book': {
@@ -78,22 +92,15 @@ const PAGE_SEO = {
 const STATIC_BREADCRUMBS = {
   '/archives': [{ name: 'Home', path: '/' }, { name: 'Archives', path: '/archives' }],
   '/rituals': [{ name: 'Home', path: '/' }, { name: 'Rituals', path: '/rituals' }],
-  '/new-order': [{ name: 'Home', path: '/' }, { name: 'New World Order', path: '/new-order' }],
+  '/stories': [{ name: 'Home', path: '/' }, { name: 'Stories', path: '/stories' }],
   '/videos': [{ name: 'Home', path: '/' }, { name: 'Videos', path: '/videos' }],
-  '/visuals': [{ name: 'Home', path: '/' }, { name: 'Visuals', path: '/visuals' }],
+  '/visuals': [{ name: 'Home', path: '/' }, { name: 'Symbols', path: '/visuals' }],
   '/community': [{ name: 'Home', path: '/' }, { name: 'Community', path: '/community' }],
   '/about': [{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }],
   '/rules': [{ name: 'Home', path: '/' }, { name: 'Rules', path: '/rules' }],
-  '/why-999': [{ name: 'Home', path: '/' }, { name: 'Why ₹999', path: '/why-999' }],
-}
-
-export function normalizeSiteUrl(value = DEFAULT_SITE_URL) {
-  try {
-    const url = new URL(value, DEFAULT_SITE_URL)
-    return url.origin
-  } catch {
-    return DEFAULT_SITE_URL
-  }
+  '/why-999': [{ name: 'Home', path: '/' }, { name: 'What Paid Access Covers', path: '/why-999' }],
+  '/contact': [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }],
+  '/privacy': [{ name: 'Home', path: '/' }, { name: 'Privacy Policy', path: '/privacy' }],
 }
 
 function normalizePath(pathname = '/') {
@@ -134,84 +141,63 @@ function absoluteUrl(siteUrl, assetOrPath) {
   return new URL(assetOrPath || '/assets/hero-baphomet.jpg', `${siteUrl}/`).toString()
 }
 
-export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_URL, extraArchives = []) {
+export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_URL, { archives = CARDS, videos = VIDEOS } = {}) {
   const path = normalizePath(pathname)
   const siteUrl = normalizeSiteUrl(siteUrlValue)
-  const record = PAGE_SEO[path]
+  const story = findStory(path)
+  const record = story ? { title: `${story.title} | ${SITE_NAME}`, description: story.summary, image: EDITORIAL_IMAGE } : PAGE_SEO[path]
   let pageName = record?.title || SITE_NAME
   let description = record?.description || 'Explore a fictional entertainment experience inspired by secret-society history, symbols and historical mysteries.'
   let image = record?.image || '/assets/hero-baphomet.jpg'
   let robots = record?.robots || 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
-  let ogType = 'website'
-  let breadcrumbs = STATIC_BREADCRUMBS[path] || null
+  const ogType = story ? 'article' : 'website'
+  let breadcrumbs = story ? [
+    { name: 'Home', path: '/' },
+    { name: 'Stories', path: STORY_INDEX_PATH },
+    { name: story.title, path },
+  ] : STATIC_BREADCRUMBS[path] || null
 
   const archiveMatch = path.match(/^\/archives\/([^/]+)$/)
-  if (archiveMatch) {
-    const slug = decodeSegment(archiveMatch[1])
-    const card = CARDS.find((item) => item.slug === slug)
-    if (card) {
-      const title = localize(translate, `content.cards.${slug}.title`, slug.replaceAll('-', ' '))
-      const body = localize(translate, `content.cards.${slug}.body`, '')
-      pageName = `${title} | Archive Chamber | ${SITE_NAME}`
-      description = excerpt(`${body} A fictional archive chapter inspired by secret-society symbolism.`)
-      image = card.img
-      ogType = 'article'
-      breadcrumbs = [
-        { name: 'Home', path: '/' },
-        { name: 'Archives', path: '/archives' },
-        { name: title, path },
-      ]
-    } else {
-      const custom = extraArchives.find((item) => item.slug === slug)
-      if (custom) {
-        pageName = `${custom.title} | Archive Chamber | ${SITE_NAME}`
-        description = excerpt(`${custom.body || custom.desc} A chapter of the Illuminati Brotherhood archive.`)
-        image = custom.img
-        ogType = 'article'
-        breadcrumbs = [
-          { name: 'Home', path: '/' },
-          { name: 'Archives', path: '/archives' },
-          { name: title, path },
-        ]
-      } else {
-        robots = 'noindex,follow'
-      }
-    }
-  }
-
   const videoMatch = path.match(/^\/videos\/([^/]+)$/)
-  if (videoMatch) {
-    const slug = decodeSegment(videoMatch[1])
-    const video = VIDEOS.find((item) => item.slug === slug)
-    if (video) {
-      pageName = `${video.title} | Videos | ${SITE_NAME}`
-      description = excerpt(`${video.desc} Clearly labelled as story, theory or fact in an entertainment series.`)
-      image = video.img
-      ogType = 'article'
-      breadcrumbs = [
-        { name: 'Home', path: '/' },
-        { name: 'Videos', path: '/videos' },
-        { name: video.title, path },
-      ]
-    } else {
-      robots = 'noindex,follow'
-    }
+  const archiveSlug = archiveMatch && decodeSegment(archiveMatch[1])
+  const videoSlug = videoMatch && decodeSegment(videoMatch[1])
+  const archive = archiveSlug && archives.find((item) => item.slug === archiveSlug)
+  const video = videoSlug && videos.find((item) => item.slug === videoSlug)
+
+  if (archive) {
+    const title = archive.custom
+      ? archive.title
+      : localize(translate, `content.cards.${archiveSlug}.title`, archiveSlug.replaceAll('-', ' '))
+    const preview = archive.custom ? (archive.desc || '') : localize(translate, `content.cards.${archiveSlug}.desc`, '')
+    pageName = `${title} | Archive Chamber | ${SITE_NAME}`
+    description = `${preview} A fictional archive chapter inspired by secret-society symbolism.`
+    image = archive.img || EDITORIAL_IMAGE
+    breadcrumbs = [
+      { name: 'Home', path: '/' },
+      { name: 'Archives', path: '/archives' },
+      { name: title, path },
+    ]
   }
 
-  if (path === '/profile' || path.startsWith('/admin/')) robots = 'noindex,nofollow'
-  if (path === '/admin') robots = 'noindex,nofollow'
-  if (!record && !archiveMatch && !videoMatch && path !== '/profile' && !path.startsWith('/admin')) robots = 'noindex,follow'
+  if (video) {
+    pageName = `${video.title} | Videos | ${SITE_NAME}`
+    description = `${videoDescription(video) || ''} Browse this episode preview.`
+    image = video.img || EDITORIAL_IMAGE
+    breadcrumbs = [
+      { name: 'Home', path: '/' },
+      { name: 'Videos', path: '/videos' },
+      { name: video.title, path },
+    ]
+  }
 
-  const routeExists = Boolean(record)
-    || (archiveMatch && (CARDS.some((card) => card.slug === decodeSegment(archiveMatch[1]))
-      || extraArchives.some((card) => card.slug === decodeSegment(archiveMatch[1]))))
-    || (videoMatch && VIDEOS.some((video) => video.slug === decodeSegment(videoMatch[1])))
-    || path === '/profile'
-    || path === '/admin'
-    || path.startsWith('/admin/')
-  if (!routeExists && !record) {
+  const privateRoute = path === '/profile' || path === '/admin' || path.startsWith('/admin/')
+  const routeExists = Boolean(record || archive || video || privateRoute)
+  if (privateRoute) robots = 'noindex,nofollow'
+  if (!routeExists) {
+    robots = 'noindex,follow'
     pageName = `Page Not Found | ${SITE_NAME}`
     description = 'This page could not be found. Return to the homepage to explore the fictional archive, symbols and stories.'
+    image = EDITORIAL_IMAGE
   }
 
   const canonical = routeExists ? `${siteUrl}${path === '/' ? '/' : path}` : null
@@ -221,11 +207,12 @@ export function getSeoMetadata(pathname, translate, siteUrlValue = DEFAULT_SITE_
     description: excerpt(description),
     canonical,
     image: absoluteUrl(siteUrl, image),
-    imageAlt: `${pageName.replace(/\s\|.*$/, '')} artwork`,
+    imageAlt: image === EDITORIAL_IMAGE ? EDITORIAL_IMAGE_ALT : `${pageName.replace(/\s\|.*$/, '')} artwork`,
     robots,
     ogType,
     breadcrumbs,
-    preloadImage: image,
+    preloadImage: record?.preloadImage || null,
+    story,
     siteUrl,
   }
 }
@@ -257,6 +244,21 @@ export function getStructuredData(metadata) {
       },
     },
   ]
+
+  if (metadata.story) {
+    graph.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: metadata.story.title,
+      description: metadata.description,
+      image: metadata.image,
+      mainEntityOfPage: { '@id': `${metadata.canonical}#webpage` },
+      author: { '@type': 'Organization', name: STORY_AUTHOR, url: `${metadata.siteUrl}/about#editorial` },
+      datePublished: metadata.story.publishedAt,
+      dateModified: storyDate(metadata.story),
+      inLanguage: 'en',
+    })
+  }
 
   if (metadata.breadcrumbs?.length > 1) {
     graph.push({

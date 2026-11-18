@@ -1,35 +1,40 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { NAV_LINKS } from '../data/content'
 import { useAuth } from '../context/AuthContext'
-import { useSiteSettings } from '../context/SiteSettingsContext'
-import { socialHandle } from '../utils/social'
 import BrandMark from './BrandMark'
-import BrandFlame from './BrandFlame'
 import SocialLinks from './SocialLinks'
 
 export default function Footer() {
   const { user, isAdmin } = useAuth()
   const { t } = useTranslation()
-  const { social, joiningFee } = useSiteSettings()
-  const handle = socialHandle(social.instagram)
 
   return (
-    <footer>
+    <footer className="site-footer">
       <div className="foot-top">
         <div className="foot-col foot-about">
-          <div className="foot-brand">
-            <BrandFlame />
+          <Link className="foot-brand" to="/">
             <BrandMark className="brand-mark" style={{ width: 40, height: 40 }} />
             <span className="brand-name">ILLUMINATI<small>BROTHERHOOD</small></span>
-          </div>
-          <p className="foot-desc">{t('footer.description')}</p>
-          {handle && <p className="foot-handle">{handle}</p>}
+          </Link>
+          <p className="foot-desc">{t('editorial.disclaimer')}</p>
+          <p className="foot-desc">{t('editorial.accessDisclosure')}</p>
           <SocialLinks className="social-row footer-social" labels={false} />
         </div>
         <div className="foot-col">
           <h2 className="foot-heading">{t('footer.explore')}</h2>
-          {NAV_LINKS.map((l) => <Link key={l.to} to={l.to}>{t(`nav.${l.key}`)}</Link>)}
+          <Link to="/stories">{t('editorial.stories')}</Link>
+          <Link to="/visuals">{t('editorial.symbols')}</Link>
+          <Link to="/archives">{t('nav.archives')}</Link>
+          <Link to="/videos">{t('nav.videos')}</Link>
+          <Link to="/new-order">{t('nav.newOrder')}</Link>
+        </div>
+        <div className="foot-col">
+          <h2 className="foot-heading">{t('footer.legal')}</h2>
+          <Link to="/about">{t('nav.about')}</Link>
+          <Link to="/contact">{t('editorial.contact.title')}</Link>
+          <Link to="/privacy">{t('editorial.privacy')}</Link>
+          <Link to="/rules#terms">{t('editorial.terms')}</Link>
+          <Link to="/about#disclaimer">{t('footer.disclaimer')}</Link>
         </div>
         <div className="foot-col">
           <h2 className="foot-heading">{t('footer.account')}</h2>
@@ -40,25 +45,17 @@ export default function Footer() {
             </>
           ) : (
             <>
-              <Link to="/login">{t('nav.login')}</Link>
-              <Link to="/register">{t('nav.register')}</Link>
+              <Link to="/login">{t('editorial.signIn')}</Link>
+              <Link to="/register">{t('editorial.contact.register')}</Link>
             </>
           )}
-          <Link to="/why-999">{t('footer.whyFee', { fee: joiningFee })}</Link>
-          <Link to="/about#faq">{t('footer.faq')}</Link>
-          <Link to="/about#disclaimer">{t('footer.disclaimer')}</Link>
-        </div>
-        <div className="foot-col">
-          <h2 className="foot-heading">{t('footer.legal')}</h2>
-          <Link to="/rules#rule-privacy">{t('footer.privacy')}</Link>
-          <Link to="/rules#terms">{t('footer.terms')}</Link>
-          <Link to="/rules">{t('footer.guidelines')}</Link>
-          <Link to="/community#threads">{t('footer.contact')}</Link>
+          <Link to="/archives#library">{t('nav.library')}</Link>
+          <Link to="/rituals">{t('nav.rituals')}</Link>
+          <Link to="/community">{t('nav.community')}</Link>
+          <Link to="/why-999">{t('editorial.catalogue.accessDetails')}</Link>
         </div>
       </div>
-      <div className="foot-copy">
-        {t('footer.copyright')} · <span className="foot-version">{t('rules.versionNote', { version: '1.1.6' })}</span>
-      </div>
+      <div className="foot-copy">{t('footer.copyright')}</div>
     </footer>
   )
 }

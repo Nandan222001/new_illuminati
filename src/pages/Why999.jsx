@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero'
 import WhyFee from '../components/WhyFee'
 import InitiationModal from '../components/InitiationModal'
 import { useAuth } from '../context/AuthContext'
+import { useConsent } from '../context/ConsentContext'
 import { useSiteSettings } from '../context/SiteSettingsContext'
 
 /**
@@ -14,6 +15,7 @@ import { useSiteSettings } from '../context/SiteSettingsContext'
  */
 export default function Why999() {
   const { user, isAdmin } = useAuth()
+  const { consent } = useConsent()
   const { joiningFee } = useSiteSettings()
   const { t } = useTranslation()
   const [showInitiation, setShowInitiation] = useState(false)
@@ -31,10 +33,13 @@ export default function Why999() {
       />
 
       <section className="page-section why-page">
+        <p className="rules-wellbeing">{t('editorial.accessDisclosure')}</p>
         <WhyFee fee={joiningFee} showTermsLink />
 
         <div className="why-page-cta">
-          {paid ? (
+          {user && !consent ? (
+            <Link to="/rules#instructions" className="btn-gold">{t('editorial.catalogue.reviewTerms')}</Link>
+          ) : paid ? (
             <Link to="/archives" className="btn-gold">{t('whyFee.ctaPaid')}</Link>
           ) : user ? (
             <button type="button" className="btn-gold" onClick={() => setShowInitiation(true)}>{t('whyFee.continue', { fee: joiningFee })}</button>
@@ -44,7 +49,7 @@ export default function Why999() {
           <Link to="/" className="btn-ghost">{t('whyFee.back')}</Link>
         </div>
 
-        {user && !paid && <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />}
+        {user && consent && !paid && <InitiationModal open={showInitiation} onClose={() => setShowInitiation(false)} />}
       </section>
     </>
   )

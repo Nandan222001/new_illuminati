@@ -6,10 +6,6 @@
     "play": "Reproducir",
     "pause": "Pausar",
     "close": "Cerrar",
-    "days": "DÍAS",
-    "hours": "HORAS",
-    "minutes": "MINUTOS",
-    "seconds": "SEGUNDOS",
     "sealedBadge": "🔒 SELLADO",
     "signInBadge": "🔒 INICIA SESIÓN PARA VER",
     "unsealedBadge": "◈ DESSELLADO",
@@ -18,8 +14,6 @@
     "tagline": "SÍMBOLOS · MITO · HISTORIA",
     "sealYourOathCta": "SELLA TU JURAMENTO ›",
     "followNow": "SEGUIR AHORA",
-    "followingToast": "El seguimiento en Instagram llegará pronto.",
-    "instagramPostAlt": "Publicación de Instagram",
     "explore": "Explorar",
     "emailLabel": "CORREO ELECTRÓNICO",
     "passphraseLabel": "CONTRASEÑA",
@@ -195,60 +189,8 @@
     }
   },
   "home": {
-    "welcomeTo": "BIENVENIDO A",
-    "welcomeBack": "BIENVENIDO DE NUEVO, {{name}}",
-    "heroSubLine1": "La puerta siempre ha estado abierta,",
-    "heroSubLine2": "solo unos pocos saben dónde está.",
-    "heroTag": "ENTRA EN LO DESCONOCIDO",
-    "ctaMain": "ENTRA AL MUNDO OSCURO",
-    "railHistory": "HISTORIA",
-    "railSymbols": "SÍMBOLOS",
-    "railConspiracies": "CONSPIRACIONES",
-    "railSecrets": "SECRETOS",
-    "bottomLeft": "SÍMBOLOS · MITO · HISTORIA",
-    "scrollHint": "DESPLÁZATE PARA EXPLORAR",
-    "exploreTitle": "ELIGE TU CAMINO",
-    "exploreSub": "SEIS PUERTAS. CADA UNA TE LLEVA MÁS PROFUNDO.",
-    "viewAllChambers": "VER TODAS LAS CÁMARAS ›",
-    "autoplayLabel": "REPRODUCCIÓN AUTOMÁTICA · 02 SEG",
     "allVisuals": "TODOS LOS VISUALES ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
-    "countdownCta": "NUEVO ORDEN MUNDIAL ›",
-    "allVideos": "TODOS LOS VIDEOS ›",
-    "communityTitle": "ENTRA A LA COMUNIDAD",
-    "communityMatureNote": "Solo +18. Contiene contenido maduro.",
-    "instagramTitleLine1": "SIGUE A LA HERMANDAD",
-    "instagramTitleLine2": "EN INSTAGRAM",
-    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
-    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
-    "membersStatNote": "Joined members across the Network."
-  },
-  "about": {
-    "pillars": {
-      "storyFirst": {
-        "title": "LA HISTORIA PRIMERO",
-        "text": "Cada página es un capítulo. El archivo, los rituales y la cuenta regresiva son recursos narrativos, no afirmaciones."
-      },
-      "clearlyLabelled": {
-        "title": "CLARAMENTE ETIQUETADO",
-        "text": "Los videos están etiquetados como relato, teoría o hecho para que siempre sepas qué estás viendo."
-      },
-      "communityLed": {
-        "title": "LIDERADO POR LA COMUNIDAD",
-        "text": "Los iniciados votan hacia dónde va la historia. El consejo escucha."
-      },
-      "noClaims": {
-        "title": "SIN AFIRMACIONES REALES",
-        "text": "Nunca señalamos a personas u organizaciones reales. Cualquier parecido es coincidencia o referencia."
-      }
-    },
-    "pillarsTitle": "LO QUE DEFENDEMOS",
-    "pillarsSub": "CUATRO PILARES DE LA EXPERIENCIA.",
-    "storyTitle": "LA HISTORIA HASTA AHORA",
-    "libraryAlt": "La biblioteca",
-    "faqTitle": "PREGUNTAS FRECUENTES",
-    "faqSub": "LAS PREGUNTAS QUE TODO INICIADO HACE PRIMERO.",
-    "disclaimerText": "Illuminati Brotherhood es una marca y un universo narrativo inspirados en la historia y el simbolismo de las sociedades secretas. No está afiliado a ningún ritual, sistema de creencias, organización o ideología real, ni los promueve, describe o respalda. Algunas imágenes son oscuras y de tono maduro; solo +18. Si algún tema de este sitio te afecta, aléjate y busca a alguien de confianza."
+    "allVideos": "TODOS LOS VIDEOS ›"
   },
   "archives": {
     "chambersTitle": "LAS SEIS CÁMARAS",
@@ -272,36 +214,6 @@
     "bandTitle": "ESCENIFICADO. SIMBÓLICO. NARRATIVO.",
     "bandText": "En esta experiencia no se describe ni se fomenta ningún ritual real. Las estaciones son recursos narrativos — escenas de una historia que te invitamos a explorar.",
     "watchDocs": "VER LOS DOCUMENTALES ›"
-  },
-  "newOrder": {
-    "phases": {
-      "signal": {
-        "title": "LA SEÑAL",
-        "text": "El contador aparece en cada página. Los iniciados reciben el primer mensaje sellado."
-      },
-      "gathering": {
-        "title": "LA REUNIÓN",
-        "text": "El consejo se reúne. Se abren nuevas cámaras en el archivo y la comunidad vota el siguiente capítulo."
-      },
-      "screening": {
-        "title": "LA PROYECCIÓN",
-        "text": "El Último Estreno — el final de larga duración de la primera temporada — se desella para todos los iniciados."
-      },
-      "zeroHour": {
-        "title": "EL NUEVO ORDEN",
-        "text": "Hora cero. Comienza la próxima temporada. Programado y enteramente nuestro."
-      }
-    },
-    "whatHappensTitle": "QUÉ OCURRE EN EL CERO",
-    "whatHappensSub": "CUATRO FASES. UNA FECHA.",
-    "roadTitle": "EL CAMINO HACIA EL 31 · 12 · 2026",
-    "notifyTitle": "SÉ EL PRIMERO EN SABERLO",
-    "alreadyOnList": "Ya estás en la lista, {{name}}. Los iniciados son notificados antes que nadie.",
-    "viewProfile": "VER MI PERFIL ›",
-    "notifyPrompt": "Deja un correo o conviértete en iniciado para recibir la señal.",
-    "notifyMe": "AVISARME",
-    "orBecomeInitiate": "O CONVIÉRTETE EN INICIADO ›",
-    "notifyToast": "Las alertas por correo llegarán pronto. Crea una cuenta para recibir la señal primero."
   },
   "videos": {
     "nowScreeningTitle": "EN PROYECCIÓN AHORA",
@@ -557,12 +469,6 @@
         "sub": "VELA. CÍRCULO. SILENCIO. LAS ETAPAS DEL INICIADO.",
         "intro": "Los ritos de la Hermandad son teatro: escenificados y simbólicos. Léelos como una historia. Sigue las siete estaciones desde la primera vela hasta el juramento sellado."
       },
-      "newOrder": {
-        "kicker": "LA EXPERIENCIA 666.666",
-        "title": "NUEVO ORDEN MUNDIAL",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
-      },
       "videos": {
         "kicker": "ARCHIVOS PROHIBIDOS",
         "title": "VIDEOS",
@@ -812,46 +718,32 @@
         "desc": "Ensayos extensos y análisis profundos del archivo.",
         "note": "El foro de discusión está justo debajo: desplázate para unirte."
       }
+    }
+  },
+  "editorial": {
+    "stories": "Artículos",
+    "symbols": "Símbolos",
+    "signIn": "Iniciar sesión",
+    "latest": "Últimos artículos",
+    "allStories": "Todos los artículos",
+    "updated": "Actualizado el",
+    "learnMore": "Sobre el proyecto",
+    "instagram": "Síguenos en Instagram",
+    "viewProfile": "Ver perfil",
+    "skip": "Ir al contenido",
+    "disclaimer": "Un proyecto educativo independiente sobre mitos, símbolos e historia. No estamos vinculados a ninguna sociedad secreta real.",
+    "accessDisclosure": "El acceso de pago y las compras solo abarcan contenido digital. No conceden membresía ni iniciación en ninguna organización real.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos y condiciones",
+    "contact": {
+      "title": "Contacto"
     },
-    "timeline": {
-      "origin": {
-        "year": "ORIGEN",
-        "title": "The first spark",
-        "text": "La Hermandad comenzó como un proyecto creativo: ¿y si la mitología de sociedades secretas se tratara como cine en lugar de conspiración?"
-      },
-      "archive": {
-        "year": "ARCHIVO",
-        "title": "Seis cámaras",
-        "text": "El Archivo Ritual le dio a la historia una estructura — seis reliquias, seis cámaras, un viaje de la percepción al juramento."
-      },
-      "council": {
-        "year": "CONSEJO",
-        "title": "La comunidad",
-        "text": "Los iniciados se unieron a la mesa redonda. Sus teorías, arte y preguntas ahora dan forma al rumbo de la historia."
-      },
-      "newOrder": {
-        "year": "2026",
-        "title": "The New World Order",
-        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
-      }
-    },
-    "faq": {
-      "isReal": {
-        "q": "¿Algo de esto es real?",
-        "a": "La historia que citamos es real. La Hermandad en sí —sus rituales, su consejo, la cuenta regresiva y su mitología— es creación nuestra, un universo narrativo inspirado en el simbolismo de las sociedades secretas. No estamos afiliados a ninguna organización real."
-      },
-      "whoCanJoin": {
-        "q": "¿Quién puede unirse a la comunidad?",
-        "a": "Cualquiera que disfrute del misterio, el cine y la mitología. Debes tener 18 años o más, porque algunas imágenes son oscuras y de tono maduro."
-      },
-      "accountDoes": {
-        "q": "¿Qué hace una cuenta?",
-        "a": "Los iniciados con sesión iniciada desbloquean videos y rituales sellados y reciben un número de iniciado. Los administradores (Guardianes) gestionan a los miembros y el contenido sellado."
-      },
-      "realWorldClaims": {
-        "q": "¿Hacen afirmaciones reales sobre personas u organizaciones?",
-        "a": "Nunca. Cualquier parecido con personas, grupos o hechos reales es casual o meramente referencial por el bien de la historia."
-      }
+    "home": {
+      "kicker": "Historia · Símbolos · Mitos",
+      "title": "Las historias detrás de los símbolos",
+      "description": "Explora la historia de los Illuminati bávaros, el ojo del dólar y los mitos que surgieron a su alrededor. Consulta las fuentes.",
+      "explore": "Explorar artículos",
+      "exploreSymbols": "Explorar símbolos"
     }
   }
 }

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { useConsent } from '../context/ConsentContext'
 import BrandMark from './BrandMark'
 import TermsDocument from './TermsDocument'
 
 /**
- * Blocks the public site until the viewer acknowledges the Terms & Conditions.
+ * Blocks account and member pages until the viewer acknowledges the terms.
  * The modal presents the complete, English terms document from src/data/terms.js
  * on first visit; the document itself is scrollable while the acknowledgement
  * controls remain available beneath it.
@@ -42,6 +43,7 @@ export default function ConsentGate() {
     <div className="consent-gate" role="dialog" aria-modal="true" aria-labelledby="consent-title">
       <div className="consent-box">
         <BrandMark className="consent-mark" style={{ width: 52, height: 52 }} />
+        <p className="gate-context">{t('editorial.accessDisclosure')}</p>
         <div ref={termsRef} className="consent-scroll" tabIndex={0} role="region" aria-label="Terms and Conditions">
           <TermsDocument compact headingId="consent-title" />
         </div>
@@ -49,10 +51,11 @@ export default function ConsentGate() {
           <input type="checkbox" checked={agreed} onChange={(e) => { setAgreed(e.target.checked); setDeclined(false) }} />
           <span>{t('rules.gate.agree')}</span>
         </label>
-        {declined && <div className="form-error" role="alert">{t('rules.gate.declined')}</div>}
+        {declined && <div className="form-error" role="alert">{t('editorial.declined')}</div>}
         <div className="modal-actions">
           <button type="button" className="btn-gold" disabled={!agreed} onClick={accept}>{t('rules.gate.accept')}</button>
           <button type="button" className="btn-ghost" onClick={() => setDeclined(true)}>{t('rules.gate.decline')}</button>
+          <Link className="editorial-text-link" to="/stories">{t('editorial.allStories')}</Link>
         </div>
       </div>
     </div>

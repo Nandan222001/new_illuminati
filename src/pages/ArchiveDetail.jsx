@@ -1,9 +1,11 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useLocalizedCards } from '../hooks/useLocalizedContent'
+import { useLocalizedArchives } from '../hooks/useLocalizedContent'
 import { useContent } from '../context/ContentContext'
 import PageHero from '../components/PageHero'
 import Img from '../components/Img'
+import CatalogueLoading from '../components/CatalogueLoading'
+import NotFound from './NotFound'
 
 const THIRD_EYE_SLUG = 'the-third-eye'
 const OSIRIS_URL = 'https://osirisai.live/?layers=jets,maritime,cctv,cctv_previews,live_news,earthquakes,global_incidents,day_night,cables,sdk_sea,sdk_air,sdk_naval'
@@ -11,14 +13,10 @@ const OSIRIS_URL = 'https://osirisai.live/?layers=jets,maritime,cctv,cctv_previe
 export default function ArchiveDetail() {
   const { slug } = useParams()
   const { t } = useTranslation()
-  const { archives } = useContent()
-  const cards = useLocalizedCards()
-  const custom = archives.find((a) => a.custom && a.slug === slug)
-  const list = custom
-    ? [...cards, { ...custom, era: custom.era || 'Chamber', cap: custom.cap || '', body: custom.body || '' }]
-    : cards
-  const index = list.findIndex((c) => c.slug === slug)
-  if (index === -1) return <Navigate to="/archives" replace />
+  const { ready } = useContent()
+  const list = useLocalizedArchives()
+  const index = list.findIndex((card) => card.slug === slug)
+  if (index === -1) return ready ? <NotFound /> : <CatalogueLoading />
   const card = list[index]
   const prev = list[(index - 1 + list.length) % list.length]
   const next = list[(index + 1) % list.length]
@@ -26,7 +24,7 @@ export default function ArchiveDetail() {
 
   return (
     <>
-      <PageHero kicker={card.era} title={card.title} sub={card.cap} image={card.img} compact />
+      <PageHero kicker={card.era || (card.custom ? t('nav.archives') : undefined)} title={card.title} sub={card.cap} image={card.img} compact />
 
       <section className="page-section detail">
         <nav className="crumbs" aria-label="Breadcrumb">
@@ -63,8 +61,8 @@ export default function ArchiveDetail() {
         )}
 
         <div className="detail-nav">
-          <Link to={`/archives/${prev.slug}`} className="detail-nav-link">‹ <span>{prev.title}</span></Link>
-          <Link to={`/archives/${next.slug}`} className="detail-nav-link right"><span>{next.title}</span> ›</Link>
+          <Link to={`/archives/${encodeURIComponent(prev.slug)}`} className="detail-nav-link">‹ <span>{prev.title}</span></Link>
+          <Link to={`/archives/${encodeURIComponent(next.slug)}`} className="detail-nav-link right"><span>{next.title}</span> ›</Link>
         </div>
       </section>
     </>

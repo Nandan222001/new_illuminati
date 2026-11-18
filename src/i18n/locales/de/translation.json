@@ -6,10 +6,6 @@
     "play": "Abspielen",
     "pause": "Pause",
     "close": "Schließen",
-    "days": "TAGE",
-    "hours": "STUNDEN",
-    "minutes": "MINUTEN",
-    "seconds": "SEKUNDEN",
     "sealedBadge": "🔒 VERSIEGELT",
     "signInBadge": "🔒 ANMELDEN ZUM ANSEHEN",
     "unsealedBadge": "◈ ENTSIEGELT",
@@ -18,8 +14,6 @@
     "tagline": "SYMBOLE · MYTHOS · GESCHICHTE",
     "sealYourOathCta": "VERSIEGLE DEINEN SCHWUR ›",
     "followNow": "JETZT FOLGEN",
-    "followingToast": "Instagram-Folgen kommt bald.",
-    "instagramPostAlt": "Instagram-Beitrag",
     "explore": "Entdecken",
     "emailLabel": "E-MAIL",
     "passphraseLabel": "PASSPHRASE",
@@ -195,60 +189,8 @@
     }
   },
   "home": {
-    "welcomeTo": "WILLKOMMEN BEI",
-    "welcomeBack": "WILLKOMMEN ZURÜCK, {{name}}",
-    "heroSubLine1": "Die Tür stand schon immer offen,",
-    "heroSubLine2": "nur wenige wissen, wo sie ist.",
-    "heroTag": "BETRITT DAS UNBEKANNTE",
-    "ctaMain": "BETRITT DIE DUNKLE WELT",
-    "railHistory": "GESCHICHTE",
-    "railSymbols": "SYMBOLE",
-    "railConspiracies": "VERSCHWÖRUNGEN",
-    "railSecrets": "GEHEIMNISSE",
-    "bottomLeft": "SYMBOLE · MYTHOS · GESCHICHTE",
-    "scrollHint": "SCROLLEN ZUM ENTDECKEN",
-    "exploreTitle": "WÄHLE DEINEN WEG",
-    "exploreSub": "SECHS TÜREN. JEDE FÜHRT TIEFER.",
-    "viewAllChambers": "ALLE KAMMERN ANSEHEN ›",
-    "autoplayLabel": "AUTOWIEDERGABE · 02 SEK",
     "allVisuals": "ALLE VISUALS ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
-    "countdownCta": "NEUE WELTORDNUNG ›",
-    "allVideos": "ALLE VIDEOS ›",
-    "communityTitle": "TRITT DER COMMUNITY BEI",
-    "communityMatureNote": "Nur ab 18 Jahren (reifer Inhalt).",
-    "instagramTitleLine1": "FOLGE DER BRUDERSCHAFT",
-    "instagramTitleLine2": "AUF INSTAGRAM",
-    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
-    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
-    "membersStatNote": "Joined members across the Network."
-  },
-  "about": {
-    "pillars": {
-      "storyFirst": {
-        "title": "GESCHICHTE ZUERST",
-        "text": "Jede Seite ist ein Kapitel. Das Archiv, die Rituale und der Countdown sind erzählerische Mittel — keine Behauptungen."
-      },
-      "clearlyLabelled": {
-        "title": "KLAR GEKENNZEICHNET",
-        "text": "Videos sind als Geschichte, Theorie oder Fakt gekennzeichnet, damit du immer weißt, was du dir ansiehst."
-      },
-      "communityLed": {
-        "title": "VON DER COMMUNITY GELEITET",
-        "text": "Initiierte stimmen darüber ab, wohin die Geschichte als Nächstes geht. Der Rat hört zu."
-      },
-      "noClaims": {
-        "title": "KEINE REALEN BEHAUPTUNGEN",
-        "text": "Wir richten uns nie gegen reale Personen oder Organisationen. Ähnlichkeiten sind zufällig oder rein referenziell."
-      }
-    },
-    "pillarsTitle": "WOFÜR WIR STEHEN",
-    "pillarsSub": "VIER SÄULEN DES ERLEBNISSES.",
-    "storyTitle": "DIE GESCHICHTE BISHER",
-    "libraryAlt": "Die Bibliothek",
-    "faqTitle": "HÄUFIG GESTELLTE FRAGEN",
-    "faqSub": "DIE FRAGEN, DIE SICH JEDER INITIIERTE ZUERST STELLT.",
-    "disclaimerText": "Illuminati Brotherhood ist eine Marke und Erzählwelt, inspiriert von Geschichte und Symbolik der Geheimbünde. Sie ist mit keinem realen Ritual, Glaubenssystem, keiner Organisation und keiner Ideologie verbunden und bewirbt, beschreibt oder unterstützt sie nicht. Manche Bilder sind düster und von reifem Ton; nur ab 18. Wenn dich Themen dieser Seite belasten, tritt bitte zurück und wende dich an eine Vertrauensperson."
+    "allVideos": "ALLE VIDEOS ›"
   },
   "archives": {
     "chambersTitle": "DIE SECHS KAMMERN",
@@ -272,36 +214,6 @@
     "bandTitle": "INSZENIERT. SYMBOLISCH. ERZÄHLERISCH.",
     "bandText": "In diesem Erlebnis werden keine echten Rituale beschrieben oder gefördert. Die Stationen sind erzählerische Mittel — Szenen einer Geschichte, die du erkunden darfst.",
     "watchDocs": "DIE DOKUMENTATIONEN ANSEHEN ›"
-  },
-  "newOrder": {
-    "phases": {
-      "signal": {
-        "title": "DAS SIGNAL",
-        "text": "Der Zähler erscheint auf jeder Seite. Initiierte erhalten die erste versiegelte Nachricht."
-      },
-      "gathering": {
-        "title": "DIE VERSAMMLUNG",
-        "text": "Der Rat kommt zusammen. Neue Kammern öffnen sich im Archiv, und die Community stimmt über das nächste Kapitel ab."
-      },
-      "screening": {
-        "title": "DIE VORFÜHRUNG",
-        "text": "Die Letzte Vorführung — das abendfüllende Finale der ersten Staffel — wird für alle Initiierten entsiegelt."
-      },
-      "zeroHour": {
-        "title": "DIE NEUE ORDNUNG",
-        "text": "Stunde null. Die nächste Staffel beginnt. Geplant und ganz unser."
-      }
-    },
-    "whatHappensTitle": "WAS BEI NULL PASSIERT",
-    "whatHappensSub": "VIER PHASEN. EIN DATUM.",
-    "roadTitle": "DER WEG ZUM 31 · 12 · 2026",
-    "notifyTitle": "SEI DER ERSTE, DER ES ERFÄHRT",
-    "alreadyOnList": "Du stehst bereits auf der Liste, {{name}}. Initiierte werden vor allen anderen benachrichtigt.",
-    "viewProfile": "MEIN PROFIL ANSEHEN ›",
-    "notifyPrompt": "Hinterlasse eine E-Mail oder werde Initiierter, um das Signal zu erhalten.",
-    "notifyMe": "BENACHRICHTIGEN",
-    "orBecomeInitiate": "ODER INITIIERTER WERDEN ›",
-    "notifyToast": "E-Mail-Benachrichtigungen kommen bald. Erstelle ein Konto, um das Signal zuerst zu erhalten."
   },
   "videos": {
     "nowScreeningTitle": "JETZT IM PROGRAMM",
@@ -557,12 +469,6 @@
         "sub": "KERZE. KREIS. STILLE. DIE STUFEN DES INITIIERTEN.",
         "intro": "Die Riten der Bruderschaft sind Theater – inszeniert und symbolisch. Lies sie als Geschichte. Folge den sieben Stationen von der ersten Kerze bis zum versiegelten Schwur."
       },
-      "newOrder": {
-        "kicker": "DAS 666.666-ERLEBNIS",
-        "title": "NEUE WELTORDNUNG",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
-      },
       "videos": {
         "kicker": "VERBOTENE ARCHIVE",
         "title": "VIDEOS",
@@ -812,46 +718,32 @@
         "desc": "Ausführliche Essays und tiefgehende Archiv-Analysen.",
         "note": "Das Diskussionsforum ist direkt darunter – scrolle nach unten, um mitzumachen."
       }
+    }
+  },
+  "editorial": {
+    "stories": "Artikel",
+    "symbols": "Symbole",
+    "signIn": "Anmelden",
+    "latest": "Neueste Artikel",
+    "allStories": "Alle Artikel",
+    "updated": "Zuletzt aktualisiert",
+    "learnMore": "Über das Projekt",
+    "instagram": "Folge uns auf Instagram",
+    "viewProfile": "Profil ansehen",
+    "skip": "Zum Inhalt springen",
+    "disclaimer": "Ein unabhängiges Bildungsprojekt über Mythen, Symbole und Geschichte. Wir gehören keiner realen Geheimgesellschaft an.",
+    "accessDisclosure": "Kostenpflichtige Angebote und Käufe betreffen nur digitale Inhalte. Sie verleihen weder eine Mitgliedschaft noch eine Einweihung in einer realen Organisation.",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "contact": {
+      "title": "Kontakt"
     },
-    "timeline": {
-      "origin": {
-        "year": "URSPRUNG",
-        "title": "The first spark",
-        "text": "Die Bruderschaft begann als kreatives Projekt: Was wäre, wenn die Mythologie von Geheimgesellschaften wie Kino statt wie Verschwörung behandelt würde?"
-      },
-      "archive": {
-        "year": "ARCHIV",
-        "title": "Sechs Kammern",
-        "text": "Das Ritualarchiv gab der Geschichte eine Struktur — sechs Relikte, sechs Kammern, eine Reise von der Wahrnehmung zum Schwur."
-      },
-      "council": {
-        "year": "RAT",
-        "title": "Die Community",
-        "text": "Initiierte traten dem Runden Tisch bei. Ihre Theorien, Kunst und Fragen prägen heute, wohin die Geschichte als Nächstes geht."
-      },
-      "newOrder": {
-        "year": "2026",
-        "title": "The New World Order",
-        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
-      }
-    },
-    "faq": {
-      "isReal": {
-        "q": "Ist irgendetwas davon real?",
-        "a": "Die Geschichte, die wir zitieren, ist real. Die Bruderschaft selbst – ihre Rituale, ihr Rat, der Countdown und ihre Mythologie – ist unsere eigene Schöpfung, eine von der Symbolik der Geheimbünde inspirierte Erzählwelt. Wir sind mit keiner realen Organisation verbunden."
-      },
-      "whoCanJoin": {
-        "q": "Wer kann der Community beitreten?",
-        "a": "Jeder, der Mysterien, Kino und Mythologie mag. Nur ab 18 Jahren, da manche Bilder düster und reif im Ton sind."
-      },
-      "accountDoes": {
-        "q": "Was macht ein Konto?",
-        "a": "Angemeldete Initiierte schalten versiegelte Videos und Rituale frei und erhalten eine Initiierten-Nummer. Admins (Hüter) verwalten Mitglieder und versiegelte Inhalte."
-      },
-      "realWorldClaims": {
-        "q": "Stellt ihr reale Behauptungen über Personen oder Organisationen auf?",
-        "a": "Niemals. Jede Ähnlichkeit mit realen Personen, Gruppen oder Ereignissen ist zufällig oder rein referenziell, der Geschichte zuliebe."
-      }
+    "home": {
+      "kicker": "Geschichte · Symbole · Mythen",
+      "title": "Die Geschichten hinter den Symbolen",
+      "description": "Erkunde die Geschichte der bayerischen Illuminaten, des Auges auf dem Dollar und der Mythen, die darum entstanden sind. Lies die Quellen selbst.",
+      "explore": "Artikel lesen",
+      "exploreSymbols": "Symbole entdecken"
     }
   }
 }

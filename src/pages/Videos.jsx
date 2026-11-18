@@ -9,6 +9,7 @@ import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 
 const FILTERS = ['all', 'fiction', 'theory', 'fact']
+const hasSource = (video) => Boolean(video.video_key || video.video_url)
 
 export default function Videos() {
   const page = PAGES.videos
@@ -35,7 +36,7 @@ export default function Videos() {
       {featured && (
         <section className="page-section">
           <SectionHead title={t('videos.nowScreeningTitle')} sub={t('videos.nowScreeningSub')} />
-          <Link to={`/videos/${featured.slug}`} className="featured-video">
+          <Link to={`/videos/${encodeURIComponent(featured.slug)}`} className="featured-video">
             <Img src={featured.img} alt={featured.title} />
             <div className="featured-cap">
               <span className={`tag ${featured.tag}`}>{t(`common.tags.${featured.tag}`)}</span>
@@ -45,7 +46,7 @@ export default function Videos() {
             </div>
             {(() => {
               const open = canAccess(featured.category) && !!user
-              if (open) return <span className="play big-play">▶</span>
+              if (open) return hasSource(featured) ? <span className="play big-play">▶</span> : null
               return (
                 <>
                   <span className="play big-play">🔒</span>
@@ -81,17 +82,17 @@ export default function Videos() {
               const open = canAccess(v.category) && !!user
               const needsLogin = !user
               return (
-                <Link className={`vid${!open ? ' sealed' : ''}`} key={v.slug} to={`/videos/${v.slug}`}>
+                <Link className={`vid${!open ? ' sealed' : ''}`} key={v.slug} to={`/videos/${encodeURIComponent(v.slug)}`}>
                   <div className="vid-thumb">
                     <Img src={v.img} alt={v.title} />
-                    <span className="play">{open ? '▶' : '🔒'}</span>
+                    {(!open || hasSource(v)) && <span className="play">{open ? '▶' : '🔒'}</span>}
                     <span className="dur">{v.dur}</span>
                     {!open && <span className="seal-badge">{needsLogin ? t('common.signInBadge') : t('common.sealedBadge')}</span>}
                     {open && locked && <span className="seal-badge unsealed">{t('common.unsealedBadge')}</span>}
                   </div>
                   <div className="vid-body">
                     <h5>{v.title}</h5>
-                    <span className="vid-sub">{v.date}</span>
+                    <span className="vid-sub">{open && !hasSource(v) ? t('editorial.catalogue.noPlayback') : v.date}</span>
                     <span className={`tag ${v.tag}`}>{t(`common.tags.${v.tag}`)}</span>
                   </div>
                 </Link>

@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { DEFAULT_SITE_URL, getSeoMetadata, getStructuredData } from '../seo/metadata.js'
+import { useContent } from '../context/ContentContext'
+import { getSeoMetadata, getStructuredData } from '../seo/metadata.js'
+import { DEFAULT_SITE_URL, SITE_NAME } from '../seo/site.js'
 
 const SITE_URL = import.meta.env.VITE_SITE_URL || DEFAULT_SITE_URL
 
@@ -20,7 +22,7 @@ function applyMetadata(documentRef, metadata) {
   setMeta(documentRef, 'meta[name="description"]', 'name', 'description', metadata.description)
   setMeta(documentRef, 'meta[name="robots"]', 'name', 'robots', metadata.robots)
   setMeta(documentRef, 'meta[property="og:type"]', 'property', 'og:type', metadata.ogType)
-  setMeta(documentRef, 'meta[property="og:site_name"]', 'property', 'og:site_name', 'Illuminati Brotherhood')
+  setMeta(documentRef, 'meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME)
   setMeta(documentRef, 'meta[property="og:title"]', 'property', 'og:title', metadata.title)
   setMeta(documentRef, 'meta[property="og:description"]', 'property', 'og:description', metadata.description)
   if (metadata.canonical) {
@@ -48,7 +50,7 @@ function applyMetadata(documentRef, metadata) {
   }
 
   const preload = documentRef.head.querySelector('#seo-hero-preload')
-  if (preload && metadata.preloadImage) preload.href = metadata.preloadImage
+  if (preload && !metadata.preloadImage) preload.remove()
 
   let jsonLd = documentRef.head.querySelector('#seo-jsonld')
   if (!jsonLd) {
@@ -64,11 +66,12 @@ function applyMetadata(documentRef, metadata) {
 export default function SeoManager() {
   const { pathname } = useLocation()
   const { t, i18n } = useTranslation()
+  const { archives, videos } = useContent()
 
   useEffect(() => {
-    const metadata = getSeoMetadata(pathname, t, SITE_URL)
+    const metadata = getSeoMetadata(pathname, t, SITE_URL, { archives, videos })
     applyMetadata(document, metadata)
-  }, [pathname, t, i18n.language])
+  }, [pathname, t, i18n.language, archives, videos])
 
   return null
 }

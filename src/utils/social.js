@@ -20,10 +20,30 @@ export const DEFAULT_SOCIAL = {
   whatsapp: '',
 }
 
+const INSTAGRAM_HOSTS = new Set(['instagram.com', 'www.instagram.com'])
+const INSTAGRAM_NON_PROFILES = new Set(['accounts', 'api', 'about', 'developer', 'direct', 'explore', 'p', 'reel', 'reels', 'stories', 'tv', 'web'])
+const INSTAGRAM_HANDLE = /^(?!\.)(?!.*\.\.)(?!.*\.$)[a-z0-9_.]{1,30}$/i
+
+function instagramProfile(raw) {
+  let handle = raw.replace(/^@/, '')
+  if (!INSTAGRAM_HANDLE.test(handle) || INSTAGRAM_HOSTS.has(handle.toLowerCase())) {
+    try {
+      const url = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`)
+      if (!INSTAGRAM_HOSTS.has(url.hostname) || url.username || url.password || url.port) return ''
+      handle = url.pathname.replace(/^\/|\/$/g, '')
+    } catch {
+      return ''
+    }
+  }
+  if (!INSTAGRAM_HANDLE.test(handle) || INSTAGRAM_NON_PROFILES.has(handle.toLowerCase())) return ''
+  return `https://www.instagram.com/${handle.toLowerCase()}/`
+}
+
 /** Turns whatever the Keeper typed into an absolute https URL (or ''). */
 export function normalizeSocialUrl(platform, raw) {
   const value = String(raw ?? '').trim()
   if (!value) return ''
+  if (platform === 'instagram') return instagramProfile(value)
   if (/^https?:\/\//i.test(value)) return value
   if (/^mailto:|^tel:/i.test(value)) return value
   if (platform === 'whatsapp' && /^\+?[\d\s().-]+$/.test(value)) {
@@ -33,7 +53,6 @@ export function normalizeSocialUrl(platform, raw) {
   if (value.startsWith('@')) {
     const handle = value.slice(1).replace(/^\/+/, '')
     const bases = {
-      instagram: 'https://instagram.com/',
       discord: 'https://discord.gg/',
       telegram: 'https://t.me/',
       youtube: 'https://youtube.com/@',
@@ -50,7 +69,7 @@ export function normalizeSocialUrl(platform, raw) {
 export function normalizeSocialMap(input = {}) {
   const out = { ...DEFAULT_SOCIAL }
   SOCIAL_PLATFORMS.forEach((platform) => {
-    out[platform] = normalizeSocialUrl(platform, input[platform])
+    out[platform] = normalizeSocialUrl(platform, input?.[platform])
   })
   return out
 }
