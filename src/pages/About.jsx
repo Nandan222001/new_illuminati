@@ -1,79 +1,35 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { PAGES } from '../data/content'
-import { useLocalizedFaq, useLocalizedTimeline } from '../hooks/useLocalizedContent'
-import PageHero from '../components/PageHero'
-import SectionHead from '../components/SectionHead'
-import Img from '../components/Img'
-
-const PILLARS = ['storyFirst', 'clearlyLabelled', 'communityLed']
-const PILLAR_ICONS = { storyFirst: '◬', clearlyLabelled: '◈', communityLed: '◎' }
+import EditorialHeader, { Breadcrumbs } from '../components/EditorialHeader'
 
 export default function About() {
-  const page = PAGES.about
-  const [open, setOpen] = useState(0)
   const { t } = useTranslation()
-  const timeline = useLocalizedTimeline()
-  const faq = useLocalizedFaq()
-
   return (
-    <>
-      <PageHero kicker={t('content.pages.about.kicker')} title={t('content.pages.about.title')} sub={t('content.pages.about.sub')} image={page.hero} imageMobile={page.heroMobile}>
-        <p className="page-intro">{t('content.pages.about.intro')}</p>
-      </PageHero>
-
-      <section className="page-section">
-        <SectionHead title={t('about.pillarsTitle')} sub={t('about.pillarsSub')} />
-        <div className="pillar-grid">
-          {PILLARS.map((key) => (
-            <article className="pillar" key={key}>
-              <span className="pillar-icon">{PILLAR_ICONS[key]}</span>
-              <h3>{t(`about.pillars.${key}.title`)}</h3>
-              <p>{t(`about.pillars.${key}.text`)}</p>
-            </article>
-          ))}
-        </div>
+    <div className="editorial-frame editorial-page">
+      <Breadcrumbs items={[{ label: t('nav.about') }]} />
+      <EditorialHeader kicker={t('editorial.home.kicker')} title={t('editorial.about.title')} description={t('editorial.about.description')} />
+      <div className="editorial-prose" lang="en">
+        <section id="editorial">
+          <h2>How we write the stories</h2>
+          <p>New articles are credited to Illuminati Brotherhood Editorial. We distinguish historical records from later interpretations and from fiction. Where an article discusses a document, object or public speech, look for its source at the end of the article. We use archives, museum and university collections, and published research so readers can check our work.</p>
+          <p>If you spot a misleading label, a factual error or a source that no longer opens, <Link to="/contact">tell us which page and what needs changing</Link>. A material revision is reflected in the article’s update date.</p>
+        </section>
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Do I need an account to read the educational articles?</h3>
+          <p>No. The <Link to="/stories">public stories</Link> and catalogue previews can be read without signing in or paying.</p>
+          <h3>How do the fictional archive and the articles differ?</h3>
+          <p>The <Link to="/archives">archive</Link> presents invented characters, settings and scenes. It can draw on historical imagery, but it is not a historical source. The articles link to evidence and label speculation instead of blending it into the historical record.</p>
+          <h3>What does paid access cover?</h3>
+          <p>Some digital materials are available with paid site access, and the separate book shop may sell a digital download. Neither is admission to an organization. See <Link to="/why-999">what paid site access covers</Link> and read the <Link to="/rules#terms">Terms &amp; Conditions</Link> before any purchase.</p>
+        </section>
+      </div>
+      <section className="editorial-notice editorial-about-notice" id="disclaimer">
+        <h2>{t('footer.disclaimer')}</h2>
+        <p>{t('editorial.disclaimer')}</p>
+        <p>{t('editorial.accessDisclosure')}</p>
+        <p>{t('editorial.about.noPromises')}</p>
       </section>
-
-      <section className="page-section about-story">
-        <div className="about-img"><Img src="/assets/archives-hero.jpg" alt={t('about.libraryAlt')} /></div>
-        <div className="about-text">
-          <SectionHead title={t('about.storyTitle')} />
-          <ol className="story-timeline">
-            {timeline.map((item) => (
-              <li key={item.key}><b>{item.year}</b><h4>{item.title}</h4><p>{item.text}</p></li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="page-section" id="faq">
-        <SectionHead title={t('about.faqTitle')} sub={t('about.faqSub')} />
-        <div className="faq">
-          {faq.map((f, i) => (
-            <div className={`faq-item${open === i ? ' open' : ''}`} key={f.key}>
-              <button type="button" onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i}>
-                <span>{f.q}</span><em>{open === i ? '−' : '+'}</em>
-              </button>
-              <div className="faq-a"><p>{f.a}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="page-section band" id="disclaimer">
-        <div className="band-inner">
-          <div>
-            <div className="sec-title">{t('footer.disclaimer')}</div>
-            <p className="band-text">{t('about.disclaimerText')}</p>
-          </div>
-          <div className="band-actions">
-            <Link to="/register" className="btn-gold">{t('common.becomeInitiate')} ›</Link>
-            <Link to="/community" className="btn-ghost">{t('common.joinCommunity')}</Link>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   )
 }

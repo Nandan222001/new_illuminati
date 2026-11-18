@@ -1,12 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { apiFetch } from '../api/client'
-import { CARDS, EBOOKS, GALLERY, RITUALS, VIDEOS } from '../data/content'
+import { CARDS, EBOOKS, GALLERY, RITUALS, VIDEOS, videoDescription } from '../data/content'
 import { useAuth } from './AuthContext'
 
 /**
  * Content catalog — backed by the FastAPI backend's /content/{kind}
  * endpoints (kind is 'video' | 'ritual' | 'image' | 'book' | 'archive').
- * `category` is 'paid' (sealed for signed-in initiates only) or 'free';
+ * `category` is 'paid' (sealed for paid members and admins) or 'free';
  * `custom` marks admin-added items. See /backend/app/models/content.py.
  *
  * If the API is unreachable the console keeps working: uploads are written to
@@ -214,7 +214,8 @@ export function ContentProvider({ children }) {
   const [local, setLocal] = useState(emptyMap)
   const [hiddenLocal, setHiddenLocal] = useState({})
   const [hiddenRaw, setHiddenRaw] = useState(EMPTY)
-  const [ready, setReady] = useState(true)
+  const [ready, setReady] = useState(false)
+  const publicRequest = useRef(0)
 
   const loadLocal = useCallback(() => {
     setLocal({ ...emptyMap(), ...readJSON(LOCAL_KEY, {}) })
@@ -222,20 +223,19 @@ export function ContentProvider({ children }) {
   }, [])
 
   const loadPublic = useCallback(async () => {
+    const request = ++publicRequest.current
     loadLocal()
-    try {
-      // The token is sent when one exists: sealed e-books only hand their file
-      // link to an entitled reader (see backend content.py `_view_for`).
-      const results = await Promise.all(KINDS.map((kind) => (
-        apiFetch(`/content/${kind}`, { timeoutMs: LOAD_TIMEOUT_MS }).catch(() => null)
-      )))
-      // Keep the bundled list for any kind the API does not serve yet.
-      setRaw((prev) => Object.fromEntries(KINDS.map((kind, i) => (
-        [kind, Array.isArray(results[i]) ? results[i] : (prev[kind] ?? BUNDLED[kind])]
-      ))))
-    } catch {
-      setRaw((prev) => (prev === EMPTY ? BUNDLED : prev))
-    }
+    // The token is sent when one exists: sealed items only hand their file
+    // link to an entitled reader (see backend content.py `_view_for`).
+    const results = await Promise.all(KINDS.map((kind) => (
+      apiFetch(`/content/${kind}`, { timeoutMs: LOAD_TIMEOUT_MS }).catch(() => null)
+    )))
+    if (request !== publicRequest.current) return
+    // A successful response is authoritative, even if a catalogue is empty.
+    setRaw((prev) => Object.fromEntries(KINDS.map((kind, i) => (
+      [kind, Array.isArray(results[i]) ? results[i] : prev[kind]]
+    ))))
+    setReady(true)
   }, [loadLocal])
 
   const loadHidden = useCallback(async () => {
@@ -254,8 +254,8 @@ export function ContentProvider({ children }) {
   useEffect(() => {
     // Re-reads whenever the session changes: sealed volumes only hand over their
     // file link to an entitled reader, so paying (or signing out) must re-fetch.
-    loadPublic().finally(() => setReady(true))
-  }, [loadPublic, user?.id, user?.paid])
+    loadPublic()
+  }, [loadPublic, user?.id, user?.paid, isAdmin])
 
   useEffect(() => {
     if (authReady) loadHidden()
@@ -274,7 +274,7 @@ export function ContentProvider({ children }) {
     return rows.map((row) => (row.local ? row : toClientItem(row)))
   }, [raw, local, hiddenLocal])
 
-  const videos = useMemo(() => clientList('video'), [clientList])
+  const videos = useMemo(() => clientList('video').map((video) => ({ ...video, desc: videoDescription(video) })), [clientList])
   const rituals = useMemo(() => clientList('ritual'), [clientList])
   const gallery = useMemo(() => clientList('image'), [clientList])
   const books = useMemo(() => clientList('book'), [clientList])
@@ -284,8 +284,7 @@ export function ContentProvider({ children }) {
 
   const value = useMemo(() => ({
     ready,
-    /** Sealed (paid) content is visible to any signed-in initiate. */
-    canAccess: (category) => category !== 'paid' || !!user?.paid,
+    canAccess: (category) => category !== 'paid' || isAdmin || !!user?.paid,
     videos,
     rituals,
     gallery,
@@ -302,7 +301,7 @@ export function ContentProvider({ children }) {
     addBook: apis.book.add, updateBook: apis.book.update, deleteBook: apis.book.remove, restoreBook: apis.book.restore,
     attachBookFile: apis.book.attachFile,
     addArchive: apis.archive.add, updateArchive: apis.archive.update, deleteArchive: apis.archive.remove, restoreArchive: apis.archive.restore,
-  }), [ready, user, videos, rituals, gallery, books, archives, hiddenRaw, apis])
+  }), [ready, isAdmin, user?.paid, videos, rituals, gallery, books, archives, hiddenRaw, apis])
 
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>
 }

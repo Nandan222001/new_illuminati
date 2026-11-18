@@ -1,9 +1,8 @@
 /**
  * Consent record for the Terms & Conditions gate.
  *
- * The version string is part of the record: bumping it re-locks the site for
- * every visitor, which is what item “Everything will be locked post
- * acknowledgement” requires — a new terms version must be acknowledged again.
+ * Changing the terms version requires a new acknowledgement before account and
+ * member pages can be opened. Public editorial pages do not need a record.
  * The wording of the terms themselves lives in src/data/terms.js.
  */
 import { TERMS_VERSION } from '../data/terms'

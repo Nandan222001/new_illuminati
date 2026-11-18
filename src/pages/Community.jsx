@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
-import { INSTA_IMAGES, PAGES } from '../data/content'
+import { PAGES } from '../data/content'
 import { useLocalizedChannels } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import { useSiteSettings } from '../context/SiteSettingsContext'
 import { addMessage, createThread, listThreads, normalizeThread, onThreadsChanged, setThreadStatus } from '../api/community'
-import { socialHandle } from '../utils/social'
 import PageHero from '../components/PageHero'
 import SectionHead from '../components/SectionHead'
 import Img from '../components/Img'
 import ThreadList from '../components/ThreadList'
 import SocialLinks from '../components/SocialLinks'
+import InstagramFollow from '../components/InstagramFollow'
 import { SOCIAL_ICONS } from '../components/SocialIcons'
 
 /**
@@ -73,7 +73,7 @@ export default function Community() {
     await refresh()
   }
 
-  const instagramUrl = social.instagram
+  const linkedChannels = channels.filter((channel) => social[channel.key])
 
   return (
     <>
@@ -81,30 +81,24 @@ export default function Community() {
         <p className="page-intro">{t('content.pages.community.intro')}</p>
       </PageHero>
 
-      <section className="page-section">
-        <SectionHead title={t('community.channelsTitle')} sub={t('community.channelsSub')} />
-        <div className="channel-grid">
-          {channels.map((c) => {
-            const Icon = SOCIAL_ICONS[c.key]
-            const href = social[c.key]
-            return href ? (
-              <a className="channel" key={c.key} href={href} target="_blank" rel="noopener noreferrer me">
-                <span className="channel-icon">{Icon ? <Icon width={22} height={22} /> : '✦'}</span>
-                <h3>{c.name}</h3>
-                <p>{c.desc}</p>
-                <em>{t('social.follow')} ↗</em>
-              </a>
-            ) : (
-              <button type="button" className="channel" key={c.key} onClick={() => toast(t('social.comingSoon', { name: c.name }))}>
-                <span className="channel-icon">{Icon ? <Icon width={22} height={22} /> : '✦'}</span>
-                <h3>{c.name}</h3>
-                <p>{c.desc}</p>
-                <em>{t('social.notLinked', { name: c.name })}</em>
-              </button>
-            )
-          })}
-        </div>
-      </section>
+      {linkedChannels.length > 0 && (
+        <section className="page-section">
+          <SectionHead title={t('community.channelsTitle')} sub={t('community.channelsSub')} />
+          <div className="channel-grid">
+            {linkedChannels.map((c) => {
+              const Icon = SOCIAL_ICONS[c.key]
+              return (
+                <a className="channel" key={c.key} href={social[c.key]} target="_blank" rel="noopener noreferrer me">
+                  <span className="channel-icon"><Icon width={22} height={22} /></span>
+                  <h3>{c.name}</h3>
+                  <p>{c.desc}</p>
+                  <em>{t('social.follow')} ↗</em>
+                </a>
+              )
+            })}
+          </div>
+        </section>
+      )}
 
       <section className="page-section community-split" id="threads">
         <div className="board">
@@ -163,28 +157,7 @@ export default function Community() {
             {!user && <Link to="/register" className="btn-gold">{t('common.becomeInitiate')} ›</Link>}
             {user && <Link to="/profile" className="btn-gold">{t('nav.myProfile')} ›</Link>}
           </div>
-          <div className="side-card">
-            <h4>{t('community.followInstagram')}</h4>
-            <div className="insta-grid tight">
-              {INSTA_IMAGES.map((img, i) => (
-                instagramUrl
-                  ? <a href={instagramUrl} key={i} target="_blank" rel="noopener noreferrer me"><Img src={img} alt={t('common.instagramPostAlt')} /></a>
-                  : <button type="button" className="insta-tile" key={i} onClick={() => toast(t('social.comingSoon', { name: t('social.instagram') }))}><Img src={img} alt={t('common.instagramPostAlt')} /></button>
-              ))}
-            </div>
-            <div className="insta-foot">
-              <a
-                className="follow-btn"
-                href={instagramUrl || undefined}
-                target={instagramUrl ? '_blank' : undefined}
-                rel={instagramUrl ? 'noopener noreferrer me' : undefined}
-                onClick={(e) => { if (!instagramUrl) { e.preventDefault(); toast(t('social.comingSoon', { name: t('social.instagram') })) } }}
-              >
-                {t('common.followNow')}
-              </a>
-              <span className="handle">{socialHandle(instagramUrl) || t('social.notLinked', { name: t('social.instagram') })}</span>
-            </div>
-          </div>
+          <InstagramFollow />
           <SocialLinks className="social-row side-social" labels={false} />
           <div className="comm-note">{t('community.matureNote')}</div>
         </aside>

@@ -6,10 +6,6 @@
     "play": "Play",
     "pause": "Pause",
     "close": "Close",
-    "days": "DAYS",
-    "hours": "HOURS",
-    "minutes": "MINUTES",
-    "seconds": "SECONDS",
     "sealedBadge": "🔒 SEALED",
     "signInBadge": "🔒 SIGN IN TO WATCH",
     "unsealedBadge": "◈ UNSEALED",
@@ -18,8 +14,6 @@
     "tagline": "SYMBOLS · MYTH · HISTORY",
     "sealYourOathCta": "SEAL YOUR OATH ›",
     "followNow": "FOLLOW NOW",
-    "followingToast": "Instagram follow is coming soon.",
-    "instagramPostAlt": "Instagram post",
     "explore": "Explore",
     "emailLabel": "EMAIL",
     "passphraseLabel": "PASSPHRASE",
@@ -158,7 +152,7 @@
     "steps": {
       "explore": {
         "title": "EXPLORE",
-        "text": "Browse the Archives, Rituals, Videos, Visuals and Library freely. Sealed items are marked with a lock."
+        "text": "Read the public stories and browse the previews first. The full archive, gallery, library and available videos require paid site access."
       },
       "join": {
         "title": "BECOME A MEMBER",
@@ -211,64 +205,8 @@
     }
   },
   "home": {
-    "welcomeTo": "WELCOME TO",
-    "welcomeBack": "WELCOME BACK, {{name}}",
-    "heroSubLine1": "The door has always been open,",
-    "heroSubLine2": "only a few know where it is.",
-    "heroTag": "ENTER THE UNKNOWN",
-    "ctaMain": "ENTER THE DARK WORLD",
-    "railHistory": "HISTORY",
-    "railSymbols": "SYMBOLS",
-    "railConspiracies": "CONSPIRACIES",
-    "railSecrets": "SECRETS",
-    "bottomLeft": "SYMBOLS · MYTH · HISTORY",
-    "scrollHint": "SCROLL TO EXPLORE",
-    "exploreTitle": "CHOOSE YOUR PATH",
-    "exploreSub": "SIX DOORS. EACH ONE LEADS DEEPER.",
-    "viewAllChambers": "VIEW ALL CHAMBERS ›",
-    "autoplayLabel": "AUTO PLAY · 02 SEC",
     "allVisuals": "ALL VISUALS ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
-    "countdownCta": "THE NEW WORLD ORDER ›",
-    "allVideos": "ALL VIDEOS ›",
-    "communityTitle": "ENTER THE COMMUNITY",
-    "communityMatureNote": "18+ only. Contains mature content.",
-    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
-    "statsTitle": "THE UNIVERSE, IN NUMBERS",
-    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
-    "membersStatLabel": "MEMBERS JOINED",
-    "membersStatNote": "Joined members across the Network.",
-    "membersUnavailable": "Live total appears when the member service is connected.",
-    "chambersStatLabel": "ARCHIVE CHAMBERS",
-    "stationsStatLabel": "STORY STATIONS",
-    "stationsStatNote": "Fictional narrative stages—not real practices.",
-    "episodesStatLabel": "VIDEO EPISODES",
-    "episodesStatNote": "Episodes in the current public catalogue.",
-    "instagramTitleLine1": "FOLLOW THE BROTHERHOOD",
-    "instagramTitleLine2": "ON INSTAGRAM"
-  },
-  "about": {
-    "pillars": {
-      "storyFirst": {
-        "title": "STORY FIRST",
-        "text": "Every page is a chapter. The archive, the rituals and the countdown are narrative devices — not claims."
-      },
-      "clearlyLabelled": {
-        "title": "CLEARLY LABELLED",
-        "text": "Videos are tagged story, theory or fact so you always know what you are watching."
-      },
-      "communityLed": {
-        "title": "COMMUNITY LED",
-        "text": "Initiates vote on where the story goes next. The council listens."
-      }
-    },
-    "pillarsTitle": "WHAT WE STAND FOR",
-    "pillarsSub": "FOUR PILLARS OF THE EXPERIENCE.",
-    "storyTitle": "THE STORY SO FAR",
-    "libraryAlt": "The library",
-    "faqTitle": "FREQUENTLY ASKED",
-    "faqSub": "THE QUESTIONS EVERY INITIATE ASKS FIRST.",
-    "disclaimerText": "Illuminati Brotherhood is a brand and story world inspired by secret-society history and symbolism. It is not affiliated with, and does not promote, describe or endorse, any real ritual, belief system, organisation or ideology. Some imagery is dark and mature in tone; 18+ only. If you are affected by any themes on this site, please step away and reach out to someone you trust."
+    "allVideos": "ALL VIDEOS ›"
   },
   "archives": {
     "chambersTitle": "THE SIX CHAMBERS",
@@ -301,36 +239,6 @@
     "play": "PLAY THE STATION FILM",
     "noFilm": "The station film has not been linked yet.",
     "filmNote": "Every station is a scene from the story, staged and symbolic."
-  },
-  "newOrder": {
-    "phases": {
-      "signal": {
-        "title": "THE SIGNAL",
-        "text": "The counter appears on every page. Initiates receive the first sealed message."
-      },
-      "gathering": {
-        "title": "THE GATHERING",
-        "text": "The council convenes. New chambers open in the archive and the community votes on the next chapter."
-      },
-      "screening": {
-        "title": "THE SCREENING",
-        "text": "The Last Screening — the feature-length finale of season one — is unsealed for all initiates."
-      },
-      "zeroHour": {
-        "title": "THE NEW ORDER",
-        "text": "Zero hour. The next season begins. Scheduled and entirely ours."
-      }
-    },
-    "whatHappensTitle": "WHAT HAPPENS AT ZERO",
-    "whatHappensSub": "FOUR PHASES. ONE DATE.",
-    "roadTitle": "THE ROAD TO 31 · 12 · 2026",
-    "notifyTitle": "BE THE FIRST TO KNOW",
-    "alreadyOnList": "You are already on the list, {{name}}. Initiates are notified before anyone else.",
-    "viewProfile": "VIEW MY PROFILE ›",
-    "notifyPrompt": "Leave an email or become an initiate to receive the signal.",
-    "notifyMe": "NOTIFY ME",
-    "orBecomeInitiate": "OR BECOME AN INITIATE ›",
-    "notifyToast": "Email alerts are coming soon. Create an account to get the signal first."
   },
   "videos": {
     "nowScreeningTitle": "NOW SCREENING",
@@ -644,12 +552,6 @@
         "sub": "CANDLE. CIRCLE. SILENCE. THE STAGES OF THE INITIATE.",
         "intro": "The rites of the Brotherhood are theatre — staged and symbolic. Read them as story. Follow the seven stations from the first candle to the sealed oath."
       },
-      "newOrder": {
-        "kicker": "THE 666,666 EXPERIENCE",
-        "title": "NEW WORLD ORDER",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
-      },
       "videos": {
         "kicker": "FORBIDDEN ARCHIVES",
         "title": "VIDEOS",
@@ -948,46 +850,6 @@
         "desc": "Long-form essays and archive deep-dives.",
         "note": "The discussion board is just below — scroll down to join."
       }
-    },
-    "timeline": {
-      "origin": {
-        "year": "ORIGIN",
-        "title": "The first spark",
-        "text": "The Brotherhood began as a creative project: what if secret-society mythology were treated as cinema instead of conspiracy?"
-      },
-      "archive": {
-        "year": "ARCHIVE",
-        "title": "Six chambers",
-        "text": "The Ritual Archive gave the story a structure — six relics, six chambers, one journey from perception to oath."
-      },
-      "council": {
-        "year": "COUNCIL",
-        "title": "The community",
-        "text": "Initiates joined the round table. Their theories, art and questions now shape where the story goes next."
-      },
-      "newOrder": {
-        "year": "2026",
-        "title": "The New World Order",
-        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
-      }
-    },
-    "faq": {
-      "isReal": {
-        "q": "Is any of this real?",
-        "a": "The history we cite is real. The Brotherhood itself — its rituals, council, countdown and lore — is our own creation, a story world inspired by secret-society symbolism. We are not affiliated with any real organisation."
-      },
-      "whoCanJoin": {
-        "q": "Who can join the community?",
-        "a": "Anyone who enjoys mystery, cinema and mythology. You must be 18 or older, because some visuals are dark and mature in tone."
-      },
-      "accountDoes": {
-        "q": "What does an account do?",
-        "a": "Signed-in initiates unlock sealed videos and rituals and receive an initiate number. Admins (Keepers) manage members and sealed content."
-      },
-      "realWorldClaims": {
-        "q": "Do you make real-world claims about people or organisations?",
-        "a": "Never. Any resemblance to real people, groups or events is coincidental or purely referential for the sake of the story."
-      }
     }
   },
   "validation": {
@@ -1008,12 +870,6 @@
     "passwordRule.special": "a special character (!@#$%&*…)",
     "passwordOk": "Passphrase meets every rule."
   },
-  "countdownBar": {
-    "aria": "Membership countdown and joined members",
-    "countdownLabel": "MEMBERSHIP COUNTDOWN · NEW WORLD ORDER",
-    "membersJoined": "MEMBERS JOINED",
-    "allTimesGmt": "ALL TIMES GMT (UTC)"
-  },
   "social": {
     "instagram": "Instagram",
     "discord": "Discord",
@@ -1026,7 +882,7 @@
     "notLinked": "{{name}} — link coming soon",
     "follow": "FOLLOW",
     "adminTitle": "SOCIAL MEDIA",
-    "adminHint": "Paste each profile URL (or @handle). For WhatsApp, use a wa.me link or a phone number with country code. Empty links show a “coming soon” note.",
+    "adminHint": "Add official profile links. Unset channels stay hidden. For Instagram, enter an @handle or a full profile URL.",
     "adminLabel": "{{name}} URL",
     "placeholder": "@illuminati.brotherhood or https://…",
     "savedToast": "Social links saved. The footer, home page and community page now use them.",
@@ -1074,5 +930,100 @@
     "uploadFile": "FILE / LINK",
     "statusAnswered": "ANSWERED",
     "statusOpen": "OPEN"
+  },
+  "editorial": {
+    "primaryNavigation": "Primary navigation",
+    "skip": "Skip to content",
+    "breadcrumbs": "Breadcrumb",
+    "stories": "Stories",
+    "symbols": "Symbols",
+    "latest": "Latest stories",
+    "storyCount_one": "{{count}} sourced article",
+    "storyCount_other": "{{count}} sourced articles",
+    "allStories": "All stories",
+    "moreStories": "More to read",
+    "readStory": "Read story",
+    "updated": "Last updated",
+    "signIn": "Sign in",
+    "learnMore": "About this project",
+    "instagram": "Follow us on Instagram",
+    "viewProfile": "View profile",
+    "disclaimer": "An independent educational project about myths, symbols and history. We are not affiliated with any real secret society.",
+    "accessDisclosure": "Paid access and purchases are for digital content only. They do not provide membership or initiation in any real-world organization.",
+    "terms": "Terms & Conditions",
+    "confirmTerms": "I accept the terms and confirm I am 18 or older",
+    "declined": "You can keep reading the public stories, but account and member pages require acknowledgement of the terms.",
+    "privacy": "Privacy Policy",
+    "privacyIntro": "What information the site uses when you browse, sign in, send a message or make a purchase.",
+    "home": {
+      "kicker": "History · Symbols · Myth",
+      "title": "The stories behind the symbols",
+      "description": "Explore the real history of the Bavarian Illuminati, the eye on the dollar and the myths that grew around them. Read the evidence for yourself.",
+      "explore": "Explore the stories",
+      "exploreSymbols": "Explore symbols",
+      "readingRoom": "The reading room",
+      "fiction": "Fiction collection",
+      "archiveTitle": "Doors into the archive",
+      "archiveDescription": "Each preview opens a fictional chapter you can read without signing in.",
+      "allArchives": "Browse archives",
+      "keepExploring": "Keep exploring",
+      "aboutProject": "About the project"
+    },
+    "storyIndex": {
+      "kicker": "The reading room",
+      "description": "Read sourced features about history, symbols and the origins of familiar myths. No account is required."
+    },
+    "share": {
+      "label": "Share this page",
+      "native": "Share",
+      "email": "Share by email",
+      "copy": "Copy link",
+      "copied": "Link copied.",
+      "manual": "Select and copy this link:"
+    },
+    "catalogue": {
+      "archiveTitle": "Archives",
+      "archiveIntro": "Browse previews of the fictional archive. These chapters are creative work, not records of actual events or practices.",
+      "symbolIntro": "Follow the historical record behind familiar motifs, from the Eye of Providence to the pyramid and the illustrated grimoire.",
+      "videosTitle": "Video catalogue",
+      "videosIntro": "Browse episode previews. Where a video is published, playback is part of the member experience.",
+      "preview": "View preview",
+      "fictionPreview": "Fiction preview",
+      "background": "Read the historical background",
+      "otherChambers": "Other archive chapters",
+      "members": "Member access",
+      "accessNotice": "The full archive, gallery and available videos are part of paid site access. Public stories and catalogue previews remain free.",
+      "accessDetails": "What paid access covers",
+      "reviewTerms": "Review and accept the terms",
+      "loading": "Loading catalogue…",
+      "noChapters": "No archive chapters are currently listed.",
+      "noEpisodes": "No episodes are currently listed.",
+      "noPlayback": "No video is currently available for this episode.",
+      "readNwo": "Read New World Order: Myth vs. History"
+    },
+    "about": {
+      "title": "About the project",
+      "description": "Illuminati Brotherhood is an independent educational storytelling project. We examine myths, symbols and history, and clearly separate that work from our fictional archive.",
+      "noPromises": "The site does not offer real-world initiation or promise wealth, power, protection or other personal outcomes."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Send the site team a question about the articles, your account, a purchase or your privacy.",
+      "options": "Ways to contact us",
+      "email": "Email the site team at",
+      "signIn": "Sign in to send a private message to the site team. No purchase is needed to use the support form.",
+      "register": "Create an account",
+      "subject": "Subject",
+      "message": "Message",
+      "reminder": "Please do not include passwords or payment card details.",
+      "send": "Send message",
+      "sending": "Sending…",
+      "sent": "Message sent. Check your support messages here for a reply.",
+      "sendError": "We could not send your message. Your draft is still here; please try again.",
+      "loadError": "Past messages could not be loaded. Refresh the page to try again.",
+      "threads": "Your support messages",
+      "loading": "Loading your support messages…",
+      "empty": "No support messages yet."
+    }
   }
 }

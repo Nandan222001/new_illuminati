@@ -6,10 +6,6 @@
     "play": "Lecture",
     "pause": "Pause",
     "close": "Fermer",
-    "days": "JOURS",
-    "hours": "HEURES",
-    "minutes": "MINUTES",
-    "seconds": "SECONDES",
     "sealedBadge": "🔒 SCELLÉ",
     "signInBadge": "🔒 CONNECTEZ-VOUS POUR REGARDER",
     "unsealedBadge": "◈ DESCELLÉ",
@@ -18,8 +14,6 @@
     "tagline": "SYMBOLES · MYTHE · HISTOIRE",
     "sealYourOathCta": "SCELLEZ VOTRE SERMENT ›",
     "followNow": "SUIVRE MAINTENANT",
-    "followingToast": "Le suivi sur Instagram arrive bientôt.",
-    "instagramPostAlt": "Publication Instagram",
     "explore": "Explorer",
     "emailLabel": "E-MAIL",
     "passphraseLabel": "MOT DE PASSE",
@@ -195,60 +189,8 @@
     }
   },
   "home": {
-    "welcomeTo": "BIENVENUE À",
-    "welcomeBack": "BON RETOUR, {{name}}",
-    "heroSubLine1": "La porte a toujours été ouverte,",
-    "heroSubLine2": "seuls quelques-uns savent où elle se trouve.",
-    "heroTag": "ENTREZ DANS L'INCONNU",
-    "ctaMain": "ENTREZ DANS LE MONDE OBSCUR",
-    "railHistory": "HISTOIRE",
-    "railSymbols": "SYMBOLES",
-    "railConspiracies": "CONSPIRATIONS",
-    "railSecrets": "SECRETS",
-    "bottomLeft": "SYMBOLES · MYTHE · HISTOIRE",
-    "scrollHint": "FAITES DÉFILER POUR EXPLORER",
-    "exploreTitle": "CHOISISSEZ VOTRE VOIE",
-    "exploreSub": "SIX PORTES. CHACUNE MÈNE PLUS LOIN.",
-    "viewAllChambers": "VOIR TOUTES LES CHAMBRES ›",
-    "autoplayLabel": "LECTURE AUTOMATIQUE · 02 S",
     "allVisuals": "TOUS LES VISUELS ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
-    "countdownCta": "NOUVEL ORDRE MONDIAL ›",
-    "allVideos": "TOUTES LES VIDÉOS ›",
-    "communityTitle": "ENTREZ DANS LA COMMUNAUTÉ",
-    "communityMatureNote": "Réservé aux 18 ans et plus (contenu mature).",
-    "instagramTitleLine1": "SUIVEZ LA CONFRÉRIE",
-    "instagramTitleLine2": "SUR INSTAGRAM",
-    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
-    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
-    "membersStatNote": "Joined members across the Network."
-  },
-  "about": {
-    "pillars": {
-      "storyFirst": {
-        "title": "L'HISTOIRE D'ABORD",
-        "text": "Chaque page est un chapitre. L'archive, les rituels et le compte à rebours sont des procédés narratifs — pas des affirmations."
-      },
-      "clearlyLabelled": {
-        "title": "CLAIREMENT ÉTIQUETÉ",
-        "text": "Les vidéos sont étiquetées récit, théorie ou fait afin que vous sachiez toujours ce que vous regardez."
-      },
-      "communityLed": {
-        "title": "DIRIGÉ PAR LA COMMUNAUTÉ",
-        "text": "Les initiés votent sur la suite de l'histoire. Le conseil écoute."
-      },
-      "noClaims": {
-        "title": "AUCUNE AFFIRMATION RÉELLE",
-        "text": "Nous ne visons jamais de vraies personnes ou organisations. Toute ressemblance est fortuite ou référentielle."
-      }
-    },
-    "pillarsTitle": "CE QUE NOUS DÉFENDONS",
-    "pillarsSub": "QUATRE PILIERS DE L'EXPÉRIENCE.",
-    "storyTitle": "L'HISTOIRE JUSQU'À PRÉSENT",
-    "libraryAlt": "La bibliothèque",
-    "faqTitle": "QUESTIONS FRÉQUENTES",
-    "faqSub": "LES QUESTIONS QUE SE POSE D'ABORD TOUT INITIÉ.",
-    "disclaimerText": "Illuminati Brotherhood est une marque et un univers narratif inspirés de l'histoire et du symbolisme des sociétés secrètes. Elle n'est affiliée à aucun rituel, système de croyance, organisation ou idéologie réels et ne les promeut, ne les décrit ni ne les approuve. Certaines images sont sombres et de ton mature ; réservé aux 18 ans et plus. Si un thème de ce site vous affecte, éloignez-vous et parlez-en à une personne de confiance."
+    "allVideos": "TOUTES LES VIDÉOS ›"
   },
   "archives": {
     "chambersTitle": "LES SIX CHAMBRES",
@@ -272,36 +214,6 @@
     "bandTitle": "MIS EN SCÈNE. SYMBOLIQUE. NARRATIF.",
     "bandText": "Aucun rituel réel n'est décrit ni encouragé dans cette expérience. Les stations sont des procédés narratifs — des scènes d'une histoire que nous vous invitons à explorer.",
     "watchDocs": "REGARDER LES DOCUMENTAIRES ›"
-  },
-  "newOrder": {
-    "phases": {
-      "signal": {
-        "title": "LE SIGNAL",
-        "text": "Le compteur apparaît sur chaque page. Les initiés reçoivent le premier message scellé."
-      },
-      "gathering": {
-        "title": "LE RASSEMBLEMENT",
-        "text": "Le conseil se réunit. De nouvelles chambres s'ouvrent dans l'archive et la communauté vote pour le prochain chapitre."
-      },
-      "screening": {
-        "title": "LA PROJECTION",
-        "text": "La Dernière Projection — le final long-métrage de la saison un — est desscellée pour tous les initiés."
-      },
-      "zeroHour": {
-        "title": "LE NOUVEL ORDRE",
-        "text": "Heure zéro. La prochaine saison commence. Planifiée et entièrement à nous."
-      }
-    },
-    "whatHappensTitle": "CE QUI SE PASSE À ZÉRO",
-    "whatHappensSub": "QUATRE PHASES. UNE DATE.",
-    "roadTitle": "LA ROUTE VERS LE 31 · 12 · 2026",
-    "notifyTitle": "SOYEZ LE PREMIER INFORMÉ",
-    "alreadyOnList": "Vous êtes déjà sur la liste, {{name}}. Les initiés sont prévenus avant tout le monde.",
-    "viewProfile": "VOIR MON PROFIL ›",
-    "notifyPrompt": "Laissez un e-mail ou devenez initié pour recevoir le signal.",
-    "notifyMe": "M'AVERTIR",
-    "orBecomeInitiate": "OU DEVENIR INITIÉ ›",
-    "notifyToast": "Les alertes par e-mail arrivent bientôt. Créez un compte pour recevoir le signal en premier."
   },
   "videos": {
     "nowScreeningTitle": "ACTUELLEMENT DIFFUSÉ",
@@ -557,12 +469,6 @@
         "sub": "BOUGIE. CERCLE. SILENCE. LES ÉTAPES DE L'INITIÉ.",
         "intro": "Les rites de la Confrérie sont du théâtre — mis en scène et symboliques. Lisez-les comme une histoire. Suivez les sept stations, de la première bougie au serment scellé."
       },
-      "newOrder": {
-        "kicker": "L'EXPÉRIENCE 666 666",
-        "title": "NOUVEL ORDRE MONDIAL",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
-      },
       "videos": {
         "kicker": "ARCHIVES INTERDITES",
         "title": "VIDÉOS",
@@ -812,46 +718,32 @@
         "desc": "Essais approfondis et analyses détaillées de l'archive.",
         "note": "Le forum de discussion se trouve juste en dessous — faites défiler pour participer."
       }
+    }
+  },
+  "editorial": {
+    "stories": "Articles",
+    "symbols": "Symboles",
+    "signIn": "Se connecter",
+    "latest": "Derniers articles",
+    "allStories": "Tous les articles",
+    "updated": "Mis à jour le",
+    "learnMore": "À propos du projet",
+    "instagram": "Suivez-nous sur Instagram",
+    "viewProfile": "Voir le profil",
+    "skip": "Aller au contenu",
+    "disclaimer": "Un projet éducatif indépendant sur les mythes, les symboles et l’histoire. Nous ne sommes affiliés à aucune société secrète réelle.",
+    "accessDisclosure": "Les achats et l’accès payant concernent uniquement des contenus numériques. Ils ne donnent ni adhésion ni initiation à une organisation réelle.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales",
+    "contact": {
+      "title": "Contact"
     },
-    "timeline": {
-      "origin": {
-        "year": "ORIGINE",
-        "title": "The first spark",
-        "text": "La Confrérie a débuté comme un projet créatif : et si la mythologie des sociétés secrètes était traitée comme du cinéma plutôt que comme une conspiration ?"
-      },
-      "archive": {
-        "year": "ARCHIVE",
-        "title": "Six chambres",
-        "text": "L'Archive Rituelle a donné à l'histoire une structure — six reliques, six chambres, un voyage de la perception au serment."
-      },
-      "council": {
-        "year": "CONSEIL",
-        "title": "La communauté",
-        "text": "Les initiés ont rejoint la table ronde. Leurs théories, leur art et leurs questions façonnent désormais la suite de l'histoire."
-      },
-      "newOrder": {
-        "year": "2026",
-        "title": "The New World Order",
-        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
-      }
-    },
-    "faq": {
-      "isReal": {
-        "q": "Est-ce que quelque chose ici est réel ?",
-        "a": "L'histoire que nous citons est réelle. La Confrérie elle-même — ses rituels, son conseil, son compte à rebours et sa mythologie — est notre propre création, un univers narratif inspiré du symbolisme des sociétés secrètes. Nous ne sommes affiliés à aucune organisation réelle."
-      },
-      "whoCanJoin": {
-        "q": "Qui peut rejoindre la communauté ?",
-        "a": "Toute personne qui aime le mystère, le cinéma et la mythologie. Réservé aux 18 ans et plus, car certaines images sont sombres et de ton mature."
-      },
-      "accountDoes": {
-        "q": "Que permet un compte ?",
-        "a": "Les initiés connectés débloquent les vidéos et rituels scellés et reçoivent un numéro d'initié. Les administrateurs (Gardiens) gèrent les membres et le contenu scellé."
-      },
-      "realWorldClaims": {
-        "q": "Faites-vous des affirmations réelles sur des personnes ou des organisations ?",
-        "a": "Jamais. Toute ressemblance avec des personnes, groupes ou événements réels est fortuite ou purement référentielle, au service de l'histoire."
-      }
+    "home": {
+      "kicker": "Histoire · Symboles · Mythes",
+      "title": "Les histoires derrière les symboles",
+      "description": "Découvrez l’histoire des Illuminés de Bavière, de l’œil sur le dollar et des mythes qui les entourent. Consultez les sources.",
+      "explore": "Lire les articles",
+      "exploreSymbols": "Explorer les symboles"
     }
   }
 }

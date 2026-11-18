@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 480" fill="none">
+  <defs>
+    <radialGradient id="halo">
+      <stop stop-color="#43341e"/>
+      <stop offset=".65" stop-color="#221a11" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#14100d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brass" x1="180" y1="112" x2="389" y2="365" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f5e0a9"/><stop offset="1" stop-color="#b38850"/>
+    </linearGradient>
+    <pattern id="paper" width="13" height="13" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r=".65" fill="#b68f58" opacity=".27"/>
+    </pattern>
+  </defs>
+  <rect x="36" y="18" width="508" height="444" rx="5" fill="url(#paper)"/>
+  <ellipse cx="290" cy="240" rx="278" ry="230" fill="url(#halo)"/>
+  <g stroke="#c1a371" stroke-width="1" opacity=".36">
+    <path d="M45 60V27h33m424 0h33v33m0 360v33h-33m-424 0H45v-33"/>
+    <circle cx="290" cy="240" r="199" stroke-dasharray="1 6"/>
+    <circle cx="290" cy="240" r="183"/><circle cx="290" cy="240" r="168"/>
+    <path d="M290 42v40m0 316v40M92 240h40m316 0h40M152 102l25 25m226 226 25 25m0-276-25 25M177 353l-25 25"/>
+    <path d="M290 72l168 168-168 168L122 240z" stroke-dasharray="3 7"/>
+    <path d="M213 123h154m-154 234h154"/>
+  </g>
+  <g stroke="url(#brass)" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M290 110l134 242H156z" opacity=".12" fill="#e0bb80" stroke="none"/>
+    <path d="M290 110l134 242H156z" stroke-width="1.75"/>
+    <path d="M290 141l107 193H183z" stroke-width="1" opacity=".49"/>
+    <path d="M227 249q63-62 126 0-63 62-126 0Z" stroke-width="2.2"/>
+    <circle cx="290" cy="249" r="24" stroke-width="1.4"/>
+    <circle cx="290" cy="249" r="10" fill="#f3db97" stroke="none"/>
+    <path d="M290 195v8m0 91v8m-51-99 7 11m88-11-7 11m-88 78 7-10m88 10-7-10" opacity=".63"/>
+    <path d="M278 83h24m-12-12v24m-12 302h24m-12-12v24" opacity=".8"/>
+  </g>
+  <g fill="#e3c387">
+    <path d="M116 235l5 5-5 5-5-5zm348 0 5 5-5 5-5-5z"/>
+    <circle cx="159" cy="109" r="2"/><circle cx="421" cy="109" r="2"/>
+    <circle cx="159" cy="371" r="2"/><circle cx="421" cy="371" r="2"/>
+  </g>
+</svg>

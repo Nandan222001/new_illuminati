@@ -1,48 +1,16 @@
 import { createServer, loadEnv } from 'vite'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
-import { CARDS, VIDEOS } from '../src/data/content.js'
-import { DEFAULT_SITE_URL, getSeoMetadata, getStructuredData, normalizeSiteUrl } from '../src/seo/metadata.js'
+import { findStory, storyDate } from '../src/data/stories/index.js'
+import { getSeoMetadata, getStructuredData } from '../src/seo/metadata.js'
+import { CATALOGUE_FALLBACK, documentFile, publicRoutes, renderRoutes } from '../src/seo/routes.js'
+import { DEFAULT_SITE_URL, SITE_NAME, normalizeSiteUrl } from '../src/seo/site.js'
 
 const root = process.cwd()
 const dist = join(root, 'dist')
 const environment = loadEnv('production', root, 'VITE_')
 const siteUrl = normalizeSiteUrl(process.env.VITE_SITE_URL || environment.VITE_SITE_URL || DEFAULT_SITE_URL)
 const htmlTemplate = await readFile(join(dist, 'index.html'), 'utf8')
-
-const publicRoutes = [
-  '/',
-  '/archives',
-  ...CARDS.map((card) => `/archives/${card.slug}`),
-  '/rituals',
-  '/new-order',
-  '/videos',
-  ...VIDEOS.map((video) => `/videos/${video.slug}`),
-  '/visuals',
-  '/community',
-  '/about',
-  '/rules',
-  '/why-999',
-  '/book',
-]
-const renderRoutes = [
-  ...publicRoutes,
-  '/login',
-  '/register',
-  '/profile',
-  '/admin',
-  '/admin/revenue',
-  '/admin/members',
-  '/admin/videos',
-  '/admin/images',
-  '/admin/rituals',
-  '/admin/books',
-  '/admin/book',
-  '/admin/archives',
-  '/admin/messages',
-  '/admin/settings',
-  '/__not-found',
-]
 
 // Match the server snapshot used for hydration: browser-only values are read
 // after mount by the app, never while static HTML is being rendered.
@@ -76,7 +44,7 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => (
 
 function replaceTag(html, expression, replacement) {
   if (!expression.test(html)) throw new Error(`Could not find head tag matching ${expression}`)
-  return html.replace(expression, replacement)
+  return html.replace(expression, () => replacement)
 }
 
 function renderHead(template, metadata) {
@@ -86,7 +54,7 @@ function renderHead(template, metadata) {
   html = replaceTag(html, /<meta name="description"[^>]*>/i, `<meta name="description" content="${escapeHtml(metadata.description)}">`)
   html = replaceTag(html, /<meta name="robots"[^>]*>/i, `<meta name="robots" content="${escapeHtml(metadata.robots)}">`)
   html = replaceTag(html, /<link rel="canonical"[^>]*>/i, metadata.canonical ? `<link rel="canonical" href="${escapeHtml(metadata.canonical)}">` : '')
-  html = replaceTag(html, /<link id="seo-hero-preload"[^>]*>/i, `<link id="seo-hero-preload" rel="preload" as="image" href="${escapeHtml(metadata.preloadImage)}" fetchpriority="high">`)
+  html = replaceTag(html, /<link id="seo-hero-preload"[^>]*>/i, metadata.preloadImage ? `<link id="seo-hero-preload" rel="preload" as="image" href="${escapeHtml(metadata.preloadImage)}" fetchpriority="high">` : '')
   html = replaceTag(html, /<meta property="og:type"[^>]*>/i, `<meta property="og:type" content="${metadata.ogType}">`)
   html = replaceTag(html, /<meta property="og:title"[^>]*>/i, `<meta property="og:title" content="${escapeHtml(metadata.title)}">`)
   html = replaceTag(html, /<meta property="og:description"[^>]*>/i, `<meta property="og:description" content="${escapeHtml(metadata.description)}">`)
@@ -103,6 +71,7 @@ function renderHead(template, metadata) {
 const vite = await createServer({
   appType: 'custom',
   logLevel: 'error',
+  optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true },
 })
 
@@ -110,19 +79,24 @@ try {
   const { render } = await vite.ssrLoadModule('/src/entry-server.jsx')
   const { default: i18n } = await vite.ssrLoadModule('/src/i18n/config.js')
   await i18n.changeLanguage('en')
+  const translate = i18n.t.bind(i18n)
+  const fallbackMetadata = {
+    ...getSeoMetadata('/__not-found', translate, siteUrl),
+    title: `Catalogue | ${SITE_NAME}`,
+    description: 'Browse published archive and video previews.',
+  }
+  // Entries may be published in the API after the static site was built.
+  // Mount (not hydrate) the app at those URLs and let it resolve the record.
+  await writeFile(join(dist, CATALOGUE_FALLBACK), renderHead(htmlTemplate, fallbackMetadata))
 
   for (const route of renderRoutes) {
-    const metadata = getSeoMetadata(route, i18n.t.bind(i18n), siteUrl)
+    const metadata = getSeoMetadata(route, translate, siteUrl)
     const markup = await render(route)
     const document = renderHead(htmlTemplate, metadata).replace(
       '<div id="root"></div>',
-      `<div id="root">${markup}</div>`,
+      () => `<div id="root">${markup}</div>`,
     )
-    const outputPath = route === '/__not-found'
-      ? join(dist, '404.html')
-      : route === '/'
-        ? join(dist, 'index.html')
-        : join(dist, route.slice(1), 'index.html')
+    const outputPath = join(dist, documentFile(route))
     await mkdir(dirname(outputPath), { recursive: true })
     await writeFile(outputPath, document)
     console.log(`Pre-rendered ${route}`)
@@ -131,7 +105,11 @@ try {
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...publicRoutes.map((route) => `  <url><loc>${escapeHtml(`${siteUrl}${route === '/' ? '/' : route}`)}</loc></url>`),
+    ...publicRoutes.map((route) => {
+      const story = findStory(route)
+      const lastmod = story ? `<lastmod>${storyDate(story)}</lastmod>` : ''
+      return `  <url><loc>${escapeHtml(`${siteUrl}${route}`)}</loc>${lastmod}</url>`
+    }),
     '</urlset>',
     '',
   ].join('\n')

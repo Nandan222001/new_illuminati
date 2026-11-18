@@ -60,14 +60,14 @@ export default function Rules() {
         <div className="rules-consent">
           {consent
             ? <span>✓ {t('rules.acceptedOn', { date: acceptedOn, version: consent.version || CONSENT_VERSION })}</span>
-            : <button type="button" className="btn-gold" onClick={accept}>{t('rules.acceptRules')}</button>}
+            : <button type="button" className="btn-gold" onClick={accept}>{t('editorial.confirmTerms')}</button>}
         </div>
       </section>
 
-      {/* Kept for the footer “Privacy” link and the account/privacy statement. */}
+      {/* Legacy anchor for visitors using older privacy links. */}
       <section className="page-section" id="rule-privacy">
         <SectionHead title={t('rules.items.privacy.title')} />
-        <p className="rules-wellbeing">{t('rules.items.privacy.text')}</p>
+        <p className="rules-wellbeing"><Link className="editorial-text-link" to="/privacy">{t('editorial.privacy')} →</Link></p>
       </section>
     </>
   )

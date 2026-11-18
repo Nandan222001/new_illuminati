@@ -1,5 +1,5 @@
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { useContent } from '../context/ContentContext'
+import { Outlet } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useConsent } from '../context/ConsentContext'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -7,33 +7,24 @@ import ConsentGate from './ConsentGate'
 import ScrollToTop from './ScrollToTop'
 import ContentProtection from './ContentProtection'
 
-export default function Layout() {
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
-  const isAdmin = pathname.startsWith('/admin')
-  const { ready: contentReady } = useContent()
+export default function Layout({ requiresConsent = false }) {
   const { consent } = useConsent()
-  const enterSite = () => navigate('/archives')
+  const { t } = useTranslation()
+  const blocked = requiresConsent && !consent
 
   return (
     <>
       <ScrollToTop />
-      <ContentProtection />
-      {/* Everything inside #site-shell is inert while the consent gate is up. */}
+      {requiresConsent && <ContentProtection />}
       <div id="site-shell">
-        <Navbar onEnter={enterSite} />
-        <main id="site-main">
-          {contentReady ? (
-            <Outlet context={{ enterSite }} />
-          ) : (
-            <div className="page-loading">
-              <div className="sigil-spinner" aria-label="Loading" />
-            </div>
-          )}
+        <a className="skip-to-content" href="#site-main">{t('editorial.skip')}</a>
+        <Navbar />
+        <main id="site-main" tabIndex={-1}>
+          {!blocked && <Outlet />}
         </main>
-        {!isAdmin && <Footer />}
+        <Footer />
       </div>
-      {!consent && pathname !== '/rules' && <ConsentGate />}
+      {blocked && <ConsentGate />}
     </>
   )
 }

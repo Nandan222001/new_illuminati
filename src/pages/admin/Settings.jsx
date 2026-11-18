@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useToast } from '../../context/ToastContext'
 import { useSiteSettings } from '../../context/SiteSettingsContext'
 import { DEFAULT_SETTINGS, fetchSettings, saveSettings } from '../../admin/adminStore'
+import { normalizeSocialUrl } from '../../utils/social'
 
 function SecretField({ label, value, onChange, placeholder }) {
   const [show, setShow] = useState(false)
@@ -32,6 +33,11 @@ export default function AdminSettings() {
   const save = async (section) => {
     try {
       if (section === 'Razorpay' && !(Number(settings.razorpay.joiningFee) >= 1)) { toast('Enter a joining fee of at least ₹1.'); return }
+      const instagram = settings.social.instagram?.trim()
+      if (section === 'Social media' && instagram && !normalizeSocialUrl('instagram', instagram)) {
+        toast('Enter an Instagram profile URL or @handle, or leave Instagram blank.')
+        return
+      }
       await saveSettings({ ...settings, razorpay: { ...settings.razorpay, joiningFee: Number(settings.razorpay.joiningFee) || 999 } })
       // Mirror the social links into the public site immediately (they are
       // also served by GET /public/settings once the API is reachable).

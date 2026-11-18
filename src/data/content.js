@@ -2,25 +2,12 @@
 /*  Site content. Every image path points at /public/assets.           */
 /* ------------------------------------------------------------------ */
 
-export const NAV_LINKS = [
-  { to: '/', key: 'home' },
-  { to: '/archives', key: 'archives' },
-  { to: '/new-order', key: 'newOrder' },
-  { to: '/rituals', key: 'rituals' },
-  { to: '/videos', key: 'videos' },
-  { to: '/visuals', key: 'visuals' },
-  { to: '/community', key: 'community' },
-  { to: '/archives#library', key: 'library' },
-  { to: '/about', key: 'about' },
-]
-
 /* Translatable copy for these entries (kicker/title/sub/intro, card/symbol
    text, channel/timeline/faq copy) lives in src/i18n/locales/*, keyed by the
    slug/key below. See src/hooks/useLocalizedContent.js. */
 export const PAGES = {
   archives: { hero: '/assets/archives-hero.jpg', heroMobile: '/assets/archives-hero-mobile.jpg' },
   rituals: { hero: '/assets/rituals-hero.jpg', heroMobile: '/assets/rituals-hero-mobile.jpg' },
-  newOrder: { hero: '/assets/neworder-hero.jpg', heroMobile: '/assets/neworder-hero-mobile.jpg' },
   videos: { hero: '/assets/videos-hero.jpg', heroMobile: '/assets/videos-hero-mobile.jpg' },
   visuals: { hero: '/assets/visuals-hero.jpg', heroMobile: '/assets/visuals-hero-mobile.jpg' },
   community: { hero: '/assets/community-hero.jpg', heroMobile: '/assets/community-hero-mobile.jpg' },
@@ -50,12 +37,25 @@ export const VIDEOS = [
   { slug: 'satanic-mythology', title: 'Satanic Mythology', tag: 'fiction', dur: '12:46', img: '/assets/archive-baphomet.jpg', desc: 'How the horned figure travelled from medieval allegory to modern pop culture — and how the Brotherhood story reinterprets it.', date: 'Episode 01' },
   { slug: 'hidden-societies', title: 'Hidden Societies', tag: 'theory', dur: '08:20', img: '/assets/archive-ritual.jpg', desc: 'A survey of the real historical societies that inspired the mythology, and the theories that grew around them.', date: 'Episode 02' },
   { slug: 'ancient-mysteries', title: 'Ancient Mysteries', tag: 'fact', dur: '15:02', img: '/assets/forbidden-pyramid.jpg', desc: 'Pyramids, alignments and lost libraries. The documented history behind the symbols used throughout the experience.', date: 'Episode 03' },
-  { slug: 'new-world-order', title: 'New World Order', tag: 'theory', dur: '10:44', img: '/assets/forbidden-city.jpg', desc: 'Where the phrase came from, why it stuck, and how the Brotherhood story uses it as a countdown.', date: 'Episode 04' },
+  { slug: 'new-world-order', title: 'New World Order', tag: 'theory', dur: '10:44', img: '/assets/forbidden-city.jpg', desc: 'Where the phrase came from and why it became associated with a conspiracy theory.', date: 'Episode 04' },
   { slug: 'the-forbidden-library', title: 'The Forbidden Library', tag: 'fiction', dur: '09:31', img: '/assets/archives-hero.jpg', desc: 'A dramatised walk through the six chambers of the Ritual Archive, narrated by the Grand Keeper.', date: 'Episode 05' },
-  { slug: 'the-last-screening', title: 'The Last Screening', tag: 'fiction', dur: '18:12', img: '/assets/videos-hero.jpg', desc: 'The feature-length chapter that closes season one. Sealed for initiates until the New Order date.', date: 'Episode 06' },
+  { slug: 'the-last-screening', title: 'The Last Screening', tag: 'fiction', dur: '18:12', img: '/assets/videos-hero.jpg', desc: 'A fictional chapter that closes season one. Member access is required when the episode is available.', date: 'Episode 06' },
   { slug: 'council-of-thirteen', title: 'Council of Thirteen', tag: 'fiction', dur: '11:05', img: '/assets/community-hero.jpg', desc: 'Inside the round table: how the council makes its decisions and what the empty thirteenth seat means.', date: 'Episode 07' },
   { slug: 'the-eye-over-the-city', title: 'The Eye Over The City', tag: 'theory', dur: '07:48', img: '/assets/neworder-hero.jpg', desc: 'Skylines, pyramids and the all-seeing eye — an image breakdown of the New Order key visual.', date: 'Episode 08' },
 ]
+
+// Keep older database seeds in sync without overriding a description edited by a Keeper.
+const STALE_VIDEO_DESCRIPTIONS = {
+  'new-world-order': 'Where the phrase came from, why it stuck, and how the Brotherhood story uses it as a countdown.',
+  'the-last-screening': 'The feature-length chapter that closes season one. Sealed for initiates until the New Order date.',
+}
+
+export function videoDescription(video) {
+  if (!video.custom && video.desc && video.desc === STALE_VIDEO_DESCRIPTIONS[video.slug]) {
+    return VIDEOS.find(({ slug }) => slug === video.slug)?.desc || video.desc
+  }
+  return video.desc
+}
 
 export const SYMBOLS = [
   { slug: 'the-third-eye', img: '/assets/archive-eye.jpg' },
@@ -132,50 +132,9 @@ export const GALLERY = [
   { id: 'the-oath', img: '/assets/auth-register.jpg', title: 'The Oath', cap: 'Register · Key visual', portrait: true },
 ]
 
-export const INSTA_IMAGES = [
-  '/assets/archive-eye.jpg',
-  '/assets/archive-altar.jpg',
-  '/assets/archive-ritual.jpg',
-  '/assets/archive-baphomet.jpg',
-  '/assets/archive-silhouette.jpg',
-  '/assets/community-emblem.jpg',
-]
-
 export const CHANNELS = [
   { key: 'discord', icon: '🎮' },
   { key: 'telegram', icon: '✈' },
   { key: 'instagram', icon: '📷' },
   { key: 'discussionBoard', icon: '💬' },
 ]
-
-export const TIMELINE = [
-  { key: 'origin' },
-  { key: 'archive' },
-  { key: 'council' },
-  { key: 'newOrder' },
-]
-
-export const FAQ = [
-  { key: 'isReal' },
-  { key: 'whoCanJoin' },
-  { key: 'accountDoes' },
-  { key: 'realWorldClaims' },
-]
-
-// 31 December 2026, 11:59:59 PM GMT — fixed instant so every visitor counts
-// down to the same moment. All published times on the site are GMT.
-export const TARGET_DATE = new Date('2026-12-31T23:59:59Z')
-
-/** Joined-members figure shown on the home countdown block and the New World Order hero. */
-export const MEMBERS_JOINED_DISPLAY = '3.6M+'
-
-export function getTimeLeft() {
-  let diff = TARGET_DATE - new Date()
-  if (diff < 0) diff = 0
-  return {
-    d: Math.floor(diff / 864e5),
-    h: Math.floor(diff / 36e5) % 24,
-    m: Math.floor(diff / 6e4) % 60,
-    s: Math.floor(diff / 1e3) % 60,
-  }
-}

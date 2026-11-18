@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { PAGES } from '../data/content'
-import { useLocalizedCards } from '../hooks/useLocalizedContent'
+import { useLocalizedArchives } from '../hooks/useLocalizedContent'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
@@ -17,11 +17,11 @@ export default function Archives() {
   const page = PAGES.archives
   const { t } = useTranslation()
   const { user } = useAuth()
-  const { archives, books, canAccess } = useContent()
+  const { books, canAccess } = useContent()
   const toast = useToast()
   const [showInitiation, setShowInitiation] = useState(false)
   const [viewerBook, setViewerBook] = useState(null)
-  const cards = useLocalizedCards()
+  const allCards = useLocalizedArchives()
 
   /** Stored volumes open in the in-page reader (they need the member's token);
    *  linked ones simply open where they are hosted. */
@@ -33,12 +33,6 @@ export default function Archives() {
     setViewerBook(book)
   }
 
-  // Keeper-added chambers come from the API; built-in chambers stay translated.
-  const customCards = archives
-    .filter((a) => a.custom)
-    .map((a) => ({ ...a, era: a.era || 'Chamber', cap: a.cap || '', body: a.body || '' }))
-  const allCards = [...cards, ...customCards]
-
   return (
     <>
       <PageHero kicker={t('content.pages.archives.kicker')} title={t('content.pages.archives.title')} sub={t('content.pages.archives.sub')} image={page.hero} imageMobile={page.heroMobile}>
@@ -49,7 +43,7 @@ export default function Archives() {
         <SectionHead title={t('archives.chambersTitle')} sub={t('archives.chambersSub')} />
         <div className="chamber-list">
           {allCards.map((c, i) => (
-            <Link to={`/archives/${c.slug}`} className={`chamber${i % 2 ? ' reverse' : ''}`} key={c.slug}>
+            <Link to={`/archives/${encodeURIComponent(c.slug)}`} className={`chamber${i % 2 ? ' reverse' : ''}`} key={c.slug}>
               <div className="chamber-img"><Img src={c.img} alt={c.title} /></div>
               <div className="chamber-body">
                 <span className="chamber-num">{c.era}</span>

@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { useCallback, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { useContent } from '../context/ContentContext'
 import { useToast } from '../context/ToastContext'
 import { useSiteSettings } from '../context/SiteSettingsContext'
 import Img from '../components/Img'
+import CatalogueLoading from '../components/CatalogueLoading'
+import NotFound from './NotFound'
 import MediaPlayer from '../components/MediaPlayer'
 import SectionHead from '../components/SectionHead'
 import InitiationModal from '../components/InitiationModal'
@@ -26,7 +28,7 @@ function VideoSource({ video, onError }) {
 
 export default function VideoDetail() {
   const { slug } = useParams()
-  const { videos: VIDEOS, canAccess } = useContent()
+  const { videos: VIDEOS, canAccess, ready } = useContent()
   const video = VIDEOS.find((v) => v.slug === slug)
   const [playing, setPlaying] = useState(false)
   const [showInitiation, setShowInitiation] = useState(false)
@@ -34,8 +36,10 @@ export default function VideoDetail() {
   const { joiningFee } = useSiteSettings()
   const toast = useToast()
   const { t } = useTranslation()
+  const onPlaybackError = useCallback((message) => { setPlaying(false); toast(message) }, [toast])
+  useEffect(() => { setPlaying(false) }, [slug])
 
-  if (!video) return <Navigate to="/videos" replace />
+  if (!video) return ready ? <NotFound /> : <CatalogueLoading />
   const open = canAccess(video.category) && !!user
   const hasSource = !!(video.video_key || video.video_url)
   const related = VIDEOS.filter((v) => v.slug !== video.slug).slice(0, 4)
@@ -50,17 +54,11 @@ export default function VideoDetail() {
         <Img src={video.img} alt={video.title} eager />
         {open ? (
           <>
-            {!playing && (
+            {!hasSource && <p className="player-unavailable">{t('editorial.catalogue.noPlayback')}</p>}
+            {hasSource && !playing && (
               <button type="button" className="play big-play" aria-label={t('common.play')} onClick={() => { setPlaying(true); toast(t('videoDetail.nowPlayingToast', { title: video.title })) }}>▶</button>
             )}
-            {playing && hasSource && <VideoSource video={video} onError={(m) => { setPlaying(false); toast(m) }} />}
-            {playing && !hasSource && (
-              <div className="player-bar">
-                <button type="button" onClick={() => setPlaying(false)} aria-label={t('common.pause')}>❚❚</button>
-                <div className="progress"><span /></div>
-                <em>00:00 / {video.dur}</em>
-              </div>
-            )}
+            {playing && hasSource && <VideoSource key={video.slug} video={video} onError={onPlaybackError} />}
           </>
         ) : (
           <div className="player-locked">

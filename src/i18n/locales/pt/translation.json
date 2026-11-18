@@ -6,10 +6,6 @@
     "play": "Reproduzir",
     "pause": "Pausar",
     "close": "Fechar",
-    "days": "DIAS",
-    "hours": "HORAS",
-    "minutes": "MINUTOS",
-    "seconds": "SEGUNDOS",
     "sealedBadge": "🔒 SELADO",
     "signInBadge": "🔒 ENTRE PARA ASSISTIR",
     "unsealedBadge": "◈ DESSELADO",
@@ -18,8 +14,6 @@
     "tagline": "SÍMBOLOS · MITO · HISTÓRIA",
     "sealYourOathCta": "SELE SEU JURAMENTO ›",
     "followNow": "SEGUIR AGORA",
-    "followingToast": "Seguir no Instagram estará disponível em breve.",
-    "instagramPostAlt": "Publicação do Instagram",
     "explore": "Explorar",
     "emailLabel": "E-MAIL",
     "passphraseLabel": "SENHA",
@@ -195,60 +189,8 @@
     }
   },
   "home": {
-    "welcomeTo": "BEM-VINDO A",
-    "welcomeBack": "BEM-VINDO DE VOLTA, {{name}}",
-    "heroSubLine1": "A porta sempre esteve aberta,",
-    "heroSubLine2": "poucos sabem onde ela fica.",
-    "heroTag": "ENTRE NO DESCONHECIDO",
-    "ctaMain": "ENTRE NO MUNDO SOMBRIO",
-    "railHistory": "HISTÓRIA",
-    "railSymbols": "SÍMBOLOS",
-    "railConspiracies": "CONSPIRAÇÕES",
-    "railSecrets": "SEGREDOS",
-    "bottomLeft": "SÍMBOLOS · MITO · HISTÓRIA",
-    "scrollHint": "ROLE PARA EXPLORAR",
-    "exploreTitle": "ESCOLHA SEU CAMINHO",
-    "exploreSub": "SEIS PORTAS. CADA UMA LEVA MAIS FUNDO.",
-    "viewAllChambers": "VER TODAS AS CÂMARAS ›",
-    "autoplayLabel": "REPRODUÇÃO AUTOMÁTICA · 02 SEG",
     "allVisuals": "TODOS OS VISUAIS ›",
-    "countdownDate": "31 DECEMBER 2026 · 11:59:59 PM GMT",
-    "countdownCta": "NOVA ORDEM MUNDIAL ›",
-    "allVideos": "TODOS OS VÍDEOS ›",
-    "communityTitle": "ENTRE NA COMUNIDADE",
-    "communityMatureNote": "Somente maiores de 18 anos (conteúdo adulto).",
-    "instagramTitleLine1": "SIGA A IRMANDADE",
-    "instagramTitleLine2": "NO INSTAGRAM",
-    "statsKicker": "A STORY IN NUMBERS · REAL METRICS, NO MADE-UP CLAIMS",
-    "statsSub": "The countdown, the joined-members total and the size of the story catalogue.",
-    "membersStatNote": "Joined members across the Network."
-  },
-  "about": {
-    "pillars": {
-      "storyFirst": {
-        "title": "A HISTÓRIA EM PRIMEIRO LUGAR",
-        "text": "Cada página é um capítulo. O arquivo, os rituais e a contagem regressiva são recursos narrativos — não alegações."
-      },
-      "clearlyLabelled": {
-        "title": "CLARAMENTE ROTULADO",
-        "text": "Os vídeos são marcados como história, teoria ou fato para que você sempre saiba o que está assistindo."
-      },
-      "communityLed": {
-        "title": "LIDERADO PELA COMUNIDADE",
-        "text": "Os iniciados votam para onde a história vai a seguir. O conselho escuta."
-      },
-      "noClaims": {
-        "title": "SEM ALEGAÇÕES REAIS",
-        "text": "Nunca visamos pessoas ou organizações reais. Semelhanças são coincidência ou puramente referenciais."
-      }
-    },
-    "pillarsTitle": "NO QUE ACREDITAMOS",
-    "pillarsSub": "QUATRO PILARES DA EXPERIÊNCIA.",
-    "storyTitle": "A HISTÓRIA ATÉ AGORA",
-    "libraryAlt": "A biblioteca",
-    "faqTitle": "PERGUNTAS FREQUENTES",
-    "faqSub": "AS PERGUNTAS QUE TODO INICIADO FAZ PRIMEIRO.",
-    "disclaimerText": "Illuminati Brotherhood é uma marca e um universo narrativo inspirados na história e no simbolismo das sociedades secretas. Não é afiliada a nenhum ritual, sistema de crenças, organização ou ideologia real, nem os promove, descreve ou endossa. Algumas imagens são sombrias e de tom maduro; somente +18. Se algum tema deste site o afetar, afaste-se e procure alguém de confiança."
+    "allVideos": "TODOS OS VÍDEOS ›"
   },
   "archives": {
     "chambersTitle": "AS SEIS CÂMARAS",
@@ -272,36 +214,6 @@
     "bandTitle": "ENCENADO. SIMBÓLICO. NARRATIVO.",
     "bandText": "Nenhum ritual real é descrito ou incentivado nesta experiência. As estações são recursos narrativos — cenas de uma história que convidamos você a explorar.",
     "watchDocs": "ASSISTIR AOS DOCUMENTÁRIOS ›"
-  },
-  "newOrder": {
-    "phases": {
-      "signal": {
-        "title": "O SINAL",
-        "text": "O contador aparece em cada página. Os iniciados recebem a primeira mensagem selada."
-      },
-      "gathering": {
-        "title": "A REUNIÃO",
-        "text": "O conselho se reúne. Novas câmaras se abrem no arquivo e a comunidade vota o próximo capítulo."
-      },
-      "screening": {
-        "title": "A EXIBIÇÃO",
-        "text": "A Última Exibição — o final de longa-metragem da primeira temporada — é desselada para todos os iniciados."
-      },
-      "zeroHour": {
-        "title": "A NOVA ORDEM",
-        "text": "Hora zero. A próxima temporada começa. Agendado e inteiramente nosso."
-      }
-    },
-    "whatHappensTitle": "O QUE ACONTECE NO ZERO",
-    "whatHappensSub": "QUATRO FASES. UMA DATA.",
-    "roadTitle": "O CAMINHO ATÉ 31 · 12 · 2026",
-    "notifyTitle": "SEJA O PRIMEIRO A SABER",
-    "alreadyOnList": "Você já está na lista, {{name}}. Os iniciados são avisados antes de todos.",
-    "viewProfile": "VER MEU PERFIL ›",
-    "notifyPrompt": "Deixe um e-mail ou torne-se um iniciado para receber o sinal.",
-    "notifyMe": "AVISAR-ME",
-    "orBecomeInitiate": "OU TORNE-SE UM INICIADO ›",
-    "notifyToast": "Os alertas por e-mail chegarão em breve. Crie uma conta para receber o sinal primeiro."
   },
   "videos": {
     "nowScreeningTitle": "EM EXIBIÇÃO AGORA",
@@ -557,12 +469,6 @@
         "sub": "VELA. CÍRCULO. SILÊNCIO. AS ETAPAS DO INICIADO.",
         "intro": "Os ritos da Irmandade são teatro: encenados e simbólicos. Leia-os como uma história. Siga as sete estações, da primeira vela ao juramento selado."
       },
-      "newOrder": {
-        "kicker": "A EXPERIÊNCIA 666.666",
-        "title": "NOVA ORDEM MUNDIAL",
-        "sub": "31 DECEMBER 2026 · 11:59:59 PM GMT · THE VEIL THINS.",
-        "intro": "A campaign milestone: when the counter reaches zero the Brotherhood opens the next chapter. One date, four phases, and a story waiting to unfold."
-      },
       "videos": {
         "kicker": "ARQUIVOS PROIBIDOS",
         "title": "VÍDEOS",
@@ -812,46 +718,32 @@
         "desc": "Ensaios longos e análises profundas do arquivo.",
         "note": "O fórum de discussão está logo abaixo — role para participar."
       }
+    }
+  },
+  "editorial": {
+    "stories": "Artigos",
+    "symbols": "Símbolos",
+    "signIn": "Entrar",
+    "latest": "Últimos artigos",
+    "allStories": "Todos os artigos",
+    "updated": "Última atualização",
+    "learnMore": "Sobre o projeto",
+    "instagram": "Siga-nos no Instagram",
+    "viewProfile": "Ver perfil",
+    "skip": "Pular para o conteúdo",
+    "disclaimer": "Um projeto educacional independente sobre mitos, símbolos e história. Não temos vínculo com nenhuma sociedade secreta real.",
+    "accessDisclosure": "O acesso pago e as compras são apenas para conteúdo digital. Não dão direito a filiação ou iniciação em nenhuma organização real.",
+    "privacy": "Política de privacidade",
+    "terms": "Termos e condições",
+    "contact": {
+      "title": "Contato"
     },
-    "timeline": {
-      "origin": {
-        "year": "ORIGEM",
-        "title": "The first spark",
-        "text": "A Irmandade começou como um projeto criativo: e se a mitologia de sociedades secretas fosse tratada como cinema em vez de conspiração?"
-      },
-      "archive": {
-        "year": "ARQUIVO",
-        "title": "Seis câmaras",
-        "text": "O Arquivo Ritual deu à história uma estrutura — seis relíquias, seis câmaras, uma jornada da percepção ao juramento."
-      },
-      "council": {
-        "year": "CONSELHO",
-        "title": "A comunidade",
-        "text": "Os iniciados se juntaram à mesa redonda. Suas teorias, arte e perguntas agora moldam para onde a história vai."
-      },
-      "newOrder": {
-        "year": "2026",
-        "title": "The New World Order",
-        "text": "On 31 December 2026 at 11:59:59 PM GMT the counter hits zero and the next chapter opens. Scheduled, and entirely ours."
-      }
-    },
-    "faq": {
-      "isReal": {
-        "q": "Alguma coisa disso é real?",
-        "a": "A história que citamos é real. A Irmandade em si — seus rituais, seu conselho, a contagem regressiva e sua mitologia — é criação nossa, um universo narrativo inspirado no simbolismo das sociedades secretas. Não somos afiliados a nenhuma organização real."
-      },
-      "whoCanJoin": {
-        "q": "Quem pode participar da comunidade?",
-        "a": "Qualquer pessoa que goste de mistério, cinema e mitologia. Somente para maiores de 18 anos, porque algumas imagens são sombrias e de tom adulto."
-      },
-      "accountDoes": {
-        "q": "O que uma conta faz?",
-        "a": "Iniciados conectados desbloqueiam vídeos e rituais selados e recebem um número de iniciado. Administradores (Guardiões) gerenciam membros e conteúdo selado."
-      },
-      "realWorldClaims": {
-        "q": "Vocês fazem alegações reais sobre pessoas ou organizações?",
-        "a": "Nunca. Qualquer semelhança com pessoas, grupos ou eventos reais é coincidência ou puramente referencial, em nome da história."
-      }
+    "home": {
+      "kicker": "História · Símbolos · Mitos",
+      "title": "As histórias por trás dos símbolos",
+      "description": "Explore a história dos Illuminati da Baviera, do olho na nota de dólar e dos mitos que surgiram ao redor deles. Consulte as fontes.",
+      "explore": "Ler os artigos",
+      "exploreSymbols": "Explorar símbolos"
     }
   }
 }

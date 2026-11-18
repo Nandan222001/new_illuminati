@@ -55,7 +55,7 @@ export default function ThreadList({ threads, isAdmin, onReply, onStatus, emptyT
             ))}
           </ol>
 
-          <form
+          {onReply && <form
             className="thread-reply"
             onSubmit={(e) => {
               e.preventDefault()
@@ -79,7 +79,7 @@ export default function ThreadList({ threads, isAdmin, onReply, onStatus, emptyT
               )}
               <button type="submit" className="btn-gold small">{t('community.reply')}</button>
             </div>
-          </form>
+          </form>}
         </li>
       ))}
     </ul>

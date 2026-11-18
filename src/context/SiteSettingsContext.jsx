@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { apiFetch } from '../api/client'
 import { INITIATION_FEE_INR } from '../auth/authService'
-import { DEFAULT_SOCIAL, readStoredSocial, saveStoredSocial, SOCIAL_PLATFORMS } from '../utils/social'
+import { DEFAULT_SOCIAL, readStoredSocial, saveStoredSocial } from '../utils/social'
 
 const SiteSettingsContext = createContext(null)
 
@@ -17,7 +17,6 @@ export function SiteSettingsProvider({ children }) {
   const [joiningFee, setJoiningFee] = useState(INITIATION_FEE_INR)
 
   useEffect(() => {
-    setSocial(readStoredSocial())
     const onUpdate = (event) => setSocial(event.detail || readStoredSocial())
     window.addEventListener('ib:social-updated', onUpdate)
     window.addEventListener('storage', onUpdate)
@@ -27,12 +26,10 @@ export function SiteSettingsProvider({ children }) {
         if (!alive) return
         if (data?.paymentButtonId) setPaymentButtonId(data.paymentButtonId)
         if (Number(data?.joiningFee) > 0) setJoiningFee(Number(data.joiningFee))
-        if (!data?.social) return
-        const merged = Object.fromEntries(SOCIAL_PLATFORMS.map((p) => [p, data.social[p] || '']))
-        const hasAny = SOCIAL_PLATFORMS.some((p) => merged[p])
-        if (hasAny) setSocial(saveStoredSocial({ ...readStoredSocial(), ...merged }))
+        // The API is authoritative, including when the last configured link is removed.
+        if (data?.social && typeof data.social === 'object') setSocial(saveStoredSocial(data.social))
       })
-      .catch(() => { /* bundled/local defaults stay in place */ })
+      .catch(() => { if (alive) setSocial(readStoredSocial()) })
     return () => {
       alive = false
       window.removeEventListener('ib:social-updated', onUpdate)

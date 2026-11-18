@@ -1,17 +1,21 @@
 import { useTranslation } from 'react-i18next'
-import { CARDS, CHANNELS, FAQ, SYMBOLS, TATTOOS, TIMELINE } from '../data/content'
+import { CARDS, CHANNELS, SYMBOLS, TATTOOS } from '../data/content'
+import { useContent } from '../context/ContentContext'
 
-/** Archive chamber cards, with title/desc/cap/era/body translated by slug. */
-export function useLocalizedCards() {
+/** Keep built-in chapters in display order and honor the API's visible list. */
+export function useLocalizedArchives() {
   const { t } = useTranslation()
-  return CARDS.map((c) => ({
-    ...c,
-    title: t(`content.cards.${c.slug}.title`),
-    desc: t(`content.cards.${c.slug}.desc`),
-    cap: t(`content.cards.${c.slug}.cap`),
-    era: t(`content.cards.${c.slug}.era`),
-    body: t(`content.cards.${c.slug}.body`),
+  const { archives } = useContent()
+  const bySlug = new Map(archives.map((row) => [row.slug, row]))
+  const builtIn = CARDS.filter(({ slug }) => bySlug.has(slug)).map(({ slug }) => ({
+    ...bySlug.get(slug),
+    title: t(`content.cards.${slug}.title`),
+    desc: t(`content.cards.${slug}.desc`),
+    cap: t(`content.cards.${slug}.cap`),
+    era: t(`content.cards.${slug}.era`),
+    body: t(`content.cards.${slug}.body`),
   }))
+  return [...builtIn, ...archives.filter((row) => row.custom)]
 }
 
 /** Visual sigils, with name/short/meaning/about translated by slug. */
@@ -44,26 +48,5 @@ export function useLocalizedChannels() {
     name: t(`content.channels.${c.key}.name`),
     desc: t(`content.channels.${c.key}.desc`),
     note: t(`content.channels.${c.key}.note`),
-  }))
-}
-
-/** Brotherhood history timeline, translated by key. */
-export function useLocalizedTimeline() {
-  const { t } = useTranslation()
-  return TIMELINE.map((item) => ({
-    ...item,
-    year: t(`content.timeline.${item.key}.year`),
-    title: t(`content.timeline.${item.key}.title`),
-    text: t(`content.timeline.${item.key}.text`),
-  }))
-}
-
-/** About page FAQ, translated by key. */
-export function useLocalizedFaq() {
-  const { t } = useTranslation()
-  return FAQ.map((item) => ({
-    ...item,
-    q: t(`content.faq.${item.key}.q`),
-    a: t(`content.faq.${item.key}.a`),
   }))
 }
